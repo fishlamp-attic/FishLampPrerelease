@@ -33,7 +33,7 @@
     return FLAutorelease([[[self class] alloc] init]);
 }
 
-- (void) addOperation:(FLOperation*) operation {
+- (void) queueOperation:(FLOperation*) operation {
     [_operations addObject:operation];
 }
 

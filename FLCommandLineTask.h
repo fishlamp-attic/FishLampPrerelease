@@ -19,6 +19,6 @@
 
 + (id) commandLineTask;
 
-- (void) addOperation:(FLOperation*) operation;
+- (void) queueOperation:(FLOperation*) operation;
 
 @end

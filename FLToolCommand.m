@@ -83,7 +83,7 @@
 }
 
 - (void) addOperationToTask:(FLCommandLineTask*) task withOptions:(NSDictionary*) options {
-    [task addOperation:self];
+    [task queueOperation:self];
 }
 
 - (void) addSubcommand:(FLToolCommand *)command {
