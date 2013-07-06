@@ -37,7 +37,7 @@
     [_operations addObject:operation];
 }
 
-- (id) performSynchronously {
+- (FLPromisedResult) performSynchronously {
     for(FLOperation* operation in _operations) {
         [self runChildSynchronously:operation];
     }
