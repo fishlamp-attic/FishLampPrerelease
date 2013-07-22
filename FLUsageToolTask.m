@@ -35,7 +35,7 @@
 //    
 //    [self.output closeLine];
 //    
-//    [self.output appendLineWithFormat:@"%@[<args>]", [@"" stringWithPadding:leader.length]];
+//    [self.output appendLineWithFormat:@"%@[<args>]", [@"" stringWithPadding_fl:leader.length]];
 
     return nil;
 }

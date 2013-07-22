@@ -50,7 +50,7 @@
 }
 
 - (void) addKeys:(NSString*) keys {
-    NSArray* list = [keys componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@", "] allowEmptyStrings:NO];
+    NSArray* list = [keys componentsSeparatedByCharactersInSet_fl:[NSCharacterSet characterSetWithCharactersInString:@", "] allowEmptyStrings:NO];
     for(NSString* key in list) {
         [_optionKeys addObject:[key lowercaseString]];
     }
@@ -65,7 +65,7 @@
 }
 
 - (void) printHelpToStringFormatter:(FLStringFormatter*) output {
-    [output appendLineWithFormat:@"@: %@", [[NSString concatStringArray:self.optionKeys.allObjects] stringWithPadding:20], [self help]];
+    [output appendLineWithFormat:@"@: %@", [[NSString concatStringArray:self.optionKeys.allObjects] stringWithPadding_fl:20], [self help]];
 }
 
 

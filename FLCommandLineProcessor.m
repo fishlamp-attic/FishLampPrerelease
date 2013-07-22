@@ -57,7 +57,7 @@
 
 - (FLCommandLineTask*) taskFromInput:(NSString*) input {
 
-    input = [input trimmedString];
+    input = [input trimmedString_fl];
 
     @try {
         [self willParseInput];
@@ -183,7 +183,7 @@
 //- (void) willPrintUsage:(id) sender {
 //    FLLog(@"%@ Usage:", self.toolName);
 //    for(FLArgumentHandler* handler in _argumentHandlers) {
-//        NSString* inputParms = [[NSString stringWithFormat:@"%@:", handler.inputParametersAsString] stringWithPadding:40];
+//        NSString* inputParms = [[NSString stringWithFormat:@"%@:", handler.inputParametersAsString] stringWithPadding_fl:40];
 //        FLLog(@"%@%@", inputParms, handler.helpDescription);
 //    }
 //}
