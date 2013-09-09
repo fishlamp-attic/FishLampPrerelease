@@ -1,12 +1,13 @@
 //
-//  FishLampCocoa-pch.pch
-//  FishLampCocoa
+//  FishLamp-Objc-Lib-Test-PrefixHeader.pch
+//  FishLamp-Objc-Lib
 //
-//  Created by Mike Fullerton on 7/1/13.
+//  Created by Fullerton, Mike on 9/9/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import <Availability.h>
+    #import "PiecemealCompilerFlagOverrides.h"
 #endif

@@ -5,10 +5,11 @@
 //
 
 GCC_PRECOMPILE_PREFIX_HEADER = YES
-GCC_PREFIX_HEADER = FishLamp-Objc-Lib/FishLamp-Objc-Lib-Prefix.pch
+GCC_PREFIX_HEADER = FishLamp-Objc-Lib-Lib/FishLamp-Objc-Lib-Lib-Prefix.pch
 
 MACH_O_TYPE = staticlib
 EXECUTABLE_PREFIX = lib
 EXECUTABLE_EXTENSION = a
 
-HEADER_SEARCH_PATHS = $(inherited) ../**
+// change this for your project
+HEADER_SEARCH_PATHS = $(inherited)

@@ -1,0 +1,10 @@
+//
+//  FishLamp-Objc-Lib-Test-OSX-Universal-MRC.xcconfig
+//  FishLamp-Objc-Lib
+//
+//  Created by Mike Fullerton on 9/9/13.
+//  Copyright (c) 2013 Mike Fullerton. All rights reserved.
+//
+
+#include "Piecemeal-XcodeConfigs/TargetSettings/Piecemeal-TargetSettings-OSX-Universal-MRC.xcconfig"
+#include "FishLamp-Objc-Lib-Test-OSX/SharedTargetSettings.xcconfig"
