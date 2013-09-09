@@ -1,0 +1,9 @@
+//
+//  ProjectSettingsDebug.xcconfig
+//
+//  Created by Mike Fullerton on 11/13/12.
+//  Copyright (c) 2013 GreenTongue Software LLC, Mike Fullerton. 
+//  This file is released under the MIT License: http://fishlamp.com/license 
+//
+
+#include "Piecemeal-XcodeConfigs/ProjectSettings/Piecemeal-ProjectSettingsDebug.xcconfig"

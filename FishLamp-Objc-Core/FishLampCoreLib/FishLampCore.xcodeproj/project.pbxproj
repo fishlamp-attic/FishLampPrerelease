@@ -1,0 +1,2305 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		27E9CF94175E4A3600BD6205 /* FishLampCore */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 27E9CF97175E4A3600BD6205 /* Build configuration list for PBXAggregateTarget "FishLampCore" */;
+			buildPhases = (
+			);
+			dependencies = (
+				27E9CF99175E4A4200BD6205 /* PBXTargetDependency */,
+				27E9CF9B175E4A4200BD6205 /* PBXTargetDependency */,
+				27E9CF9D175E4A4200BD6205 /* PBXTargetDependency */,
+				27E9CF9F175E4A4200BD6205 /* PBXTargetDependency */,
+				27E9CFA1175E4A4200BD6205 /* PBXTargetDependency */,
+			);
+			name = FishLampCore;
+			productName = FishLampCore;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		2702147417C3CF9F001A8A77 /* FLBroadcaster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146517C3CF9F001A8A77 /* FLBroadcaster.h */; };
+		2702147517C3CF9F001A8A77 /* FLBroadcaster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146517C3CF9F001A8A77 /* FLBroadcaster.h */; };
+		2702147617C3CF9F001A8A77 /* FLBroadcaster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146517C3CF9F001A8A77 /* FLBroadcaster.h */; };
+		2702147717C3CF9F001A8A77 /* FLBroadcaster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146517C3CF9F001A8A77 /* FLBroadcaster.h */; };
+		2702147817C3CF9F001A8A77 /* FLBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146617C3CF9F001A8A77 /* FLBroadcaster.m */; };
+		2702147917C3CF9F001A8A77 /* FLBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146617C3CF9F001A8A77 /* FLBroadcaster.m */; };
+		2702147A17C3CF9F001A8A77 /* FLBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146617C3CF9F001A8A77 /* FLBroadcaster.m */; };
+		2702147B17C3CF9F001A8A77 /* FLBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146617C3CF9F001A8A77 /* FLBroadcaster.m */; };
+		2702147C17C3CF9F001A8A77 /* FLBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146617C3CF9F001A8A77 /* FLBroadcaster.m */; };
+		2702147D17C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146717C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h */; };
+		2702147E17C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146717C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h */; };
+		2702147F17C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146717C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h */; };
+		2702148017C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146717C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h */; };
+		2702148117C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146817C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m */; };
+		2702148217C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146817C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m */; };
+		2702148317C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146817C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m */; };
+		2702148417C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146817C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m */; };
+		2702148517C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146817C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m */; };
+		2702148617C3CF9F001A8A77 /* FLArrayProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146A17C3CF9F001A8A77 /* FLArrayProxy.h */; };
+		2702148717C3CF9F001A8A77 /* FLArrayProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146A17C3CF9F001A8A77 /* FLArrayProxy.h */; };
+		2702148817C3CF9F001A8A77 /* FLArrayProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146A17C3CF9F001A8A77 /* FLArrayProxy.h */; };
+		2702148917C3CF9F001A8A77 /* FLArrayProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146A17C3CF9F001A8A77 /* FLArrayProxy.h */; };
+		2702148A17C3CF9F001A8A77 /* FLArrayProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146B17C3CF9F001A8A77 /* FLArrayProxy.m */; };
+		2702148B17C3CF9F001A8A77 /* FLArrayProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146B17C3CF9F001A8A77 /* FLArrayProxy.m */; };
+		2702148C17C3CF9F001A8A77 /* FLArrayProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146B17C3CF9F001A8A77 /* FLArrayProxy.m */; };
+		2702148D17C3CF9F001A8A77 /* FLArrayProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146B17C3CF9F001A8A77 /* FLArrayProxy.m */; };
+		2702148E17C3CF9F001A8A77 /* FLArrayProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146B17C3CF9F001A8A77 /* FLArrayProxy.m */; };
+		2702148F17C3CF9F001A8A77 /* FLMainThreadObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146C17C3CF9F001A8A77 /* FLMainThreadObject.h */; };
+		2702149017C3CF9F001A8A77 /* FLMainThreadObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146C17C3CF9F001A8A77 /* FLMainThreadObject.h */; };
+		2702149117C3CF9F001A8A77 /* FLMainThreadObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146C17C3CF9F001A8A77 /* FLMainThreadObject.h */; };
+		2702149217C3CF9F001A8A77 /* FLMainThreadObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146C17C3CF9F001A8A77 /* FLMainThreadObject.h */; };
+		2702149317C3CF9F001A8A77 /* FLMainThreadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146D17C3CF9F001A8A77 /* FLMainThreadObject.m */; };
+		2702149417C3CF9F001A8A77 /* FLMainThreadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146D17C3CF9F001A8A77 /* FLMainThreadObject.m */; };
+		2702149517C3CF9F001A8A77 /* FLMainThreadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146D17C3CF9F001A8A77 /* FLMainThreadObject.m */; };
+		2702149617C3CF9F001A8A77 /* FLMainThreadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146D17C3CF9F001A8A77 /* FLMainThreadObject.m */; };
+		2702149717C3CF9F001A8A77 /* FLMainThreadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146D17C3CF9F001A8A77 /* FLMainThreadObject.m */; };
+		2702149817C3CF9F001A8A77 /* FLNonretainedObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146E17C3CF9F001A8A77 /* FLNonretainedObjectProxy.h */; };
+		2702149917C3CF9F001A8A77 /* FLNonretainedObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146E17C3CF9F001A8A77 /* FLNonretainedObjectProxy.h */; };
+		2702149A17C3CF9F001A8A77 /* FLNonretainedObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146E17C3CF9F001A8A77 /* FLNonretainedObjectProxy.h */; };
+		2702149B17C3CF9F001A8A77 /* FLNonretainedObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702146E17C3CF9F001A8A77 /* FLNonretainedObjectProxy.h */; };
+		2702149C17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146F17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m */; };
+		2702149D17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146F17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m */; };
+		2702149E17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146F17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m */; };
+		2702149F17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146F17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m */; };
+		270214A017C3CF9F001A8A77 /* FLNonretainedObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702146F17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m */; };
+		270214A117C3CF9F001A8A77 /* FLAbstractObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702147017C3CF9F001A8A77 /* FLAbstractObjectProxy.h */; };
+		270214A217C3CF9F001A8A77 /* FLAbstractObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702147017C3CF9F001A8A77 /* FLAbstractObjectProxy.h */; };
+		270214A317C3CF9F001A8A77 /* FLAbstractObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702147017C3CF9F001A8A77 /* FLAbstractObjectProxy.h */; };
+		270214A417C3CF9F001A8A77 /* FLAbstractObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702147017C3CF9F001A8A77 /* FLAbstractObjectProxy.h */; };
+		270214A517C3CF9F001A8A77 /* FLAbstractObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702147117C3CF9F001A8A77 /* FLAbstractObjectProxy.m */; };
+		270214A617C3CF9F001A8A77 /* FLAbstractObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702147117C3CF9F001A8A77 /* FLAbstractObjectProxy.m */; };
+		270214A717C3CF9F001A8A77 /* FLAbstractObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702147117C3CF9F001A8A77 /* FLAbstractObjectProxy.m */; };
+		270214A817C3CF9F001A8A77 /* FLAbstractObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702147117C3CF9F001A8A77 /* FLAbstractObjectProxy.m */; };
+		270214A917C3CF9F001A8A77 /* FLAbstractObjectProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702147117C3CF9F001A8A77 /* FLAbstractObjectProxy.m */; };
+		270214AA17C3CF9F001A8A77 /* FLRetainedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702147217C3CF9F001A8A77 /* FLRetainedObject.h */; };
+		270214AB17C3CF9F001A8A77 /* FLRetainedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702147217C3CF9F001A8A77 /* FLRetainedObject.h */; };
+		270214AC17C3CF9F001A8A77 /* FLRetainedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702147217C3CF9F001A8A77 /* FLRetainedObject.h */; };
+		270214AD17C3CF9F001A8A77 /* FLRetainedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2702147217C3CF9F001A8A77 /* FLRetainedObject.h */; };
+		270214AE17C3CF9F001A8A77 /* FLRetainedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702147317C3CF9F001A8A77 /* FLRetainedObject.m */; };
+		270214AF17C3CF9F001A8A77 /* FLRetainedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702147317C3CF9F001A8A77 /* FLRetainedObject.m */; };
+		270214B017C3CF9F001A8A77 /* FLRetainedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702147317C3CF9F001A8A77 /* FLRetainedObject.m */; };
+		270214B117C3CF9F001A8A77 /* FLRetainedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702147317C3CF9F001A8A77 /* FLRetainedObject.m */; };
+		270214B217C3CF9F001A8A77 /* FLRetainedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702147317C3CF9F001A8A77 /* FLRetainedObject.m */; };
+		271EAAF217D807470049055E /* FLTestAssertions.h in Headers */ = {isa = PBXBuildFile; fileRef = 271EAAF017D807470049055E /* FLTestAssertions.h */; };
+		271EAAF317D807470049055E /* FLTestAssertions.h in Headers */ = {isa = PBXBuildFile; fileRef = 271EAAF017D807470049055E /* FLTestAssertions.h */; };
+		271EAAF417D807470049055E /* FLTestAssertions.h in Headers */ = {isa = PBXBuildFile; fileRef = 271EAAF017D807470049055E /* FLTestAssertions.h */; };
+		271EAAF517D807470049055E /* FLTestAssertions.h in Headers */ = {isa = PBXBuildFile; fileRef = 271EAAF017D807470049055E /* FLTestAssertions.h */; };
+		271EAAF617D807470049055E /* FLTestAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = 271EAAF117D807470049055E /* FLTestAssertions.m */; };
+		271EAAF717D807470049055E /* FLTestAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = 271EAAF117D807470049055E /* FLTestAssertions.m */; };
+		271EAAF817D807470049055E /* FLTestAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = 271EAAF117D807470049055E /* FLTestAssertions.m */; };
+		271EAAF917D807470049055E /* FLTestAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = 271EAAF117D807470049055E /* FLTestAssertions.m */; };
+		271EAAFA17D807470049055E /* FLTestAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = 271EAAF117D807470049055E /* FLTestAssertions.m */; };
+		271EAAFD17D817820049055E /* FL_ASSERT.h in Headers */ = {isa = PBXBuildFile; fileRef = 271EAAFB17D817820049055E /* FL_ASSERT.h */; };
+		271EAAFE17D817820049055E /* FL_ASSERT.h in Headers */ = {isa = PBXBuildFile; fileRef = 271EAAFB17D817820049055E /* FL_ASSERT.h */; };
+		271EAAFF17D817820049055E /* FL_ASSERT.h in Headers */ = {isa = PBXBuildFile; fileRef = 271EAAFB17D817820049055E /* FL_ASSERT.h */; };
+		271EAB0017D817820049055E /* FL_ASSERT.h in Headers */ = {isa = PBXBuildFile; fileRef = 271EAAFB17D817820049055E /* FL_ASSERT.h */; };
+		2729CB05177777E700D59B4F /* FLObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 2729CB04177777E700D59B4F /* FLObjc.m */; };
+		2729CB06177777E700D59B4F /* FLObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 2729CB04177777E700D59B4F /* FLObjc.m */; };
+		2729CB07177777E700D59B4F /* FLObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 2729CB04177777E700D59B4F /* FLObjc.m */; };
+		2729CB08177777E700D59B4F /* FLObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 2729CB04177777E700D59B4F /* FLObjc.m */; };
+		2729CB09177777E700D59B4F /* FLObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 2729CB04177777E700D59B4F /* FLObjc.m */; };
+		2733799D1781FF7D00F56276 /* FLStringUtils_Inlines.h in Headers */ = {isa = PBXBuildFile; fileRef = 2733799C1781FF7D00F56276 /* FLStringUtils_Inlines.h */; };
+		2733799E1781FF7D00F56276 /* FLStringUtils_Inlines.h in Headers */ = {isa = PBXBuildFile; fileRef = 2733799C1781FF7D00F56276 /* FLStringUtils_Inlines.h */; };
+		2733799F1781FF7D00F56276 /* FLStringUtils_Inlines.h in Headers */ = {isa = PBXBuildFile; fileRef = 2733799C1781FF7D00F56276 /* FLStringUtils_Inlines.h */; };
+		273379A01781FF7D00F56276 /* FLStringUtils_Inlines.h in Headers */ = {isa = PBXBuildFile; fileRef = 2733799C1781FF7D00F56276 /* FLStringUtils_Inlines.h */; };
+		273379EC178223FA00F56276 /* FishLampCore-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 273379EB178223FA00F56276 /* FishLampCore-Prefix.pch */; };
+		273379ED178223FA00F56276 /* FishLampCore-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 273379EB178223FA00F56276 /* FishLampCore-Prefix.pch */; };
+		273379EE178223FA00F56276 /* FishLampCore-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 273379EB178223FA00F56276 /* FishLampCore-Prefix.pch */; };
+		273379EF178223FA00F56276 /* FishLampCore-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 273379EB178223FA00F56276 /* FishLampCore-Prefix.pch */; };
+		27570A6917D63FE6004F2A40 /* FLTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A6717D63FE6004F2A40 /* FLTesting.h */; };
+		27570A6A17D63FE6004F2A40 /* FLTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A6717D63FE6004F2A40 /* FLTesting.h */; };
+		27570A6B17D63FE6004F2A40 /* FLTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A6717D63FE6004F2A40 /* FLTesting.h */; };
+		27570A6C17D63FE6004F2A40 /* FLTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A6717D63FE6004F2A40 /* FLTesting.h */; };
+		27570A6D17D63FE6004F2A40 /* FLTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A6817D63FE6004F2A40 /* FLTesting.m */; };
+		27570A6E17D63FE6004F2A40 /* FLTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A6817D63FE6004F2A40 /* FLTesting.m */; };
+		27570A6F17D63FE6004F2A40 /* FLTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A6817D63FE6004F2A40 /* FLTesting.m */; };
+		27570A7017D63FE6004F2A40 /* FLTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A6817D63FE6004F2A40 /* FLTesting.m */; };
+		27570A7117D63FE6004F2A40 /* FLTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A6817D63FE6004F2A40 /* FLTesting.m */; };
+		27570A7317D64154004F2A40 /* FLStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A7217D64154004F2A40 /* FLStrings.h */; };
+		27570A7417D64154004F2A40 /* FLStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A7217D64154004F2A40 /* FLStrings.h */; };
+		27570A7517D64154004F2A40 /* FLStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A7217D64154004F2A40 /* FLStrings.h */; };
+		27570A7617D64154004F2A40 /* FLStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A7217D64154004F2A40 /* FLStrings.h */; };
+		27570A7817D6422E004F2A40 /* FLSimpleLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A7717D6422E004F2A40 /* FLSimpleLogger.h */; };
+		27570A7917D6422E004F2A40 /* FLSimpleLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A7717D6422E004F2A40 /* FLSimpleLogger.h */; };
+		27570A7A17D6422E004F2A40 /* FLSimpleLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A7717D6422E004F2A40 /* FLSimpleLogger.h */; };
+		27570A7B17D6422E004F2A40 /* FLSimpleLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A7717D6422E004F2A40 /* FLSimpleLogger.h */; };
+		27570A7D17D6430B004F2A40 /* FLUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A7C17D6430B004F2A40 /* FLUtilities.h */; };
+		27570A7E17D6430B004F2A40 /* FLUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A7C17D6430B004F2A40 /* FLUtilities.h */; };
+		27570A7F17D6430B004F2A40 /* FLUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A7C17D6430B004F2A40 /* FLUtilities.h */; };
+		27570A8017D6430B004F2A40 /* FLUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A7C17D6430B004F2A40 /* FLUtilities.h */; };
+		27570A8217D6436C004F2A40 /* FLErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A8117D6436C004F2A40 /* FLErrors.h */; };
+		27570A8317D6436C004F2A40 /* FLErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A8117D6436C004F2A40 /* FLErrors.h */; };
+		27570A8417D6436C004F2A40 /* FLErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A8117D6436C004F2A40 /* FLErrors.h */; };
+		27570A8517D6436C004F2A40 /* FLErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A8117D6436C004F2A40 /* FLErrors.h */; };
+		27570A8817D6444C004F2A40 /* FLAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A8617D6444C004F2A40 /* FLAssert.h */; };
+		27570A8917D6444C004F2A40 /* FLAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A8617D6444C004F2A40 /* FLAssert.h */; };
+		27570A8A17D6444C004F2A40 /* FLAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A8617D6444C004F2A40 /* FLAssert.h */; };
+		27570A8B17D6444C004F2A40 /* FLAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A8617D6444C004F2A40 /* FLAssert.h */; };
+		27570A8C17D6444C004F2A40 /* FLAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A8717D6444C004F2A40 /* FLAssert.m */; };
+		27570A8D17D6444C004F2A40 /* FLAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A8717D6444C004F2A40 /* FLAssert.m */; };
+		27570A8E17D6444C004F2A40 /* FLAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A8717D6444C004F2A40 /* FLAssert.m */; };
+		27570A8F17D6444C004F2A40 /* FLAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A8717D6444C004F2A40 /* FLAssert.m */; };
+		27570A9017D6444C004F2A40 /* FLAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A8717D6444C004F2A40 /* FLAssert.m */; };
+		27570A9317D6460B004F2A40 /* FLEventBroadcasting.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A9217D6460B004F2A40 /* FLEventBroadcasting.h */; };
+		27570A9417D6460B004F2A40 /* FLEventBroadcasting.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A9217D6460B004F2A40 /* FLEventBroadcasting.h */; };
+		27570A9517D6460B004F2A40 /* FLEventBroadcasting.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A9217D6460B004F2A40 /* FLEventBroadcasting.h */; };
+		27570A9617D6460B004F2A40 /* FLEventBroadcasting.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A9217D6460B004F2A40 /* FLEventBroadcasting.h */; };
+		27570A9917D64A08004F2A40 /* FLOwnershipTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A9717D64A08004F2A40 /* FLOwnershipTests.h */; };
+		27570A9A17D64A08004F2A40 /* FLOwnershipTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A9717D64A08004F2A40 /* FLOwnershipTests.h */; };
+		27570A9B17D64A08004F2A40 /* FLOwnershipTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A9717D64A08004F2A40 /* FLOwnershipTests.h */; };
+		27570A9C17D64A08004F2A40 /* FLOwnershipTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570A9717D64A08004F2A40 /* FLOwnershipTests.h */; };
+		27570A9D17D64A08004F2A40 /* FLOwnershipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A9817D64A08004F2A40 /* FLOwnershipTests.m */; };
+		27570A9E17D64A08004F2A40 /* FLOwnershipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A9817D64A08004F2A40 /* FLOwnershipTests.m */; };
+		27570A9F17D64A08004F2A40 /* FLOwnershipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A9817D64A08004F2A40 /* FLOwnershipTests.m */; };
+		27570AA017D64A08004F2A40 /* FLOwnershipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A9817D64A08004F2A40 /* FLOwnershipTests.m */; };
+		27570AA117D64A08004F2A40 /* FLOwnershipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27570A9817D64A08004F2A40 /* FLOwnershipTests.m */; };
+		27570AA317D64B93004F2A40 /* FLObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570AA217D64B93004F2A40 /* FLObjectProxy.h */; };
+		27570AA417D64B93004F2A40 /* FLObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570AA217D64B93004F2A40 /* FLObjectProxy.h */; };
+		27570AA517D64B93004F2A40 /* FLObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570AA217D64B93004F2A40 /* FLObjectProxy.h */; };
+		27570AA617D64B93004F2A40 /* FLObjectProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 27570AA217D64B93004F2A40 /* FLObjectProxy.h */; };
+		2768074A175D370700B1D643 /* FLDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806D6175D370700B1D643 /* FLDebug.h */; };
+		2768074B175D370700B1D643 /* FLDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806D6175D370700B1D643 /* FLDebug.h */; };
+		2768074C175D370700B1D643 /* FLDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806D6175D370700B1D643 /* FLDebug.h */; };
+		2768074D175D370700B1D643 /* FLDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806D6175D370700B1D643 /* FLDebug.h */; };
+		2768074E175D370700B1D643 /* FLDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806D7175D370700B1D643 /* FLDebug.m */; };
+		2768074F175D370700B1D643 /* FLDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806D7175D370700B1D643 /* FLDebug.m */; };
+		27680750175D370700B1D643 /* FLDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806D7175D370700B1D643 /* FLDebug.m */; };
+		27680751175D370700B1D643 /* FLDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806D7175D370700B1D643 /* FLDebug.m */; };
+		27680752175D370700B1D643 /* FLDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806D7175D370700B1D643 /* FLDebug.m */; };
+		2768076E175D370700B1D643 /* FLCancelError.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806DF175D370700B1D643 /* FLCancelError.h */; };
+		2768076F175D370700B1D643 /* FLCancelError.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806DF175D370700B1D643 /* FLCancelError.h */; };
+		27680770175D370700B1D643 /* FLCancelError.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806DF175D370700B1D643 /* FLCancelError.h */; };
+		27680771175D370700B1D643 /* FLCancelError.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806DF175D370700B1D643 /* FLCancelError.h */; };
+		27680772175D370700B1D643 /* FLCancelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E0175D370700B1D643 /* FLCancelError.m */; };
+		27680773175D370700B1D643 /* FLCancelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E0175D370700B1D643 /* FLCancelError.m */; };
+		27680774175D370700B1D643 /* FLCancelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E0175D370700B1D643 /* FLCancelError.m */; };
+		27680775175D370700B1D643 /* FLCancelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E0175D370700B1D643 /* FLCancelError.m */; };
+		27680776175D370700B1D643 /* FLCancelError.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E0175D370700B1D643 /* FLCancelError.m */; };
+		27680780175D370700B1D643 /* FLErrorCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806E3175D370700B1D643 /* FLErrorCodes.h */; };
+		27680781175D370700B1D643 /* FLErrorCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806E3175D370700B1D643 /* FLErrorCodes.h */; };
+		27680782175D370700B1D643 /* FLErrorCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806E3175D370700B1D643 /* FLErrorCodes.h */; };
+		27680783175D370700B1D643 /* FLErrorCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806E3175D370700B1D643 /* FLErrorCodes.h */; };
+		27680784175D370700B1D643 /* FLErrorCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E4175D370700B1D643 /* FLErrorCodes.m */; };
+		27680785175D370700B1D643 /* FLErrorCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E4175D370700B1D643 /* FLErrorCodes.m */; };
+		27680786175D370700B1D643 /* FLErrorCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E4175D370700B1D643 /* FLErrorCodes.m */; };
+		27680787175D370700B1D643 /* FLErrorCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E4175D370700B1D643 /* FLErrorCodes.m */; };
+		27680788175D370700B1D643 /* FLErrorCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E4175D370700B1D643 /* FLErrorCodes.m */; };
+		27680789175D370700B1D643 /* FLErrorDomainInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806E5175D370700B1D643 /* FLErrorDomainInfo.h */; };
+		2768078A175D370700B1D643 /* FLErrorDomainInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806E5175D370700B1D643 /* FLErrorDomainInfo.h */; };
+		2768078B175D370700B1D643 /* FLErrorDomainInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806E5175D370700B1D643 /* FLErrorDomainInfo.h */; };
+		2768078C175D370700B1D643 /* FLErrorDomainInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806E5175D370700B1D643 /* FLErrorDomainInfo.h */; };
+		2768078D175D370700B1D643 /* FLErrorDomainInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E6175D370700B1D643 /* FLErrorDomainInfo.m */; };
+		2768078E175D370700B1D643 /* FLErrorDomainInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E6175D370700B1D643 /* FLErrorDomainInfo.m */; };
+		2768078F175D370700B1D643 /* FLErrorDomainInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E6175D370700B1D643 /* FLErrorDomainInfo.m */; };
+		27680790175D370700B1D643 /* FLErrorDomainInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E6175D370700B1D643 /* FLErrorDomainInfo.m */; };
+		27680791175D370700B1D643 /* FLErrorDomainInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E6175D370700B1D643 /* FLErrorDomainInfo.m */; };
+		27680792175D370700B1D643 /* FLErrorException.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806E7175D370700B1D643 /* FLErrorException.h */; };
+		27680793175D370700B1D643 /* FLErrorException.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806E7175D370700B1D643 /* FLErrorException.h */; };
+		27680794175D370700B1D643 /* FLErrorException.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806E7175D370700B1D643 /* FLErrorException.h */; };
+		27680795175D370700B1D643 /* FLErrorException.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806E7175D370700B1D643 /* FLErrorException.h */; };
+		27680796175D370700B1D643 /* FLErrorException.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E8175D370700B1D643 /* FLErrorException.m */; };
+		27680797175D370700B1D643 /* FLErrorException.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E8175D370700B1D643 /* FLErrorException.m */; };
+		27680798175D370700B1D643 /* FLErrorException.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E8175D370700B1D643 /* FLErrorException.m */; };
+		27680799175D370700B1D643 /* FLErrorException.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E8175D370700B1D643 /* FLErrorException.m */; };
+		2768079A175D370700B1D643 /* FLErrorException.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806E8175D370700B1D643 /* FLErrorException.m */; };
+		276807A4175D370700B1D643 /* FLExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806EB175D370700B1D643 /* FLExceptions.h */; };
+		276807A5175D370700B1D643 /* FLExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806EB175D370700B1D643 /* FLExceptions.h */; };
+		276807A6175D370700B1D643 /* FLExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806EB175D370700B1D643 /* FLExceptions.h */; };
+		276807A7175D370700B1D643 /* FLExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806EB175D370700B1D643 /* FLExceptions.h */; };
+		276807A8175D370700B1D643 /* FLExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806EC175D370700B1D643 /* FLExceptions.m */; };
+		276807A9175D370700B1D643 /* FLExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806EC175D370700B1D643 /* FLExceptions.m */; };
+		276807AA175D370700B1D643 /* FLExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806EC175D370700B1D643 /* FLExceptions.m */; };
+		276807AB175D370700B1D643 /* FLExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806EC175D370700B1D643 /* FLExceptions.m */; };
+		276807AC175D370700B1D643 /* FLExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806EC175D370700B1D643 /* FLExceptions.m */; };
+		276807BA175D370700B1D643 /* FLStackTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F0175D370700B1D643 /* FLStackTrace.h */; };
+		276807BB175D370700B1D643 /* FLStackTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F0175D370700B1D643 /* FLStackTrace.h */; };
+		276807BC175D370700B1D643 /* FLStackTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F0175D370700B1D643 /* FLStackTrace.h */; };
+		276807BD175D370700B1D643 /* FLStackTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F0175D370700B1D643 /* FLStackTrace.h */; };
+		276807BE175D370700B1D643 /* FLStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F1175D370700B1D643 /* FLStackTrace.m */; };
+		276807BF175D370700B1D643 /* FLStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F1175D370700B1D643 /* FLStackTrace.m */; };
+		276807C0175D370700B1D643 /* FLStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F1175D370700B1D643 /* FLStackTrace.m */; };
+		276807C1175D370700B1D643 /* FLStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F1175D370700B1D643 /* FLStackTrace.m */; };
+		276807C2175D370700B1D643 /* FLStackTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F1175D370700B1D643 /* FLStackTrace.m */; };
+		276807C3175D370700B1D643 /* NSError+FLExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F2175D370700B1D643 /* NSError+FLExtras.h */; };
+		276807C4175D370700B1D643 /* NSError+FLExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F2175D370700B1D643 /* NSError+FLExtras.h */; };
+		276807C5175D370700B1D643 /* NSError+FLExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F2175D370700B1D643 /* NSError+FLExtras.h */; };
+		276807C6175D370700B1D643 /* NSError+FLExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F2175D370700B1D643 /* NSError+FLExtras.h */; };
+		276807C7175D370700B1D643 /* NSError+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F3175D370700B1D643 /* NSError+FLExtras.m */; };
+		276807C8175D370700B1D643 /* NSError+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F3175D370700B1D643 /* NSError+FLExtras.m */; };
+		276807C9175D370700B1D643 /* NSError+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F3175D370700B1D643 /* NSError+FLExtras.m */; };
+		276807CA175D370700B1D643 /* NSError+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F3175D370700B1D643 /* NSError+FLExtras.m */; };
+		276807CB175D370700B1D643 /* NSError+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F3175D370700B1D643 /* NSError+FLExtras.m */; };
+		276807CC175D370700B1D643 /* FishLampMinimum.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F4175D370700B1D643 /* FishLampMinimum.h */; };
+		276807CD175D370700B1D643 /* FishLampMinimum.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F4175D370700B1D643 /* FishLampMinimum.h */; };
+		276807CE175D370700B1D643 /* FishLampMinimum.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F4175D370700B1D643 /* FishLampMinimum.h */; };
+		276807CF175D370700B1D643 /* FishLampMinimum.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F4175D370700B1D643 /* FishLampMinimum.h */; };
+		276807D4175D370700B1D643 /* FLConsoleLogSink.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F7175D370700B1D643 /* FLConsoleLogSink.h */; };
+		276807D5175D370700B1D643 /* FLConsoleLogSink.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F7175D370700B1D643 /* FLConsoleLogSink.h */; };
+		276807D6175D370700B1D643 /* FLConsoleLogSink.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F7175D370700B1D643 /* FLConsoleLogSink.h */; };
+		276807D7175D370700B1D643 /* FLConsoleLogSink.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F7175D370700B1D643 /* FLConsoleLogSink.h */; };
+		276807D8175D370700B1D643 /* FLConsoleLogSink.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F8175D370700B1D643 /* FLConsoleLogSink.m */; };
+		276807D9175D370700B1D643 /* FLConsoleLogSink.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F8175D370700B1D643 /* FLConsoleLogSink.m */; };
+		276807DA175D370700B1D643 /* FLConsoleLogSink.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F8175D370700B1D643 /* FLConsoleLogSink.m */; };
+		276807DB175D370700B1D643 /* FLConsoleLogSink.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F8175D370700B1D643 /* FLConsoleLogSink.m */; };
+		276807DC175D370700B1D643 /* FLConsoleLogSink.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806F8175D370700B1D643 /* FLConsoleLogSink.m */; };
+		276807DD175D370700B1D643 /* FLLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F9175D370700B1D643 /* FLLog.h */; };
+		276807DE175D370700B1D643 /* FLLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F9175D370700B1D643 /* FLLog.h */; };
+		276807DF175D370700B1D643 /* FLLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F9175D370700B1D643 /* FLLog.h */; };
+		276807E0175D370700B1D643 /* FLLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806F9175D370700B1D643 /* FLLog.h */; };
+		276807E1175D370700B1D643 /* FLLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FA175D370700B1D643 /* FLLog.m */; };
+		276807E2175D370700B1D643 /* FLLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FA175D370700B1D643 /* FLLog.m */; };
+		276807E3175D370700B1D643 /* FLLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FA175D370700B1D643 /* FLLog.m */; };
+		276807E4175D370700B1D643 /* FLLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FA175D370700B1D643 /* FLLog.m */; };
+		276807E5175D370700B1D643 /* FLLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FA175D370700B1D643 /* FLLog.m */; };
+		276807E6175D370700B1D643 /* FLLogEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806FB175D370700B1D643 /* FLLogEntry.h */; };
+		276807E7175D370700B1D643 /* FLLogEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806FB175D370700B1D643 /* FLLogEntry.h */; };
+		276807E8175D370700B1D643 /* FLLogEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806FB175D370700B1D643 /* FLLogEntry.h */; };
+		276807E9175D370700B1D643 /* FLLogEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806FB175D370700B1D643 /* FLLogEntry.h */; };
+		276807EA175D370700B1D643 /* FLLogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FC175D370700B1D643 /* FLLogEntry.m */; };
+		276807EB175D370700B1D643 /* FLLogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FC175D370700B1D643 /* FLLogEntry.m */; };
+		276807EC175D370700B1D643 /* FLLogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FC175D370700B1D643 /* FLLogEntry.m */; };
+		276807ED175D370700B1D643 /* FLLogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FC175D370700B1D643 /* FLLogEntry.m */; };
+		276807EE175D370700B1D643 /* FLLogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FC175D370700B1D643 /* FLLogEntry.m */; };
+		276807EF175D370700B1D643 /* FLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806FD175D370700B1D643 /* FLLogger.h */; };
+		276807F0175D370700B1D643 /* FLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806FD175D370700B1D643 /* FLLogger.h */; };
+		276807F1175D370700B1D643 /* FLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806FD175D370700B1D643 /* FLLogger.h */; };
+		276807F2175D370700B1D643 /* FLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806FD175D370700B1D643 /* FLLogger.h */; };
+		276807F3175D370700B1D643 /* FLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FE175D370700B1D643 /* FLLogger.m */; };
+		276807F4175D370700B1D643 /* FLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FE175D370700B1D643 /* FLLogger.m */; };
+		276807F5175D370700B1D643 /* FLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FE175D370700B1D643 /* FLLogger.m */; };
+		276807F6175D370700B1D643 /* FLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FE175D370700B1D643 /* FLLogger.m */; };
+		276807F7175D370700B1D643 /* FLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 276806FE175D370700B1D643 /* FLLogger.m */; };
+		276807F8175D370700B1D643 /* FLLogSink.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806FF175D370700B1D643 /* FLLogSink.h */; };
+		276807F9175D370700B1D643 /* FLLogSink.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806FF175D370700B1D643 /* FLLogSink.h */; };
+		276807FA175D370700B1D643 /* FLLogSink.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806FF175D370700B1D643 /* FLLogSink.h */; };
+		276807FB175D370700B1D643 /* FLLogSink.h in Headers */ = {isa = PBXBuildFile; fileRef = 276806FF175D370700B1D643 /* FLLogSink.h */; };
+		276807FC175D370700B1D643 /* FLLogSink.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680700175D370700B1D643 /* FLLogSink.m */; };
+		276807FD175D370700B1D643 /* FLLogSink.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680700175D370700B1D643 /* FLLogSink.m */; };
+		276807FE175D370700B1D643 /* FLLogSink.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680700175D370700B1D643 /* FLLogSink.m */; };
+		276807FF175D370700B1D643 /* FLLogSink.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680700175D370700B1D643 /* FLLogSink.m */; };
+		27680800175D370700B1D643 /* FLLogSink.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680700175D370700B1D643 /* FLLogSink.m */; };
+		27680801175D370700B1D643 /* FLPrintf.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680701175D370700B1D643 /* FLPrintf.h */; };
+		27680802175D370700B1D643 /* FLPrintf.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680701175D370700B1D643 /* FLPrintf.h */; };
+		27680803175D370700B1D643 /* FLPrintf.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680701175D370700B1D643 /* FLPrintf.h */; };
+		27680804175D370700B1D643 /* FLPrintf.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680701175D370700B1D643 /* FLPrintf.h */; };
+		27680805175D370700B1D643 /* FLPrintf.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680702175D370700B1D643 /* FLPrintf.m */; };
+		27680806175D370700B1D643 /* FLPrintf.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680702175D370700B1D643 /* FLPrintf.m */; };
+		27680807175D370700B1D643 /* FLPrintf.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680702175D370700B1D643 /* FLPrintf.m */; };
+		27680808175D370700B1D643 /* FLPrintf.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680702175D370700B1D643 /* FLPrintf.m */; };
+		27680809175D370700B1D643 /* FLPrintf.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680702175D370700B1D643 /* FLPrintf.m */; };
+		2768080A175D370700B1D643 /* FLTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680703175D370700B1D643 /* FLTrace.h */; };
+		2768080B175D370700B1D643 /* FLTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680703175D370700B1D643 /* FLTrace.h */; };
+		2768080C175D370700B1D643 /* FLTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680703175D370700B1D643 /* FLTrace.h */; };
+		2768080D175D370700B1D643 /* FLTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680703175D370700B1D643 /* FLTrace.h */; };
+		2768080E175D370700B1D643 /* FLTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680704175D370700B1D643 /* FLTrace.m */; };
+		2768080F175D370700B1D643 /* FLTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680704175D370700B1D643 /* FLTrace.m */; };
+		27680810175D370700B1D643 /* FLTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680704175D370700B1D643 /* FLTrace.m */; };
+		27680811175D370700B1D643 /* FLTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680704175D370700B1D643 /* FLTrace.m */; };
+		27680812175D370700B1D643 /* FLTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680704175D370700B1D643 /* FLTrace.m */; };
+		27680813175D370700B1D643 /* FLAssociatedProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680706175D370700B1D643 /* FLAssociatedProperty.h */; };
+		27680814175D370700B1D643 /* FLAssociatedProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680706175D370700B1D643 /* FLAssociatedProperty.h */; };
+		27680815175D370700B1D643 /* FLAssociatedProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680706175D370700B1D643 /* FLAssociatedProperty.h */; };
+		27680816175D370700B1D643 /* FLAssociatedProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680706175D370700B1D643 /* FLAssociatedProperty.h */; };
+		27680817175D370700B1D643 /* FLAssociatedProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680707175D370700B1D643 /* FLAssociatedProperty.m */; };
+		27680818175D370700B1D643 /* FLAssociatedProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680707175D370700B1D643 /* FLAssociatedProperty.m */; };
+		27680819175D370700B1D643 /* FLAssociatedProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680707175D370700B1D643 /* FLAssociatedProperty.m */; };
+		2768081A175D370700B1D643 /* FLAssociatedProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680707175D370700B1D643 /* FLAssociatedProperty.m */; };
+		2768081B175D370700B1D643 /* FLAssociatedProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680707175D370700B1D643 /* FLAssociatedProperty.m */; };
+		2768081C175D370700B1D643 /* FLAtomicProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680708175D370700B1D643 /* FLAtomicProperties.h */; };
+		2768081D175D370700B1D643 /* FLAtomicProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680708175D370700B1D643 /* FLAtomicProperties.h */; };
+		2768081E175D370700B1D643 /* FLAtomicProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680708175D370700B1D643 /* FLAtomicProperties.h */; };
+		2768081F175D370700B1D643 /* FLAtomicProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680708175D370700B1D643 /* FLAtomicProperties.h */; };
+		27680820175D370700B1D643 /* FLAtomicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680709175D370700B1D643 /* FLAtomicProperties.m */; };
+		27680821175D370700B1D643 /* FLAtomicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680709175D370700B1D643 /* FLAtomicProperties.m */; };
+		27680822175D370700B1D643 /* FLAtomicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680709175D370700B1D643 /* FLAtomicProperties.m */; };
+		27680823175D370700B1D643 /* FLAtomicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680709175D370700B1D643 /* FLAtomicProperties.m */; };
+		27680824175D370700B1D643 /* FLAtomicProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680709175D370700B1D643 /* FLAtomicProperties.m */; };
+		27680825175D370700B1D643 /* FLBitFlagsProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070A175D370700B1D643 /* FLBitFlagsProperty.h */; };
+		27680826175D370700B1D643 /* FLBitFlagsProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070A175D370700B1D643 /* FLBitFlagsProperty.h */; };
+		27680827175D370700B1D643 /* FLBitFlagsProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070A175D370700B1D643 /* FLBitFlagsProperty.h */; };
+		27680828175D370700B1D643 /* FLBitFlagsProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070A175D370700B1D643 /* FLBitFlagsProperty.h */; };
+		27680829175D370700B1D643 /* FLDefaultProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070B175D370700B1D643 /* FLDefaultProperty.h */; };
+		2768082A175D370700B1D643 /* FLDefaultProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070B175D370700B1D643 /* FLDefaultProperty.h */; };
+		2768082B175D370700B1D643 /* FLDefaultProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070B175D370700B1D643 /* FLDefaultProperty.h */; };
+		2768082C175D370700B1D643 /* FLDefaultProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070B175D370700B1D643 /* FLDefaultProperty.h */; };
+		2768082D175D370700B1D643 /* FLObjcPropertyHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070C175D370700B1D643 /* FLObjcPropertyHelpers.h */; };
+		2768082E175D370700B1D643 /* FLObjcPropertyHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070C175D370700B1D643 /* FLObjcPropertyHelpers.h */; };
+		2768082F175D370700B1D643 /* FLObjcPropertyHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070C175D370700B1D643 /* FLObjcPropertyHelpers.h */; };
+		27680830175D370700B1D643 /* FLObjcPropertyHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070C175D370700B1D643 /* FLObjcPropertyHelpers.h */; };
+		27680831175D370700B1D643 /* FLSingletonProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070D175D370700B1D643 /* FLSingletonProperty.h */; };
+		27680832175D370700B1D643 /* FLSingletonProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070D175D370700B1D643 /* FLSingletonProperty.h */; };
+		27680833175D370700B1D643 /* FLSingletonProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070D175D370700B1D643 /* FLSingletonProperty.h */; };
+		27680834175D370700B1D643 /* FLSingletonProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070D175D370700B1D643 /* FLSingletonProperty.h */; };
+		27680835175D370700B1D643 /* FLStaticMemberProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070E175D370700B1D643 /* FLStaticMemberProperty.h */; };
+		27680836175D370700B1D643 /* FLStaticMemberProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070E175D370700B1D643 /* FLStaticMemberProperty.h */; };
+		27680837175D370700B1D643 /* FLStaticMemberProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070E175D370700B1D643 /* FLStaticMemberProperty.h */; };
+		27680838175D370700B1D643 /* FLStaticMemberProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070E175D370700B1D643 /* FLStaticMemberProperty.h */; };
+		27680839175D370700B1D643 /* FLStructFlagsProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070F175D370700B1D643 /* FLStructFlagsProperty.h */; };
+		2768083A175D370700B1D643 /* FLStructFlagsProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070F175D370700B1D643 /* FLStructFlagsProperty.h */; };
+		2768083B175D370700B1D643 /* FLStructFlagsProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070F175D370700B1D643 /* FLStructFlagsProperty.h */; };
+		2768083C175D370700B1D643 /* FLStructFlagsProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768070F175D370700B1D643 /* FLStructFlagsProperty.h */; };
+		2768083D175D370700B1D643 /* FLCompilerWarnings.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680711175D370700B1D643 /* FLCompilerWarnings.h */; };
+		2768083E175D370700B1D643 /* FLCompilerWarnings.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680711175D370700B1D643 /* FLCompilerWarnings.h */; };
+		2768083F175D370700B1D643 /* FLCompilerWarnings.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680711175D370700B1D643 /* FLCompilerWarnings.h */; };
+		27680840175D370700B1D643 /* FLCompilerWarnings.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680711175D370700B1D643 /* FLCompilerWarnings.h */; };
+		27680841175D370700B1D643 /* FLCoreFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680712175D370700B1D643 /* FLCoreFlags.h */; };
+		27680842175D370700B1D643 /* FLCoreFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680712175D370700B1D643 /* FLCoreFlags.h */; };
+		27680843175D370700B1D643 /* FLCoreFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680712175D370700B1D643 /* FLCoreFlags.h */; };
+		27680844175D370700B1D643 /* FLCoreFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680712175D370700B1D643 /* FLCoreFlags.h */; };
+		27680845175D370700B1D643 /* FLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680713175D370700B1D643 /* FLMath.h */; };
+		27680846175D370700B1D643 /* FLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680713175D370700B1D643 /* FLMath.h */; };
+		27680847175D370700B1D643 /* FLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680713175D370700B1D643 /* FLMath.h */; };
+		27680848175D370700B1D643 /* FLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680713175D370700B1D643 /* FLMath.h */; };
+		27680849175D370700B1D643 /* FLObjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680714175D370700B1D643 /* FLObjc.h */; };
+		2768084A175D370700B1D643 /* FLObjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680714175D370700B1D643 /* FLObjc.h */; };
+		2768084B175D370700B1D643 /* FLObjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680714175D370700B1D643 /* FLObjc.h */; };
+		2768084C175D370700B1D643 /* FLObjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680714175D370700B1D643 /* FLObjc.h */; };
+		2768084D175D370700B1D643 /* FLObjcARC.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680715175D370700B1D643 /* FLObjcARC.h */; };
+		2768084E175D370700B1D643 /* FLObjcARC.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680715175D370700B1D643 /* FLObjcARC.h */; };
+		2768084F175D370700B1D643 /* FLObjcARC.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680715175D370700B1D643 /* FLObjcARC.h */; };
+		27680850175D370700B1D643 /* FLObjcARC.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680715175D370700B1D643 /* FLObjcARC.h */; };
+		27680851175D370700B1D643 /* FLObjcMRC.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680716175D370700B1D643 /* FLObjcMRC.h */; };
+		27680852175D370700B1D643 /* FLObjcMRC.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680716175D370700B1D643 /* FLObjcMRC.h */; };
+		27680853175D370700B1D643 /* FLObjcMRC.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680716175D370700B1D643 /* FLObjcMRC.h */; };
+		27680854175D370700B1D643 /* FLObjcMRC.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680716175D370700B1D643 /* FLObjcMRC.h */; };
+		27680855175D370700B1D643 /* FLCoreRequired.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680717175D370700B1D643 /* FLCoreRequired.h */; };
+		27680856175D370700B1D643 /* FLCoreRequired.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680717175D370700B1D643 /* FLCoreRequired.h */; };
+		27680857175D370700B1D643 /* FLCoreRequired.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680717175D370700B1D643 /* FLCoreRequired.h */; };
+		27680858175D370700B1D643 /* FLCoreRequired.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680717175D370700B1D643 /* FLCoreRequired.h */; };
+		27680859175D370700B1D643 /* FLObjcRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680719175D370700B1D643 /* FLObjcRuntime.h */; };
+		2768085A175D370700B1D643 /* FLObjcRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680719175D370700B1D643 /* FLObjcRuntime.h */; };
+		2768085B175D370700B1D643 /* FLObjcRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680719175D370700B1D643 /* FLObjcRuntime.h */; };
+		2768085C175D370700B1D643 /* FLObjcRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680719175D370700B1D643 /* FLObjcRuntime.h */; };
+		2768085D175D370700B1D643 /* FLObjcRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071A175D370700B1D643 /* FLObjcRuntime.m */; };
+		2768085E175D370700B1D643 /* FLObjcRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071A175D370700B1D643 /* FLObjcRuntime.m */; };
+		2768085F175D370700B1D643 /* FLObjcRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071A175D370700B1D643 /* FLObjcRuntime.m */; };
+		27680860175D370700B1D643 /* FLObjcRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071A175D370700B1D643 /* FLObjcRuntime.m */; };
+		27680861175D370700B1D643 /* FLObjcRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071A175D370700B1D643 /* FLObjcRuntime.m */; };
+		27680862175D370700B1D643 /* FLPropertyAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768071B175D370700B1D643 /* FLPropertyAttributes.h */; };
+		27680863175D370700B1D643 /* FLPropertyAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768071B175D370700B1D643 /* FLPropertyAttributes.h */; };
+		27680864175D370700B1D643 /* FLPropertyAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768071B175D370700B1D643 /* FLPropertyAttributes.h */; };
+		27680865175D370700B1D643 /* FLPropertyAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768071B175D370700B1D643 /* FLPropertyAttributes.h */; };
+		27680866175D370700B1D643 /* FLPropertyAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071C175D370700B1D643 /* FLPropertyAttributes.m */; };
+		27680867175D370700B1D643 /* FLPropertyAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071C175D370700B1D643 /* FLPropertyAttributes.m */; };
+		27680868175D370700B1D643 /* FLPropertyAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071C175D370700B1D643 /* FLPropertyAttributes.m */; };
+		27680869175D370700B1D643 /* FLPropertyAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071C175D370700B1D643 /* FLPropertyAttributes.m */; };
+		2768086A175D370700B1D643 /* FLPropertyAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071C175D370700B1D643 /* FLPropertyAttributes.m */; };
+		2768086B175D370700B1D643 /* FLRuntimeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768071D175D370700B1D643 /* FLRuntimeInfo.h */; };
+		2768086C175D370700B1D643 /* FLRuntimeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768071D175D370700B1D643 /* FLRuntimeInfo.h */; };
+		2768086D175D370700B1D643 /* FLRuntimeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768071D175D370700B1D643 /* FLRuntimeInfo.h */; };
+		2768086E175D370700B1D643 /* FLRuntimeInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768071D175D370700B1D643 /* FLRuntimeInfo.h */; };
+		2768086F175D370700B1D643 /* FLRuntimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071E175D370700B1D643 /* FLRuntimeInfo.m */; };
+		27680870175D370700B1D643 /* FLRuntimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071E175D370700B1D643 /* FLRuntimeInfo.m */; };
+		27680871175D370700B1D643 /* FLRuntimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071E175D370700B1D643 /* FLRuntimeInfo.m */; };
+		27680872175D370700B1D643 /* FLRuntimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071E175D370700B1D643 /* FLRuntimeInfo.m */; };
+		27680873175D370700B1D643 /* FLRuntimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768071E175D370700B1D643 /* FLRuntimeInfo.m */; };
+		27680874175D370700B1D643 /* FLSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768071F175D370700B1D643 /* FLSelector.h */; };
+		27680875175D370700B1D643 /* FLSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768071F175D370700B1D643 /* FLSelector.h */; };
+		27680876175D370700B1D643 /* FLSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768071F175D370700B1D643 /* FLSelector.h */; };
+		27680877175D370700B1D643 /* FLSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768071F175D370700B1D643 /* FLSelector.h */; };
+		27680878175D370700B1D643 /* FLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680720175D370700B1D643 /* FLSelector.m */; };
+		27680879175D370700B1D643 /* FLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680720175D370700B1D643 /* FLSelector.m */; };
+		2768087A175D370700B1D643 /* FLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680720175D370700B1D643 /* FLSelector.m */; };
+		2768087B175D370700B1D643 /* FLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680720175D370700B1D643 /* FLSelector.m */; };
+		2768087C175D370700B1D643 /* FLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680720175D370700B1D643 /* FLSelector.m */; };
+		2768087D175D370700B1D643 /* FLCharString.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680722175D370700B1D643 /* FLCharString.h */; };
+		2768087E175D370700B1D643 /* FLCharString.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680722175D370700B1D643 /* FLCharString.h */; };
+		2768087F175D370700B1D643 /* FLCharString.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680722175D370700B1D643 /* FLCharString.h */; };
+		27680880175D370700B1D643 /* FLCharString.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680722175D370700B1D643 /* FLCharString.h */; };
+		27680881175D370700B1D643 /* FLCharString.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680723175D370700B1D643 /* FLCharString.m */; };
+		27680882175D370700B1D643 /* FLCharString.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680723175D370700B1D643 /* FLCharString.m */; };
+		27680883175D370700B1D643 /* FLCharString.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680723175D370700B1D643 /* FLCharString.m */; };
+		27680884175D370700B1D643 /* FLCharString.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680723175D370700B1D643 /* FLCharString.m */; };
+		27680885175D370700B1D643 /* FLCharString.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680723175D370700B1D643 /* FLCharString.m */; };
+		27680886175D370700B1D643 /* FLPrettyString.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680724175D370700B1D643 /* FLPrettyString.h */; };
+		27680887175D370700B1D643 /* FLPrettyString.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680724175D370700B1D643 /* FLPrettyString.h */; };
+		27680888175D370700B1D643 /* FLPrettyString.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680724175D370700B1D643 /* FLPrettyString.h */; };
+		27680889175D370700B1D643 /* FLPrettyString.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680724175D370700B1D643 /* FLPrettyString.h */; };
+		2768088A175D370700B1D643 /* FLPrettyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680725175D370700B1D643 /* FLPrettyString.m */; };
+		2768088B175D370700B1D643 /* FLPrettyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680725175D370700B1D643 /* FLPrettyString.m */; };
+		2768088C175D370700B1D643 /* FLPrettyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680725175D370700B1D643 /* FLPrettyString.m */; };
+		2768088D175D370700B1D643 /* FLPrettyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680725175D370700B1D643 /* FLPrettyString.m */; };
+		2768088E175D370700B1D643 /* FLPrettyString.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680725175D370700B1D643 /* FLPrettyString.m */; };
+		2768088F175D370700B1D643 /* FLStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680726175D370700B1D643 /* FLStringFormatter.h */; };
+		27680890175D370700B1D643 /* FLStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680726175D370700B1D643 /* FLStringFormatter.h */; };
+		27680891175D370700B1D643 /* FLStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680726175D370700B1D643 /* FLStringFormatter.h */; };
+		27680892175D370700B1D643 /* FLStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680726175D370700B1D643 /* FLStringFormatter.h */; };
+		27680893175D370700B1D643 /* FLStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680727175D370700B1D643 /* FLStringFormatter.m */; };
+		27680894175D370700B1D643 /* FLStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680727175D370700B1D643 /* FLStringFormatter.m */; };
+		27680895175D370700B1D643 /* FLStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680727175D370700B1D643 /* FLStringFormatter.m */; };
+		27680896175D370700B1D643 /* FLStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680727175D370700B1D643 /* FLStringFormatter.m */; };
+		27680897175D370700B1D643 /* FLStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680727175D370700B1D643 /* FLStringFormatter.m */; };
+		27680898175D370700B1D643 /* FLStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680728175D370700B1D643 /* FLStringUtils.h */; };
+		27680899175D370700B1D643 /* FLStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680728175D370700B1D643 /* FLStringUtils.h */; };
+		2768089A175D370700B1D643 /* FLStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680728175D370700B1D643 /* FLStringUtils.h */; };
+		2768089B175D370700B1D643 /* FLStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680728175D370700B1D643 /* FLStringUtils.h */; };
+		2768089C175D370700B1D643 /* FLStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680729175D370700B1D643 /* FLStringUtils.m */; };
+		2768089D175D370700B1D643 /* FLStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680729175D370700B1D643 /* FLStringUtils.m */; };
+		2768089E175D370700B1D643 /* FLStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680729175D370700B1D643 /* FLStringUtils.m */; };
+		2768089F175D370700B1D643 /* FLStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680729175D370700B1D643 /* FLStringUtils.m */; };
+		276808A0175D370700B1D643 /* FLStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680729175D370700B1D643 /* FLStringUtils.m */; };
+		276808A1175D370700B1D643 /* FLWhitespace.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072A175D370700B1D643 /* FLWhitespace.h */; };
+		276808A2175D370700B1D643 /* FLWhitespace.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072A175D370700B1D643 /* FLWhitespace.h */; };
+		276808A3175D370700B1D643 /* FLWhitespace.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072A175D370700B1D643 /* FLWhitespace.h */; };
+		276808A4175D370700B1D643 /* FLWhitespace.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072A175D370700B1D643 /* FLWhitespace.h */; };
+		276808A5175D370700B1D643 /* FLWhitespace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768072B175D370700B1D643 /* FLWhitespace.m */; };
+		276808A6175D370700B1D643 /* FLWhitespace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768072B175D370700B1D643 /* FLWhitespace.m */; };
+		276808A7175D370700B1D643 /* FLWhitespace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768072B175D370700B1D643 /* FLWhitespace.m */; };
+		276808A8175D370700B1D643 /* FLWhitespace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768072B175D370700B1D643 /* FLWhitespace.m */; };
+		276808A9175D370700B1D643 /* FLWhitespace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768072B175D370700B1D643 /* FLWhitespace.m */; };
+		276808AA175D370700B1D643 /* _FLAtomic.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072D175D370700B1D643 /* _FLAtomic.h */; };
+		276808AB175D370700B1D643 /* _FLAtomic.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072D175D370700B1D643 /* _FLAtomic.h */; };
+		276808AC175D370700B1D643 /* _FLAtomic.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072D175D370700B1D643 /* _FLAtomic.h */; };
+		276808AD175D370700B1D643 /* _FLAtomic.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072D175D370700B1D643 /* _FLAtomic.h */; };
+		276808AE175D370700B1D643 /* FLAtomic.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072E175D370700B1D643 /* FLAtomic.h */; };
+		276808AF175D370700B1D643 /* FLAtomic.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072E175D370700B1D643 /* FLAtomic.h */; };
+		276808B0175D370700B1D643 /* FLAtomic.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072E175D370700B1D643 /* FLAtomic.h */; };
+		276808B1175D370700B1D643 /* FLAtomic.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072E175D370700B1D643 /* FLAtomic.h */; };
+		276808B2175D370700B1D643 /* FLBitFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072F175D370700B1D643 /* FLBitFlags.h */; };
+		276808B3175D370700B1D643 /* FLBitFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072F175D370700B1D643 /* FLBitFlags.h */; };
+		276808B4175D370700B1D643 /* FLBitFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072F175D370700B1D643 /* FLBitFlags.h */; };
+		276808B5175D370700B1D643 /* FLBitFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768072F175D370700B1D643 /* FLBitFlags.h */; };
+		276808B6175D370700B1D643 /* FLBitFlags.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680730175D370700B1D643 /* FLBitFlags.m */; };
+		276808B7175D370700B1D643 /* FLBitFlags.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680730175D370700B1D643 /* FLBitFlags.m */; };
+		276808B8175D370700B1D643 /* FLBitFlags.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680730175D370700B1D643 /* FLBitFlags.m */; };
+		276808B9175D370700B1D643 /* FLBitFlags.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680730175D370700B1D643 /* FLBitFlags.m */; };
+		276808BA175D370700B1D643 /* FLBitFlags.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680730175D370700B1D643 /* FLBitFlags.m */; };
+		276808C4175D370700B1D643 /* FLOSVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680733175D370700B1D643 /* FLOSVersion.h */; };
+		276808C5175D370700B1D643 /* FLOSVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680733175D370700B1D643 /* FLOSVersion.h */; };
+		276808C6175D370700B1D643 /* FLOSVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680733175D370700B1D643 /* FLOSVersion.h */; };
+		276808C7175D370700B1D643 /* FLOSVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680733175D370700B1D643 /* FLOSVersion.h */; };
+		276808C8175D370700B1D643 /* FLOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680734175D370700B1D643 /* FLOSVersion.m */; };
+		276808C9175D370700B1D643 /* FLOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680734175D370700B1D643 /* FLOSVersion.m */; };
+		276808CA175D370700B1D643 /* FLOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680734175D370700B1D643 /* FLOSVersion.m */; };
+		276808CB175D370700B1D643 /* FLOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680734175D370700B1D643 /* FLOSVersion.m */; };
+		276808CC175D370700B1D643 /* FLOSVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680734175D370700B1D643 /* FLOSVersion.m */; };
+		276808CD175D370700B1D643 /* FLSelectorPerforming.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680735175D370700B1D643 /* FLSelectorPerforming.h */; };
+		276808CE175D370700B1D643 /* FLSelectorPerforming.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680735175D370700B1D643 /* FLSelectorPerforming.h */; };
+		276808CF175D370700B1D643 /* FLSelectorPerforming.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680735175D370700B1D643 /* FLSelectorPerforming.h */; };
+		276808D0175D370700B1D643 /* FLSelectorPerforming.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680735175D370700B1D643 /* FLSelectorPerforming.h */; };
+		276808D1175D370700B1D643 /* FLSelectorPerforming.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680736175D370700B1D643 /* FLSelectorPerforming.m */; };
+		276808D2175D370700B1D643 /* FLSelectorPerforming.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680736175D370700B1D643 /* FLSelectorPerforming.m */; };
+		276808D3175D370700B1D643 /* FLSelectorPerforming.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680736175D370700B1D643 /* FLSelectorPerforming.m */; };
+		276808D4175D370700B1D643 /* FLSelectorPerforming.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680736175D370700B1D643 /* FLSelectorPerforming.m */; };
+		276808D5175D370700B1D643 /* FLSelectorPerforming.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680736175D370700B1D643 /* FLSelectorPerforming.m */; };
+		276808DA175D370700B1D643 /* FLVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680738175D370700B1D643 /* FLVersion.h */; };
+		276808DB175D370700B1D643 /* FLVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680738175D370700B1D643 /* FLVersion.h */; };
+		276808DC175D370700B1D643 /* FLVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680738175D370700B1D643 /* FLVersion.h */; };
+		276808DD175D370700B1D643 /* FLVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680738175D370700B1D643 /* FLVersion.h */; };
+		276808DE175D370700B1D643 /* FLVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680739175D370700B1D643 /* FLVersion.m */; };
+		276808DF175D370700B1D643 /* FLVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680739175D370700B1D643 /* FLVersion.m */; };
+		276808E0175D370700B1D643 /* FLVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680739175D370700B1D643 /* FLVersion.m */; };
+		276808E1175D370700B1D643 /* FLVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680739175D370700B1D643 /* FLVersion.m */; };
+		276808E2175D370700B1D643 /* FLVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680739175D370700B1D643 /* FLVersion.m */; };
+		276808E3175D370700B1D643 /* NSArray+FLExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768073A175D370700B1D643 /* NSArray+FLExtras.h */; };
+		276808E4175D370700B1D643 /* NSArray+FLExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768073A175D370700B1D643 /* NSArray+FLExtras.h */; };
+		276808E5175D370700B1D643 /* NSArray+FLExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768073A175D370700B1D643 /* NSArray+FLExtras.h */; };
+		276808E6175D370700B1D643 /* NSArray+FLExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768073A175D370700B1D643 /* NSArray+FLExtras.h */; };
+		276808E7175D370700B1D643 /* NSArray+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073B175D370700B1D643 /* NSArray+FLExtras.m */; };
+		276808E8175D370700B1D643 /* NSArray+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073B175D370700B1D643 /* NSArray+FLExtras.m */; };
+		276808E9175D370700B1D643 /* NSArray+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073B175D370700B1D643 /* NSArray+FLExtras.m */; };
+		276808EA175D370700B1D643 /* NSArray+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073B175D370700B1D643 /* NSArray+FLExtras.m */; };
+		276808EB175D370700B1D643 /* NSArray+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073B175D370700B1D643 /* NSArray+FLExtras.m */; };
+		276808EC175D370700B1D643 /* NSDictionary+FLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768073C175D370700B1D643 /* NSDictionary+FLAdditions.h */; };
+		276808ED175D370700B1D643 /* NSDictionary+FLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768073C175D370700B1D643 /* NSDictionary+FLAdditions.h */; };
+		276808EE175D370700B1D643 /* NSDictionary+FLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768073C175D370700B1D643 /* NSDictionary+FLAdditions.h */; };
+		276808EF175D370700B1D643 /* NSDictionary+FLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768073C175D370700B1D643 /* NSDictionary+FLAdditions.h */; };
+		276808F0175D370700B1D643 /* NSDictionary+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073D175D370700B1D643 /* NSDictionary+FLAdditions.m */; };
+		276808F1175D370700B1D643 /* NSDictionary+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073D175D370700B1D643 /* NSDictionary+FLAdditions.m */; };
+		276808F2175D370700B1D643 /* NSDictionary+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073D175D370700B1D643 /* NSDictionary+FLAdditions.m */; };
+		276808F3175D370700B1D643 /* NSDictionary+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073D175D370700B1D643 /* NSDictionary+FLAdditions.m */; };
+		276808F4175D370700B1D643 /* NSDictionary+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073D175D370700B1D643 /* NSDictionary+FLAdditions.m */; };
+		276808F5175D370700B1D643 /* NSObject+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768073E175D370700B1D643 /* NSObject+Blocks.h */; };
+		276808F6175D370700B1D643 /* NSObject+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768073E175D370700B1D643 /* NSObject+Blocks.h */; };
+		276808F7175D370700B1D643 /* NSObject+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768073E175D370700B1D643 /* NSObject+Blocks.h */; };
+		276808F8175D370700B1D643 /* NSObject+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 2768073E175D370700B1D643 /* NSObject+Blocks.h */; };
+		276808F9175D370700B1D643 /* NSObject+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073F175D370700B1D643 /* NSObject+Blocks.m */; };
+		276808FA175D370700B1D643 /* NSObject+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073F175D370700B1D643 /* NSObject+Blocks.m */; };
+		276808FB175D370700B1D643 /* NSObject+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073F175D370700B1D643 /* NSObject+Blocks.m */; };
+		276808FC175D370700B1D643 /* NSObject+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073F175D370700B1D643 /* NSObject+Blocks.m */; };
+		276808FD175D370700B1D643 /* NSObject+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 2768073F175D370700B1D643 /* NSObject+Blocks.m */; };
+		276808FE175D370700B1D643 /* NSObject+FLPerformSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680740175D370700B1D643 /* NSObject+FLPerformSelector.h */; };
+		276808FF175D370700B1D643 /* NSObject+FLPerformSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680740175D370700B1D643 /* NSObject+FLPerformSelector.h */; };
+		27680900175D370700B1D643 /* NSObject+FLPerformSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680740175D370700B1D643 /* NSObject+FLPerformSelector.h */; };
+		27680901175D370700B1D643 /* NSObject+FLPerformSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 27680740175D370700B1D643 /* NSObject+FLPerformSelector.h */; };
+		27680902175D370700B1D643 /* NSObject+FLPerformSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680741175D370700B1D643 /* NSObject+FLPerformSelector.m */; };
+		27680903175D370700B1D643 /* NSObject+FLPerformSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680741175D370700B1D643 /* NSObject+FLPerformSelector.m */; };
+		27680904175D370700B1D643 /* NSObject+FLPerformSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680741175D370700B1D643 /* NSObject+FLPerformSelector.m */; };
+		27680905175D370700B1D643 /* NSObject+FLPerformSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680741175D370700B1D643 /* NSObject+FLPerformSelector.m */; };
+		27680906175D370700B1D643 /* NSObject+FLPerformSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 27680741175D370700B1D643 /* NSObject+FLPerformSelector.m */; };
+		2769E51C17CAF7C600F5D868 /* FLEventForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E51A17CAF7C600F5D868 /* FLEventForwarder.h */; };
+		2769E51D17CAF7C600F5D868 /* FLEventForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E51A17CAF7C600F5D868 /* FLEventForwarder.h */; };
+		2769E51E17CAF7C600F5D868 /* FLEventForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E51A17CAF7C600F5D868 /* FLEventForwarder.h */; };
+		2769E51F17CAF7C600F5D868 /* FLEventForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E51A17CAF7C600F5D868 /* FLEventForwarder.h */; };
+		2769E52017CAF7C600F5D868 /* FLEventForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E51B17CAF7C600F5D868 /* FLEventForwarder.m */; };
+		2769E52117CAF7C600F5D868 /* FLEventForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E51B17CAF7C600F5D868 /* FLEventForwarder.m */; };
+		2769E52217CAF7C600F5D868 /* FLEventForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E51B17CAF7C600F5D868 /* FLEventForwarder.m */; };
+		2769E52317CAF7C600F5D868 /* FLEventForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E51B17CAF7C600F5D868 /* FLEventForwarder.m */; };
+		2769E52417CAF7C600F5D868 /* FLEventForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E51B17CAF7C600F5D868 /* FLEventForwarder.m */; };
+		2769E52717CBA2CA00F5D868 /* FLTestable.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E52617CBA2CA00F5D868 /* FLTestable.h */; };
+		2769E52817CBA2CA00F5D868 /* FLTestable.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E52617CBA2CA00F5D868 /* FLTestable.h */; };
+		2769E52917CBA2CA00F5D868 /* FLTestable.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E52617CBA2CA00F5D868 /* FLTestable.h */; };
+		2769E52A17CBA2CA00F5D868 /* FLTestable.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E52617CBA2CA00F5D868 /* FLTestable.h */; };
+		2769E53117CBA2EC00F5D868 /* FLTestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E52C17CBA2EC00F5D868 /* FLTestable.m */; };
+		2769E53217CBA2EC00F5D868 /* FLTestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E52C17CBA2EC00F5D868 /* FLTestable.m */; };
+		2769E53317CBA2EC00F5D868 /* FLTestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E52C17CBA2EC00F5D868 /* FLTestable.m */; };
+		2769E53417CBA2EC00F5D868 /* FLTestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E52C17CBA2EC00F5D868 /* FLTestable.m */; };
+		2769E53517CBA2EC00F5D868 /* FLTestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E52C17CBA2EC00F5D868 /* FLTestable.m */; };
+		2769E53817CBA3F400F5D868 /* FLTestGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E53617CBA3F400F5D868 /* FLTestGroup.h */; };
+		2769E53917CBA3F400F5D868 /* FLTestGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E53617CBA3F400F5D868 /* FLTestGroup.h */; };
+		2769E53A17CBA3F400F5D868 /* FLTestGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E53617CBA3F400F5D868 /* FLTestGroup.h */; };
+		2769E53B17CBA3F400F5D868 /* FLTestGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E53617CBA3F400F5D868 /* FLTestGroup.h */; };
+		2769E53C17CBA3F400F5D868 /* FLTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E53717CBA3F400F5D868 /* FLTestGroup.m */; };
+		2769E53D17CBA3F400F5D868 /* FLTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E53717CBA3F400F5D868 /* FLTestGroup.m */; };
+		2769E53E17CBA3F400F5D868 /* FLTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E53717CBA3F400F5D868 /* FLTestGroup.m */; };
+		2769E53F17CBA3F400F5D868 /* FLTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E53717CBA3F400F5D868 /* FLTestGroup.m */; };
+		2769E54017CBA3F400F5D868 /* FLTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E53717CBA3F400F5D868 /* FLTestGroup.m */; };
+		2769E54517CBA54B00F5D868 /* FLTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E54117CBA54B00F5D868 /* FLTestCase.h */; };
+		2769E54617CBA54B00F5D868 /* FLTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E54117CBA54B00F5D868 /* FLTestCase.h */; };
+		2769E54717CBA54B00F5D868 /* FLTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E54117CBA54B00F5D868 /* FLTestCase.h */; };
+		2769E54817CBA54B00F5D868 /* FLTestCase.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E54117CBA54B00F5D868 /* FLTestCase.h */; };
+		2769E54917CBA54B00F5D868 /* FLTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E54217CBA54B00F5D868 /* FLTestCase.m */; };
+		2769E54A17CBA54B00F5D868 /* FLTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E54217CBA54B00F5D868 /* FLTestCase.m */; };
+		2769E54B17CBA54B00F5D868 /* FLTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E54217CBA54B00F5D868 /* FLTestCase.m */; };
+		2769E54C17CBA54B00F5D868 /* FLTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E54217CBA54B00F5D868 /* FLTestCase.m */; };
+		2769E54D17CBA54B00F5D868 /* FLTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E54217CBA54B00F5D868 /* FLTestCase.m */; };
+		2769E54E17CBA54B00F5D868 /* FLTestCaseList.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E54317CBA54B00F5D868 /* FLTestCaseList.h */; };
+		2769E54F17CBA54B00F5D868 /* FLTestCaseList.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E54317CBA54B00F5D868 /* FLTestCaseList.h */; };
+		2769E55017CBA54B00F5D868 /* FLTestCaseList.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E54317CBA54B00F5D868 /* FLTestCaseList.h */; };
+		2769E55117CBA54B00F5D868 /* FLTestCaseList.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E54317CBA54B00F5D868 /* FLTestCaseList.h */; };
+		2769E55217CBA54B00F5D868 /* FLTestCaseList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E54417CBA54B00F5D868 /* FLTestCaseList.m */; };
+		2769E55317CBA54B00F5D868 /* FLTestCaseList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E54417CBA54B00F5D868 /* FLTestCaseList.m */; };
+		2769E55417CBA54B00F5D868 /* FLTestCaseList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E54417CBA54B00F5D868 /* FLTestCaseList.m */; };
+		2769E55517CBA54B00F5D868 /* FLTestCaseList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E54417CBA54B00F5D868 /* FLTestCaseList.m */; };
+		2769E55617CBA54B00F5D868 /* FLTestCaseList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E54417CBA54B00F5D868 /* FLTestCaseList.m */; };
+		2769E56417CBA74700F5D868 /* FLTestCaseResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E56217CBA74700F5D868 /* FLTestCaseResult.h */; };
+		2769E56517CBA74700F5D868 /* FLTestCaseResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E56217CBA74700F5D868 /* FLTestCaseResult.h */; };
+		2769E56617CBA74700F5D868 /* FLTestCaseResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E56217CBA74700F5D868 /* FLTestCaseResult.h */; };
+		2769E56717CBA74700F5D868 /* FLTestCaseResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E56217CBA74700F5D868 /* FLTestCaseResult.h */; };
+		2769E56817CBA74700F5D868 /* FLTestCaseResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E56317CBA74700F5D868 /* FLTestCaseResult.m */; };
+		2769E56917CBA74700F5D868 /* FLTestCaseResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E56317CBA74700F5D868 /* FLTestCaseResult.m */; };
+		2769E56A17CBA74700F5D868 /* FLTestCaseResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E56317CBA74700F5D868 /* FLTestCaseResult.m */; };
+		2769E56B17CBA74700F5D868 /* FLTestCaseResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E56317CBA74700F5D868 /* FLTestCaseResult.m */; };
+		2769E56C17CBA74700F5D868 /* FLTestCaseResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E56317CBA74700F5D868 /* FLTestCaseResult.m */; };
+		2769E56F17CBA79100F5D868 /* FLTestResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E56D17CBA79100F5D868 /* FLTestResult.h */; };
+		2769E57017CBA79100F5D868 /* FLTestResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E56D17CBA79100F5D868 /* FLTestResult.h */; };
+		2769E57117CBA79100F5D868 /* FLTestResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E56D17CBA79100F5D868 /* FLTestResult.h */; };
+		2769E57217CBA79100F5D868 /* FLTestResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E56D17CBA79100F5D868 /* FLTestResult.h */; };
+		2769E57317CBA79100F5D868 /* FLTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E56E17CBA79100F5D868 /* FLTestResult.m */; };
+		2769E57417CBA79100F5D868 /* FLTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E56E17CBA79100F5D868 /* FLTestResult.m */; };
+		2769E57517CBA79100F5D868 /* FLTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E56E17CBA79100F5D868 /* FLTestResult.m */; };
+		2769E57617CBA79100F5D868 /* FLTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E56E17CBA79100F5D868 /* FLTestResult.m */; };
+		2769E57717CBA79100F5D868 /* FLTestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E56E17CBA79100F5D868 /* FLTestResult.m */; };
+		2769E57B17CBA7BE00F5D868 /* FLTestResultCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E57817CBA7BE00F5D868 /* FLTestResultCollection.h */; };
+		2769E57C17CBA7BE00F5D868 /* FLTestResultCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E57817CBA7BE00F5D868 /* FLTestResultCollection.h */; };
+		2769E57D17CBA7BE00F5D868 /* FLTestResultCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E57817CBA7BE00F5D868 /* FLTestResultCollection.h */; };
+		2769E57E17CBA7BE00F5D868 /* FLTestResultCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E57817CBA7BE00F5D868 /* FLTestResultCollection.h */; };
+		2769E57F17CBA7BE00F5D868 /* FLTestResultCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E57917CBA7BE00F5D868 /* FLTestResultCollection.m */; };
+		2769E58017CBA7BE00F5D868 /* FLTestResultCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E57917CBA7BE00F5D868 /* FLTestResultCollection.m */; };
+		2769E58117CBA7BE00F5D868 /* FLTestResultCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E57917CBA7BE00F5D868 /* FLTestResultCollection.m */; };
+		2769E58217CBA7BE00F5D868 /* FLTestResultCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E57917CBA7BE00F5D868 /* FLTestResultCollection.m */; };
+		2769E58317CBA7BE00F5D868 /* FLTestResultCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E57917CBA7BE00F5D868 /* FLTestResultCollection.m */; };
+		2769E58C17CE60D700F5D868 /* FLTestLoggingManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E58A17CE60D700F5D868 /* FLTestLoggingManager.h */; };
+		2769E58D17CE60D700F5D868 /* FLTestLoggingManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E58A17CE60D700F5D868 /* FLTestLoggingManager.h */; };
+		2769E58E17CE60D700F5D868 /* FLTestLoggingManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E58A17CE60D700F5D868 /* FLTestLoggingManager.h */; };
+		2769E58F17CE60D700F5D868 /* FLTestLoggingManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E58A17CE60D700F5D868 /* FLTestLoggingManager.h */; };
+		2769E59017CE60D700F5D868 /* FLTestLoggingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E58B17CE60D700F5D868 /* FLTestLoggingManager.m */; };
+		2769E59117CE60D700F5D868 /* FLTestLoggingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E58B17CE60D700F5D868 /* FLTestLoggingManager.m */; };
+		2769E59217CE60D700F5D868 /* FLTestLoggingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E58B17CE60D700F5D868 /* FLTestLoggingManager.m */; };
+		2769E59317CE60D700F5D868 /* FLTestLoggingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E58B17CE60D700F5D868 /* FLTestLoggingManager.m */; };
+		2769E59417CE60D700F5D868 /* FLTestLoggingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E58B17CE60D700F5D868 /* FLTestLoggingManager.m */; };
+		2769E63717D279EC00F5D868 /* FLPrettyAttributedString.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E63517D279EC00F5D868 /* FLPrettyAttributedString.h */; };
+		2769E63817D279EC00F5D868 /* FLPrettyAttributedString.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E63517D279EC00F5D868 /* FLPrettyAttributedString.h */; };
+		2769E63917D279EC00F5D868 /* FLPrettyAttributedString.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E63517D279EC00F5D868 /* FLPrettyAttributedString.h */; };
+		2769E63A17D279EC00F5D868 /* FLPrettyAttributedString.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E63517D279EC00F5D868 /* FLPrettyAttributedString.h */; };
+		2769E63B17D279EC00F5D868 /* FLPrettyAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E63617D279EC00F5D868 /* FLPrettyAttributedString.m */; };
+		2769E63C17D279EC00F5D868 /* FLPrettyAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E63617D279EC00F5D868 /* FLPrettyAttributedString.m */; };
+		2769E63D17D279EC00F5D868 /* FLPrettyAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E63617D279EC00F5D868 /* FLPrettyAttributedString.m */; };
+		2769E63E17D279EC00F5D868 /* FLPrettyAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E63617D279EC00F5D868 /* FLPrettyAttributedString.m */; };
+		2769E63F17D279EC00F5D868 /* FLPrettyAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E63617D279EC00F5D868 /* FLPrettyAttributedString.m */; };
+		2769E65D17D2907900F5D868 /* FLWhitespaceStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E65B17D2907900F5D868 /* FLWhitespaceStringFormatter.h */; };
+		2769E65E17D2907900F5D868 /* FLWhitespaceStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E65B17D2907900F5D868 /* FLWhitespaceStringFormatter.h */; };
+		2769E65F17D2907900F5D868 /* FLWhitespaceStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E65B17D2907900F5D868 /* FLWhitespaceStringFormatter.h */; };
+		2769E66017D2907900F5D868 /* FLWhitespaceStringFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2769E65B17D2907900F5D868 /* FLWhitespaceStringFormatter.h */; };
+		2769E66117D2907900F5D868 /* FLWhitespaceStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E65C17D2907900F5D868 /* FLWhitespaceStringFormatter.m */; };
+		2769E66217D2907900F5D868 /* FLWhitespaceStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E65C17D2907900F5D868 /* FLWhitespaceStringFormatter.m */; };
+		2769E66317D2907900F5D868 /* FLWhitespaceStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E65C17D2907900F5D868 /* FLWhitespaceStringFormatter.m */; };
+		2769E66417D2907900F5D868 /* FLWhitespaceStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E65C17D2907900F5D868 /* FLWhitespaceStringFormatter.m */; };
+		2769E66517D2907900F5D868 /* FLWhitespaceStringFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769E65C17D2907900F5D868 /* FLWhitespaceStringFormatter.m */; };
+		2781F2B1179C4CBC008DCAFB /* FLAssertionFailedError.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2A9179C4CBC008DCAFB /* FLAssertionFailedError.h */; };
+		2781F2B2179C4CBC008DCAFB /* FLAssertionFailedError.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2A9179C4CBC008DCAFB /* FLAssertionFailedError.h */; };
+		2781F2B3179C4CBC008DCAFB /* FLAssertionFailedError.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2A9179C4CBC008DCAFB /* FLAssertionFailedError.h */; };
+		2781F2B4179C4CBC008DCAFB /* FLAssertionFailedError.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2A9179C4CBC008DCAFB /* FLAssertionFailedError.h */; };
+		2781F2B5179C4CBC008DCAFB /* FLAssertionFailedError.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AA179C4CBC008DCAFB /* FLAssertionFailedError.m */; };
+		2781F2B6179C4CBC008DCAFB /* FLAssertionFailedError.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AA179C4CBC008DCAFB /* FLAssertionFailedError.m */; };
+		2781F2B7179C4CBC008DCAFB /* FLAssertionFailedError.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AA179C4CBC008DCAFB /* FLAssertionFailedError.m */; };
+		2781F2B8179C4CBC008DCAFB /* FLAssertionFailedError.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AA179C4CBC008DCAFB /* FLAssertionFailedError.m */; };
+		2781F2B9179C4CBC008DCAFB /* FLAssertionFailedError.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AA179C4CBC008DCAFB /* FLAssertionFailedError.m */; };
+		2781F2BA179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2AB179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h */; };
+		2781F2BB179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2AB179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h */; };
+		2781F2BC179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2AB179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h */; };
+		2781F2BD179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2AB179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h */; };
+		2781F2BE179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AC179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m */; };
+		2781F2BF179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AC179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m */; };
+		2781F2C0179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AC179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m */; };
+		2781F2C1179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AC179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m */; };
+		2781F2C2179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AC179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m */; };
+		2781F2C3179C4CBC008DCAFB /* FLAssertions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2AD179C4CBC008DCAFB /* FLAssertions.h */; };
+		2781F2C4179C4CBC008DCAFB /* FLAssertions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2AD179C4CBC008DCAFB /* FLAssertions.h */; };
+		2781F2C5179C4CBC008DCAFB /* FLAssertions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2AD179C4CBC008DCAFB /* FLAssertions.h */; };
+		2781F2C6179C4CBC008DCAFB /* FLAssertions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2AD179C4CBC008DCAFB /* FLAssertions.h */; };
+		2781F2C7179C4CBC008DCAFB /* FLAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AE179C4CBC008DCAFB /* FLAssertions.m */; };
+		2781F2C8179C4CBC008DCAFB /* FLAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AE179C4CBC008DCAFB /* FLAssertions.m */; };
+		2781F2C9179C4CBC008DCAFB /* FLAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AE179C4CBC008DCAFB /* FLAssertions.m */; };
+		2781F2CA179C4CBC008DCAFB /* FLAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AE179C4CBC008DCAFB /* FLAssertions.m */; };
+		2781F2CB179C4CBC008DCAFB /* FLAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2AE179C4CBC008DCAFB /* FLAssertions.m */; };
+		2781F2CC179C4CBC008DCAFB /* FLConfirm.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2AF179C4CBC008DCAFB /* FLConfirm.h */; };
+		2781F2CD179C4CBC008DCAFB /* FLConfirm.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2AF179C4CBC008DCAFB /* FLConfirm.h */; };
+		2781F2CE179C4CBC008DCAFB /* FLConfirm.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2AF179C4CBC008DCAFB /* FLConfirm.h */; };
+		2781F2CF179C4CBC008DCAFB /* FLConfirm.h in Headers */ = {isa = PBXBuildFile; fileRef = 2781F2AF179C4CBC008DCAFB /* FLConfirm.h */; };
+		2781F2D0179C4CBC008DCAFB /* FLConfirm.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2B0179C4CBC008DCAFB /* FLConfirm.m */; };
+		2781F2D1179C4CBC008DCAFB /* FLConfirm.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2B0179C4CBC008DCAFB /* FLConfirm.m */; };
+		2781F2D2179C4CBC008DCAFB /* FLConfirm.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2B0179C4CBC008DCAFB /* FLConfirm.m */; };
+		2781F2D3179C4CBC008DCAFB /* FLConfirm.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2B0179C4CBC008DCAFB /* FLConfirm.m */; };
+		2781F2D4179C4CBC008DCAFB /* FLConfirm.m in Sources */ = {isa = PBXBuildFile; fileRef = 2781F2B0179C4CBC008DCAFB /* FLConfirm.m */; };
+		27F1AF07175FBEEB0086E14A /* FishLampVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F1AF06175FBEEB0086E14A /* FishLampVersion.h */; };
+		27F1AF08175FBEEB0086E14A /* FishLampVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F1AF06175FBEEB0086E14A /* FishLampVersion.h */; };
+		27F1AF09175FBEEB0086E14A /* FishLampVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F1AF06175FBEEB0086E14A /* FishLampVersion.h */; };
+		27F1AF0A175FBEEB0086E14A /* FishLampVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 27F1AF06175FBEEB0086E14A /* FishLampVersion.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		27E9CF98175E4A4200BD6205 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27A43A7315CDCC1B001CB13E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27A43AB315CDCC89001CB13E;
+			remoteInfo = "FishLampCore-iOS-ARC";
+		};
+		27E9CF9A175E4A4200BD6205 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27A43A7315CDCC1B001CB13E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27048B70161CB58600C38ADA;
+			remoteInfo = "FishLampCore-OSX-32-MRC";
+		};
+		27E9CF9C175E4A4200BD6205 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27A43A7315CDCC1B001CB13E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27A43AC315CDCCCB001CB13E;
+			remoteInfo = "FishLampCore-OSX-64-MRC";
+		};
+		27E9CF9E175E4A4200BD6205 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27A43A7315CDCC1B001CB13E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 273148B9165328400027850D;
+			remoteInfo = "FishLampCore-OSX-64-ARC";
+		};
+		27E9CFA0175E4A4200BD6205 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27A43A7315CDCC1B001CB13E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27CBBE2916768BA600753D0A;
+			remoteInfo = "FishLampCore-OSX-Universal-MRC";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		27A43AB215CDCC89001CB13E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2702146517C3CF9F001A8A77 /* FLBroadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBroadcaster.h; sourceTree = "<group>"; };
+		2702146617C3CF9F001A8A77 /* FLBroadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBroadcaster.m; sourceTree = "<group>"; };
+		2702146717C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAsyncMessageBroadcaster.h; sourceTree = "<group>"; };
+		2702146817C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAsyncMessageBroadcaster.m; sourceTree = "<group>"; };
+		2702146A17C3CF9F001A8A77 /* FLArrayProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLArrayProxy.h; sourceTree = "<group>"; };
+		2702146B17C3CF9F001A8A77 /* FLArrayProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLArrayProxy.m; sourceTree = "<group>"; };
+		2702146C17C3CF9F001A8A77 /* FLMainThreadObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMainThreadObject.h; sourceTree = "<group>"; };
+		2702146D17C3CF9F001A8A77 /* FLMainThreadObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMainThreadObject.m; sourceTree = "<group>"; };
+		2702146E17C3CF9F001A8A77 /* FLNonretainedObjectProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLNonretainedObjectProxy.h; sourceTree = "<group>"; };
+		2702146F17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLNonretainedObjectProxy.m; sourceTree = "<group>"; };
+		2702147017C3CF9F001A8A77 /* FLAbstractObjectProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAbstractObjectProxy.h; sourceTree = "<group>"; };
+		2702147117C3CF9F001A8A77 /* FLAbstractObjectProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAbstractObjectProxy.m; sourceTree = "<group>"; };
+		2702147217C3CF9F001A8A77 /* FLRetainedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRetainedObject.h; sourceTree = "<group>"; };
+		2702147317C3CF9F001A8A77 /* FLRetainedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLRetainedObject.m; sourceTree = "<group>"; };
+		27048EF0161CB58600C38ADA /* libFishLampCore-OSX-32-MRC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFishLampCore-OSX-32-MRC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		271EAAF017D807470049055E /* FLTestAssertions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestAssertions.h; sourceTree = "<group>"; };
+		271EAAF117D807470049055E /* FLTestAssertions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestAssertions.m; sourceTree = "<group>"; };
+		271EAAFB17D817820049055E /* FL_ASSERT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FL_ASSERT.h; sourceTree = "<group>"; };
+		2729CB04177777E700D59B4F /* FLObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObjc.m; sourceTree = "<group>"; };
+		27314C79165328400027850D /* libFishLampCore-OSX-64-ARC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFishLampCore-OSX-64-ARC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2733799C1781FF7D00F56276 /* FLStringUtils_Inlines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringUtils_Inlines.h; sourceTree = "<group>"; };
+		273379EB178223FA00F56276 /* FishLampCore-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FishLampCore-Prefix.pch"; sourceTree = "<group>"; };
+		27570A6717D63FE6004F2A40 /* FLTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTesting.h; sourceTree = "<group>"; };
+		27570A6817D63FE6004F2A40 /* FLTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTesting.m; sourceTree = "<group>"; };
+		27570A7217D64154004F2A40 /* FLStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStrings.h; sourceTree = "<group>"; };
+		27570A7717D6422E004F2A40 /* FLSimpleLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSimpleLogger.h; sourceTree = "<group>"; };
+		27570A7C17D6430B004F2A40 /* FLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLUtilities.h; sourceTree = "<group>"; };
+		27570A8117D6436C004F2A40 /* FLErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLErrors.h; sourceTree = "<group>"; };
+		27570A8617D6444C004F2A40 /* FLAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAssert.h; sourceTree = "<group>"; };
+		27570A8717D6444C004F2A40 /* FLAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAssert.m; sourceTree = "<group>"; };
+		27570A9117D64570004F2A40 /* FLObjectProxies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLObjectProxies.h; sourceTree = "<group>"; };
+		27570A9217D6460B004F2A40 /* FLEventBroadcasting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEventBroadcasting.h; sourceTree = "<group>"; };
+		27570A9717D64A08004F2A40 /* FLOwnershipTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLOwnershipTests.h; sourceTree = "<group>"; };
+		27570A9817D64A08004F2A40 /* FLOwnershipTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLOwnershipTests.m; sourceTree = "<group>"; };
+		27570AA217D64B93004F2A40 /* FLObjectProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjectProxy.h; sourceTree = "<group>"; };
+		276806D6175D370700B1D643 /* FLDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLDebug.h; sourceTree = "<group>"; };
+		276806D7175D370700B1D643 /* FLDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLDebug.m; sourceTree = "<group>"; };
+		276806DF175D370700B1D643 /* FLCancelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLCancelError.h; sourceTree = "<group>"; };
+		276806E0175D370700B1D643 /* FLCancelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLCancelError.m; sourceTree = "<group>"; };
+		276806E3175D370700B1D643 /* FLErrorCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLErrorCodes.h; sourceTree = "<group>"; };
+		276806E4175D370700B1D643 /* FLErrorCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLErrorCodes.m; sourceTree = "<group>"; };
+		276806E5175D370700B1D643 /* FLErrorDomainInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLErrorDomainInfo.h; sourceTree = "<group>"; };
+		276806E6175D370700B1D643 /* FLErrorDomainInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLErrorDomainInfo.m; sourceTree = "<group>"; };
+		276806E7175D370700B1D643 /* FLErrorException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLErrorException.h; sourceTree = "<group>"; };
+		276806E8175D370700B1D643 /* FLErrorException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLErrorException.m; sourceTree = "<group>"; };
+		276806EB175D370700B1D643 /* FLExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLExceptions.h; sourceTree = "<group>"; };
+		276806EC175D370700B1D643 /* FLExceptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLExceptions.m; sourceTree = "<group>"; };
+		276806F0175D370700B1D643 /* FLStackTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStackTrace.h; sourceTree = "<group>"; };
+		276806F1175D370700B1D643 /* FLStackTrace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStackTrace.m; sourceTree = "<group>"; };
+		276806F2175D370700B1D643 /* NSError+FLExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+FLExtras.h"; sourceTree = "<group>"; };
+		276806F3175D370700B1D643 /* NSError+FLExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+FLExtras.m"; sourceTree = "<group>"; };
+		276806F4175D370700B1D643 /* FishLampMinimum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FishLampMinimum.h; sourceTree = "<group>"; };
+		276806F7175D370700B1D643 /* FLConsoleLogSink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLConsoleLogSink.h; sourceTree = "<group>"; };
+		276806F8175D370700B1D643 /* FLConsoleLogSink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLConsoleLogSink.m; sourceTree = "<group>"; };
+		276806F9175D370700B1D643 /* FLLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLog.h; sourceTree = "<group>"; };
+		276806FA175D370700B1D643 /* FLLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLog.m; sourceTree = "<group>"; };
+		276806FB175D370700B1D643 /* FLLogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLogEntry.h; sourceTree = "<group>"; };
+		276806FC175D370700B1D643 /* FLLogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLogEntry.m; sourceTree = "<group>"; };
+		276806FD175D370700B1D643 /* FLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLogger.h; sourceTree = "<group>"; };
+		276806FE175D370700B1D643 /* FLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLogger.m; sourceTree = "<group>"; };
+		276806FF175D370700B1D643 /* FLLogSink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLogSink.h; sourceTree = "<group>"; };
+		27680700175D370700B1D643 /* FLLogSink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLogSink.m; sourceTree = "<group>"; };
+		27680701175D370700B1D643 /* FLPrintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPrintf.h; sourceTree = "<group>"; };
+		27680702175D370700B1D643 /* FLPrintf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPrintf.m; sourceTree = "<group>"; };
+		27680703175D370700B1D643 /* FLTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTrace.h; sourceTree = "<group>"; };
+		27680704175D370700B1D643 /* FLTrace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTrace.m; sourceTree = "<group>"; };
+		27680706175D370700B1D643 /* FLAssociatedProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAssociatedProperty.h; sourceTree = "<group>"; };
+		27680707175D370700B1D643 /* FLAssociatedProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAssociatedProperty.m; sourceTree = "<group>"; };
+		27680708175D370700B1D643 /* FLAtomicProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAtomicProperties.h; sourceTree = "<group>"; };
+		27680709175D370700B1D643 /* FLAtomicProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAtomicProperties.m; sourceTree = "<group>"; };
+		2768070A175D370700B1D643 /* FLBitFlagsProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBitFlagsProperty.h; sourceTree = "<group>"; };
+		2768070B175D370700B1D643 /* FLDefaultProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLDefaultProperty.h; sourceTree = "<group>"; };
+		2768070C175D370700B1D643 /* FLObjcPropertyHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjcPropertyHelpers.h; sourceTree = "<group>"; };
+		2768070D175D370700B1D643 /* FLSingletonProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSingletonProperty.h; sourceTree = "<group>"; };
+		2768070E175D370700B1D643 /* FLStaticMemberProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStaticMemberProperty.h; sourceTree = "<group>"; };
+		2768070F175D370700B1D643 /* FLStructFlagsProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStructFlagsProperty.h; sourceTree = "<group>"; };
+		27680711175D370700B1D643 /* FLCompilerWarnings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLCompilerWarnings.h; sourceTree = "<group>"; };
+		27680712175D370700B1D643 /* FLCoreFlags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLCoreFlags.h; sourceTree = "<group>"; };
+		27680713175D370700B1D643 /* FLMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMath.h; sourceTree = "<group>"; };
+		27680714175D370700B1D643 /* FLObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjc.h; sourceTree = "<group>"; };
+		27680715175D370700B1D643 /* FLObjcARC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjcARC.h; sourceTree = "<group>"; };
+		27680716175D370700B1D643 /* FLObjcMRC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjcMRC.h; sourceTree = "<group>"; };
+		27680717175D370700B1D643 /* FLCoreRequired.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLCoreRequired.h; sourceTree = "<group>"; };
+		27680719175D370700B1D643 /* FLObjcRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjcRuntime.h; sourceTree = "<group>"; };
+		2768071A175D370700B1D643 /* FLObjcRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObjcRuntime.m; sourceTree = "<group>"; };
+		2768071B175D370700B1D643 /* FLPropertyAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPropertyAttributes.h; sourceTree = "<group>"; };
+		2768071C175D370700B1D643 /* FLPropertyAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPropertyAttributes.m; sourceTree = "<group>"; };
+		2768071D175D370700B1D643 /* FLRuntimeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRuntimeInfo.h; sourceTree = "<group>"; };
+		2768071E175D370700B1D643 /* FLRuntimeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLRuntimeInfo.m; sourceTree = "<group>"; };
+		2768071F175D370700B1D643 /* FLSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSelector.h; sourceTree = "<group>"; };
+		27680720175D370700B1D643 /* FLSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSelector.m; sourceTree = "<group>"; };
+		27680722175D370700B1D643 /* FLCharString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLCharString.h; sourceTree = "<group>"; };
+		27680723175D370700B1D643 /* FLCharString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLCharString.m; sourceTree = "<group>"; };
+		27680724175D370700B1D643 /* FLPrettyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPrettyString.h; sourceTree = "<group>"; };
+		27680725175D370700B1D643 /* FLPrettyString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPrettyString.m; sourceTree = "<group>"; };
+		27680726175D370700B1D643 /* FLStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringFormatter.h; sourceTree = "<group>"; };
+		27680727175D370700B1D643 /* FLStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringFormatter.m; sourceTree = "<group>"; };
+		27680728175D370700B1D643 /* FLStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringUtils.h; sourceTree = "<group>"; };
+		27680729175D370700B1D643 /* FLStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringUtils.m; sourceTree = "<group>"; };
+		2768072A175D370700B1D643 /* FLWhitespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLWhitespace.h; sourceTree = "<group>"; };
+		2768072B175D370700B1D643 /* FLWhitespace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLWhitespace.m; sourceTree = "<group>"; };
+		2768072D175D370700B1D643 /* _FLAtomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FLAtomic.h; sourceTree = "<group>"; };
+		2768072E175D370700B1D643 /* FLAtomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAtomic.h; sourceTree = "<group>"; };
+		2768072F175D370700B1D643 /* FLBitFlags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBitFlags.h; sourceTree = "<group>"; };
+		27680730175D370700B1D643 /* FLBitFlags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBitFlags.m; sourceTree = "<group>"; };
+		27680733175D370700B1D643 /* FLOSVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLOSVersion.h; sourceTree = "<group>"; };
+		27680734175D370700B1D643 /* FLOSVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLOSVersion.m; sourceTree = "<group>"; };
+		27680735175D370700B1D643 /* FLSelectorPerforming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSelectorPerforming.h; sourceTree = "<group>"; };
+		27680736175D370700B1D643 /* FLSelectorPerforming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSelectorPerforming.m; sourceTree = "<group>"; };
+		27680738175D370700B1D643 /* FLVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVersion.h; sourceTree = "<group>"; };
+		27680739175D370700B1D643 /* FLVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVersion.m; sourceTree = "<group>"; };
+		2768073A175D370700B1D643 /* NSArray+FLExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+FLExtras.h"; sourceTree = "<group>"; };
+		2768073B175D370700B1D643 /* NSArray+FLExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FLExtras.m"; sourceTree = "<group>"; };
+		2768073C175D370700B1D643 /* NSDictionary+FLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+FLAdditions.h"; sourceTree = "<group>"; };
+		2768073D175D370700B1D643 /* NSDictionary+FLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+FLAdditions.m"; sourceTree = "<group>"; };
+		2768073E175D370700B1D643 /* NSObject+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Blocks.h"; sourceTree = "<group>"; };
+		2768073F175D370700B1D643 /* NSObject+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Blocks.m"; sourceTree = "<group>"; };
+		27680740175D370700B1D643 /* NSObject+FLPerformSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FLPerformSelector.h"; sourceTree = "<group>"; };
+		27680741175D370700B1D643 /* NSObject+FLPerformSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FLPerformSelector.m"; sourceTree = "<group>"; };
+		2769E51A17CAF7C600F5D868 /* FLEventForwarder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEventForwarder.h; sourceTree = "<group>"; };
+		2769E51B17CAF7C600F5D868 /* FLEventForwarder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEventForwarder.m; sourceTree = "<group>"; };
+		2769E52617CBA2CA00F5D868 /* FLTestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestable.h; sourceTree = "<group>"; };
+		2769E52C17CBA2EC00F5D868 /* FLTestable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestable.m; sourceTree = "<group>"; };
+		2769E53617CBA3F400F5D868 /* FLTestGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestGroup.h; sourceTree = "<group>"; };
+		2769E53717CBA3F400F5D868 /* FLTestGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestGroup.m; sourceTree = "<group>"; };
+		2769E54117CBA54B00F5D868 /* FLTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestCase.h; sourceTree = "<group>"; };
+		2769E54217CBA54B00F5D868 /* FLTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestCase.m; sourceTree = "<group>"; };
+		2769E54317CBA54B00F5D868 /* FLTestCaseList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestCaseList.h; sourceTree = "<group>"; };
+		2769E54417CBA54B00F5D868 /* FLTestCaseList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestCaseList.m; sourceTree = "<group>"; };
+		2769E56217CBA74700F5D868 /* FLTestCaseResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestCaseResult.h; sourceTree = "<group>"; };
+		2769E56317CBA74700F5D868 /* FLTestCaseResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestCaseResult.m; sourceTree = "<group>"; };
+		2769E56D17CBA79100F5D868 /* FLTestResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestResult.h; sourceTree = "<group>"; };
+		2769E56E17CBA79100F5D868 /* FLTestResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestResult.m; sourceTree = "<group>"; };
+		2769E57817CBA7BE00F5D868 /* FLTestResultCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestResultCollection.h; sourceTree = "<group>"; };
+		2769E57917CBA7BE00F5D868 /* FLTestResultCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestResultCollection.m; sourceTree = "<group>"; };
+		2769E58A17CE60D700F5D868 /* FLTestLoggingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestLoggingManager.h; sourceTree = "<group>"; };
+		2769E58B17CE60D700F5D868 /* FLTestLoggingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestLoggingManager.m; sourceTree = "<group>"; };
+		2769E63517D279EC00F5D868 /* FLPrettyAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPrettyAttributedString.h; sourceTree = "<group>"; };
+		2769E63617D279EC00F5D868 /* FLPrettyAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPrettyAttributedString.m; sourceTree = "<group>"; };
+		2769E65B17D2907900F5D868 /* FLWhitespaceStringFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLWhitespaceStringFormatter.h; sourceTree = "<group>"; };
+		2769E65C17D2907900F5D868 /* FLWhitespaceStringFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLWhitespaceStringFormatter.m; sourceTree = "<group>"; };
+		2781F2A9179C4CBC008DCAFB /* FLAssertionFailedError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAssertionFailedError.h; sourceTree = "<group>"; };
+		2781F2AA179C4CBC008DCAFB /* FLAssertionFailedError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAssertionFailedError.m; sourceTree = "<group>"; };
+		2781F2AB179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAssertionFailureErrorDomain.h; sourceTree = "<group>"; };
+		2781F2AC179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAssertionFailureErrorDomain.m; sourceTree = "<group>"; };
+		2781F2AD179C4CBC008DCAFB /* FLAssertions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAssertions.h; sourceTree = "<group>"; };
+		2781F2AE179C4CBC008DCAFB /* FLAssertions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAssertions.m; sourceTree = "<group>"; };
+		2781F2AF179C4CBC008DCAFB /* FLConfirm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLConfirm.h; sourceTree = "<group>"; };
+		2781F2B0179C4CBC008DCAFB /* FLConfirm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLConfirm.m; sourceTree = "<group>"; };
+		27A43AB415CDCC89001CB13E /* libFishLampCore-iOS-ARC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFishLampCore-iOS-ARC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27A43AC415CDCCCB001CB13E /* libFishLampCore-OSX-64-MRC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFishLampCore-OSX-64-MRC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27C62DCC170B537B0093F260 /* CoreTargetSettings-OSX-32-MRC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "CoreTargetSettings-OSX-32-MRC.xcconfig"; sourceTree = "<group>"; };
+		27C62DCD170B537B0093F260 /* SharedTargetSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SharedTargetSettings.xcconfig; sourceTree = "<group>"; };
+		27C62DCE170B537B0093F260 /* CoreTargetSettings-OSX-Universal-MRC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "CoreTargetSettings-OSX-Universal-MRC.xcconfig"; sourceTree = "<group>"; };
+		27C62DCF170B537B0093F260 /* CoreTargetSettings-OSX-64-ARC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "CoreTargetSettings-OSX-64-ARC.xcconfig"; sourceTree = "<group>"; };
+		27C62DD0170B537B0093F260 /* CoreTargetSettings-OSX-64-MRC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "CoreTargetSettings-OSX-64-MRC.xcconfig"; sourceTree = "<group>"; };
+		27C62DD1170B537B0093F260 /* CoreTargetSettings-OSX-iOS-ARC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "CoreTargetSettings-OSX-iOS-ARC.xcconfig"; sourceTree = "<group>"; };
+		27CBC1F416768BA600753D0A /* libFishLampCore-OSX-Universal-MRC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFishLampCore-OSX-Universal-MRC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E957E6170B572F00587A8F /* FishLampProjectSettingsDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = FishLampProjectSettingsDebug.xcconfig; sourceTree = "<group>"; };
+		27E957E7170B572F00587A8F /* FishLampProjectSettingsRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = FishLampProjectSettingsRelease.xcconfig; sourceTree = "<group>"; };
+		27F1AF06175FBEEB0086E14A /* FishLampVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FishLampVersion.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27048D0F161CB58600C38ADA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27314A76165328400027850D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27A43AB115CDCC89001CB13E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27A43AC115CDCCCB001CB13E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27CBBFEC16768BA600753D0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2702146417C3CF9F001A8A77 /* Observing */ = {
+			isa = PBXGroup;
+			children = (
+				2702146517C3CF9F001A8A77 /* FLBroadcaster.h */,
+				2702146617C3CF9F001A8A77 /* FLBroadcaster.m */,
+				2702146717C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h */,
+				2702146817C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m */,
+				2769E51A17CAF7C600F5D868 /* FLEventForwarder.h */,
+				2769E51B17CAF7C600F5D868 /* FLEventForwarder.m */,
+				27570A9217D6460B004F2A40 /* FLEventBroadcasting.h */,
+			);
+			path = Observing;
+			sourceTree = "<group>";
+		};
+		2702146917C3CF9F001A8A77 /* Ownership */ = {
+			isa = PBXGroup;
+			children = (
+				2702146A17C3CF9F001A8A77 /* FLArrayProxy.h */,
+				2702146B17C3CF9F001A8A77 /* FLArrayProxy.m */,
+				2702146C17C3CF9F001A8A77 /* FLMainThreadObject.h */,
+				2702146D17C3CF9F001A8A77 /* FLMainThreadObject.m */,
+				2702146E17C3CF9F001A8A77 /* FLNonretainedObjectProxy.h */,
+				2702146F17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m */,
+				2702147017C3CF9F001A8A77 /* FLAbstractObjectProxy.h */,
+				2702147117C3CF9F001A8A77 /* FLAbstractObjectProxy.m */,
+				2702147217C3CF9F001A8A77 /* FLRetainedObject.h */,
+				2702147317C3CF9F001A8A77 /* FLRetainedObject.m */,
+				27570A9117D64570004F2A40 /* FLObjectProxies.h */,
+				27570A9717D64A08004F2A40 /* FLOwnershipTests.h */,
+				27570A9817D64A08004F2A40 /* FLOwnershipTests.m */,
+				27570AA217D64B93004F2A40 /* FLObjectProxy.h */,
+			);
+			path = Ownership;
+			sourceTree = "<group>";
+		};
+		2731477B1652D2D30027850D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27E957E5170B572F00587A8F /* FishLampProjectSettings */,
+				27C62DCB170B537B0093F260 /* FishLampCore */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		276806D2175D370700B1D643 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2769E52517CBA2AC00F5D868 /* Testing */,
+				2702146417C3CF9F001A8A77 /* Observing */,
+				2702146917C3CF9F001A8A77 /* Ownership */,
+				273379EB178223FA00F56276 /* FishLampCore-Prefix.pch */,
+				27F1AF06175FBEEB0086E14A /* FishLampVersion.h */,
+				2781F2A8179C4CBC008DCAFB /* Assertions */,
+				276806D5175D370700B1D643 /* Debug */,
+				276806D8175D370700B1D643 /* Errors */,
+				276806F4175D370700B1D643 /* FishLampMinimum.h */,
+				276806F6175D370700B1D643 /* Logger */,
+				27680705175D370700B1D643 /* Properties */,
+				27680710175D370700B1D643 /* Required */,
+				27680718175D370700B1D643 /* Runtime */,
+				27680721175D370700B1D643 /* Strings */,
+				2768072C175D370700B1D643 /* Utilities */,
+			);
+			name = Classes;
+			path = ../Classes;
+			sourceTree = "<group>";
+		};
+		276806D5175D370700B1D643 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				276806D6175D370700B1D643 /* FLDebug.h */,
+				276806D7175D370700B1D643 /* FLDebug.m */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		276806D8175D370700B1D643 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				276806DF175D370700B1D643 /* FLCancelError.h */,
+				276806E0175D370700B1D643 /* FLCancelError.m */,
+				276806E3175D370700B1D643 /* FLErrorCodes.h */,
+				276806E4175D370700B1D643 /* FLErrorCodes.m */,
+				276806E5175D370700B1D643 /* FLErrorDomainInfo.h */,
+				276806E6175D370700B1D643 /* FLErrorDomainInfo.m */,
+				276806E7175D370700B1D643 /* FLErrorException.h */,
+				276806E8175D370700B1D643 /* FLErrorException.m */,
+				276806EB175D370700B1D643 /* FLExceptions.h */,
+				276806EC175D370700B1D643 /* FLExceptions.m */,
+				276806F0175D370700B1D643 /* FLStackTrace.h */,
+				276806F1175D370700B1D643 /* FLStackTrace.m */,
+				276806F2175D370700B1D643 /* NSError+FLExtras.h */,
+				276806F3175D370700B1D643 /* NSError+FLExtras.m */,
+				27570A8117D6436C004F2A40 /* FLErrors.h */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		276806F6175D370700B1D643 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				276806F7175D370700B1D643 /* FLConsoleLogSink.h */,
+				276806F8175D370700B1D643 /* FLConsoleLogSink.m */,
+				276806F9175D370700B1D643 /* FLLog.h */,
+				276806FA175D370700B1D643 /* FLLog.m */,
+				276806FB175D370700B1D643 /* FLLogEntry.h */,
+				276806FC175D370700B1D643 /* FLLogEntry.m */,
+				276806FD175D370700B1D643 /* FLLogger.h */,
+				276806FE175D370700B1D643 /* FLLogger.m */,
+				276806FF175D370700B1D643 /* FLLogSink.h */,
+				27680700175D370700B1D643 /* FLLogSink.m */,
+				27680701175D370700B1D643 /* FLPrintf.h */,
+				27680702175D370700B1D643 /* FLPrintf.m */,
+				27680703175D370700B1D643 /* FLTrace.h */,
+				27680704175D370700B1D643 /* FLTrace.m */,
+				27570A7717D6422E004F2A40 /* FLSimpleLogger.h */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		27680705175D370700B1D643 /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				27680706175D370700B1D643 /* FLAssociatedProperty.h */,
+				27680707175D370700B1D643 /* FLAssociatedProperty.m */,
+				27680708175D370700B1D643 /* FLAtomicProperties.h */,
+				27680709175D370700B1D643 /* FLAtomicProperties.m */,
+				2768070A175D370700B1D643 /* FLBitFlagsProperty.h */,
+				2768070B175D370700B1D643 /* FLDefaultProperty.h */,
+				2768070C175D370700B1D643 /* FLObjcPropertyHelpers.h */,
+				2768070D175D370700B1D643 /* FLSingletonProperty.h */,
+				2768070E175D370700B1D643 /* FLStaticMemberProperty.h */,
+				2768070F175D370700B1D643 /* FLStructFlagsProperty.h */,
+			);
+			path = Properties;
+			sourceTree = "<group>";
+		};
+		27680710175D370700B1D643 /* Required */ = {
+			isa = PBXGroup;
+			children = (
+				27680711175D370700B1D643 /* FLCompilerWarnings.h */,
+				27680712175D370700B1D643 /* FLCoreFlags.h */,
+				27680713175D370700B1D643 /* FLMath.h */,
+				27680714175D370700B1D643 /* FLObjc.h */,
+				27680715175D370700B1D643 /* FLObjcARC.h */,
+				27680716175D370700B1D643 /* FLObjcMRC.h */,
+				27680717175D370700B1D643 /* FLCoreRequired.h */,
+				2729CB04177777E700D59B4F /* FLObjc.m */,
+			);
+			path = Required;
+			sourceTree = "<group>";
+		};
+		27680718175D370700B1D643 /* Runtime */ = {
+			isa = PBXGroup;
+			children = (
+				27680719175D370700B1D643 /* FLObjcRuntime.h */,
+				2768071A175D370700B1D643 /* FLObjcRuntime.m */,
+				2768071B175D370700B1D643 /* FLPropertyAttributes.h */,
+				2768071C175D370700B1D643 /* FLPropertyAttributes.m */,
+				2768071D175D370700B1D643 /* FLRuntimeInfo.h */,
+				2768071E175D370700B1D643 /* FLRuntimeInfo.m */,
+				2768071F175D370700B1D643 /* FLSelector.h */,
+				27680720175D370700B1D643 /* FLSelector.m */,
+			);
+			path = Runtime;
+			sourceTree = "<group>";
+		};
+		27680721175D370700B1D643 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				27680722175D370700B1D643 /* FLCharString.h */,
+				27680723175D370700B1D643 /* FLCharString.m */,
+				2769E63517D279EC00F5D868 /* FLPrettyAttributedString.h */,
+				2769E63617D279EC00F5D868 /* FLPrettyAttributedString.m */,
+				27680724175D370700B1D643 /* FLPrettyString.h */,
+				27680725175D370700B1D643 /* FLPrettyString.m */,
+				27680726175D370700B1D643 /* FLStringFormatter.h */,
+				27680727175D370700B1D643 /* FLStringFormatter.m */,
+				27680728175D370700B1D643 /* FLStringUtils.h */,
+				27680729175D370700B1D643 /* FLStringUtils.m */,
+				2733799C1781FF7D00F56276 /* FLStringUtils_Inlines.h */,
+				2768072A175D370700B1D643 /* FLWhitespace.h */,
+				2768072B175D370700B1D643 /* FLWhitespace.m */,
+				2769E65B17D2907900F5D868 /* FLWhitespaceStringFormatter.h */,
+				2769E65C17D2907900F5D868 /* FLWhitespaceStringFormatter.m */,
+				27570A7217D64154004F2A40 /* FLStrings.h */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		2768072C175D370700B1D643 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2768072D175D370700B1D643 /* _FLAtomic.h */,
+				2768072E175D370700B1D643 /* FLAtomic.h */,
+				2768072F175D370700B1D643 /* FLBitFlags.h */,
+				27680730175D370700B1D643 /* FLBitFlags.m */,
+				27680733175D370700B1D643 /* FLOSVersion.h */,
+				27680734175D370700B1D643 /* FLOSVersion.m */,
+				27680735175D370700B1D643 /* FLSelectorPerforming.h */,
+				27680736175D370700B1D643 /* FLSelectorPerforming.m */,
+				27680738175D370700B1D643 /* FLVersion.h */,
+				27680739175D370700B1D643 /* FLVersion.m */,
+				2768073A175D370700B1D643 /* NSArray+FLExtras.h */,
+				2768073B175D370700B1D643 /* NSArray+FLExtras.m */,
+				2768073C175D370700B1D643 /* NSDictionary+FLAdditions.h */,
+				2768073D175D370700B1D643 /* NSDictionary+FLAdditions.m */,
+				2768073E175D370700B1D643 /* NSObject+Blocks.h */,
+				2768073F175D370700B1D643 /* NSObject+Blocks.m */,
+				27680740175D370700B1D643 /* NSObject+FLPerformSelector.h */,
+				27680741175D370700B1D643 /* NSObject+FLPerformSelector.m */,
+				27570A7C17D6430B004F2A40 /* FLUtilities.h */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2769E52517CBA2AC00F5D868 /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				2769E5A017CE68E400F5D868 /* Logging */,
+				2769E58917CE5FE100F5D868 /* TestCase */,
+				2769E58817CE5FCF00F5D868 /* Results */,
+				2769E53617CBA3F400F5D868 /* FLTestGroup.h */,
+				2769E53717CBA3F400F5D868 /* FLTestGroup.m */,
+				2769E52617CBA2CA00F5D868 /* FLTestable.h */,
+				2769E52C17CBA2EC00F5D868 /* FLTestable.m */,
+				27570A6717D63FE6004F2A40 /* FLTesting.h */,
+				27570A6817D63FE6004F2A40 /* FLTesting.m */,
+				271EAAF017D807470049055E /* FLTestAssertions.h */,
+				271EAAF117D807470049055E /* FLTestAssertions.m */,
+			);
+			path = Testing;
+			sourceTree = "<group>";
+		};
+		2769E58817CE5FCF00F5D868 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				2769E57817CBA7BE00F5D868 /* FLTestResultCollection.h */,
+				2769E57917CBA7BE00F5D868 /* FLTestResultCollection.m */,
+				2769E56D17CBA79100F5D868 /* FLTestResult.h */,
+				2769E56E17CBA79100F5D868 /* FLTestResult.m */,
+				2769E56217CBA74700F5D868 /* FLTestCaseResult.h */,
+				2769E56317CBA74700F5D868 /* FLTestCaseResult.m */,
+			);
+			name = Results;
+			sourceTree = "<group>";
+		};
+		2769E58917CE5FE100F5D868 /* TestCase */ = {
+			isa = PBXGroup;
+			children = (
+				2769E54117CBA54B00F5D868 /* FLTestCase.h */,
+				2769E54217CBA54B00F5D868 /* FLTestCase.m */,
+				2769E54317CBA54B00F5D868 /* FLTestCaseList.h */,
+				2769E54417CBA54B00F5D868 /* FLTestCaseList.m */,
+			);
+			name = TestCase;
+			sourceTree = "<group>";
+		};
+		2769E5A017CE68E400F5D868 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				2769E58A17CE60D700F5D868 /* FLTestLoggingManager.h */,
+				2769E58B17CE60D700F5D868 /* FLTestLoggingManager.m */,
+			);
+			name = Logging;
+			sourceTree = "<group>";
+		};
+		2781F2A8179C4CBC008DCAFB /* Assertions */ = {
+			isa = PBXGroup;
+			children = (
+				2781F2A9179C4CBC008DCAFB /* FLAssertionFailedError.h */,
+				2781F2AA179C4CBC008DCAFB /* FLAssertionFailedError.m */,
+				2781F2AB179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h */,
+				2781F2AC179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m */,
+				2781F2AD179C4CBC008DCAFB /* FLAssertions.h */,
+				2781F2AE179C4CBC008DCAFB /* FLAssertions.m */,
+				2781F2AF179C4CBC008DCAFB /* FLConfirm.h */,
+				2781F2B0179C4CBC008DCAFB /* FLConfirm.m */,
+				27570A8617D6444C004F2A40 /* FLAssert.h */,
+				27570A8717D6444C004F2A40 /* FLAssert.m */,
+				271EAAFB17D817820049055E /* FL_ASSERT.h */,
+			);
+			path = Assertions;
+			sourceTree = "<group>";
+		};
+		27A43A7115CDCC1B001CB13E = {
+			isa = PBXGroup;
+			children = (
+				276806D2175D370700B1D643 /* Classes */,
+				2731477B1652D2D30027850D /* Supporting Files */,
+				27A43A7E15CDCC1B001CB13E /* Frameworks */,
+				27A43A7D15CDCC1B001CB13E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		27A43A7D15CDCC1B001CB13E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27A43AB415CDCC89001CB13E /* libFishLampCore-iOS-ARC.a */,
+				27A43AC415CDCCCB001CB13E /* libFishLampCore-OSX-64-MRC.a */,
+				27048EF0161CB58600C38ADA /* libFishLampCore-OSX-32-MRC.a */,
+				27314C79165328400027850D /* libFishLampCore-OSX-64-ARC.a */,
+				27CBC1F416768BA600753D0A /* libFishLampCore-OSX-Universal-MRC.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27A43A7E15CDCC1B001CB13E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27C62DCB170B537B0093F260 /* FishLampCore */ = {
+			isa = PBXGroup;
+			children = (
+				27C62DCC170B537B0093F260 /* CoreTargetSettings-OSX-32-MRC.xcconfig */,
+				27C62DCD170B537B0093F260 /* SharedTargetSettings.xcconfig */,
+				27C62DCE170B537B0093F260 /* CoreTargetSettings-OSX-Universal-MRC.xcconfig */,
+				27C62DCF170B537B0093F260 /* CoreTargetSettings-OSX-64-ARC.xcconfig */,
+				27C62DD0170B537B0093F260 /* CoreTargetSettings-OSX-64-MRC.xcconfig */,
+				27C62DD1170B537B0093F260 /* CoreTargetSettings-OSX-iOS-ARC.xcconfig */,
+			);
+			path = FishLampCore;
+			sourceTree = "<group>";
+		};
+		27E957E5170B572F00587A8F /* FishLampProjectSettings */ = {
+			isa = PBXGroup;
+			children = (
+				27E957E6170B572F00587A8F /* FishLampProjectSettingsDebug.xcconfig */,
+				27E957E7170B572F00587A8F /* FishLampProjectSettingsRelease.xcconfig */,
+			);
+			name = FishLampProjectSettings;
+			path = FishLampXcodeConfigs/FishLampProjectSettings;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		27048D11161CB58600C38ADA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27570A7817D6422E004F2A40 /* FLSimpleLogger.h in Headers */,
+				2768074A175D370700B1D643 /* FLDebug.h in Headers */,
+				2768076E175D370700B1D643 /* FLCancelError.h in Headers */,
+				2781F2C3179C4CBC008DCAFB /* FLAssertions.h in Headers */,
+				27680780175D370700B1D643 /* FLErrorCodes.h in Headers */,
+				27680789175D370700B1D643 /* FLErrorDomainInfo.h in Headers */,
+				27680792175D370700B1D643 /* FLErrorException.h in Headers */,
+				276807A4175D370700B1D643 /* FLExceptions.h in Headers */,
+				27570AA317D64B93004F2A40 /* FLObjectProxy.h in Headers */,
+				276807BA175D370700B1D643 /* FLStackTrace.h in Headers */,
+				276807C3175D370700B1D643 /* NSError+FLExtras.h in Headers */,
+				273379EC178223FA00F56276 /* FishLampCore-Prefix.pch in Headers */,
+				2781F2B1179C4CBC008DCAFB /* FLAssertionFailedError.h in Headers */,
+				276807CC175D370700B1D643 /* FishLampMinimum.h in Headers */,
+				276807D4175D370700B1D643 /* FLConsoleLogSink.h in Headers */,
+				276807DD175D370700B1D643 /* FLLog.h in Headers */,
+				276807E6175D370700B1D643 /* FLLogEntry.h in Headers */,
+				27570A9917D64A08004F2A40 /* FLOwnershipTests.h in Headers */,
+				276807EF175D370700B1D643 /* FLLogger.h in Headers */,
+				276807F8175D370700B1D643 /* FLLogSink.h in Headers */,
+				27680801175D370700B1D643 /* FLPrintf.h in Headers */,
+				2768080A175D370700B1D643 /* FLTrace.h in Headers */,
+				2769E57B17CBA7BE00F5D868 /* FLTestResultCollection.h in Headers */,
+				2769E52717CBA2CA00F5D868 /* FLTestable.h in Headers */,
+				27680813175D370700B1D643 /* FLAssociatedProperty.h in Headers */,
+				2769E56F17CBA79100F5D868 /* FLTestResult.h in Headers */,
+				2768081C175D370700B1D643 /* FLAtomicProperties.h in Headers */,
+				27680825175D370700B1D643 /* FLBitFlagsProperty.h in Headers */,
+				27570A7D17D6430B004F2A40 /* FLUtilities.h in Headers */,
+				27680829175D370700B1D643 /* FLDefaultProperty.h in Headers */,
+				2768082D175D370700B1D643 /* FLObjcPropertyHelpers.h in Headers */,
+				27680831175D370700B1D643 /* FLSingletonProperty.h in Headers */,
+				271EAAF217D807470049055E /* FLTestAssertions.h in Headers */,
+				2702148617C3CF9F001A8A77 /* FLArrayProxy.h in Headers */,
+				2702147D17C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h in Headers */,
+				27680835175D370700B1D643 /* FLStaticMemberProperty.h in Headers */,
+				27680839175D370700B1D643 /* FLStructFlagsProperty.h in Headers */,
+				27570A8817D6444C004F2A40 /* FLAssert.h in Headers */,
+				2768083D175D370700B1D643 /* FLCompilerWarnings.h in Headers */,
+				2769E65D17D2907900F5D868 /* FLWhitespaceStringFormatter.h in Headers */,
+				27680841175D370700B1D643 /* FLCoreFlags.h in Headers */,
+				27680845175D370700B1D643 /* FLMath.h in Headers */,
+				2769E63717D279EC00F5D868 /* FLPrettyAttributedString.h in Headers */,
+				27680849175D370700B1D643 /* FLObjc.h in Headers */,
+				2768084D175D370700B1D643 /* FLObjcARC.h in Headers */,
+				2769E51C17CAF7C600F5D868 /* FLEventForwarder.h in Headers */,
+				27680851175D370700B1D643 /* FLObjcMRC.h in Headers */,
+				27570A9317D6460B004F2A40 /* FLEventBroadcasting.h in Headers */,
+				27680855175D370700B1D643 /* FLCoreRequired.h in Headers */,
+				27680859175D370700B1D643 /* FLObjcRuntime.h in Headers */,
+				2702148F17C3CF9F001A8A77 /* FLMainThreadObject.h in Headers */,
+				27680862175D370700B1D643 /* FLPropertyAttributes.h in Headers */,
+				27570A8217D6436C004F2A40 /* FLErrors.h in Headers */,
+				2768086B175D370700B1D643 /* FLRuntimeInfo.h in Headers */,
+				2733799D1781FF7D00F56276 /* FLStringUtils_Inlines.h in Headers */,
+				27570A7317D64154004F2A40 /* FLStrings.h in Headers */,
+				270214A117C3CF9F001A8A77 /* FLAbstractObjectProxy.h in Headers */,
+				27680874175D370700B1D643 /* FLSelector.h in Headers */,
+				2702147417C3CF9F001A8A77 /* FLBroadcaster.h in Headers */,
+				2768087D175D370700B1D643 /* FLCharString.h in Headers */,
+				2702149817C3CF9F001A8A77 /* FLNonretainedObjectProxy.h in Headers */,
+				2781F2CC179C4CBC008DCAFB /* FLConfirm.h in Headers */,
+				270214AA17C3CF9F001A8A77 /* FLRetainedObject.h in Headers */,
+				27680886175D370700B1D643 /* FLPrettyString.h in Headers */,
+				2768088F175D370700B1D643 /* FLStringFormatter.h in Headers */,
+				27680898175D370700B1D643 /* FLStringUtils.h in Headers */,
+				2769E58C17CE60D700F5D868 /* FLTestLoggingManager.h in Headers */,
+				276808A1175D370700B1D643 /* FLWhitespace.h in Headers */,
+				2769E54517CBA54B00F5D868 /* FLTestCase.h in Headers */,
+				276808AA175D370700B1D643 /* _FLAtomic.h in Headers */,
+				276808AE175D370700B1D643 /* FLAtomic.h in Headers */,
+				276808B2175D370700B1D643 /* FLBitFlags.h in Headers */,
+				276808C4175D370700B1D643 /* FLOSVersion.h in Headers */,
+				276808CD175D370700B1D643 /* FLSelectorPerforming.h in Headers */,
+				27570A6917D63FE6004F2A40 /* FLTesting.h in Headers */,
+				2781F2BA179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h in Headers */,
+				276808DA175D370700B1D643 /* FLVersion.h in Headers */,
+				276808E3175D370700B1D643 /* NSArray+FLExtras.h in Headers */,
+				2769E53817CBA3F400F5D868 /* FLTestGroup.h in Headers */,
+				2769E54E17CBA54B00F5D868 /* FLTestCaseList.h in Headers */,
+				276808EC175D370700B1D643 /* NSDictionary+FLAdditions.h in Headers */,
+				271EAAFD17D817820049055E /* FL_ASSERT.h in Headers */,
+				276808F5175D370700B1D643 /* NSObject+Blocks.h in Headers */,
+				2769E56417CBA74700F5D868 /* FLTestCaseResult.h in Headers */,
+				276808FE175D370700B1D643 /* NSObject+FLPerformSelector.h in Headers */,
+				27F1AF07175FBEEB0086E14A /* FishLampVersion.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27314A78165328400027850D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27570A7A17D6422E004F2A40 /* FLSimpleLogger.h in Headers */,
+				2768074C175D370700B1D643 /* FLDebug.h in Headers */,
+				27680770175D370700B1D643 /* FLCancelError.h in Headers */,
+				2781F2C5179C4CBC008DCAFB /* FLAssertions.h in Headers */,
+				27680782175D370700B1D643 /* FLErrorCodes.h in Headers */,
+				2768078B175D370700B1D643 /* FLErrorDomainInfo.h in Headers */,
+				27680794175D370700B1D643 /* FLErrorException.h in Headers */,
+				276807A6175D370700B1D643 /* FLExceptions.h in Headers */,
+				27570AA517D64B93004F2A40 /* FLObjectProxy.h in Headers */,
+				276807BC175D370700B1D643 /* FLStackTrace.h in Headers */,
+				276807C5175D370700B1D643 /* NSError+FLExtras.h in Headers */,
+				273379EE178223FA00F56276 /* FishLampCore-Prefix.pch in Headers */,
+				2781F2B3179C4CBC008DCAFB /* FLAssertionFailedError.h in Headers */,
+				276807CE175D370700B1D643 /* FishLampMinimum.h in Headers */,
+				276807D6175D370700B1D643 /* FLConsoleLogSink.h in Headers */,
+				276807DF175D370700B1D643 /* FLLog.h in Headers */,
+				276807E8175D370700B1D643 /* FLLogEntry.h in Headers */,
+				27570A9B17D64A08004F2A40 /* FLOwnershipTests.h in Headers */,
+				276807F1175D370700B1D643 /* FLLogger.h in Headers */,
+				276807FA175D370700B1D643 /* FLLogSink.h in Headers */,
+				27680803175D370700B1D643 /* FLPrintf.h in Headers */,
+				2768080C175D370700B1D643 /* FLTrace.h in Headers */,
+				2769E57D17CBA7BE00F5D868 /* FLTestResultCollection.h in Headers */,
+				2769E52917CBA2CA00F5D868 /* FLTestable.h in Headers */,
+				27680815175D370700B1D643 /* FLAssociatedProperty.h in Headers */,
+				2769E57117CBA79100F5D868 /* FLTestResult.h in Headers */,
+				2768081E175D370700B1D643 /* FLAtomicProperties.h in Headers */,
+				27680827175D370700B1D643 /* FLBitFlagsProperty.h in Headers */,
+				27570A7F17D6430B004F2A40 /* FLUtilities.h in Headers */,
+				2768082B175D370700B1D643 /* FLDefaultProperty.h in Headers */,
+				2768082F175D370700B1D643 /* FLObjcPropertyHelpers.h in Headers */,
+				27680833175D370700B1D643 /* FLSingletonProperty.h in Headers */,
+				271EAAF417D807470049055E /* FLTestAssertions.h in Headers */,
+				2702148817C3CF9F001A8A77 /* FLArrayProxy.h in Headers */,
+				2702147F17C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h in Headers */,
+				27680837175D370700B1D643 /* FLStaticMemberProperty.h in Headers */,
+				2768083B175D370700B1D643 /* FLStructFlagsProperty.h in Headers */,
+				27570A8A17D6444C004F2A40 /* FLAssert.h in Headers */,
+				2768083F175D370700B1D643 /* FLCompilerWarnings.h in Headers */,
+				2769E65F17D2907900F5D868 /* FLWhitespaceStringFormatter.h in Headers */,
+				27680843175D370700B1D643 /* FLCoreFlags.h in Headers */,
+				27680847175D370700B1D643 /* FLMath.h in Headers */,
+				2769E63917D279EC00F5D868 /* FLPrettyAttributedString.h in Headers */,
+				2768084B175D370700B1D643 /* FLObjc.h in Headers */,
+				2768084F175D370700B1D643 /* FLObjcARC.h in Headers */,
+				2769E51E17CAF7C600F5D868 /* FLEventForwarder.h in Headers */,
+				27680853175D370700B1D643 /* FLObjcMRC.h in Headers */,
+				27570A9517D6460B004F2A40 /* FLEventBroadcasting.h in Headers */,
+				27680857175D370700B1D643 /* FLCoreRequired.h in Headers */,
+				2768085B175D370700B1D643 /* FLObjcRuntime.h in Headers */,
+				2702149117C3CF9F001A8A77 /* FLMainThreadObject.h in Headers */,
+				27680864175D370700B1D643 /* FLPropertyAttributes.h in Headers */,
+				27570A8417D6436C004F2A40 /* FLErrors.h in Headers */,
+				2768086D175D370700B1D643 /* FLRuntimeInfo.h in Headers */,
+				2733799F1781FF7D00F56276 /* FLStringUtils_Inlines.h in Headers */,
+				27570A7517D64154004F2A40 /* FLStrings.h in Headers */,
+				270214A317C3CF9F001A8A77 /* FLAbstractObjectProxy.h in Headers */,
+				27680876175D370700B1D643 /* FLSelector.h in Headers */,
+				2702147617C3CF9F001A8A77 /* FLBroadcaster.h in Headers */,
+				2768087F175D370700B1D643 /* FLCharString.h in Headers */,
+				2702149A17C3CF9F001A8A77 /* FLNonretainedObjectProxy.h in Headers */,
+				2781F2CE179C4CBC008DCAFB /* FLConfirm.h in Headers */,
+				270214AC17C3CF9F001A8A77 /* FLRetainedObject.h in Headers */,
+				27680888175D370700B1D643 /* FLPrettyString.h in Headers */,
+				27680891175D370700B1D643 /* FLStringFormatter.h in Headers */,
+				2768089A175D370700B1D643 /* FLStringUtils.h in Headers */,
+				2769E58E17CE60D700F5D868 /* FLTestLoggingManager.h in Headers */,
+				276808A3175D370700B1D643 /* FLWhitespace.h in Headers */,
+				2769E54717CBA54B00F5D868 /* FLTestCase.h in Headers */,
+				276808AC175D370700B1D643 /* _FLAtomic.h in Headers */,
+				276808B0175D370700B1D643 /* FLAtomic.h in Headers */,
+				276808B4175D370700B1D643 /* FLBitFlags.h in Headers */,
+				276808C6175D370700B1D643 /* FLOSVersion.h in Headers */,
+				276808CF175D370700B1D643 /* FLSelectorPerforming.h in Headers */,
+				27570A6B17D63FE6004F2A40 /* FLTesting.h in Headers */,
+				2781F2BC179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h in Headers */,
+				276808DC175D370700B1D643 /* FLVersion.h in Headers */,
+				276808E5175D370700B1D643 /* NSArray+FLExtras.h in Headers */,
+				2769E53A17CBA3F400F5D868 /* FLTestGroup.h in Headers */,
+				2769E55017CBA54B00F5D868 /* FLTestCaseList.h in Headers */,
+				276808EE175D370700B1D643 /* NSDictionary+FLAdditions.h in Headers */,
+				271EAAFF17D817820049055E /* FL_ASSERT.h in Headers */,
+				276808F7175D370700B1D643 /* NSObject+Blocks.h in Headers */,
+				2769E56617CBA74700F5D868 /* FLTestCaseResult.h in Headers */,
+				27680900175D370700B1D643 /* NSObject+FLPerformSelector.h in Headers */,
+				27F1AF09175FBEEB0086E14A /* FishLampVersion.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27A43AC215CDCCCB001CB13E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27570A7917D6422E004F2A40 /* FLSimpleLogger.h in Headers */,
+				2768074B175D370700B1D643 /* FLDebug.h in Headers */,
+				2768076F175D370700B1D643 /* FLCancelError.h in Headers */,
+				2781F2C4179C4CBC008DCAFB /* FLAssertions.h in Headers */,
+				27680781175D370700B1D643 /* FLErrorCodes.h in Headers */,
+				2768078A175D370700B1D643 /* FLErrorDomainInfo.h in Headers */,
+				27680793175D370700B1D643 /* FLErrorException.h in Headers */,
+				276807A5175D370700B1D643 /* FLExceptions.h in Headers */,
+				27570AA417D64B93004F2A40 /* FLObjectProxy.h in Headers */,
+				276807BB175D370700B1D643 /* FLStackTrace.h in Headers */,
+				276807C4175D370700B1D643 /* NSError+FLExtras.h in Headers */,
+				273379ED178223FA00F56276 /* FishLampCore-Prefix.pch in Headers */,
+				2781F2B2179C4CBC008DCAFB /* FLAssertionFailedError.h in Headers */,
+				276807CD175D370700B1D643 /* FishLampMinimum.h in Headers */,
+				276807D5175D370700B1D643 /* FLConsoleLogSink.h in Headers */,
+				276807DE175D370700B1D643 /* FLLog.h in Headers */,
+				276807E7175D370700B1D643 /* FLLogEntry.h in Headers */,
+				27570A9A17D64A08004F2A40 /* FLOwnershipTests.h in Headers */,
+				276807F0175D370700B1D643 /* FLLogger.h in Headers */,
+				276807F9175D370700B1D643 /* FLLogSink.h in Headers */,
+				27680802175D370700B1D643 /* FLPrintf.h in Headers */,
+				2768080B175D370700B1D643 /* FLTrace.h in Headers */,
+				2769E57C17CBA7BE00F5D868 /* FLTestResultCollection.h in Headers */,
+				2769E52817CBA2CA00F5D868 /* FLTestable.h in Headers */,
+				27680814175D370700B1D643 /* FLAssociatedProperty.h in Headers */,
+				2769E57017CBA79100F5D868 /* FLTestResult.h in Headers */,
+				2768081D175D370700B1D643 /* FLAtomicProperties.h in Headers */,
+				27680826175D370700B1D643 /* FLBitFlagsProperty.h in Headers */,
+				27570A7E17D6430B004F2A40 /* FLUtilities.h in Headers */,
+				2768082A175D370700B1D643 /* FLDefaultProperty.h in Headers */,
+				2768082E175D370700B1D643 /* FLObjcPropertyHelpers.h in Headers */,
+				27680832175D370700B1D643 /* FLSingletonProperty.h in Headers */,
+				271EAAF317D807470049055E /* FLTestAssertions.h in Headers */,
+				2702148717C3CF9F001A8A77 /* FLArrayProxy.h in Headers */,
+				2702147E17C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h in Headers */,
+				27680836175D370700B1D643 /* FLStaticMemberProperty.h in Headers */,
+				2768083A175D370700B1D643 /* FLStructFlagsProperty.h in Headers */,
+				27570A8917D6444C004F2A40 /* FLAssert.h in Headers */,
+				2768083E175D370700B1D643 /* FLCompilerWarnings.h in Headers */,
+				2769E65E17D2907900F5D868 /* FLWhitespaceStringFormatter.h in Headers */,
+				27680842175D370700B1D643 /* FLCoreFlags.h in Headers */,
+				27680846175D370700B1D643 /* FLMath.h in Headers */,
+				2769E63817D279EC00F5D868 /* FLPrettyAttributedString.h in Headers */,
+				2768084A175D370700B1D643 /* FLObjc.h in Headers */,
+				2768084E175D370700B1D643 /* FLObjcARC.h in Headers */,
+				2769E51D17CAF7C600F5D868 /* FLEventForwarder.h in Headers */,
+				27680852175D370700B1D643 /* FLObjcMRC.h in Headers */,
+				27570A9417D6460B004F2A40 /* FLEventBroadcasting.h in Headers */,
+				27680856175D370700B1D643 /* FLCoreRequired.h in Headers */,
+				2768085A175D370700B1D643 /* FLObjcRuntime.h in Headers */,
+				2702149017C3CF9F001A8A77 /* FLMainThreadObject.h in Headers */,
+				27680863175D370700B1D643 /* FLPropertyAttributes.h in Headers */,
+				27570A8317D6436C004F2A40 /* FLErrors.h in Headers */,
+				2768086C175D370700B1D643 /* FLRuntimeInfo.h in Headers */,
+				2733799E1781FF7D00F56276 /* FLStringUtils_Inlines.h in Headers */,
+				27570A7417D64154004F2A40 /* FLStrings.h in Headers */,
+				270214A217C3CF9F001A8A77 /* FLAbstractObjectProxy.h in Headers */,
+				27680875175D370700B1D643 /* FLSelector.h in Headers */,
+				2702147517C3CF9F001A8A77 /* FLBroadcaster.h in Headers */,
+				2768087E175D370700B1D643 /* FLCharString.h in Headers */,
+				2702149917C3CF9F001A8A77 /* FLNonretainedObjectProxy.h in Headers */,
+				2781F2CD179C4CBC008DCAFB /* FLConfirm.h in Headers */,
+				270214AB17C3CF9F001A8A77 /* FLRetainedObject.h in Headers */,
+				27680887175D370700B1D643 /* FLPrettyString.h in Headers */,
+				27680890175D370700B1D643 /* FLStringFormatter.h in Headers */,
+				27680899175D370700B1D643 /* FLStringUtils.h in Headers */,
+				2769E58D17CE60D700F5D868 /* FLTestLoggingManager.h in Headers */,
+				276808A2175D370700B1D643 /* FLWhitespace.h in Headers */,
+				2769E54617CBA54B00F5D868 /* FLTestCase.h in Headers */,
+				276808AB175D370700B1D643 /* _FLAtomic.h in Headers */,
+				276808AF175D370700B1D643 /* FLAtomic.h in Headers */,
+				276808B3175D370700B1D643 /* FLBitFlags.h in Headers */,
+				276808C5175D370700B1D643 /* FLOSVersion.h in Headers */,
+				276808CE175D370700B1D643 /* FLSelectorPerforming.h in Headers */,
+				27570A6A17D63FE6004F2A40 /* FLTesting.h in Headers */,
+				2781F2BB179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h in Headers */,
+				276808DB175D370700B1D643 /* FLVersion.h in Headers */,
+				276808E4175D370700B1D643 /* NSArray+FLExtras.h in Headers */,
+				2769E53917CBA3F400F5D868 /* FLTestGroup.h in Headers */,
+				2769E54F17CBA54B00F5D868 /* FLTestCaseList.h in Headers */,
+				276808ED175D370700B1D643 /* NSDictionary+FLAdditions.h in Headers */,
+				271EAAFE17D817820049055E /* FL_ASSERT.h in Headers */,
+				276808F6175D370700B1D643 /* NSObject+Blocks.h in Headers */,
+				2769E56517CBA74700F5D868 /* FLTestCaseResult.h in Headers */,
+				276808FF175D370700B1D643 /* NSObject+FLPerformSelector.h in Headers */,
+				27F1AF08175FBEEB0086E14A /* FishLampVersion.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27CBBFED16768BA600753D0A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27570A7B17D6422E004F2A40 /* FLSimpleLogger.h in Headers */,
+				2768074D175D370700B1D643 /* FLDebug.h in Headers */,
+				27680771175D370700B1D643 /* FLCancelError.h in Headers */,
+				2781F2C6179C4CBC008DCAFB /* FLAssertions.h in Headers */,
+				27680783175D370700B1D643 /* FLErrorCodes.h in Headers */,
+				2768078C175D370700B1D643 /* FLErrorDomainInfo.h in Headers */,
+				27680795175D370700B1D643 /* FLErrorException.h in Headers */,
+				276807A7175D370700B1D643 /* FLExceptions.h in Headers */,
+				27570AA617D64B93004F2A40 /* FLObjectProxy.h in Headers */,
+				276807BD175D370700B1D643 /* FLStackTrace.h in Headers */,
+				276807C6175D370700B1D643 /* NSError+FLExtras.h in Headers */,
+				273379EF178223FA00F56276 /* FishLampCore-Prefix.pch in Headers */,
+				2781F2B4179C4CBC008DCAFB /* FLAssertionFailedError.h in Headers */,
+				276807CF175D370700B1D643 /* FishLampMinimum.h in Headers */,
+				276807D7175D370700B1D643 /* FLConsoleLogSink.h in Headers */,
+				276807E0175D370700B1D643 /* FLLog.h in Headers */,
+				276807E9175D370700B1D643 /* FLLogEntry.h in Headers */,
+				27570A9C17D64A08004F2A40 /* FLOwnershipTests.h in Headers */,
+				276807F2175D370700B1D643 /* FLLogger.h in Headers */,
+				276807FB175D370700B1D643 /* FLLogSink.h in Headers */,
+				27680804175D370700B1D643 /* FLPrintf.h in Headers */,
+				2768080D175D370700B1D643 /* FLTrace.h in Headers */,
+				2769E57E17CBA7BE00F5D868 /* FLTestResultCollection.h in Headers */,
+				2769E52A17CBA2CA00F5D868 /* FLTestable.h in Headers */,
+				27680816175D370700B1D643 /* FLAssociatedProperty.h in Headers */,
+				2769E57217CBA79100F5D868 /* FLTestResult.h in Headers */,
+				2768081F175D370700B1D643 /* FLAtomicProperties.h in Headers */,
+				27680828175D370700B1D643 /* FLBitFlagsProperty.h in Headers */,
+				27570A8017D6430B004F2A40 /* FLUtilities.h in Headers */,
+				2768082C175D370700B1D643 /* FLDefaultProperty.h in Headers */,
+				27680830175D370700B1D643 /* FLObjcPropertyHelpers.h in Headers */,
+				27680834175D370700B1D643 /* FLSingletonProperty.h in Headers */,
+				271EAAF517D807470049055E /* FLTestAssertions.h in Headers */,
+				2702148917C3CF9F001A8A77 /* FLArrayProxy.h in Headers */,
+				2702148017C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.h in Headers */,
+				27680838175D370700B1D643 /* FLStaticMemberProperty.h in Headers */,
+				2768083C175D370700B1D643 /* FLStructFlagsProperty.h in Headers */,
+				27570A8B17D6444C004F2A40 /* FLAssert.h in Headers */,
+				27680840175D370700B1D643 /* FLCompilerWarnings.h in Headers */,
+				2769E66017D2907900F5D868 /* FLWhitespaceStringFormatter.h in Headers */,
+				27680844175D370700B1D643 /* FLCoreFlags.h in Headers */,
+				27680848175D370700B1D643 /* FLMath.h in Headers */,
+				2769E63A17D279EC00F5D868 /* FLPrettyAttributedString.h in Headers */,
+				2768084C175D370700B1D643 /* FLObjc.h in Headers */,
+				27680850175D370700B1D643 /* FLObjcARC.h in Headers */,
+				2769E51F17CAF7C600F5D868 /* FLEventForwarder.h in Headers */,
+				27680854175D370700B1D643 /* FLObjcMRC.h in Headers */,
+				27570A9617D6460B004F2A40 /* FLEventBroadcasting.h in Headers */,
+				27680858175D370700B1D643 /* FLCoreRequired.h in Headers */,
+				2768085C175D370700B1D643 /* FLObjcRuntime.h in Headers */,
+				2702149217C3CF9F001A8A77 /* FLMainThreadObject.h in Headers */,
+				27680865175D370700B1D643 /* FLPropertyAttributes.h in Headers */,
+				27570A8517D6436C004F2A40 /* FLErrors.h in Headers */,
+				2768086E175D370700B1D643 /* FLRuntimeInfo.h in Headers */,
+				273379A01781FF7D00F56276 /* FLStringUtils_Inlines.h in Headers */,
+				27570A7617D64154004F2A40 /* FLStrings.h in Headers */,
+				270214A417C3CF9F001A8A77 /* FLAbstractObjectProxy.h in Headers */,
+				27680877175D370700B1D643 /* FLSelector.h in Headers */,
+				2702147717C3CF9F001A8A77 /* FLBroadcaster.h in Headers */,
+				27680880175D370700B1D643 /* FLCharString.h in Headers */,
+				2702149B17C3CF9F001A8A77 /* FLNonretainedObjectProxy.h in Headers */,
+				2781F2CF179C4CBC008DCAFB /* FLConfirm.h in Headers */,
+				270214AD17C3CF9F001A8A77 /* FLRetainedObject.h in Headers */,
+				27680889175D370700B1D643 /* FLPrettyString.h in Headers */,
+				27680892175D370700B1D643 /* FLStringFormatter.h in Headers */,
+				2768089B175D370700B1D643 /* FLStringUtils.h in Headers */,
+				2769E58F17CE60D700F5D868 /* FLTestLoggingManager.h in Headers */,
+				276808A4175D370700B1D643 /* FLWhitespace.h in Headers */,
+				2769E54817CBA54B00F5D868 /* FLTestCase.h in Headers */,
+				276808AD175D370700B1D643 /* _FLAtomic.h in Headers */,
+				276808B1175D370700B1D643 /* FLAtomic.h in Headers */,
+				276808B5175D370700B1D643 /* FLBitFlags.h in Headers */,
+				276808C7175D370700B1D643 /* FLOSVersion.h in Headers */,
+				276808D0175D370700B1D643 /* FLSelectorPerforming.h in Headers */,
+				27570A6C17D63FE6004F2A40 /* FLTesting.h in Headers */,
+				2781F2BD179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.h in Headers */,
+				276808DD175D370700B1D643 /* FLVersion.h in Headers */,
+				276808E6175D370700B1D643 /* NSArray+FLExtras.h in Headers */,
+				2769E53B17CBA3F400F5D868 /* FLTestGroup.h in Headers */,
+				2769E55117CBA54B00F5D868 /* FLTestCaseList.h in Headers */,
+				276808EF175D370700B1D643 /* NSDictionary+FLAdditions.h in Headers */,
+				271EAB0017D817820049055E /* FL_ASSERT.h in Headers */,
+				276808F8175D370700B1D643 /* NSObject+Blocks.h in Headers */,
+				2769E56717CBA74700F5D868 /* FLTestCaseResult.h in Headers */,
+				27680901175D370700B1D643 /* NSObject+FLPerformSelector.h in Headers */,
+				27F1AF0A175FBEEB0086E14A /* FishLampVersion.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		27048B70161CB58600C38ADA /* FishLampCore-OSX-32-MRC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27048EEB161CB58600C38ADA /* Build configuration list for PBXNativeTarget "FishLampCore-OSX-32-MRC" */;
+			buildPhases = (
+				27048B71161CB58600C38ADA /* Sources */,
+				27048D0F161CB58600C38ADA /* Frameworks */,
+				27048D11161CB58600C38ADA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FishLampCore-OSX-32-MRC";
+			productName = FishLampCocoaApp;
+			productReference = 27048EF0161CB58600C38ADA /* libFishLampCore-OSX-32-MRC.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		273148B9165328400027850D /* FishLampCore-OSX-64-ARC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27314C75165328400027850D /* Build configuration list for PBXNativeTarget "FishLampCore-OSX-64-ARC" */;
+			buildPhases = (
+				273148BA165328400027850D /* Sources */,
+				27314A76165328400027850D /* Frameworks */,
+				27314A78165328400027850D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FishLampCore-OSX-64-ARC";
+			productName = FishLampCommandLine;
+			productReference = 27314C79165328400027850D /* libFishLampCore-OSX-64-ARC.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		27A43AB315CDCC89001CB13E /* FishLampCore-iOS-ARC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27A43ABD15CDCC89001CB13E /* Build configuration list for PBXNativeTarget "FishLampCore-iOS-ARC" */;
+			buildPhases = (
+				27A43AB015CDCC89001CB13E /* Sources */,
+				27A43AB115CDCC89001CB13E /* Frameworks */,
+				27A43AB215CDCC89001CB13E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FishLampCore-iOS-ARC";
+			productName = FishLampiOS;
+			productReference = 27A43AB415CDCC89001CB13E /* libFishLampCore-iOS-ARC.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		27A43AC315CDCCCB001CB13E /* FishLampCore-OSX-64-MRC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27A43ACC15CDCCCB001CB13E /* Build configuration list for PBXNativeTarget "FishLampCore-OSX-64-MRC" */;
+			buildPhases = (
+				27A43AC015CDCCCB001CB13E /* Sources */,
+				27A43AC115CDCCCB001CB13E /* Frameworks */,
+				27A43AC215CDCCCB001CB13E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FishLampCore-OSX-64-MRC";
+			productName = FishLampCommandLine;
+			productReference = 27A43AC415CDCCCB001CB13E /* libFishLampCore-OSX-64-MRC.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		27CBBE2916768BA600753D0A /* FishLampCore-OSX-Universal-MRC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27CBC1F116768BA600753D0A /* Build configuration list for PBXNativeTarget "FishLampCore-OSX-Universal-MRC" */;
+			buildPhases = (
+				27CBBE2A16768BA600753D0A /* Sources */,
+				27CBBFEC16768BA600753D0A /* Frameworks */,
+				27CBBFED16768BA600753D0A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FishLampCore-OSX-Universal-MRC";
+			productName = FishLampCommandLine;
+			productReference = 27CBC1F416768BA600753D0A /* libFishLampCore-OSX-Universal-MRC.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		27A43A7315CDCC1B001CB13E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Mike Fullerton";
+			};
+			buildConfigurationList = 27A43A7615CDCC1B001CB13E /* Build configuration list for PBXProject "FishLampCore" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				English,
+			);
+			mainGroup = 27A43A7115CDCC1B001CB13E;
+			productRefGroup = 27A43A7D15CDCC1B001CB13E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				27A43AB315CDCC89001CB13E /* FishLampCore-iOS-ARC */,
+				27048B70161CB58600C38ADA /* FishLampCore-OSX-32-MRC */,
+				27A43AC315CDCCCB001CB13E /* FishLampCore-OSX-64-MRC */,
+				273148B9165328400027850D /* FishLampCore-OSX-64-ARC */,
+				27CBBE2916768BA600753D0A /* FishLampCore-OSX-Universal-MRC */,
+				27E9CF94175E4A3600BD6205 /* FishLampCore */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27048B71161CB58600C38ADA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2768074F175D370700B1D643 /* FLDebug.m in Sources */,
+				2769E55317CBA54B00F5D868 /* FLTestCaseList.m in Sources */,
+				27680773175D370700B1D643 /* FLCancelError.m in Sources */,
+				2781F2C8179C4CBC008DCAFB /* FLAssertions.m in Sources */,
+				27680785175D370700B1D643 /* FLErrorCodes.m in Sources */,
+				2768078E175D370700B1D643 /* FLErrorDomainInfo.m in Sources */,
+				270214AF17C3CF9F001A8A77 /* FLRetainedObject.m in Sources */,
+				2702149417C3CF9F001A8A77 /* FLMainThreadObject.m in Sources */,
+				2702149D17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m in Sources */,
+				27570A9E17D64A08004F2A40 /* FLOwnershipTests.m in Sources */,
+				2702147917C3CF9F001A8A77 /* FLBroadcaster.m in Sources */,
+				27680797175D370700B1D643 /* FLErrorException.m in Sources */,
+				2729CB06177777E700D59B4F /* FLObjc.m in Sources */,
+				276807A9175D370700B1D643 /* FLExceptions.m in Sources */,
+				270214A617C3CF9F001A8A77 /* FLAbstractObjectProxy.m in Sources */,
+				2769E63C17D279EC00F5D868 /* FLPrettyAttributedString.m in Sources */,
+				2769E53217CBA2EC00F5D868 /* FLTestable.m in Sources */,
+				276807BF175D370700B1D643 /* FLStackTrace.m in Sources */,
+				276807C8175D370700B1D643 /* NSError+FLExtras.m in Sources */,
+				2769E53D17CBA3F400F5D868 /* FLTestGroup.m in Sources */,
+				2781F2BF179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m in Sources */,
+				27570A6E17D63FE6004F2A40 /* FLTesting.m in Sources */,
+				276807D9175D370700B1D643 /* FLConsoleLogSink.m in Sources */,
+				271EAAF717D807470049055E /* FLTestAssertions.m in Sources */,
+				2769E54A17CBA54B00F5D868 /* FLTestCase.m in Sources */,
+				276807E2175D370700B1D643 /* FLLog.m in Sources */,
+				2781F2D1179C4CBC008DCAFB /* FLConfirm.m in Sources */,
+				2769E58017CBA7BE00F5D868 /* FLTestResultCollection.m in Sources */,
+				276807EB175D370700B1D643 /* FLLogEntry.m in Sources */,
+				2702148B17C3CF9F001A8A77 /* FLArrayProxy.m in Sources */,
+				2781F2B6179C4CBC008DCAFB /* FLAssertionFailedError.m in Sources */,
+				276807F4175D370700B1D643 /* FLLogger.m in Sources */,
+				276807FD175D370700B1D643 /* FLLogSink.m in Sources */,
+				27570A8D17D6444C004F2A40 /* FLAssert.m in Sources */,
+				27680806175D370700B1D643 /* FLPrintf.m in Sources */,
+				2768080F175D370700B1D643 /* FLTrace.m in Sources */,
+				2702148217C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m in Sources */,
+				27680818175D370700B1D643 /* FLAssociatedProperty.m in Sources */,
+				27680821175D370700B1D643 /* FLAtomicProperties.m in Sources */,
+				2768085E175D370700B1D643 /* FLObjcRuntime.m in Sources */,
+				27680867175D370700B1D643 /* FLPropertyAttributes.m in Sources */,
+				27680870175D370700B1D643 /* FLRuntimeInfo.m in Sources */,
+				27680879175D370700B1D643 /* FLSelector.m in Sources */,
+				2769E59117CE60D700F5D868 /* FLTestLoggingManager.m in Sources */,
+				27680882175D370700B1D643 /* FLCharString.m in Sources */,
+				2768088B175D370700B1D643 /* FLPrettyString.m in Sources */,
+				27680894175D370700B1D643 /* FLStringFormatter.m in Sources */,
+				2768089D175D370700B1D643 /* FLStringUtils.m in Sources */,
+				276808A6175D370700B1D643 /* FLWhitespace.m in Sources */,
+				276808B7175D370700B1D643 /* FLBitFlags.m in Sources */,
+				2769E66217D2907900F5D868 /* FLWhitespaceStringFormatter.m in Sources */,
+				276808C9175D370700B1D643 /* FLOSVersion.m in Sources */,
+				276808D2175D370700B1D643 /* FLSelectorPerforming.m in Sources */,
+				2769E57417CBA79100F5D868 /* FLTestResult.m in Sources */,
+				276808DF175D370700B1D643 /* FLVersion.m in Sources */,
+				276808E8175D370700B1D643 /* NSArray+FLExtras.m in Sources */,
+				2769E56917CBA74700F5D868 /* FLTestCaseResult.m in Sources */,
+				276808F1175D370700B1D643 /* NSDictionary+FLAdditions.m in Sources */,
+				2769E52117CAF7C600F5D868 /* FLEventForwarder.m in Sources */,
+				276808FA175D370700B1D643 /* NSObject+Blocks.m in Sources */,
+				27680903175D370700B1D643 /* NSObject+FLPerformSelector.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		273148BA165328400027850D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27680751175D370700B1D643 /* FLDebug.m in Sources */,
+				2769E55517CBA54B00F5D868 /* FLTestCaseList.m in Sources */,
+				27680775175D370700B1D643 /* FLCancelError.m in Sources */,
+				2781F2CA179C4CBC008DCAFB /* FLAssertions.m in Sources */,
+				27680787175D370700B1D643 /* FLErrorCodes.m in Sources */,
+				27680790175D370700B1D643 /* FLErrorDomainInfo.m in Sources */,
+				270214B117C3CF9F001A8A77 /* FLRetainedObject.m in Sources */,
+				2702149617C3CF9F001A8A77 /* FLMainThreadObject.m in Sources */,
+				2702149F17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m in Sources */,
+				27570AA017D64A08004F2A40 /* FLOwnershipTests.m in Sources */,
+				2702147B17C3CF9F001A8A77 /* FLBroadcaster.m in Sources */,
+				27680799175D370700B1D643 /* FLErrorException.m in Sources */,
+				2729CB08177777E700D59B4F /* FLObjc.m in Sources */,
+				276807AB175D370700B1D643 /* FLExceptions.m in Sources */,
+				270214A817C3CF9F001A8A77 /* FLAbstractObjectProxy.m in Sources */,
+				2769E63E17D279EC00F5D868 /* FLPrettyAttributedString.m in Sources */,
+				2769E53417CBA2EC00F5D868 /* FLTestable.m in Sources */,
+				276807C1175D370700B1D643 /* FLStackTrace.m in Sources */,
+				276807CA175D370700B1D643 /* NSError+FLExtras.m in Sources */,
+				2769E53F17CBA3F400F5D868 /* FLTestGroup.m in Sources */,
+				2781F2C1179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m in Sources */,
+				27570A7017D63FE6004F2A40 /* FLTesting.m in Sources */,
+				276807DB175D370700B1D643 /* FLConsoleLogSink.m in Sources */,
+				271EAAF917D807470049055E /* FLTestAssertions.m in Sources */,
+				2769E54C17CBA54B00F5D868 /* FLTestCase.m in Sources */,
+				276807E4175D370700B1D643 /* FLLog.m in Sources */,
+				2781F2D3179C4CBC008DCAFB /* FLConfirm.m in Sources */,
+				2769E58217CBA7BE00F5D868 /* FLTestResultCollection.m in Sources */,
+				276807ED175D370700B1D643 /* FLLogEntry.m in Sources */,
+				2702148D17C3CF9F001A8A77 /* FLArrayProxy.m in Sources */,
+				2781F2B8179C4CBC008DCAFB /* FLAssertionFailedError.m in Sources */,
+				276807F6175D370700B1D643 /* FLLogger.m in Sources */,
+				276807FF175D370700B1D643 /* FLLogSink.m in Sources */,
+				27570A8F17D6444C004F2A40 /* FLAssert.m in Sources */,
+				27680808175D370700B1D643 /* FLPrintf.m in Sources */,
+				27680811175D370700B1D643 /* FLTrace.m in Sources */,
+				2702148417C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m in Sources */,
+				2768081A175D370700B1D643 /* FLAssociatedProperty.m in Sources */,
+				27680823175D370700B1D643 /* FLAtomicProperties.m in Sources */,
+				27680860175D370700B1D643 /* FLObjcRuntime.m in Sources */,
+				27680869175D370700B1D643 /* FLPropertyAttributes.m in Sources */,
+				27680872175D370700B1D643 /* FLRuntimeInfo.m in Sources */,
+				2768087B175D370700B1D643 /* FLSelector.m in Sources */,
+				2769E59317CE60D700F5D868 /* FLTestLoggingManager.m in Sources */,
+				27680884175D370700B1D643 /* FLCharString.m in Sources */,
+				2768088D175D370700B1D643 /* FLPrettyString.m in Sources */,
+				27680896175D370700B1D643 /* FLStringFormatter.m in Sources */,
+				2768089F175D370700B1D643 /* FLStringUtils.m in Sources */,
+				276808A8175D370700B1D643 /* FLWhitespace.m in Sources */,
+				276808B9175D370700B1D643 /* FLBitFlags.m in Sources */,
+				2769E66417D2907900F5D868 /* FLWhitespaceStringFormatter.m in Sources */,
+				276808CB175D370700B1D643 /* FLOSVersion.m in Sources */,
+				276808D4175D370700B1D643 /* FLSelectorPerforming.m in Sources */,
+				2769E57617CBA79100F5D868 /* FLTestResult.m in Sources */,
+				276808E1175D370700B1D643 /* FLVersion.m in Sources */,
+				276808EA175D370700B1D643 /* NSArray+FLExtras.m in Sources */,
+				2769E56B17CBA74700F5D868 /* FLTestCaseResult.m in Sources */,
+				276808F3175D370700B1D643 /* NSDictionary+FLAdditions.m in Sources */,
+				2769E52317CAF7C600F5D868 /* FLEventForwarder.m in Sources */,
+				276808FC175D370700B1D643 /* NSObject+Blocks.m in Sources */,
+				27680905175D370700B1D643 /* NSObject+FLPerformSelector.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27A43AB015CDCC89001CB13E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2768074E175D370700B1D643 /* FLDebug.m in Sources */,
+				2769E55217CBA54B00F5D868 /* FLTestCaseList.m in Sources */,
+				27680772175D370700B1D643 /* FLCancelError.m in Sources */,
+				2781F2C7179C4CBC008DCAFB /* FLAssertions.m in Sources */,
+				27680784175D370700B1D643 /* FLErrorCodes.m in Sources */,
+				2768078D175D370700B1D643 /* FLErrorDomainInfo.m in Sources */,
+				270214AE17C3CF9F001A8A77 /* FLRetainedObject.m in Sources */,
+				2702149317C3CF9F001A8A77 /* FLMainThreadObject.m in Sources */,
+				2702149C17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m in Sources */,
+				27570A9D17D64A08004F2A40 /* FLOwnershipTests.m in Sources */,
+				2702147817C3CF9F001A8A77 /* FLBroadcaster.m in Sources */,
+				27680796175D370700B1D643 /* FLErrorException.m in Sources */,
+				2729CB05177777E700D59B4F /* FLObjc.m in Sources */,
+				276807A8175D370700B1D643 /* FLExceptions.m in Sources */,
+				270214A517C3CF9F001A8A77 /* FLAbstractObjectProxy.m in Sources */,
+				2769E63B17D279EC00F5D868 /* FLPrettyAttributedString.m in Sources */,
+				2769E53117CBA2EC00F5D868 /* FLTestable.m in Sources */,
+				276807BE175D370700B1D643 /* FLStackTrace.m in Sources */,
+				276807C7175D370700B1D643 /* NSError+FLExtras.m in Sources */,
+				2769E53C17CBA3F400F5D868 /* FLTestGroup.m in Sources */,
+				2781F2BE179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m in Sources */,
+				27570A6D17D63FE6004F2A40 /* FLTesting.m in Sources */,
+				276807D8175D370700B1D643 /* FLConsoleLogSink.m in Sources */,
+				271EAAF617D807470049055E /* FLTestAssertions.m in Sources */,
+				2769E54917CBA54B00F5D868 /* FLTestCase.m in Sources */,
+				276807E1175D370700B1D643 /* FLLog.m in Sources */,
+				2781F2D0179C4CBC008DCAFB /* FLConfirm.m in Sources */,
+				2769E57F17CBA7BE00F5D868 /* FLTestResultCollection.m in Sources */,
+				276807EA175D370700B1D643 /* FLLogEntry.m in Sources */,
+				2702148A17C3CF9F001A8A77 /* FLArrayProxy.m in Sources */,
+				2781F2B5179C4CBC008DCAFB /* FLAssertionFailedError.m in Sources */,
+				276807F3175D370700B1D643 /* FLLogger.m in Sources */,
+				276807FC175D370700B1D643 /* FLLogSink.m in Sources */,
+				27570A8C17D6444C004F2A40 /* FLAssert.m in Sources */,
+				27680805175D370700B1D643 /* FLPrintf.m in Sources */,
+				2768080E175D370700B1D643 /* FLTrace.m in Sources */,
+				2702148117C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m in Sources */,
+				27680817175D370700B1D643 /* FLAssociatedProperty.m in Sources */,
+				27680820175D370700B1D643 /* FLAtomicProperties.m in Sources */,
+				2768085D175D370700B1D643 /* FLObjcRuntime.m in Sources */,
+				27680866175D370700B1D643 /* FLPropertyAttributes.m in Sources */,
+				2768086F175D370700B1D643 /* FLRuntimeInfo.m in Sources */,
+				27680878175D370700B1D643 /* FLSelector.m in Sources */,
+				2769E59017CE60D700F5D868 /* FLTestLoggingManager.m in Sources */,
+				27680881175D370700B1D643 /* FLCharString.m in Sources */,
+				2768088A175D370700B1D643 /* FLPrettyString.m in Sources */,
+				27680893175D370700B1D643 /* FLStringFormatter.m in Sources */,
+				2768089C175D370700B1D643 /* FLStringUtils.m in Sources */,
+				276808A5175D370700B1D643 /* FLWhitespace.m in Sources */,
+				276808B6175D370700B1D643 /* FLBitFlags.m in Sources */,
+				2769E66117D2907900F5D868 /* FLWhitespaceStringFormatter.m in Sources */,
+				276808C8175D370700B1D643 /* FLOSVersion.m in Sources */,
+				276808D1175D370700B1D643 /* FLSelectorPerforming.m in Sources */,
+				2769E57317CBA79100F5D868 /* FLTestResult.m in Sources */,
+				276808DE175D370700B1D643 /* FLVersion.m in Sources */,
+				276808E7175D370700B1D643 /* NSArray+FLExtras.m in Sources */,
+				2769E56817CBA74700F5D868 /* FLTestCaseResult.m in Sources */,
+				276808F0175D370700B1D643 /* NSDictionary+FLAdditions.m in Sources */,
+				2769E52017CAF7C600F5D868 /* FLEventForwarder.m in Sources */,
+				276808F9175D370700B1D643 /* NSObject+Blocks.m in Sources */,
+				27680902175D370700B1D643 /* NSObject+FLPerformSelector.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27A43AC015CDCCCB001CB13E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27680750175D370700B1D643 /* FLDebug.m in Sources */,
+				2769E55417CBA54B00F5D868 /* FLTestCaseList.m in Sources */,
+				27680774175D370700B1D643 /* FLCancelError.m in Sources */,
+				2781F2C9179C4CBC008DCAFB /* FLAssertions.m in Sources */,
+				27680786175D370700B1D643 /* FLErrorCodes.m in Sources */,
+				2768078F175D370700B1D643 /* FLErrorDomainInfo.m in Sources */,
+				270214B017C3CF9F001A8A77 /* FLRetainedObject.m in Sources */,
+				2702149517C3CF9F001A8A77 /* FLMainThreadObject.m in Sources */,
+				2702149E17C3CF9F001A8A77 /* FLNonretainedObjectProxy.m in Sources */,
+				27570A9F17D64A08004F2A40 /* FLOwnershipTests.m in Sources */,
+				2702147A17C3CF9F001A8A77 /* FLBroadcaster.m in Sources */,
+				27680798175D370700B1D643 /* FLErrorException.m in Sources */,
+				2729CB07177777E700D59B4F /* FLObjc.m in Sources */,
+				276807AA175D370700B1D643 /* FLExceptions.m in Sources */,
+				270214A717C3CF9F001A8A77 /* FLAbstractObjectProxy.m in Sources */,
+				2769E63D17D279EC00F5D868 /* FLPrettyAttributedString.m in Sources */,
+				2769E53317CBA2EC00F5D868 /* FLTestable.m in Sources */,
+				276807C0175D370700B1D643 /* FLStackTrace.m in Sources */,
+				276807C9175D370700B1D643 /* NSError+FLExtras.m in Sources */,
+				2769E53E17CBA3F400F5D868 /* FLTestGroup.m in Sources */,
+				2781F2C0179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m in Sources */,
+				27570A6F17D63FE6004F2A40 /* FLTesting.m in Sources */,
+				276807DA175D370700B1D643 /* FLConsoleLogSink.m in Sources */,
+				271EAAF817D807470049055E /* FLTestAssertions.m in Sources */,
+				2769E54B17CBA54B00F5D868 /* FLTestCase.m in Sources */,
+				276807E3175D370700B1D643 /* FLLog.m in Sources */,
+				2781F2D2179C4CBC008DCAFB /* FLConfirm.m in Sources */,
+				2769E58117CBA7BE00F5D868 /* FLTestResultCollection.m in Sources */,
+				276807EC175D370700B1D643 /* FLLogEntry.m in Sources */,
+				2702148C17C3CF9F001A8A77 /* FLArrayProxy.m in Sources */,
+				2781F2B7179C4CBC008DCAFB /* FLAssertionFailedError.m in Sources */,
+				276807F5175D370700B1D643 /* FLLogger.m in Sources */,
+				276807FE175D370700B1D643 /* FLLogSink.m in Sources */,
+				27570A8E17D6444C004F2A40 /* FLAssert.m in Sources */,
+				27680807175D370700B1D643 /* FLPrintf.m in Sources */,
+				27680810175D370700B1D643 /* FLTrace.m in Sources */,
+				2702148317C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m in Sources */,
+				27680819175D370700B1D643 /* FLAssociatedProperty.m in Sources */,
+				27680822175D370700B1D643 /* FLAtomicProperties.m in Sources */,
+				2768085F175D370700B1D643 /* FLObjcRuntime.m in Sources */,
+				27680868175D370700B1D643 /* FLPropertyAttributes.m in Sources */,
+				27680871175D370700B1D643 /* FLRuntimeInfo.m in Sources */,
+				2768087A175D370700B1D643 /* FLSelector.m in Sources */,
+				2769E59217CE60D700F5D868 /* FLTestLoggingManager.m in Sources */,
+				27680883175D370700B1D643 /* FLCharString.m in Sources */,
+				2768088C175D370700B1D643 /* FLPrettyString.m in Sources */,
+				27680895175D370700B1D643 /* FLStringFormatter.m in Sources */,
+				2768089E175D370700B1D643 /* FLStringUtils.m in Sources */,
+				276808A7175D370700B1D643 /* FLWhitespace.m in Sources */,
+				276808B8175D370700B1D643 /* FLBitFlags.m in Sources */,
+				2769E66317D2907900F5D868 /* FLWhitespaceStringFormatter.m in Sources */,
+				276808CA175D370700B1D643 /* FLOSVersion.m in Sources */,
+				276808D3175D370700B1D643 /* FLSelectorPerforming.m in Sources */,
+				2769E57517CBA79100F5D868 /* FLTestResult.m in Sources */,
+				276808E0175D370700B1D643 /* FLVersion.m in Sources */,
+				276808E9175D370700B1D643 /* NSArray+FLExtras.m in Sources */,
+				2769E56A17CBA74700F5D868 /* FLTestCaseResult.m in Sources */,
+				276808F2175D370700B1D643 /* NSDictionary+FLAdditions.m in Sources */,
+				2769E52217CAF7C600F5D868 /* FLEventForwarder.m in Sources */,
+				276808FB175D370700B1D643 /* NSObject+Blocks.m in Sources */,
+				27680904175D370700B1D643 /* NSObject+FLPerformSelector.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27CBBE2A16768BA600753D0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27680752175D370700B1D643 /* FLDebug.m in Sources */,
+				2769E55617CBA54B00F5D868 /* FLTestCaseList.m in Sources */,
+				27680776175D370700B1D643 /* FLCancelError.m in Sources */,
+				2781F2CB179C4CBC008DCAFB /* FLAssertions.m in Sources */,
+				27680788175D370700B1D643 /* FLErrorCodes.m in Sources */,
+				27680791175D370700B1D643 /* FLErrorDomainInfo.m in Sources */,
+				270214B217C3CF9F001A8A77 /* FLRetainedObject.m in Sources */,
+				2702149717C3CF9F001A8A77 /* FLMainThreadObject.m in Sources */,
+				270214A017C3CF9F001A8A77 /* FLNonretainedObjectProxy.m in Sources */,
+				27570AA117D64A08004F2A40 /* FLOwnershipTests.m in Sources */,
+				2702147C17C3CF9F001A8A77 /* FLBroadcaster.m in Sources */,
+				2768079A175D370700B1D643 /* FLErrorException.m in Sources */,
+				2729CB09177777E700D59B4F /* FLObjc.m in Sources */,
+				276807AC175D370700B1D643 /* FLExceptions.m in Sources */,
+				270214A917C3CF9F001A8A77 /* FLAbstractObjectProxy.m in Sources */,
+				2769E63F17D279EC00F5D868 /* FLPrettyAttributedString.m in Sources */,
+				2769E53517CBA2EC00F5D868 /* FLTestable.m in Sources */,
+				276807C2175D370700B1D643 /* FLStackTrace.m in Sources */,
+				276807CB175D370700B1D643 /* NSError+FLExtras.m in Sources */,
+				2769E54017CBA3F400F5D868 /* FLTestGroup.m in Sources */,
+				2781F2C2179C4CBC008DCAFB /* FLAssertionFailureErrorDomain.m in Sources */,
+				27570A7117D63FE6004F2A40 /* FLTesting.m in Sources */,
+				276807DC175D370700B1D643 /* FLConsoleLogSink.m in Sources */,
+				271EAAFA17D807470049055E /* FLTestAssertions.m in Sources */,
+				2769E54D17CBA54B00F5D868 /* FLTestCase.m in Sources */,
+				276807E5175D370700B1D643 /* FLLog.m in Sources */,
+				2781F2D4179C4CBC008DCAFB /* FLConfirm.m in Sources */,
+				2769E58317CBA7BE00F5D868 /* FLTestResultCollection.m in Sources */,
+				276807EE175D370700B1D643 /* FLLogEntry.m in Sources */,
+				2702148E17C3CF9F001A8A77 /* FLArrayProxy.m in Sources */,
+				2781F2B9179C4CBC008DCAFB /* FLAssertionFailedError.m in Sources */,
+				276807F7175D370700B1D643 /* FLLogger.m in Sources */,
+				27680800175D370700B1D643 /* FLLogSink.m in Sources */,
+				27570A9017D6444C004F2A40 /* FLAssert.m in Sources */,
+				27680809175D370700B1D643 /* FLPrintf.m in Sources */,
+				27680812175D370700B1D643 /* FLTrace.m in Sources */,
+				2702148517C3CF9F001A8A77 /* FLAsyncMessageBroadcaster.m in Sources */,
+				2768081B175D370700B1D643 /* FLAssociatedProperty.m in Sources */,
+				27680824175D370700B1D643 /* FLAtomicProperties.m in Sources */,
+				27680861175D370700B1D643 /* FLObjcRuntime.m in Sources */,
+				2768086A175D370700B1D643 /* FLPropertyAttributes.m in Sources */,
+				27680873175D370700B1D643 /* FLRuntimeInfo.m in Sources */,
+				2768087C175D370700B1D643 /* FLSelector.m in Sources */,
+				2769E59417CE60D700F5D868 /* FLTestLoggingManager.m in Sources */,
+				27680885175D370700B1D643 /* FLCharString.m in Sources */,
+				2768088E175D370700B1D643 /* FLPrettyString.m in Sources */,
+				27680897175D370700B1D643 /* FLStringFormatter.m in Sources */,
+				276808A0175D370700B1D643 /* FLStringUtils.m in Sources */,
+				276808A9175D370700B1D643 /* FLWhitespace.m in Sources */,
+				276808BA175D370700B1D643 /* FLBitFlags.m in Sources */,
+				2769E66517D2907900F5D868 /* FLWhitespaceStringFormatter.m in Sources */,
+				276808CC175D370700B1D643 /* FLOSVersion.m in Sources */,
+				276808D5175D370700B1D643 /* FLSelectorPerforming.m in Sources */,
+				2769E57717CBA79100F5D868 /* FLTestResult.m in Sources */,
+				276808E2175D370700B1D643 /* FLVersion.m in Sources */,
+				276808EB175D370700B1D643 /* NSArray+FLExtras.m in Sources */,
+				2769E56C17CBA74700F5D868 /* FLTestCaseResult.m in Sources */,
+				276808F4175D370700B1D643 /* NSDictionary+FLAdditions.m in Sources */,
+				2769E52417CAF7C600F5D868 /* FLEventForwarder.m in Sources */,
+				276808FD175D370700B1D643 /* NSObject+Blocks.m in Sources */,
+				27680906175D370700B1D643 /* NSObject+FLPerformSelector.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27E9CF99175E4A4200BD6205 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27A43AB315CDCC89001CB13E /* FishLampCore-iOS-ARC */;
+			targetProxy = 27E9CF98175E4A4200BD6205 /* PBXContainerItemProxy */;
+		};
+		27E9CF9B175E4A4200BD6205 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27048B70161CB58600C38ADA /* FishLampCore-OSX-32-MRC */;
+			targetProxy = 27E9CF9A175E4A4200BD6205 /* PBXContainerItemProxy */;
+		};
+		27E9CF9D175E4A4200BD6205 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27A43AC315CDCCCB001CB13E /* FishLampCore-OSX-64-MRC */;
+			targetProxy = 27E9CF9C175E4A4200BD6205 /* PBXContainerItemProxy */;
+		};
+		27E9CF9F175E4A4200BD6205 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 273148B9165328400027850D /* FishLampCore-OSX-64-ARC */;
+			targetProxy = 27E9CF9E175E4A4200BD6205 /* PBXContainerItemProxy */;
+		};
+		27E9CFA1175E4A4200BD6205 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27CBBE2916768BA600753D0A /* FishLampCore-OSX-Universal-MRC */;
+			targetProxy = 27E9CFA0175E4A4200BD6205 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		27048EEC161CB58600C38ADA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C62DCC170B537B0093F260 /* CoreTargetSettings-OSX-32-MRC.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		27048EEE161CB58600C38ADA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C62DCC170B537B0093F260 /* CoreTargetSettings-OSX-32-MRC.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		27314C76165328400027850D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C62DCF170B537B0093F260 /* CoreTargetSettings-OSX-64-ARC.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		27314C77165328400027850D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C62DCF170B537B0093F260 /* CoreTargetSettings-OSX-64-ARC.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		27A43A8B15CDCC1B001CB13E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27E957E6170B572F00587A8F /* FishLampProjectSettingsDebug.xcconfig */;
+			buildSettings = {
+				MACH_O_TYPE = staticlib;
+			};
+			name = Debug;
+		};
+		27A43A8C15CDCC1B001CB13E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27E957E7170B572F00587A8F /* FishLampProjectSettingsRelease.xcconfig */;
+			buildSettings = {
+				MACH_O_TYPE = staticlib;
+			};
+			name = Release;
+		};
+		27A43ABE15CDCC89001CB13E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C62DD1170B537B0093F260 /* CoreTargetSettings-OSX-iOS-ARC.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		27A43ABF15CDCC89001CB13E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C62DD1170B537B0093F260 /* CoreTargetSettings-OSX-iOS-ARC.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		27A43ACD15CDCCCB001CB13E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C62DD0170B537B0093F260 /* CoreTargetSettings-OSX-64-MRC.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		27A43ACE15CDCCCB001CB13E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C62DD0170B537B0093F260 /* CoreTargetSettings-OSX-64-MRC.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		27CBC1F216768BA600753D0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C62DCE170B537B0093F260 /* CoreTargetSettings-OSX-Universal-MRC.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		27CBC1F316768BA600753D0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C62DCE170B537B0093F260 /* CoreTargetSettings-OSX-Universal-MRC.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		27E9CF95175E4A3600BD6205 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		27E9CF96175E4A3600BD6205 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27048EEB161CB58600C38ADA /* Build configuration list for PBXNativeTarget "FishLampCore-OSX-32-MRC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27048EEC161CB58600C38ADA /* Debug */,
+				27048EEE161CB58600C38ADA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27314C75165328400027850D /* Build configuration list for PBXNativeTarget "FishLampCore-OSX-64-ARC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27314C76165328400027850D /* Debug */,
+				27314C77165328400027850D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27A43A7615CDCC1B001CB13E /* Build configuration list for PBXProject "FishLampCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27A43A8B15CDCC1B001CB13E /* Debug */,
+				27A43A8C15CDCC1B001CB13E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27A43ABD15CDCC89001CB13E /* Build configuration list for PBXNativeTarget "FishLampCore-iOS-ARC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27A43ABE15CDCC89001CB13E /* Debug */,
+				27A43ABF15CDCC89001CB13E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27A43ACC15CDCCCB001CB13E /* Build configuration list for PBXNativeTarget "FishLampCore-OSX-64-MRC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27A43ACD15CDCCCB001CB13E /* Debug */,
+				27A43ACE15CDCCCB001CB13E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27CBC1F116768BA600753D0A /* Build configuration list for PBXNativeTarget "FishLampCore-OSX-Universal-MRC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27CBC1F216768BA600753D0A /* Debug */,
+				27CBC1F316768BA600753D0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27E9CF97175E4A3600BD6205 /* Build configuration list for PBXAggregateTarget "FishLampCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27E9CF95175E4A3600BD6205 /* Debug */,
+				27E9CF96175E4A3600BD6205 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 27A43A7315CDCC1B001CB13E /* Project object */;
+}
