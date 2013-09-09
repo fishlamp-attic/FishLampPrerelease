@@ -8,6 +8,7 @@
 //
 
 #import "FLObjcUnitTests.h"
+#import "FLTestGroup.h"
 
 @implementation FLObjcUnitTests
 

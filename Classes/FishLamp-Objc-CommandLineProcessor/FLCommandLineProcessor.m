@@ -105,6 +105,10 @@
 
 @end
 
+#if OSX
+
+#import <AppKit/AppKit.h>
+
 @implementation NSFileManager (FLCommandLineProcessor)
 
 - (void) openURL:(NSString *)url inBackground:(BOOL)background {
@@ -122,6 +126,8 @@
 }
 
 @end
+
+#endif
 
 
 

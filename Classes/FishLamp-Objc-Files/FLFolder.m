@@ -10,6 +10,12 @@
 #import "FLFolder.h"
 #import "NSFileManager+FLExtras.h"
 
+#if OSX
+#import <CoreServices/CoreServices.h>
+#else
+#import <MobileCoreServices/MobileCoreServices.h>
+#endif
+
 @interface FLFolder ()
 @property (readwrite, strong) NSString* folderPath;
 @end

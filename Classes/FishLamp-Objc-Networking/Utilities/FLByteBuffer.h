@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLCocoaRequired.h"
+#import "FishLampMinimum.h"
 #define FLByteBufferDeadBeafSize 4
 
 @interface FLByteBuffer : NSObject {

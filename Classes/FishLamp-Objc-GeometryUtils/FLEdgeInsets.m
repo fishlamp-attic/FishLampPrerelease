@@ -8,6 +8,7 @@
 //
 
 #import "FLEdgeInsets.h"
+#import "FLCompatibility.h"
 
 #if OSX
 const UIEdgeInsets UIEdgeInsetsZero = {0,0,0,0};

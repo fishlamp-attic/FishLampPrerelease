@@ -9,6 +9,7 @@
 
 #import "FLErrorTests.h"
 #import "NSError+FLExtras.h"
+#import "FishLampMinimum.h"
 
 @implementation FLErrorTests
 

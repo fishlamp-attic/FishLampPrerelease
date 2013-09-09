@@ -31,7 +31,6 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 @property (readwrite, strong) id<FLUserService> userService;
 @property (readwrite, strong) id<FLStorageService> storageService;
 @property (readwrite, strong) FLHttpRequestAuthenticator* httpRequestAuthenticator;
-@property (readwrite, strong) FLService* authenticatedServices;
 @property (readwrite, strong) FLOperationContext* operationContext;
 @property (readwrite, strong) FLHttpUser* httpUser;
 
@@ -43,7 +42,6 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 @synthesize httpRequestAuthenticator = _httpRequestAuthenticator;
 //@synthesize streamSecurity = _streamSecurity;
 @synthesize httpUser = _httpUser;
-@synthesize authenticatedServices = _authenticatedServices;
 @synthesize operationContext = _operationContext;
 
 //- (id) init {

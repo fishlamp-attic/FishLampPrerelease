@@ -8,10 +8,10 @@
 
 #import "FLCoreRequired.h"
 
-@class FLTestGroup;
-@class FLTestCaseList;
-@class FLExpectedTestResult;
-@class FLTestResultCollection;
+#import "FLTestGroup.h"
+#import "FLTestCaseList.h"
+//#import "FLExpectedTestResult.h"
+#import "FLTestResultCollection.h"
 
 @protocol FLTestable <NSObject>
 @optional

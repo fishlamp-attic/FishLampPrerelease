@@ -33,7 +33,7 @@
     return nil;
 }
 
-- (FLTestFactory*) findPossibleUnitTestClass:(FLRuntimeInfo) info {
+- (id<FLTestFactory>) findPossibleUnitTestClass:(FLRuntimeInfo) info {
 //class_conformsToProtocol
     if(!info.isMetaClass) {
 //        if(FLRuntimeClassHasSubclass([FLTestable class], info.class)) {

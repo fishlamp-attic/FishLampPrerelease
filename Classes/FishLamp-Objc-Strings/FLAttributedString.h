@@ -8,9 +8,8 @@
 //
 
 #import "FishLampMinimum.h"
-#import "FLCocoaRequired.h"
-
 #import "FLModelObject.h"
+#import "FLCompatibility.h"
 
 @class SDKFont;
 @class SDKColor;

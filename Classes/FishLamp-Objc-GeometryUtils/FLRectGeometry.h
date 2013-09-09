@@ -6,9 +6,10 @@
 //	Copyright (c) 2013 GreenTongue Software LLC, Mike Fullerton. 
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
-#import "FLCocoaRequired.h"
+#import "FishLampMinimum.h"
 #import "FLMath.h"
 #import "FLPointGeometry.h"
+#import "FLCompatibility.h"
 
 #if DEBUG
     #define CGRectInset             FLRectInset

@@ -572,7 +572,7 @@ sqlite3_stmt* FLStatmentFailed(	sqlite3_stmt* stmt) {
 //}
 @end
 
-//#import "FLCocoaRequired.h"
+//#import "FishLampMinimum.h"
 
 //@implementation SDKImage (FLSqlStatement)
 ////+ (id) decodeObjectWithSqliteColumnData:(NSData*) data {

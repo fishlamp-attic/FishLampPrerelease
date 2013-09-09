@@ -14,13 +14,11 @@ NSString* const FLServiceDidOpenNotificationKey = @"FLServiceDidOpenNotification
 
 @interface FLService ()
 @property (readwrite, assign, getter=isOpen) BOOL isOpen;
-@property (readwrite, assign) id superService;
 @property (readwrite, strong) NSError* error;
 @end
 
 @implementation FLService
 @synthesize isOpen = _isOpen;
-@synthesize superService = _superService;
 @synthesize error = _error;
 
 + (id) service {

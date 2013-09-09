@@ -25,6 +25,8 @@
                            alpha:alpha ];
 #else
 
+    return nil;
+
 #endif
 }
 

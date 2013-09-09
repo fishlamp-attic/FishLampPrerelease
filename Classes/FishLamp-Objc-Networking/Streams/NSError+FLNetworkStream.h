@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLCocoaRequired.h"
+#import "FishLampMinimum.h"
 
 @interface NSError (FLStreamController)
 + (NSError*) errorFromStreamError:(CFStreamError) streamError;

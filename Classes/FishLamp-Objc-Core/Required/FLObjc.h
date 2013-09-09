@@ -3,13 +3,18 @@
 // This is more readable than #if !FL_ARC, but either way works.
 #undef FL_ARC 
 #undef FL_MRC
+#undef FL_DISPATCH_MRC
+#undef FL_DISPATCH_ARC
 
 #if __has_feature(objc_arc)
     #define FL_ARC 1
+    #define FL_DISPATCH_ARC 1
     #import "FLObjcARC.h"
 #else
     #define FL_MRC 1
+    #define FL_DISPATCH_MRC 1
     #import "FLObjcMRC.h"
+
 #endif
 
 NS_INLINE

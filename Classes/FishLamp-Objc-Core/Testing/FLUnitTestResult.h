@@ -8,13 +8,13 @@
 //
 
 #import "FLTestResultCollection.h"
-@class FLUnitTest;
+@protocol FLTestable;
 
 @interface FLUnitTestResult : FLTestResultCollection {
 @private
-    FLUnitTest* _unitTest;
+    id<FLTestable> _unitTest;
 }
 
-@property (readonly, strong) FLUnitTest* unitTest;
+@property (readonly, strong) id<FLTestable> unitTest;
 
 @end

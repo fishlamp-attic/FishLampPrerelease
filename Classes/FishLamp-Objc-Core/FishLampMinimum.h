@@ -9,14 +9,6 @@
 
 // Prerequisites
 
-#ifndef FISHLAMP
-#error FISHLAMP not defined
-#endif
-
-#ifndef FISHLAMP_TARGET
-#error FISHLAMP_TARGET not defined
-#endif
-
 #import <Foundation/Foundation.h>
 #import <Availability.h>
 

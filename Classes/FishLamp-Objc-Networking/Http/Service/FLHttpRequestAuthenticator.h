@@ -23,6 +23,7 @@
 
 @interface FLHttpRequestAuthenticator : NSObject<FLHttpRequestAuthenticator> {
 @private
+    FLFifoAsyncQueue* _asyncQueue;
     id<FLHttpRequestAuthenticatorStrategy> _strategy;
     __unsafe_unretained id _delegate;
 }

@@ -8,7 +8,6 @@
 //
 #if REFACTOR
 
-#import "FLCocoaRequired.h"
 #import "FishLampMinimum.h"
 
 @interface NSObject (FLJsonParser)

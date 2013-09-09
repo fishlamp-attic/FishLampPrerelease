@@ -8,7 +8,7 @@
 #if 0
 #import "FishLampMinimum.h"
 
-#import "FLCocoaRequired.h"
+#import "FishLampMinimum.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 
 

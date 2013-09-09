@@ -10,7 +10,7 @@
 
 @implementation FLTestFinder
 
-- (FLTestFactory*) findPossibleUnitTestClass:(FLRuntimeInfo) info {
+- (id<FLTestFactory>) findPossibleUnitTestClass:(FLRuntimeInfo) info {
     return nil;
 }
 

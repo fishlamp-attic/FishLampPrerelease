@@ -31,7 +31,9 @@ static void * const s_queue_key = (void*)&s_queue_key;
     self = [super init];
     if(self) {
         _dispatch_queue = queue;
+#if FL_DISPATCH_MRC
         dispatch_retain(_dispatch_queue);
+#endif
 #if DEPRECATED
 #if __MAC_10_8
         if(OSXVersionIsAtLeast10_7()) {        
@@ -55,7 +57,9 @@ static void * const s_queue_key = (void*)&s_queue_key;
         self = [self initWithDispatchQueue:queue];
     }
     @finally {
+#if FL_DISPATCH_MRC
         dispatch_release(queue);
+#endif
     }
 
     return self;
@@ -95,7 +99,9 @@ static void * const s_queue_key = (void*)&s_queue_key;
         }
 #endif        
 #endif
+#if FL_DISPATCH_MRC
         dispatch_release(_dispatch_queue);
+#endif
     }
     
 #if FL_MRC
@@ -157,7 +163,9 @@ static void * const s_queue_key = (void*)&s_queue_key;
         dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         dispatch_semaphore_wait(semaphore, 
                                 dispatch_time(DISPATCH_TIME_NOW, (milliseconds * NSEC_PER_MSEC)));
+#if FL_DISPATCH_MRC
         dispatch_release(semaphore);
+#endif
     } 
 }    
 

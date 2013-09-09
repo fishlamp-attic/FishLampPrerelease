@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "FLObjcRuntime.h"
 
-@class FLTestFactory;
+@protocol FLTestFactory;
 @class FLTestMethod;
 
 @interface FLTestFinder : NSObject {
 @private
 }
 
-- (FLTestFactory*) findPossibleUnitTestClass:(FLRuntimeInfo) info;
+- (id<FLTestFactory>) findPossibleUnitTestClass:(FLRuntimeInfo) info;
 - (FLTestMethod*) findPossibleTestMethod:(FLRuntimeInfo) info;
 
 @end

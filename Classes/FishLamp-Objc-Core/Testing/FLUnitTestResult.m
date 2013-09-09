@@ -8,11 +8,10 @@
 //
 
 #import "FLUnitTestResult.h"
-#import "FLUnitTest.h"
-#import "FLUnitTestResult_Internal.h"
+#import "FLTestable.h"
 
 @interface FLUnitTestResult ()
-@property (readwrite, strong) FLUnitTest* unitTest;
+@property (readwrite, strong) id<FLTestable> unitTest;
 @end
 
 @implementation FLUnitTestResult
@@ -39,7 +38,7 @@
     return NSStringFromClass([self.unitTest class]);
 }
 
-- (id) initWithUnitTest:(FLUnitTest*) unitTest {
+- (id) initWithUnitTest:(id<FLTestable>) unitTest {
     self = [super init];
     if(self) {
         self.unitTest = unitTest;
@@ -47,7 +46,7 @@
     return self;
 }
 
-+ (FLUnitTestResult*) unitTestResult:(FLUnitTest*) unitTest {
++ (FLUnitTestResult*) unitTestResult:(id<FLTestable>) unitTest {
     return FLAutorelease([[[self class] alloc] initWithUnitTest:unitTest]);
 }
 

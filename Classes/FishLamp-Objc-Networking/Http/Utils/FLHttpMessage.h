@@ -8,7 +8,7 @@
 //
 #import "FishLampMinimum.h"
 
-#import "FLCocoaRequired.h"
+#import "FishLampMinimum.h"
 
 @interface FLHttpMessage : NSObject<NSCopying> {
 @private

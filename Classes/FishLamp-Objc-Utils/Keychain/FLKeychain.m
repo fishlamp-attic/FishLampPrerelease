@@ -10,6 +10,9 @@
 #import "FLKeychain.h"
 #import "FLCoreFoundation.h"
 
+#import <Security/Security.h>
+
+#if OSX
 // non atomic wrappers around sec api
 
 extern OSStatus FLKeychainSetHttpPassword(     NSString* inUsername,
@@ -86,7 +89,7 @@ OSStatus FLKeychainSetHttpPassword(     NSString* inUserName,
 
 #if DEBUG
     if(status != noErr) {
-        FLLog(@"addInternetPassword returned %d", status);
+        FLLog(@"addInternetPassword returned %ld", (long) status);
     }
 #endif
 
@@ -150,7 +153,7 @@ OSStatus FLKeychainFindHttpPassword(    NSString* inUserName,
 
 #if DEBUG
     if(err != noErr && err != errSecItemNotFound) {
-        FLLog(@"Find internet password returned: %d", err);
+        FLLog(@"Find internet password returned: %ld", (long) err);
     }
 #endif
 
@@ -196,3 +199,4 @@ OSStatus FLKeychainFindHttpPassword(    NSString* inUserName,
 
 
 @end
+#endif

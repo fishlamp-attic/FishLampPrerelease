@@ -9,7 +9,7 @@
 
 #import "NSFileManager+FLExtras.h"
 
-#import "FLCocoaRequired.h"
+#import "FishLampMinimum.h"
 #include <sys/param.h>
 #include <sys/mount.h>
 #include <sys/xattr.h>

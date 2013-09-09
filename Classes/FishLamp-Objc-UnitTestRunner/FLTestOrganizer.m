@@ -12,7 +12,6 @@
 #import "FLTestMethod.h"
 #import "FLTestable.h"
 #import "FLTestGroup.h"
-
 #import "FLTestGroupOrganizer.h"
 
 @interface FLTestOrganizer ()
@@ -73,7 +72,7 @@
     FLRuntimeVisitEveryClass(
         ^(FLRuntimeInfo classInfo, BOOL* stop) {
             for(FLTestFinder* finder in _unitTestFinders) {
-                FLTestFactory* factory = [finder findPossibleUnitTestClass:classInfo];
+                id<FLTestFactory> factory = [finder findPossibleUnitTestClass:classInfo];
                 if(factory) {
                     [unitTestFactories addObject:factory];
                 }
@@ -154,7 +153,7 @@
     NSMutableArray* newList = [NSMutableArray array];
 
     for(NSInteger i = 0; i < factoryList.count; i++) {
-        FLTestFactory* factory = [factoryList objectAtIndex:i];
+        id<FLTestFactory> factory = [factoryList objectAtIndex:i];
         Class outerClass = [factory testableClass];
 
         BOOL foundSubclass = NO;
