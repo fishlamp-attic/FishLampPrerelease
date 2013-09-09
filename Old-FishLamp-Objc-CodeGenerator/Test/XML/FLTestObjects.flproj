@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fishlamp>
+    <info projectName="FishLamp">
+        <organization name="GreenTongue Software, LLC">
+            <website>http://www.greentongue.com</website>
+        </organization>
+        <license>Individual licensees only</license>
+    </info>
+    <options typePrefix="FL" canLazyCreate="YES" generateUserObjects="YES">
+        <objectsFolderName>Generated</objectsFolderName>
+        <userObjectsFolderName>Objects</userObjectsFolderName>
+	</options>
+    <enumType name="MyEnum">
+        <enum name="foo"/>
+        <enum name="bar"/>
+        <enum name="foobar"/>
+    </enumType>
+    <typeDefinitions>
+        <typeDefinition typeName="FLXmlParser" import="FLXmlParser.h" dataType="Object"/>
+    </typeDefinitions>
+    <import path="FLImportedTestObject.flproj" type="File"/>
+    <class name="FLTestObject">
+        <property name="bob" type="string"/>
+        <property name="teddy" type="string"/>
+        <property name="rambo" type="string"/>
+        <property name="chloe" type="string"/>
+        <property name="sanjo" type="string"/>
+        <property type="int" name="testInt" defaultValue="5">
+            <storageOptions isIndexed="YES"/>
+        </property>
+        <property type="int" name="anotherInt">
+            <storageOptions isRequired="YES"/>
+        </property>
+        <property type="CGRect" name="rect"/>
+        <property type="CGPoint" name="point"/>
+        <property type="CGSize" name="size"/>
+        <property type="MyEnum" name="stateEnum" defaultValue="FLMyEnumFoobar"/>
+        <property type="bool" name="myBool" defaultValue="YES"/>
+        <property type="FLGuid" name="databaseGuid">
+            <storageOptions isPrimaryKey="YES"/>
+        </property>
+        <property type="date" name="dateModified"/>
+        <property type="date" name="dateCreated" comment="This is the date the object was created"/>
+        <property type="date" name="expireDate"/>
+        <property type="string" name="foo" useForEquality="YES"/>
+        <property name="myString" type="NSString" defaultValue="hello!"/>
+        <property name="foopy" type="NSString" defaultValue="hello!" isStatic="YES"/>
+        <property name="foop" type="NSString" defaultValue="hello!" isImmutable="YES"/>
+        <property name="iLikeRum" type="NSString" defaultValue="Captain Morgan" isImmutable="YES" isStatic="YES"/>
+        <property type="float" name="testFloat"/>
+        <property type="array" name="anArray">
+            <arrayType name="item" type="string"/>
+            <arrayType name="number" type="number"/>
+            <arrayType name="parser" type="FLXmlParser"/>
+        </property>
+    </class>
+</fishlamp>
