@@ -1739,37 +1739,6 @@
 		B263F89E17DE80AD0049EF94 /* NSError+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = B263F30817DE80AC0049EF94 /* NSError+FLExtras.m */; };
 		B263F89F17DE80AD0049EF94 /* NSError+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = B263F30817DE80AC0049EF94 /* NSError+FLExtras.m */; };
 		B263F8A017DE80AD0049EF94 /* NSError+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = B263F30817DE80AC0049EF94 /* NSError+FLExtras.m */; };
-		B263F8A117DE80AD0049EF94 /* CoreTargetSettings-OSX-32-MRC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F30C17DE80AC0049EF94 /* CoreTargetSettings-OSX-32-MRC.xcconfig */; };
-		B263F8A217DE80AD0049EF94 /* CoreTargetSettings-OSX-64-ARC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F30D17DE80AC0049EF94 /* CoreTargetSettings-OSX-64-ARC.xcconfig */; };
-		B263F8A317DE80AD0049EF94 /* CoreTargetSettings-OSX-64-MRC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F30E17DE80AC0049EF94 /* CoreTargetSettings-OSX-64-MRC.xcconfig */; };
-		B263F8A417DE80AD0049EF94 /* CoreTargetSettings-OSX-iOS-ARC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F30F17DE80AC0049EF94 /* CoreTargetSettings-OSX-iOS-ARC.xcconfig */; };
-		B263F8A517DE80AD0049EF94 /* CoreTargetSettings-OSX-Universal-MRC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F31017DE80AC0049EF94 /* CoreTargetSettings-OSX-Universal-MRC.xcconfig */; };
-		B263F8A617DE80AD0049EF94 /* SharedTargetSettings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F31117DE80AC0049EF94 /* SharedTargetSettings.xcconfig */; };
-		B263F8A717DE80AD0049EF94 /* SharedTargetSettings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F31717DE80AC0049EF94 /* SharedTargetSettings.xcconfig */; };
-		B263F8A817DE80AD0049EF94 /* TargetSettings-OSX-32-MRC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F31817DE80AC0049EF94 /* TargetSettings-OSX-32-MRC.xcconfig */; };
-		B263F8A917DE80AD0049EF94 /* TargetSettings-OSX-64-ARC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F31917DE80AC0049EF94 /* TargetSettings-OSX-64-ARC.xcconfig */; };
-		B263F8AA17DE80AD0049EF94 /* TargetSettings-OSX-64-MRC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F31A17DE80AC0049EF94 /* TargetSettings-OSX-64-MRC.xcconfig */; };
-		B263F8AB17DE80AD0049EF94 /* TargetSettings-OSX-iOS-ARC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F31B17DE80AC0049EF94 /* TargetSettings-OSX-iOS-ARC.xcconfig */; };
-		B263F8AC17DE80AD0049EF94 /* TargetSettings-OSX-Universal-MRC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F31C17DE80AC0049EF94 /* TargetSettings-OSX-Universal-MRC.xcconfig */; };
-		B263F8AD17DE80AD0049EF94 /* FishLampIncludedConfig-ARC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F31D17DE80AC0049EF94 /* FishLampIncludedConfig-ARC.xcconfig */; };
-		B263F8AE17DE80AD0049EF94 /* FishLampIncludedConfig-iOS.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F31E17DE80AC0049EF94 /* FishLampIncludedConfig-iOS.xcconfig */; };
-		B263F8AF17DE80AD0049EF94 /* FishLampIncludedConfig-MRC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F31F17DE80AC0049EF94 /* FishLampIncludedConfig-MRC.xcconfig */; };
-		B263F8B017DE80AD0049EF94 /* FishLampIncludedConfig-OSX-32.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32017DE80AC0049EF94 /* FishLampIncludedConfig-OSX-32.xcconfig */; };
-		B263F8B117DE80AD0049EF94 /* FishLampIncludedConfig-OSX-64.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32117DE80AC0049EF94 /* FishLampIncludedConfig-OSX-64.xcconfig */; };
-		B263F8B217DE80AD0049EF94 /* FishLampIncludedConfig-OSX-Universal.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32217DE80AC0049EF94 /* FishLampIncludedConfig-OSX-Universal.xcconfig */; };
-		B263F8B317DE80AD0049EF94 /* FishLampIncludedConfig-Preprocessor.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32317DE80AC0049EF94 /* FishLampIncludedConfig-Preprocessor.xcconfig */; };
-		B263F8B417DE80AD0049EF94 /* FishLampIncludedConfig-Settings-Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32417DE80AC0049EF94 /* FishLampIncludedConfig-Settings-Debug.xcconfig */; };
-		B263F8B517DE80AD0049EF94 /* FishLampIncludedConfig-Settings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32517DE80AC0049EF94 /* FishLampIncludedConfig-Settings.xcconfig */; };
-		B263F8B617DE80AD0049EF94 /* FishLampIncludedConfig-TestTool.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32617DE80AC0049EF94 /* FishLampIncludedConfig-TestTool.xcconfig */; };
-		B263F8B717DE80AD0049EF94 /* FishLampIncludedConfig-Tool.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32717DE80AC0049EF94 /* FishLampIncludedConfig-Tool.xcconfig */; };
-		B263F8B817DE80AD0049EF94 /* FishLampPaths.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32817DE80AC0049EF94 /* FishLampPaths.xcconfig */; };
-		B263F8B917DE80AD0049EF94 /* FishLampProjectSettingsDebug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32A17DE80AC0049EF94 /* FishLampProjectSettingsDebug.xcconfig */; };
-		B263F8BA17DE80AD0049EF94 /* FishLampProjectSettingsRelease.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32B17DE80AC0049EF94 /* FishLampProjectSettingsRelease.xcconfig */; };
-		B263F8BB17DE80AD0049EF94 /* FishLampTargetSettings-iOS-ARC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32C17DE80AC0049EF94 /* FishLampTargetSettings-iOS-ARC.xcconfig */; };
-		B263F8BC17DE80AD0049EF94 /* FishLampTargetSettings-OSX-32-MRC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32D17DE80AC0049EF94 /* FishLampTargetSettings-OSX-32-MRC.xcconfig */; };
-		B263F8BD17DE80AD0049EF94 /* FishLampTargetSettings-OSX-64-ARC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32E17DE80AC0049EF94 /* FishLampTargetSettings-OSX-64-ARC.xcconfig */; };
-		B263F8BE17DE80AD0049EF94 /* FishLampTargetSettings-OSX-64-MRC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F32F17DE80AC0049EF94 /* FishLampTargetSettings-OSX-64-MRC.xcconfig */; };
-		B263F8BF17DE80AD0049EF94 /* FishLampTargetSettings-OSX-Universal-MRC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B263F33017DE80AC0049EF94 /* FishLampTargetSettings-OSX-Universal-MRC.xcconfig */; };
 		B263F8C017DE80AD0049EF94 /* FLConsoleLogSink.m in Sources */ = {isa = PBXBuildFile; fileRef = B263F33517DE80AC0049EF94 /* FLConsoleLogSink.m */; };
 		B263F8C117DE80AD0049EF94 /* FLConsoleLogSink.m in Sources */ = {isa = PBXBuildFile; fileRef = B263F33517DE80AC0049EF94 /* FLConsoleLogSink.m */; };
 		B263F8C217DE80AD0049EF94 /* FLConsoleLogSink.m in Sources */ = {isa = PBXBuildFile; fileRef = B263F33517DE80AC0049EF94 /* FLConsoleLogSink.m */; };
@@ -6394,7 +6363,7 @@
 		27A43A7315CDCC1B001CB13E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Mike Fullerton";
 			};
 			buildConfigurationList = 27A43A7615CDCC1B001CB13E /* Build configuration list for PBXProject "FishLamp-Objc" */;
@@ -6473,50 +6442,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B263F8B717DE80AD0049EF94 /* FishLampIncludedConfig-Tool.xcconfig in Resources */,
-				B263F8AB17DE80AD0049EF94 /* TargetSettings-OSX-iOS-ARC.xcconfig in Resources */,
 				B263FFE917DE80AE0049EF94 /* FLSessionObjects.flproj in Resources */,
-				B263F8A117DE80AD0049EF94 /* CoreTargetSettings-OSX-32-MRC.xcconfig in Resources */,
-				B263F8AC17DE80AD0049EF94 /* TargetSettings-OSX-Universal-MRC.xcconfig in Resources */,
-				B263F8AF17DE80AD0049EF94 /* FishLampIncludedConfig-MRC.xcconfig in Resources */,
-				B263F8BB17DE80AD0049EF94 /* FishLampTargetSettings-iOS-ARC.xcconfig in Resources */,
 				B263FE9E17DE80AE0049EF94 /* FLSoapFault.flproj in Resources */,
-				B263F8AE17DE80AD0049EF94 /* FishLampIncludedConfig-iOS.xcconfig in Resources */,
-				B263F8A417DE80AD0049EF94 /* CoreTargetSettings-OSX-iOS-ARC.xcconfig in Resources */,
-				B263F8BF17DE80AD0049EF94 /* FishLampTargetSettings-OSX-Universal-MRC.xcconfig in Resources */,
-				B263F8BE17DE80AD0049EF94 /* FishLampTargetSettings-OSX-64-MRC.xcconfig in Resources */,
 				B263FDC117DE80AE0049EF94 /* FLOauth.flproj in Resources */,
 				B263F66417DE80AD0049EF94 /* FLColorModule.json in Resources */,
-				B263F8B517DE80AD0049EF94 /* FishLampIncludedConfig-Settings.xcconfig in Resources */,
-				B263F8B417DE80AD0049EF94 /* FishLampIncludedConfig-Settings-Debug.xcconfig in Resources */,
-				B263F8BC17DE80AD0049EF94 /* FishLampTargetSettings-OSX-32-MRC.xcconfig in Resources */,
-				B263F8A817DE80AD0049EF94 /* TargetSettings-OSX-32-MRC.xcconfig in Resources */,
-				B263F8A517DE80AD0049EF94 /* CoreTargetSettings-OSX-Universal-MRC.xcconfig in Resources */,
-				B263F8BD17DE80AD0049EF94 /* FishLampTargetSettings-OSX-64-ARC.xcconfig in Resources */,
-				B263F8AD17DE80AD0049EF94 /* FishLampIncludedConfig-ARC.xcconfig in Resources */,
 				B214728417DE7BBC00985872 /* InfoPlist.strings in Resources */,
-				B263F8B217DE80AD0049EF94 /* FishLampIncludedConfig-OSX-Universal.xcconfig in Resources */,
 				B263F73817DE80AD0049EF94 /* fishlamp-module.json in Resources */,
-				B263F8AA17DE80AD0049EF94 /* TargetSettings-OSX-64-MRC.xcconfig in Resources */,
-				B263F8A617DE80AD0049EF94 /* SharedTargetSettings.xcconfig in Resources */,
-				B263F8B817DE80AD0049EF94 /* FishLampPaths.xcconfig in Resources */,
 				B263039617DE80AE0049EF94 /* FLTwoObjects.flproj in Resources */,
 				B214728C17DE7BBD00985872 /* Default.png in Resources */,
-				B263F8B017DE80AD0049EF94 /* FishLampIncludedConfig-OSX-32.xcconfig in Resources */,
 				B263FB4017DE80AD0049EF94 /* FLXmlParserErrorCode.flproj in Resources */,
 				B214728E17DE7BBD00985872 /* Default@2x.png in Resources */,
 				B263F6C917DE80AD0049EF94 /* temp.txt in Resources */,
-				B263F8B917DE80AD0049EF94 /* FishLampProjectSettingsDebug.xcconfig in Resources */,
-				B263F8A317DE80AD0049EF94 /* CoreTargetSettings-OSX-64-MRC.xcconfig in Resources */,
-				B263F8B117DE80AD0049EF94 /* FishLampIncludedConfig-OSX-64.xcconfig in Resources */,
-				B263F8B317DE80AD0049EF94 /* FishLampIncludedConfig-Preprocessor.xcconfig in Resources */,
-				B263F8A717DE80AD0049EF94 /* SharedTargetSettings.xcconfig in Resources */,
 				B214729017DE7BBD00985872 /* Default-568h@2x.png in Resources */,
-				B263F8BA17DE80AD0049EF94 /* FishLampProjectSettingsRelease.xcconfig in Resources */,
-				B263F8A217DE80AD0049EF94 /* CoreTargetSettings-OSX-64-ARC.xcconfig in Resources */,
 				B214729617DE7BBD00985872 /* ViewController_iPhone.xib in Resources */,
-				B263F8B617DE80AD0049EF94 /* FishLampIncludedConfig-TestTool.xcconfig in Resources */,
-				B263F8A917DE80AD0049EF94 /* TargetSettings-OSX-64-ARC.xcconfig in Resources */,
 				B214729917DE7BBD00985872 /* ViewController_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10180,6 +10118,7 @@
 			baseConfigurationReference = 2712D9C217DE36C8007327C0 /* ProjectSettingsDebug.xcconfig */;
 			buildSettings = {
 				MACH_O_TYPE = staticlib;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};

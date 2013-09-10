@@ -23,11 +23,11 @@
 // 
 // Info
 //
-
-#if FL_DISPATCH_MRC
-@property (readonly, assign) dispatch_queue_t dispatch_queue_t;
+//__attribute__((NSObject))
+#if OS_OBJECT_USE_OBJC
+@property (readonly, strong) dispatch_queue_t dispatch_queue_t;
 #else
-@property (readonly, strong) __attribute__((NSObject)) dispatch_queue_t dispatch_queue_t;
+@property (readonly, assign) dispatch_queue_t dispatch_queue_t;
 #endif
 
 @property (readonly, strong) NSString* label;

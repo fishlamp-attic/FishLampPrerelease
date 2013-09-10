@@ -52,7 +52,7 @@
 }
 
 - (void) dealloc {
-#if FL_DISPATCH_MRC
+#if !OS_OBJECT_USE_OBJC
     if(_semaphore) {
         dispatch_release(_semaphore);
     }
@@ -124,7 +124,7 @@
     if(_semaphore) {
     //       FLLog(@"releasing semaphor for %X, ont thread %@", (void*) _semaphore, [NSThread currentThread]);
         dispatch_semaphore_signal(_semaphore);
-#if FL_DISPATCH_MRC
+#if !OS_OBJECT_USE_OBJC
         dispatch_release(_semaphore);
 #endif
         _semaphore = nil;
