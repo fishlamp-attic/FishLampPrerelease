@@ -7,7 +7,7 @@
 //
 
 #ifdef __OBJC__
+    #import "PiecemealCompilerFlagOverrides.h"
     #import <Foundation/Foundation.h>
     #import <Availability.h>
-    #import "PiecemealCompilerFlagOverrides.h"
 #endif
