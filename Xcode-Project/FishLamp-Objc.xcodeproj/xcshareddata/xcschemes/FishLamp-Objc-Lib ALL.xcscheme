@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2727D28C17DE2FF80069F9D2"
-               BuildableName = "FishLamp-Objc-Test-OSX-64-MRC"
+               BuildableName = "FishLamp-Objc-Test-OSX-64-MRC-old"
                BlueprintName = "FishLamp-Objc-Test-OSX-64-MRC"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
@@ -85,7 +85,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27048B70161CB58600C38ADA"
-               BuildableName = "lib.a"
+               BuildableName = "libFishLamp-Objc-OSX-32-MRC.a"
                BlueprintName = "FishLamp-Objc-OSX-32-MRC"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
@@ -99,7 +99,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "273148B9165328400027850D"
-               BuildableName = "lib.a"
+               BuildableName = "libFishLamp-Objc-OSX-64-ARC.a"
                BlueprintName = "FishLamp-Objc-OSX-64-ARC"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
@@ -113,7 +113,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27A43AC315CDCCCB001CB13E"
-               BuildableName = "lib.a"
+               BuildableName = "libFishLamp-Objc-OSX-64-MRC.a"
                BlueprintName = "FishLamp-Objc-OSX-64-MRC"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
@@ -127,7 +127,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27CBBE2916768BA600753D0A"
-               BuildableName = "lib.a"
+               BuildableName = "libFishLamp-Objc-OSX-Universal-MRC.a"
                BlueprintName = "FishLamp-Objc-OSX-Universal-MRC"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
@@ -141,7 +141,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27A43AB315CDCC89001CB13E"
-               BuildableName = "lib.a"
+               BuildableName = "libFishLamp-Objc-iOS-ARC.a"
                BlueprintName = "FishLamp-Objc-iOS-ARC"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
@@ -154,6 +154,26 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2767DFD218134012001EF21C"
+               BuildableName = "FishLamp-Objc-OSX-64-MRC-TesterTests.xctest"
+               BlueprintName = "FishLamp-Objc-OSX-64-MRC-TesterTests"
+               ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2767E0DF18134CAE001EF21C"
+               BuildableName = "TestApp-iOSTests.xctest"
+               BlueprintName = "TestApp-iOSTests"
+               ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

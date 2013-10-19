@@ -38,7 +38,7 @@
         [object respondsToSelector:@selector(addListener:)]) {
         @synchronized(self) {
             [_operations addObject:object];
-            [[((id)object) listeners] addListener:self];
+            [((id)object) addListener:self];
         }
     }
 
@@ -56,7 +56,7 @@
 }
 
 - (void) operationDidFinish:(id) operation withResult:(FLPromisedResult) result {
-    [[operation listeners] removeListener:self];
+    [operation removeListener:self];
     @synchronized(self) {
         [_operations removeObject:operation];
     }

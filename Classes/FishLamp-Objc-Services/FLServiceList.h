@@ -7,9 +7,9 @@
 //
 
 #import "FLService.h"
+#import "FLBroadcaster.h"
 
-
-@interface FLServiceList : FLAsyncMessageBroadcaster<FLService, NSFastEnumeration> {
+@interface FLServiceList : FLBroadcaster<FLService, NSFastEnumeration> {
 @private
     NSMutableArray* _services;
     BOOL _isOpen;

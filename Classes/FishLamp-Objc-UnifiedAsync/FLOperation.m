@@ -20,11 +20,7 @@
 @interface FLOperation ()
 @property (readwrite, assign, getter=wasCancelled) BOOL cancelled;
 @property (readwrite, strong) FLFinisher* finisher; 
-
-- (FLPromise*) runAsynchronously:(fl_completion_block_t) completionOrNil;
-
-- (void) finisherWillFinish:(FLFinisher*) finisher
-                withResult:(FLPromisedResult) resultOrNil;
+//@property (readwrite, assign) id<FLAsyncQueue> asyncQueue;
 
 - (void) finisherDidFinish:(FLFinisher*) finisher
                 withResult:(FLPromisedResult) resultOrNil;
@@ -36,6 +32,7 @@
 - (void) removeOperation:(FLOperation*) operation;
 @end
 
+/*
 @interface FLOperation (Synchronous)
 // run synchronously
 - (FLPromisedResult) runSynchronously;
@@ -51,6 +48,7 @@
 - (FLPromise*) runChildAsynchronously:(FLOperation*) operation 
                             completion:(fl_completion_block_t) completionOrNil;
 @end
+*/
 
 @interface FLOperationFinisher : FLFinisher {
 @private
@@ -72,21 +70,6 @@
 + (id) operationEventWithDelay:(NSTimeInterval) timeInterval operation:(FLOperation*) operation;
 @end
 
-@interface FLOperation ()
-@property (readwrite, assign) NSInteger childCount;
-@property (readwrite, assign, getter=wasCancelled) BOOL cancelled;
-@property (readwrite, strong) FLFinisher* finisher; 
-@property (readwrite, assign) id<FLAsyncQueue> asyncQueue;
-
-- (void) finisherWillFinish:(FLOperationFinisher*) finisher
-                withResult:(FLPromisedResult) result;
-
-- (void) finisherDidFinish:(FLOperationFinisher*) finisher
-                withResult:(FLPromisedResult) result;
-
-@end
-
-
 @implementation FLOperationFinisher
 
 @synthesize operation = _operation;
@@ -99,37 +82,10 @@
 	return self;
 }
 
-- (void) willFinishWithResult:(id)result {
-    [_operation finisherWillFinish:self withResult:result];
-}
-
 - (void) didFinishWithResult:(id)result {
     [_operation finisherDidFinish:self withResult:result];
 }
-
-
 @end
-
-
-@interface FLOperationAsyncInitiator : FLAsyncInitiator {
-@private
-    FLOperation* _operation;
-}
-
-@property (readonly, strong) FLOperation* operation;
-
-+ (id) operationEventWithDelay:(NSTimeInterval) timeInterval operation:(FLOperation*) operation;
-@end
-
-
-@interface FLOperation ()
-@property (readwrite, assign, getter=wasCancelled) BOOL cancelled;
-@property (readwrite, strong) FLFinisher* finisher; 
-
-- (FLPromise*) runAsynchronously:(fl_completion_block_t) completionOrNil;
-
-@end
-
 
 @implementation FLOperation
 
@@ -180,7 +136,7 @@
     self.asyncQueue = asyncQueue;
     [self willStartOperation];
     [self startOperation];
-    [self.listeners notify:@selector(operationWillBegin:) withObject:self];
+    [self notify:@selector(operationWillBegin:) withObject:self];
 }
 
 - (FLPromisedResult) runSynchronouslyInQueue:(id<FLAsyncQueue>) asyncQueue {
@@ -240,17 +196,9 @@
     }
 }
 
-- (void) finisherWillFinish:(FLFinisher*) finisher
-                withResult:(FLPromisedResult) resultOrNil {
-
-}
-
-- (void) finisherDidFinish:(FLFinisher*) finisher
-                withResult:(FLPromisedResult) resultOrNil {
-
-}
 
 
+/*
 - (FLPromisedResult) runSynchronously {
     return [[self.asyncQueue queueOperation:self] waitUntilFinished];
 }
@@ -277,6 +225,7 @@
     self.context = context;
     return [self runAsynchronously:completionOrNil];
 }
+*/
 
 /*
 - (void) willRunChildOperation:(FLOperation*) operation {
@@ -351,12 +300,11 @@
     }
 }
 
-
 - (void) finisherDidFinish:(FLFinisher*) finisher
                 withResult:(FLPromisedResult) result {
             
     [self didFinishWithResult:result];
-    [self.observers notify:@selector(operationDidFinish:withResult:) withObject:self withObject:result];
+    [self notify:@selector(operationDidFinish:withResult:) withObject:self withObject:result];
     self.context = nil;
     self.cancelled = NO;
 }
@@ -364,16 +312,12 @@
 - (void) didFinishWithResult:(FLPromisedResult) result {
 }
 
-- (void) setFinished {
-    [self setFinishedWithResult:[FLSuccessfulResult successfulResult]];
-}
-
 - (void) setFinishedWithResult:(id) result {
     [self.finisher setFinishedWithResult:result];
 }
 
 - (void) setFinishedWithFailedResult {
-    [self setFinishedWithResult:FLFailureResult];
+    [self setFinishedWithResult:FLFailedResult];
 }
 
 - (void) setFinished {

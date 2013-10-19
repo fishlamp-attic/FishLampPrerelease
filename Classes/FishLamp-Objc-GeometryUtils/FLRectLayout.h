@@ -46,10 +46,6 @@ extern const FLRectLayout FLRectLayoutCentered;
 extern const FLRectLayout FLRectLayoutCenteredTop;
 extern const FLRectLayout FLRectLayoutCenteredBottom;
 
-#if DEBUG
-
-// These are are inlined for release build.
-
 extern BOOL FLRectLayoutsAreEqual(FLRectLayout lhs,
                                    FLRectLayout rhs);
 
@@ -77,8 +73,6 @@ extern CGRect FLRectLayoutRectInRect(
 	CGRect containeeRect,
     FLRectLayout rectLayout);
 
-#endif 
-
 extern CGRect FLRectLayoutRectHorizonallyInRect(
 	CGRect containerRect,
 	CGRect containeeRect,
@@ -89,11 +83,3 @@ extern CGRect FLRectLayoutRectVerticallyInRect(
 	CGRect containeeRect,
     FLRectLayout rectLayout);
     
-#if !DEBUG
-#define __INLINES__
-#import "FLRectLayout_Inlines.h"
-#undef __INLINES__
-#endif
-
-    
-

@@ -19,7 +19,7 @@
 #endif
 
 #import "FLCoreRequired.h"
-#import "FishLampVersion.h"
+
 // TODO: push these out to the frameworks?
 #if IOS
 //    #import <UIKit/UIKit.h>
@@ -52,7 +52,7 @@
 #import "FLObjectProxies.h"
 
 // Event broadcasting and object communication
-#import "FLEventBroadcasting.h"
+#import "FLBroadcaster.h"
 
 // Logger
 #import "FLSimpleLogger.h"

@@ -97,7 +97,7 @@ static void WriteStreamClientCallBack(CFWriteStreamRef writeStream,
     FLAssertIsNotNil(_streamRef);
     CFWriteStreamUnscheduleFromRunLoop(_streamRef, [[self.eventHandler runLoop] getCFRunLoop], FLBridge(void*,self.eventHandler.runLoopMode));
     CFWriteStreamClose(_streamRef);
-    [self didCloseWithResult:FLSuccess];
+    [self didCloseWithResult:FLSuccessfulResult];
 }
 
 - (BOOL) canAcceptBytes {

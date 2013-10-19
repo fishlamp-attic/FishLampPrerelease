@@ -23,12 +23,10 @@
     if(![NSThread isMainThread] &&
         [object respondsToSelector:[anInvocation selector]]) {
 
-        __block NSInvocation* theInvocation = FLRetainWithAutorelease(anInvocation);
-
-        FLRetain(theInvocation); // for the block in
+        __block NSInvocation* theInvocation = FLRetain(anInvocation);
         [theInvocation retainArguments];
 
-        FLRetain(object);
+        FLRetainObject(object);
         dispatch_async(dispatch_get_main_queue(), ^{
             [theInvocation invokeWithTarget:object];
             FLReleaseWithNil(theInvocation);

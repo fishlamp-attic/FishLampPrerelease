@@ -8,17 +8,12 @@
 //
 
 #import "FLTestToolMain.h"
-#import "FLTestRunner.h"
-
+#import "FLRunAllTestsOperation.h"
 #import "FLAsyncQueue.h"
 #import "FLOperation.h"
-
 #import "FLTestable.h"
 #import "FLAppInfo.h"
-
 #import "FLDispatchQueue.h"
-
-
 #import "FLTestLoggingManager.h"
 
 int FLTestToolMain(int argc, const char *argv[], NSString* bundleIdentifier, NSString* appName, NSString* version) {
@@ -38,7 +33,7 @@ int FLTestToolMain(int argc, const char *argv[], NSString* bundleIdentifier, NSS
             [logger addLoggerSink:[FLConsoleLogSink consoleLogSink:FLLogOutputSimple]];
             [FLTestOutput addLogger:logger];
         
-            FLTestRunner* runner = [FLTestRunner testRunner];
+            FLRunAllTestsOperation* runner = [FLRunAllTestsOperation testRunner];
             FLPromisedResult result = [FLBackgroundQueue runSynchronously:runner];
 
             if([result isError]) {

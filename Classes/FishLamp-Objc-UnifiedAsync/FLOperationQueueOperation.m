@@ -17,7 +17,7 @@
     self = [super init];
     if(self) {
         _operationQueue = FLRetain(operationQueue);
-        [_operationQueue.listeners addListener:self];
+        [_operationQueue addListener:self];
     }
 
     return self;

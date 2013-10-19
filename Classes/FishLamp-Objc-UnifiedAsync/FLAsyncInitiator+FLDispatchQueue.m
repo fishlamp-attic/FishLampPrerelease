@@ -17,16 +17,25 @@
 - (FLPromise*) dispatchAsyncInQueue:(FLDispatchQueue*) queue
                          completion:(fl_completion_block_t) completion {
 
-    FLFinisher* finisher = self.finisher;
-    FLPromise* promise = [finisher addPromiseWithBlock:completion];
+    __block FLFinisher* theFinisher = FLRetain(self.finisher);
+    __block FLAsyncInitiator* myself = FLRetain(self);
+    __block FLDispatchQueue* theQueue = FLRetain(queue);
+
+    if(completion) {
+        [theFinisher addPromiseWithBlock:completion];
+    }
 
     fl_block_t block = ^{
         @try {
-            [self startAsyncOperation:finisher inQueue:queue];
+            [myself startAsyncOperation:theFinisher inQueue:theQueue];
         }
         @catch(NSException* ex) {
-            [finisher setFinishedWithResult:ex.error];
+            [theFinisher setFinishedWithResult:ex.error];
         }
+
+        FLReleaseWithNil(theFinisher);
+        FLReleaseWithNil(myself);
+        FLReleaseWithNil(theQueue);
     };
 
     NSTimeInterval delay = self.delay;
@@ -37,27 +46,31 @@
         dispatch_async(queue.dispatch_queue_t, block);
     }
 
-    return promise;
+    return self.finisher;
 }
 
 - (FLPromisedResult) dispatchSyncInQueue:(FLDispatchQueue*) queue {
 
     __block FLPromisedResult result = nil;
-
-    FLFinisher* finisher = self.finisher;
+    __block FLFinisher* theFinisher = FLRetain(self.finisher);
+    __block FLAsyncInitiator* myself = FLRetain(self);
+    __block FLDispatchQueue* theQueue = FLRetain(queue);
 
     fl_block_t block = ^{
         @try {
-            result = [self runSynchronousOperation:finisher inQueue:queue];
+            result = FLRetain([myself runSynchronousOperation:theFinisher inQueue:theQueue]);
         }
         @catch(NSException* ex) {
-            [finisher setFinishedWithResult:ex.error];
+            [theFinisher setFinishedWithResult:ex.error];
         }
+        FLReleaseWithNil(theFinisher);
+        FLReleaseWithNil(theQueue);
+        FLReleaseWithNil(myself);
     };
 
     dispatch_sync(queue.dispatch_queue_t, block);
 
-    return result;
+    return FLAutorelease(result);
 }
 
 

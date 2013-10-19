@@ -21,9 +21,6 @@
 #endif
 }
 
-// TODO (MWF): get rid of this.
-@property (readwrite, assign) id<FLFinisherDelegate> delegate;
-
 + (id) finisher;
 + (id) finisherWithBlock:(fl_completion_block_t) completion;
 + (id) finisherWithTarget:(id) target action:(SEL) action;

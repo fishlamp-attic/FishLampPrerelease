@@ -18,24 +18,9 @@
 #endif
 
 #define FLRectMake                  CGRectMake
-//#define FLRectIntegral(r)           
-
-NS_INLINE
-CGRect FLRectIntegral(CGRect r) {
-    r.origin.x = floor(r.origin.x);
-    r.origin.y = floor(r.origin.y);
-    r.size.width = ceil(r.size.width);
-    r.size.height = ceil(r.size.height);
-    return r;
-}
-
 #define FLRectGetMidX               CGRectGetMidX
 #define FLRectGetMidY               CGRectGetMidY
 #define FLRectEqualToRect           CGRectEqualToRect
-
-#define FLRectMakeIntegral(__x__, __y__, __width__, __height__) \
-	 FLRectIntegral(FLRectMake(__x__,__y__,__width__,__height__))
-
 #define FLRectIsTaller(__lhs__, __rhs__) ((__lhs__).size.height > (__rhs___).size.height)
 #define FLRectIsWider(__lhs__, __rhs__) ((__lhs__).size.width > (__rhs__).size.width)
 #define FLRectGetLeft(__rect__) ((__rect__)).origin.x
@@ -45,29 +30,6 @@ CGRect FLRectIntegral(CGRect r) {
 #if IOS
     #define FLRectInsetWithEdgeInsets   UIEdgeInsetsInsetRect
 #endif    
-
-
-//#if OSX
-//    #if DEBUG
-//        #define NSRectInset             FLRectInset
-//    #else
-//        #define FLRectInset             NSRectInset
-//    #endif
-//    
-//    #define FLStringFromRect         NSStringFromRect
-//    #define FLRectFromString            NSRectFromString
-//    #define FLRectMake                  NSMakeRect
-//    #define FLRectIntegral              NSIntegralRect
-//    #define FLRectGetMidX               NSMidX
-//    #define FLRectGetMidY               NSMidY
-//    #define FLRectEqualToRect           NSEqualRects
-//    #define CGRectZero                  NSZeroRect
-//    
-//#endif
-
-
-
-#if DEBUG
 
 extern BOOL FLRectIsIntegral(CGRect r);
 
@@ -154,19 +116,10 @@ extern CGRect FLRectMakeWithWidthAndHeight(CGFloat width, CGFloat height);
 extern BOOL FLRectEnclosesRect(CGRect container, CGRect containee);
 extern CGRect FLRectRotate90Degrees(CGRect rect);
 
-
-#else
-
-#define __INLINES__
-#include "FLRectGeometry_Inlines.h"
-#undef __INLINES__
-
 //	This scales the containee rect to completely fill the container.
 //	The containee rect is scaled proportionally so if it has a different
 //	aspect ratio than the container, it WILL be larger than the container rect.
 extern CGRect FLRectFillRectInRectProportionally(CGRect container, CGRect containee);
 extern CGRect FLRectFitInRectInRectProportionally(CGRect container, CGRect containee);
 extern CGRect FLRectEnsureRectInRect(CGRect container, CGRect containee);
-
-#endif
 

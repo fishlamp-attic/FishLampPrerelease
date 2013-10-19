@@ -8,6 +8,7 @@
 //
 
 #import "FLServiceList.h"
+#import "FLHttpRequestAuthenticator.h"
 
 @protocol FLUserService;
 @protocol FLStorageService;
@@ -21,26 +22,16 @@
 
 extern NSString* const FLHttpControllerDidLogoutUserNotification;
 
-//    FLHttpRequestContext,
-//    FLDatabaseObjectStorageServiceDelegate,
-//    FLHttpRequestAuthenticatorDelegate {
-
-@interface FLHttpController : FLOperationContext {
+@interface FLHttpController : FLOperationContext<FLHttpRequestAuthenticatorDelegate> {
 @private
     FLHttpUser* _httpUser;
     id<FLUserService> _userService;
     id<FLStorageService> _storageService;
     FLHttpRequestAuthenticator* _httpRequestAuthenticator;
     FLServiceList* _serviceList;
-
-//    FLNetworkStreamSecurity _streamSecurity;
 }
 
-// settable properties
-//@property (readwrite, assign, nonatomic) FLNetworkStreamSecurity streamSecurity;
-
 // getters
-@property (readonly, strong) FLOperationContext* operationContext;
 @property (readonly, assign, nonatomic) BOOL isAuthenticated;
 @property (readonly, strong) id<FLUserService> userService;
 @property (readonly, strong) id<FLStorageService> storageService;

@@ -10,7 +10,7 @@
 #import "FishLampMinimum.h"
 #import "FLDispatchQueue.h"
 #import "FLAsyncQueue.h"
-#import "FLAsyncMessageBroadcaster.h"
+#import "FLBroadcaster.h"
 
 @class FLFifoAsyncQueue;
 @class FLOperation;
@@ -18,7 +18,7 @@
 @protocol FLOperationQueueOperationFactory;
 @protocol FLOperationQueueErrorStrategy;
 
-@interface FLOperationQueue : FLAsyncMessageBroadcaster {
+@interface FLOperationQueue : FLBroadcaster {
 @private
     FLFifoAsyncQueue* _schedulingQueue;
     NSMutableArray* _objectQueue;

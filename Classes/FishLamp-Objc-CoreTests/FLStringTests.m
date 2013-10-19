@@ -7,17 +7,18 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLFancyStringTests.h"
-#import "FLTestable.h"
+#import "FLStringTests.h"
 
-@implementation FLFancyStringTest
+@implementation FLStringTests
 
 + (FLTestGroup*) testGroup {
     return [FLTestGroup frameworkTestGroup];
 }
 
-- (void) testBasicStuff {
-    
+- (void) testPrettyString1 {
+
+    FLPrettyString* string = [FLPrettyString prettyString];
+
 //    FLFancyString* builder = [FLFancyString stringBuilder];
 //    
 //    [builder appendLine:@"Hello"];

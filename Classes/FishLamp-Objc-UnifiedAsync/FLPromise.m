@@ -126,7 +126,7 @@ static NSInteger s_max = 0;
     return self.result;
 }
 
-- (void) setFinishedWithResult:(FLPromisedResult) result {
+- (void) fufillPromiseWithResult:(FLPromisedResult) result {
     
     FLAssertIsNilWithComment(self.result, @"already finished");
 

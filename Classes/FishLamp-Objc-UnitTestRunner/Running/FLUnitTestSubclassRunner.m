@@ -14,7 +14,7 @@
 //#import "FLTestOperation.h"
 //#import "FLTestLoggingManager.h"
 //
-//@implementation FLTestRunner
+//@implementation FLRunAllTestsOperation
 //
 //- (id) init {
 //    self = [super init];

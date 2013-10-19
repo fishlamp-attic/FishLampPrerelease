@@ -20,7 +20,7 @@
 
 @end
 
-static BOOL s_deleted = YES;
+static BOOL s_deleted = NO;
 
 @implementation FLObjectProxyTestObject
 @synthesize propertyWasCalled = _propertyWasCalled;
@@ -32,7 +32,6 @@ static BOOL s_deleted = YES;
 - (id) init {	
 	self = [super init];
 	if(self) {
-		s_deleted = NO;
 	}
 	return self;
 }
@@ -69,7 +68,8 @@ static BOOL s_deleted = YES;
 }
 
 - (void) testRetainedObjectProxy {
-    FLTest(s_deleted);
+    s_deleted = NO;
+
     @autoreleasepool {
         FLRetainedObject* object = [FLRetainedObject retainedObject:[FLObjectProxyTestObject objectProxyTestObject]];
         FLTest(!s_deleted);

@@ -10,11 +10,12 @@
 #import "FishLampMinimum.h"
 #import "FLAsyncBlockTypes.h"
 #import "FLPromisedResult.h"
+#import "FLBroadcaster.h"
 
 @class FLOperation;
 @class FLPromise;
 
-@interface FLOperationContext : NSObject {
+@interface FLOperationContext : FLBroadcaster {
 @private
     NSMutableSet* _operations;
     NSUInteger _contextID;

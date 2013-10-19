@@ -1,5 +1,5 @@
 //
-//  FLTestRunnerBot.h
+//  FLRunAllTestsOperationBot.h
 //  FishLamp
 //
 //  Created by Mike Fullerton on 10/19/12.
@@ -9,21 +9,9 @@
 
 #import "FLSynchronousOperation.h"
 #import "FLTestResultCollection.h"
-//
-//@interface FLTestRunner : NSObject {
-//}
-//
-//+ (id) testRunner;
-//
-//- (NSArray*) runUnitTests:(NSArray*) factoryList;
-//
-//// returns array of FLTestResultCollection
-//@end
-
-
 #import "FLSynchronousOperation.h"
 
-@interface FLTestRunner : FLSynchronousOperation {
+@interface FLRunAllTestsOperation : FLSynchronousOperation {
 @private
 }
 

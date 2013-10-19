@@ -22,7 +22,6 @@
 @end
 
 @implementation FLFinisher 
-@synthesize delegate = _delegate;
 
 - (id) init {	
     return [self initWithPromise:nil];
@@ -73,11 +72,9 @@
 
 - (void) setFinishedWithResult:(FLPromisedResult) result {
 
-    FLRetainWithAutorelease(self);
-
+    FLPromise* promise = FLRetainWithAutorelease(self);
     [self willFinishWithResult:result];
 
-    FLPromise* promise = self;
     while(promise) {
         [promise fufillPromiseWithResult:result];
         promise = promise.nextPromise;
@@ -89,7 +86,7 @@
 }
 
 - (void) setFinished {
-    [self setFinishedWithResult:[FLSuccessfulResult successfulResult]];
+    [self setFinishedWithResult:FLSuccessfulResult];
 }
 
 - (void) setFinishedWithCancel {

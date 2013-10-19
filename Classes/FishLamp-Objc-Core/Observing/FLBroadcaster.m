@@ -9,8 +9,13 @@
 
 #import "FLBroadcaster.h"
 #import "FLSelectorPerforming.h"
+#import "FLAtomic.h"
 
-@implementation FLBroadcaster 
+@implementation FLBroadcasterProxy
+
+- (id) init {	
+	return self;
+}
 
 #if FL_MRC
 - (void)dealloc {
@@ -57,21 +62,21 @@
     }
 }
 
-- (void) notify:(SEL) messageSelector {
+- (void) notify:(SEL) selector {
     for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
         @try {
-            [[_listeners objectAtIndex:i] performOptionalSelector_fl:messageSelector];
+            [[_listeners objectAtIndex:i] performOptionalSelector_fl:selector];
         }
         @catch(NSException* ex) {
         }
     }
 }
 
-- (void) notify:(SEL) messageSelector  
+- (void) notify:(SEL) selector  
                      withObject:(id) object {
     for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
         @try {
-            [[_listeners objectAtIndex:i] performOptionalSelector_fl:messageSelector
+            [[_listeners objectAtIndex:i] performOptionalSelector_fl:selector
                                                    withObject:object];
         }
         @catch(NSException* ex) {
@@ -79,13 +84,13 @@
     }
 }
 
-- (void) notify:(SEL) messageSelector 
+- (void) notify:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2 {
 
     for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
         @try {
-            [[_listeners objectAtIndex:i] performOptionalSelector_fl:messageSelector
+            [[_listeners objectAtIndex:i] performOptionalSelector_fl:selector
                                                        withObject:object1
                                                        withObject:object2];
         }
@@ -94,13 +99,13 @@
     }
 }
 
-- (void) notify:(SEL) messageSelector 
+- (void) notify:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2
                      withObject:(id) object3 {
     for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
         @try {
-            [[_listeners objectAtIndex:i] performOptionalSelector_fl:messageSelector
+            [[_listeners objectAtIndex:i] performOptionalSelector_fl:selector
                                                        withObject:object1
                                                        withObject:object2
                                                        withObject:object3];
@@ -110,7 +115,7 @@
     }
 }
 
-- (void) notify:(SEL) messageSelector 
+- (void) notify:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2
                      withObject:(id) object3
@@ -118,7 +123,7 @@
 
     for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
         @try {
-            [[_listeners objectAtIndex:i] performOptionalSelector_fl:messageSelector
+            [[_listeners objectAtIndex:i] performOptionalSelector_fl:selector
                                                        withObject:object1
                                                        withObject:object2
                                                        withObject:object3
@@ -153,6 +158,89 @@
     }
 
     return NO;
+}
+
+@end
+
+@interface FLBroadcaster ()
+@end
+
+@implementation FLBroadcaster
+
+#if FL_MRC
+- (void)dealloc {
+	[_broadcasterProxy release];
+	[super dealloc];
+}
+#endif
+
+- (id) notify {
+    dispatch_once(&_predicate, ^{
+        _broadcasterProxy = [[FLBroadcasterProxy alloc] init];}
+        );
+    return _broadcasterProxy;
+}
+
+- (BOOL) hasListener:(id) listener {
+    __block BOOL hasListener = NO;
+
+    FLAtomicBlock(&_predicate, ^{
+        hasListener = [self.notify hasListener:listener];
+    });
+
+    return hasListener;
+}
+
+- (void) addListener:(id) listener {
+    FLAtomicBlock(&_predicate, ^{
+        [self.notify addListener:listener];
+    });
+}
+
+- (void) removeListener:(id) listener {
+    FLAtomicBlock(&_predicate, ^{
+        [self.notify removeListener:listener];
+    });
+}
+
+- (void) notify:(SEL) selector {
+    FLAtomicBlock(&_predicate, ^{
+        [self.notify notify:selector];
+    });
+}
+
+- (void) notify:(SEL) selector  
+                     withObject:(id) object {
+    FLAtomicBlock(&_predicate, ^{
+        [self.notify notify:selector withObject:object];
+    });
+}
+
+- (void) notify:(SEL) selector 
+                     withObject:(id) object1
+                     withObject:(id) object2 {
+    FLAtomicBlock(&_predicate, ^{
+        [self.notify notify:selector withObject:object1 withObject:object2];
+    });
+}
+
+- (void) notify:(SEL) selector 
+                     withObject:(id) object1
+                     withObject:(id) object2
+                     withObject:(id) object3 {
+    FLAtomicBlock(&_predicate, ^{
+        [self.notify notify:selector withObject:object1 withObject:object2 withObject:object3];
+    });
+}
+
+- (void) notify:(SEL) selector 
+                     withObject:(id) object1
+                     withObject:(id) object2
+                     withObject:(id) object3
+                     withObject:(id) object4 {
+    FLAtomicBlock(&_predicate, ^{
+        [self.notify notify:selector withObject:object1 withObject:object2 withObject:object3 withObject:object4];
+    });
 }
 
 @end

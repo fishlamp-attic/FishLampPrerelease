@@ -161,9 +161,7 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
         FLLog(@"Operation removed from context: %@", [operation description]);
 #endif
 
-        FLRetainWithAutorelease(operation);
-
-        [_operations removeObject:operation];
+        [_operations removeObject:FLRetainWithAutorelease(operation)];
         if(operation.context == self) {
             [operation wasRemovedFromContext:self];
         }

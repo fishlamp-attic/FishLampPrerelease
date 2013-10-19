@@ -126,7 +126,7 @@ static int s_counter = 0;
     });
     
     [self willOpen];
-    [self.listeners notify:@selector(httpRequestWillOpen:) withObject:self];
+    [self notify:@selector(httpRequestWillOpen:) withObject:self];
 
     if(!self.inputSink) {
         self.inputSink = [FLDataSink dataSink];
@@ -189,12 +189,12 @@ static int s_counter = 0;
 
     if(self.httpRequestAuthenticator && !self.disableAuthenticator) {
         [self willAuthenticate];
-        [self.listeners notify:@selector(httpRequestWillAuthenticate:) withObject:self];
+        [self notify:@selector(httpRequestWillAuthenticate:) withObject:self];
 
         [self.httpRequestAuthenticator authenticateHttpRequest:self];
 
         [self didAuthenticate];
-        [self.listeners notify:@selector(httpRequestDidAuthenticate:) withObject:self];
+        [self notify:@selector(httpRequestDidAuthenticate:) withObject:self];
     }
 
     [self openStreamWithURL:url];
@@ -207,7 +207,7 @@ static int s_counter = 0;
 }
 
 - (void) networkStreamDidOpen:(FLHttpStream*) networkStream {
-    [self.listeners notify:@selector(httpRequestDidOpen:) withObject:self];
+    [self notify:@selector(httpRequestDidOpen:) withObject:self];
     [self.byteCount setStartTime];
 }
 
@@ -217,7 +217,7 @@ static int s_counter = 0;
     [self.byteCount incrementByteCount:amountRead];
     [self didReadBytes:amountRead];
 
-    [self.listeners notify:@selector(httpRequest:didReadBytes:) withObject:self withObject:self.byteCount];
+    [self notify:@selector(httpRequest:didReadBytes:) withObject:self withObject:self.byteCount];
 }
 
 - (void) finishRequestWithResult:(FLPromisedResult) result {
@@ -226,7 +226,7 @@ static int s_counter = 0;
     [self releaseResponseData];
                 
     [self setFinishedWithResult:result];
-    [self.listeners notify:@selector(httpRequest:didCloseWithResult:) withObject:self withObject:result];
+    [self notify:@selector(httpRequest:didCloseWithResult:) withObject:self withObject:result];
     
     [self.retryHandler resetRetryCount];
 

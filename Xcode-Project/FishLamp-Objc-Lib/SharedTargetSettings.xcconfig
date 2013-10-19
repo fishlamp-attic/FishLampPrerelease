@@ -12,4 +12,4 @@ EXECUTABLE_PREFIX = lib
 EXECUTABLE_EXTENSION = a
 
 // change this for your project
-HEADER_SEARCH_PATHS = $(inherited)
+HEADER_SEARCH_PATHS = $(inherited) ../Classes/**

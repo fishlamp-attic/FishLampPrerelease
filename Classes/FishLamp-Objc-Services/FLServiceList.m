@@ -66,7 +66,7 @@
 
     [finisher setFinished];
 
-    return finisher.firstPromise;
+    return finisher;
 }
 
 - (FLPromise*) closeService:(fl_result_block_t) completion {
@@ -105,7 +105,7 @@
         }
     }
 
-    return finisher.firstPromise;
+    return finisher;
 }
 
 - (void) addService:(id<FLService>) service {
@@ -113,12 +113,12 @@
         _services = [[NSMutableArray alloc] init];
     }
     [_services addObject:service];
-    [service.listeners addListener:self];
+    [service addListener:self];
 }
 
 - (void) removeService:(id<FLService>) service {
     [_services removeObject:service];
-    [service.listeners removeListener:self];
+    [service removeListener:self];
 }
 
 - (void) removeAllServices {

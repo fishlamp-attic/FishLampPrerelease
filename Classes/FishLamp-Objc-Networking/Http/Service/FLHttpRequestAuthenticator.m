@@ -14,48 +14,37 @@
 
 @interface FLHttpRequestAuthenticator ()
 @property (readonly, strong) FLFifoAsyncQueue* asyncQueue;
-@property (readonly, strong) id<FLHttpRequestAuthenticatorStrategy> strategy;
 @end
 
 @implementation FLHttpRequestAuthenticator
 
 @synthesize asyncQueue = _asyncQueue;
-@synthesize strategy = _strategy;
 @synthesize delegate = _delegate;
 
-- (id) initWithStrategy:(id<FLHttpRequestAuthenticatorStrategy>) strategy {
-    FLAssertNotNil(strategy);
-
+- (id) init {
 	self = [super init];
 	if(self) {
         _asyncQueue = [[FLFifoAsyncQueue alloc] init];
-        _strategy = FLRetain(strategy);
 	}
 	return self;
 }
 
-- (id) init {
-    return [self initWithStrategy:nil];
-}
-
-+ (id) httpRequestAuthenticator:(id<FLHttpRequestAuthenticatorStrategy>) strategy {
-    return FLAutorelease([[[self class] alloc] initWithStrategy:strategy]);
-}
-
-
 #if FL_MRC
 - (void) dealloc {
-    [_strategy release];
     [_asyncQueue release];
     [super dealloc];
 }
 #endif
 
 - (FLHttpUser*) user {
-    return [self.delegate httpRequestAuthenticationServiceGetUser:self];
+    return [self.delegate httpRequestAuthenticatorGetUser:self];
 }
-       
+
 - (BOOL) credentialsNeedAuthentication:(FLHttpUser*) user {
+    return NO;
+}
+
+- (BOOL) shouldAuthenticateUser:(FLHttpUser*) user {
 
 	FLAssertIsNotNil(user);
 	
@@ -80,52 +69,72 @@
         }
     }
 
-    if([self.strategy respondsToSelector:@selector(credentialsNeedAuthentication:)]) {
-        return [self.strategy credentialsNeedAuthentication:user];
-    }
-
-    return NO;
+    return [self credentialsNeedAuthentication:user];
 }
 
-- (void) authenticateUser:(FLHttpUser*) user {
+- (FLPromisedResult) authenticateUser:(FLHttpUser*) user {
+    return user;
+}
+
+- (void) authenticateHttpRequest:(FLHttpRequest*) request 
+           withAuthenticatedUser:(FLHttpUser*) user {
+}
+
+- (FLHttpUser*) synchronouslyAuthenticateUser:(FLHttpUser*) user {
     [user resetAuthenticationTimestamp];
 
-    FLOperation* authenticateUserOperation = [self.strategy createAuthenticateUserOperation:user];
+    FLPromisedResult result = [self authenticateUser:user];
+    FLThrowIfError(result);
 
-    FLThrowIfError([authenticateUserOperation runSynchronously]);
+    FLHttpUser* authenticatedUser = [FLHttpUser fromPromisedResult:result];
+    [authenticatedUser touchAuthenticationTimestamp];
+    [self.delegate httpRequestAuthenticator:self didAuthenticateUser:user];
 
-    [user touchAuthenticationTimestamp];
-    [self.delegate httpRequestAuthenticationService:self didAuthenticateUser:user];
+    return authenticatedUser;
 }
 
 - (void) authenticateHttpRequest:(FLHttpRequest*) request {
 
-    FLHttpUser* user = self.user;
+    __block FLHttpUser* user = FLRetain(self.user);
     FLAssertNotNil(user); 
-        
+
+    __block FLHttpRequestAuthenticator* myself = FLRetain(self);
+
     [_asyncQueue runBlockSynchronously:^{
-        
-        if([self credentialsNeedAuthentication:user]) {
-            [self authenticateUser:user];
+
+        FLHttpUser* authenticatedUser = user;
+        if([myself shouldAuthenticateUser:user]) {
+            user = FLRetainWithAutorelease([myself synchronouslyAuthenticateUser:user]);
         }
 
-        [self.strategy authenticateHttpRequest:request withAuthenticatedUser:user];
+        [myself authenticateHttpRequest:request withAuthenticatedUser:user];
+
+        [self.delegate httpRequestAuthenticator:self didAuthenticateUser:user];
+
+        FLReleaseWithNil(myself);
+        FLReleaseWithNil(user);
     }];
 }
 
 - (FLPromise*) beginAuthenticating:(fl_completion_block_t) completion {
-    FLHttpUser* user = self.user;
+
+    __block FLHttpUser* user = FLRetain(self.user);
+    __block FLHttpRequestAuthenticator* myself = FLRetain(self);
     FLAssertNotNil(user); 
 
     return [self.asyncQueue queueBlock:^{
 
         FLTrace(@"started auth");
-        if([self credentialsNeedAuthentication:user]) {
-            [self authenticateUser:user];
+
+        FLHttpUser* authenticatedUser = user;
+        if([myself shouldAuthenticateUser:user]) {
+            authenticatedUser = FLRetainWithAutorelease([myself synchronouslyAuthenticateUser:user]);
         }
-        else {
-            [self.delegate httpRequestAuthenticationService:self didAuthenticateUser:user];
-        }
+
+        [myself.delegate httpRequestAuthenticator:self didAuthenticateUser:user];
+
+        FLReleaseWithNil(user);
+        FLReleaseWithNil(myself);
     } 
     completion:completion];
 }

@@ -16,11 +16,7 @@
 #import "FLNonretainedObjectProxy.h"
 #import "FLMainThreadObject.h"
 
-@interface FLBroadcaster : FLAbstractArrayProxy<NSFastEnumeration> {
-@private
-    NSMutableArray* _listeners;
-}
-
+@protocol FLBroadcaster <NSObject>
 - (id) notify;
 
 - (void) notify:(SEL) messageSelector;
@@ -48,5 +44,21 @@
 - (void) addListener:(id) observer;
 
 - (void) removeListener:(id) listener;
-
 @end
+
+@interface FLBroadcasterProxy : FLAbstractArrayProxy<NSFastEnumeration, FLBroadcaster> {
+@private
+    NSMutableArray* _listeners;
+}
+
+- (id) init;
+@end
+
+
+@interface FLBroadcaster : NSObject<FLBroadcaster> {
+@private
+    FLBroadcasterProxy* _broadcasterProxy;
+    dispatch_once_t _predicate;
+}
+@end
+

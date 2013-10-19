@@ -35,7 +35,7 @@
         _finisherBlock(self.finisher);
     }
     else {
-        [self setFinishedWithResult:FLFailureResult];
+        [self setFinishedWithResult:FLFailedResult];
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  FLTestRunnerBot.m
+//  FLRunAllTestsOperationBot.m
 //  FishLamp
 //
 //  Created by Mike Fullerton on 10/19/12.
@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLTestRunner.h"
+#import "FLRunAllTestsOperation.h"
 #import "FLAsyncQueue.h"
 #import "FLStaticTestMethodRunner.h"
 #import "FLObjcRuntime.h"
@@ -22,7 +22,7 @@
 #import "FLTestFactory.h"
 
 
-@implementation FLTestRunner
+@implementation FLRunAllTestsOperation
 
 + (id) testRunner {
     return FLAutorelease([[[self class] alloc] init]);
@@ -82,67 +82,4 @@
 }
 
 @end
-// - (FLPromisedResult) performSynchronously {
-//
-//    NSMutableArray* array = [NSMutableArray array];
-//    NSArray* allResults = [self findUnitTests];
-//    
-//    for(FLTestable* test in tests) {
-//
-//        FLTestOutput(@"%Running @ Test Cases:", test.unitTestName);
-//
-//        [[FLTestable logger] indent:^{
-//            FLTestResultCollection* results = [self runChildSynchronously:test];
-//            NSArray* failedResults = [results failedResults];
-//            if(result && results.count) {
-//                FLTestOutput(@"%@ test cases failed", failedResults.count);
-//            }
-//            else {
-//                FLTestOutput(@"%@ test cases passed", results.count);
-//            }
-//            
-//            [allResults addObject:results];
-//        }];
-//    }
-//
-//    return allResults;
-//}   
 
-//@implementation FLTestRunner 
-//
-//+ (id) testRunner {
-//    return FLAutorelease([[[self class] alloc] init]);
-//}
-//
-//
-//- (NSArray*) runUnitTests:(NSArray*) factoryList {
-//
-//    NSMutableArray* resultsArray = [NSMutableArray array];
-//
-//    for(id<FLTestFactory> factory in factoryList) {
-//        @autoreleasepool {
-//            FLTestOperation* unitTestOperation = [FLTestOperation unitTestOperation:factory];
-//            [resultsArray addObject:[FLBackgroundQueue runSynchronously:unitTestOperation]];
-//        }
-//    }
-//
-//    int errorCount = 0;
-//    for(NSArray* resultArray in array) {
-//        for(FLTestResultCollection* result in resultArray) {
-//            errorCount += [[result failedResults] count];
-//        }
-//    }
-//    
-//    if(errorCount) {
-//        [FLTestOutput appendLine:@"Unit Tests Failed"];
-//    
-////        return [NSError errorWithDomain:FLErrorDomain code:FLErrorResultFailed localizedDescription:@"Unit Tests Failed"];
-//    }
-//    else {
-//        [FLTestOutput appendLine:@"Unit Tests Passed"];
-//    }
-//
-//    return resultsArray;
-//}
-//
-//@end

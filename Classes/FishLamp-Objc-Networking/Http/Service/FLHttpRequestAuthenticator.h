@@ -19,43 +19,29 @@
 - (void) authenticateHttpRequest:(FLHttpRequest*) request;
 @end
 
-@protocol FLHttpRequestAuthenticatorStrategy;
-
 @interface FLHttpRequestAuthenticator : NSObject<FLHttpRequestAuthenticator> {
 @private
     FLFifoAsyncQueue* _asyncQueue;
-    id<FLHttpRequestAuthenticatorStrategy> _strategy;
     __unsafe_unretained id _delegate;
 }
-@property (readwrite, assign, nonatomic) id<FLHttpRequestAuthenticatorDelegate> delegate;
 
-+ (id) httpRequestAuthenticator:(id<FLHttpRequestAuthenticatorStrategy>) strategy;
+@property (readwrite, assign, nonatomic) id<FLHttpRequestAuthenticatorDelegate> delegate;
 
 - (FLPromise*) beginAuthenticating:(fl_completion_block_t) completion;
 
-@end
-
-@protocol FLHttpRequestAuthenticatorStrategy <NSObject>
-- (FLSynchronousOperation*) createAuthenticateUserOperation:(FLHttpUser*) user;
+// required overrides
+- (FLPromisedResult) authenticateUser:(FLHttpUser*) user;
 
 - (void) authenticateHttpRequest:(FLHttpRequest*) request 
            withAuthenticatedUser:(FLHttpUser*) user;
 
-@optional
 - (BOOL) credentialsNeedAuthentication:(FLHttpUser*) user;
+
 @end
 
 @protocol FLHttpRequestAuthenticatorDelegate <NSObject>
+- (FLHttpUser*) httpRequestAuthenticatorGetUser:(FLHttpRequestAuthenticator*) service;
 
-//- (FLOperationContext*) httpRequestAuthenticationServiceGetOperationContext:(FLHttpRequestAuthenticator*) service;
-
-- (FLHttpUser*) httpRequestAuthenticationServiceGetUser:(FLHttpRequestAuthenticator*) service;
-
-- (void) httpRequestAuthenticationService:(FLHttpRequestAuthenticator*) service
-               didAuthenticateUser:(FLHttpUser*) user;
-
-@optional 
-- (void) httpRequestAuthenticationServiceDidOpen:(FLHttpRequestAuthenticator*) service;
-- (void) httpRequestAuthenticationServiceDidClose:(FLHttpRequestAuthenticator*) service;
-
+- (void) httpRequestAuthenticator:(FLHttpRequestAuthenticator*) authenticator
+                didAuthenticateUser:(FLHttpUser*) user;
 @end

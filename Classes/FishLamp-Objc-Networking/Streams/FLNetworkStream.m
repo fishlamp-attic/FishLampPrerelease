@@ -124,8 +124,6 @@ static Class s_eventHandlerClass = nil;
 - (void) didCloseWithResult:(FLPromisedResult) result {
     FLAssert([NSThread currentThread] != [NSThread mainThread]);
 
-    FLRetainWithAutorelease(self);
-
     [self.timer stopTimer];
 
     self.open = NO;

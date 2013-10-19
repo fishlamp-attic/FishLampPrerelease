@@ -85,8 +85,6 @@
 // Utils
 //
 
-+ (FLDispatchQueue*) currentQueue;
-
 #if __MAC_10_8
 + (void) sleepForTimeInterval:(NSTimeInterval) milliseconds;
 #endif
