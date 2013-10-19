@@ -11,6 +11,9 @@
 #import "FLAsyncInitiator.h"
 #import "FLAsyncQueue.h"
 
+#import "FLFinisher.h"
+#import "NSError+FLFailedResult.h"
+#import "FLSuccessfulResult.h"
 @interface FLOperationContext (Protected)
 - (void) queueOperation:(FLOperation*) operation;
 - (void) removeOperation:(FLOperation*) operation;
@@ -39,6 +42,30 @@
 @property (readwrite, assign, nonatomic) FLOperation* operation;
 
 - (id) initWithOperation:(FLOperation*) operation;
+
+@end
+
+@interface FLOperationAsyncInitiator : FLAsyncInitiator {
+@private
+    FLOperation* _operation;
+}
+
+@property (readonly, strong) FLOperation* operation;
+
++ (id) operationEventWithDelay:(NSTimeInterval) timeInterval operation:(FLOperation*) operation;
+@end
+
+@interface FLOperation ()
+@property (readwrite, assign) NSInteger childCount;
+@property (readwrite, assign, getter=wasCancelled) BOOL cancelled;
+@property (readwrite, strong) FLFinisher* finisher; 
+@property (readwrite, assign) id<FLAsyncQueue> asyncQueue;
+
+- (void) finisherWillFinish:(FLOperationFinisher*) finisher
+                withResult:(FLPromisedResult) result;
+
+- (void) finisherDidFinish:(FLOperationFinisher*) finisher
+                withResult:(FLPromisedResult) result;
 
 @end
 

@@ -14,7 +14,7 @@
 @class FLOperation;
 @class FLFifoAsyncQueue;
 
-typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
+//typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 
 @interface FLOperationContext : FLObservable {
 @private
