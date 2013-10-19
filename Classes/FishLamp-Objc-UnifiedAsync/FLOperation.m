@@ -14,6 +14,23 @@
 #import "FLFinisher.h"
 #import "NSError+FLFailedResult.h"
 #import "FLSuccessfulResult.h"
+#import "FLOperationContext.h"
+#import "FLDispatchQueue.h"
+
+@interface FLOperation ()
+@property (readwrite, assign, getter=wasCancelled) BOOL cancelled;
+@property (readwrite, strong) FLFinisher* finisher; 
+
+- (FLPromise*) runAsynchronously:(fl_completion_block_t) completionOrNil;
+
+- (void) finisherWillFinish:(FLFinisher*) finisher
+                withResult:(FLPromisedResult) resultOrNil;
+
+- (void) finisherDidFinish:(FLFinisher*) finisher
+                withResult:(FLPromisedResult) resultOrNil;
+
+@end
+
 @interface FLOperationContext (Protected)
 - (void) queueOperation:(FLOperation*) operation;
 - (void) removeOperation:(FLOperation*) operation;
@@ -120,7 +137,6 @@
 @synthesize contextID = _contextID;
 @synthesize asyncQueue = _asyncQueue;
 @synthesize identifier = _identifier;
-@synthesize storageService = _storageService;
 @synthesize cancelled = _cancelled;
 @synthesize finisher = _finisher;
 
@@ -148,7 +164,6 @@
 #if FL_MRC
     [_identifier release];
     [_asyncQueue release];
-    [_storageService release];
 	[_finisher release];
 	[super dealloc];
 #endif
@@ -224,6 +239,17 @@
         _contextID = 0;
     }
 }
+
+- (void) finisherWillFinish:(FLFinisher*) finisher
+                withResult:(FLPromisedResult) resultOrNil {
+
+}
+
+- (void) finisherDidFinish:(FLFinisher*) finisher
+                withResult:(FLPromisedResult) resultOrNil {
+
+}
+
 
 - (FLPromisedResult) runSynchronously {
     return [[self.asyncQueue queueOperation:self] waitUntilFinished];

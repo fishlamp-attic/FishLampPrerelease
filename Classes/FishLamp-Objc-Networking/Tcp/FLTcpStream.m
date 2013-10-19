@@ -140,7 +140,7 @@
 
 - (void) readStreamDidOpen:(FLReadStream*) networkStream {
     if(self.isOpen) {
-//        [self performSelector:@"networkStreamDidOpen:"];
+//        [self sendMessage:@"networkStreamDidOpen:"];
     }
 }
 
@@ -158,19 +158,19 @@
 }
 
 - (void) readStreamHasBytesAvailable:(FLReadStream*) networkStream {
-//    [self performSelector:@"readStreamHasBytesAvailable:"];
+//    [self sendMessage:@"readStreamHasBytesAvailable:"];
     if(self.isOpen) {
         [self updateRequestQueue];
     }
 }
 
 - (void) readStream:(FLReadStream*) stream didReadBytes:(NSNumber*) amountRead {
-//    [self performSelector:@"readStreamDidReadBytes:"];
+//    [self sendMessage:@"readStreamDidReadBytes:"];
 }
 
 - (void) writeStreamDidOpen:(FLWriteStream*) networkStream {
     if(self.isOpen) {
-//        [self performSelector:@"networkStreamDidOpen:"];
+//        [self sendMessage:@"networkStreamDidOpen:"];
 
         [self updateRequestQueue];
     }
@@ -190,7 +190,7 @@
 }      
 
 - (void) writeStreamCanAcceptBytes:(FLWriteStream*) networkStream {
-//    [self performSelector:@"writeStreamCanAcceptBytes:"];
+//    [self sendMessage:@"writeStreamCanAcceptBytes:"];
 
     if(self.isOpen) {
         [self updateRequestQueue];
@@ -198,7 +198,7 @@
 }
 
 - (void) writeStream:(FLWriteStream*) stream didWriteBytes:(NSNumber*) amountWritten {
-//    [self performSelector:@"writeStreamDidWriteBytes:"];
+//    [self sendMessage:@"writeStreamDidWriteBytes:"];
 
 }
 

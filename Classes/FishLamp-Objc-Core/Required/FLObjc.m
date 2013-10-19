@@ -15,9 +15,6 @@ id FLCopyOrRetainObject(id src) {
 	else if([src conformsToProtocol:@protocol(NSCopying)]) {
 		return FLAutorelease([src copy]);
 	}
-	else {
-		return FLAutorelease(FLRetain(src));
-	}
-	
-	return nil;
+
+	return FLAutorelease(FLRetain(src));
 }

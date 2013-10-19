@@ -11,11 +11,18 @@
 #import "FishLampAsync.h"
 #import "FLFifoQueueNetworkStreamEventHandler.h"
 
+NSString* const FLNetworkStreamErrorDomain = @"FLNetworkStreamErrorDomain";
+NSString* const FLNetworkStreamErrorArrayKey = @"FLNetworkStreamErrorArrayKey";
+
+
 @interface FLNetworkStream ()
 @property (readwrite, assign, getter=isOpen) BOOL open;
 @property (readwrite, strong) id<FLNetworkStreamEventHandler> eventHandler;
 @property (readwrite, strong) FLTimer* timer;
 @property (readwrite, assign) NSTimeInterval idleDuration;
+@property (readwrite, assign) BOOL hasError;
+@property (readwrite, assign) BOOL wasCancelled;
+@property (readwrite, strong) NSError* error;
 @end
 
 @implementation FLNetworkStream
@@ -24,8 +31,10 @@
 @synthesize delegate = _delegate;
 @synthesize timer = _timer;
 @synthesize streamSecurity = _streamSecurity;
-@synthesize wasTerminated = _wasTerminated;
 @synthesize idleDuration = _idleDuration;
+@synthesize error = _error;
+@synthesize hasError = _hasError;
+@synthesize wasCancelled = _wasCancelled;
 
 static Class s_eventHandlerClass = nil;
 
@@ -76,6 +85,7 @@ static Class s_eventHandlerClass = nil;
     _timer.delegate = nil;
     _eventHandler.stream = nil;
 #if FL_MRC
+    [_error release];
     [_eventHandler release];
     [_timer release];
     [super dealloc];
@@ -90,11 +100,17 @@ static Class s_eventHandlerClass = nil;
     }
 }
 
+- (void) resetToStartState {
+    self.open = NO;
+    self.wasCancelled = NO;
+    self.hasError = NO;
+    self.error = nil;
+}
+
 - (void) willOpen {
     FLAssert([NSThread currentThread] != [NSThread mainThread]);
 
-    self.open = NO;
-    self.wasTerminated = NO;
+    [self resetToStartState];
     FLPerformSelector1(self.delegate, @selector(networkStreamWillOpen:), self);
 }
 
@@ -105,15 +121,18 @@ static Class s_eventHandlerClass = nil;
     FLPerformSelector1(self.delegate, @selector(networkStreamDidOpen:), self);
 }
 
-- (void) didClose {
+- (void) didCloseWithResult:(FLPromisedResult) result {
     FLAssert([NSThread currentThread] != [NSThread mainThread]);
 
-    self.open = NO;
-    FLPerformSelector1(self.delegate, @selector(networkStreamDidClose:), self);
+    FLRetainWithAutorelease(self);
+
     [self.timer stopTimer];
-    
-    self.delegate = nil;
-    [self.eventHandler streamDidClose];
+
+    self.open = NO;
+
+    [self.eventHandler streamDidCloseWithResult:result];
+
+    FLPerformSelector2(self.delegate, @selector(networkStream:didCloseWithResult:), self, result);
 }
 
 - (void) encounteredBytesAvailable {
@@ -141,8 +160,7 @@ static Class s_eventHandlerClass = nil;
 
 - (void) encounteredError:(NSError*) error {
     FLAssert([NSThread currentThread] != [NSThread mainThread]);
-    self.wasTerminated = YES;
-    FLPerformSelector2(self.delegate, @selector(networkStream:encounteredError:), self, error);
+    [self addError:error];
 }
 
 - (NSError*) streamError {
@@ -167,14 +185,16 @@ static Class s_eventHandlerClass = nil;
     }];
 }
 
-- (void) terminateStream {
-    self.wasTerminated = YES;
-    self.delegate = nil;
-    [self.eventHandler queueSelector:@selector(closeStream)];
+- (void) requestCancel {
+    if(!self.wasCancelled) {
+        self.wasCancelled = YES;
+        self.hasError = YES;
+        [self.eventHandler queueSelector:@selector(encounteredError:) withObject:[NSError cancelError]];
+    }
 }
 
 - (void) timerDidTimeout:(FLTimer*) timer {
-    self.wasTerminated = YES;
+    self.hasError = YES;
     [self.eventHandler queueSelector:@selector(encounteredError:) withObject:[NSError timeoutError]];
 }
 
@@ -190,6 +210,31 @@ static Class s_eventHandlerClass = nil;
         self.idleDuration = timer.idleDuration;
     }
 #endif
+
+}
+
+- (void) addError:(NSError*) error {
+    @synchronized(self) {
+        if(!self.error) {
+            self.error = error;
+            FLPerformSelector2(self.delegate, @selector(networkStream:encounteredError:), self, error);
+        }
+        else if(error != self.error) {
+            NSMutableDictionary* userInfo = FLMutableCopyWithAutorelease(error.userInfo);
+            if(!userInfo) {
+                userInfo = [NSMutableDictionary dictionary];
+            }
+            [userInfo setObject:self.error forKey:NSUnderlyingErrorKey];
+
+            self.error = [NSError errorWithDomain:error.domain code:error.code userInfo:userInfo];
+
+            FLLog(@"set additional error");
+
+            FLPerformSelector2(self.delegate, @selector(networkStream:encounteredError:), self, error);
+        }
+
+        self.hasError = YES;
+    }
 
 }
 

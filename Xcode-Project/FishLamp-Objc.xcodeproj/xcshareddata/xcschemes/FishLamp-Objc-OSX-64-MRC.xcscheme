@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27A43AC315CDCCCB001CB13E"
-               BuildableName = "libFishLamp-Objc-OSX-64-MRC.a"
+               BuildableName = "lib.a"
                BlueprintName = "FishLamp-Objc-OSX-64-MRC"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>

@@ -104,8 +104,7 @@ FLStackTrace_t FLStackTraceMake(FLLocationInSourceFile_t loc, BOOL withCallStack
     return self;
 }
 
-+ (FLStackTrace*) stackTraceWithException:(NSException*) ex {
-
++ (FLStackTrace*) stackTraceWithException:(NSException*) exception {
     return nil;
 }
 

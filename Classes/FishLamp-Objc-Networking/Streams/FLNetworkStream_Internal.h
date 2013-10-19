@@ -10,7 +10,8 @@
 #import "FLNetworkStream.h"
 
 @interface FLNetworkStream ()
-@property (readwrite, assign) BOOL wasTerminated;
+
+- (void) addError:(NSError*) error;
 
 - (void) touchTimeoutTimestamp;
 
@@ -23,7 +24,7 @@
 // optional overrides
 - (void) willOpen;
 - (void) didOpen;
-- (void) didClose;
+- (void) didCloseWithResult:(FLPromisedResult) result;
 - (NSError*) streamError;
 
 // stream events. All of these do nothing by default. They are called on the 

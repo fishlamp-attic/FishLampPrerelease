@@ -34,4 +34,10 @@
 
 @end
 
+#define FLXmlObjectBuilderErrorDomain @"FLXmlObjectBuilderErrorDomain"
 
+typedef NS_ENUM(NSInteger, FLXmlObjectBuilderError) {
+    FLXmlObjectBuilderErrorUnknownProperty = 1,
+    FLXmlObjectBuilderErrorObjectNotInflated
+
+};

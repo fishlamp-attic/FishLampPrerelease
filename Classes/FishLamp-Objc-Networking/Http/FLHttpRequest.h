@@ -28,13 +28,11 @@
 
 @protocol FLRetryHandler;
 
-
-
 @protocol FLHttpRequestContext <NSObject>
 - (id<FLHttpRequestAuthenticator>) httpRequestAuthenticator;
 @end
 
-@interface FLHttpRequest : FLOperation<FLHttpStreamDelegate> {
+@interface FLHttpRequest : FLOperation<FLNetworkStreamDelegate> {
 @private
     FLHttpRequestHeaders* _requestHeaders;
     FLHttpRequestBody* _requestBody;
@@ -52,11 +50,15 @@
     id<FLInputSink> _inputSink;
     id<FLHttpRequestAuthenticator> _httpRequestAuthenticator;
     BOOL _disableAuthenticator;
+    id<FLReadStreamByteReader> _readStreamByteReader;
 }
 
 @property (readwrite, nonatomic, strong) id<FLRetryHandler> retryHandler;
 @property (readwrite, strong, nonatomic) id<FLInputSink> inputSink;
 @property (readwrite, strong, nonatomic) id<FLHttpRequestAuthenticator> httpRequestAuthenticator;
+
+// optional
+@property (readwrite, strong, nonatomic) id<FLReadStreamByteReader> readStreamByteReader;
 
 // timeouts
 @property (readwrite, assign, nonatomic) NSTimeInterval timeoutInterval;

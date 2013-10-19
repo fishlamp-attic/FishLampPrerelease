@@ -62,7 +62,10 @@
             FLTrace(@"object not inflated for %@.%@", NSStringFromClass([outObject class]), element.fullPath);
 
             if(builder.strict) {
-                FLConfirmationFailedWithComment(@"object not inflated for \"%@\" (%@)", element.fullPath, element.elementValue);
+                FLThrowErrorCodeWithComment(    FLXmlObjectBuilderErrorDomain,
+                                                FLXmlObjectBuilderErrorObjectNotInflated,
+                                                @"object not inflated for \"%@\" (%@)", element.fullPath, element.elementValue);
+
             }
         }
     }
@@ -97,7 +100,9 @@
                     walker.fullPath);
 
                 if(builder.strict) {
-                    FLConfirmationFailedWithComment(@"Array object not inflated: %@:%@",
+                    FLThrowErrorCodeWithComment(    FLXmlObjectBuilderErrorDomain,
+                                                    FLXmlObjectBuilderErrorObjectNotInflated,
+                                                    @"Array object not inflated: %@:%@",
                                                      NSStringFromClass([self class]),
                                                      walker.fullPath);
                 }
@@ -112,7 +117,9 @@
                 element.fullPath);
 
         if(builder.strict) {
-            FLConfirmationFailedWithComment(@"Unknown property: %@", element.fullPath);
+            FLThrowErrorCodeWithComment(    FLXmlObjectBuilderErrorDomain,
+                                            FLXmlObjectBuilderErrorUnknownProperty,
+                                            @"Unknown property: %@", element.fullPath);
         }
 
     }

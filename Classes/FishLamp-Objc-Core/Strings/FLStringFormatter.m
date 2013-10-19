@@ -2,13 +2,13 @@
 //  FLAbstractStringFormatter.m
 //  FishLampCore
 //
-//  Created by Mike Fullerton on 8/31/13.
-//  Copyright (c) 2013 Mike Fullerton. All rights reserved.
+//  Created by Mike Fullerton on 12/29/12.
+//  Copyright (c) 2013 GreenTongue Software LLC, Mike Fullerton.. 
+//  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
 #import "FLStringFormatter.h"
 #import "FLAssertions.h"
-#import "FLWhitespace.h"
 #import "NSArray+FLExtras.h"
 
 @implementation FLStringFormatter
@@ -203,10 +203,10 @@
 
 - (void) appendLineWithFormat:(NSString*) format, ... {
     FLAssertNotNil(format);
-	va_list va;
-	va_start(va, format);
-	NSString *string = FLAutorelease([[NSString alloc] initWithFormat:format arguments:va]);
-	va_end(va);
+	va_list va_args;
+	va_start(va_args, format);
+	NSString *string = FLAutorelease([[NSString alloc] initWithFormat:format arguments:va_args]);
+	va_end(va_args);
 	[self appendLine:string];
 }
 
@@ -216,19 +216,19 @@
 
 - (void) openLineWithFormat:(NSString*) format, ... {
     FLAssertNotNil(format);
-	va_list va;
-	va_start(va, format);
-	NSString *string = FLAutorelease([[NSString alloc] initWithFormat:format arguments:va]);
-	va_end(va);
+	va_list va_args;
+	va_start(va_args, format);
+	NSString *string = FLAutorelease([[NSString alloc] initWithFormat:format arguments:va_args]);
+	va_end(va_args);
 	[self openLineWithString:string];
 }
 
 - (void) closeLineWithFormat:(NSString*) format, ... {
     FLAssertNotNil(format);
-	va_list va;
-	va_start(va, format);
-	NSString *string = FLAutorelease([[NSString alloc] initWithFormat:format arguments:va]);
-	va_end(va);
+	va_list va_args;
+	va_start(va_args, format);
+	NSString *string = FLAutorelease([[NSString alloc] initWithFormat:format arguments:va_args]);
+	va_end(va_args);
 	[self closeLineWithString:string];
 }
 

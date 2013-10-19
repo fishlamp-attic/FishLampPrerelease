@@ -1,8 +1,6 @@
 
 #ifdef __INLINES__
 
-
-
 #define __FLRectCheckWidth(r) \
             (FLFloatMod(r.origin.x + r.size.width, 2.0f) == 0.0f)
 
@@ -29,7 +27,7 @@ BOOL FLRectIsOptimizedForView(CGRect r) {
 
 FL_SHIP_ONLY_INLINE 
 CGRect FLRectOptimizedForViewSize(CGRect r) {
-	r = FLRectIntegral(r);
+	r = FLRectMakeIntegral(r);
 	
 	// make sure the midpoint is not fractional.
 	if(r.size.width > 0.0f && !__FLRectCheckWidth(r)) {
@@ -43,7 +41,7 @@ CGRect FLRectOptimizedForViewSize(CGRect r) {
 
 FL_SHIP_ONLY_INLINE 
 CGRect FLRectOptimizedForViewLocation(CGRect r) {
-	r = FLRectIntegral(r);
+	r = FLRectMakeIntegral(r);
 	
 	// make sure the midpoint is not fractional.
 	if(r.size.width > 0.0f && !__FLRectCheckWidth(r)) {

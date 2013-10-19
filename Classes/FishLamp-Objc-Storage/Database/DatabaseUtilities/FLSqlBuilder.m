@@ -130,10 +130,10 @@
 
 - (void) appendFormat:(NSString*) format, ... {
 
-	va_list va;
-	va_start(va, format);
-	NSString *string = [[NSString alloc] initWithFormat:format arguments:va];
-	va_end(va);
+	va_list va_args;
+	va_start(va_args, format);
+	NSString *string = [[NSString alloc] initWithFormat:format arguments:va_args];
+	va_end(va_args);
 	[self appendString:string];
     FLRelease(string);
 }

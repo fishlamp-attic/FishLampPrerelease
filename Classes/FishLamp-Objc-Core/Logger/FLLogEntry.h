@@ -20,7 +20,7 @@
     NSTimeInterval _timestamp;
     FLStackTrace* _stackTrace;
     id _object;
-}
+} 
 
 + (id) logEntry;
 

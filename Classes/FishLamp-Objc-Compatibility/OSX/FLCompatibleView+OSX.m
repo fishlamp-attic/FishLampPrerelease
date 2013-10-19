@@ -11,9 +11,6 @@
 #import "FLCompatibleView+OSX.h"
 #import "FLCompatibleViewController+OSX.h"
 
-
-
-
 @implementation FLCompatibleView 
 
 //@synthesize backgroundColor = _backgroundColor;

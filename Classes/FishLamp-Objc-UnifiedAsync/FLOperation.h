@@ -27,7 +27,6 @@
 @private
 	id _identifier;
     id<FLAsyncQueue> _asyncQueue;
-    id _storageService;
     FLOperationFinisher* _finisher;
     NSUInteger _contextID;
     BOOL _cancelled;

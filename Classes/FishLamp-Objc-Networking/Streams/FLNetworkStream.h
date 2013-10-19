@@ -9,6 +9,11 @@
 
 #import "FishLampMinimum.h"
 #import "FLTimer.h"
+#import "FishLampAsync.h"
+
+//extern NSString* const FLNetworkStreamErrorDomain;
+//extern NSString* const FLNetworkStreamErrorArrayKey;
+//#define FLNetworkStreamError 1
 
 @protocol FLNetworkStreamDelegate;
 @protocol FLNetworkStreamEventHandler;
@@ -22,32 +27,44 @@ typedef enum {
 
 @interface FLNetworkStream : NSObject<FLTimerDelegate> {
 @private
+    NSError* _error;
+    BOOL _hasError;
+    BOOL _wasCancelled;
+    BOOL _open;
+
     FLTimer* _timer;
     FLNetworkStreamSecurity _streamSecurity;
     id<FLNetworkStreamEventHandler> _eventHandler;
-    BOOL _open;
-    BOOL _wasTerminated;
     NSTimeInterval _idleDuration;
     __unsafe_unretained id<FLNetworkStreamDelegate> _delegate;
 }
 
-@property (readonly, assign, nonatomic) FLNetworkStreamSecurity streamSecurity;
-
-@property (readwrite, assign) id<FLNetworkStreamDelegate> delegate;
-@property (readonly, strong) id<FLNetworkStreamEventHandler> eventHandler;
-
-@property (readonly, assign, getter=isOpen) BOOL open;
-
-@property (readonly, strong) FLTimer* timer;
-
+// ctors
 - (id) initWithStreamSecurity:(FLNetworkStreamSecurity) security;
 - (id) initWithStreamSecurity:(FLNetworkStreamSecurity) security
                  eventHandler:(id<FLNetworkStreamEventHandler>) eventHandler;
 
+// delegate
+@property (readwrite, assign) id<FLNetworkStreamDelegate> delegate;
+
+// state
+@property (readonly, assign, getter=isOpen) BOOL open;
 - (void) openStreamWithDelegate:(id<FLNetworkStreamDelegate>) delegate;
 
-- (void) terminateStream;
+// errors
+@property (readonly, strong) NSError* error;
+@property (readonly, assign) BOOL hasError;
+@property (readonly, assign) BOOL wasCancelled;
+- (void) requestCancel;
 
+// security
+@property (readonly, assign, nonatomic) FLNetworkStreamSecurity streamSecurity;
+
+// timer
+@property (readonly, strong) FLTimer* timer;
+
+// event handler (runLoop, etc)
+@property (readonly, strong) id<FLNetworkStreamEventHandler> eventHandler;
 + (Class) defaultEventHandlerClass;
 + (void) setDefaultEventHandlerClass:(Class) aClass;
 
@@ -63,7 +80,7 @@ typedef enum {
 
 - (void) networkStreamDidOpen:(FLNetworkStream*) networkStream;
 
-- (void) networkStreamDidClose:(FLNetworkStream*) networkStream;
+- (void) networkStream:(FLNetworkStream*) stream didCloseWithResult:(FLPromisedResult) result;
 
 - (void) networkStream:(FLNetworkStream*) networkStream encounteredError:(NSError*) error;
 
@@ -89,10 +106,15 @@ typedef enum {
 - (void) queueSelector:(SEL) selector withObject:(id) object;
 
 - (void) streamWillOpen:(void (^)()) completion;
-- (void) streamDidClose;
+- (void) streamDidCloseWithResult:(FLPromisedResult) result;
 
 - (NSRunLoop*) runLoop;
 - (NSString*) runLoopMode;
 
 @end
+
+
+
+
+
 

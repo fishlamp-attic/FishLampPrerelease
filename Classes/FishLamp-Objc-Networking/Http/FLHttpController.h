@@ -17,6 +17,7 @@
 @class FLHttpRequest;
 @class FLHttpUser;
 @class FLHttpRequestAuthenticator;
+@class FLServiceList;
 
 extern NSString* const FLHttpControllerDidLogoutUserNotification;
 
@@ -24,14 +25,15 @@ extern NSString* const FLHttpControllerDidLogoutUserNotification;
 //    FLDatabaseObjectStorageServiceDelegate,
 //    FLHttpRequestAuthenticatorDelegate {
 
-@interface FLHttpController : FLServiceList {
+@interface FLHttpController : FLOperationContext {
 @private
     FLHttpUser* _httpUser;
     id<FLUserService> _userService;
     id<FLStorageService> _storageService;
     FLHttpRequestAuthenticator* _httpRequestAuthenticator;
+    FLServiceList* _serviceList;
+
 //    FLNetworkStreamSecurity _streamSecurity;
-    FLOperationContext* _operationContext;
 }
 
 // settable properties

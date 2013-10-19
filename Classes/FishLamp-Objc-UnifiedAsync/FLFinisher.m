@@ -65,11 +65,6 @@
 }
 #endif
 
-- (BOOL) willFinish {
-    return self.firstPromise != nil;
-}
-
-
 - (void) willFinishWithResult:(FLPromisedResult) result {
 }
 
@@ -80,6 +75,8 @@
 
     FLRetainWithAutorelease(self);
 
+    [self willFinishWithResult:result];
+
     FLPromise* promise = self;
     while(promise) {
         [promise fufillPromiseWithResult:result];
@@ -88,7 +85,7 @@
 
     self.nextPromise = nil;
 
-    [self.delegate finisherDidFinish:self withResult:result];
+    [self didFinishWithResult:result];
 }
 
 - (void) setFinished {

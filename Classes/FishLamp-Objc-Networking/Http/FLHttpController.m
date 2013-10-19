@@ -9,7 +9,6 @@
 
 #import "FLHttpController.h"
 #import "FLReachableNetwork.h" 
-#import "FLDatabaseStorageService.h"
 #import "FLAppInfo.h"
 #import "FLSynchronousOperation.h"
 #import "FLOperationContext.h"
@@ -19,9 +18,6 @@
 
 #import "FLStorageService.h"
 #import "FLUserService.h"
-
-// TODO (MWF): removing this coupling
-#import "FLDatabaseStorageService.h"
 
 #import "FLHttpAuthenticatorAsyncQueue.h"
 

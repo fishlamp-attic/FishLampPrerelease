@@ -50,11 +50,3 @@ typedef NSUInteger UIViewAnimationOptions;
 @end
 
 
-
-//@interface UIView ()
-//@property (readwrite, assign, nonatomic) UIViewController* viewController;
-//@end
-
-
-#endif
-

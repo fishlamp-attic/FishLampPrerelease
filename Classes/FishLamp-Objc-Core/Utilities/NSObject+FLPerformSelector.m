@@ -29,10 +29,10 @@ void FLConfirmNoReturnObject(id obj) {
 
 
 - (void) performSelector_fl:(SEL) selector
-                argCount:(int) argCount
-              withObject:(id) object1
-              withObject:(id) object2
-              withObject:(id) object3 {
+                   argCount:(int) argCount
+                 withObject:(id) object1
+                 withObject:(id) object2
+                 withObject:(id) object3 {
 
     FLAssertWithComment(FLArgumentCountForClassSelector([self class], selector) == argCount, @"@selector(%@) arg count is %d, should be: %d", NSStringFromSelector(selector), argCount, FLArgumentCountForClassSelector([self class], selector));
 
@@ -59,9 +59,9 @@ void FLConfirmNoReturnObject(id obj) {
     }
 }
 
-- (void) performSelector_fl:(SEL) selector 
-           withArguments:(id __strong *) objects
-         argumumentCount:(NSUInteger) argCount {
+- (void) performSelector_fl:(SEL) selector
+              withArguments:(id __strong *) objects
+            argumumentCount:(NSUInteger) argCount {
 
     FLConfirmIsNotNil(selector);
     
@@ -78,6 +78,10 @@ void FLConfirmNoReturnObject(id obj) {
             case 2: 
                 [self performSelector:selector withObject:objects[0] withObject:objects[1]];
             break;
+
+            default:
+                FLAssertionFailedWithComment(@"only args 0 - 2 supported");
+                break;
         }
         return;
     }

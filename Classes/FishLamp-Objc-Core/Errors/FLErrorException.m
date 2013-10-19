@@ -21,7 +21,7 @@ NSString* const FLErrorExceptionName = @"error";
 
 - (id) initWithException:(NSException*) exception {
 	return [super initWithDomain:FLErrorDomain code:FLUnknownExceptionErrorCode
-        userInfo:[NSDictionary dictionaryWithObject:exception forKey:FLErrorExceptionName]];
+                        userInfo:[NSDictionary dictionaryWithObject:exception forKey:FLErrorExceptionName]];
 }
 
 + (id) unknownExceptionError:(NSException*) exception {
@@ -50,11 +50,10 @@ NSString* const FLErrorExceptionName = @"error";
         if(aUserInfo) {
             NSMutableDictionary* newUserInfo = FLMutableCopyWithAutorelease(aUserInfo);
             [newUserInfo setObject:error forKey:NSUnderlyingErrorKey];
-            aUserInfo = newUserInfo;
+            return [self initWithName:aName reason:aReason userInfo:newUserInfo];
         }
-        else {
-            aUserInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
-        }
+
+        return [self initWithName:aName reason:aReason userInfo:[NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey]];
     }
 
     return [self initWithName:aName reason:aReason userInfo:aUserInfo];

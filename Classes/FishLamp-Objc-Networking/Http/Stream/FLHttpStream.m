@@ -15,6 +15,35 @@
 @property (readonly, strong, nonatomic) FLHttpMessage* requestHeaders;
 @end
 
+@implementation FLHttpStreamSuccessfulResult
+
+@synthesize responseHttpHeaders = _responseHttpHeaders;
+@synthesize responseData = _responseData;
+
+- (id) initWithResponseHeaders:(FLHttpMessage*) header responseData:(id<FLInputSink>) inputSink {
+	self = [super init];
+	if(self) {
+		_responseHttpHeaders = FLRetain(header);
+        _responseData = FLRetain(inputSink);
+	}
+	return self;
+}
+
++ (id) httpStreamSuccessfulResult:(FLHttpMessage*) header responseData:(id<FLInputSink>) inputSink {
+    return FLAutorelease([[[self class] alloc] initWithResponseHeaders:header responseData:inputSink]);
+}
+
+#if FL_MRC
+- (void)dealloc {
+	[_responseHttpHeaders release];
+    [_responseData release];
+    [super dealloc];
+}
+#endif
+
+@end
+
+
 @implementation FLHttpStream
 @synthesize responseHeaders = _responseHeaders;
 @synthesize requestHeaders = _requestHeaders;
@@ -22,10 +51,6 @@
 - (id) init {
     return [self initWithHttpMessage:nil withBodyStream:nil streamSecurity:FLNetworkStreamSecurityNone inputSink:nil];
 }
-
-//- (id) initWithHttpMessage:(FLHttpMessage*) request {
-//    return [self initWithHttpMessage:request withBodyStream:nil streamSecurity:FLNetworkStreamSecurityNone];
-//}
 
 - (id) initWithHttpMessage:(FLHttpMessage*) request 
             withBodyStream:(NSInputStream*) bodyStream             
@@ -65,10 +90,10 @@
     return CFReadStreamCreateForHTTPRequest(kCFAllocatorDefault, _requestHeaders.messageRef);
 }
 
-+ (id) httpStream:(FLHttpMessage*) request 
++ (id) httpStream:(FLHttpMessage*) request
    withBodyStream:(NSInputStream*) bodyStream
    streamSecurity:(FLNetworkStreamSecurity) security
-   inputSink:(id<FLInputSink>) inputSink {
+        inputSink:(id<FLInputSink>) inputSink {
     
     return FLAutorelease([[[self class] alloc] initWithHttpMessage:request 
                                                     withBodyStream:bodyStream 
@@ -101,6 +126,7 @@
 - (void) encounteredError:(NSError*) error {
     [self readResponseHeaders];
     [super encounteredError:error];
+    [self closeStream];
 }
 
 - (void) encounteredEnd {
@@ -123,8 +149,8 @@
     return 0;
 }
 
-- (void) willCloseWithResponseData:(id<FLInputSink>) responseData {
-    FLPerformSelector3(self.delegate, @selector(httpStream:willCloseWithResponseHeaders:responseData:), self, [self readResponseHeaders], responseData);
+- (FLPromisedResult) createSuccessfulResult:(id<FLInputSink>) responseData {
+    return [FLHttpStreamSuccessfulResult httpStreamSuccessfulResult:[self readResponseHeaders] responseData:responseData];
 }
 
 @end

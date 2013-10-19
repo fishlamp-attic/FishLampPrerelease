@@ -137,9 +137,8 @@ FLSynthesizeDictionaryGetterProperty(stackTrace, FLStackTrace*, FLStackTraceKey,
 
         return FLAutorelease([[[error class] alloc] initWithDomain:error.domain code:error.code userInfo:userInfo]);
     }
-    else {
-        return FLRetainWithAutorelease(error);
-    }
+
+    return FLRetainWithAutorelease(error);
 }
 
 - (NSException*) createContainingException {

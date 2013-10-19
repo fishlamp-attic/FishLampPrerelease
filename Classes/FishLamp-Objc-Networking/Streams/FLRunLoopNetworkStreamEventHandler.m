@@ -54,17 +54,6 @@
 }
 
 - (void) queueSelector:(SEL) selector {
-//    [self queueBlock:^{ 
-//    
-//        @try { 
-//            [self performSelector:selector];
-//        }
-//        @catch(NSException* ex) {
-//            _stream.wasTerminated = YES;
-//            FLLog(@"stream encountered secondary error: %@", [ex.error localizedDescription]);
-//        }
-//    }];
-//    
     FLAssertNotNil(self.runLoop);
     
     if([NSThread currentThread] == self.thread) {
@@ -76,10 +65,6 @@
 }
 
 #pragma GCC diagnostic pop
-
-//- (void) queueBlock:(dispatch_block_t) block {
-//    [self.asyncQueue queueBlock:block completion:nil];
-//}
 
 - (void) handleStreamEvent:(CFStreamEventType) eventType {
 
@@ -96,7 +81,6 @@
         break;
 
         case kCFStreamEventErrorOccurred:  
-            _stream.wasTerminated = YES;
             [self queueSelector:@selector(encounteredError:) withObject:[_stream streamError]];
         break;
         
@@ -141,12 +125,12 @@
         }
         
         self.runLoop = nil;
-    
+        self.thread = nil;
     });
     
 }
 
-- (void) streamDidClose {
+- (void) streamDidCloseWithResult:(FLPromisedResult) result {
 }
 
 - (NSString*) runLoopMode {

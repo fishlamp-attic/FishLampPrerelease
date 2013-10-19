@@ -46,13 +46,13 @@ const char* FLParsePropertyType(FLPropertyAttributes_t* attributes, const char* 
 
     // i don't trust checking for trailing 0
     while(str < end) {
-        char c = *str++;
+        char theChar = *str++;
 
-        if(c == ',') {
+        if(theChar == ',') {
             break;
         }
 
-        switch(c) {
+        switch(theChar) {
         // parse sub strings
         
             case 'T':
@@ -225,7 +225,7 @@ const char* FLParsePropertyType(FLPropertyAttributes_t* attributes, const char* 
             }
             
             default:
-                FLAssertFailedWithComment(@"unhandled type: %c", c);
+                FLAssertFailedWithComment(@"unhandled type: %c", theChar);
             break;
         }
     }
@@ -236,9 +236,9 @@ const char* FLParsePropertyType(FLPropertyAttributes_t* attributes, const char* 
 const char* FLParseTrailingAttributes(FLPropertyAttributes_t* attributes, const char* str, const char* end) {
     // i don't trust checking for trailing 0
     while(str < end) {
-        char c = *str++;
+        char theChar = *str++;
                 
-        switch(c) {
+        switch(theChar) {
         // parse sub strings
 
             case 'C':       
@@ -294,7 +294,7 @@ const char* FLParseTrailingAttributes(FLPropertyAttributes_t* attributes, const 
             break;
                 
             default:
-                FLAssertFailedWithComment(@"unhandled char: %c", c);
+                FLAssertFailedWithComment(@"unhandled char: %c", theChar);
             break;
         }
     }
@@ -323,7 +323,7 @@ FLPropertyAttributes_t FLPropertyAttributesParse(objc_property_t property) {
        
         NSUInteger len = strlen(encoded);
         
-        const char* end = (encoded + len);
+        const char* end = encoded + len;
         
         const char* walker = FLParsePropertyType(&attributes, encoded, end);
         

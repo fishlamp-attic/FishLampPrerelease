@@ -75,8 +75,11 @@ BOOL FLPerformSelectorOnMainThread0(id target, SEL selector) {
             [target performSelector:selector];
         }
         else {
+
+            __block id theTarget = FLRetain(target);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [target performSelector:selector];
+                [theTarget performSelector:selector];
+                FLReleaseWithNil(theTarget);
             });
         }
         
@@ -91,8 +94,12 @@ BOOL FLPerformSelectorOnMainThread1(id target, SEL selector, id object) {
             [target performSelector:selector withObject:object];
         }
         else {
+            __block id theTarget = FLRetain(target);
+            __block id theObject = FLRetain(object);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [target performSelector:selector withObject:object];
+                [target performSelector:selector withObject:theObject];
+                FLReleaseWithNil(theTarget);
+                FLReleaseWithNil(theObject);
             });
         }
         return YES;
@@ -106,8 +113,14 @@ BOOL FLPerformSelectorOnMainThread2(id target, SEL selector, id object1, id obje
             [target performSelector:selector withObject:object1 withObject:object2];
         }
         else {
+            __block id theTarget = FLRetain(target);
+            __block id theObject1 = FLRetain(object1);
+            __block id theObject2 = FLRetain(object2);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [target performSelector:selector withObject:object1 withObject:object2];
+                [theTarget performSelector:selector withObject:theObject1 withObject:theObject2];
+                FLReleaseWithNil(theTarget);
+                FLReleaseWithNil(theObject1);
+                FLReleaseWithNil(theObject2);
             });
         }
         return YES;
@@ -121,8 +134,16 @@ BOOL FLPerformSelectorOnMainThread3(id target, SEL selector, id object1, id obje
             [target performSelector_fl:selector withObject:object1 withObject:object2 withObject:object3];
         }
         else {
+            __block id theTarget = FLRetain(target);
+            __block id theObject1 = FLRetain(object1);
+            __block id theObject2 = FLRetain(object2);
+            __block id theObject3 = FLRetain(object3);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [target performSelector_fl:selector withObject:object1 withObject:object2 withObject:object3];
+                [theTarget performSelector_fl:selector withObject:theObject1 withObject:theObject2 withObject:theObject3];
+                FLReleaseWithNil(theTarget);
+                FLReleaseWithNil(theObject1);
+                FLReleaseWithNil(theObject2);
+                FLReleaseWithNil(theObject3);
             });
         }
         return YES;
@@ -136,34 +157,23 @@ BOOL FLPerformSelectorOnMainThread4(id target, SEL selector, id object1, id obje
             [target performSelector_fl:selector withObject:object1 withObject:object2 withObject:object3 withObject:object4];
         }
         else {
+            __block id theTarget = FLRetain(target);
+            __block id theObject1 = FLRetain(object1);
+            __block id theObject2 = FLRetain(object2);
+            __block id theObject3 = FLRetain(object3);
+            __block id theObject4 = FLRetain(object4);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [target performSelector_fl:selector withObject:object1 withObject:object2 withObject:object3 withObject:object4];
+                [theTarget performSelector_fl:selector withObject:theObject1 withObject:theObject2 withObject:theObject3 withObject:theObject4];
+                FLReleaseWithNil(theTarget);
+                FLReleaseWithNil(theObject1);
+                FLReleaseWithNil(theObject2);
+                FLReleaseWithNil(theObject3);
+                FLReleaseWithNil(theObject4);
             });
         }
         return YES;
     }
     return NO;
 }
-
-// this is fatallay flawed - could be sending an array f
-//extern BOOL FLPerformSelectorOnMainThread(id target, SEL selector, id __strong * arguments, int argCount);
-
-//BOOL FLPerformSelectorOnMainThread(id target, SEL selector, NSArray* arguments) {
-//
-//     FLAssertWithComment(FLArgumentCountForClassSelector([target class], selector) == argCount, @"@selector(%@) arg count is %d, should be: %d", NSStringFromSelector(selector), argCount, FLArgumentCountForClassSelector([target class], selector));
-//    
-//    if([target respondsToSelector:selector]) {
-//        if([NSThread currentThread] == [NSThread mainThread]) {
-//            [target performSelector:selector withArguments:arguments argumumentCount:argCount];
-//        }
-//        else {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [target performSelector:selector withArguments:arguments argumumentCount:argCount];
-//            });
-//        }
-//        return YES;
-//    }
-//    return NO;
-//}
 
 #pragma GCC diagnostic pop

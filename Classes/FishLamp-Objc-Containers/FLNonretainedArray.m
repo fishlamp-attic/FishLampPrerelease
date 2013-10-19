@@ -70,23 +70,23 @@ static CFArrayCallBacks s_callbacks = {
 }
 
 #define GetObjectsAndCountFromVaList(objects, count) \
-    va_list va; \
-	va_start(va, firstObj); \
+    va_list va_args; \
+	va_start(va_args, firstObj); \
     id arg = firstObj; \
     while(arg) { \
         ++count; \
-        arg = va_arg(va, id); \
+        arg = va_arg(va_args, id); \
     } \
-	va_end(va); \
+	va_end(va_args); \
     \
     objects = malloc(count * sizeof(id)); \
     \
-    va_start(va, firstObj); \
+    va_start(va_args, firstObj); \
     objects[0] = firstObj; \
     for(int i = 1; i < count; i++) { \
-        objects[i] = va_arg(va, id); \
+        objects[i] = va_arg(va_args, id); \
     } \
-	va_end(va)
+	va_end(va_args)
 
 
 - (id)initWithObjects:(id)firstObj, ... {

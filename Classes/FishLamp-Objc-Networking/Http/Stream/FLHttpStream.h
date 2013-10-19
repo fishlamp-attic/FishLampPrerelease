@@ -35,11 +35,14 @@
 
 @end
 
-@protocol FLHttpStreamDelegate <FLReadStreamDelegate>
-- (void) httpStream:(FLHttpStream*) stream 
-willCloseWithResponseHeaders:(FLHttpMessage*) responseHeaders 
-       responseData:(id<FLInputSink>) responseData;
+
+@interface FLHttpStreamSuccessfulResult : NSObject {
+@private
+    FLHttpMessage* _responseHttpHeaders;
+    id<FLInputSink> _responseData;
+}
+@property (readonly, strong, nonatomic) FLHttpMessage* responseHttpHeaders;
+@property (readonly, strong, nonatomic) id<FLInputSink> responseData;
+
 @end
-
-
 

@@ -24,6 +24,8 @@ NSString* const FLWorkerContextOpened = @"FLWorkerContextOpened";
 
 #define OperationInQueue(op) op
 
+typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
+
 @interface FLOperationContext ()
 @property (readwrite, assign, getter=isContextOpen) BOOL contextOpen; 
 @property (readwrite, assign) NSUInteger contextID;
@@ -140,7 +142,6 @@ NSString* const FLWorkerContextOpened = @"FLWorkerContextOpened";
             [operation.context removeOperation:operation];
         }
         [operation wasAddedToContext:self];
-        [operation.observers addObserver:self.nonretained_fl];
     }
 
     [self didAddOperation:operation];
@@ -165,7 +166,6 @@ NSString* const FLWorkerContextOpened = @"FLWorkerContextOpened";
         [_operations removeObject:operation];
         if(operation.context == self) {
             [operation wasRemovedFromContext:self];
-            [operation.observers removeObserver:self];
         }
     }
     

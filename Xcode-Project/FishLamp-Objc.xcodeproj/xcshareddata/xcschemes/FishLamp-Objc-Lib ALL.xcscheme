@@ -85,7 +85,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27048B70161CB58600C38ADA"
-               BuildableName = "libFishLamp-Objc-OSX-32-MRC.a"
+               BuildableName = "lib.a"
                BlueprintName = "FishLamp-Objc-OSX-32-MRC"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
@@ -99,7 +99,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "273148B9165328400027850D"
-               BuildableName = "libFishLamp-Objc-OSX-64-ARC.a"
+               BuildableName = "lib.a"
                BlueprintName = "FishLamp-Objc-OSX-64-ARC"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
@@ -113,7 +113,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27A43AC315CDCCCB001CB13E"
-               BuildableName = "libFishLamp-Objc-OSX-64-MRC.a"
+               BuildableName = "lib.a"
                BlueprintName = "FishLamp-Objc-OSX-64-MRC"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
@@ -127,7 +127,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27CBBE2916768BA600753D0A"
-               BuildableName = "libFishLamp-Objc-OSX-Universal-MRC.a"
+               BuildableName = "lib.a"
                BlueprintName = "FishLamp-Objc-OSX-Universal-MRC"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
@@ -141,7 +141,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27A43AB315CDCC89001CB13E"
-               BuildableName = "libFishLamp-Objc-iOS-ARC.a"
+               BuildableName = "lib.a"
                BlueprintName = "FishLamp-Objc-iOS-ARC"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>

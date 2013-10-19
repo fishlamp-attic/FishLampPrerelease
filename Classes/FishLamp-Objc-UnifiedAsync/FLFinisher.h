@@ -16,8 +16,6 @@
 
 @interface FLFinisher : FLPromise {
 @private
-    __unsafe_unretained id<FLFinisherDelegate> _delegate;
-
 #if DEBUG
     NSTimeInterval _birth;
 #endif
@@ -37,11 +35,9 @@
 - (void) setFinished;
 - (void) setFinishedWithCancel;
 
-@end
-
-@protocol FLFinisherDelegate <NSObject>
-- (void) finisherDidFinish:(FLFinisher*) finisher
-                withResult:(FLPromisedResult) resultOrNil;
+// oprtional overrides
+- (void) willFinishWithResult:(FLPromisedResult) result;
+- (void) didFinishWithResult:(FLPromisedResult) result;
 @end
 
 @interface FLForegroundFinisher : FLFinisher

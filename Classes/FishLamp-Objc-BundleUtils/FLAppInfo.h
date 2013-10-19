@@ -28,8 +28,5 @@
             appName:(NSString*) appName
             version:(NSString*) version;
 
-+ (NSString*) appSpecificKey:(NSString*) key;
-+ (BOOL) isAppSpecificKey:(NSString*) key;
-
 @end
 

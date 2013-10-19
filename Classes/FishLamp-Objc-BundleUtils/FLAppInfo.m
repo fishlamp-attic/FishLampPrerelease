@@ -87,12 +87,6 @@ static NSDictionary* s_infoDictionary = nil;
     [self setInfoDictionary:dict];
 }            
 
-+ (NSString*) appSpecificKey:(NSString*) key {
-    return [key hasPrefix:[self bundleIdentifier]] ? key : [NSString stringWithFormat:@"%@.%@", [self bundleIdentifier], key];
-}
-+ (BOOL) isAppSpecificKey:(NSString*) key {
-    return [key hasPrefix:[self bundleIdentifier]];
-}
 
 
 @end

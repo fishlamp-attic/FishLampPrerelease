@@ -12,6 +12,11 @@
 const FLVersion FLVersionZero =  { 0, 0, 0, 0 };
 
 FLVersion FLVersionFromString(NSString* versionString) {
+
+    if(!versionString) {
+        return FLVersionZero;
+    }
+
 	FLVersion version = FLVersionZero;
 	
     NSArray* split = [versionString componentsSeparatedByString:@"."];

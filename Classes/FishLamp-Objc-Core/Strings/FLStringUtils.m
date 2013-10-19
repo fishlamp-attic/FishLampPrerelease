@@ -16,11 +16,11 @@
 
 NSString* FLStringWithFormatOrNil(NSString* format, ...) {
     if(format) {
-        va_list va;
-        va_start(va, format);
+        va_list va_args;
+        va_start(va_args, format);
         
-        NSString* string = FLAutorelease([[NSString alloc] initWithFormat:[format description] arguments:va]);
-        va_end(va);
+        NSString* string = FLAutorelease([[NSString alloc] initWithFormat:[format description] arguments:va_args]);
+        va_end(va_args);
         return string;
     }
     
@@ -45,10 +45,10 @@ NSString* FLStringWithFormatOrNil(NSString* format, ...) {
 
 + (NSString*) stringWithFormatOrNil_fl:(NSString*) format, ... {
     if(format) {
-        va_list va;
-        va_start(va, format);
-        NSString* string = [[NSString alloc] initWithFormat:format arguments:va];
-        va_end(va);
+        va_list va_args;
+        va_start(va_args, format);
+        NSString* string = [[NSString alloc] initWithFormat:format arguments:va_args];
+        va_end(va_args);
         return FLAutorelease(string);
     }
     
@@ -114,19 +114,19 @@ NSString* FLStringWithFormatOrNil(NSString* format, ...) {
 - (NSString*) stringWithRemovingQuotes_fl {
     
     if(self.length >= 2) {
-        NSRange r;
-        r.length = self.length;
-        r.location = 0;
+        NSRange range;
+        range.length = self.length;
+        range.location = 0;
         
-        unichar f = [self characterAtIndex:0];
-        unichar l = [self characterAtIndex:self.length - 1];
-        if((f == '\"' && l == '\"') ||
-           (f == '\'' && l == '\'') ) {
-           r.length -= 2;
-           ++r.location;
+        unichar first = [self characterAtIndex:0];
+        unichar last = [self characterAtIndex:self.length - 1];
+        if((first == '\"' && last == '\"') ||
+           (first == '\'' && last == '\'') ) {
+           range.length -= 2;
+           ++range.location;
         }
 
-        return [self substringWithRange:r];
+        return [self substringWithRange:range];
     }
     
     return self;

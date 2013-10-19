@@ -2,11 +2,11 @@
 //  FLObjectProxy.h
 //  FishLampCore
 //
-//  Created by Mike Fullerton on 9/3/13.
+//  Created by Mike Fullerton on 6/24/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "FLCoreRequired.h"
 
 /**
  *  A object proxy the protocol for defining objects that represents represents another object.
@@ -21,3 +21,4 @@
 - (id) representedObject;
 
 @end
+

@@ -1,13 +1,14 @@
 #ifdef __INLINES__
 
-FL_SHIP_ONLY_INLINE 
-BOOL FLRectIsIntegral(CGRect r) {
-	return	FLIsIntegralValue(r.origin.x) && 
-			FLIsIntegralValue(r.origin.y) && 
-			FLIsIntegralValue(r.size.width) &&
-			FLIsIntegralValue(r.size.height);
-}
-
+    #define FLRectMake                  CGRectMake
+    #define FLRectGetMidX               CGRectGetMidX
+    #define FLRectGetMidY               CGRectGetMidY
+    #define FLRectEqualToRect           CGRectEqualToRect
+    #define FLRectIsTaller(__lhs__, __rhs__) ((__lhs__).size.height > (__rhs___).size.height)
+    #define FLRectIsWider(__lhs__, __rhs__) ((__lhs__).size.width > (__rhs__).size.width)
+    #define FLRectGetLeft(__rect__) ((__rect__)).origin.x
+    #define FLRectGetTop(__rect__) ((__rect__)).origin.y
+    #define FLRectGetTopLeft(__rect__) (__rect__).origin
 
 
 FL_SHIP_ONLY_INLINE 

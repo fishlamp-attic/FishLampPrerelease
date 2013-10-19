@@ -8,15 +8,13 @@
 //
 
 #import "FishLampMinimum.h"
-#import "FLFinisher.h"
-#import "FLAsyncQueueDecorator.h"
+#import "FLAsyncBlockTypes.h"
+#import "FLPromisedResult.h"
 
 @class FLOperation;
-@class FLFifoAsyncQueue;
+@class FLPromise;
 
-//typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
-
-@interface FLOperationContext : FLObservable {
+@interface FLOperationContext : NSObject {
 @private
     NSMutableSet* _operations;
     NSUInteger _contextID;

@@ -17,20 +17,22 @@
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation {
     
-    id object = [self representedObject];
+    __block id object = [self representedObject];
     FLAssertNotNil(object);
     
     if(![NSThread isMainThread] &&
         [object respondsToSelector:[anInvocation selector]]) {
 
-        [anInvocation retainArguments];
+        __block NSInvocation* theInvocation = FLRetainWithAutorelease(anInvocation);
+
+        FLRetain(theInvocation); // for the block in
+        [theInvocation retainArguments];
+
+        FLRetain(object);
         dispatch_async(dispatch_get_main_queue(), ^{
-            @try {
-                [anInvocation invokeWithTarget:object];
-            }
-            @catch(NSException* ex) {
-//                FLLog([ex description]);
-            }
+            [theInvocation invokeWithTarget:object];
+            FLReleaseWithNil(theInvocation);
+            FLReleaseWithNil(object);
         });
     }
     else {

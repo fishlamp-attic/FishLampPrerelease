@@ -51,6 +51,7 @@
 @synthesize streamSecurity = _streamSecurity;
 @synthesize byteCount = _byteCount;
 @synthesize retryHandler = _retryHandler;
+@synthesize readStreamByteReader = _readStreamByteReader;
 
 #if TRACE
 static int s_counter = 0;
@@ -59,6 +60,7 @@ static int s_counter = 0;
 - (id) init {
     return [self initWithRequestURL:nil httpMethod:nil];
 }
+
 -(id) initWithRequestURL:(NSURL*) url httpMethod:(NSString*) httpMethod {
 
     FLAssertNotNil(url);
@@ -170,7 +172,11 @@ static int s_counter = 0;
                                  withBodyStream:self.requestBody.bodyStream 
                                  streamSecurity:_streamSecurity
                                       inputSink:self.inputSink];
-    
+
+    if(self.readStreamByteReader) {
+        self.httpStream.byteReader = self.readStreamByteReader;
+    }
+
     [self.httpStream openStreamWithDelegate:self];
 }
 
@@ -232,8 +238,8 @@ static int s_counter = 0;
 
 - (void) requestCancel {
     [super requestCancel];
-    [self.httpStream terminateStream];
-    [self finishRequestWithResult:[NSError cancelError]];
+    [self.httpStream requestCancel];
+//    [self finishRequestWithResult:[NSError cancelError]];
 }
 
 - (BOOL) tryRetry {
@@ -245,79 +251,84 @@ static int s_counter = 0;
 
 - (void) networkStream:(FLHttpStream*) readStream 
       encounteredError:(NSError*) error {
-    [self.httpStream terminateStream];
-    
-    if( [error isCancelError] || self.wasCancelled || ![self tryRetry]) {       
-        [self finishRequestWithResult:error];
-    }
-    
-}
 
-- (void) networkStreamDidClose:(FLHttpStream*) stream {
+//    [self.httpStream requestCancel];
 
+//    if( [error isCancelError] || self.wasCancelled || ![self tryRetry]) {       
+//        [self finishRequestWithResult:error];
+//    }
+
+    FLLog(@"got error: %@", [error description])
 }
 
 - (NSTimeInterval) networkStreamGetTimeoutInterval:(FLNetworkStream*) stream {
     return self.timeoutInterval;
 }
 
-- (void) httpStream:(FLHttpStream*) stream 
-willCloseWithResponseHeaders:(FLHttpMessage*) responseHeaders 
-       responseData:(id<FLInputSink>) responseData {
-       
-    FLHttpResponse* httpResponse = [FLHttpResponse httpResponse:[[self requestHeaders] requestURL]
-                                                    headers:responseHeaders 
-                                             redirectedFrom:self.previousResponse
-                                                  inputSink:responseData];
-    
-    httpResponse.byteCount = self.byteCount;
-    
-    NSError* responseError = nil;
-    @try {
-        [self throwErrorIfResponseIsError:httpResponse];
-        FLThrowIfError(httpResponse.error);
-    }
-    @catch(NSException* ex) {
-        responseError = FLRetainWithAutorelease(ex.error);
-    }
-    
-    if(responseData.isOpen) {
-        [responseData closeSinkWithCommit:responseError == nil];
-    }
-    
-    if(responseError) {
-        [self finishRequestWithResult:responseError];
+- (void) networkStream:(FLHttpStream*) stream didCloseWithResult:(FLPromisedResult) result {
+
+    if([result isError]) {
+        if( self.wasCancelled || ![self tryRetry]) {
+            [self finishRequestWithResult:result];
+        }
     }
     else {
+        FLHttpStreamSuccessfulResult* httpResult = [FLHttpStreamSuccessfulResult fromPromisedResult:result];
 
-        // FIXME: there was an issue here with progress getting fouled up on redirects.
-        //    [self connectionGotTimerEvent];
-
-        BOOL redirect = httpResponse.wantsRedirect;
-        if(redirect) {
-            NSURL* redirectURL = httpResponse.redirectURL;
-            redirect = [self shouldRedirectToURL:redirectURL];
-
-            if(redirect) {
-                self.previousResponse = httpResponse;
-                [self openAuthenticatedStreamWithURL:redirectURL];
-            }
+        FLHttpResponse* httpResponse = [FLHttpResponse httpResponse:[[self requestHeaders] requestURL]
+                                                        headers:httpResult.responseHttpHeaders
+                                                 redirectedFrom:self.previousResponse
+                                                      inputSink:httpResult.responseData];
+        
+        httpResponse.byteCount = self.byteCount;
+        
+        NSError* responseError = nil;
+        @try {
+            [self throwErrorIfResponseIsError:httpResponse];
+            FLThrowIfError(httpResponse.error);
         }
+        @catch(NSException* ex) {
+            responseError = FLRetainWithAutorelease(ex.error);
+        }
+        
+        if(httpResult.responseData.isOpen) {
+            [httpResult.responseData closeSinkWithCommit:responseError == nil];
+        }
+        
+        if(responseError) {
+            [self finishRequestWithResult:responseError];
+        }
+        else {
 
-        if(!redirect) {
-            id finalResult = nil;
-            @try {
-                finalResult = [self convertResponseToPromisedResult:httpResponse];
-            }
-            @catch(NSException* ex) {
-                finalResult = ex.error;
+            // FIXME: there was an issue here with progress getting fouled up on redirects.
+            //    [self connectionGotTimerEvent];
+
+            BOOL redirect = httpResponse.wantsRedirect;
+            if(redirect) {
+                NSURL* redirectURL = httpResponse.redirectURL;
+                redirect = [self shouldRedirectToURL:redirectURL];
+
+                if(redirect) {
+                    self.previousResponse = httpResponse;
+                    [self openAuthenticatedStreamWithURL:redirectURL];
+                }
             }
 
-            if(!finalResult) {
-                finalResult =  httpResponse;
+            if(!redirect) {
+                id finalResult = nil;
+                @try {
+                    finalResult = [self convertResponseToPromisedResult:httpResponse];
+                }
+                @catch(NSException* ex) {
+                    finalResult = ex.error;
+                }
+
+                if(!finalResult) {
+                    finalResult =  httpResponse;
+                }
+        
+                [self finishRequestWithResult:finalResult];
             }
-    
-            [self finishRequestWithResult:finalResult];
         }
     }
 }
