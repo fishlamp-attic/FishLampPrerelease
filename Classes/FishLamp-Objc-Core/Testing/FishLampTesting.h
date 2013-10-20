@@ -25,3 +25,6 @@
 #import "FLTestLoggingManager.h"
 
 #import "FLTestAssertions.h"
+
+// utils
+#import "FLTestable+Utils.h"

@@ -46,7 +46,8 @@
 - (void) appendStringFormatter:(id<FLStringFormatter>) stringBuilder {
     FLAssert(_stack.count > 0);
     
-    [self.openedStringBuilder appendStringFormatter:stringBuilder];
+    [self.openedStringBuilder appendStringFormatter:stringBuilder
+                                   withPreprocessor:[FLStringFormatterLineProprocessor instance]];
 }
 
 - (void) openStringBuilder:(id<FLStringFormatter>) stringBuilder {

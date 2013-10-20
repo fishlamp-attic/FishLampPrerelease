@@ -10,8 +10,9 @@
 #import "FishLampMinimum.h"
 
 #import "FLTestable.h"
+#import "FLCoreFrameworkTest.h"
 
-@interface FLBitFlagTests : FLTestable {
+@interface FLBitFlagTests : FLCoreFrameworkTest {
 }
 
 @end

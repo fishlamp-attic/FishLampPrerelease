@@ -8,7 +8,12 @@
 //
 
 #import "FishLampMinimum.h"
+#import "FLStringFormatterTests.h"
 
-@interface FLStringTests : FLTestable
+@interface FLPrettyStringTests : FLStringFormatterTests
+
+@end
+
+@interface FLPrettyAttributedStringTests : FLStringFormatterTests
 
 @end

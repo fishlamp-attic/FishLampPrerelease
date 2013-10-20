@@ -8,8 +8,9 @@
 //
 
 #import "FLTestable.h"
+#import "FLCoreFrameworkTest.h"
 
-@interface FLErrorTests : FLTestable
+@interface FLErrorTests : FLCoreFrameworkTest
 
 
 @end

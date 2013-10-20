@@ -7,10 +7,7 @@
 //
 
 #import "FLTestable.h"
+#import "FLCoreFrameworkTest.h"
 
-#if TESTS
-
-@interface FLOwnershipTests : FLTestable
+@interface FLOwnershipTests : FLCoreFrameworkTest
 @end
-
-#endif

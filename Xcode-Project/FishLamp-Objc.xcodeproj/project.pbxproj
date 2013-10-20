@@ -557,11 +557,6 @@
 		2767DA8418132B1B001EF21C /* FLTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D61118132B1A001EF21C /* FLTestGroup.m */; };
 		2767DA8518132B1B001EF21C /* FLTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D61118132B1A001EF21C /* FLTestGroup.m */; };
 		2767DA8618132B1B001EF21C /* FLTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D61118132B1A001EF21C /* FLTestGroup.m */; };
-		2767DA8718132B1B001EF21C /* FLTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D61318132B1A001EF21C /* FLTesting.m */; };
-		2767DA8818132B1B001EF21C /* FLTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D61318132B1A001EF21C /* FLTesting.m */; };
-		2767DA8918132B1B001EF21C /* FLTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D61318132B1A001EF21C /* FLTesting.m */; };
-		2767DA8A18132B1B001EF21C /* FLTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D61318132B1A001EF21C /* FLTesting.m */; };
-		2767DA8B18132B1B001EF21C /* FLTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D61318132B1A001EF21C /* FLTesting.m */; };
 		2767DA8C18132B1B001EF21C /* FLTestLoggingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D61518132B1A001EF21C /* FLTestLoggingManager.m */; };
 		2767DA8D18132B1B001EF21C /* FLTestLoggingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D61518132B1A001EF21C /* FLTestLoggingManager.m */; };
 		2767DA8E18132B1B001EF21C /* FLTestLoggingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D61518132B1A001EF21C /* FLTestLoggingManager.m */; };
@@ -1814,11 +1809,11 @@
 		2767E05D18134B7C001EF21C /* FLOwnershipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E04418134B7C001EF21C /* FLOwnershipTests.m */; };
 		2767E05E18134B7C001EF21C /* FLOwnershipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E04418134B7C001EF21C /* FLOwnershipTests.m */; };
 		2767E05F18134B7C001EF21C /* FLOwnershipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E04418134B7C001EF21C /* FLOwnershipTests.m */; };
-		2767E06018134B7C001EF21C /* FLStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E04618134B7C001EF21C /* FLStringTests.m */; };
-		2767E06118134B7C001EF21C /* FLStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E04618134B7C001EF21C /* FLStringTests.m */; };
-		2767E06218134B7C001EF21C /* FLStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E04618134B7C001EF21C /* FLStringTests.m */; };
-		2767E06318134B7C001EF21C /* FLStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E04618134B7C001EF21C /* FLStringTests.m */; };
-		2767E06418134B7C001EF21C /* FLStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E04618134B7C001EF21C /* FLStringTests.m */; };
+		2767E06018134B7C001EF21C /* FLPrettyStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E04618134B7C001EF21C /* FLPrettyStringTests.m */; };
+		2767E06118134B7C001EF21C /* FLPrettyStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E04618134B7C001EF21C /* FLPrettyStringTests.m */; };
+		2767E06218134B7C001EF21C /* FLPrettyStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E04618134B7C001EF21C /* FLPrettyStringTests.m */; };
+		2767E06318134B7C001EF21C /* FLPrettyStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E04618134B7C001EF21C /* FLPrettyStringTests.m */; };
+		2767E06418134B7C001EF21C /* FLPrettyStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E04618134B7C001EF21C /* FLPrettyStringTests.m */; };
 		2767E06B18134BD2001EF21C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767DFC818134011001EF21C /* AppDelegate.m */; };
 		2767E06C18134BD2001EF21C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767DFC118134011001EF21C /* main.m */; };
 		2767E06F18134BD2001EF21C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6818133AD2001EF21C /* AppKit.framework */; };
@@ -1881,12 +1876,27 @@
 		2767E0FB18134DD4001EF21C /* libFishLamp-Objc-OSX-Universal-MRC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CBC1F416768BA600753D0A /* libFishLamp-Objc-OSX-Universal-MRC.a */; };
 		2767E0FE18134DE8001EF21C /* libFishLamp-Objc-OSX-32-MRC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27048EF0161CB58600C38ADA /* libFishLamp-Objc-OSX-32-MRC.a */; };
 		2767E10118134DF7001EF21C /* libFishLamp-Objc-iOS-ARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A43AB415CDCC89001CB13E /* libFishLamp-Objc-iOS-ARC.a */; };
-		2767E10218135335001EF21C /* StringTest1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2767E06518134BA7001EF21C /* StringTest1.txt */; };
-		2767E10318135336001EF21C /* StringTest1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2767E06518134BA7001EF21C /* StringTest1.txt */; };
-		2767E10418135337001EF21C /* StringTest1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2767E06518134BA7001EF21C /* StringTest1.txt */; };
-		2767E10518135338001EF21C /* StringTest1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2767E06518134BA7001EF21C /* StringTest1.txt */; };
-		2767E10618135338001EF21C /* StringTest1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2767E06518134BA7001EF21C /* StringTest1.txt */; };
-		2767E10718135339001EF21C /* StringTest1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2767E06518134BA7001EF21C /* StringTest1.txt */; };
+		2767E10218135335001EF21C /* StringIndentTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2767E06518134BA7001EF21C /* StringIndentTest.txt */; };
+		2767E10318135336001EF21C /* StringIndentTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2767E06518134BA7001EF21C /* StringIndentTest.txt */; };
+		2767E10418135337001EF21C /* StringIndentTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2767E06518134BA7001EF21C /* StringIndentTest.txt */; };
+		2767E10518135338001EF21C /* StringIndentTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2767E06518134BA7001EF21C /* StringIndentTest.txt */; };
+		2767E10618135338001EF21C /* StringIndentTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2767E06518134BA7001EF21C /* StringIndentTest.txt */; };
+		2767E10718135339001EF21C /* StringIndentTest.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2767E06518134BA7001EF21C /* StringIndentTest.txt */; };
+		2767E10A1813540A001EF21C /* FLTestable+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E1091813540A001EF21C /* FLTestable+Utils.m */; };
+		2767E10B1813540A001EF21C /* FLTestable+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E1091813540A001EF21C /* FLTestable+Utils.m */; };
+		2767E10C1813540A001EF21C /* FLTestable+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E1091813540A001EF21C /* FLTestable+Utils.m */; };
+		2767E10D1813540A001EF21C /* FLTestable+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E1091813540A001EF21C /* FLTestable+Utils.m */; };
+		2767E10E1813540A001EF21C /* FLTestable+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E1091813540A001EF21C /* FLTestable+Utils.m */; };
+		2767E111181370C8001EF21C /* FLStringFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E110181370C8001EF21C /* FLStringFormatterTests.m */; };
+		2767E112181370C8001EF21C /* FLStringFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E110181370C8001EF21C /* FLStringFormatterTests.m */; };
+		2767E113181370C8001EF21C /* FLStringFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E110181370C8001EF21C /* FLStringFormatterTests.m */; };
+		2767E114181370C8001EF21C /* FLStringFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E110181370C8001EF21C /* FLStringFormatterTests.m */; };
+		2767E115181370C8001EF21C /* FLStringFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E110181370C8001EF21C /* FLStringFormatterTests.m */; };
+		2767E118181371C1001EF21C /* FLCoreFrameworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E117181371C1001EF21C /* FLCoreFrameworkTest.m */; };
+		2767E119181371C1001EF21C /* FLCoreFrameworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E117181371C1001EF21C /* FLCoreFrameworkTest.m */; };
+		2767E11A181371C1001EF21C /* FLCoreFrameworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E117181371C1001EF21C /* FLCoreFrameworkTest.m */; };
+		2767E11B181371C1001EF21C /* FLCoreFrameworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E117181371C1001EF21C /* FLCoreFrameworkTest.m */; };
+		2767E11C181371C1001EF21C /* FLCoreFrameworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E117181371C1001EF21C /* FLCoreFrameworkTest.m */; };
 		B214728417DE7BBC00985872 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B214728217DE7BBC00985872 /* InfoPlist.strings */; };
 		B214728617DE7BBC00985872 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B214728517DE7BBC00985872 /* main.m */; };
 		B214728A17DE7BBD00985872 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B214728917DE7BBD00985872 /* AppDelegate.m */; };
@@ -2253,8 +2263,7 @@
 		2767D60F18132B1A001EF21C /* FLTestCaseResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestCaseResult.m; sourceTree = "<group>"; };
 		2767D61018132B1A001EF21C /* FLTestGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestGroup.h; sourceTree = "<group>"; };
 		2767D61118132B1A001EF21C /* FLTestGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestGroup.m; sourceTree = "<group>"; };
-		2767D61218132B1A001EF21C /* FLTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTesting.h; sourceTree = "<group>"; };
-		2767D61318132B1A001EF21C /* FLTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTesting.m; sourceTree = "<group>"; };
+		2767D61218132B1A001EF21C /* FishLampTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FishLampTesting.h; sourceTree = "<group>"; };
 		2767D61418132B1A001EF21C /* FLTestLoggingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestLoggingManager.h; sourceTree = "<group>"; };
 		2767D61518132B1A001EF21C /* FLTestLoggingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestLoggingManager.m; sourceTree = "<group>"; };
 		2767D61618132B1A001EF21C /* FLTestResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestResult.h; sourceTree = "<group>"; };
@@ -2785,9 +2794,9 @@
 		2767E04218134B7C001EF21C /* FLObservableTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObservableTests.m; sourceTree = "<group>"; };
 		2767E04318134B7C001EF21C /* FLOwnershipTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLOwnershipTests.h; sourceTree = "<group>"; };
 		2767E04418134B7C001EF21C /* FLOwnershipTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLOwnershipTests.m; sourceTree = "<group>"; };
-		2767E04518134B7C001EF21C /* FLStringTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringTests.h; sourceTree = "<group>"; };
-		2767E04618134B7C001EF21C /* FLStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringTests.m; sourceTree = "<group>"; };
-		2767E06518134BA7001EF21C /* StringTest1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringTest1.txt; sourceTree = "<group>"; };
+		2767E04518134B7C001EF21C /* FLPrettyStringTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPrettyStringTests.h; sourceTree = "<group>"; };
+		2767E04618134B7C001EF21C /* FLPrettyStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPrettyStringTests.m; sourceTree = "<group>"; };
+		2767E06518134BA7001EF21C /* StringIndentTest.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StringIndentTest.txt; sourceTree = "<group>"; };
 		2767E08118134BD2001EF21C /* TestApp-OSX-64-ARC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestApp-OSX-64-ARC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2767E09D18134BF4001EF21C /* TestApp-OSX-Universal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestApp-OSX-Universal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2767E0B918134C70001EF21C /* TestApp-OSX-32-MRC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestApp-OSX-32-MRC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2810,6 +2819,12 @@
 		2767E0EB18134CAF001EF21C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2767E0ED18134CAF001EF21C /* TestApp_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestApp_iOSTests.m; sourceTree = "<group>"; };
 		2767E0F518134D08001EF21C /* TestApp-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "TestApp-iOS.xcconfig"; sourceTree = "<group>"; };
+		2767E1081813540A001EF21C /* FLTestable+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FLTestable+Utils.h"; sourceTree = "<group>"; };
+		2767E1091813540A001EF21C /* FLTestable+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FLTestable+Utils.m"; sourceTree = "<group>"; };
+		2767E10F181370C8001EF21C /* FLStringFormatterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringFormatterTests.h; sourceTree = "<group>"; };
+		2767E110181370C8001EF21C /* FLStringFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringFormatterTests.m; sourceTree = "<group>"; };
+		2767E116181371C1001EF21C /* FLCoreFrameworkTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLCoreFrameworkTest.h; sourceTree = "<group>"; };
+		2767E117181371C1001EF21C /* FLCoreFrameworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLCoreFrameworkTest.m; sourceTree = "<group>"; };
 		27A43AB415CDCC89001CB13E /* libFishLamp-Objc-iOS-ARC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFishLamp-Objc-iOS-ARC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A43AC415CDCCCB001CB13E /* libFishLamp-Objc-OSX-64-MRC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFishLamp-Objc-OSX-64-MRC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CBC1F416768BA600753D0A /* libFishLamp-Objc-OSX-Universal-MRC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFishLamp-Objc-OSX-Universal-MRC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3561,8 +3576,7 @@
 				2767D60F18132B1A001EF21C /* FLTestCaseResult.m */,
 				2767D61018132B1A001EF21C /* FLTestGroup.h */,
 				2767D61118132B1A001EF21C /* FLTestGroup.m */,
-				2767D61218132B1A001EF21C /* FLTesting.h */,
-				2767D61318132B1A001EF21C /* FLTesting.m */,
+				2767D61218132B1A001EF21C /* FishLampTesting.h */,
 				2767D61418132B1A001EF21C /* FLTestLoggingManager.h */,
 				2767D61518132B1A001EF21C /* FLTestLoggingManager.m */,
 				2767D61618132B1A001EF21C /* FLTestResult.h */,
@@ -3571,6 +3585,8 @@
 				2767D61918132B1A001EF21C /* FLTestResultCollection.m */,
 				2767D61A18132B1A001EF21C /* FLUnitTestResult.h */,
 				2767D61B18132B1A001EF21C /* FLUnitTestResult.m */,
+				2767E1081813540A001EF21C /* FLTestable+Utils.h */,
+				2767E1091813540A001EF21C /* FLTestable+Utils.m */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -4503,9 +4519,13 @@
 				2767E04218134B7C001EF21C /* FLObservableTests.m */,
 				2767E04318134B7C001EF21C /* FLOwnershipTests.h */,
 				2767E04418134B7C001EF21C /* FLOwnershipTests.m */,
-				2767E04518134B7C001EF21C /* FLStringTests.h */,
-				2767E04618134B7C001EF21C /* FLStringTests.m */,
-				2767E06518134BA7001EF21C /* StringTest1.txt */,
+				2767E04518134B7C001EF21C /* FLPrettyStringTests.h */,
+				2767E04618134B7C001EF21C /* FLPrettyStringTests.m */,
+				2767E06518134BA7001EF21C /* StringIndentTest.txt */,
+				2767E10F181370C8001EF21C /* FLStringFormatterTests.h */,
+				2767E110181370C8001EF21C /* FLStringFormatterTests.m */,
+				2767E116181371C1001EF21C /* FLCoreFrameworkTest.h */,
+				2767E117181371C1001EF21C /* FLCoreFrameworkTest.m */,
 			);
 			path = "FishLamp-Objc-CoreTests";
 			sourceTree = "<group>";
@@ -5039,7 +5059,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2767DFC018134011001EF21C /* InfoPlist.strings in Resources */,
-				2767E10318135336001EF21C /* StringTest1.txt in Resources */,
+				2767E10318135336001EF21C /* StringIndentTest.txt in Resources */,
 				2767DFCE18134011001EF21C /* Images.xcassets in Resources */,
 				2767DFC618134011001EF21C /* Credits.rtf in Resources */,
 				2767DFCC18134011001EF21C /* MainMenu.xib in Resources */,
@@ -5051,7 +5071,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2767E07A18134BD2001EF21C /* InfoPlist.strings in Resources */,
-				2767E10418135337001EF21C /* StringTest1.txt in Resources */,
+				2767E10418135337001EF21C /* StringIndentTest.txt in Resources */,
 				2767E07B18134BD2001EF21C /* Images.xcassets in Resources */,
 				2767E07C18134BD2001EF21C /* Credits.rtf in Resources */,
 				2767E07D18134BD2001EF21C /* MainMenu.xib in Resources */,
@@ -5063,7 +5083,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2767E09618134BF4001EF21C /* InfoPlist.strings in Resources */,
-				2767E10518135338001EF21C /* StringTest1.txt in Resources */,
+				2767E10518135338001EF21C /* StringIndentTest.txt in Resources */,
 				2767E09718134BF4001EF21C /* Images.xcassets in Resources */,
 				2767E09818134BF4001EF21C /* Credits.rtf in Resources */,
 				2767E09918134BF4001EF21C /* MainMenu.xib in Resources */,
@@ -5075,7 +5095,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2767E0B218134C70001EF21C /* InfoPlist.strings in Resources */,
-				2767E10618135338001EF21C /* StringTest1.txt in Resources */,
+				2767E10618135338001EF21C /* StringIndentTest.txt in Resources */,
 				2767E0B318134C70001EF21C /* Images.xcassets in Resources */,
 				2767E0B418134C70001EF21C /* Credits.rtf in Resources */,
 				2767E0B518134C70001EF21C /* MainMenu.xib in Resources */,
@@ -5087,7 +5107,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2767E0D618134CAE001EF21C /* Main_iPad.storyboard in Resources */,
-				2767E10718135339001EF21C /* StringTest1.txt in Resources */,
+				2767E10718135339001EF21C /* StringIndentTest.txt in Resources */,
 				2767E0DB18134CAE001EF21C /* Images.xcassets in Resources */,
 				2767E0D318134CAE001EF21C /* Main_iPhone.storyboard in Resources */,
 				2767E0CA18134CAE001EF21C /* InfoPlist.strings in Resources */,
@@ -5098,7 +5118,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2767E10218135335001EF21C /* StringTest1.txt in Resources */,
+				2767E10218135335001EF21C /* StringIndentTest.txt in Resources */,
 				B214728417DE7BBC00985872 /* InfoPlist.strings in Resources */,
 				B214728C17DE7BBD00985872 /* Default.png in Resources */,
 				B214728E17DE7BBD00985872 /* Default@2x.png in Resources */,
@@ -5134,6 +5154,7 @@
 				2767D8B218132B1B001EF21C /* FLCStyleCodeBuilder.m in Sources */,
 				2767DC8118132B1C001EF21C /* __FLOauthEnums.m in Sources */,
 				2767DCB318132B1C001EF21C /* FLOldReachability.m in Sources */,
+				2767E10B1813540A001EF21C /* FLTestable+Utils.m in Sources */,
 				2767DCBD18132B1C001EF21C /* FLDataSink.m in Sources */,
 				2767DA1518132B1B001EF21C /* FLNonretainedObjectProxy.m in Sources */,
 				2767DF5618132B1C001EF21C /* NSString+GUID.m in Sources */,
@@ -5181,6 +5202,7 @@
 				2767DD6218132B1C001EF21C /* FLUserDataStorageService.m in Sources */,
 				2767D86218132B1B001EF21C /* SDKImage+Alpha.m in Sources */,
 				2767D8FD18132B1B001EF21C /* FLHelpToolTask.m in Sources */,
+				2767E119181371C1001EF21C /* FLCoreFrameworkTest.m in Sources */,
 				2767D8BC18132B1B001EF21C /* FLColorRange+Gradients.m in Sources */,
 				2767DABA18132B1B001EF21C /* FLBitFlags.m in Sources */,
 				2767DED918132B1C001EF21C /* FLRunAllTestsOperation.m in Sources */,
@@ -5322,7 +5344,7 @@
 				2767DD1C18132B1C001EF21C /* FLParserStack.m in Sources */,
 				2767DD8518132B1C001EF21C /* FLDatabase.m in Sources */,
 				2767DEA218132B1C001EF21C /* FLTestMethod.m in Sources */,
-				2767E06118134B7C001EF21C /* FLStringTests.m in Sources */,
+				2767E06118134B7C001EF21C /* FLPrettyStringTests.m in Sources */,
 				2767D9C518132B1B001EF21C /* FLExceptions.m in Sources */,
 				2767DA9C18132B1B001EF21C /* FLUnitTestResult.m in Sources */,
 				2767D90C18132B1B001EF21C /* FLToolTask.m in Sources */,
@@ -5337,6 +5359,7 @@
 				2767DE3918132B1C001EF21C /* FLBatchOperation.m in Sources */,
 				2767DA1018132B1B001EF21C /* FLMainThreadObject.m in Sources */,
 				2767DE1618132B1C001EF21C /* FLTimer.m in Sources */,
+				2767E112181370C8001EF21C /* FLStringFormatterTests.m in Sources */,
 				2767DBEB18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DF0B18132B1C001EF21C /* FLDnsConnectionTests.m in Sources */,
 				2767DD5D18132B1C001EF21C /* FLServiceList.m in Sources */,
@@ -5394,7 +5417,6 @@
 				2767DB7D18132B1B001EF21C /* FLAbstractFile.m in Sources */,
 				2767DB8C18132B1B001EF21C /* FLFolderFile.m in Sources */,
 				2767D8DA18132B1B001EF21C /* SDKColor+FLMoreColors.m in Sources */,
-				2767DA8818132B1B001EF21C /* FLTesting.m in Sources */,
 				2767DE9818132B1C001EF21C /* FLTestableSubclassFactory.m in Sources */,
 				2767DCA918132B1C001EF21C /* FLOAuthRequestTokenHttpRequest.m in Sources */,
 				2767D91B18132B1B001EF21C /* FLCompatibleViewController+iOS.m in Sources */,
@@ -5521,6 +5543,7 @@
 				2767D8B418132B1B001EF21C /* FLCStyleCodeBuilder.m in Sources */,
 				2767DC8318132B1C001EF21C /* __FLOauthEnums.m in Sources */,
 				2767DCB518132B1C001EF21C /* FLOldReachability.m in Sources */,
+				2767E10D1813540A001EF21C /* FLTestable+Utils.m in Sources */,
 				2767DCBF18132B1C001EF21C /* FLDataSink.m in Sources */,
 				2767DA1718132B1B001EF21C /* FLNonretainedObjectProxy.m in Sources */,
 				2767DF5818132B1C001EF21C /* NSString+GUID.m in Sources */,
@@ -5568,6 +5591,7 @@
 				2767DD6418132B1C001EF21C /* FLUserDataStorageService.m in Sources */,
 				2767D86418132B1B001EF21C /* SDKImage+Alpha.m in Sources */,
 				2767D8FF18132B1B001EF21C /* FLHelpToolTask.m in Sources */,
+				2767E11B181371C1001EF21C /* FLCoreFrameworkTest.m in Sources */,
 				2767D8BE18132B1B001EF21C /* FLColorRange+Gradients.m in Sources */,
 				2767DABC18132B1B001EF21C /* FLBitFlags.m in Sources */,
 				2767DEDB18132B1C001EF21C /* FLRunAllTestsOperation.m in Sources */,
@@ -5709,7 +5733,7 @@
 				2767DD1E18132B1C001EF21C /* FLParserStack.m in Sources */,
 				2767DD8718132B1C001EF21C /* FLDatabase.m in Sources */,
 				2767DEA418132B1C001EF21C /* FLTestMethod.m in Sources */,
-				2767E06318134B7C001EF21C /* FLStringTests.m in Sources */,
+				2767E06318134B7C001EF21C /* FLPrettyStringTests.m in Sources */,
 				2767D9C718132B1B001EF21C /* FLExceptions.m in Sources */,
 				2767DA9E18132B1B001EF21C /* FLUnitTestResult.m in Sources */,
 				2767D90E18132B1B001EF21C /* FLToolTask.m in Sources */,
@@ -5724,6 +5748,7 @@
 				2767DE3B18132B1C001EF21C /* FLBatchOperation.m in Sources */,
 				2767DA1218132B1B001EF21C /* FLMainThreadObject.m in Sources */,
 				2767DE1818132B1C001EF21C /* FLTimer.m in Sources */,
+				2767E114181370C8001EF21C /* FLStringFormatterTests.m in Sources */,
 				2767DBED18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DF0D18132B1C001EF21C /* FLDnsConnectionTests.m in Sources */,
 				2767DD5F18132B1C001EF21C /* FLServiceList.m in Sources */,
@@ -5781,7 +5806,6 @@
 				2767DB7F18132B1B001EF21C /* FLAbstractFile.m in Sources */,
 				2767DB8E18132B1B001EF21C /* FLFolderFile.m in Sources */,
 				2767D8DC18132B1B001EF21C /* SDKColor+FLMoreColors.m in Sources */,
-				2767DA8A18132B1B001EF21C /* FLTesting.m in Sources */,
 				2767DE9A18132B1C001EF21C /* FLTestableSubclassFactory.m in Sources */,
 				2767DCAB18132B1C001EF21C /* FLOAuthRequestTokenHttpRequest.m in Sources */,
 				2767D91D18132B1B001EF21C /* FLCompatibleViewController+iOS.m in Sources */,
@@ -5922,6 +5946,7 @@
 				2767D8B118132B1B001EF21C /* FLCStyleCodeBuilder.m in Sources */,
 				2767DC8018132B1C001EF21C /* __FLOauthEnums.m in Sources */,
 				2767DCB218132B1C001EF21C /* FLOldReachability.m in Sources */,
+				2767E10A1813540A001EF21C /* FLTestable+Utils.m in Sources */,
 				2767DCBC18132B1C001EF21C /* FLDataSink.m in Sources */,
 				2767DA1418132B1B001EF21C /* FLNonretainedObjectProxy.m in Sources */,
 				2767DF5518132B1C001EF21C /* NSString+GUID.m in Sources */,
@@ -5969,6 +5994,7 @@
 				2767DD6118132B1C001EF21C /* FLUserDataStorageService.m in Sources */,
 				2767D86118132B1B001EF21C /* SDKImage+Alpha.m in Sources */,
 				2767D8FC18132B1B001EF21C /* FLHelpToolTask.m in Sources */,
+				2767E118181371C1001EF21C /* FLCoreFrameworkTest.m in Sources */,
 				2767D8BB18132B1B001EF21C /* FLColorRange+Gradients.m in Sources */,
 				2767DAB918132B1B001EF21C /* FLBitFlags.m in Sources */,
 				2767DED818132B1C001EF21C /* FLRunAllTestsOperation.m in Sources */,
@@ -6110,7 +6136,7 @@
 				2767DD1B18132B1C001EF21C /* FLParserStack.m in Sources */,
 				2767DD8418132B1C001EF21C /* FLDatabase.m in Sources */,
 				2767DEA118132B1C001EF21C /* FLTestMethod.m in Sources */,
-				2767E06018134B7C001EF21C /* FLStringTests.m in Sources */,
+				2767E06018134B7C001EF21C /* FLPrettyStringTests.m in Sources */,
 				2767D9C418132B1B001EF21C /* FLExceptions.m in Sources */,
 				2767DA9B18132B1B001EF21C /* FLUnitTestResult.m in Sources */,
 				2767D90B18132B1B001EF21C /* FLToolTask.m in Sources */,
@@ -6125,6 +6151,7 @@
 				2767DE3818132B1C001EF21C /* FLBatchOperation.m in Sources */,
 				2767DA0F18132B1B001EF21C /* FLMainThreadObject.m in Sources */,
 				2767DE1518132B1C001EF21C /* FLTimer.m in Sources */,
+				2767E111181370C8001EF21C /* FLStringFormatterTests.m in Sources */,
 				2767DBEA18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DF0A18132B1C001EF21C /* FLDnsConnectionTests.m in Sources */,
 				2767DD5C18132B1C001EF21C /* FLServiceList.m in Sources */,
@@ -6182,7 +6209,6 @@
 				2767DB7C18132B1B001EF21C /* FLAbstractFile.m in Sources */,
 				2767DB8B18132B1B001EF21C /* FLFolderFile.m in Sources */,
 				2767D8D918132B1B001EF21C /* SDKColor+FLMoreColors.m in Sources */,
-				2767DA8718132B1B001EF21C /* FLTesting.m in Sources */,
 				2767DE9718132B1C001EF21C /* FLTestableSubclassFactory.m in Sources */,
 				2767DCA818132B1C001EF21C /* FLOAuthRequestTokenHttpRequest.m in Sources */,
 				2767D91A18132B1B001EF21C /* FLCompatibleViewController+iOS.m in Sources */,
@@ -6277,6 +6303,7 @@
 				2767D8B318132B1B001EF21C /* FLCStyleCodeBuilder.m in Sources */,
 				2767DC8218132B1C001EF21C /* __FLOauthEnums.m in Sources */,
 				2767DCB418132B1C001EF21C /* FLOldReachability.m in Sources */,
+				2767E10C1813540A001EF21C /* FLTestable+Utils.m in Sources */,
 				2767DCBE18132B1C001EF21C /* FLDataSink.m in Sources */,
 				2767DA1618132B1B001EF21C /* FLNonretainedObjectProxy.m in Sources */,
 				2767DF5718132B1C001EF21C /* NSString+GUID.m in Sources */,
@@ -6324,6 +6351,7 @@
 				2767DD6318132B1C001EF21C /* FLUserDataStorageService.m in Sources */,
 				2767D86318132B1B001EF21C /* SDKImage+Alpha.m in Sources */,
 				2767D8FE18132B1B001EF21C /* FLHelpToolTask.m in Sources */,
+				2767E11A181371C1001EF21C /* FLCoreFrameworkTest.m in Sources */,
 				2767D8BD18132B1B001EF21C /* FLColorRange+Gradients.m in Sources */,
 				2767DABB18132B1B001EF21C /* FLBitFlags.m in Sources */,
 				2767DEDA18132B1C001EF21C /* FLRunAllTestsOperation.m in Sources */,
@@ -6465,7 +6493,7 @@
 				2767DD1D18132B1C001EF21C /* FLParserStack.m in Sources */,
 				2767DD8618132B1C001EF21C /* FLDatabase.m in Sources */,
 				2767DEA318132B1C001EF21C /* FLTestMethod.m in Sources */,
-				2767E06218134B7C001EF21C /* FLStringTests.m in Sources */,
+				2767E06218134B7C001EF21C /* FLPrettyStringTests.m in Sources */,
 				2767D9C618132B1B001EF21C /* FLExceptions.m in Sources */,
 				2767DA9D18132B1B001EF21C /* FLUnitTestResult.m in Sources */,
 				2767D90D18132B1B001EF21C /* FLToolTask.m in Sources */,
@@ -6480,6 +6508,7 @@
 				2767DE3A18132B1C001EF21C /* FLBatchOperation.m in Sources */,
 				2767DA1118132B1B001EF21C /* FLMainThreadObject.m in Sources */,
 				2767DE1718132B1C001EF21C /* FLTimer.m in Sources */,
+				2767E113181370C8001EF21C /* FLStringFormatterTests.m in Sources */,
 				2767DBEC18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DF0C18132B1C001EF21C /* FLDnsConnectionTests.m in Sources */,
 				2767DD5E18132B1C001EF21C /* FLServiceList.m in Sources */,
@@ -6537,7 +6566,6 @@
 				2767DB7E18132B1B001EF21C /* FLAbstractFile.m in Sources */,
 				2767DB8D18132B1B001EF21C /* FLFolderFile.m in Sources */,
 				2767D8DB18132B1B001EF21C /* SDKColor+FLMoreColors.m in Sources */,
-				2767DA8918132B1B001EF21C /* FLTesting.m in Sources */,
 				2767DE9918132B1C001EF21C /* FLTestableSubclassFactory.m in Sources */,
 				2767DCAA18132B1C001EF21C /* FLOAuthRequestTokenHttpRequest.m in Sources */,
 				2767D91C18132B1B001EF21C /* FLCompatibleViewController+iOS.m in Sources */,
@@ -6632,6 +6660,7 @@
 				2767D8B518132B1B001EF21C /* FLCStyleCodeBuilder.m in Sources */,
 				2767DC8418132B1C001EF21C /* __FLOauthEnums.m in Sources */,
 				2767DCB618132B1C001EF21C /* FLOldReachability.m in Sources */,
+				2767E10E1813540A001EF21C /* FLTestable+Utils.m in Sources */,
 				2767DCC018132B1C001EF21C /* FLDataSink.m in Sources */,
 				2767DA1818132B1B001EF21C /* FLNonretainedObjectProxy.m in Sources */,
 				2767DF5918132B1C001EF21C /* NSString+GUID.m in Sources */,
@@ -6679,6 +6708,7 @@
 				2767DD6518132B1C001EF21C /* FLUserDataStorageService.m in Sources */,
 				2767D86518132B1B001EF21C /* SDKImage+Alpha.m in Sources */,
 				2767D90018132B1B001EF21C /* FLHelpToolTask.m in Sources */,
+				2767E11C181371C1001EF21C /* FLCoreFrameworkTest.m in Sources */,
 				2767D8BF18132B1B001EF21C /* FLColorRange+Gradients.m in Sources */,
 				2767DABD18132B1B001EF21C /* FLBitFlags.m in Sources */,
 				2767DEDC18132B1C001EF21C /* FLRunAllTestsOperation.m in Sources */,
@@ -6820,7 +6850,7 @@
 				2767DD1F18132B1C001EF21C /* FLParserStack.m in Sources */,
 				2767DD8818132B1C001EF21C /* FLDatabase.m in Sources */,
 				2767DEA518132B1C001EF21C /* FLTestMethod.m in Sources */,
-				2767E06418134B7C001EF21C /* FLStringTests.m in Sources */,
+				2767E06418134B7C001EF21C /* FLPrettyStringTests.m in Sources */,
 				2767D9C818132B1B001EF21C /* FLExceptions.m in Sources */,
 				2767DA9F18132B1B001EF21C /* FLUnitTestResult.m in Sources */,
 				2767D90F18132B1B001EF21C /* FLToolTask.m in Sources */,
@@ -6835,6 +6865,7 @@
 				2767DE3C18132B1C001EF21C /* FLBatchOperation.m in Sources */,
 				2767DA1318132B1B001EF21C /* FLMainThreadObject.m in Sources */,
 				2767DE1918132B1C001EF21C /* FLTimer.m in Sources */,
+				2767E115181370C8001EF21C /* FLStringFormatterTests.m in Sources */,
 				2767DBEE18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DF0E18132B1C001EF21C /* FLDnsConnectionTests.m in Sources */,
 				2767DD6018132B1C001EF21C /* FLServiceList.m in Sources */,
@@ -6892,7 +6923,6 @@
 				2767DB8018132B1B001EF21C /* FLAbstractFile.m in Sources */,
 				2767DB8F18132B1B001EF21C /* FLFolderFile.m in Sources */,
 				2767D8DD18132B1B001EF21C /* SDKColor+FLMoreColors.m in Sources */,
-				2767DA8B18132B1B001EF21C /* FLTesting.m in Sources */,
 				2767DE9B18132B1C001EF21C /* FLTestableSubclassFactory.m in Sources */,
 				2767DCAC18132B1C001EF21C /* FLOAuthRequestTokenHttpRequest.m in Sources */,
 				2767D91E18132B1B001EF21C /* FLCompatibleViewController+iOS.m in Sources */,

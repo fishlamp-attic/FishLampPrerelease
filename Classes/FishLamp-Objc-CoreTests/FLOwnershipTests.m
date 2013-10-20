@@ -7,9 +7,7 @@
 //
 
 #import "FLOwnershipTests.h"
-#import "FLTesting.h"
-
-#if TESTS
+#import "FishLampTesting.h"
 
 #import "FLObjectProxies.h"
 @interface FLObjectProxyTestObject : NSObject {
@@ -52,19 +50,19 @@ static BOOL s_deleted = NO;
 - (void) testMethodForwarding {
 
     FLObjectProxyTestObject* testObject = [FLObjectProxyTestObject objectProxyTestObject];
-    FLTest(!testObject.propertyWasCalled);
+    FLEnsure(!testObject.propertyWasCalled);
     testObject.propertyWasCalled = YES;
-    FLTest(testObject.propertyWasCalled);
+    FLEnsure(testObject.propertyWasCalled);
 
     testObject.propertyWasCalled = NO;
     id proxy = [FLRetainedObject retainedObject:testObject];
 
-    FLTest([proxy representedObject] == testObject);
-    FLTest(![proxy propertyWasCalled]);
+    FLEnsure([proxy representedObject] == testObject);
+    FLEnsure(![proxy propertyWasCalled]);
     [proxy setPropertyWasCalled:YES];
 
-    FLTest(testObject.propertyWasCalled);
-    FLTest([proxy propertyWasCalled]);
+    FLEnsure(testObject.propertyWasCalled);
+    FLEnsure([proxy propertyWasCalled]);
 }
 
 - (void) testRetainedObjectProxy {
@@ -72,10 +70,9 @@ static BOOL s_deleted = NO;
 
     @autoreleasepool {
         FLRetainedObject* object = [FLRetainedObject retainedObject:[FLObjectProxyTestObject objectProxyTestObject]];
-        FLTest(!s_deleted);
+        FLEnsure(!s_deleted);
     }
-    FLTest(s_deleted);
+    FLEnsure(s_deleted);
 }
 
 @end
-#endif

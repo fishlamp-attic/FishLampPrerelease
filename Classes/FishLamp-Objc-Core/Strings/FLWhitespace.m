@@ -11,27 +11,22 @@
 #import "FLAssertions.h"
 
 @interface FLWhitespace ()
-@property (readwrite, strong, nonatomic) NSString* eolString;
-@property (readwrite, strong, nonatomic) NSString* tabString; 
 @end
 
 @implementation FLWhitespace
 
 @synthesize eolString = _eolString;
-@synthesize tabString = _tabString;
 
-- (id) initWithEOL:(NSString*) eol tab:(NSString*) tab {
+- (id) initWithEOL:(NSString*) eol {
     self = [super init];
     if(self) {
-        self.eolString = eol == nil ? @"" : eol;
-        self.tabString = tab == nil ? @"" : tab;
-        memset(_cachedTabs, 0, sizeof(NSString*) * FLWhitespaceMaxIndent); 
+        _eolString = FLRetain(eol == nil ? @"" : eol);
     }
     return self;
 }
 
-+ (id) whitespace:(NSString*) eol tab:(NSString*) tab {
-    return FLAutorelease([[[self class] alloc] initWithEOL:eol tab:tab]);
++ (id) whitespace:(NSString*) eol {
+    return FLAutorelease([[[self class] alloc] initWithEOL:eol]);
 }
 
 + (FLWhitespace*) whitespace {
@@ -40,13 +35,94 @@
 
 #if FL_MRC
 - (void) dealloc {
+    [_eolString release];
+    [super dealloc];
+}
+#endif
+
+- (NSString*) tabString {
+    return @"";
+}
+
+- (NSInteger) tabSize {
+    return 0;
+}
+
++ (FLWhitespace*) tabbedWithSpacesWhitespace {
+     FLReturnStaticObject(
+        [[FLTabbedWithFourSpacesWhitespace alloc] initWithEOL:FLWhitespaceDefaultEOL];
+     );
+}
+
++ (FLWhitespace*) compressedWhitespace {
+    return nil;
+}
+
++ (id) untabbedWhitespace {
+    FLReturnStaticObject(
+        [[FLWhitespace alloc] initWithEOL:FLWhitespaceDefaultEOL];
+    );
+}
+
++ (FLWhitespace*) defaultWhitespace {
+    return [self tabbedWithSpacesWhitespace];
+}
+
+- (NSString*) tabStringForScope:(NSUInteger) indent {
+    return @"";
+}
+
+
+@end
+
+@implementation FLRepeatingCharTabWhitespace
+
+- (id) initWithEOL:(NSString*) eol
+           tabChar:(NSString*) tabChar
+tabCharRepeatCount:(NSInteger) tabCharRepeatCount {
+
+    self = [super initWithEOL:eol];
+    if(self) {
+        NSMutableString* str = [[NSMutableString alloc] initWithString:tabChar];
+
+        for(int i = 1; i < tabCharRepeatCount; i++) {
+            [str appendString:tabChar];
+        }
+
+        _singleTab = str;
+
+        memset(_cachedTabs, 0, sizeof(NSString*) * FLWhitespaceMaxIndent);
+    }
+
+    return self;
+}
+
+- (NSString*) tabString {
+    return _singleTab;
+}
+
+- (NSInteger) tabSize {
+    return _tabSize;
+}
+
+- (NSString*) expandTabToSize:(NSInteger) toSize {
+    NSMutableString* outString = [NSMutableString string];
+
+    for(int i = 0; i < toSize; i++) {
+        [outString appendString:_singleTab];
+    }
+
+    return outString;
+}
+
+#if FL_MRC
+- (void) dealloc {
+    [_singleTab release];
     for(int i = 0; i < FLWhitespaceMaxIndent; i++) {
         if(_cachedTabs[i]) {
             FLRelease(_cachedTabs[i]);
         }
     }
-    [_eolString release];
-    [_tabString release];
     [super dealloc];
 }
 #endif
@@ -54,83 +130,28 @@
 - (NSString*) tabStringForScope:(NSUInteger) indent {
     FLAssertWithComment(indent < FLWhitespaceMaxIndent, @"too many indents");
     
-    if( indent > 0 && 
-        _tabString && 
-        _tabString.length && 
-        indent < FLWhitespaceMaxIndent) {
-    
-        if(!_cachedTabs[indent]) {
-            _cachedTabs[indent] = FLRetain([@"" stringByPaddingToLength:(indent * _tabString.length) 
-                                                             withString:_tabString startingAtIndex:0]);
+    if( indent > 0) {
+        if(indent >= FLWhitespaceMaxIndent) {
+            return [self expandTabToSize:indent];
         }
-        return _cachedTabs[indent];
+        else {
+            if(!_cachedTabs[indent]) {
+                _cachedTabs[indent] = FLRetain([self expandTabToSize:indent]);
+            }
+
+            return _cachedTabs[indent];
+        }
     }
     
     return @"";
 }
 
-+ (FLWhitespace*) tabbedWithSpacesWhitespace {
-     FLReturnStaticObject(
-        [[FLWhitespace alloc] initWithEOL:FLWhitespaceDefaultEOL tab:FLWhitespaceDefaultTabString];
-     );
-}
-
-+ (FLWhitespace*) compressedWhitespace {
-    return nil;
-    
-//    FLReturnStaticObject(
-//        [[FLWhitespace alloc] initWithEOL:nil tab:nil];
-//    );
-}
-
-+ (id) untabbedWhitespace {
-    FLReturnStaticObject(
-        [[FLWhitespace alloc] initWithEOL:FLWhitespaceDefaultEOL tab:nil];
-    );
-}
-
-+ (FLWhitespace*) defaultWhitespace {
-    return [FLWhitespace tabbedWithSpacesWhitespace];
-}
-
-
-//- (void) appendEol:(NSMutableString*) toString {
-//    if(FLStringIsNotEmpty(_eolString)) {
-//        [toString appendString:_eolString];
-//    }
-//}
-//
-//- (void) appendTabs:(NSUInteger) count toString:(NSMutableString*) toString {
-//    
-//    NSString* tabs = [self tabStringForScope:count];
-//    if(FLStringIsNotEmpty(tabs)) {
-//        [toString appendString:tabs];
-//    }
-//    
-//}
-//
-//- (void) appendEolAndTabs:(NSUInteger) tabIndent 
-//                 toString:(NSMutableString*) toString {
-//                 
-//    [self appendEol:toString];
-//    [self appendTabs:tabIndent toString:toString];
-//}
-//
-//- (void) appendWhitespaceToPrettyString:(FLPrettyString*) string {
-//
-//    if(FLStringIsNotEmpty(_eolString)) {
-//        [string appendString:_eolString];
-//    }
-//    if(string.indentCount) {
-//        NSString* tabs = [self tabStringForScope:string.indentCount];
-//        if(FLStringIsNotEmpty(tabs)) {
-//            [string appendString:tabs];
-//        }
-//    }
-//}
-
-
-
 
 @end
 
+@implementation FLTabbedWithFourSpacesWhitespace
+- (id) initWithEOL:(NSString*) eol {
+    return [super initWithEOL:eol tabChar:@" " tabCharRepeatCount:4];
+}
+
+@end

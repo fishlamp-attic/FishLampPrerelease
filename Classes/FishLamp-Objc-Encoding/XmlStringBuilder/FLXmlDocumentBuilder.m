@@ -63,7 +63,7 @@ FLSynthesizeLazyGetter(dateEncoder, FLStringToObjectConversionManager*, _dataEnc
 }
 
 - (void) addElement:(FLXmlElement*) element {
-    [self appendStringFormatter:element];
+    [self appendStringFormatter:element withPreprocessor:[FLStringFormatterLineProprocessor instance]];
 }
 
 - (void) closeElement {

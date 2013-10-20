@@ -47,8 +47,10 @@
     return [_document openedStringBuilder];
 }
 
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
-    [anotherStringFormatter appendStringFormatter:_document.rootStringBuilder];
+- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
+                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+
+    [anotherStringFormatter appendStringFormatter:_document.rootStringBuilder withPreprocessor:preprocessor];
 }
 
 - (void) appendStringFormatter:(id<FLStringFormatter>) element {
@@ -89,7 +91,7 @@
 
 - (NSString*) buildStringWithWhitespace:(FLWhitespace*) whitespace {
     FLPrettyString* prettyString = [FLPrettyString prettyString:whitespace];
-    [prettyString appendStringFormatter:self];
+    [prettyString appendStringFormatter:self withPreprocessor:[FLStringFormatterLineProprocessor instance]];
     return prettyString.string;
 }
 
@@ -99,7 +101,7 @@
 
 - (NSAttributedString*) exportAttributedString {
     FLPrettyAttributedString* prettyString = [FLPrettyAttributedString prettyAttributedString];
-    [prettyString appendStringFormatter:self];
+    [prettyString appendStringFormatter:self withPreprocessor:[FLStringFormatterLineProprocessor instance]];
     return [prettyString exportAttributedString];
 }
 

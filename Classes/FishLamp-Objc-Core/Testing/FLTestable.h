@@ -7,10 +7,8 @@
 //
 
 #import "FLCoreRequired.h"
-
 #import "FLTestGroup.h"
 #import "FLTestCaseList.h"
-//#import "FLExpectedTestResult.h"
 #import "FLTestResultCollection.h"
 
 @protocol FLTestable <NSObject>
@@ -51,3 +49,5 @@
 #ifndef TESTS
 #define TESTS 1
 #endif
+
+#import "FishLampTesting.h"

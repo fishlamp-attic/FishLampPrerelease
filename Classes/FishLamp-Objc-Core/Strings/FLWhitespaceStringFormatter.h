@@ -28,7 +28,9 @@
 - (void) willAppendAttributedString:(NSAttributedString*) string;
 
 // optional overrides
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter;
+- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
+                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor;
+
 - (NSUInteger) length;
 - (void) willOpenLine;
 - (void) willCloseLine;

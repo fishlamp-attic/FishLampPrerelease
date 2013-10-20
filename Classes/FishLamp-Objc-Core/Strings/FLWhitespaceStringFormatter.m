@@ -78,6 +78,8 @@
 
     // intentionally not opening line
     [self appendEOL];
+
+    _editingLine = NO;
 }
 
 - (void) willAppendString:(NSString*) string {
@@ -90,7 +92,8 @@
     return 0;
 }
 
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter {
+- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
+                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
 }
 
 @end

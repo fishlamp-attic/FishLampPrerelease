@@ -58,7 +58,7 @@
 #import "FLSimpleLogger.h"
 
 // Testing
-#import "FLTesting.h"
+#import "FishLampTesting.h"
 
 /*
     // Runtime

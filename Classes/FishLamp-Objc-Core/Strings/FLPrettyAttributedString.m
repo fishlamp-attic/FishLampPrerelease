@@ -11,8 +11,12 @@
 
 @implementation FLPrettyAttributedString
 
-- (NSMutableAttributedString*) storage {
-    return _attributedString;
+- (id) initWithWhitespace:(FLWhitespace*) whitespace {
+    self = [super initWithWhitespace:whitespace];
+    if(self) {
+        _attributedString = [[NSMutableAttributedString alloc] init];
+    }
+    return self;
 }
 
 + (id) prettyAttributedString:(FLWhitespace*) whitespace {
@@ -52,8 +56,12 @@
     return [self exportString];
 }
 
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
-    [anotherStringFormatter appendAttributedString:[self exportAttributedString]];
+- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
+                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+
+    [preprocessor processAndAppendAttributedString:[self exportAttributedString]
+                                 toStringFormatter:anotherStringFormatter];
+
 }
 
 - (void) willAppendString:(NSString*) string {

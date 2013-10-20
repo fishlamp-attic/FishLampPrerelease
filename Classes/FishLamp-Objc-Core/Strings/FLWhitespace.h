@@ -16,45 +16,24 @@
 #define FLWhitespaceDefaultEOL          @"\n"
 
 /// FLWhitespaceTabTab is defines a "tab style" behavior - e.g. it uses \\t not "    " for a tab.
-
 #define FLWhitespaceTabTab              @"\t"
-
-/// FLWhitespaceFourSpacesTab defines a four character tab. This is the default tab.
-
-
-#define FLWhitespaceFourSpacesTab       @"    " // 4 spaces
-
-//#define FLWhitespaceFourSpacesTab       @"...." // 4 spaces
-
-
-/// FLWhitespaceDefaultTabString defines the default tab string. You can override this in your prefix file.
-
-#ifndef FLWhitespaceDefaultTabString    
-#define FLWhitespaceDefaultTabString    FLWhitespaceFourSpacesTab
-#endif
-
-/// FLWhitespace defines how a builder handles whitespace during a build. With this you can control tabs and LF.
-
-#define FLWhitespaceMaxIndent 128
 
 @interface FLWhitespace : NSObject {
 @private
     NSString* _eolString;
-    NSString* _tabString;
-    NSString* _cachedTabs[FLWhitespaceMaxIndent];
 }
 
-/// Create a whitespace
-
-- (id) initWithEOL:(NSString*) eol tab:(NSString*) tab;
-
-+ (id) whitespace:(NSString*) eol tab:(NSString*) tab;
+@property (readonly, assign, nonatomic) NSInteger tabSize;
 
 /// Set the eolString here, e.g. \\n or \\r\\n. See FLWhitespaceDefaultEOL
 @property (readonly, strong, nonatomic) NSString* eolString;
 
-/// Set teh tabString. See FLWhitespaceFourSpacesTab or FLWhitespaceTabTab
+/// Set the tabString. See FLWhitespaceFourSpacesTab or FLWhitespaceTabTab
 @property (readonly, strong, nonatomic) NSString* tabString; 
+
+- (id) initWithEOL:(NSString*) eol;
+
++ (id) whitespace:(NSString*) eol;
 
 /// returns tabString for indent level. This is cached and built once for the life of the formatter.
 - (NSString*) tabStringForScope:(NSUInteger) indent;
@@ -71,3 +50,20 @@
 
 @end
 
+#define FLWhitespaceMaxIndent 128
+
+@interface FLRepeatingCharTabWhitespace : FLWhitespace {
+@private
+    NSString* _cachedTabs[FLWhitespaceMaxIndent];
+    NSString* _singleTab;
+    NSInteger _tabSize;
+}
+
+- (id) initWithEOL:(NSString*) eol
+           tabChar:(NSString*) tabChar
+tabCharRepeatCount:(NSInteger) tabCharRepeatCount;
+
+@end
+
+@interface FLTabbedWithFourSpacesWhitespace : FLRepeatingCharTabWhitespace
+@end

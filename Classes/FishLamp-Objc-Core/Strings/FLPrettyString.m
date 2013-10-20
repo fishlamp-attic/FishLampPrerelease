@@ -65,8 +65,11 @@
     return [self string];
 }
 
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
-    [anotherStringFormatter appendString:self.string];
+- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
+                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+
+    [preprocessor processAndAppendString:[self exportString]
+                       toStringFormatter:anotherStringFormatter];
 }
 
 - (void) willAppendString:(NSString*) string {
@@ -76,6 +79,14 @@
 
 - (void) willAppendAttributedString:(NSAttributedString*) attributedString {
     [self willAppendString:[attributedString string]];
+}
+
+- (NSString*) exportString {
+    return self.string;
+}
+
+- (NSAttributedString*) exportAttributedString {
+    return FLAutorelease([[NSAttributedString alloc] initWithString:[self exportString]]);
 }
 
 @end

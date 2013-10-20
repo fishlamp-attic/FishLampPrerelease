@@ -16,7 +16,8 @@
 
 @implementation NSString (FLDocumentSection)
 
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
+- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
+                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
     FLAssertNotNil(anotherStringFormatter);
 
     [anotherStringFormatter appendLine:self];
@@ -36,7 +37,8 @@
 + (id) documentSectionIndent {
     FLReturnStaticObject(FLAutorelease([[[self class] alloc] init]));
 }
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter {
+- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
+                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
     [stringFormatter indent];
 }
 - (NSString*) description {
@@ -48,7 +50,8 @@
 + (id) documentSectionOutdent {
     FLReturnStaticObject(FLAutorelease([[[self class] alloc] init]));
 }
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter {
+- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
+                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
     [stringFormatter outdent];
 }
 - (NSString*) description {
@@ -139,7 +142,7 @@
 
 - (NSString*) description {
     FLPrettyString* str = [FLPrettyString prettyString];
-    [str appendStringFormatter:self];
+    [str appendStringFormatter:self withPreprocessor:[FLStringFormatterLineProprocessor instance]];
     return str.string;
 }
 
@@ -159,7 +162,8 @@ appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
     [self willBuildWithStringFormatter:anotherStringFormatter];
 
     for(id<FLStringFormatter> line in _lines) {
-        [anotherStringFormatter appendStringFormatter:line];
+        [anotherStringFormatter appendStringFormatter:line
+                                     withPreprocessor:[FLStringFormatterLineProprocessor instance]];
     }
 
     [self didBuildWithStringFormatter:anotherStringFormatter];

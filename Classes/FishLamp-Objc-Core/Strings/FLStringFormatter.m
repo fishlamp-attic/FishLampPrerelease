@@ -16,10 +16,12 @@
 @synthesize parent = _parent;
 
 - (NSString*) exportString {
+    FLAssertFailedWithComment(@"this is a required override");
     return nil;
 }
 
 - (NSAttributedString*) exportAttributedString {
+    FLAssertFailedWithComment(@"this is a required override");
     return nil;
 }
 
@@ -37,6 +39,10 @@
 - (void) outdent {
 }
 
+- (NSInteger) indentLevel {
+    return 0;
+}
+
 - (void) processString:(NSString*) string {
 
     [self willAppendString:string];
@@ -44,16 +50,28 @@
 }
 
 - (void) willAppendString:(NSString*) string {
+    FLAssertFailedWithComment(@"this is a required override");
 }
 
 - (void) willAppendAttributedString:(NSAttributedString*) string {
+    FLAssertFailedWithComment(@"this is a required override");
 }
 
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter {
+- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
+                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+    FLAssertFailedWithComment(@"this is a required override");
+}
+
+- (void) appendStringFormatter:(id<FLStringFormatter>) aStringFormatter
+              withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+
+    [aStringFormatter appendSelfToStringFormatter:self
+                                 withPreprocessor:preprocessor];
 }
 
 - (void) appendStringFormatter:(id<FLStringFormatter>) aStringFormatter {
-    [aStringFormatter appendSelfToStringFormatter:self];
+    [aStringFormatter appendSelfToStringFormatter:self
+                                withPreprocessor:[FLStringFormatterLineProprocessor instance]];
 }
 
 - (void) setParent:(id) parent {
@@ -65,9 +83,11 @@
 }
 
 - (void) appendBlankLine {
+    FLAssertFailedWithComment(@"this is a required override");
 }
 
 - (void) openLine {
+    FLAssertFailedWithComment(@"this is a required override");
 }
 
 - (void) appendString:(NSString*) string {
@@ -85,6 +105,7 @@
 }
 
 - (void) closeLine {
+    FLAssertFailedWithComment(@"this is a required override");
 }
 
 - (void) closeLineWithString:(NSString*) string {
@@ -266,18 +287,22 @@
 
 FLSynthesizeSingleton(FLStringFormatterLineProprocessor);
 
-- (void) processAndAppendString:(NSString*) string toStringFormatter:(FLStringFormatter*) formatter {
+- (void) processAndAppendString:(NSString*) string
+              toStringFormatter:(FLStringFormatter*) formatter {
 
-    NSRange range = { 0, 1 };
-    
+    NSRange range = { 0, 0 };
+
+    [formatter closeLine];
+
     for(NSUInteger i = 0; i < string.length; i++) {
         unichar c = [string characterAtIndex:i];
         
         if(c == '\n') {
             if(range.length > 0) {
-                [formatter openLine];
-                [formatter willAppendString:[string substringWithRange:range]];
-                [formatter closeLine];
+                [formatter appendLine:[string substringWithRange:range]];
+            }
+            else {
+                [formatter appendBlankLine];
             }
             
             range.location = i+1;
@@ -293,12 +318,53 @@ FLSynthesizeSingleton(FLStringFormatterLineProprocessor);
         [formatter openLine];
             
         if(range.location > 0) {
-            [formatter willAppendString:[string substringWithRange:range]];
+            [formatter appendLine:[string substringWithRange:range]];
         }
         else {
-            [formatter willAppendString:string];
+            [formatter appendLine:string];
         }
     }
 }
 
+- (void) processAndAppendAttributedString:(NSAttributedString*) attributedString
+                        toStringFormatter:(id<FLStringFormatter>) formatter {
+
+    NSRange range = { 0, 0 };
+
+    [formatter closeLine];
+
+    NSString* string = [attributedString string];
+
+    for(NSUInteger i = 0; i < string.length; i++) {
+        unichar c = [string characterAtIndex:i];
+        
+        if(c == '\n') {
+            if(range.length > 0) {
+                [formatter appendLineWithAttributedString:
+                    [attributedString attributedSubstringFromRange:range]];
+            }
+            else {
+                [formatter appendBlankLine];
+            }
+            
+            range.location = i+1;
+            range.length = 0;
+            
+            continue;
+        }
+
+        ++range.length;
+    }
+    
+    if(range.length) {
+        if(range.location > 0) {
+            [formatter appendLineWithAttributedString:
+                [attributedString attributedSubstringFromRange:range]];
+        }
+        else {
+            [formatter appendLineWithAttributedString:attributedString];
+        }
+    }
+
+}
 @end

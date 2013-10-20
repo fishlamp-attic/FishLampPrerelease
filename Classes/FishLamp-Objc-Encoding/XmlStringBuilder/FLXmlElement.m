@@ -173,7 +173,8 @@
     
 }
 
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter {
+- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
+                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
 
     FLAssertNotNil(stringFormatter);
     FLAssertNotNil(self.lines);
@@ -181,7 +182,8 @@
   //  FLLog(@"appending %@ to %@", [self description], [stringFormatter description]);
 
     if(_comments) {
-        [stringFormatter appendStringFormatter:_comments];
+        [stringFormatter appendStringFormatter:_comments
+                              withPreprocessor:[FLStringFormatterLineProprocessor instance]];
     }
 
     BOOL hasLines = self.lines.count > 0;
@@ -196,7 +198,7 @@
     [stringFormatter appendLine:[self xmlOpenTag:!hasLines]];
     if(hasLines) {
         [stringFormatter indent:^{
-            [super appendSelfToStringFormatter:stringFormatter];
+            [super appendSelfToStringFormatter:stringFormatter withPreprocessor:preprocessor];
         }];
 
         [stringFormatter appendLine:[NSString stringWithFormat:@"</%@>", self.xmlElementCloseTag]];

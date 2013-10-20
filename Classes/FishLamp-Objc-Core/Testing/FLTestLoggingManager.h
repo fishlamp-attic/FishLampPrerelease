@@ -52,4 +52,5 @@ FLSingletonProperty(FLTestLoggingManager);
 /**
  *  Macro that all the tests should use for output.
  */
-#define FLTestLog(__FORMAT__, ...) [[FLTestLoggingManager instance] appendLineWithFormat:__FORMAT__, ##__VA_ARGS__]
+#define FLTestLog(__FORMAT__, ...) \
+            [[FLTestLoggingManager instance] appendLineWithFormat:__FORMAT__, ##__VA_ARGS__]

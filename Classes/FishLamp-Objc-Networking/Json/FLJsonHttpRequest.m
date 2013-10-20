@@ -38,7 +38,9 @@
 //    if(self.json && self.json.lines.count > 0) {
 
         FLPrettyString* jsonString = [FLPrettyString prettyString:nil];
-        [jsonString appendStringFormatter:self.json];
+        [jsonString appendStringFormatter:self.json
+                         withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+                         
         NSData* content = [jsonString.string dataUsingEncoding:NSUTF8StringEncoding];
         
         [self.requestBody setContentWithData:content typeContentHeader:@"application/json; charset=utf-8"];

@@ -74,7 +74,8 @@ FLSynthesizeSingleton(FLTestLoggingManager)
     return [[self logger] length];
 }
 
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter {
+- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
+                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
 }
 
 - (void) willAppendString:(NSString*) string {
