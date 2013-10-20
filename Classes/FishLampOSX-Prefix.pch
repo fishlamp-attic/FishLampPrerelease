@@ -1,0 +1,11 @@
+//
+//  FishLampCocoa-pch.pch
+//  FishLampCocoa
+//
+//  Created by Mike Fullerton on 7/1/13.
+//  Copyright (c) 2013 Mike Fullerton. All rights reserved.
+//
+
+#ifdef __OBJC__
+    #import "FishLampCocoaUI-Prefix.pch"
+#endif
