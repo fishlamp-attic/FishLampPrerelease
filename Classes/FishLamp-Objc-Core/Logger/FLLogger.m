@@ -202,6 +202,9 @@
     return 0;
 }
 
+- (void) didMoveToParent:(id) parent {
+}
+
 //- (void) logException:(NSException*) exception withComment:(NSString*) comment {
 //
 //    [self dispatchBlock: ^{

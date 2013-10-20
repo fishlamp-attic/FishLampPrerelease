@@ -7,17 +7,13 @@
 //
 
 #import "FishLampMinimum.h"
+#import "FLHttpRequest.h"
 #import "FishLampAsync.h"
 
-@class FLHttpRequest;
 @class FLHttpUser;
 @class FLSynchronousOperation;
-@protocol FLHttpRequestAuthenticatorDelegate;
 
-@protocol FLHttpRequestAuthenticator <NSObject>
-//// this needs to be synchronous for scheduling reasons amoung concurrent requests.
-- (void) authenticateHttpRequest:(FLHttpRequest*) request;
-@end
+@protocol FLHttpRequestAuthenticatorDelegate;
 
 @interface FLHttpRequestAuthenticator : NSObject<FLHttpRequestAuthenticator> {
 @private
@@ -37,9 +33,15 @@
 
 - (BOOL) credentialsNeedAuthentication:(FLHttpUser*) user;
 
+@property (readonly, assign, nonatomic) FLOperationContext* operationContext;
+@property (readonly, assign, nonatomic) FLHttpUser* httpUser;
+
 @end
 
 @protocol FLHttpRequestAuthenticatorDelegate <NSObject>
+
+- (FLOperationContext*) httpRequestAuthenticatorGetOperationContext:(FLHttpRequestAuthenticator*) context;
+
 - (FLHttpUser*) httpRequestAuthenticatorGetUser:(FLHttpRequestAuthenticator*) service;
 
 - (void) httpRequestAuthenticator:(FLHttpRequestAuthenticator*) authenticator

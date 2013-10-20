@@ -8,20 +8,22 @@
 //
 
 #import "FLHttpRequest.h"
+
 #import "FLAppInfo.h"
 #import "FLCoreFoundation.h"
-#import "FLReadStream.h"
-#import "FLHttpMessage.h"
-#import "FLGlobalNetworkActivityIndicator.h"
 #import "FLDataSink.h"
+#import "FLGlobalNetworkActivityIndicator.h"
+#import "FLHttpMessage.h"
+#import "FLHttpRequestAuthenticator.h"
 #import "FLHttpRequestBody.h"
-#import "FishLampAsync.h"
-#import "FLTimer.h"
-#import "FLReachableNetwork.h"
 #import "FLHttpRequestByteCount.h"
 #import "FLHttpResponse.h"
 #import "FLNetworkErrors.h"
+#import "FLReachableNetwork.h"
+#import "FLReadStream.h"
 #import "FLRetryHandler.h"
+#import "FLTimer.h"
+#import "FishLampAsync.h"
 
 #define FORCE_NO_SSL DEBUG
 

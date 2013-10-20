@@ -8,11 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate> {
+@interface AppDelegate : NSObject<NSApplicationDelegate> {
 @private
     NSWindow* _window;
 }
 
 @property (strong, nonatomic, readonly) IBOutlet NSWindow *window;
 
+- (IBAction) runAllTests:(id) sender;
 @end

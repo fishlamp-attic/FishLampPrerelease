@@ -98,7 +98,7 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
 //}
 
 - (NSError*) exportToPath:(NSURL*) url {
-    NSString* log = [self string];
+    NSString* log = [self exportString];
     NSError* err = nil;
     [log writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:&err];
     return FLAutorelease(err);

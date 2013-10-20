@@ -12,7 +12,7 @@
 @class FLWhitespace;
 @protocol FLPrettyStringDelegate;
 
-@interface FLPrettyString : FLWhitespaceStringFormatter {
+@interface FLPrettyString : FLWhitespaceStringFormatter<FLWhitespaceStringFormatterImplementation> {
 @private
     NSMutableString* _string;
     __unsafe_unretained id<FLPrettyStringDelegate> _delegate;

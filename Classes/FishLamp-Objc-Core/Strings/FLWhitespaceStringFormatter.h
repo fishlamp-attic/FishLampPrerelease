@@ -10,7 +10,7 @@
 
 @class FLWhitespace;
 
-@interface FLWhitespaceStringFormatter : FLStringFormatter {
+@interface FLWhitespaceStringFormatter : FLStringFormatter<FLStringFormatterImplementation> {
 @private
     BOOL _editingLine;
     FLWhitespace* _whitespace;
@@ -23,19 +23,23 @@
 
 - (id) initWithWhitespace:(FLWhitespace*) whitespace;
 
-// required overrides
-- (void) willAppendString:(NSString*) string;
-- (void) willAppendAttributedString:(NSAttributedString*) string;
-
 // optional overrides
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
-                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor;
-
-- (NSUInteger) length;
 - (void) willOpenLine;
 - (void) willCloseLine;
 
 // utils 
 - (void) appendEOL;
 
+@end
+
+@protocol FLWhitespaceStringFormatterImplementation <NSObject>
+- (void) willAppendString:(NSString*) string;
+- (void) willAppendAttributedString:(NSAttributedString*) string;
+
+- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
+                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor;
+
+- (NSUInteger) length;
+
+- (void) didMoveToParent:(id) parent;
 @end

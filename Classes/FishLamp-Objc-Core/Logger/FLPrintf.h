@@ -10,7 +10,7 @@
 #import "FLCoreRequired.h"
 #import "FLWhitespaceStringFormatter.h"
 
-@interface FLPrintfStringFormatter : FLWhitespaceStringFormatter 
+@interface FLPrintfStringFormatter : FLWhitespaceStringFormatter<FLWhitespaceStringFormatterImplementation>
 
 FLSingletonProperty(FLPrintfStringFormatter);
 

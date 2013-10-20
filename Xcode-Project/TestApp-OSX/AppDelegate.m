@@ -14,7 +14,17 @@
 @synthesize window = _window;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [self runAllTests:nil];
+}
 
+#if FL_MRC
+- (void)dealloc {
+	[_window release];
+	[super dealloc];
+}
+#endif
+
+- (IBAction) runAllTests:(id) sender {
     FLLogger* logger = [FLLogger logger];
     [logger addLoggerSink:[FLConsoleLogSink consoleLogSink:FLLogOutputSimple]];
     [FLTestOutput addLogger:logger];
@@ -26,12 +36,5 @@
         [[NSApplication sharedApplication] terminate:self];
     });
 }
-
-#if FL_MRC
-- (void)dealloc {
-	[_window release];
-	[super dealloc];
-}
-#endif
 
 @end

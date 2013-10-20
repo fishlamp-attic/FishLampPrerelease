@@ -36,8 +36,12 @@
 }
 #endif
 
-- (FLHttpUser*) user {
+- (FLHttpUser*) httpUser {
     return [self.delegate httpRequestAuthenticatorGetUser:self];
+}
+
+- (FLOperationContext*) operationContext {
+    return [self.delegate httpRequestAuthenticatorGetOperationContext:self];
 }
 
 - (BOOL) credentialsNeedAuthentication:(FLHttpUser*) user {
@@ -95,7 +99,7 @@
 
 - (void) authenticateHttpRequest:(FLHttpRequest*) request {
 
-    __block FLHttpUser* user = FLRetain(self.user);
+    __block FLHttpUser* user = FLRetain(self.httpUser);
     FLAssertNotNil(user); 
 
     __block FLHttpRequestAuthenticator* myself = FLRetain(self);
@@ -118,7 +122,7 @@
 
 - (FLPromise*) beginAuthenticating:(fl_completion_block_t) completion {
 
-    __block FLHttpUser* user = FLRetain(self.user);
+    __block FLHttpUser* user = FLRetain(self.httpUser);
     __block FLHttpRequestAuthenticator* myself = FLRetain(self);
     FLAssertNotNil(user); 
 

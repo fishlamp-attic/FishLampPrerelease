@@ -96,4 +96,7 @@
                     withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
 }
 
+- (void) didMoveToParent:(id) parent {
+}
+
 @end

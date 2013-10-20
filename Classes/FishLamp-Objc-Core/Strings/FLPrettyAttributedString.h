@@ -10,7 +10,7 @@
 
 @protocol FLPrettyAttributedStringDelegate;
 
-@interface FLPrettyAttributedString : FLWhitespaceStringFormatter {
+@interface FLPrettyAttributedString : FLWhitespaceStringFormatter<FLWhitespaceStringFormatterImplementation> {
 @private
     NSMutableAttributedString* _attributedString;
 }

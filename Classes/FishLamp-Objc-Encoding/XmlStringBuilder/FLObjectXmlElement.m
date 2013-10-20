@@ -112,7 +112,6 @@
     FLAssertNotNil(_object);
     FLAssertNotNil(_propertyDescriber);
 
-    [super didMoveToParent:parent];
     if(parent && _object) {
 //        FLLog(@"Adding %@ to %@ parent with object %@", NSStringFromClass([self class]), NSStringFromClass([parent class]), [_object description]);
         [_object addToXmlElement:self propertyDescriber:_propertyDescriber];

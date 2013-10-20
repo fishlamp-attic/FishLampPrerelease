@@ -86,6 +86,21 @@ typedef void (^FLStringFormatterBlock)();
 
 @end
 
+@protocol FLStringFormatterImplementation <NSObject>
+- (void) appendBlankLine;
+- (void) openLine;
+- (void) closeLine;
+- (void) indent;
+- (void) outdent;
+- (NSInteger) indentLevel;
+- (NSUInteger) length;
+- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
+                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor;
+
+- (void) willAppendString:(NSString*) string;
+- (void) willAppendAttributedString:(NSAttributedString*) string;
+- (void) didMoveToParent:(id) parent;
+@end
 
 // Concrete base class
 
@@ -94,27 +109,11 @@ typedef void (^FLStringFormatterBlock)();
     __unsafe_unretained id _parent;
 }
 
-// override points
-- (void) appendBlankLine;
-- (void) openLine;
-- (void) closeLine;
-- (void) indent;
-- (void) outdent;
-- (NSInteger) indentLevel;
-
-- (NSUInteger) length;
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
-                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor;
-
-- (void) willAppendString:(NSString*) string;
-- (void) willAppendAttributedString:(NSAttributedString*) string;
-
-// optional
-- (void) didMoveToParent:(id) parent;
-
 // deprecated
+/*
 - (NSAttributedString*) attributedString;
 - (NSString*) string;
+*/
 
 @end
 

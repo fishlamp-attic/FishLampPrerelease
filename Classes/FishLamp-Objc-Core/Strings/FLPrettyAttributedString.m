@@ -44,10 +44,6 @@
 }
 #endif
 
-//- (void) appendPrettyString:(FLPrettyString*) string {
-//    [self appendStringContainingMultipleLines:string.string];
-//}
-
 - (void) deleteAllCharacters {
     [_attributedString deleteCharactersInRange:NSMakeRange(0, [_attributedString length])];
 }
@@ -81,22 +77,3 @@
 }
 
 @end
-
-//@implementation FLDeprecatedPrettyAttributedString
-//
-//@synthesize delegate = _delegate;
-//
-//- (void) willAppendAttributedString:(NSAttributedString*) attributedString {
-//
-//    NSAttributedString* stringToAppend = FLRetainWithAutorelease(attributedString);
-//
-//    if([self.delegate respondsToSelector:@selector(prettyString:willAppendAttributedString:)]) {
-//        stringToAppend = [self.delegate prettyString:self willAppendAttributedString:attributedString];
-//    }
-//
-//    [self.storage appendAttributedString:stringToAppend];
-//    
-//    FLPerformSelector2(self.delegate, @selector(prettyString:didAppendAttributedString:), self, stringToAppend); 
-//}
-//
-//@end
