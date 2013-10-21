@@ -86,36 +86,42 @@ typedef void (^FLStringFormatterBlock)();
 
 @end
 
-@protocol FLStringFormatterImplementation <NSObject>
-- (void) appendBlankLine;
-- (void) openLine;
-- (void) closeLine;
-- (void) indent;
-- (void) outdent;
-- (NSInteger) indentLevel;
-- (NSUInteger) length;
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
-                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor;
-
-- (void) willAppendString:(NSString*) string;
-- (void) willAppendAttributedString:(NSAttributedString*) string;
-- (void) didMoveToParent:(id) parent;
-@end
-
 // Concrete base class
 
 @interface FLStringFormatter : NSObject<FLStringFormatter> {
 @private
     __unsafe_unretained id _parent;
+    __unsafe_unretained id _delegate;
 }
+@end
 
-// deprecated
-/*
-- (NSAttributedString*) attributedString;
-- (NSString*) string;
-*/
+@protocol FLStringFormatterDelegate <NSObject>
+- (void) stringFormatterAppendBlankLine:(FLStringFormatter*) formatter;
+- (void) stringFormatterOpenLine:(FLStringFormatter*) formatter;
+- (void) stringFormatterCloseLine:(FLStringFormatter*) formatter;
+- (void) stringFormatterIndent:(FLStringFormatter*) formatter;
+- (void) stringFormatterOutdent:(FLStringFormatter*) formatter;
+- (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter;
+- (NSUInteger) stringFormatterLength:(FLStringFormatter*) formatter;
+
+- (void)stringFormatter:(FLStringFormatter*) formatter
+appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
+       withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor;
+
+- (void) stringFormatter:(FLStringFormatter*) formatter
+            appendString:(NSString*) string;
+
+- (void) stringFormatter:(FLStringFormatter*) formatter
+  appendAttributedString:(NSAttributedString*) string;
+
+- (void) stringFormatter:(FLStringFormatter*) formatter
+         didMoveToParent:(id) parent;
+
+- (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter;
+- (NSAttributedString*) stringFormatterExportAttributedString:(FLStringFormatter*) formatter;
 
 @end
+
 
 @protocol FLStringFormatterProprocessor <NSObject>
 - (void) processAndAppendString:(NSString*) string toStringFormatter:(id<FLStringFormatter>) formatter;

@@ -14,7 +14,6 @@
 
 @synthesize whitespace = _whitespace;
 @synthesize lineIsOpen = _editingLine;
-@synthesize indentLevel = _indentLevel;
 
 - (id) initWithWhitespace:(FLWhitespace*) whitespace {
     self = [super init];
@@ -35,7 +34,7 @@
 }
 #endif
 
-- (void) closeLine {
+- (void) stringFormatterCloseLine:(FLStringFormatter*) formatter {
 
     if(_editingLine) {
         [self willCloseLine];
@@ -43,7 +42,7 @@
     }
 }
 
-- (void) openLine {
+- (void) stringFormatterOpenLine:(FLStringFormatter*) formatter {
     if(!_editingLine) {
         _editingLine = YES;
         if(self.whitespace) {
@@ -59,11 +58,11 @@
 - (void) willOpenLine {
 }
 
-- (void) indent {
+- (void) stringFormatterIndent:(FLStringFormatter*) formatter {
     ++_indentLevel;
 }
 
-- (void) outdent {
+- (void) stringFormatterOutdent:(FLStringFormatter*) formatter {
     --_indentLevel;
 }
 
@@ -73,7 +72,7 @@
     } 
 }
 
-- (void) appendBlankLine {
+- (void) stringFormatterAppendBlankLine:(FLStringFormatter*) formatter {
     [self closeLine];
 
     // intentionally not opening line
@@ -82,21 +81,36 @@
     _editingLine = NO;
 }
 
-- (void) willAppendString:(NSString*) string {
+- (void) stringFormatter:(FLStringFormatter*) formatter appendString:(NSString*) string {
 }
 
-- (void) willAppendAttributedString:(NSAttributedString*) string {
+- (void) stringFormatter:(FLStringFormatter*) formatter appendAttributedString:(NSAttributedString*) string {
 }
 
-- (NSUInteger) length {
+- (NSUInteger) stringFormatterLength:(FLStringFormatter*) formatter {
     return 0;
 }
 
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
+- (void) stringFormatter:(FLStringFormatter*) formatter
+        appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
                     withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
 }
 
-- (void) didMoveToParent:(id) parent {
+- (void) stringFormatter:(FLStringFormatter*) formatter
+         didMoveToParent:(id) parent {
 }
+
+- (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter {
+    return _indentLevel;
+}
+
+- (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter {
+    return nil;
+}
+
+- (NSAttributedString*) stringFormatterExportAttributedString:(FLStringFormatter*) formatter {
+    return nil;
+}
+
 
 @end

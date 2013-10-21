@@ -54,7 +54,7 @@ FLSynthesizeSingleton(FLTestLoggingManager)
     [[self logger] appendBlankLine];
 }
 
-- (void) openLine {
+- (void) willOpenLine {
     [[self logger] openLine];
 }
 

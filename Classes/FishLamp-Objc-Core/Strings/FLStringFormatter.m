@@ -15,51 +15,33 @@
 
 @synthesize parent = _parent;
 
+- (id) init {	
+	self = [super init];
+	if(self) {
+		_delegate = self;
+	}
+	return self;
+}
+
 - (NSString*) exportString {
-    FLAssertFailedWithComment(@"this is a required override");
-    return nil;
+    return [_delegate stringFormatterExportString:self];
 }
 
 - (NSAttributedString*) exportAttributedString {
-    FLAssertFailedWithComment(@"this is a required override");
-    return nil;
-}
-
-- (NSAttributedString*) attributedString {
-    return [self exportAttributedString];
-}
-
-- (NSString*) string {
-    return [self exportString];
-}
-
-- (void) indent {
-}
-
-- (void) outdent {
-}
-
-- (NSInteger) indentLevel {
-    return 0;
+    return [_delegate stringFormatterExportAttributedString:self];
 }
 
 - (void) processString:(NSString*) string {
 
-    [self willAppendString:string];
+    [_delegate stringFormatter:self appendString:string];
 //    [[FLStringFormatterLineProprocessor instance] processAndAppendString:string toStringFormatter:self];
-}
-
-- (void) willAppendString:(NSString*) string {
-    FLAssertFailedWithComment(@"this is a required override");
-}
-
-- (void) willAppendAttributedString:(NSAttributedString*) string {
-    FLAssertFailedWithComment(@"this is a required override");
 }
 
 - (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
                     withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
-    FLAssertFailedWithComment(@"this is a required override");
+    [_delegate stringFormatter:self
+   appendSelfToStringFormatter:stringFormatter
+              withPreprocessor:preprocessor];
 }
 
 - (void) appendStringFormatter:(id<FLStringFormatter>) aStringFormatter
@@ -76,97 +58,110 @@
 
 - (void) setParent:(id) parent {
     _parent = parent;
-    [self didMoveToParent:_parent];
-}
-
-- (void) didMoveToParent:(id) parent {
-}
-
-- (void) appendBlankLine {
-    FLAssertFailedWithComment(@"this is a required override");
-}
-
-- (void) openLine {
-    FLAssertFailedWithComment(@"this is a required override");
+    [_delegate stringFormatter:self didMoveToParent:_parent];
 }
 
 - (void) appendString:(NSString*) string {
     FLAssertNotNil(string);
 
-    [self openLine];
+    [_delegate stringFormatterOpenLine:self];
     [self processString:string];
 }
 
 - (void) appendAttributedString:(NSAttributedString*) string {
     FLAssertNotNil(string);
 
-    [self openLine];
-    [self willAppendAttributedString:string];
+    [_delegate stringFormatterOpenLine:self];
+    [_delegate stringFormatter:self appendAttributedString:string];
+}
+
+- (void) openLine {
+    [_delegate stringFormatterOpenLine:self];
 }
 
 - (void) closeLine {
-    FLAssertFailedWithComment(@"this is a required override");
+    [_delegate stringFormatterCloseLine:self];
+}
+
+- (void) indent {
+    [_delegate stringFormatterIndent:self];
+}
+
+- (void) outdent {
+    [_delegate stringFormatterOutdent:self];
+}
+
+- (NSUInteger) length {
+    return [_delegate stringFormatterLength:self];
+}
+
+- (NSInteger) indentLevel {
+    return [_delegate stringFormatterIndentLevel:self];
+}
+
+- (void) appendBlankLine {
+    [_delegate stringFormatterAppendBlankLine:self];
 }
 
 - (void) closeLineWithString:(NSString*) string {
 
     if(string) {
-        [self openLine];
+        [_delegate stringFormatterOpenLine:self];
         [self processString:string];
     }
 
-    [self closeLine];
+    [_delegate stringFormatterCloseLine:self];
 }
 
 - (void) closeLineWithAttributedString:(NSAttributedString*) string {
 
     if(string) {
-        [self openLine];
-        [self willAppendAttributedString:string];
+        [_delegate stringFormatterOpenLine:self];
+        [_delegate stringFormatter:self appendAttributedString:string];
     }
 
-    [self closeLine];
+    [_delegate stringFormatterCloseLine:self];
 }
 
 - (void) openLineWithString:(NSString*) string {
     FLAssertNotNil(string);
 
-    [self closeLine];
-    [self openLine];
+    [_delegate stringFormatterCloseLine:self];
+    [_delegate stringFormatterOpenLine:self];
     [self processString:string];
 }
 
 - (void) openLineWithAttributedString:(NSAttributedString*) string {
     FLAssertNotNil(string);
 
-    [self closeLine];
-    [self openLine];
-    [self willAppendAttributedString:string];
+    [_delegate stringFormatterCloseLine:self];
+    [_delegate stringFormatterOpenLine:self];
+    [_delegate stringFormatter:self appendAttributedString:string];
 }
 
 - (void) appendLineWithAttributedString:(NSAttributedString*) string {
     FLAssertNotNil(string);
 
-    [self openLine];
-    [self willAppendAttributedString:string];
-    [self closeLine];
+    [_delegate stringFormatterOpenLine:self];
+    [_delegate stringFormatter:self appendAttributedString:string];
+    [_delegate stringFormatterCloseLine:self];
 }
 
 - (void) appendLine:(NSString*) string {
     FLAssertNotNil(string);
 
-    [self openLine];
+    [_delegate stringFormatterOpenLine:self];
     [self processString:string];
-    [self closeLine];
+    [_delegate stringFormatterCloseLine:self];
 }
 
 - (void) indent:(FLStringFormatterBlock) block {
-    [self closeLine];
-    [self indent];
+    [_delegate stringFormatterCloseLine:self];
+    [_delegate stringFormatterIndent:self];
     // subsequent calls to us will open a line, etc..
     block();
-    [self closeLine]; // just in case.
-    [self outdent];
+    [_delegate stringFormatterCloseLine:self]; // just in case.
+    [_delegate stringFormatterOutdent:self];
 }
 
 - (BOOL) isEmpty {
@@ -179,10 +174,6 @@
     [self appendLine:openScope];
     [self indent:block];
     [self appendLine:closeScope];
-}
-
-- (NSUInteger) length {
-    return 0;
 }
 
 - (void) appendLines:(NSString**) lines
@@ -280,7 +271,9 @@
     [self appendStringContainingMultipleLines:inLines trimWhitespace:YES];
 }
 
-
+- (NSString*) description {
+    return [self exportString];
+}
 @end
 
 @implementation FLStringFormatterLineProprocessor

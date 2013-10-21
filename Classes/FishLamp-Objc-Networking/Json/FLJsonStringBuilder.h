@@ -7,11 +7,11 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLDocumentBuilder.h"
+#import "FLStringBuilder.h"
 
 @class FLStringToObjectConversionManager;
 
-@interface FLJsonStringBuilder : FLDocumentBuilder {
+@interface FLJsonStringBuilder : FLStringBuilder {
 @private
 	FLStringToObjectConversionManager* _dataEncoder;
 }

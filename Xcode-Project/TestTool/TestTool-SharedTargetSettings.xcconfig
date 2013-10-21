@@ -8,5 +8,5 @@
 
 #include "Piecemeal-XcodeConfigs/Configs/Piecemeal-IncludedConfig-TestTool.xcconfig"
 
-GCC_PRECOMPILE_PREFIX_HEADER = NO
-GCC_PREFIX_HEADER = FishLamp-Objc-Test-OSX/FishLamp-Objc-Test-Prefix.pch
+GCC_PRECOMPILE_PREFIX_HEADER = YES
+GCC_PREFIX_HEADER = TestTool/TestTool-Prefix.pch

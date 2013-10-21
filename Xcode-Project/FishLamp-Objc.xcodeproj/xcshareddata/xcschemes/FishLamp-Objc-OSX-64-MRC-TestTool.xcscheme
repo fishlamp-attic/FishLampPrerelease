@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B214727A17DE7BBC00985872"
-               BuildableName = "FishLamp-Objc-Test-iOS.app"
-               BlueprintName = "FishLamp-Objc-Test-iOS"
+               BlueprintIdentifier = "2727D28C17DE2FF80069F9D2"
+               BuildableName = "FishLamp-Objc-OSX-64-MRC-TestTool"
+               BlueprintName = "FishLamp-Objc-OSX-64-MRC-TestTool"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,33 +28,13 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2767DFD218134012001EF21C"
-               BuildableName = "FishLamp-Objc-OSX-64-MRC-TesterTests.xctest"
-               BlueprintName = "FishLamp-Objc-OSX-64-MRC-TesterTests"
-               ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2767E0DF18134CAE001EF21C"
-               BuildableName = "TestApp-iOSTests.xctest"
-               BlueprintName = "TestApp-iOSTests"
-               ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B214727A17DE7BBC00985872"
-            BuildableName = "FishLamp-Objc-Test-iOS.app"
-            BlueprintName = "FishLamp-Objc-Test-iOS"
+            BlueprintIdentifier = "2727D28C17DE2FF80069F9D2"
+            BuildableName = "FishLamp-Objc-OSX-64-MRC-TestTool"
+            BlueprintName = "FishLamp-Objc-OSX-64-MRC-TestTool"
             ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -71,9 +51,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B214727A17DE7BBC00985872"
-            BuildableName = "FishLamp-Objc-Test-iOS.app"
-            BlueprintName = "FishLamp-Objc-Test-iOS"
+            BlueprintIdentifier = "2727D28C17DE2FF80069F9D2"
+            BuildableName = "FishLamp-Objc-OSX-64-MRC-TestTool"
+            BlueprintName = "FishLamp-Objc-OSX-64-MRC-TestTool"
             ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -89,9 +69,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B214727A17DE7BBC00985872"
-            BuildableName = "FishLamp-Objc-Test-iOS.app"
-            BlueprintName = "FishLamp-Objc-Test-iOS"
+            BlueprintIdentifier = "2727D28C17DE2FF80069F9D2"
+            BuildableName = "FishLamp-Objc-OSX-64-MRC-TestTool"
+            BlueprintName = "FishLamp-Objc-OSX-64-MRC-TestTool"
             ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

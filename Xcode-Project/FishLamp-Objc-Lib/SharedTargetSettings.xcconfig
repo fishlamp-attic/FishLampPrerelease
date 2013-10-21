@@ -8,7 +8,7 @@ GCC_PRECOMPILE_PREFIX_HEADER = YES
 GCC_PREFIX_HEADER = FishLamp-Objc-Lib/FishLamp-Objc-Lib-Prefix.pch
 
 MACH_O_TYPE = staticlib
-EXECUTABLE_PREFIX = lib
+EXECUTABLE_PREFIX =
 EXECUTABLE_EXTENSION = a
 
 // change this for your project

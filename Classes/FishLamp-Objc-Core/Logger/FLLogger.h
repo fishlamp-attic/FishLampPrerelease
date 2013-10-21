@@ -20,7 +20,7 @@
 @class FLLogEntry;
 @class FLStackTrace;
 
-@interface FLLogger : FLStringFormatter<FLStringFormatterImplementation> {
+@interface FLLogger : FLStringFormatter<FLStringFormatterDelegate> {
 @private
     NSMutableArray* _sinks;
     dispatch_queue_t _fifoQueue;

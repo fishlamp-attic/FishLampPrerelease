@@ -124,8 +124,8 @@
     }
 }
 
-- (void) appendAttributedString:(NSAttributedString*) attributedString {
-    [self appendString:attributedString.string];
+- (void) willAppendAttributedString:(NSAttributedString*) attributedString {
+    [self willAppendString:attributedString.string];
 }
 
 - (void) indent {
@@ -194,6 +194,10 @@ appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
         length += line.length;
     }
     return length;
+}
+
+- (void) didMoveToParent:(id) parent {
+
 }
 
 

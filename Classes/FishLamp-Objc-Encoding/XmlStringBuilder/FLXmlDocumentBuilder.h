@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLDocumentBuilder.h"
+#import "FLStringBuilder.h"
 
 // xml
 #define FLXmlVersion1_0                         @"1.0"
@@ -17,7 +17,7 @@
 @class FLXmlElement;
 @class FLStringToObjectConversionManager;
 
-@interface FLXmlDocumentBuilder : FLDocumentBuilder {
+@interface FLXmlDocumentBuilder : FLStringBuilder {
 @private
     FLStringToObjectConversionManager* _dataEncoder;
 }

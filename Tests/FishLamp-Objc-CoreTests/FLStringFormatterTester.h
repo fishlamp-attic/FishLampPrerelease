@@ -1,5 +1,5 @@
 //
-//  FLStringFormatterTests.h
+//  FLStringFormatterTester.h
 //  FishLamp-Objc
 //
 //  Created by Mike Fullerton on 10/19/13.
@@ -9,7 +9,7 @@
 #import "FLTestable.h"
 #import "FLCoreFrameworkTest.h"
 
-@interface FLStringFormatterTests : FLCoreFrameworkTest
+@interface FLStringFormatterTester : FLCoreFrameworkTest
 - (id<FLStringFormatter>) createStringFormatter;
 - (id<FLStringFormatter>) createStringFormatter:(FLWhitespace*) whiteSpace;
 @end

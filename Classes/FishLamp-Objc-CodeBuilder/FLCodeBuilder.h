@@ -8,11 +8,11 @@
 //
 
 #import "FishLampMinimum.h"
-#import "FLDocumentBuilder.h"
+#import "FLStringBuilder.h"
 
 @class FLCodeChunk;
 
-@interface FLCodeBuilder : FLDocumentBuilder {
+@interface FLCodeBuilder : FLStringBuilder {
 @private
 }
 

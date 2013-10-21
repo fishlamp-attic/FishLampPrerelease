@@ -7,79 +7,97 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLDocumentBuilder.h"
+#import "FLStringBuilder.h"
 #import "FLPrettyString.h"
 #import "FLPrettyAttributedString.h"
 
-@implementation FLDocumentBuilder 
+@interface FLStringBuilder ()
+@property (readonly, strong, nonatomic) id<FLStringFormatter> rootStringBuilder;
+@property (readonly, strong, nonatomic) NSArray* stack;
+@end
 
-@synthesize document = _document;
+@implementation FLStringBuilder 
+
+@synthesize stack = _stack;
 
 - (id) init {
     self = [super init];
     if(self) {
-        _document = [[FLStringDocument alloc] init];
-        _document.rootStringBuilder.parent = self;
+
+        _stack = [[NSMutableArray alloc] init];
+        [_stack addObject:[FLDocumentSection stringBuilder]];
+
+        self.rootStringBuilder.parent = self;
     }
     return self;
 }
 
-+ (id) documentBuilder {
++ (id) stringBuilder {
     return FLAutorelease([[[self class] alloc] init]);
 }
 
 #if FL_MRC
 - (void) dealloc {
-    [_document release];
+    [_stack release];
     [super dealloc];
 }
 #endif
 
-//- (void) stringFormatter:(FLStringFormatter*) stringFormatter 
-//            appendString:(NSString*) string
-//  appendAttributedString:(NSAttributedString*) attributedString
-//              lineUpdate:(FLStringFormatterLineUpdate) lineUpdate {
-//
-//    [[self openedSection] stringFormatter:stringFormatter appendString:string appendAttributedString:attributedString lineUpdate:lineUpdate];
-//}                                                 
+- (void) deleteAllStringBuilders {
+    [_stack removeAllObjects];
+    [_stack addObject:[FLDocumentSection stringBuilder]];
+}
+
+- (id<FLStringFormatter>) rootStringBuilder {
+    FLAssertNotNil([_stack objectAtIndex:0]);
+    return [_stack objectAtIndex:0];
+}
 
 - (id<FLStringFormatter>) openedSection {
-    return [_document openedStringBuilder];
+    FLAssertNotNil([_stack lastObject]);
+    return [_stack lastObject];
 }
 
 - (void) appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
                     withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
 
-    [anotherStringFormatter appendStringFormatter:_document.rootStringBuilder withPreprocessor:preprocessor];
+    [anotherStringFormatter appendStringFormatter:self.rootStringBuilder withPreprocessor:preprocessor];
 }
 
-- (void) appendStringFormatter:(id<FLStringFormatter>) element {
-    [self.document appendStringFormatter:element];
+- (void) appendStringFormatter:(id<FLStringFormatter>) formatter {
+    FLAssert(_stack.count > 0);
+    
+    [self.openedSection appendStringFormatter:formatter
+                             withPreprocessor:[FLStringFormatterLineProprocessor instance]];
 }
 
 - (void) openSection:(id<FLStringFormatter>) element {
-    [self.document openStringBuilder:element];
+
+    FLAssert(_stack.count > 0);
+    
+    [_stack addObject:element];
 }
 
-//- (void) appendStringFormatter:(id<FLStringFormatter>) element {
-//    [self.document appendStringFormatter:element];
-//}
-
 - (void) closeSection {
-    [self.document closeStringBuilder];
+    FLAssert(_stack.count > 0);
+    
+    id last = FLRetainWithAutorelease(self.openedSection);
+    [_stack removeLastObject_fl];
 }
 
 - (void) closeAllSections {
-    [self.document closeAllStringBuilders];
+    while(_stack.count > 1) {
+        [self closeSection];
+    }
 }
 
-//- (void) willAppendString:(NSString*) string {
-//    [[self.document] willAppendString:string];
-//}
-//
-//- (void) willAppendAttributedString:(NSAttributedString*) string {
-//    [[self.document] willAppendAttributedString:string];
-//}
+- (void) willAppendString:(NSString*) string {
+    [[self openedSection] appendString:string];
+}
+
+- (void) willAppendAttributedString:(NSAttributedString*) string {
+    [[self openedSection] appendAttributedString:string];
+}
 
 - (NSString*) exportString {
     return [self buildString];
@@ -109,7 +127,7 @@
     [[self openedSection] appendBlankLine];
 }
 
-- (void) openLine {
+- (void) willOpenLine {
     [[self openedSection] openLine];
 }
 
@@ -117,12 +135,8 @@
     [[self openedSection] closeLine];
 }
 
-- (void) appendString:(NSString*) string {
-    [[self openedSection] appendString:string];
-}
-
-- (void) appendAttributedString:(NSAttributedString*) attributedString {
-    [[self openedSection] appendAttributedString:attributedString];
+- (NSInteger) indentLevel {
+    return [[self openedSection] indentLevel];
 }
 
 - (void) indent {
@@ -134,22 +148,16 @@
 }
 
 - (NSUInteger) length {
-    return [_document length];
+
+    NSUInteger length = 0;
+    for(id<FLStringFormatter> formatter in _stack) {
+        length += formatter.length;
+    }
+
+    return length;
 }
 
-- (NSString*) description {
-    return [self exportString];
+- (void) didMoveToParent:(id) parent {
 }
-
-- (id) parent {
-    return nil;
-}
-
-//- (void) appendDocument:(FLDocumentBuilder*) document {
-//    [self appendStringFormatter:document];
-//}
-
-
-
 
 @end

@@ -11,17 +11,15 @@
 #import "FLWhitespace.h"
 #import "FLStringFormatter.h"
 #import "FLDocumentSection.h"
-#import "FLPrettyString.h"
-#import "FLStringDocument.h"
 
-@interface FLDocumentBuilder : FLStringFormatter {
+@interface FLStringBuilder : FLStringFormatter<FLStringFormatterDelegate> {
 @private
-    FLStringDocument* _document;
+    NSMutableArray* _stack;
 }
-+ (id) documentBuilder;
 
-@property (readonly, strong, nonatomic) FLStringDocument* document;
-@property (readonly, strong, nonatomic) FLDocumentSection* openedSection;
++ (id) stringBuilder;
+
+@property (readonly, strong, nonatomic) id<FLStringFormatter> openedSection;
 
 - (void) openSection:(id<FLStringFormatter>) element;
 - (void) closeSection;

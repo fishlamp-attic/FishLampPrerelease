@@ -139,7 +139,7 @@
     }];
 }
 
-- (void) appendBlankLine {
+- (void) willAppendBlankLine {
     [self dispatchBlock: ^{
         FLLogEntry* entry = [FLLogEntry logEntry];
         entry.logString = @"";
@@ -148,7 +148,7 @@
     }];
 }
 
-- (void) openLine {
+- (void) willOpenLine {
     [self closeLine];
 }
 

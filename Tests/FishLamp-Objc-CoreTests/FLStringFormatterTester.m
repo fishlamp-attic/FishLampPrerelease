@@ -1,12 +1,12 @@
 //
-//  FLStringFormatterTests.m
+//  FLStringFormatterTester.m
 //  FishLamp-Objc
 //
 //  Created by Mike Fullerton on 10/19/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FLStringFormatterTests.h"
+#import "FLStringFormatterTester.h"
 
 @interface FLTestWhitespace : FLRepeatingCharTabWhitespace
 @end
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation FLStringFormatterTests
+@implementation FLStringFormatterTester
 
 - (id<FLStringFormatter>) createStringFormatter {
     return nil;

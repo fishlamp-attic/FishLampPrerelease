@@ -10,7 +10,7 @@
 
 @class FLWhitespace;
 
-@interface FLWhitespaceStringFormatter : FLStringFormatter<FLStringFormatterImplementation> {
+@interface FLWhitespaceStringFormatter : FLStringFormatter<FLStringFormatterDelegate> {
 @private
     BOOL _editingLine;
     FLWhitespace* _whitespace;
@@ -19,7 +19,6 @@
 
 @property (readonly, assign, nonatomic) BOOL lineIsOpen;
 @property (readonly, strong, nonatomic) FLWhitespace* whitespace;
-@property (readonly, assign, nonatomic) NSInteger indentLevel;
 
 - (id) initWithWhitespace:(FLWhitespace*) whitespace;
 

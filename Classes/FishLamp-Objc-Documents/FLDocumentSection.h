@@ -13,7 +13,7 @@
 #import "FLPrettyString.h"
 #import "FLWhitespaceStringFormatter.h"
 
-@interface FLDocumentSection : FLWhitespaceStringFormatter<FLWhitespaceStringFormatterImplementation> {
+@interface FLDocumentSection : FLStringFormatter<FLStringFormatterDelegate> {
 @private
     NSMutableArray* _lines;
     BOOL _needsLine;

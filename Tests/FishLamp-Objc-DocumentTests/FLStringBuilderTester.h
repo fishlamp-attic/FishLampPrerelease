@@ -1,5 +1,5 @@
 //
-//  FLStringDocumentTests.h
+//  FLDocumentTests.h
 //  FishLamp-Objc
 //
 //  Created by Mike Fullerton on 10/20/13.
@@ -7,7 +7,8 @@
 //
 
 #import "FLTestable.h"
+#import "FLStringFormatterTester.h"
 
-@interface FLStringDocumentTests : FLTestable
+@interface FLStringBuilderTester : FLStringFormatterTester
 
 @end

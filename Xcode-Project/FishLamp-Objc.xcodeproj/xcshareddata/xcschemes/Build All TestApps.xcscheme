@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2767E09F18134C70001EF21C"
                BuildableName = "TestApp-OSX-32-MRC.app"
-               BlueprintName = "TestApp-OSX-32-MRC"
+               BlueprintName = "FishLamp-Objc-OSX-32-MRC-TestApp"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,7 +30,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2767E06718134BD2001EF21C"
                BuildableName = "TestApp-OSX-64-ARC.app"
-               BlueprintName = "TestApp-OSX-64-ARC"
+               BlueprintName = "FishLamp-Objc-OSX-64-ARC-TestApp"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,7 +44,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2767DFB418134011001EF21C"
                BuildableName = "TestApp-OSX-64-MRC.app"
-               BlueprintName = "TestApp-OSX-64-MRC"
+               BlueprintName = "FishLamp-Objc-OSX-64-MRC-TestApp"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -58,7 +58,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2767E08318134BF4001EF21C"
                BuildableName = "TestApp-OSX-Universal.app"
-               BlueprintName = "TestApp-OSX-Universal"
+               BlueprintName = "FishLamp-Objc-OSX-Universal-TestApp"
                ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
