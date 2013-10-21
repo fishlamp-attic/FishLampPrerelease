@@ -7,7 +7,8 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLCocoaUIRequired.h"
+#import "FishLampMinimum.h"
+#import "FLCompatibility.h"
 
 @protocol FLDrawableParent <NSObject>
 @property (readonly, assign, nonatomic) CGRect bounds;

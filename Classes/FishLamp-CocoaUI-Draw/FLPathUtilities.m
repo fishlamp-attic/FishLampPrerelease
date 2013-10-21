@@ -8,6 +8,8 @@
 //
 
 #import "FLPathUtilities.h"
+#import "FLGeometry.h"
+#import "FLCompatibility.h"
 
 void FLCreateRectPathWithCornerRadii(CGMutablePathRef path, CGRect rect, CGFloat topLeft, CGFloat topRight, CGFloat bottomRight, CGFloat bottomLeft)
 {

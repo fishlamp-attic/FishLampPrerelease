@@ -8,7 +8,8 @@
 //
 
 #import "FLSlideInAnimation.h"
-
+#import "FLGeometry.h"
+#import "FLCompatibility.h"
 
 @implementation FLSlideAnimation
 

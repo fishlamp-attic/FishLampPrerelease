@@ -8,7 +8,6 @@
 //
 
 #import "FLViewControllerTransitionAnimation.h"
-#import "FLViewController.h"
 
 @implementation FLViewControllerTransitionAnimation
 

@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLCocoaUIRequired.h"
+#import "FishLampMinimum.h"
 
 extern void FLDrawLinearGradient(CGContextRef context, 
     CGRect rect, 
@@ -24,14 +24,14 @@ typedef struct {
       
 extern void FLDrawLine(CGContextRef context, FLLine_t line);    
 
-NS_INLINE
-CGContextRef FLPushContext() {
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextSaveGState(context);
-    return context;
-}
-
-NS_INLINE 
-void FLPopContext(CGContextRef context) {
-	CGContextRestoreGState(context);
-}
+//NS_INLINE
+//CGContextRef FLPushContext() {
+//	CGContextRef context = UIGraphicsGetCurrentContext();
+//	CGContextSaveGState(context);
+//    return context;
+//}
+//
+//NS_INLINE 
+//void FLPopContext(CGContextRef context) {
+//	CGContextRestoreGState(context);
+//}

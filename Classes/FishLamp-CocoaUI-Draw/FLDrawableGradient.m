@@ -8,6 +8,8 @@
 //
 
 #import "FLDrawableGradient.h"
+#import "FLGeometry.h"
+#import "FLCompatibility.h"
 
 @implementation FLDrawableGradient
 

@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLCocoaUIRequired.h"
+#import "FishLampMinimum.h"
 
 #if __MAC_10_8
 #import <CoreText/CoreText.h>

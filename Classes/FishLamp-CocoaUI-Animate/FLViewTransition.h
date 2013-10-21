@@ -9,6 +9,7 @@
 
 #import "FLAbstractAnimation.h"
 #import "FLAnimation.h"
+#import "FLCompatibility.h"
 
 @interface FLAbstractViewTransition : FLAbstractAnimation {
 @private 
