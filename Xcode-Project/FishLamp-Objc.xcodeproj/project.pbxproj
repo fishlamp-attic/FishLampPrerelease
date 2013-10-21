@@ -2376,12 +2376,8 @@
 		2767D69418132B1A001EF21C /* FLPointGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPointGeometry.h; sourceTree = "<group>"; };
 		2767D69518132B1A001EF21C /* FLRectGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRectGeometry.h; sourceTree = "<group>"; };
 		2767D69618132B1A001EF21C /* FLRectGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLRectGeometry.m; sourceTree = "<group>"; };
-		2767D69718132B1A001EF21C /* FLRectGeometry_Inlines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRectGeometry_Inlines.h; sourceTree = "<group>"; };
 		2767D69818132B1A001EF21C /* FLRectLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRectLayout.h; sourceTree = "<group>"; };
 		2767D69918132B1A001EF21C /* FLRectLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLRectLayout.m; sourceTree = "<group>"; };
-		2767D69A18132B1A001EF21C /* FLRectLayout_Inlines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRectLayout_Inlines.h; sourceTree = "<group>"; };
-		2767D69B18132B1A001EF21C /* FLRectOptimize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRectOptimize.h; sourceTree = "<group>"; };
-		2767D69C18132B1A001EF21C /* FLRectOptimize_Inlines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRectOptimize_Inlines.h; sourceTree = "<group>"; };
 		2767D69D18132B1A001EF21C /* FLSizeGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSizeGeometry.h; sourceTree = "<group>"; };
 		2767D69E18132B1A001EF21C /* FLSizeGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSizeGeometry.m; sourceTree = "<group>"; };
 		2767D6A018132B1A001EF21C /* FLDateMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLDateMgr.h; sourceTree = "<group>"; };
@@ -3818,12 +3814,8 @@
 				2767D69418132B1A001EF21C /* FLPointGeometry.h */,
 				2767D69518132B1A001EF21C /* FLRectGeometry.h */,
 				2767D69618132B1A001EF21C /* FLRectGeometry.m */,
-				2767D69718132B1A001EF21C /* FLRectGeometry_Inlines.h */,
 				2767D69818132B1A001EF21C /* FLRectLayout.h */,
 				2767D69918132B1A001EF21C /* FLRectLayout.m */,
-				2767D69A18132B1A001EF21C /* FLRectLayout_Inlines.h */,
-				2767D69B18132B1A001EF21C /* FLRectOptimize.h */,
-				2767D69C18132B1A001EF21C /* FLRectOptimize_Inlines.h */,
 				2767D69D18132B1A001EF21C /* FLSizeGeometry.h */,
 				2767D69E18132B1A001EF21C /* FLSizeGeometry.m */,
 			);

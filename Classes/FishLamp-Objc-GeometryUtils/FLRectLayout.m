@@ -10,12 +10,6 @@
 #import "FLRectLayout.h"
 #import "FLRectGeometry.h"
 
-//#if DEBUG
-//#define __INLINES__
-//#import "FLRectLayout_Inlines.h"
-//#undef __INLINES__
-//#endif
-
 #ifdef FL_SHIP_ONLY_INLINE
 #undef FL_SHIP_ONLY_INLINE
 #define FL_SHIP_ONLY_INLINE

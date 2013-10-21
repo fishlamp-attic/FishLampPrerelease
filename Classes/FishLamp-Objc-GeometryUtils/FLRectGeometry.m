@@ -9,13 +9,6 @@
 
 #import "FLRectGeometry.h"
 
-//#if DEBUG
-//#define __INLINES__
-//#include "FLRectGeometry_Inlines.h"
-//#include "FLRectOptimize_Inlines.h"
-//#undef __INLINES__
-//#endif
-
 #ifdef FL_SHIP_ONLY_INLINE
 #undef FL_SHIP_ONLY_INLINE
 #define FL_SHIP_ONLY_INLINE
@@ -62,6 +55,15 @@ CGRect FLRectEnsureRectInRect(CGRect container, CGRect containee) {
 	
 	return containee;
 }
+
+FL_SHIP_ONLY_INLINE
+BOOL FLRectIsIntegral(CGRect r) {
+        return        FLIsIntegralValue(r.origin.x) && 
+                        FLIsIntegralValue(r.origin.y) && 
+                        FLIsIntegralValue(r.size.width) &&
+                        FLIsIntegralValue(r.size.height);
+}
+
 
 #if DEBUG
 
@@ -404,4 +406,64 @@ CGRect FLRectMakeWithSize(CGSize size) {
 FL_SHIP_ONLY_INLINE 
 CGRect FLRectMakeWithWidthAndHeight(CGFloat width, CGFloat height) {	
     return FLRectMake(0,0,width, height);
+}
+
+#define __FLRectCheckWidth(r) \
+            (FLFloatMod(r.origin.x + r.size.width, 2.0f) == 0.0f)
+
+#define __FLRectCheckHeight(r) \
+            (FLFloatMod(r.origin.y + r.size.height, 2.0f) == 0.0f)
+
+FL_SHIP_ONLY_INLINE
+BOOL FLRectWidthIsOptimizedForView(CGRect r) {
+    return r.size.width == 0.0f || (FLRectIsIntegral(r) && __FLRectCheckWidth(r));
+}
+
+FL_SHIP_ONLY_INLINE
+BOOL FLRectHeightIsOptimizedForView(CGRect r) {
+    return r.size.height == 0.0f || (FLRectIsIntegral(r) && __FLRectCheckHeight(r));
+}
+
+FL_SHIP_ONLY_INLINE 
+BOOL FLRectIsOptimizedForView(CGRect r) {
+	return	FLRectIsIntegral(r) && 
+			FLRectWidthIsOptimizedForView(r) &&
+			FLRectHeightIsOptimizedForView(r);
+}
+
+FL_SHIP_ONLY_INLINE 
+CGRect FLRectOptimizedForViewSize(CGRect r) {
+	r = FLRectMakeIntegral(r);
+	
+	// make sure the midpoint is not fractional.
+	if(r.size.width > 0.0f && !__FLRectCheckWidth(r)) {
+        r.size.width += 1.0f; 
+    }
+	if(r.size.height > 0.0f && !__FLRectCheckHeight(r)) {
+        r.size.height += 1.0f; 
+	}
+	return r;
+}
+
+FL_SHIP_ONLY_INLINE 
+CGRect FLRectOptimizedForViewLocation(CGRect r) {
+	r = FLRectMakeIntegral(r);
+	
+	// make sure the midpoint is not fractional.
+	if(r.size.width > 0.0f && !__FLRectCheckWidth(r)) {
+        r.origin.x -= 1.0f;
+    }
+	if(r.size.height > 0.0f && !__FLRectCheckHeight(r)) {
+        r.origin.y -= 1.0f;
+    }
+	
+	return r;
+}
+
+FL_SHIP_ONLY_INLINE 
+CGSize FLSizeOptimizeForView(CGSize aSize) {
+	CGSize size = CGSizeMake(round(aSize.width), round(aSize.height));
+	if(FLFloatMod(size.width, 2.0f) != 0.0f) size.width += 1.0f;
+	if(FLFloatMod(size.height, 2.0f) != 0.0f) size.height += 1.0f;
+	return size;
 }

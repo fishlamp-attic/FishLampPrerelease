@@ -79,6 +79,10 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
     }];
 }
 
+- (void) logoutUser {
+    [self.userService closeService:nil];
+}
+
 - (BOOL) isAuthenticated {
     return self.httpUser && [self.httpUser isLoginAuthenticated];
 }

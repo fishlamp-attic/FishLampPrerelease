@@ -38,6 +38,8 @@ extern NSString* const FLHttpControllerDidLogoutUserNotification;
 @property (readonly, strong) FLHttpRequestAuthenticator* httpRequestAuthenticator;
 @property (readonly, strong) FLHttpUser* httpUser;
 
+- (void) logoutUser;
+
 // Optional overrides
 
 /// @return FLHttpUser by default.

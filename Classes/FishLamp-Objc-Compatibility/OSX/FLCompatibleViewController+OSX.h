@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 GreenTongue Software LLC, Mike Fullerton. 
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
-#if OSX
+#if 0
 
 #import <Cocoa/Cocoa.h>
 #import <AppKit/AppKit.h>
