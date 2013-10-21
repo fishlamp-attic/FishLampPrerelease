@@ -9,6 +9,7 @@
 
 #import "FLHttpController+UserLogin.h"
 #import "FLLoginPanel.h"
+#import "FLUserService.h"
 
 @implementation FLHttpController (UserLogin)
 

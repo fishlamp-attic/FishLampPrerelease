@@ -6,16 +6,15 @@
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FishLamp.h"
+#import "FishLampOSX.h"
 #import "FLStringFormatter.h"
+#import "FLWhitespaceStringFormatter.h"
 
-@interface FLTextViewLogger : FLStringFormatter<FLStringFormatterOutput> {
+@interface FLTextViewLogger : FLWhitespaceStringFormatter<FLWhitespaceStringFormatterImplementation> {
 @private
     NSTextView* _textView;
     NSMutableAttributedString* _buffer;
     NSTimeInterval _lastUpdate;
-
-    NSInteger _indentLevel;
 }
 
 @property (readwrite, strong, nonatomic) NSTextView* textView;

@@ -8,7 +8,6 @@
 //
 #import "FLLoginPanel.h"
 #import "NSObject+Blocks.h"
-#import "FLViewController.h"
 #import "FLKeychain.h"
 #import "FLProgressPanel.h"
 #import "NSViewController+FLErrorSheet.h"

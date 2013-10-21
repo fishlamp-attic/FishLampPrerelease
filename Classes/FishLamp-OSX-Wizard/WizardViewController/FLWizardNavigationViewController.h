@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLCocoaUIRequired.h"
+#import "FishLampOSX.h"
 
 #import "FLBreadcrumbBarViewController.h"
 

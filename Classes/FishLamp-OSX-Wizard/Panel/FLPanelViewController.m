@@ -103,7 +103,7 @@
 - (void) respondToBackButton:(BOOL*) handledIt {
 }
 
-- (void) addPanelView:(SDKView*) panelView toPanelArea:(id<FLPanelArea>) panelArea animated:(BOOL) animated {
+- (void) addPanelView:(NSView*) panelView toPanelArea:(id<FLPanelArea>) panelArea animated:(BOOL) animated {
     [_panelManager addPanelView:panelView toView:panelArea.contentView animated:animated];
 }
 

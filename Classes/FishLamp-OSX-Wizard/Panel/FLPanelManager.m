@@ -469,7 +469,7 @@
     return _started && self.currentPanelIndex == (_panels.count - 1);
 }
           
-- (void) addPanelView:(SDKView*) panelView toView:(SDKView*) superview animated:(BOOL) animated {
+- (void) addPanelView:(NSView*) panelView toView:(NSView*) superview animated:(BOOL) animated {
 
 // TODO: animate
 //    panelView.wantsLayer = YES;
@@ -484,7 +484,7 @@
 
 // TODO: animate
 
-    for(SDKView* view in _panelViews) {
+    for(NSView* view in _panelViews) {
         [view removeFromSuperview];
     }
 

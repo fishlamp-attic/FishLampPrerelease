@@ -7,16 +7,16 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLCocoaUIRequired.h"
+#import "FishLampOSX.h"
 #import "FLPanelViewController.h"
 
 @protocol FLWizardButtonViewControllerDelegate;
-@interface FLWizardButtonViewController : FLCompatibleViewController<FLPanelButtons> {
+@interface FLWizardButtonViewController : NSViewController<FLPanelButtons> {
 @private
     IBOutlet NSButton* _nextButton;
     IBOutlet NSButton* _backButton;
     IBOutlet NSButton* _otherButton;
-    IBOutlet SDKView* _contentView;
+    IBOutlet NSView* _contentView;
     
     __unsafe_unretained id<FLWizardButtonViewControllerDelegate> _delegate;
 }
@@ -24,7 +24,7 @@
 @property (readonly, strong, nonatomic) NSButton* nextButton;
 @property (readonly, strong, nonatomic) NSButton* backButton;
 @property (readonly, strong, nonatomic) NSButton* otherButton;
-@property (readonly, strong, nonatomic) SDKView* contentView;
+@property (readonly, strong, nonatomic) NSView* contentView;
 
 - (void) updateButtons;
 

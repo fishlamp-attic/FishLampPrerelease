@@ -18,14 +18,12 @@
 
 @synthesize buffer = _buffer;
 @synthesize textView = _textView;
-@synthesize indentLevel = _indentLevel;
 
 - (id) initWithTextView:(NSTextView*) textView {
 	self = [super init];
 	if(self) {
 		self.textView = textView;
-        self.stringFormatterOutput = self;
-	}
+    }
 	return self;
 }
 
@@ -140,13 +138,7 @@
     [self appendAttributedStringToStorage:attributedString];
 }
 
-- (void) stringFormatterIndent:(FLStringFormatter*) stringFormatter {
-    ++_indentLevel;
-}
 
-- (void) stringFormatterOutdent:(FLStringFormatter*) stringFormatter {
-    --_indentLevel;
-}
 
 - (NSUInteger) stringFormatterGetLength:(FLStringFormatter*) stringFormatter {
     return [_textView textStorage].length + _buffer.length;

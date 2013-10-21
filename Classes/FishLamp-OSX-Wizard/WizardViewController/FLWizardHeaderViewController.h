@@ -7,10 +7,10 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLCocoaUIRequired.h"
+#import "FishLampOSX.h"
 #import "FLPanelViewController.h"
 
-@interface FLWizardHeaderViewController : FLCompatibleViewController<FLPanelHeader> {
+@interface FLWizardHeaderViewController : NSViewController<FLPanelHeader> {
 @private
     IBOutlet NSTextField* _titleView;
     IBOutlet NSView* _logoView;

@@ -81,7 +81,7 @@
     }
 }
 
-- (SDKView*) contentView {
+- (NSView*) contentView {
     return self.view;
 }
 

@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FishLamp.h"
+#import "FishLampOSX.h"
 #import "FLPanelViewController.h"
 #import "FLWizardViewController.h"
 #import "FLProgressPanel.h"

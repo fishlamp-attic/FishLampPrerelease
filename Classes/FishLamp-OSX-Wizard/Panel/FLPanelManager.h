@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLCocoaUIRequired.h"
+#import "FishLampOSX.h"
 #import "FLFramedView.h"
 #import "FLPanelViewController.h"
 #import "FLViewTransition.h"
@@ -87,8 +87,8 @@ typedef void (^FLPanelViewControllerBlock)(FLPanelViewController* panel);
 
 // panel views
 
-- (void) addPanelView:(SDKView*) panelView 
-               toView:(SDKView*) superview 
+- (void) addPanelView:(NSView*) panelView 
+               toView:(NSView*) superview 
              animated:(BOOL) animated;
 
 - (void) removePanelViews:(BOOL) animated;

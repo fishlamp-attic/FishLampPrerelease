@@ -14,11 +14,11 @@
 
 @interface FLActivityLogViewController : FLTextViewController {
 @private
-    id<FLActivityLog> _activityLog;
+    FLActivityLog* _activityLog;
     NSMutableArray* _queue;
     NSTimeInterval _nextUpdate;
 }
 
-@property (readwrite, strong, nonatomic) id<FLActivityLog> activityLog;
+@property (readwrite, strong, nonatomic) FLActivityLog* activityLog;
 
 @end
