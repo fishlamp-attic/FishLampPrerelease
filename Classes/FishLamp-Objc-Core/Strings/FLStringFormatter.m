@@ -14,32 +14,33 @@
 @implementation FLStringFormatter
 
 @synthesize parent = _parent;
+@synthesize stringFormatterDelegate = _stringFormatterDelegate;
 
 - (id) init {	
 	self = [super init];
 	if(self) {
-		_delegate = self;
+		_stringFormatterDelegate = self;
 	}
 	return self;
 }
 
 - (NSString*) exportString {
-    return [_delegate stringFormatterExportString:self];
+    return [_stringFormatterDelegate stringFormatterExportString:self];
 }
 
 - (NSAttributedString*) exportAttributedString {
-    return [_delegate stringFormatterExportAttributedString:self];
+    return [_stringFormatterDelegate stringFormatterExportAttributedString:self];
 }
 
 - (void) processString:(NSString*) string {
 
-    [_delegate stringFormatter:self appendString:string];
+    [_stringFormatterDelegate stringFormatter:self appendString:string];
 //    [[FLStringFormatterLineProprocessor instance] processAndAppendString:string toStringFormatter:self];
 }
 
 - (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
                     withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
-    [_delegate stringFormatter:self
+    [_stringFormatterDelegate stringFormatter:self
    appendSelfToStringFormatter:stringFormatter
               withPreprocessor:preprocessor];
 }
@@ -58,110 +59,110 @@
 
 - (void) setParent:(id) parent {
     _parent = parent;
-    [_delegate stringFormatter:self didMoveToParent:_parent];
+    [_stringFormatterDelegate stringFormatter:self didMoveToParent:_parent];
 }
 
 - (void) appendString:(NSString*) string {
     FLAssertNotNil(string);
 
-    [_delegate stringFormatterOpenLine:self];
+    [_stringFormatterDelegate stringFormatterOpenLine:self];
     [self processString:string];
 }
 
 - (void) appendAttributedString:(NSAttributedString*) string {
     FLAssertNotNil(string);
 
-    [_delegate stringFormatterOpenLine:self];
-    [_delegate stringFormatter:self appendAttributedString:string];
+    [_stringFormatterDelegate stringFormatterOpenLine:self];
+    [_stringFormatterDelegate stringFormatter:self appendAttributedString:string];
 }
 
 - (void) openLine {
-    [_delegate stringFormatterOpenLine:self];
+    [_stringFormatterDelegate stringFormatterOpenLine:self];
 }
 
 - (void) closeLine {
-    [_delegate stringFormatterCloseLine:self];
+    [_stringFormatterDelegate stringFormatterCloseLine:self];
 }
 
 - (void) indent {
-    [_delegate stringFormatterIndent:self];
+    [_stringFormatterDelegate stringFormatterIndent:self];
 }
 
 - (void) outdent {
-    [_delegate stringFormatterOutdent:self];
+    [_stringFormatterDelegate stringFormatterOutdent:self];
 }
 
 - (NSUInteger) length {
-    return [_delegate stringFormatterLength:self];
+    return [_stringFormatterDelegate stringFormatterLength:self];
 }
 
 - (NSInteger) indentLevel {
-    return [_delegate stringFormatterIndentLevel:self];
+    return [_stringFormatterDelegate stringFormatterIndentLevel:self];
 }
 
 - (void) appendBlankLine {
-    [_delegate stringFormatterAppendBlankLine:self];
+    [_stringFormatterDelegate stringFormatterAppendBlankLine:self];
 }
 
 - (void) closeLineWithString:(NSString*) string {
 
     if(string) {
-        [_delegate stringFormatterOpenLine:self];
+        [_stringFormatterDelegate stringFormatterOpenLine:self];
         [self processString:string];
     }
 
-    [_delegate stringFormatterCloseLine:self];
+    [_stringFormatterDelegate stringFormatterCloseLine:self];
 }
 
 - (void) closeLineWithAttributedString:(NSAttributedString*) string {
 
     if(string) {
-        [_delegate stringFormatterOpenLine:self];
-        [_delegate stringFormatter:self appendAttributedString:string];
+        [_stringFormatterDelegate stringFormatterOpenLine:self];
+        [_stringFormatterDelegate stringFormatter:self appendAttributedString:string];
     }
 
-    [_delegate stringFormatterCloseLine:self];
+    [_stringFormatterDelegate stringFormatterCloseLine:self];
 }
 
 - (void) openLineWithString:(NSString*) string {
     FLAssertNotNil(string);
 
-    [_delegate stringFormatterCloseLine:self];
-    [_delegate stringFormatterOpenLine:self];
+    [_stringFormatterDelegate stringFormatterCloseLine:self];
+    [_stringFormatterDelegate stringFormatterOpenLine:self];
     [self processString:string];
 }
 
 - (void) openLineWithAttributedString:(NSAttributedString*) string {
     FLAssertNotNil(string);
 
-    [_delegate stringFormatterCloseLine:self];
-    [_delegate stringFormatterOpenLine:self];
-    [_delegate stringFormatter:self appendAttributedString:string];
+    [_stringFormatterDelegate stringFormatterCloseLine:self];
+    [_stringFormatterDelegate stringFormatterOpenLine:self];
+    [_stringFormatterDelegate stringFormatter:self appendAttributedString:string];
 }
 
 - (void) appendLineWithAttributedString:(NSAttributedString*) string {
     FLAssertNotNil(string);
 
-    [_delegate stringFormatterOpenLine:self];
-    [_delegate stringFormatter:self appendAttributedString:string];
-    [_delegate stringFormatterCloseLine:self];
+    [_stringFormatterDelegate stringFormatterOpenLine:self];
+    [_stringFormatterDelegate stringFormatter:self appendAttributedString:string];
+    [_stringFormatterDelegate stringFormatterCloseLine:self];
 }
 
 - (void) appendLine:(NSString*) string {
     FLAssertNotNil(string);
 
-    [_delegate stringFormatterOpenLine:self];
+    [_stringFormatterDelegate stringFormatterOpenLine:self];
     [self processString:string];
-    [_delegate stringFormatterCloseLine:self];
+    [_stringFormatterDelegate stringFormatterCloseLine:self];
 }
 
 - (void) indent:(FLStringFormatterBlock) block {
-    [_delegate stringFormatterCloseLine:self];
-    [_delegate stringFormatterIndent:self];
+    [_stringFormatterDelegate stringFormatterCloseLine:self];
+    [_stringFormatterDelegate stringFormatterIndent:self];
     // subsequent calls to us will open a line, etc..
     block();
-    [_delegate stringFormatterCloseLine:self]; // just in case.
-    [_delegate stringFormatterOutdent:self];
+    [_stringFormatterDelegate stringFormatterCloseLine:self]; // just in case.
+    [_stringFormatterDelegate stringFormatterOutdent:self];
 }
 
 - (BOOL) isEmpty {

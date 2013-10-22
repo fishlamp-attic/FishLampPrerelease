@@ -15,7 +15,10 @@
     BOOL _editingLine;
     FLWhitespace* _whitespace;
     NSInteger _indentLevel;
+
+    __unsafe_unretained id _whitespaceStringFormatterDelegate;
 }
+@property (readwrite, assign, nonatomic) id whitespaceStringFormatterDelegate;
 
 @property (readonly, assign, nonatomic) BOOL lineIsOpen;
 @property (readonly, strong, nonatomic) FLWhitespace* whitespace;
@@ -31,14 +34,25 @@
 
 @end
 
-@protocol FLWhitespaceStringFormatterImplementation <NSObject>
-- (void) willAppendString:(NSString*) string;
-- (void) willAppendAttributedString:(NSAttributedString*) string;
+@protocol FLWhitespaceStringFormatterDelegate <NSObject>
 
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
-                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor;
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+                      appendString:(NSString*) string;
 
-- (NSUInteger) length;
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+            appendAttributedString:(NSAttributedString*) attributedString;
 
-- (void) didMoveToParent:(id) parent;
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+       appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
+                  withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor;
+
+- (NSUInteger) whitespaceStringFormatterGetLength:(FLWhitespaceStringFormatter*) stringFormatter;
+
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+                   didMoveToParent:(id) parent;
+
+- (NSString*) whitespaceStringFormatterExportString:(FLWhitespaceStringFormatter*) formatter;
+
+- (NSAttributedString*) whitespaceStringFormatterExportAttributedString:(FLWhitespaceStringFormatter*) formatter;
+
 @end

@@ -33,7 +33,7 @@
     return prettyString;
 }
 
-- (NSUInteger) length {
+- (NSUInteger) whitespaceStringFormatterGetLength:(FLWhitespaceStringFormatter*) stringFormatter {
     return [_attributedString length];
 }
 
@@ -48,32 +48,39 @@
     [_attributedString deleteCharactersInRange:NSMakeRange(0, [_attributedString length])];
 }
 
-- (NSString*) description {
-    return [self exportString];
-}
-
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
-                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+       appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
+                  withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
 
     [preprocessor processAndAppendAttributedString:[self exportAttributedString]
                                  toStringFormatter:anotherStringFormatter];
 
 }
 
-- (void) willAppendString:(NSString*) string {
-    [self willAppendAttributedString:FLAutorelease([[NSAttributedString alloc] initWithString:string])];
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+                      appendString:(NSString*) string {
+
+    [self whitespaceStringFormatter:self
+             appendAttributedString:FLAutorelease([[NSAttributedString alloc] initWithString:string])];
 }
 
-- (void) willAppendAttributedString:(NSAttributedString*) attributedString {
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+            appendAttributedString:(NSAttributedString*) attributedString {
     [_attributedString appendAttributedString:attributedString];
 }
 
-- (NSString*) exportString {
+- (NSString*) whitespaceStringFormatterExportString:(FLWhitespaceStringFormatter*) formatter {
     return [_attributedString string];
 }
 
-- (NSAttributedString*) exportAttributedString {
+- (NSAttributedString*) whitespaceStringFormatterExportAttributedString:(FLWhitespaceStringFormatter*) formatter {
     return FLCopyWithAutorelease(_attributedString);
 }
+
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+                   didMoveToParent:(id) parent {
+
+}
+
 
 @end

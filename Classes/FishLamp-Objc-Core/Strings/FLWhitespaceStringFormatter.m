@@ -14,11 +14,13 @@
 
 @synthesize whitespace = _whitespace;
 @synthesize lineIsOpen = _editingLine;
+@synthesize whitespaceStringFormatterDelegate = _delegate;
 
 - (id) initWithWhitespace:(FLWhitespace*) whitespace {
     self = [super init];
     if(self) {
         _whitespace = FLRetain(whitespace);
+        _whitespaceStringFormatterDelegate = self;
     }
     return self;
 }
@@ -82,22 +84,27 @@
 }
 
 - (void) stringFormatter:(FLStringFormatter*) formatter appendString:(NSString*) string {
+    [_whitespaceStringFormatterDelegate whitespaceStringFormatter:self appendString:string];
 }
 
 - (void) stringFormatter:(FLStringFormatter*) formatter appendAttributedString:(NSAttributedString*) string {
+    [_whitespaceStringFormatterDelegate whitespaceStringFormatter:self appendAttributedString:string];
 }
 
 - (NSUInteger) stringFormatterLength:(FLStringFormatter*) formatter {
-    return 0;
+    return [_whitespaceStringFormatterDelegate whitespaceStringFormatterGetLength:self];
 }
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
         appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
                     withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+
+    [_whitespaceStringFormatterDelegate whitespaceStringFormatter:self appendSelfToStringFormatter:stringFormatter withPreprocessor:preprocessor];
 }
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
          didMoveToParent:(id) parent {
+    [_whitespaceStringFormatterDelegate whitespaceStringFormatter:self didMoveToParent:parent];
 }
 
 - (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter {
@@ -105,11 +112,11 @@
 }
 
 - (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter {
-    return nil;
+    return [_whitespaceStringFormatterDelegate whitespaceStringFormatterExportString:self];
 }
 
 - (NSAttributedString*) stringFormatterExportAttributedString:(FLStringFormatter*) formatter {
-    return nil;
+    return [_whitespaceStringFormatterDelegate whitespaceStringFormatterExportAttributedString:self];
 }
 
 

@@ -66,8 +66,12 @@ typedef void (^FLStringFormatterBlock)();
 - (void) indent;
 - (void) outdent;
 
-// if delegate doesn't implement indentLevel, then the block is executed anyway and resulting
-// text will not be indented.
+/**
+ *  Indent in a block. All calls inside the block are indented once.
+ *  Note: if delegate doesn't implement indentLevel, then the block is executed anyway and resulting text will not be indented.
+ *
+ *  @param block <#block description#>
+ */
 - (void) indent:(FLStringFormatterBlock) block;
 
 - (void) appendInScope:(NSString*) openScope 
@@ -86,22 +90,40 @@ typedef void (^FLStringFormatterBlock)();
 
 @end
 
-// Concrete base class
-
+/**
+ *  Concrete base class for a string formatter.
+ */
 @interface FLStringFormatter : NSObject<FLStringFormatter> {
 @private
     __unsafe_unretained id _parent;
-    __unsafe_unretained id _delegate;
+    __unsafe_unretained id _stringFormatterDelegate;
 }
+
+/**
+ *  The delegate implements the guts of the string formatter. By default the delegate is set to self because most of the time we will be subclass FLStringFormatter.
+ *  @interface MyStringFormatter : FLStringFormatter<FLStringFormatterDelegate>
+ */
+@property (readwrite, assign, nonatomic) id stringFormatterDelegate;
 @end
 
+/**
+ *  This delegate is here mainly to help subclasses be sure that they're implementing all the relevant methods.
+ *  The delegate is normally the subclass of the FLStringFormatter.
+ */
 @protocol FLStringFormatterDelegate <NSObject>
+
 - (void) stringFormatterAppendBlankLine:(FLStringFormatter*) formatter;
+
 - (void) stringFormatterOpenLine:(FLStringFormatter*) formatter;
+
 - (void) stringFormatterCloseLine:(FLStringFormatter*) formatter;
+
 - (void) stringFormatterIndent:(FLStringFormatter*) formatter;
+
 - (void) stringFormatterOutdent:(FLStringFormatter*) formatter;
+
 - (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter;
+
 - (NSUInteger) stringFormatterLength:(FLStringFormatter*) formatter;
 
 - (void)stringFormatter:(FLStringFormatter*) formatter
@@ -112,12 +134,13 @@ appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
             appendString:(NSString*) string;
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
-  appendAttributedString:(NSAttributedString*) string;
+  appendAttributedString:(NSAttributedString*) attributedString;
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
          didMoveToParent:(id) parent;
 
 - (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter;
+
 - (NSAttributedString*) stringFormatterExportAttributedString:(FLStringFormatter*) formatter;
 
 @end

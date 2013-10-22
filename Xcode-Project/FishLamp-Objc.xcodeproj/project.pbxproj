@@ -1914,9 +1914,9 @@
 
 /* Begin PBXFileReference section */
 		27048EF0161CB58600C38ADA /* FishLamp-Objc-OSX-32-MRC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-32-MRC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2712D92F17DE30EF007327C0 /* FishLamp-Objc-Test-OSX-Universal-MRC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "FishLamp-Objc-Test-OSX-Universal-MRC"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2712D93F17DE310C007327C0 /* FishLamp-Objc-Test-OSX-64-ARC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "FishLamp-Objc-Test-OSX-64-ARC"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2712D94F17DE311F007327C0 /* FishLamp-Objc-Test-OSX-32-MRC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "FishLamp-Objc-Test-OSX-32-MRC"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2712D92F17DE30EF007327C0 /* FishLamp-Objc-OSX-Universal-MRC-TestTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "FishLamp-Objc-OSX-Universal-MRC-TestTool"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2712D93F17DE310C007327C0 /* FishLamp-Objc-OSX-64-ARC-TestTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-ARC-TestTool"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2712D94F17DE311F007327C0 /* FishLamp-Objc-OSX-32-MRC-TestTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "FishLamp-Objc-OSX-32-MRC-TestTool"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2712D99E17DE35FE007327C0 /* SharedTargetSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SharedTargetSettings.xcconfig; sourceTree = "<group>"; };
 		2712D99F17DE35FE007327C0 /* FishLamp-Objc-Lib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FishLamp-Objc-Lib-Prefix.pch"; sourceTree = "<group>"; };
 		2712D9A017DE35FE007327C0 /* FishLamp-Objc-Lib-OSX-32-MRC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "FishLamp-Objc-Lib-OSX-32-MRC.xcconfig"; sourceTree = "<group>"; };
@@ -2025,7 +2025,7 @@
 		27188C9618148C450060FED6 /* FLTimeoutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTimeoutTests.m; sourceTree = "<group>"; };
 		27188CA318148CF90060FED6 /* FLStringBuilderTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringBuilderTester.h; sourceTree = "<group>"; };
 		27188CA418148CF90060FED6 /* FLStringBuilderTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringBuilderTester.m; sourceTree = "<group>"; };
-		2727D28D17DE2FF80069F9D2 /* FishLamp-Objc-Test-OSX-64-MRC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "FishLamp-Objc-Test-OSX-64-MRC"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2727D28D17DE2FF80069F9D2 /* FishLamp-Objc-OSX-64-MRC-TestTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-MRC-TestTool"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27314C79165328400027850D /* FishLamp-Objc-OSX-64-ARC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-ARC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2767D4F618132B19001EF21C /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
 		2767D4F718132B19001EF21C /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
@@ -2686,7 +2686,7 @@
 		2767DF6F18133AD2001EF21C /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = ../../../../../../System/Library/Frameworks/Quartz.framework; sourceTree = "<group>"; };
 		2767DF7018133AD2001EF21C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = ../../../../../../System/Library/Frameworks/QuartzCore.framework; sourceTree = "<group>"; };
 		2767DF7118133AD2001EF21C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		2767DFB518134011001EF21C /* TestApp-OSX-64-MRC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestApp-OSX-64-MRC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2767DFB518134011001EF21C /* FishLamp-Objc-OSX-64-MRC-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-MRC-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2767DFB818134011001EF21C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		2767DFB918134011001EF21C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2767DFBA18134011001EF21C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -2706,9 +2706,9 @@
 		2767E037181347F0001EF21C /* TestApp-OSX-64-MRC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "TestApp-OSX-64-MRC.xcconfig"; sourceTree = "<group>"; };
 		2767E038181347F0001EF21C /* TestApp-OSX-Universal-MRC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "TestApp-OSX-Universal-MRC.xcconfig"; sourceTree = "<group>"; };
 		2767E03918134828001EF21C /* SharedTargetSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SharedTargetSettings.xcconfig; sourceTree = "<group>"; };
-		2767E08118134BD2001EF21C /* TestApp-OSX-64-ARC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestApp-OSX-64-ARC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2767E09D18134BF4001EF21C /* TestApp-OSX-Universal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestApp-OSX-Universal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2767E0B918134C70001EF21C /* TestApp-OSX-32-MRC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestApp-OSX-32-MRC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2767E08118134BD2001EF21C /* FishLamp-Objc-OSX-64-ARC-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-ARC-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2767E09D18134BF4001EF21C /* FishLamp-Objc-OSX-Universal-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-OSX-Universal-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2767E0B918134C70001EF21C /* FishLamp-Objc-OSX-32-MRC-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-OSX-32-MRC-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2767E0BF18134CAD001EF21C /* TestApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2767E0C118134CAE001EF21C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2767E0C318134CAE001EF21C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -2729,7 +2729,7 @@
 		27A43AB415CDCC89001CB13E /* FishLamp-Objc-iOS-ARC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-iOS-ARC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A43AC415CDCCCB001CB13E /* FishLamp-Objc-OSX-64-MRC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-MRC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CBC1F416768BA600753D0A /* FishLamp-Objc-OSX-Universal-MRC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-Universal-MRC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B214727B17DE7BBC00985872 /* FishLamp-Objc-Test-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-Test-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B214727B17DE7BBC00985872 /* FishLamp-Objc-iOS-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-iOS-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B263E0E317DE7CF80049EF94 /* PiecemealCompilerFlagOverrides.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PiecemealCompilerFlagOverrides.h; sourceTree = "<group>"; };
 		B263E0E417DE7D4C0049EF94 /* PiecemealCompilerFlagOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PiecemealCompilerFlagOverrides.h; path = "Piecemeal-XcodeConfigs/PiecemealCompilerFlagOverrides.h"; sourceTree = "<group>"; };
 		B2B1436B17DE701600A8454E /* TestTool-SharedTargetSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "TestTool-SharedTargetSettings.xcconfig"; sourceTree = "<group>"; };
@@ -4461,15 +4461,15 @@
 				27048EF0161CB58600C38ADA /* FishLamp-Objc-OSX-32-MRC-Lib.a */,
 				27314C79165328400027850D /* FishLamp-Objc-OSX-64-ARC-Lib.a */,
 				27CBC1F416768BA600753D0A /* FishLamp-Objc-OSX-Universal-MRC-Lib.a */,
-				2727D28D17DE2FF80069F9D2 /* FishLamp-Objc-Test-OSX-64-MRC */,
-				2712D92F17DE30EF007327C0 /* FishLamp-Objc-Test-OSX-Universal-MRC */,
-				2712D93F17DE310C007327C0 /* FishLamp-Objc-Test-OSX-64-ARC */,
-				2712D94F17DE311F007327C0 /* FishLamp-Objc-Test-OSX-32-MRC */,
-				B214727B17DE7BBC00985872 /* FishLamp-Objc-Test-iOS.app */,
-				2767DFB518134011001EF21C /* TestApp-OSX-64-MRC.app */,
-				2767E08118134BD2001EF21C /* TestApp-OSX-64-ARC.app */,
-				2767E09D18134BF4001EF21C /* TestApp-OSX-Universal.app */,
-				2767E0B918134C70001EF21C /* TestApp-OSX-32-MRC.app */,
+				2727D28D17DE2FF80069F9D2 /* FishLamp-Objc-OSX-64-MRC-TestTool */,
+				2712D92F17DE30EF007327C0 /* FishLamp-Objc-OSX-Universal-MRC-TestTool */,
+				2712D93F17DE310C007327C0 /* FishLamp-Objc-OSX-64-ARC-TestTool */,
+				2712D94F17DE311F007327C0 /* FishLamp-Objc-OSX-32-MRC-TestTool */,
+				B214727B17DE7BBC00985872 /* FishLamp-Objc-iOS-TestApp.app */,
+				2767DFB518134011001EF21C /* FishLamp-Objc-OSX-64-MRC-TestApp.app */,
+				2767E08118134BD2001EF21C /* FishLamp-Objc-OSX-64-ARC-TestApp.app */,
+				2767E09D18134BF4001EF21C /* FishLamp-Objc-OSX-Universal-TestApp.app */,
+				2767E0B918134C70001EF21C /* FishLamp-Objc-OSX-32-MRC-TestApp.app */,
 				2767E0BF18134CAD001EF21C /* TestApp-iOS.app */,
 			);
 			name = Products;
@@ -4616,7 +4616,7 @@
 			);
 			name = "FishLamp-Objc-OSX-Universal-MRC-TestTool";
 			productName = "FishLamp-Objc-Test-OSX-Universal-MRC";
-			productReference = 2712D92F17DE30EF007327C0 /* FishLamp-Objc-Test-OSX-Universal-MRC */;
+			productReference = 2712D92F17DE30EF007327C0 /* FishLamp-Objc-OSX-Universal-MRC-TestTool */;
 			productType = "com.apple.product-type.tool";
 		};
 		2712D93E17DE310C007327C0 /* FishLamp-Objc-OSX-64-ARC-TestTool */ = {
@@ -4633,7 +4633,7 @@
 			);
 			name = "FishLamp-Objc-OSX-64-ARC-TestTool";
 			productName = "FishLamp-Objc-Test-OSX-64-ARC";
-			productReference = 2712D93F17DE310C007327C0 /* FishLamp-Objc-Test-OSX-64-ARC */;
+			productReference = 2712D93F17DE310C007327C0 /* FishLamp-Objc-OSX-64-ARC-TestTool */;
 			productType = "com.apple.product-type.tool";
 		};
 		2712D94E17DE311F007327C0 /* FishLamp-Objc-OSX-32-MRC-TestTool */ = {
@@ -4650,7 +4650,7 @@
 			);
 			name = "FishLamp-Objc-OSX-32-MRC-TestTool";
 			productName = "FishLamp-Objc-Test-OSX-32-MRC";
-			productReference = 2712D94F17DE311F007327C0 /* FishLamp-Objc-Test-OSX-32-MRC */;
+			productReference = 2712D94F17DE311F007327C0 /* FishLamp-Objc-OSX-32-MRC-TestTool */;
 			productType = "com.apple.product-type.tool";
 		};
 		2727D28C17DE2FF80069F9D2 /* FishLamp-Objc-OSX-64-MRC-TestTool */ = {
@@ -4668,7 +4668,7 @@
 			);
 			name = "FishLamp-Objc-OSX-64-MRC-TestTool";
 			productName = "FishLamp-Objc-Test-OSX-64-MRC";
-			productReference = 2727D28D17DE2FF80069F9D2 /* FishLamp-Objc-Test-OSX-64-MRC */;
+			productReference = 2727D28D17DE2FF80069F9D2 /* FishLamp-Objc-OSX-64-MRC-TestTool */;
 			productType = "com.apple.product-type.tool";
 		};
 		273148B9165328400027850D /* FishLamp-Objc-OSX-64-ARC-Lib */ = {
@@ -4702,7 +4702,7 @@
 			);
 			name = "FishLamp-Objc-OSX-64-MRC-TestApp";
 			productName = "FishLamp-Objc-OSX-64-MRC-Tester";
-			productReference = 2767DFB518134011001EF21C /* TestApp-OSX-64-MRC.app */;
+			productReference = 2767DFB518134011001EF21C /* FishLamp-Objc-OSX-64-MRC-TestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2767E06718134BD2001EF21C /* FishLamp-Objc-OSX-64-ARC-TestApp */ = {
@@ -4720,7 +4720,7 @@
 			);
 			name = "FishLamp-Objc-OSX-64-ARC-TestApp";
 			productName = "FishLamp-Objc-OSX-64-MRC-Tester";
-			productReference = 2767E08118134BD2001EF21C /* TestApp-OSX-64-ARC.app */;
+			productReference = 2767E08118134BD2001EF21C /* FishLamp-Objc-OSX-64-ARC-TestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2767E08318134BF4001EF21C /* FishLamp-Objc-OSX-Universal-TestApp */ = {
@@ -4738,7 +4738,7 @@
 			);
 			name = "FishLamp-Objc-OSX-Universal-TestApp";
 			productName = "FishLamp-Objc-OSX-64-MRC-Tester";
-			productReference = 2767E09D18134BF4001EF21C /* TestApp-OSX-Universal.app */;
+			productReference = 2767E09D18134BF4001EF21C /* FishLamp-Objc-OSX-Universal-TestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2767E09F18134C70001EF21C /* FishLamp-Objc-OSX-32-MRC-TestApp */ = {
@@ -4756,7 +4756,7 @@
 			);
 			name = "FishLamp-Objc-OSX-32-MRC-TestApp";
 			productName = "FishLamp-Objc-OSX-64-MRC-Tester";
-			productReference = 2767E0B918134C70001EF21C /* TestApp-OSX-32-MRC.app */;
+			productReference = 2767E0B918134C70001EF21C /* FishLamp-Objc-OSX-32-MRC-TestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2767E0BE18134CAD001EF21C /* TestApp-iOS */ = {
@@ -4839,7 +4839,7 @@
 			);
 			name = "FishLamp-Objc-iOS-TestApp";
 			productName = "FishLamp-Objc-Test-iOS";
-			productReference = B214727B17DE7BBC00985872 /* FishLamp-Objc-Test-iOS.app */;
+			productReference = B214727B17DE7BBC00985872 /* FishLamp-Objc-iOS-TestApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

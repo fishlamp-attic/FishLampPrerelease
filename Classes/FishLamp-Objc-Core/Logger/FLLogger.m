@@ -139,7 +139,7 @@
     }];
 }
 
-- (void) willAppendBlankLine {
+- (void) stringFormatterAppendBlankLine:(FLStringFormatter*) formatter {
     [self dispatchBlock: ^{
         FLLogEntry* entry = [FLLogEntry logEntry];
         entry.logString = @"";
@@ -148,17 +148,18 @@
     }];
 }
 
-- (void) willOpenLine {
+- (void) stringFormatterOpenLine:(FLStringFormatter*) formatter {
     [self closeLine];
 }
 
-- (void) closeLine {
+- (void) stringFormatterCloseLine:(FLStringFormatter*) formatter {
     [self dispatchBlock: ^{
         [self closeCurrentLine];
     }];
 }
 
-- (void) willAppendString:(NSString*) string {
+- (void) stringFormatter:(FLStringFormatter*) formatter
+            appendString:(NSString*) string {
     [self dispatchBlock: ^{
         if(self.line) {
             [self.line appendString:string];
@@ -169,11 +170,12 @@
     }];
 }
 
-- (void) willAppendAttributedString:(NSAttributedString*) attributedString {
+- (void) stringFormatter:(FLStringFormatter*) formatter
+  appendAttributedString:(NSAttributedString*) attributedString {
     [self appendString:attributedString.string];
 }
 
-- (void) indent {
+- (void) stringFormatterIndent:(FLStringFormatter*) formatter {
     [self dispatchBlock: ^{
         for(id<FLLogSink> sink in _sinks) {
             [sink indent];
@@ -181,7 +183,7 @@
     }];
 }
 
-- (void) outdent {
+- (void) stringFormatterOutdent:(FLStringFormatter*) formatter {
     [self dispatchBlock: ^{
         for(id<FLLogSink> sink in _sinks) {
             [sink outdent];
@@ -198,12 +200,37 @@
     }];
 }
 
-- (NSUInteger) length {
+- (NSUInteger) stringFormatterLength:(FLStringFormatter*) formatter {
     return 0;
 }
 
 - (void) didMoveToParent:(id) parent {
 }
+
+- (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter {
+    return nil;
+}
+
+- (NSAttributedString*) stringFormatterExportAttributedString:(FLStringFormatter*) formatter {
+    return nil;
+}
+
+- (void)stringFormatter:(FLStringFormatter*) formatter
+appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
+       withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+
+}
+
+- (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter {
+    return 0;
+}
+
+- (void) stringFormatter:(FLStringFormatter*) formatter
+         didMoveToParent:(id) parent {
+
+}
+
+
 
 //- (void) logException:(NSException*) exception withComment:(NSString*) comment {
 //

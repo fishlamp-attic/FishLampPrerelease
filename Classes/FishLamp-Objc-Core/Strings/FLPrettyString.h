@@ -12,13 +12,10 @@
 @class FLWhitespace;
 @protocol FLPrettyStringDelegate;
 
-@interface FLPrettyString : FLWhitespaceStringFormatter<FLWhitespaceStringFormatterImplementation> {
+@interface FLPrettyString : FLWhitespaceStringFormatter<FLWhitespaceStringFormatterDelegate> {
 @private
     NSMutableString* _string;
-    __unsafe_unretained id<FLPrettyStringDelegate> _delegate;
 }
-@property (readwrite, assign, nonatomic) id<FLPrettyStringDelegate> delegate;
-
 @property (readonly, strong, nonatomic) NSString* string;
 
 + (id) prettyString:(FLWhitespace*) whiteSpace;
@@ -29,12 +26,6 @@
 - (void) deleteAllCharacters;
 
 @end
-
-@protocol FLPrettyStringDelegate <NSObject>
-@optional
-- (void) prettyString:(FLPrettyString*) prettyString didAppendString:(NSString*) string;
-@end
-
 
 @interface NSObject (FLStringFormatter)
 // override this one
