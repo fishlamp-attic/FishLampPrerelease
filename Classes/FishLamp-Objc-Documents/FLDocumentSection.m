@@ -109,7 +109,8 @@
     _needsLine = YES;
 }
 
-- (void) willAppendString:(NSString*) string {
+- (void) stringFormatter:(FLStringFormatter*) formatter
+            appendString:(NSString*) string {
 
     FLAssertNotNil(_lines);
     FLAssertNotNil(string);
@@ -124,26 +125,25 @@
     }
 }
 
-- (void) willAppendAttributedString:(NSAttributedString*) attributedString {
-    [self willAppendString:attributedString.string];
+- (void) stringFormatter:(FLStringFormatter*) formatter
+  appendAttributedString:(NSAttributedString*) attributedString {
+      [self stringFormatter:formatter appendString:attributedString.string];
 }
 
-- (void) indent {
+- (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter {
+    return _indentLevel;
+}
+
+- (void) stringFormatterIndent:(FLStringFormatter*) formatter {
     FLAssertNotNil(_lines);
-    [super indent];
+    ++_indentLevel;
     [_lines addObject:[FLDocumentSectionIndent documentSectionIndent]];
 }
 
-- (void) outdent {
+- (void) stringFormatterOutdent:(FLStringFormatter*) formatter {
     FLAssertNotNil(_lines);
-    [super outdent];
+    --_indentLevel;
     [_lines addObject:[FLDocumentSectionOutdent documentSectionOutdent]];
-}
-
-- (NSString*) description {
-    FLPrettyString* str = [FLPrettyString prettyString];
-    [str appendStringFormatter:self withPreprocessor:[FLStringFormatterLineProprocessor instance]];
-    return str.string;
 }
 
 - (void) willBuildWithStringFormatter:(id<FLStringFormatter>) stringFormatter {
@@ -152,11 +152,11 @@
 - (void) didBuildWithStringFormatter:(id<FLStringFormatter>) stringFormatter {
 }
 
-- (void) stringFormatter:(FLStringFormatter*) myFormatter
-appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
+- (void)stringFormatter:(FLStringFormatter*) formatter
+appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
+       withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
 
     FLAssertNotNil(_lines);
-    FLAssertNotNil(myFormatter);
     FLAssertNotNil(anotherStringFormatter);
 
     [self willBuildWithStringFormatter:anotherStringFormatter];
@@ -186,7 +186,7 @@ appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
 //    [_lines removeAllObjects];
 //}
 
-- (NSUInteger) length {
+- (NSUInteger) stringFormatterLength:(FLStringFormatter*) formatter {
     FLAssertNotNil(_lines);
 
     NSUInteger length = 0;
@@ -196,9 +196,24 @@ appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
     return length;
 }
 
-- (void) didMoveToParent:(id) parent {
-
+- (void) stringFormatter:(FLStringFormatter*) formatter
+         didMoveToParent:(id) parent {
 }
+
+
+
+- (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter {
+    FLPrettyString* str = [FLPrettyString prettyString];
+    [str appendStringFormatter:self withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+    return str.string;
+}
+
+- (NSAttributedString*) stringFormatterExportAttributedString:(FLStringFormatter*) formatter {
+    FLPrettyAttributedString* string = [FLPrettyAttributedString prettyAttributedString];
+    [string appendStringFormatter:self withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+    return [string exportAttributedString];
+}
+
 
 
 @end

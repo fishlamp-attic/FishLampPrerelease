@@ -1682,11 +1682,6 @@
 		2767DEDF18132B1C001EF21C /* FLTestToolMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81718132B1B001EF21C /* FLTestToolMain.m */; };
 		2767DEE018132B1C001EF21C /* FLTestToolMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81718132B1B001EF21C /* FLTestToolMain.m */; };
 		2767DEE118132B1C001EF21C /* FLTestToolMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81718132B1B001EF21C /* FLTestToolMain.m */; };
-		2767DEE218132B1C001EF21C /* FLUnitTestSubclassRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81918132B1B001EF21C /* FLUnitTestSubclassRunner.m */; };
-		2767DEE318132B1C001EF21C /* FLUnitTestSubclassRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81918132B1B001EF21C /* FLUnitTestSubclassRunner.m */; };
-		2767DEE418132B1C001EF21C /* FLUnitTestSubclassRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81918132B1B001EF21C /* FLUnitTestSubclassRunner.m */; };
-		2767DEE518132B1C001EF21C /* FLUnitTestSubclassRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81918132B1B001EF21C /* FLUnitTestSubclassRunner.m */; };
-		2767DEE618132B1C001EF21C /* FLUnitTestSubclassRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81918132B1B001EF21C /* FLUnitTestSubclassRunner.m */; };
 		2767DF3218132B1C001EF21C /* FLGuid.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D84018132B1B001EF21C /* FLGuid.m */; };
 		2767DF3318132B1C001EF21C /* FLGuid.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D84018132B1B001EF21C /* FLGuid.m */; };
 		2767DF3418132B1C001EF21C /* FLGuid.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D84018132B1B001EF21C /* FLGuid.m */; };
@@ -2654,8 +2649,6 @@
 		2767D81518132B1B001EF21C /* FLRunAllTestsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLRunAllTestsOperation.m; sourceTree = "<group>"; };
 		2767D81618132B1B001EF21C /* FLTestToolMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestToolMain.h; sourceTree = "<group>"; };
 		2767D81718132B1B001EF21C /* FLTestToolMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestToolMain.m; sourceTree = "<group>"; };
-		2767D81818132B1B001EF21C /* FLUnitTestSubclassRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLUnitTestSubclassRunner.h; sourceTree = "<group>"; };
-		2767D81918132B1B001EF21C /* FLUnitTestSubclassRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLUnitTestSubclassRunner.m; sourceTree = "<group>"; };
 		2767D83E18132B1B001EF21C /* FLCoreFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLCoreFoundation.h; sourceTree = "<group>"; };
 		2767D83F18132B1B001EF21C /* FLGuid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGuid.h; sourceTree = "<group>"; };
 		2767D84018132B1B001EF21C /* FLGuid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGuid.m; sourceTree = "<group>"; };
@@ -4336,8 +4329,6 @@
 				2767D81518132B1B001EF21C /* FLRunAllTestsOperation.m */,
 				2767D81618132B1B001EF21C /* FLTestToolMain.h */,
 				2767D81718132B1B001EF21C /* FLTestToolMain.m */,
-				2767D81818132B1B001EF21C /* FLUnitTestSubclassRunner.h */,
-				2767D81918132B1B001EF21C /* FLUnitTestSubclassRunner.m */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -5217,7 +5208,6 @@
 				2767DA0618132B1B001EF21C /* FLAbstractObjectProxy.m in Sources */,
 				27188BF518148A820060FED6 /* FLCancellableAsyncQueue.m in Sources */,
 				27188C1318148A820060FED6 /* FLOperation.m in Sources */,
-				2767DEE318132B1C001EF21C /* FLUnitTestSubclassRunner.m in Sources */,
 				2767DB2818132B1B001EF21C /* FLXmlParser.m in Sources */,
 				2767DB4618132B1B001EF21C /* NSObject+FLXmlSerialization.m in Sources */,
 				2767DEAC18132B1C001EF21C /* FLTestableSubclassFinder.m in Sources */,
@@ -5601,7 +5591,6 @@
 				2767DA0818132B1B001EF21C /* FLAbstractObjectProxy.m in Sources */,
 				27188BF718148A820060FED6 /* FLCancellableAsyncQueue.m in Sources */,
 				27188C1518148A820060FED6 /* FLOperation.m in Sources */,
-				2767DEE518132B1C001EF21C /* FLUnitTestSubclassRunner.m in Sources */,
 				2767DB2A18132B1B001EF21C /* FLXmlParser.m in Sources */,
 				2767DB4818132B1B001EF21C /* NSObject+FLXmlSerialization.m in Sources */,
 				2767DEAE18132B1C001EF21C /* FLTestableSubclassFinder.m in Sources */,
@@ -5999,7 +5988,6 @@
 				2767DA0518132B1B001EF21C /* FLAbstractObjectProxy.m in Sources */,
 				27188BF418148A820060FED6 /* FLCancellableAsyncQueue.m in Sources */,
 				27188C1218148A820060FED6 /* FLOperation.m in Sources */,
-				2767DEE218132B1C001EF21C /* FLUnitTestSubclassRunner.m in Sources */,
 				2767DB2718132B1B001EF21C /* FLXmlParser.m in Sources */,
 				2767DB4518132B1B001EF21C /* NSObject+FLXmlSerialization.m in Sources */,
 				2767DEAB18132B1C001EF21C /* FLTestableSubclassFinder.m in Sources */,
@@ -6351,7 +6339,6 @@
 				2767DA0718132B1B001EF21C /* FLAbstractObjectProxy.m in Sources */,
 				27188BF618148A820060FED6 /* FLCancellableAsyncQueue.m in Sources */,
 				27188C1418148A820060FED6 /* FLOperation.m in Sources */,
-				2767DEE418132B1C001EF21C /* FLUnitTestSubclassRunner.m in Sources */,
 				2767DB2918132B1B001EF21C /* FLXmlParser.m in Sources */,
 				2767DB4718132B1B001EF21C /* NSObject+FLXmlSerialization.m in Sources */,
 				2767DEAD18132B1C001EF21C /* FLTestableSubclassFinder.m in Sources */,
@@ -6703,7 +6690,6 @@
 				2767DA0918132B1B001EF21C /* FLAbstractObjectProxy.m in Sources */,
 				27188BF818148A820060FED6 /* FLCancellableAsyncQueue.m in Sources */,
 				27188C1618148A820060FED6 /* FLOperation.m in Sources */,
-				2767DEE618132B1C001EF21C /* FLUnitTestSubclassRunner.m in Sources */,
 				2767DB2B18132B1B001EF21C /* FLXmlParser.m in Sources */,
 				2767DB4918132B1B001EF21C /* NSObject+FLXmlSerialization.m in Sources */,
 				2767DEAF18132B1C001EF21C /* FLTestableSubclassFinder.m in Sources */,

@@ -23,20 +23,3 @@
 
 @end
 
-
-//@interface FLDeprecatedPrettyAttributedString : FLPrettyAttributedString {
-//@private
-//    id<FLPrettyAttributedStringDelegate> _delegate;
-//}
-//@property (readwrite, assign, nonatomic) id<FLPrettyAttributedStringDelegate> delegate;
-//@end
-//
-//@protocol FLPrettyAttributedStringDelegate <NSObject>
-//@optional
-//
-//- (NSAttributedString*) prettyString:(FLPrettyAttributedString*) prettyString
-//          willAppendAttributedString:(NSAttributedString*) string;
-//
-//- (void) prettyString:(FLPrettyAttributedString*) prettyString
-//didAppendAttributedString:(NSAttributedString*) string;
-//@end

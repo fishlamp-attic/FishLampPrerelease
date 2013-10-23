@@ -15,15 +15,62 @@
 
 FLSynthesizeSingleton(FLPrintfStringFormatter);
 
-- (void) willAppendString:(NSString*) string {
+@synthesize rememberHistory = _rememberHistory;
+
+- (id) init {	
+	self = [super init];
+	if(self) {
+#if DEBUG
+        _rememberHistory = YES;
+#endif
+	}
+	return self;
+}
+
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+                      appendString:(NSString*) string {
+
+    [_history appendString:string];
+
+    _length += string.length;
+
     const char* c_str = [string cStringUsingEncoding:NSUTF8StringEncoding];
     if(c_str) {
         printf("%s", c_str);
     }
 }
 
-- (void) willAppendAttributedString:(NSAttributedString*) string {
-    [self willAppendString:[string string]];
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+            appendAttributedString:(NSAttributedString*) attributedString {
+
+    [self whitespaceStringFormatter:stringFormatter appendString:attributedString.string];
 }
+
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+       appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
+                  withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+
+    if(_history) {
+        [preprocessor processAndAppendString:_history toStringFormatter:anotherStringFormatter];
+    }
+}
+
+- (NSUInteger) whitespaceStringFormatterGetLength:(FLWhitespaceStringFormatter*) stringFormatter {
+    return _length;
+}
+
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+                   didMoveToParent:(id) parent {
+
+}
+
+- (NSString*) whitespaceStringFormatterExportString:(FLWhitespaceStringFormatter*) formatter {
+    return _history;
+}
+
+- (NSAttributedString*) whitespaceStringFormatterExportAttributedString:(FLWhitespaceStringFormatter*) formatter {
+    return FLAutorelease([[NSAttributedString alloc] initWithString:_history]);
+}
+
 
 @end

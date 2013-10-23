@@ -10,7 +10,13 @@
 #import "FLCoreRequired.h"
 #import "FLWhitespaceStringFormatter.h"
 
-@interface FLPrintfStringFormatter : FLWhitespaceStringFormatter<FLWhitespaceStringFormatterDelegate>
+@interface FLPrintfStringFormatter : FLWhitespaceStringFormatter<FLWhitespaceStringFormatterDelegate> {
+@private
+    NSMutableString* _history;
+    NSInteger _length;
+}
+
+@property (readwrite, assign, nonatomic) BOOL rememberHistory;
 
 FLSingletonProperty(FLPrintfStringFormatter);
 

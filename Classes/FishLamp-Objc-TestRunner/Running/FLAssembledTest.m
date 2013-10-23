@@ -38,6 +38,23 @@
 }
 #endif
 
+- (BOOL) isDisabled {
+    return [_testableObject respondsToSelector:@selector(disableAll)];
+}
+
+- (NSString*) disabledReason {
+    if([self isDisabled]) {
+        NSString* reason = [_testableObject disableAll];
+
+        return reason ? reason : @"";
+    }
+
+    return nil;
+}
+
+- (NSString*) testName {
+    return [_testableObject unitTestName];
+}
 
 - (void) willRunTestCases:(FLTestCaseList*) testCases
        withExpectedResult:(FLExpectedTestResult*) expected {

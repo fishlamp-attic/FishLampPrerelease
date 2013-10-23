@@ -20,7 +20,7 @@
 #import "FLTestGroupOrganizer.h"
 
 #import "FLTestFactory.h"
-
+#import "FLAssembledTest.h"
 
 @implementation FLRunAllTestsOperation
 
@@ -53,6 +53,11 @@
 
             @autoreleasepool {
                 FLAssembledTest* test = [factory createAssembledTest];
+
+                if(test.isDisabled) {
+                    FLTestLog(@"Unit test disabled: %@, Reason: %@", test.testName, test.disabledReason);
+                    continue;
+                }
 
                 [FLTestOutput indent:^{
                     FLTestOperation* unitTestOperation =

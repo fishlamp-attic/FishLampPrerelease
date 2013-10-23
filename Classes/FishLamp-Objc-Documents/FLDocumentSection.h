@@ -17,6 +17,7 @@
 @private
     NSMutableArray* _lines;
     BOOL _needsLine;
+    NSInteger _indentLevel;
 }
 + (id) stringBuilder;
 

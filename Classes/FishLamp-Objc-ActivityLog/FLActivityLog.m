@@ -106,7 +106,8 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
 
 #define kActivityLog @"ActivityLog"
 
-- (void) willAppendAttributedString:(NSAttributedString*) string {
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+            appendAttributedString:(NSAttributedString*) string {
 
     NSAttributedString* theString = string;
     if(_textFont || _textColor) {
@@ -125,7 +126,7 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
         theString = FLAutorelease([[NSAttributedString alloc] initWithString:string.string attributes:attr]);
     }
     
-    [super willAppendAttributedString:theString];
+    [super whitespaceStringFormatter:stringFormatter appendAttributedString:theString];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:FLActivityLogUpdated
                                                         object:self

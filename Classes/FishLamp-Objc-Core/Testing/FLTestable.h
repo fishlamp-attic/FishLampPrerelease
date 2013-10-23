@@ -14,22 +14,51 @@
 @protocol FLTestable <NSObject>
 @optional
 
+/**
+ *  Return a custom name for the unit test. By default this is the name of the class.
+ */
 @property (readonly, strong) NSString* unitTestName;
 
-+ (FLTestGroup*) testGroup; // defaultTestGroup by default.
+/**
+ *  Defining this disables all the tests in this testable.
+ *  
+ *  @return Optional string describing why the test is disabled.
+ */
+- (NSString*) disableAll;
 
-// list of other testable classes (in same group)
-+ (NSArray*) testDependencies;
-
-// optional overrides
-
-// NOTE: these are NOT tests. Thrown exceptions will terminate everything.
+/**
+ *  Called before test is run.
+ *  
+ *  @param testCases List of test cases - order of execution can be modified
+ *  @param expected  Expected results
+ */
 - (void) willRunTestCases:(FLTestCaseList*) testCases
        withExpectedResult:(FLExpectedTestResult*) expected;
 
+/**
+ *  Called after test is rull
+ *  
+ *  @param testCases the test cases that were run
+ *  @param expected  expected results
+ *  @param actual    actual results
+ */
 - (void) didRunTestCases:(FLTestCaseList*) testCases
       withExpectedResult:(FLExpectedTestResult*) expected
         withActualResult:(FLTestResultCollection*) actual;
+
+/**
+ *  Optionally return Array of Classes that this test depends on
+ *  
+ *  @return Array of Classes
+ */
++ (NSArray*) testDependencies;
+
+/**
+ *  Optionally add this test to a test group.
+ *  
+ *  @return The test group.
+ */
++ (FLTestGroup*) testGroup; // defaultTestGroup by default.
 
 @end
 

@@ -23,5 +23,8 @@
     return [FLStringBuilder stringBuilder];
 }
 
+- (NSString*) disableAll {
+    return @"Tests don't work with formtter tests";
+}
 
 @end
