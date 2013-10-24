@@ -49,12 +49,9 @@
 }
 
 - (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
-       appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
-                  withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+   appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter  {
 
-    [preprocessor processAndAppendAttributedString:[self exportAttributedString]
-                                 toStringFormatter:anotherStringFormatter];
-
+    [anotherStringFormatter appendString:[self exportString]];
 }
 
 - (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
@@ -76,11 +73,5 @@
 - (NSAttributedString*) whitespaceStringFormatterExportAttributedString:(FLWhitespaceStringFormatter*) formatter {
     return FLCopyWithAutorelease(_attributedString);
 }
-
-- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
-                   didMoveToParent:(id) parent {
-
-}
-
 
 @end

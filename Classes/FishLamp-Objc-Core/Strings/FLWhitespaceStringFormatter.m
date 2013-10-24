@@ -36,12 +36,14 @@
 }
 #endif
 
-- (void) stringFormatterCloseLine:(FLStringFormatter*) formatter {
-
+- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) formatter {
     if(_editingLine) {
         [self willCloseLine];
         _editingLine = NO;
+        return YES;
     }
+
+    return NO;
 }
 
 - (void) stringFormatterOpenLine:(FLStringFormatter*) formatter {
@@ -96,15 +98,9 @@
 }
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
-        appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
-                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+        appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter {
 
-    [_whitespaceStringFormatterDelegate whitespaceStringFormatter:self appendSelfToStringFormatter:stringFormatter withPreprocessor:preprocessor];
-}
-
-- (void) stringFormatter:(FLStringFormatter*) formatter
-         didMoveToParent:(id) parent {
-    [_whitespaceStringFormatterDelegate whitespaceStringFormatter:self didMoveToParent:parent];
+    [_whitespaceStringFormatterDelegate whitespaceStringFormatter:self appendContentsToStringFormatter:stringFormatter];
 }
 
 - (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter {

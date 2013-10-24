@@ -25,13 +25,13 @@
 }
 #endif
 
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
-                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor  {
+- (void) stringFormatter:(FLStringFormatter *)formatter
+appendContentsToStringFormatter:(id<FLStringFormatter>)anotherStringFormatter {
 
     if(FLStringIsNotEmpty(_openScopeString)) {
         [anotherStringFormatter appendLine:_openScopeString];
         [anotherStringFormatter indent:^{
-            [super appendSelfToStringFormatter:anotherStringFormatter withPreprocessor:preprocessor];
+            [super stringFormatter:formatter appendContentsToStringFormatter:anotherStringFormatter];
         }];
         
         if(FLStringIsNotEmpty(_closeScopeString)) {
@@ -39,7 +39,7 @@
         }
     }
     else {
-        [super appendSelfToStringFormatter:anotherStringFormatter  withPreprocessor:preprocessor];
+        [super stringFormatter:formatter appendContentsToStringFormatter:anotherStringFormatter];
     }
 }
 

@@ -17,11 +17,11 @@
 		27188B54181488DB0060FED6 /* FLStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B4D181488DB0060FED6 /* FLStringBuilder.m */; };
 		27188B55181488DB0060FED6 /* FLStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B4D181488DB0060FED6 /* FLStringBuilder.m */; };
 		27188B56181488DB0060FED6 /* FLStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B4D181488DB0060FED6 /* FLStringBuilder.m */; };
-		27188B57181488DB0060FED6 /* FLDocumentSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B4F181488DB0060FED6 /* FLDocumentSection.m */; };
-		27188B58181488DB0060FED6 /* FLDocumentSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B4F181488DB0060FED6 /* FLDocumentSection.m */; };
-		27188B59181488DB0060FED6 /* FLDocumentSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B4F181488DB0060FED6 /* FLDocumentSection.m */; };
-		27188B5A181488DB0060FED6 /* FLDocumentSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B4F181488DB0060FED6 /* FLDocumentSection.m */; };
-		27188B5B181488DB0060FED6 /* FLDocumentSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B4F181488DB0060FED6 /* FLDocumentSection.m */; };
+		27188B57181488DB0060FED6 /* FLStringBuilderSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B4F181488DB0060FED6 /* FLStringBuilderSection.m */; };
+		27188B58181488DB0060FED6 /* FLStringBuilderSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B4F181488DB0060FED6 /* FLStringBuilderSection.m */; };
+		27188B59181488DB0060FED6 /* FLStringBuilderSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B4F181488DB0060FED6 /* FLStringBuilderSection.m */; };
+		27188B5A181488DB0060FED6 /* FLStringBuilderSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B4F181488DB0060FED6 /* FLStringBuilderSection.m */; };
+		27188B5B181488DB0060FED6 /* FLStringBuilderSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B4F181488DB0060FED6 /* FLStringBuilderSection.m */; };
 		27188B74181489880060FED6 /* FLAssertionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B64181489880060FED6 /* FLAssertionTests.m */; };
 		27188B75181489880060FED6 /* FLAssertionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B64181489880060FED6 /* FLAssertionTests.m */; };
 		27188B76181489880060FED6 /* FLAssertionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B64181489880060FED6 /* FLAssertionTests.m */; };
@@ -232,6 +232,11 @@
 		27188CA718148CF90060FED6 /* FLStringBuilderTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188CA418148CF90060FED6 /* FLStringBuilderTester.m */; };
 		27188CA818148CF90060FED6 /* FLStringBuilderTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188CA418148CF90060FED6 /* FLStringBuilderTester.m */; };
 		27188CA918148CF90060FED6 /* FLStringBuilderTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188CA418148CF90060FED6 /* FLStringBuilderTester.m */; };
+		271D340218198E0000257490 /* FLStringPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D340118198E0000257490 /* FLStringPreprocessor.m */; };
+		271D340318198E0000257490 /* FLStringPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D340118198E0000257490 /* FLStringPreprocessor.m */; };
+		271D340418198E0000257490 /* FLStringPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D340118198E0000257490 /* FLStringPreprocessor.m */; };
+		271D340518198E0000257490 /* FLStringPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D340118198E0000257490 /* FLStringPreprocessor.m */; };
+		271D340618198E0000257490 /* FLStringPreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D340118198E0000257490 /* FLStringPreprocessor.m */; };
 		2767D85218132B1B001EF21C /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 2767D4F618132B19001EF21C /* Base64Transcoder.c */; };
 		2767D85318132B1B001EF21C /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 2767D4F618132B19001EF21C /* Base64Transcoder.c */; };
 		2767D85418132B1B001EF21C /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 2767D4F618132B19001EF21C /* Base64Transcoder.c */; };
@@ -1727,17 +1732,7 @@
 		2767DF5D1813373D001EF21C /* FLAtomic.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767DF5A1813373D001EF21C /* FLAtomic.m */; };
 		2767DF5E1813373D001EF21C /* FLAtomic.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767DF5A1813373D001EF21C /* FLAtomic.m */; };
 		2767DF5F1813373D001EF21C /* FLAtomic.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767DF5A1813373D001EF21C /* FLAtomic.m */; };
-		2767DF9F18133AD9001EF21C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6818133AD2001EF21C /* AppKit.framework */; };
-		2767DFA018133AD9001EF21C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6918133AD2001EF21C /* CoreData.framework */; };
 		2767DFA118133AD9001EF21C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6A18133AD2001EF21C /* Foundation.framework */; };
-		2767DFA218133AD9001EF21C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6B18133AD2001EF21C /* SystemConfiguration.framework */; };
-		2767DFA318133AD9001EF21C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6C18133AD2001EF21C /* Security.framework */; };
-		2767DFA418133AD9001EF21C /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6D18133AD2001EF21C /* CoreServices.framework */; };
-		2767DFA518133AD9001EF21C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6E18133AD2001EF21C /* libsqlite3.0.dylib */; };
-		2767DFA618133AD9001EF21C /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6F18133AD2001EF21C /* Quartz.framework */; };
-		2767DFA718133AD9001EF21C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF7018133AD2001EF21C /* QuartzCore.framework */; };
-		2767DFA818133AD9001EF21C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF7118133AD2001EF21C /* Cocoa.framework */; };
-		2767DFB618134011001EF21C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF7118133AD2001EF21C /* Cocoa.framework */; };
 		2767DFC018134011001EF21C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2767DFBE18134011001EF21C /* InfoPlist.strings */; };
 		2767DFC218134011001EF21C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767DFC118134011001EF21C /* main.m */; };
 		2767DFC618134011001EF21C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2767DFC418134011001EF21C /* Credits.rtf */; };
@@ -1747,25 +1742,12 @@
 		2767DFE718134044001EF21C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6818133AD2001EF21C /* AppKit.framework */; };
 		2767DFE818134044001EF21C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6918133AD2001EF21C /* CoreData.framework */; };
 		2767DFE918134044001EF21C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6A18133AD2001EF21C /* Foundation.framework */; };
-		2767DFEA18134044001EF21C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6B18133AD2001EF21C /* SystemConfiguration.framework */; };
-		2767DFEB18134044001EF21C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6C18133AD2001EF21C /* Security.framework */; };
-		2767DFEC18134044001EF21C /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6D18133AD2001EF21C /* CoreServices.framework */; };
-		2767DFED18134044001EF21C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6E18133AD2001EF21C /* libsqlite3.0.dylib */; };
-		2767DFEE18134044001EF21C /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6F18133AD2001EF21C /* Quartz.framework */; };
-		2767DFEF18134044001EF21C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF7018133AD2001EF21C /* QuartzCore.framework */; };
 		2767DFF21813405D001EF21C /* FishLamp-Objc-OSX-64-MRC-Lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A43AC415CDCCCB001CB13E /* FishLamp-Objc-OSX-64-MRC-Lib.a */; };
 		2767E06B18134BD2001EF21C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767DFC818134011001EF21C /* AppDelegate.m */; };
 		2767E06C18134BD2001EF21C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767DFC118134011001EF21C /* main.m */; };
 		2767E06F18134BD2001EF21C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6818133AD2001EF21C /* AppKit.framework */; };
 		2767E07018134BD2001EF21C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6918133AD2001EF21C /* CoreData.framework */; };
 		2767E07118134BD2001EF21C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6A18133AD2001EF21C /* Foundation.framework */; };
-		2767E07218134BD2001EF21C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6B18133AD2001EF21C /* SystemConfiguration.framework */; };
-		2767E07318134BD2001EF21C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6C18133AD2001EF21C /* Security.framework */; };
-		2767E07418134BD2001EF21C /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6D18133AD2001EF21C /* CoreServices.framework */; };
-		2767E07518134BD2001EF21C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6E18133AD2001EF21C /* libsqlite3.0.dylib */; };
-		2767E07618134BD2001EF21C /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6F18133AD2001EF21C /* Quartz.framework */; };
-		2767E07718134BD2001EF21C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF7018133AD2001EF21C /* QuartzCore.framework */; };
-		2767E07818134BD2001EF21C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF7118133AD2001EF21C /* Cocoa.framework */; };
 		2767E07A18134BD2001EF21C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2767DFBE18134011001EF21C /* InfoPlist.strings */; };
 		2767E07B18134BD2001EF21C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2767DFCD18134011001EF21C /* Images.xcassets */; };
 		2767E07C18134BD2001EF21C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2767DFC418134011001EF21C /* Credits.rtf */; };
@@ -1775,13 +1757,6 @@
 		2767E08B18134BF4001EF21C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6818133AD2001EF21C /* AppKit.framework */; };
 		2767E08C18134BF4001EF21C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6918133AD2001EF21C /* CoreData.framework */; };
 		2767E08D18134BF4001EF21C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6A18133AD2001EF21C /* Foundation.framework */; };
-		2767E08E18134BF4001EF21C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6B18133AD2001EF21C /* SystemConfiguration.framework */; };
-		2767E08F18134BF4001EF21C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6C18133AD2001EF21C /* Security.framework */; };
-		2767E09018134BF4001EF21C /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6D18133AD2001EF21C /* CoreServices.framework */; };
-		2767E09118134BF4001EF21C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6E18133AD2001EF21C /* libsqlite3.0.dylib */; };
-		2767E09218134BF4001EF21C /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6F18133AD2001EF21C /* Quartz.framework */; };
-		2767E09318134BF4001EF21C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF7018133AD2001EF21C /* QuartzCore.framework */; };
-		2767E09418134BF4001EF21C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF7118133AD2001EF21C /* Cocoa.framework */; };
 		2767E09618134BF4001EF21C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2767DFBE18134011001EF21C /* InfoPlist.strings */; };
 		2767E09718134BF4001EF21C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2767DFCD18134011001EF21C /* Images.xcassets */; };
 		2767E09818134BF4001EF21C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2767DFC418134011001EF21C /* Credits.rtf */; };
@@ -1791,20 +1766,11 @@
 		2767E0A718134C70001EF21C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6818133AD2001EF21C /* AppKit.framework */; };
 		2767E0A818134C70001EF21C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6918133AD2001EF21C /* CoreData.framework */; };
 		2767E0A918134C70001EF21C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6A18133AD2001EF21C /* Foundation.framework */; };
-		2767E0AA18134C70001EF21C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6B18133AD2001EF21C /* SystemConfiguration.framework */; };
-		2767E0AB18134C70001EF21C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6C18133AD2001EF21C /* Security.framework */; };
-		2767E0AC18134C70001EF21C /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6D18133AD2001EF21C /* CoreServices.framework */; };
-		2767E0AD18134C70001EF21C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6E18133AD2001EF21C /* libsqlite3.0.dylib */; };
-		2767E0AE18134C70001EF21C /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6F18133AD2001EF21C /* Quartz.framework */; };
-		2767E0AF18134C70001EF21C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF7018133AD2001EF21C /* QuartzCore.framework */; };
-		2767E0B018134C70001EF21C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF7118133AD2001EF21C /* Cocoa.framework */; };
 		2767E0B218134C70001EF21C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2767DFBE18134011001EF21C /* InfoPlist.strings */; };
 		2767E0B318134C70001EF21C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2767DFCD18134011001EF21C /* Images.xcassets */; };
 		2767E0B418134C70001EF21C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2767DFC418134011001EF21C /* Credits.rtf */; };
 		2767E0B518134C70001EF21C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2767DFCA18134011001EF21C /* MainMenu.xib */; };
 		2767E0C018134CAE001EF21C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6A18133AD2001EF21C /* Foundation.framework */; };
-		2767E0C218134CAE001EF21C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767E0C118134CAE001EF21C /* CoreGraphics.framework */; };
-		2767E0C418134CAE001EF21C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767E0C318134CAE001EF21C /* UIKit.framework */; };
 		2767E0CA18134CAE001EF21C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2767E0C818134CAE001EF21C /* InfoPlist.strings */; };
 		2767E0CC18134CAE001EF21C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E0CB18134CAE001EF21C /* main.m */; };
 		2767E0D018134CAE001EF21C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E0CF18134CAE001EF21C /* AppDelegate.m */; };
@@ -1821,6 +1787,16 @@
 		2767E10C1813540A001EF21C /* FLTestable+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E1091813540A001EF21C /* FLTestable+Utils.m */; };
 		2767E10D1813540A001EF21C /* FLTestable+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E1091813540A001EF21C /* FLTestable+Utils.m */; };
 		2767E10E1813540A001EF21C /* FLTestable+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767E1091813540A001EF21C /* FLTestable+Utils.m */; };
+		27B15A411819AC9600D17FF7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A401819AC9600D17FF7 /* CoreFoundation.framework */; };
+		27B15A441819ACBC00D17FF7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A431819ACBC00D17FF7 /* SystemConfiguration.framework */; };
+		27B15A461819ACC800D17FF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A451819ACC800D17FF7 /* Security.framework */; };
+		27B15A481819ACD500D17FF7 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A471819ACD500D17FF7 /* CoreServices.framework */; };
+		27B15A4A1819ACE200D17FF7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A491819ACE200D17FF7 /* libsqlite3.dylib */; };
+		27B15A4D1819ACEA00D17FF7 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A4B1819ACEA00D17FF7 /* Quartz.framework */; };
+		27B15A4E1819ACEA00D17FF7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A4C1819ACEA00D17FF7 /* QuartzCore.framework */; };
+		27B15A541819AE4D00D17FF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A531819AE4D00D17FF7 /* CoreGraphics.framework */; };
+		27B15A561819AE6500D17FF7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A551819AE6500D17FF7 /* Cocoa.framework */; };
+		27B15A581819AEB400D17FF7 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A571819AEB400D17FF7 /* ApplicationServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1930,8 +1906,8 @@
 		2712DA1917DF632F007327C0 /* TestTool-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestTool-Prefix.pch"; sourceTree = "<group>"; };
 		27188B4C181488DB0060FED6 /* FLStringBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringBuilder.h; sourceTree = "<group>"; };
 		27188B4D181488DB0060FED6 /* FLStringBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringBuilder.m; sourceTree = "<group>"; };
-		27188B4E181488DB0060FED6 /* FLDocumentSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLDocumentSection.h; sourceTree = "<group>"; };
-		27188B4F181488DB0060FED6 /* FLDocumentSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLDocumentSection.m; sourceTree = "<group>"; };
+		27188B4E181488DB0060FED6 /* FLStringBuilderSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringBuilderSection.h; sourceTree = "<group>"; };
+		27188B4F181488DB0060FED6 /* FLStringBuilderSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringBuilderSection.m; sourceTree = "<group>"; };
 		27188B63181489880060FED6 /* FLAssertionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAssertionTests.h; sourceTree = "<group>"; };
 		27188B64181489880060FED6 /* FLAssertionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAssertionTests.m; sourceTree = "<group>"; };
 		27188B65181489880060FED6 /* FLBitFlagsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBitFlagsTest.h; sourceTree = "<group>"; };
@@ -2020,6 +1996,8 @@
 		27188C9618148C450060FED6 /* FLTimeoutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTimeoutTests.m; sourceTree = "<group>"; };
 		27188CA318148CF90060FED6 /* FLStringBuilderTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringBuilderTester.h; sourceTree = "<group>"; };
 		27188CA418148CF90060FED6 /* FLStringBuilderTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringBuilderTester.m; sourceTree = "<group>"; };
+		271D340018198E0000257490 /* FLStringPreprocessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringPreprocessor.h; sourceTree = "<group>"; };
+		271D340118198E0000257490 /* FLStringPreprocessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringPreprocessor.m; sourceTree = "<group>"; };
 		2727D28D17DE2FF80069F9D2 /* FishLamp-Objc-OSX-64-MRC-TestTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-MRC-TestTool"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27314C79165328400027850D /* FishLamp-Objc-OSX-64-ARC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-ARC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2767D4F618132B19001EF21C /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
@@ -2672,17 +2650,7 @@
 		2767DF6818133AD2001EF21C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		2767DF6918133AD2001EF21C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2767DF6A18133AD2001EF21C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		2767DF6B18133AD2001EF21C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = ../../../../../../System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<group>"; };
-		2767DF6C18133AD2001EF21C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = ../../../../../../System/Library/Frameworks/Security.framework; sourceTree = "<group>"; };
-		2767DF6D18133AD2001EF21C /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = ../../../../../../System/Library/Frameworks/CoreServices.framework; sourceTree = "<group>"; };
-		2767DF6E18133AD2001EF21C /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = ../../../../../../usr/lib/libsqlite3.0.dylib; sourceTree = "<group>"; };
-		2767DF6F18133AD2001EF21C /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = ../../../../../../System/Library/Frameworks/Quartz.framework; sourceTree = "<group>"; };
-		2767DF7018133AD2001EF21C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = ../../../../../../System/Library/Frameworks/QuartzCore.framework; sourceTree = "<group>"; };
-		2767DF7118133AD2001EF21C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2767DFB518134011001EF21C /* FishLamp-Objc-OSX-64-MRC-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-MRC-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2767DFB818134011001EF21C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		2767DFB918134011001EF21C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		2767DFBA18134011001EF21C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2767DFBD18134011001EF21C /* TestApp-OSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestApp-OSX-Info.plist"; sourceTree = "<group>"; };
 		2767DFBF18134011001EF21C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2767DFC118134011001EF21C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -2703,8 +2671,6 @@
 		2767E09D18134BF4001EF21C /* FishLamp-Objc-OSX-Universal-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-OSX-Universal-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2767E0B918134C70001EF21C /* FishLamp-Objc-OSX-32-MRC-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-OSX-32-MRC-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2767E0BF18134CAD001EF21C /* TestApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2767E0C118134CAE001EF21C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2767E0C318134CAE001EF21C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		2767E0C718134CAE001EF21C /* TestApp-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestApp-iOS-Info.plist"; sourceTree = "<group>"; };
 		2767E0C918134CAE001EF21C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2767E0CB18134CAE001EF21C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -2716,11 +2682,23 @@
 		2767E0D718134CAE001EF21C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2767E0D818134CAE001EF21C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2767E0DA18134CAE001EF21C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2767E0E118134CAF001EF21C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2767E1081813540A001EF21C /* FLTestable+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FLTestable+Utils.h"; sourceTree = "<group>"; };
 		2767E1091813540A001EF21C /* FLTestable+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FLTestable+Utils.m"; sourceTree = "<group>"; };
 		27A43AB415CDCC89001CB13E /* FishLamp-Objc-iOS-ARC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-iOS-ARC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A43AC415CDCCCB001CB13E /* FishLamp-Objc-OSX-64-MRC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-MRC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27B15A3E1819A99700D17FF7 /* Piecemeal-IncludedConfig-DefaultCompilerWarnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-DefaultCompilerWarnings.xcconfig"; sourceTree = "<group>"; };
+		27B15A3F1819A9C900D17FF7 /* Piecemeal-IncludedConfig-DefaultClangSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-DefaultClangSettings.xcconfig"; sourceTree = "<group>"; };
+		27B15A401819AC9600D17FF7 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		27B15A431819ACBC00D17FF7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		27B15A451819ACC800D17FF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		27B15A471819ACD500D17FF7 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		27B15A491819ACE200D17FF7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		27B15A4B1819ACEA00D17FF7 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		27B15A4C1819ACEA00D17FF7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		27B15A511819AD2800D17FF7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		27B15A531819AE4D00D17FF7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		27B15A551819AE6500D17FF7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		27B15A571819AEB400D17FF7 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		27CBC1F416768BA600753D0A /* FishLamp-Objc-OSX-Universal-MRC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-Universal-MRC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B214727B17DE7BBC00985872 /* FishLamp-Objc-iOS-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-iOS-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B263E0E317DE7CF80049EF94 /* PiecemealCompilerFlagOverrides.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PiecemealCompilerFlagOverrides.h; sourceTree = "<group>"; };
@@ -2734,8 +2712,8 @@
 		B2B1437417DE724B00A8454E /* Piecemeal-IncludedConfig-OSX-64.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-OSX-64.xcconfig"; sourceTree = "<group>"; };
 		B2B1437517DE724B00A8454E /* Piecemeal-IncludedConfig-OSX-Universal.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-OSX-Universal.xcconfig"; sourceTree = "<group>"; };
 		B2B1437617DE724B00A8454E /* Piecemeal-IncludedConfig-Preprocessor.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-Preprocessor.xcconfig"; sourceTree = "<group>"; };
-		B2B1437717DE724B00A8454E /* Piecemeal-IncludedConfig-Settings-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-Settings-Debug.xcconfig"; sourceTree = "<group>"; };
-		B2B1437817DE724B00A8454E /* Piecemeal-IncludedConfig-Settings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-Settings.xcconfig"; sourceTree = "<group>"; };
+		B2B1437717DE724B00A8454E /* Piecemeal-IncludedConfig-DefaultSettings-Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-DefaultSettings-Debug.xcconfig"; sourceTree = "<group>"; };
+		B2B1437817DE724B00A8454E /* Piecemeal-IncludedConfig-DefaultSettings-Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-DefaultSettings-Release.xcconfig"; sourceTree = "<group>"; };
 		B2B1437917DE724B00A8454E /* Piecemeal-IncludedConfig-TestTool.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-TestTool.xcconfig"; sourceTree = "<group>"; };
 		B2B1437A17DE724B00A8454E /* Piecemeal-IncludedConfig-Tool.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-Tool.xcconfig"; sourceTree = "<group>"; };
 		B2B1438217DE724B00A8454E /* install-headers.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "install-headers.sh"; sourceTree = "<group>"; };
@@ -2783,17 +2761,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2712DA1A17DF643A007327C0 /* FishLamp-Objc-OSX-64-MRC-Lib.a in Frameworks */,
-				2767DF9F18133AD9001EF21C /* AppKit.framework in Frameworks */,
-				2767DFA018133AD9001EF21C /* CoreData.framework in Frameworks */,
+				27B15A581819AEB400D17FF7 /* ApplicationServices.framework in Frameworks */,
+				27B15A561819AE6500D17FF7 /* Cocoa.framework in Frameworks */,
+				27B15A541819AE4D00D17FF7 /* CoreGraphics.framework in Frameworks */,
+				27B15A4D1819ACEA00D17FF7 /* Quartz.framework in Frameworks */,
+				27B15A4E1819ACEA00D17FF7 /* QuartzCore.framework in Frameworks */,
+				27B15A4A1819ACE200D17FF7 /* libsqlite3.dylib in Frameworks */,
+				27B15A481819ACD500D17FF7 /* CoreServices.framework in Frameworks */,
+				27B15A461819ACC800D17FF7 /* Security.framework in Frameworks */,
+				27B15A441819ACBC00D17FF7 /* SystemConfiguration.framework in Frameworks */,
+				27B15A411819AC9600D17FF7 /* CoreFoundation.framework in Frameworks */,
 				2767DFA118133AD9001EF21C /* Foundation.framework in Frameworks */,
-				2767DFA218133AD9001EF21C /* SystemConfiguration.framework in Frameworks */,
-				2767DFA318133AD9001EF21C /* Security.framework in Frameworks */,
-				2767DFA418133AD9001EF21C /* CoreServices.framework in Frameworks */,
-				2767DFA518133AD9001EF21C /* libsqlite3.0.dylib in Frameworks */,
-				2767DFA618133AD9001EF21C /* Quartz.framework in Frameworks */,
-				2767DFA718133AD9001EF21C /* QuartzCore.framework in Frameworks */,
-				2767DFA818133AD9001EF21C /* Cocoa.framework in Frameworks */,
+				2712DA1A17DF643A007327C0 /* FishLamp-Objc-OSX-64-MRC-Lib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2812,13 +2791,6 @@
 				2767DFE718134044001EF21C /* AppKit.framework in Frameworks */,
 				2767DFE818134044001EF21C /* CoreData.framework in Frameworks */,
 				2767DFE918134044001EF21C /* Foundation.framework in Frameworks */,
-				2767DFEA18134044001EF21C /* SystemConfiguration.framework in Frameworks */,
-				2767DFEB18134044001EF21C /* Security.framework in Frameworks */,
-				2767DFEC18134044001EF21C /* CoreServices.framework in Frameworks */,
-				2767DFED18134044001EF21C /* libsqlite3.0.dylib in Frameworks */,
-				2767DFEE18134044001EF21C /* Quartz.framework in Frameworks */,
-				2767DFEF18134044001EF21C /* QuartzCore.framework in Frameworks */,
-				2767DFB618134011001EF21C /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2830,13 +2802,6 @@
 				2767E06F18134BD2001EF21C /* AppKit.framework in Frameworks */,
 				2767E07018134BD2001EF21C /* CoreData.framework in Frameworks */,
 				2767E07118134BD2001EF21C /* Foundation.framework in Frameworks */,
-				2767E07218134BD2001EF21C /* SystemConfiguration.framework in Frameworks */,
-				2767E07318134BD2001EF21C /* Security.framework in Frameworks */,
-				2767E07418134BD2001EF21C /* CoreServices.framework in Frameworks */,
-				2767E07518134BD2001EF21C /* libsqlite3.0.dylib in Frameworks */,
-				2767E07618134BD2001EF21C /* Quartz.framework in Frameworks */,
-				2767E07718134BD2001EF21C /* QuartzCore.framework in Frameworks */,
-				2767E07818134BD2001EF21C /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2848,13 +2813,6 @@
 				2767E08B18134BF4001EF21C /* AppKit.framework in Frameworks */,
 				2767E08C18134BF4001EF21C /* CoreData.framework in Frameworks */,
 				2767E08D18134BF4001EF21C /* Foundation.framework in Frameworks */,
-				2767E08E18134BF4001EF21C /* SystemConfiguration.framework in Frameworks */,
-				2767E08F18134BF4001EF21C /* Security.framework in Frameworks */,
-				2767E09018134BF4001EF21C /* CoreServices.framework in Frameworks */,
-				2767E09118134BF4001EF21C /* libsqlite3.0.dylib in Frameworks */,
-				2767E09218134BF4001EF21C /* Quartz.framework in Frameworks */,
-				2767E09318134BF4001EF21C /* QuartzCore.framework in Frameworks */,
-				2767E09418134BF4001EF21C /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2866,13 +2824,6 @@
 				2767E0A718134C70001EF21C /* AppKit.framework in Frameworks */,
 				2767E0A818134C70001EF21C /* CoreData.framework in Frameworks */,
 				2767E0A918134C70001EF21C /* Foundation.framework in Frameworks */,
-				2767E0AA18134C70001EF21C /* SystemConfiguration.framework in Frameworks */,
-				2767E0AB18134C70001EF21C /* Security.framework in Frameworks */,
-				2767E0AC18134C70001EF21C /* CoreServices.framework in Frameworks */,
-				2767E0AD18134C70001EF21C /* libsqlite3.0.dylib in Frameworks */,
-				2767E0AE18134C70001EF21C /* Quartz.framework in Frameworks */,
-				2767E0AF18134C70001EF21C /* QuartzCore.framework in Frameworks */,
-				2767E0B018134C70001EF21C /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2881,8 +2832,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2767E10118134DF7001EF21C /* FishLamp-Objc-iOS-ARC-Lib.a in Frameworks */,
-				2767E0C218134CAE001EF21C /* CoreGraphics.framework in Frameworks */,
-				2767E0C418134CAE001EF21C /* UIKit.framework in Frameworks */,
 				2767E0C018134CAE001EF21C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2962,8 +2911,8 @@
 			children = (
 				27188B4C181488DB0060FED6 /* FLStringBuilder.h */,
 				27188B4D181488DB0060FED6 /* FLStringBuilder.m */,
-				27188B4E181488DB0060FED6 /* FLDocumentSection.h */,
-				27188B4F181488DB0060FED6 /* FLDocumentSection.m */,
+				27188B4E181488DB0060FED6 /* FLStringBuilderSection.h */,
+				27188B4F181488DB0060FED6 /* FLStringBuilderSection.m */,
 			);
 			path = "FishLamp-Objc-Documents";
 			sourceTree = "<group>";
@@ -3595,6 +3544,8 @@
 				2767D60218132B1A001EF21C /* FLWhitespace.m */,
 				2767D60318132B1A001EF21C /* FLWhitespaceStringFormatter.h */,
 				2767D60418132B1A001EF21C /* FLWhitespaceStringFormatter.m */,
+				271D340018198E0000257490 /* FLStringPreprocessor.h */,
+				271D340118198E0000257490 /* FLStringPreprocessor.m */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -4367,16 +4318,6 @@
 			path = Keychain;
 			sourceTree = "<group>";
 		};
-		2767DFB718134011001EF21C /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2767DFB818134011001EF21C /* AppKit.framework */,
-				2767DFB918134011001EF21C /* CoreData.framework */,
-				2767DFBA18134011001EF21C /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
 		2767DFBB18134011001EF21C /* TestApp-OSX */ = {
 			isa = PBXGroup;
 			children = (
@@ -4469,20 +4410,20 @@
 		27A43A7E15CDCC1B001CB13E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27B15A571819AEB400D17FF7 /* ApplicationServices.framework */,
+				27B15A551819AE6500D17FF7 /* Cocoa.framework */,
+				27B15A531819AE4D00D17FF7 /* CoreGraphics.framework */,
+				27B15A511819AD2800D17FF7 /* XCTest.framework */,
+				27B15A4B1819ACEA00D17FF7 /* Quartz.framework */,
+				27B15A4C1819ACEA00D17FF7 /* QuartzCore.framework */,
+				27B15A491819ACE200D17FF7 /* libsqlite3.dylib */,
+				27B15A471819ACD500D17FF7 /* CoreServices.framework */,
+				27B15A451819ACC800D17FF7 /* Security.framework */,
+				27B15A431819ACBC00D17FF7 /* SystemConfiguration.framework */,
+				27B15A401819AC9600D17FF7 /* CoreFoundation.framework */,
 				2767DF6818133AD2001EF21C /* AppKit.framework */,
 				2767DF6918133AD2001EF21C /* CoreData.framework */,
 				2767DF6A18133AD2001EF21C /* Foundation.framework */,
-				2767DF6B18133AD2001EF21C /* SystemConfiguration.framework */,
-				2767DF6C18133AD2001EF21C /* Security.framework */,
-				2767DF6D18133AD2001EF21C /* CoreServices.framework */,
-				2767DF6E18133AD2001EF21C /* libsqlite3.0.dylib */,
-				2767DF6F18133AD2001EF21C /* Quartz.framework */,
-				2767DF7018133AD2001EF21C /* QuartzCore.framework */,
-				2767DF7118133AD2001EF21C /* Cocoa.framework */,
-				2767E0C118134CAE001EF21C /* CoreGraphics.framework */,
-				2767E0C318134CAE001EF21C /* UIKit.framework */,
-				2767E0E118134CAF001EF21C /* XCTest.framework */,
-				2767DFB718134011001EF21C /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -4544,11 +4485,13 @@
 				B2B1437417DE724B00A8454E /* Piecemeal-IncludedConfig-OSX-64.xcconfig */,
 				B2B1437517DE724B00A8454E /* Piecemeal-IncludedConfig-OSX-Universal.xcconfig */,
 				B2B1437617DE724B00A8454E /* Piecemeal-IncludedConfig-Preprocessor.xcconfig */,
-				B2B1437717DE724B00A8454E /* Piecemeal-IncludedConfig-Settings-Debug.xcconfig */,
-				B2B1437817DE724B00A8454E /* Piecemeal-IncludedConfig-Settings.xcconfig */,
+				B2B1437717DE724B00A8454E /* Piecemeal-IncludedConfig-DefaultSettings-Debug.xcconfig */,
+				B2B1437817DE724B00A8454E /* Piecemeal-IncludedConfig-DefaultSettings-Release.xcconfig */,
 				B2B1437917DE724B00A8454E /* Piecemeal-IncludedConfig-TestTool.xcconfig */,
 				B2B1437A17DE724B00A8454E /* Piecemeal-IncludedConfig-Tool.xcconfig */,
 				2767DFF418134336001EF21C /* Piecemeal-IncludedConfig-OSXTestApp.xcconfig */,
+				27B15A3E1819A99700D17FF7 /* Piecemeal-IncludedConfig-DefaultCompilerWarnings.xcconfig */,
+				27B15A3F1819A9C900D17FF7 /* Piecemeal-IncludedConfig-DefaultClangSettings.xcconfig */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -5035,6 +4978,7 @@
 				2767DF3318132B1C001EF21C /* FLGuid.m in Sources */,
 				2767D8C118132B1B001EF21C /* FLColorRange.m in Sources */,
 				2767DBD718132B1C001EF21C /* FLStringToObjectConversionManager.m in Sources */,
+				271D340318198E0000257490 /* FLStringPreprocessor.m in Sources */,
 				2767DD0318132B1C001EF21C /* NSError+FLNetworkStream.m in Sources */,
 				2767DCF918132B1C001EF21C /* FLStreamWorker.m in Sources */,
 				2767DCF418132B1C001EF21C /* FLRunLoopNetworkStreamEventHandler.m in Sources */,
@@ -5213,7 +5157,7 @@
 				2767DEAC18132B1C001EF21C /* FLTestableSubclassFinder.m in Sources */,
 				2767DC0918132B1C001EF21C /* FLHttpOperation.m in Sources */,
 				27188C4018148A820060FED6 /* NSError+FLFailedResult.m in Sources */,
-				27188B58181488DB0060FED6 /* FLDocumentSection.m in Sources */,
+				27188B58181488DB0060FED6 /* FLStringBuilderSection.m in Sources */,
 				2767DBF018132B1C001EF21C /* FLNetworkHostResolver.m in Sources */,
 				27188C3618148A820060FED6 /* FLSuccessfulResult.m in Sources */,
 				2767DA3318132B1B001EF21C /* FLObjcRuntime.m in Sources */,
@@ -5418,6 +5362,7 @@
 				2767DF3518132B1C001EF21C /* FLGuid.m in Sources */,
 				2767D8C318132B1B001EF21C /* FLColorRange.m in Sources */,
 				2767DBD918132B1C001EF21C /* FLStringToObjectConversionManager.m in Sources */,
+				271D340518198E0000257490 /* FLStringPreprocessor.m in Sources */,
 				2767DD0518132B1C001EF21C /* NSError+FLNetworkStream.m in Sources */,
 				2767DCFB18132B1C001EF21C /* FLStreamWorker.m in Sources */,
 				2767DCF618132B1C001EF21C /* FLRunLoopNetworkStreamEventHandler.m in Sources */,
@@ -5596,7 +5541,7 @@
 				2767DEAE18132B1C001EF21C /* FLTestableSubclassFinder.m in Sources */,
 				2767DC0B18132B1C001EF21C /* FLHttpOperation.m in Sources */,
 				27188C4218148A820060FED6 /* NSError+FLFailedResult.m in Sources */,
-				27188B5A181488DB0060FED6 /* FLDocumentSection.m in Sources */,
+				27188B5A181488DB0060FED6 /* FLStringBuilderSection.m in Sources */,
 				2767DBF218132B1C001EF21C /* FLNetworkHostResolver.m in Sources */,
 				27188C3818148A820060FED6 /* FLSuccessfulResult.m in Sources */,
 				2767DA3518132B1B001EF21C /* FLObjcRuntime.m in Sources */,
@@ -5815,6 +5760,7 @@
 				2767DF3218132B1C001EF21C /* FLGuid.m in Sources */,
 				2767D8C018132B1B001EF21C /* FLColorRange.m in Sources */,
 				2767DBD618132B1C001EF21C /* FLStringToObjectConversionManager.m in Sources */,
+				271D340218198E0000257490 /* FLStringPreprocessor.m in Sources */,
 				2767DD0218132B1C001EF21C /* NSError+FLNetworkStream.m in Sources */,
 				2767DCF818132B1C001EF21C /* FLStreamWorker.m in Sources */,
 				2767DCF318132B1C001EF21C /* FLRunLoopNetworkStreamEventHandler.m in Sources */,
@@ -5993,7 +5939,7 @@
 				2767DEAB18132B1C001EF21C /* FLTestableSubclassFinder.m in Sources */,
 				2767DC0818132B1C001EF21C /* FLHttpOperation.m in Sources */,
 				27188C3F18148A820060FED6 /* NSError+FLFailedResult.m in Sources */,
-				27188B57181488DB0060FED6 /* FLDocumentSection.m in Sources */,
+				27188B57181488DB0060FED6 /* FLStringBuilderSection.m in Sources */,
 				2767DBEF18132B1C001EF21C /* FLNetworkHostResolver.m in Sources */,
 				27188C3518148A820060FED6 /* FLSuccessfulResult.m in Sources */,
 				2767DA3218132B1B001EF21C /* FLObjcRuntime.m in Sources */,
@@ -6166,6 +6112,7 @@
 				2767DF3418132B1C001EF21C /* FLGuid.m in Sources */,
 				2767D8C218132B1B001EF21C /* FLColorRange.m in Sources */,
 				2767DBD818132B1C001EF21C /* FLStringToObjectConversionManager.m in Sources */,
+				271D340418198E0000257490 /* FLStringPreprocessor.m in Sources */,
 				2767DD0418132B1C001EF21C /* NSError+FLNetworkStream.m in Sources */,
 				2767DCFA18132B1C001EF21C /* FLStreamWorker.m in Sources */,
 				2767DCF518132B1C001EF21C /* FLRunLoopNetworkStreamEventHandler.m in Sources */,
@@ -6344,7 +6291,7 @@
 				2767DEAD18132B1C001EF21C /* FLTestableSubclassFinder.m in Sources */,
 				2767DC0A18132B1C001EF21C /* FLHttpOperation.m in Sources */,
 				27188C4118148A820060FED6 /* NSError+FLFailedResult.m in Sources */,
-				27188B59181488DB0060FED6 /* FLDocumentSection.m in Sources */,
+				27188B59181488DB0060FED6 /* FLStringBuilderSection.m in Sources */,
 				2767DBF118132B1C001EF21C /* FLNetworkHostResolver.m in Sources */,
 				27188C3718148A820060FED6 /* FLSuccessfulResult.m in Sources */,
 				2767DA3418132B1B001EF21C /* FLObjcRuntime.m in Sources */,
@@ -6517,6 +6464,7 @@
 				2767DF3618132B1C001EF21C /* FLGuid.m in Sources */,
 				2767D8C418132B1B001EF21C /* FLColorRange.m in Sources */,
 				2767DBDA18132B1C001EF21C /* FLStringToObjectConversionManager.m in Sources */,
+				271D340618198E0000257490 /* FLStringPreprocessor.m in Sources */,
 				2767DD0618132B1C001EF21C /* NSError+FLNetworkStream.m in Sources */,
 				2767DCFC18132B1C001EF21C /* FLStreamWorker.m in Sources */,
 				2767DCF718132B1C001EF21C /* FLRunLoopNetworkStreamEventHandler.m in Sources */,
@@ -6695,7 +6643,7 @@
 				2767DEAF18132B1C001EF21C /* FLTestableSubclassFinder.m in Sources */,
 				2767DC0C18132B1C001EF21C /* FLHttpOperation.m in Sources */,
 				27188C4318148A820060FED6 /* NSError+FLFailedResult.m in Sources */,
-				27188B5B181488DB0060FED6 /* FLDocumentSection.m in Sources */,
+				27188B5B181488DB0060FED6 /* FLStringBuilderSection.m in Sources */,
 				2767DBF318132B1C001EF21C /* FLNetworkHostResolver.m in Sources */,
 				27188C3918148A820060FED6 /* FLSuccessfulResult.m in Sources */,
 				2767DA3618132B1B001EF21C /* FLObjcRuntime.m in Sources */,
@@ -6952,10 +6900,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2712D9B917DE3632007327C0 /* FishLamp-Objc-Test-OSX-64-MRC.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks",
-				);
 			};
 			name = Debug;
 		};
@@ -6963,10 +6907,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2712D9B917DE3632007327C0 /* FishLamp-Objc-Test-OSX-64-MRC.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks",
-				);
 			};
 			name = Release;
 		};
@@ -7168,6 +7108,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2712D9A217DE35FE007327C0 /* FishLamp-Objc-Lib-OSX-64-MRC.xcconfig */;
 			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 			};
 			name = Debug;
 		};
@@ -7175,6 +7116,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2712D9A217DE35FE007327C0 /* FishLamp-Objc-Lib-OSX-64-MRC.xcconfig */;
 			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 			};
 			name = Release;
 		};

@@ -23,11 +23,8 @@
 - (id) init {
     self = [super init];
     if(self) {
-
         _stack = [[NSMutableArray alloc] init];
-        [_stack addObject:[FLDocumentSection stringBuilder]];
-
-        self.rootStringBuilder.parent = self;
+        [_stack addObject:[FLStringBuilderSection stringBuilder]];
     }
     return self;
 }
@@ -45,7 +42,7 @@
 
 - (void) deleteAllStringBuilders {
     [_stack removeAllObjects];
-    [_stack addObject:[FLDocumentSection stringBuilder]];
+    [_stack addObject:[FLStringBuilderSection stringBuilder]];
 }
 
 - (id<FLStringFormatter>) rootStringBuilder {
@@ -53,28 +50,30 @@
     return [_stack objectAtIndex:0];
 }
 
-- (id<FLStringFormatter>) openedSection {
+- (FLStringBuilderSection*) openedSection {
     FLAssertNotNil([_stack lastObject]);
     return [_stack lastObject];
 }
 
-- (void) appendStringFormatter:(id<FLStringFormatter>) formatter {
-    FLAssert(_stack.count > 0);
-    
-    [self.openedSection appendStringFormatter:formatter
-                             withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+//- (void) appendStringFormatter:(id<FLStringFormatter>) formatter {
+//    FLAssert(_stack.count > 0);
+//    
+//    [self.openedSection appendStringFormatter:formatter
+//                             withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+//}
+
+- (void) openSection:(FLStringBuilderSection*) section {
+    [self appendSection:section];
+    [_stack addObject:section];
 }
 
-- (void) openSection:(id<FLStringFormatter>) element {
-
+- (void) appendSection:(FLStringBuilderSection*) section {
     FLAssert(_stack.count > 0);
-    
-    [_stack addObject:element];
+    [[self openedSection] appendSection:section];
 }
 
 - (void) closeSection {
     FLAssert(_stack.count > 0);
-    
     id last = FLRetainWithAutorelease(self.openedSection);
     [_stack removeLastObject_fl];
 }
@@ -101,7 +100,7 @@
 
 - (NSAttributedString*) stringFormatterExportAttributedString:(FLStringFormatter*) formatter {
     FLPrettyAttributedString* prettyString = [FLPrettyAttributedString prettyAttributedString];
-    [prettyString appendStringFormatter:self withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+    [prettyString appendStringFormatter:self];
     return [prettyString exportAttributedString];
 }
 
@@ -113,8 +112,8 @@
     [[self openedSection] openLine];
 }
 
-- (void) stringFormatterCloseLine:(FLStringFormatter*) formatter {
-    [[self openedSection] closeLine];
+- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) formatter {
+    return [[self openedSection] closeLine];
 }
 
 - (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter{
@@ -139,17 +138,13 @@
     return length;
 }
 
-- (void) stringFormatter:(FLStringFormatter*) formatter
-         didMoveToParent:(id) parent {
-}
-
 - (NSString*) buildString {
     return [self buildStringWithWhitespace:[FLWhitespace defaultWhitespace]];
 }
 
 - (NSString*) buildStringWithWhitespace:(FLWhitespace*) whitespace {
     FLPrettyString* prettyString = [FLPrettyString prettyString:whitespace];
-    [prettyString appendStringFormatter:self withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+    [prettyString appendStringFormatter:self];
     return prettyString.string;
 }
 
@@ -158,10 +153,9 @@
 }
 
 - (void)stringFormatter:(FLStringFormatter*) formatter
-appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
-       withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter  {
 
-    [anotherStringFormatter appendStringFormatter:self.rootStringBuilder withPreprocessor:preprocessor];
+    [anotherStringFormatter appendStringFormatter:self.rootStringBuilder];
 }
 
 @end

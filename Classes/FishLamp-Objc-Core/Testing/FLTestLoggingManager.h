@@ -13,7 +13,7 @@
 /**
  *  Manages the loggers. A logger is just a destinations for strings.
  */
-@interface FLTestLoggingManager: FLLogger {
+@interface FLTestLoggingManager: FLStringFormatter<FLStringFormatterDelegate> {
 @private
     NSMutableArray* _loggers;
 }

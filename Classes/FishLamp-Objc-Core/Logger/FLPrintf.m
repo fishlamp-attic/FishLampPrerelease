@@ -47,21 +47,15 @@ FLSynthesizeSingleton(FLPrintfStringFormatter);
 }
 
 - (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
-       appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
-                  withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+   appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
 
     if(_history) {
-        [preprocessor processAndAppendString:_history toStringFormatter:anotherStringFormatter];
+        [anotherStringFormatter appendString:_history];
     }
 }
 
 - (NSUInteger) whitespaceStringFormatterGetLength:(FLWhitespaceStringFormatter*) stringFormatter {
     return _length;
-}
-
-- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
-                   didMoveToParent:(id) parent {
-
 }
 
 - (NSString*) whitespaceStringFormatterExportString:(FLWhitespaceStringFormatter*) formatter {

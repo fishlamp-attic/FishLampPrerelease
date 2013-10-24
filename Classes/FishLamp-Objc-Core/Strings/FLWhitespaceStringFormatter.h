@@ -43,13 +43,9 @@
             appendAttributedString:(NSAttributedString*) attributedString;
 
 - (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
-       appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
-                  withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor;
+       appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter;
 
 - (NSUInteger) whitespaceStringFormatterGetLength:(FLWhitespaceStringFormatter*) stringFormatter;
-
-- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
-                   didMoveToParent:(id) parent;
 
 - (NSString*) whitespaceStringFormatterExportString:(FLWhitespaceStringFormatter*) formatter;
 

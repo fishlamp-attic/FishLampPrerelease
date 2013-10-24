@@ -81,8 +81,8 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
 //}
 //
 //- (void) stringFormatter:(FLStringFormatter*) myFormatter
-//appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
-//    [_log stringFormatter:myFormatter appendSelfToStringFormatter:anotherStringFormatter];
+//appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
+//    [_log stringFormatter:myFormatter appendContentsToStringFormatter:anotherStringFormatter];
 //}
 //
 //- (NSString*) string {

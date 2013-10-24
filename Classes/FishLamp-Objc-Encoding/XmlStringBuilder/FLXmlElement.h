@@ -7,13 +7,13 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLDocumentSection.h"
+#import "FLStringBuilderSection.h"
 
 @class FLStringToObjectConversionManager;
 @class FLXmlComment;
 
 // This is for WRITING Xml Elements only with the FLXmlDocumentBuilder.
-@interface FLXmlElement : FLDocumentSection {
+@interface FLXmlElement : FLStringBuilderSection {
 @private
 	NSMutableDictionary* _attributes;
     NSString* _openTag;

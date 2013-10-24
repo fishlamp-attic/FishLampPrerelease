@@ -55,8 +55,7 @@
         [FLTestOutput appendLineWithFormat:@"FAILED: %@", testCase.testCaseName];;
 
         [[FLTestLoggingManager instance] indent:^{
-            [FLTestOutput appendStringFormatter:result.loggerOutput
-                               withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+            [FLTestOutput appendStringFormatter:result.loggerOutput];
         }];
     }
 

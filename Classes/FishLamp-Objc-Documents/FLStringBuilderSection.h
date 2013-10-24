@@ -1,5 +1,5 @@
 //
-//  FLDocumentSection.h
+//  FLStringBuilderSection.h
 //  FishLampCocoa
 //
 //  Created by Mike Fullerton on 12/29/12.
@@ -13,20 +13,27 @@
 #import "FLPrettyString.h"
 #import "FLWhitespaceStringFormatter.h"
 
-@interface FLDocumentSection : FLStringFormatter<FLStringFormatterDelegate> {
+@interface FLStringBuilderSection : FLStringFormatter<FLStringFormatterDelegate> {
 @private
     NSMutableArray* _lines;
     BOOL _needsLine;
+    BOOL _lineOpen;
+
     NSInteger _indentLevel;
+    __unsafe_unretained FLStringBuilderSection* _parent;
 }
+
 + (id) stringBuilder;
 
+@property (readonly, assign, nonatomic) FLStringBuilderSection* parent;
 @property (readonly, strong, nonatomic) NSArray* lines;
 
-- (void) appendStringFormatter:(id<FLStringFormatter>) stringBuilder;
+- (void) appendSection:(FLStringBuilderSection*) section;
 
+// optional overrides
 - (void) willBuildWithStringFormatter:(id<FLStringFormatter>) stringFormatter;
 - (void) didBuildWithStringFormatter:(id<FLStringFormatter>) stringFormatter;
+- (void) didMoveToParent:(FLStringBuilderSection*) parent;
 
 @end
 

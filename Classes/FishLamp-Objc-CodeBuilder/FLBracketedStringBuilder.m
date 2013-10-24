@@ -41,7 +41,7 @@
 //     return [[[self class] alloc] initWithOpenBracket:openBracket closeBracket:closeBracker openBracketStyle:openBracketStyle closeBracketStyle:closeBracketStyle];
 //}
 //
-//- (void) willOpenInBuilder:(FLDocumentSection*) builder {
+//- (void) willOpenInBuilder:(FLStringBuilderSection*) builder {
 //    
 //    switch(_openStyle) {
 //        switch FLOpenBracketStyleDefault: {
@@ -68,7 +68,7 @@
 //    
 //}
 //
-//- (void) didCloseInBuilder:(FLDocumentSection*) builder {
+//- (void) didCloseInBuilder:(FLStringBuilderSection*) builder {
 //
 //    switch(_closeStyle) {
 //        case FLCloseBracketStyleDefault:

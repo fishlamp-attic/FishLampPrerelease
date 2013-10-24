@@ -10,7 +10,7 @@
 #import "FishLampMinimum.h"
 #import "FLWhitespace.h"
 #import "FLStringFormatter.h"
-#import "FLDocumentSection.h"
+#import "FLStringBuilderSection.h"
 
 @interface FLStringBuilder : FLStringFormatter<FLStringFormatterDelegate> {
 @private
@@ -19,10 +19,11 @@
 
 + (id) stringBuilder;
 
-@property (readonly, strong, nonatomic) id<FLStringFormatter> openedSection;
+@property (readonly, strong, nonatomic) FLStringBuilderSection* openedSection;
 
-- (void) openSection:(id<FLStringFormatter>) element;
+- (void) openSection:(FLStringBuilderSection*) section;
 - (void) closeSection;
+- (void) appendSection:(FLStringBuilderSection*) section;
 
 - (void) closeAllSections;
 

@@ -84,7 +84,8 @@
 
 - (void) appendFullPath:(NSMutableString*) path {
     if(self.parent) {
-        [self.parent appendFullPath:path];
+        FLAssert([self.parent isKindOfClass:[FLXmlElement class]]);
+        [((id)self.parent) appendFullPath:path];
     }
 
     if(path.length) {
@@ -142,7 +143,7 @@
 
 - (void) addElement:(FLXmlElement*) element {
     FLAssertNotNil(element);
-    [self appendStringFormatter:element];
+    [self appendSection:element];
 }
 
 - (NSString*) xmlOpenTag:(BOOL) isEmpty {
@@ -173,8 +174,8 @@
     
 }
 
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
-                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+- (void) stringFormatter:(FLStringFormatter *)formatter
+appendContentsToStringFormatter:(id<FLStringFormatter>)stringFormatter {
 
     FLAssertNotNil(stringFormatter);
     FLAssertNotNil(self.lines);
@@ -182,8 +183,7 @@
   //  FLLog(@"appending %@ to %@", [self description], [stringFormatter description]);
 
     if(_comments) {
-        [stringFormatter appendStringFormatter:_comments
-                              withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+        [stringFormatter appendStringFormatter:_comments];
     }
 
     BOOL hasLines = self.lines.count > 0;
@@ -198,7 +198,7 @@
     [stringFormatter appendLine:[self xmlOpenTag:!hasLines]];
     if(hasLines) {
         [stringFormatter indent:^{
-            [super appendSelfToStringFormatter:stringFormatter withPreprocessor:preprocessor];
+            [super stringFormatter:self appendContentsToStringFormatter:stringFormatter];
         }];
 
         [stringFormatter appendLine:[NSString stringWithFormat:@"</%@>", self.xmlElementCloseTag]];

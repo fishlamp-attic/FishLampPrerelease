@@ -25,6 +25,7 @@
     NSMutableArray* _sinks;
     dispatch_queue_t _fifoQueue;
     NSMutableString* _line;
+    BOOL _lineOpen;
 }
 
 + (id) logger;

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FLDocumentSection.h"
+#import "FLStringBuilderSection.h"
 
-@interface FLCodeChunk : FLDocumentSection {
+@interface FLCodeChunk : FLStringBuilderSection {
 @private
     NSString* _openScopeString;
     NSString* _closeScopeString;

@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLDocumentSection.h"
+#import "FLStringBuilderSection.h"
 
 
 //typedef enum {
@@ -41,7 +41,7 @@
 //
 //@end
 //
-//@interface FLBracketedStringBuilder : FLDocumentSection {
+//@interface FLBracketedStringBuilder : FLStringBuilderSection {
 //@private
 //    FLOpenBracketStyle _openStyle;
 //    FLCloseBracketStyle _closeStyle;

@@ -176,8 +176,7 @@ static NSString* indent_result = @"foo\n....hello\n........world\n....bar\nfooba
     id<FLStringFormatter> string2 = [self createStringFormatter];
     [string2 appendLine:@"world"];
 
-    [string1 appendStringFormatter:string2
-                  withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+    [string1 appendStringFormatter:string2];
 
     FLEnsureStringsAreEqual([string1 exportString], @"hello\nworld\n");
 }
@@ -194,7 +193,7 @@ static NSString* indent_result = @"foo\n....hello\n........world\n....bar\nfooba
             [string2 appendLine:@"d"];
         }];
 
-        [string1 appendStringFormatter:string2 withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+        [string1 appendStringFormatter:string2];
     }];
 
     FLEnsureStringsAreEqual([string1 exportString], @"a\n....b\n....c\n........d\n");

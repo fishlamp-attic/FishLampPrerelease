@@ -50,40 +50,56 @@ FLSynthesizeSingleton(FLTestLoggingManager)
     return [_loggers objectAtIndex:0];
 }
 
-- (void) appendBlankLine {
+- (void) stringFormatterAppendBlankLine:(FLStringFormatter*) formatter {
     [[self logger] appendBlankLine];
 }
 
-- (void) willOpenLine {
+- (void) stringFormatterOpenLine:(FLStringFormatter*) formatter {
     [[self logger] openLine];
 }
 
-- (void) closeLine {
-    [[self logger] closeLine];
+- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) formatter {
+    return [[self logger] closeLine];
 }
 
-- (void) indent {
+- (void) stringFormatterIndent:(FLStringFormatter*) formatter {
     [[self logger] indent];
 }
 
-- (void) outdent {
+- (void) stringFormatterOutdent:(FLStringFormatter*) formatter {
     [[self logger] outdent];
 }
 
-- (NSUInteger) length {
+- (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter {
+    return [[self logger] indentLevel];
+}
+
+- (NSUInteger) stringFormatterLength:(FLStringFormatter*) formatter {
     return [[self logger] length];
 }
 
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
-                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+- (void)stringFormatter:(FLStringFormatter*) formatter
+appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter {
+    [stringFormatter appendStringFormatter:[self logger]];
 }
 
-- (void) willAppendString:(NSString*) string {
+- (void) stringFormatter:(FLStringFormatter*) formatter
+            appendString:(NSString*) string {
     [[self logger] appendString:string];
 }
 
-- (void) willAppendAttributedString:(NSAttributedString*) string {
-    [[self logger] appendAttributedString:string];
+- (void) stringFormatter:(FLStringFormatter*) formatter
+  appendAttributedString:(NSAttributedString*) attributedString {
+    [[self logger] appendAttributedString:attributedString];
 }
+
+- (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter {
+    return [[self logger] exportString];
+}
+
+- (NSAttributedString*) stringFormatterExportAttributedString:(FLStringFormatter*) formatter {
+    return [[self logger] exportAttributedString];
+}
+
 
 @end

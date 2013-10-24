@@ -1,5 +1,5 @@
 //
-//  FLDocumentSection.m
+//  FLStringBuilderSection.m
 //  FishLampCocoa
 //
 //  Created by Mike Fullerton on 12/29/12.
@@ -7,22 +7,11 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLDocumentSection.h"
+#import "FLStringBuilderSection.h"
 #import "FLWhitespace.h"
 
-@interface FLDocumentSection ()
+@interface FLStringBuilderSection ()
 //@property (readwrite, strong, nonatomic) NSMutableString* openLine;
-@end
-
-@implementation NSString (FLDocumentSection)
-
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
-                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
-    FLAssertNotNil(anotherStringFormatter);
-
-    [anotherStringFormatter appendLine:self];
-}
-
 @end
 
 @interface FLDocumentSectionIndent : NSObject<FLAppendableString>
@@ -37,8 +26,7 @@
 + (id) documentSectionIndent {
     FLReturnStaticObject(FLAutorelease([[[self class] alloc] init]));
 }
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
-                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+- (void) appendToStringFormatter:(id<FLStringFormatter>) stringFormatter  {
     [stringFormatter indent];
 }
 - (NSString*) description {
@@ -50,8 +38,7 @@
 + (id) documentSectionOutdent {
     FLReturnStaticObject(FLAutorelease([[[self class] alloc] init]));
 }
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
-                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+- (void) appendToStringFormatter:(id<FLStringFormatter>) stringFormatter  {
     [stringFormatter outdent];
 }
 - (NSString*) description {
@@ -60,9 +47,10 @@
 
 @end
 
-@implementation FLDocumentSection 
+@implementation FLStringBuilderSection 
 
 @synthesize lines = _lines;
+@synthesize parent = _parent;
 
 - (id) init {
     self = [super init];
@@ -99,14 +87,20 @@
 - (void) stringFormatterOpenLine:(FLStringFormatter*) stringFormatter {
     FLAssertNotNil(_lines);
     FLAssertNotNil(stringFormatter);
-
     _needsLine = YES;
+    _lineOpen = YES;
 }
 
-- (void) stringFormatterCloseLine:(FLStringFormatter*) stringFormatter {
+- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) stringFormatter {
     FLAssertNotNil(_lines);
     FLAssertNotNil(stringFormatter);
     _needsLine = YES;
+    if(_lineOpen) {
+        _lineOpen = NO;
+        return YES;
+    }
+
+    return NO;
 }
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
@@ -152,9 +146,11 @@
 - (void) didBuildWithStringFormatter:(id<FLStringFormatter>) stringFormatter {
 }
 
+- (void) didMoveToParent:(FLStringBuilderSection*) parent {
+}
+
 - (void)stringFormatter:(FLStringFormatter*) formatter
-appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
-       withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter  {
 
     FLAssertNotNil(_lines);
     FLAssertNotNil(anotherStringFormatter);
@@ -162,21 +158,31 @@ appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
     [self willBuildWithStringFormatter:anotherStringFormatter];
 
     for(id<FLStringFormatter> line in _lines) {
-        [anotherStringFormatter appendStringFormatter:line
-                                     withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+        [line appendToStringFormatter:anotherStringFormatter];
+        [line closeLine];
     }
 
     [self didBuildWithStringFormatter:anotherStringFormatter];
 }
 
-- (void) appendStringFormatter:(id<FLStringFormatter>) stringBuilder {
+- (void) setParent:(FLStringBuilderSection*) parent {
+    if(_parent) {
+        [self didMoveToParent:nil];
+    }
+
+    _parent = parent;
+
+    [self didMoveToParent:_parent];
+}
+
+- (void) appendSection:(FLStringBuilderSection*) section {
 
     FLAssertNotNil(_lines);
-    FLAssertNotNil(stringBuilder);
+    FLAssertNotNil(section);
 
-    [_lines addObject:stringBuilder];
+    [_lines addObject:section];
     _needsLine = YES;
-    [stringBuilder setParent:self];
+    [section setParent:self];
 }
 
 //- (void) stringFormatterDeleteAllCharacters:(FLStringFormatter*) stringFormatter {
@@ -200,17 +206,15 @@ appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter
          didMoveToParent:(id) parent {
 }
 
-
-
 - (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter {
     FLPrettyString* str = [FLPrettyString prettyString];
-    [str appendStringFormatter:self withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+    [str appendStringFormatter:self];
     return str.string;
 }
 
 - (NSAttributedString*) stringFormatterExportAttributedString:(FLStringFormatter*) formatter {
     FLPrettyAttributedString* string = [FLPrettyAttributedString prettyAttributedString];
-    [string appendStringFormatter:self withPreprocessor:[FLStringFormatterLineProprocessor instance]];
+    [string appendStringFormatter:self];
     return [string exportAttributedString];
 }
 

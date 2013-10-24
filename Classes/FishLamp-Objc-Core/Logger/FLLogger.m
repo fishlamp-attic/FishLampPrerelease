@@ -152,10 +152,15 @@
     [self closeLine];
 }
 
-- (void) stringFormatterCloseLine:(FLStringFormatter*) formatter {
-    [self dispatchBlock: ^{
-        [self closeCurrentLine];
-    }];
+- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) formatter {
+    if(self.line) {
+        [self dispatchBlock: ^{
+            [self closeCurrentLine];
+        }];
+
+        return YES;
+    }
+    return NO;
 }
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
@@ -216,20 +221,13 @@
 }
 
 - (void)stringFormatter:(FLStringFormatter*) formatter
-appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
-       withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor {
+appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter  {
 
 }
 
 - (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter {
     return 0;
 }
-
-- (void) stringFormatter:(FLStringFormatter*) formatter
-         didMoveToParent:(id) parent {
-
-}
-
 
 
 //- (void) logException:(NSException*) exception withComment:(NSString*) comment {

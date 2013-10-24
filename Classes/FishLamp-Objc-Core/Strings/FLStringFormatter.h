@@ -8,19 +8,17 @@
 //
 
 #import "FLCoreRequired.h"
-#import "FLObjcPropertyHelpers.h"
+#import "FLStringPreprocessor.h"
 
-typedef void (^FLStringFormatterBlock)();
+typedef void (^FLStringFormatterIndentedBlock)();
 
-@protocol FLStringFormatterProprocessor;
 @protocol FLStringFormatter;
 
 @protocol FLAppendableString <NSObject>
-- (void) appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
-                    withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor;
+- (void) appendToStringFormatter:(id<FLStringFormatter>) stringFormatter;
 @end
 
-@protocol FLStringFormatter <FLAppendableString>
+@protocol FLStringFormatter <FLAppendableString, FLStringPreprocessorEventHandler>
 
 @property (readonly, assign, nonatomic) NSUInteger length;
 @property (readonly, assign, nonatomic) BOOL isEmpty;
@@ -38,10 +36,7 @@ typedef void (^FLStringFormatterBlock)();
 - (void) appendFormat:(NSString*) format arguments:(va_list)argList;
 
 // end current line with EOF (only if it hasn't already been ended)
-- (void) closeLine; 
-- (void) closeLineWithString:(NSString*) string;
-- (void) closeLineWithFormat:(NSString*) format, ... NS_FORMAT_FUNCTION(1,2);
-- (void) closeLineWithAttributedString:(NSAttributedString*) format;
+- (BOOL) closeLine;
 
 /// Ends currently open line, then adds a blank line. Leaves no open line.
 - (void) appendBlankLine;
@@ -70,22 +65,18 @@ typedef void (^FLStringFormatterBlock)();
  *  Indent in a block. All calls inside the block are indented once.
  *  Note: if delegate doesn't implement indentLevel, then the block is executed anyway and resulting text will not be indented.
  *
- *  @param block <#block description#>
+ *  @param block the block in which to append content to this formatter
  */
-- (void) indent:(FLStringFormatterBlock) block;
+- (void) indent:(FLStringFormatterIndentedBlock) block;
 
 - (void) appendInScope:(NSString*) openScope 
             closeScope:(NSString*) closeScope 
-             withBlock:(FLStringFormatterBlock) block;
+             withBlock:(FLStringFormatterIndentedBlock) block;
 
-//- (void) appendStringFormatter:(id<FLStringFormatter>) aStringFormatter;
-
-- (void) appendStringFormatter:(id<FLStringFormatter>) aStringFormatter
-              withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor;
-
-@property (readwrite, assign, nonatomic) id parent;
+- (void) appendStringFormatter:(id<FLStringFormatter>) aStringFormatter;
 
 - (NSString*) exportString;
+
 - (NSAttributedString*) exportAttributedString;
 
 @end
@@ -95,8 +86,8 @@ typedef void (^FLStringFormatterBlock)();
  */
 @interface FLStringFormatter : NSObject<FLStringFormatter> {
 @private
-    __unsafe_unretained id _parent;
     __unsafe_unretained id _stringFormatterDelegate;
+    id<FLStringPreprocessor> _preprocessor;
 }
 
 /**
@@ -104,6 +95,8 @@ typedef void (^FLStringFormatterBlock)();
  *  @interface MyStringFormatter : FLStringFormatter<FLStringFormatterDelegate>
  */
 @property (readwrite, assign, nonatomic) id stringFormatterDelegate;
+
+@property (readwrite, strong, nonatomic) id<FLStringPreprocessor> preprocessor;
 @end
 
 /**
@@ -116,7 +109,7 @@ typedef void (^FLStringFormatterBlock)();
 
 - (void) stringFormatterOpenLine:(FLStringFormatter*) formatter;
 
-- (void) stringFormatterCloseLine:(FLStringFormatter*) formatter;
+- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) formatter;
 
 - (void) stringFormatterIndent:(FLStringFormatter*) formatter;
 
@@ -127,8 +120,7 @@ typedef void (^FLStringFormatterBlock)();
 - (NSUInteger) stringFormatterLength:(FLStringFormatter*) formatter;
 
 - (void)stringFormatter:(FLStringFormatter*) formatter
-appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
-       withPreprocessor:(id<FLStringFormatterProprocessor>) preprocessor;
+appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter;
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
             appendString:(NSString*) string;
@@ -136,23 +128,15 @@ appendSelfToStringFormatter:(id<FLStringFormatter>) stringFormatter
 - (void) stringFormatter:(FLStringFormatter*) formatter
   appendAttributedString:(NSAttributedString*) attributedString;
 
-- (void) stringFormatter:(FLStringFormatter*) formatter
-         didMoveToParent:(id) parent;
-
 - (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter;
 
 - (NSAttributedString*) stringFormatterExportAttributedString:(FLStringFormatter*) formatter;
 
 @end
 
-
-@protocol FLStringFormatterProprocessor <NSObject>
-- (void) processAndAppendString:(NSString*) string toStringFormatter:(id<FLStringFormatter>) formatter;
-- (void) processAndAppendAttributedString:(NSAttributedString*) string
-                        toStringFormatter:(id<FLStringFormatter>) formatter;
+@interface NSString (FLStringFormatter)
+- (void) appendToStringFormatter:(id<FLStringFormatter>) stringFormatter;
 @end
 
-@interface FLStringFormatterLineProprocessor : NSObject<FLStringFormatterProprocessor>
-FLSingletonProperty(FLStringFormatterLineProprocessor);
-@end
+
 

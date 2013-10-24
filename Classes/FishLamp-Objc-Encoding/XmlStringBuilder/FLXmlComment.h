@@ -7,9 +7,9 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLDocumentSection.h"
+#import "FLStringBuilderSection.h"
 
-@interface FLXmlComment : FLDocumentSection {
+@interface FLXmlComment : FLStringBuilderSection {
 }
 + (id) xmlComment;
 @end
