@@ -52,7 +52,7 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
         NSMutableAttributedString* string = 
             FLAutorelease([[NSMutableAttributedString alloc] initWithString:timeStamp attributes:attributes]);
 
-        [self appendAttributedString:string];
+        [self appendString:string];
     }
 }
 
@@ -98,7 +98,7 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
 //}
 
 - (NSError*) exportToPath:(NSURL*) url {
-    NSString* log = [self exportString];
+    NSString* log = [self formattedString];
     NSError* err = nil;
     [log writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:&err];
     return FLAutorelease(err);
@@ -139,7 +139,7 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
 //    [attr setObject:[NSFont boldSystemFontOfSize:[NSFont smallSystemFontSize]] forKey:NSFontAttributeName];
 //    [attr setObject:[NSNumber numberWithBool:NO] forKey:NSUnderlineStyleAttributeName];
 //    [attr setAttributedStringColor:[NSColor gray20Color]];
-    [self appendAttributedString:FLAutorelease([[NSAttributedString alloc] initWithString:string attributes:attr])];
+    [self appendString:FLAutorelease([[NSAttributedString alloc] initWithString:string attributes:attr])];
 }
 
 - (void) appendLineWithURL:(NSURL*) url string:(NSString*) string {
@@ -159,7 +159,7 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
     NSMutableAttributedString* string = 
         FLAutorelease([[NSMutableAttributedString alloc] initWithString:errorLine attributes:attributes]);
 
-    [self appendLineWithAttributedString:string];
+    [self appendLine:string];
 
 }
 
@@ -171,7 +171,7 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
     NSMutableAttributedString* string = 
         FLAutorelease([[NSMutableAttributedString alloc] initWithString:title attributes:attributes]);
 
-    [self appendAttributedString:string];
+    [self appendLine:string];
 }
 
 - (void) appendBoldTitleLine:(NSString*) title {

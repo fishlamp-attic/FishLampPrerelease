@@ -9,6 +9,7 @@
 #import "FLWhitespaceStringFormatter.h"
 #import "FLAssertions.h"
 #import "FLWhitespace.h"
+#import "FLStringPreprocessor.h"
 
 @implementation FLWhitespaceStringFormatter
 
@@ -21,6 +22,7 @@
     if(self) {
         _whitespace = FLRetain(whitespace);
         _whitespaceStringFormatterDelegate = self;
+        self.preprocessor = [FLStringFormatterLineProprocessor instance];
     }
     return self;
 }
@@ -50,7 +52,8 @@
     if(!_editingLine) {
         _editingLine = YES;
         if(self.whitespace) {
-            [self appendString:[self.whitespace tabStringForScope:self.indentLevel]];
+            [self.stringFormatterDelegate stringFormatter:self
+                                             appendString:[self.whitespace tabStringForScope:self.indentLevel]];
         }
         [self willOpenLine];
     }
@@ -72,7 +75,7 @@
 
 - (void) appendEOL {
     if(self.whitespace) {
-        [self appendString:self.whitespace.eolString];
+        [self.stringFormatterDelegate stringFormatter:self appendString:self.whitespace.eolString];
     } 
 }
 
@@ -100,7 +103,8 @@
 - (void) stringFormatter:(FLStringFormatter*) formatter
         appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter {
 
-    [_whitespaceStringFormatterDelegate whitespaceStringFormatter:self appendContentsToStringFormatter:stringFormatter];
+    [_whitespaceStringFormatterDelegate whitespaceStringFormatter:self
+                                  appendContentsToStringFormatter:stringFormatter];
 }
 
 - (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter {

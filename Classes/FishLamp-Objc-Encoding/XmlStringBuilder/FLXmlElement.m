@@ -183,7 +183,7 @@ appendContentsToStringFormatter:(id<FLStringFormatter>)stringFormatter {
   //  FLLog(@"appending %@ to %@", [self description], [stringFormatter description]);
 
     if(_comments) {
-        [stringFormatter appendStringFormatter:_comments];
+        [stringFormatter appendString:_comments];
     }
 
     BOOL hasLines = self.lines.count > 0;

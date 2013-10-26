@@ -208,14 +208,14 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter  
 
 - (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter {
     FLPrettyString* str = [FLPrettyString prettyString];
-    [str appendStringFormatter:self];
+    [str appendString:self];
     return str.string;
 }
 
 - (NSAttributedString*) stringFormatterExportAttributedString:(FLStringFormatter*) formatter {
     FLPrettyAttributedString* string = [FLPrettyAttributedString prettyAttributedString];
-    [string appendStringFormatter:self];
-    return [string exportAttributedString];
+    [string appendString:self];
+    return [string formattedAttributedString];
 }
 
 

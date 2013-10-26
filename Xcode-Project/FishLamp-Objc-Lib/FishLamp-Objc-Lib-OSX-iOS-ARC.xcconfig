@@ -4,5 +4,5 @@
 //  This file is released under the MIT License: http://fishlamp.com/license 
 //
 
-#include "Piecemeal-XcodeConfigs/TargetSettings/Piecemeal-TargetSettings-OSX-32-MRC.xcconfig"
+#include "Piecemeal-XcodeConfigs/TargetSettings/Piecemeal-TargetSettings-iOS-ARC.xcconfig"
 #include "FishLamp-Objc-Lib/SharedTargetSettings.xcconfig"

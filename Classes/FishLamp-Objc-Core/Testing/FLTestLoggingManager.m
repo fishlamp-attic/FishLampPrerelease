@@ -80,7 +80,7 @@ FLSynthesizeSingleton(FLTestLoggingManager)
 
 - (void)stringFormatter:(FLStringFormatter*) formatter
 appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter {
-    [stringFormatter appendStringFormatter:[self logger]];
+    [stringFormatter appendString:[self logger]];
 }
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
@@ -90,15 +90,15 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter {
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
   appendAttributedString:(NSAttributedString*) attributedString {
-    [[self logger] appendAttributedString:attributedString];
+    [[self logger] appendString:attributedString];
 }
 
 - (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter {
-    return [[self logger] exportString];
+    return [[self logger] formattedString];
 }
 
 - (NSAttributedString*) stringFormatterExportAttributedString:(FLStringFormatter*) formatter {
-    return [[self logger] exportAttributedString];
+    return [[self logger] formattedAttributedString];
 }
 
 

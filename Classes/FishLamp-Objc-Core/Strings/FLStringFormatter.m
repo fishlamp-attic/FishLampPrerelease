@@ -10,12 +10,77 @@
 #import "FLStringFormatter.h"
 #import "FLAssertions.h"
 #import "NSArray+FLExtras.h"
+#import "FLStringPreprocessor.h"
 
 @interface FLStringFormatter ()
-- (void) closeLineWithString:(NSString*) string;
+- (void) closeLineWithString:(id) string;
 - (void) closeLineWithFormat:(NSString*) format, ... NS_FORMAT_FUNCTION(1,2);
-- (void) closeLineWithAttributedString:(NSAttributedString*) format;
+- (void) appendActualString:(id) string;
+
+// need refactoring
+- (void) appendLines:(NSString**) lines count:(NSInteger) count;
+- (void) appendLines:(NSString**) lines;
+- (void) appendLinesWithArray:(NSArray*) lines;
+
+/// incoming string is chopped into lines and then fed through appendLines
+- (void) appendStringContainingMultipleLines:(NSString*) inLines;
+- (void) appendStringContainingMultipleLines:(NSString*) inLines trimWhitespace:(BOOL) trimWhitespace;
+
 @end
+
+@implementation NSString (FLStringFormatter)
+
+- (NSString*) stringFormatter:(FLStringFormatter*) stringFormatter
+           substringWithRange:(NSRange) range {
+
+    return [self substringWithRange:range];
+}
+
+- (void) stringFormatter:(FLStringFormatter*) stringFormatter
+        appendToDelegate:(id<FLStringFormatterDelegate>) delegate {
+
+    [delegate stringFormatter:stringFormatter appendString:self];
+}
+
+- (void) stringFormatter:(FLStringFormatter*) stringFormatter
+        appendToDelegate:(id<FLStringFormatterDelegate>) delegate
+               withRange:(NSRange) range {
+
+    [delegate stringFormatter:stringFormatter
+                 appendString:[self substringWithRange:range]];
+}
+
+- (void) appendToStringFormatter:(FLStringFormatter*) stringFormatter {
+    [stringFormatter appendActualString:self];
+}
+
+@end
+
+@implementation NSAttributedString (FLStringFormatter)
+
+- (NSString*) stringFormatter:(FLStringFormatter*) stringFormatter
+           substringWithRange:(NSRange) range {
+    return [self.string substringWithRange:range];
+}
+
+- (void) stringFormatter:(FLStringFormatter*) stringFormatter
+        appendToDelegate:(id<FLStringFormatterDelegate>) delegate {
+    [delegate stringFormatter:stringFormatter appendAttributedString:self];
+}
+
+- (void) stringFormatter:(FLStringFormatter*) stringFormatter
+        appendToDelegate:(id<FLStringFormatterDelegate>) delegate
+               withRange:(NSRange) range {
+    [delegate stringFormatter:stringFormatter
+       appendAttributedString:[self attributedSubstringFromRange:range]];
+}
+
+- (void) appendToStringFormatter:(FLStringFormatter*) stringFormatter {
+    [stringFormatter appendActualString:self];
+}
+
+@end
+
 
 @implementation FLStringFormatter
 
@@ -37,71 +102,53 @@
 }
 #endif
 
-- (NSString*) exportString {
+- (NSString*) formattedString {
     return [_stringFormatterDelegate stringFormatterExportString:self];
 }
 
-- (NSAttributedString*) exportAttributedString {
+- (NSAttributedString*) formattedAttributedString {
     return [_stringFormatterDelegate stringFormatterExportAttributedString:self];
-}
-
-- (void) stringPreprocessor:(id<FLStringPreprocessor>) preprocessor
-              didFindString:(NSString*) string {
-
-    [_stringFormatterDelegate stringFormatter:self appendString:string];
-}
-
-- (void) stringPreprocessor:(id<FLStringPreprocessor>) preprocessor
-    didFindAttributedString:(NSAttributedString*) string {
-
-    [_stringFormatterDelegate stringFormatter:self appendAttributedString:string];
-}
-
-- (void) stringPreprocessorDidFindEOL:(id<FLStringPreprocessor>) preprocessor {
-    if(![_stringFormatterDelegate stringFormatterCloseLine:self]) {
-        [self appendBlankLine];
-    }
-}
-
-- (void) processString:(NSString*) string {
-    if(_preprocessor) {
-        [_preprocessor processString:string eventHandler:self];
-    }
-    else {
-        [_stringFormatterDelegate stringFormatter:self appendString:string];
-    }
-}
-
-- (void) processAttributedString:(NSAttributedString*) string {
-    if(_preprocessor) {
-        [_preprocessor processAttributedString:string eventHandler:self];
-    }
-    else {
-        [_stringFormatterDelegate stringFormatter:self appendAttributedString:string];
-    }
 }
 
 - (void) appendToStringFormatter:(id<FLStringFormatter>) stringFormatter  {
     [_stringFormatterDelegate stringFormatter:self appendContentsToStringFormatter:stringFormatter];
 }
 
-- (void) appendStringFormatter:(id<FLStringFormatter>) aStringFormatter {
-    [aStringFormatter appendToStringFormatter:self];
+- (void) appendString:(id) string {
+    [string appendToStringFormatter:self];
 }
 
-- (void) appendString:(NSString*) string {
+- (void) appendActualString:(id) string {
     FLAssertNotNil(string);
+    if(_preprocessor) {
 
-    [self openLine];
-    [self processString:string];
+        FLStringPreprocessorResultBlock block = ^(NSRange range) {
+            [self openLine];
+            [string stringFormatter:self appendToDelegate:_stringFormatterDelegate withRange:range];
+            [self closeLine];
+        };
+
+        NSRange range = [_preprocessor processString:string foundLineRangeBlock:block];
+
+        if(range.length) {
+            [self openLine];
+            if(range.location > 0) {
+                [string stringFormatter:self appendToDelegate:_stringFormatterDelegate withRange:range];
+            }
+            else {
+                [string stringFormatter:self appendToDelegate:_stringFormatterDelegate];
+            }
+        }
+    }
+    else {
+        [self openLine];
+        [string stringFormatter:self appendToDelegate:_stringFormatterDelegate];
+    }
 }
 
-- (void) appendAttributedString:(NSAttributedString*) string {
-    FLAssertNotNil(string);
-
-    [self openLine];
-    [self processAttributedString:string];
-}
+//- (void) appendStringFormatter:(id<FLStringFormatter>) aStringFormatter {
+//    [aStringFormatter appendToStringFormatter:self];
+//}
 
 - (void) openLine {
     [_stringFormatterDelegate stringFormatterOpenLine:self];
@@ -131,60 +178,30 @@
     [_stringFormatterDelegate stringFormatterAppendBlankLine:self];
 }
 
-- (void) closeLineWithString:(NSString*) string {
+- (void) closeLineWithString:(id) string {
 
     if(string) {
-        [self openLine];
-        [self processString:string];
+        [self appendString:string];
     }
 
     [self closeLine];
 }
 
-- (void) closeLineWithAttributedString:(NSAttributedString*) string {
-
-    if(string) {
-        [self openLine];
-        [self processAttributedString:string];
-    }
-
-    [self closeLine];
-}
-
-- (void) openLineWithString:(NSString*) string {
+- (void) openLineWithString:(id) string {
     FLAssertNotNil(string);
 
     [self closeLine];
-    [self openLine];
-    [self processString:string];
+    [self appendString:string];
 }
 
-- (void) openLineWithAttributedString:(NSAttributedString*) string {
+- (void) appendLine:(id) string {
     FLAssertNotNil(string);
 
-    [self closeLine];
-    [self openLine];
-    [self processAttributedString:string];
-}
-
-- (void) appendLineWithAttributedString:(NSAttributedString*) string {
-    FLAssertNotNil(string);
-
-    [self openLine];
-    [self processAttributedString:string];
-    [self closeLine];
-}
-
-- (void) appendLine:(NSString*) string {
-    FLAssertNotNil(string);
-
-    [self openLine];
-    [self processString:string];
+    [self appendString:string];
     [self closeLine];
 }
 
 - (void) indent:(FLStringFormatterIndentedBlock) block {
-    [_stringFormatterDelegate stringFormatterCloseLine:self];
     [self closeLine];
     [self indent];
     // subsequent calls to us will open a line, etc..
@@ -301,15 +318,8 @@
 }
 
 - (NSString*) description {
-    return [self exportString];
+    return [self formattedString];
 }
 @end
 
-@implementation NSString (FLStringFormatter)
 
-- (void) appendToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter  {
-    FLAssertNotNil(anotherStringFormatter);
-    [anotherStringFormatter appendString:self];
-}
-
-@end

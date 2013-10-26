@@ -62,7 +62,7 @@
 - (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
        appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
 
-    [anotherStringFormatter appendString:[self exportString]];
+    [anotherStringFormatter appendString:[self formattedString]];
 }
 
 - (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
@@ -81,7 +81,7 @@
 }
 
 - (NSAttributedString*) whitespaceStringFormatterExportAttributedString:(FLWhitespaceStringFormatter*) formatter {
-    return FLAutorelease([[NSAttributedString alloc] initWithString:[self exportString]]);
+    return FLAutorelease([[NSAttributedString alloc] initWithString:[self formattedString]]);
 }
 
 @end

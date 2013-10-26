@@ -91,7 +91,7 @@
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
   appendAttributedString:(NSAttributedString*) attributedString {
-    [[self openedSection] appendAttributedString:attributedString];
+    [[self openedSection] appendString:attributedString];
 }
 
 - (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter {
@@ -100,8 +100,8 @@
 
 - (NSAttributedString*) stringFormatterExportAttributedString:(FLStringFormatter*) formatter {
     FLPrettyAttributedString* prettyString = [FLPrettyAttributedString prettyAttributedString];
-    [prettyString appendStringFormatter:self];
-    return [prettyString exportAttributedString];
+    [prettyString appendString:self];
+    return [prettyString formattedAttributedString];
 }
 
 - (void) stringFormatterAppendBlankLine:(FLStringFormatter*) formatter{
@@ -144,7 +144,7 @@
 
 - (NSString*) buildStringWithWhitespace:(FLWhitespace*) whitespace {
     FLPrettyString* prettyString = [FLPrettyString prettyString:whitespace];
-    [prettyString appendStringFormatter:self];
+    [prettyString appendString:self];
     return prettyString.string;
 }
 
@@ -155,7 +155,7 @@
 - (void)stringFormatter:(FLStringFormatter*) formatter
 appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter  {
 
-    [anotherStringFormatter appendStringFormatter:self.rootStringBuilder];
+    [anotherStringFormatter appendString:self.rootStringBuilder];
 }
 
 @end

@@ -8,27 +8,11 @@
 
 #import "FLCoreRequired.h"
 
-@protocol FLStringPreprocessor;
-
-@protocol FLStringPreprocessorEventHandler <NSObject>
-
-- (void) stringPreprocessor:(id<FLStringPreprocessor>) preprocessor
-              didFindString:(NSString*) string;
-
-- (void) stringPreprocessor:(id<FLStringPreprocessor>) preprocessor
-    didFindAttributedString:(NSAttributedString*) string;
-
-- (void) stringPreprocessorDidFindEOL:(id<FLStringPreprocessor>) preprocessor;
-
-@end
+typedef void (^FLStringPreprocessorResultBlock)(NSRange range);
 
 @protocol FLStringPreprocessor <NSObject>
-
-- (void) processString:(NSString*) string
-          eventHandler:(id<FLStringPreprocessorEventHandler>) eventHandler;
-
-- (void) processAttributedString:(NSAttributedString*) string
-                    eventHandler:(id<FLStringPreprocessorEventHandler>) eventHandler;
+- (NSRange) processString:(NSString*) string
+      foundLineRangeBlock:(FLStringPreprocessorResultBlock) foundLineRangeBlock;
 @end
 
 @interface FLStringFormatterLineProprocessor : NSObject<FLStringPreprocessor>

@@ -14,7 +14,7 @@
 @implementation FLTestWhitespace
 
 - (id) initWithEOL:(NSString*) eol {
-    return [super initWithEOL:eol tabChar:@"." tabCharRepeatCount:4];
+    return [super initWithEOL:eol tabChar:@">" tabCharRepeatCount:1];
 }
 
 + (id) testWhitespace {
@@ -37,13 +37,13 @@
     id<FLStringFormatter> stringFormatter = [self createStringFormatter];
     [stringFormatter appendString:@"hello world"];
 
-    NSString* string = [[stringFormatter exportAttributedString] string];
-    NSString* string2 = [stringFormatter exportString];
+    NSString* string = [[stringFormatter formattedAttributedString] string];
+    NSString* string2 = [stringFormatter formattedString];
 
-    FLEnsureNotNil(string);
-    FLEnsureNotNil(string2);
-    FLEnsureStringsAreEqual(string, string2);
-    FLEnsureStringsAreEqual(string, @"hello world");
+    FLTestNotNil(string);
+    FLTestNotNil(string2);
+    FLTestStringsAreEqual(string, string2);
+    FLTestStringsAreEqual(string, @"hello world");
 
 }
 
@@ -57,9 +57,9 @@
 
     NSString* result = @"this\nis\na\ntest\n";
 
-    NSString* exportedString = [string exportString];
-    FLEnsureNotNil(exportedString);
-    FLEnsureStringsAreEqual(result, exportedString);
+    NSString* exportedString = [string formattedString];
+    FLTestNotNil(exportedString);
+    FLTestStringsAreEqual(result, exportedString);
 }
 
 - (void) testPrettyStringNoWhitespace {
@@ -72,13 +72,13 @@
 
     NSString* result = @"thisisatest";
 
-    NSString* exportedString = [string exportString];
-    FLEnsureNotNil(exportedString);
-    FLEnsureStringsAreEqual(result, exportedString);
+    NSString* exportedString = [string formattedString];
+    FLTestNotNil(exportedString);
+    FLTestStringsAreEqual(result, exportedString);
 }
 
 - (void) testDefaultWhitespace {
-    FLEnsure(   [FLWhitespace defaultWhitespace] ==
+    FLTest(   [FLWhitespace defaultWhitespace] ==
                 [FLWhitespace tabbedWithSpacesWhitespace]);
 }
 
@@ -86,9 +86,9 @@
     for(int i = 0; i < 5;i++) {
         NSString* tab = [[FLWhitespace defaultWhitespace] tabStringForScope:i];
 
-        FLEnsure(tab.length == i * 4);
+        FLTest(tab.length == i * 4);
         for(int j = 0; j < tab.length; j++) {
-            FLEnsure([tab characterAtIndex:j] == ' ');
+            FLTest([tab characterAtIndex:j] == ' ');
         }
     }
 }
@@ -101,52 +101,52 @@
     return string;
 }
 
-static NSString* indent_result = @"foo\n....hello\n........world\n....bar\nfoobar\n";
+static NSString* indent_result = @"foo\n>hello\n>>world\n>bar\nfoobar\n";
 
 - (void) testPrettyStringIndent1 {
     id<FLStringFormatter> string = [self createStringFormatter:[FLTestWhitespace testWhitespace]];
-    FLEnsureStringsAreEqual(@"", [string exportString]);
-    FLEnsure(string.indentLevel == 0);
+    FLTestStringsAreEqual(@"", [string formattedString]);
+    FLTest(string.indentLevel == 0);
     [string appendLine:@"foo"];
     [string indent];
-    FLEnsure(string.indentLevel == 1);
-    [string appendLine:@"hello"];
-    [string indent];
-    FLEnsure(string.indentLevel == 2);
-    [string appendLine:@"world"];
-    [string outdent];
-    FLEnsure(string.indentLevel == 1);
-    [string appendLine:@"bar"];
-    [string outdent];
-    FLEnsure(string.indentLevel == 0);
+        FLTest(string.indentLevel == 1);
+        [string appendLine:@"hello"];
+        [string indent];
+            FLTest(string.indentLevel == 2);
+            [string appendLine:@"world"];
+            [string outdent];
+        FLTest(string.indentLevel == 1);
+        [string appendLine:@"bar"];
+        [string outdent];
+    FLTest(string.indentLevel == 0);
     [string appendLine:@"foobar"];
 
-    FLEnsureStringsAreEqual(indent_result, [string exportString]);
+    FLTestStringsAreEqual(indent_result, [string formattedString]);
 }
 
 - (void) testPrettyStringIndent2 {
     id<FLStringFormatter> string = [self createStringFormatter:[FLTestWhitespace testWhitespace]];
-    FLEnsureStringsAreEqual(@"", [string exportString]);
+    FLTestStringsAreEqual(@"", [string formattedString]);
     [string appendLine:@"foo"];
-    FLEnsure(string.indentLevel == 0);
+    FLTest(string.indentLevel == 0);
 
     [string indent:^{
-        FLEnsure(string.indentLevel == 1);
+        FLTest(string.indentLevel == 1);
         [string appendLine:@"hello"];
 
         [string indent:^{
-            FLEnsure(string.indentLevel == 2);
+            FLTest(string.indentLevel == 2);
             [string appendLine:@"world"];
         }];
-        FLEnsure(string.indentLevel == 1);
+        FLTest(string.indentLevel == 1);
 
         [string appendLine:@"bar"];
     }];
 
     [string appendLine:@"foobar"];
-     FLEnsure(string.indentLevel == 0);
+     FLTest(string.indentLevel == 0);
 
-    FLEnsureStringsAreEqual(indent_result, [string exportString]);
+    FLTestStringsAreEqual(indent_result, [string formattedString]);
 }
 
 - (void) testAppendString {
@@ -154,10 +154,10 @@ static NSString* indent_result = @"foo\n....hello\n........world\n....bar\nfooba
     [string appendString:@"Hello"];
     [string appendString:@" "];
     [string appendString:@"World"];
-    FLEnsureStringsAreEqual([string exportString], @"Hello World");
+    FLTestStringsAreEqual([string formattedString], @"Hello World");
 
     [string closeLine];
-    FLEnsureStringsAreEqual([string exportString], @"Hello World\n");
+    FLTestStringsAreEqual([string formattedString], @"Hello World\n");
 }
 
 - (void) testPrettyStringAppendBlankLine {
@@ -166,7 +166,7 @@ static NSString* indent_result = @"foo\n....hello\n........world\n....bar\nfooba
     [string appendBlankLine];
     [string appendBlankLine];
 
-    FLEnsureStringsAreEqual(@"\n\n\n", [string exportString]);
+    FLTestStringsAreEqual(@"\n\n\n", [string formattedString]);
 }
 
 - (void) testSimpleStringFormatterAppend {
@@ -176,9 +176,9 @@ static NSString* indent_result = @"foo\n....hello\n........world\n....bar\nfooba
     id<FLStringFormatter> string2 = [self createStringFormatter];
     [string2 appendLine:@"world"];
 
-    [string1 appendStringFormatter:string2];
+    [string1 appendString:string2];
 
-    FLEnsureStringsAreEqual([string1 exportString], @"hello\nworld\n");
+    FLTestStringsAreEqual([string1 formattedString], @"hello\nworld\n");
 }
 
 - (void) testIndentedStringFormatterAppend {
@@ -193,10 +193,43 @@ static NSString* indent_result = @"foo\n....hello\n........world\n....bar\nfooba
             [string2 appendLine:@"d"];
         }];
 
-        [string1 appendStringFormatter:string2];
+        [string1 appendString:string2];
     }];
 
-    FLEnsureStringsAreEqual([string1 exportString], @"a\n....b\n....c\n........d\n");
+    FLTestStringsAreEqual([string1 formattedString], @"a\n>b\n>c\n>>d\n");
+}
+
+- (void) testAppendLine {
+    id<FLStringFormatter> string = [self createStringFormatter:[FLTestWhitespace testWhitespace]];
+    [string appendLine:@"hello"];
+    FLTestStringsAreEqual([string formattedString], @"hello\n");
+}
+
+- (void) testAppendFormat {
+    id<FLStringFormatter> string = [self createStringFormatter:[FLTestWhitespace testWhitespace]];
+    [string appendFormat:@"hello %@", @"world"];
+    FLTestStringsAreEqual([string formattedString], @"hello world");
+}
+
+- (void) testAppendLineWithFormat {
+    id<FLStringFormatter> string = [self createStringFormatter:[FLTestWhitespace testWhitespace]];
+    [string appendLineWithFormat:@"hello %@", @"world"];
+    FLTestStringsAreEqual([string formattedString], @"hello world\n");
+}
+
+
+- (void) testLineWithLineFeedInIt {
+    id<FLStringFormatter> string1 = [self createStringFormatter:[FLTestWhitespace testWhitespace]];
+    [string1 appendLine:@"hello\nworld"];
+
+    FLTestStringsAreEqual([string1 formattedString], @"hello\nworld\n");
+}
+
+- (void) testLineWithLineFeedInIt1 {
+    id<FLStringFormatter> string1 = [self createStringFormatter:[FLTestWhitespace testWhitespace]];
+    [string1 appendString:@"hello\nworld"];
+
+    FLTestStringsAreEqual([string1 formattedString], @"hello\nworld");
 }
 
 
