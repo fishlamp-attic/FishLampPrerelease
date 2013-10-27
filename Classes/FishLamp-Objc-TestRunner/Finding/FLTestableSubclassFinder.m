@@ -34,11 +34,9 @@
 }
 
 - (id<FLTestFactory>) findPossibleUnitTestClass:(FLRuntimeInfo) info {
-//class_conformsToProtocol
-    if(!info.isMetaClass) {
-//        if(FLRuntimeClassHasSubclass([FLTestable class], info.class)) {
 
-        if( FLClassConformsToProtocol(info.class, @protocol(FLTestable))) {
+    if(!info.isMetaClass) {
+        if(FLRuntimeClassHasSubclass([FLTestable class], info.class)) {
             return [FLTestableSubclassFactory testableSubclassFactory:info.class];
         }
     }

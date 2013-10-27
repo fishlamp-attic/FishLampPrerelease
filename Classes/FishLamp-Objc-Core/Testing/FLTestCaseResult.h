@@ -17,7 +17,7 @@
 }
 + (id) testCaseResult:(FLTestCase*) forTest;
 
-@property (readonly, strong) FLTestCase* testCase;
+@property (readonly, strong, nonatomic) FLTestCase* testCase;
 
 @end
 

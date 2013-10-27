@@ -38,8 +38,12 @@
     FLAssert(fired == YES);
 }
 
-- (void) testDoubleCount__off {
-    
+- (void) willTestDoubleCount:(FLTestCase*) testCase {
+    [testCase disable:@"problem with exception propagation"];
+}
+
+- (void) testDoubleCount:(FLTestCase*) testCase {
+
     __block BOOL fired = NO;
     
     FLFinisher* finisher = [FLFinisher finisherWithBlock:^(FLPromisedResult result) { 

@@ -31,22 +31,22 @@
              range:(NSRange) range {
          
     if(FLTestAnyBit(self.outputFlags, FLLogOutputWithLocation | FLLogOutputWithStackTrace)) { 
-        [FLPrintf appendLineWithFormat:@"%@    (%s:%d)",
+        FLPrintf(@"%@    (%s:%d)",
                  [[logString substringWithRange:range] stringWithPadding_fl:80],
                  entry.stackTrace.fileName,
-                 entry.stackTrace.lineNumber];
+                 entry.stackTrace.lineNumber);
     } 
     else { 
-        [FLPrintf appendLineWithFormat:@"%@", [[logString substringWithRange:range] stringWithPadding_fl:80]];
+        FLPrintf(@"%@", [[logString substringWithRange:range] stringWithPadding_fl:80]);
     }
 }            
 
 - (void) indent {
-    [FLPrintf indent];
+    [[FLPrintfStringFormatter instance] indent];
 }
 
 - (void) outdent {
-    [FLPrintf outdent];
+    [[FLPrintfStringFormatter instance] outdent];
 }
 
 - (void) logEntry:(FLLogEntry*) entry stopPropagating:(BOOL*) stop {
@@ -86,13 +86,13 @@
 //    }
 
     if(FLTestAnyBit(self.outputFlags, FLLogOutputWithLocation | FLLogOutputWithStackTrace)) { 
-        [FLPrintf appendLineWithFormat:@"%@    (%s:%d)",
+        FLPrintf(@"%@    (%s:%d)",
                  [logString stringWithPadding_fl:80],
                  entry.stackTrace.fileName,
-                 entry.stackTrace.lineNumber];
+                 entry.stackTrace.lineNumber);
     } 
     else { 
-        [FLPrintf appendLineWithFormat:@"%@", [logString stringWithPadding_fl:80]];
+        FLPrintf(@"%@", [logString stringWithPadding_fl:80]);
     }
 
 
@@ -101,7 +101,7 @@
         [[FLPrintfStringFormatter instance] indent:^{
             if(entry.stackTrace.callStack.depth) {
                 for(int i = 0; i < entry.stackTrace.callStack.depth; i++) {
-                    [FLPrintf appendLineWithFormat:@"%s", [entry.stackTrace stackEntryAtIndex:i]];
+                    FLPrintf(@"%s", [entry.stackTrace stackEntryAtIndex:i]);
                 }
             }
         }];

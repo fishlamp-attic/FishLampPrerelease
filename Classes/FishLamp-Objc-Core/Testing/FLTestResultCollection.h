@@ -19,11 +19,11 @@
 @property (readonly, strong, nonatomic) NSDictionary* testResults;
 @property (readonly, assign, nonatomic) NSArray* failedResults;
 
-- (id) setTestResultForSelector:(SEL) selector;
-- (id) setTestResultForNumber:(int) number;
-- (id) setTestResultForKey:(id) key;
+//- (id) setTestResultForSelector:(SEL) selector;
+//- (id) setTestResultForNumber:(int) number;
+//- (id) setTestResultForKey:(id) key;
 
-- (void) setTestResult:(id<FLTestResult>) result forKey:(id) key;
+- (void) setTestResult:(FLTestResult*) result forKey:(id) key;
 
 - (id) testResultForSelector:(SEL) selector;
 - (id) testResultForNumber:(int) number;
@@ -39,4 +39,5 @@
 // outcome?
 
 @interface FLExpectedTestResult : FLTestResultCollection
++ (id) expectedTestResult;
 @end

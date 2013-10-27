@@ -10,28 +10,31 @@
 #import "FLAssertions.h"
 #import "FLTestGroup.h"
 
+@interface FLTestable ()
+@property (readwrite, strong) FLTestCaseList* testCaseList;
+@property (readwrite, strong) FLExpectedTestResult* expectedTestResult;
+@property (readwrite, strong) FLTestResultCollection* testResults;
+@end
+
 @implementation FLTestable
 
-- (id) init {
-	self = [super init];
-	if(self) {
-	}
-	return self;
-}
+@synthesize testCaseList = _testCaseList;
+@synthesize expectedTestResult = _expectedTestResult;
+@synthesize testResults = _testResults;
 
-+ (FLTestable*) unitTest {
-    return FLAutorelease([[[self class] alloc] init]);
+#if FL_MRC
+- (void)dealloc {
+	[_testCaseList release];
+    [_expectedTestResult release];
+    [_testResults release];
+
+[super dealloc];
 }
+#endif
 
 + (NSInteger) unitTestPriority {
     return FLTestPriorityNormal;
 }
-
-#if FL_MRC
-- (void) dealloc {
-    [super dealloc];
-}
-#endif
 
 - (NSString*) unitTestName {
     return NSStringFromClass([self class]);
@@ -45,16 +48,32 @@
     return [NSString stringWithFormat:@"%@ { group=%@ }", [super description], [[[self class] testGroup] description]];
 }
 
-- (void) willRunTestCases:(FLTestCaseList*) testCases
-              withResults:(FLTestResultCollection*) results {
-}
-
-- (void) didRunTestCases:(FLTestCaseList*) testCases
-             withResults:(FLTestResultCollection*) results {
-}
-
 + (NSArray*) testDependencies {
     return nil;
+}
+
+- (FLTestCase*) testCaseForSelector:(SEL) selector {
+    return [self.testCaseList testCaseForSelector:selector];
+}
+
+- (FLTestCase*) testCaseForName:(NSString*) name {
+    return [self.testCaseList testCaseForName:name];
+}
+
+- (void) willRunTestCases:(FLTestCaseList*) testCases {
+}
+
+- (void) didRunTestCases:(FLTestCaseList*) testCases {
+}
+
+- (void) willBeginExecutingTestCases:(FLTestCaseList*) testCases {
+    self.testCaseList = testCases;
+    [self willRunTestCases:self.testCaseList];
+}
+
+- (void) didFinishExecutingTestCases {
+    [self didRunTestCases:self.testCaseList];
+    self.testCaseList = nil;
 }
 
 @end

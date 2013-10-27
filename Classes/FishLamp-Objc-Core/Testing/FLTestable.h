@@ -12,12 +12,18 @@
 #import "FLTestResultCollection.h"
 
 @protocol FLTestable <NSObject>
+
 @optional
 
-/**
- *  Return a custom name for the unit test. By default this is the name of the class.
- */
-@property (readonly, strong) NSString* unitTestName;
+// any method with "test" in it (no params) will be run.
+
+// tests with "first" and "test" will be run first
+
+// tests with "last" and "test" will be run last;
+
+// all other tests are run in alphebetical order.
+
+- (void) test;
 
 /**
  *  Defining this disables all the tests in this testable.
@@ -26,14 +32,19 @@
  */
 - (NSString*) disableAll;
 
+
+/**
+ *  Return a custom name for the unit test. By default this is the name of the class.
+ */
+@property (readonly, strong) NSString* unitTestName;
+
 /**
  *  Called before test is run.
  *  
  *  @param testCases List of test cases - order of execution can be modified
  *  @param expected  Expected results
  */
-- (void) willRunTestCases:(FLTestCaseList*) testCases
-       withExpectedResult:(FLExpectedTestResult*) expected;
+- (void) willRunTestCases:(FLTestCaseList*) testCases;
 
 /**
  *  Called after test is rull
@@ -42,9 +53,7 @@
  *  @param expected  expected results
  *  @param actual    actual results
  */
-- (void) didRunTestCases:(FLTestCaseList*) testCases
-      withExpectedResult:(FLExpectedTestResult*) expected
-        withActualResult:(FLTestResultCollection*) actual;
+- (void) didRunTestCases:(FLTestCaseList*) testCases;
 
 /**
  *  Optionally return Array of Classes that this test depends on
@@ -62,16 +71,17 @@
 
 @end
 
+@interface FLTestable : NSObject<FLTestable> {
+@private
+    FLTestCaseList* _testCases;
+    FLExpectedTestResult* _expectedTestResult;
+    FLTestResultCollection* _testResults;
+}
 
-@interface FLTestable : NSObject<FLTestable>
+- (FLTestCase*) testCaseForSelector:(SEL) selector;
 
-// any method with "test" in it (no params) will be run.
+- (FLTestCase*) testCaseForName:(NSString*) name;
 
-// tests with "first" and "test" will be run first
-
-// tests with "last" and "test" will be run last;
-
-// all other tests are run in alphebetical order.
 
 @end
 
@@ -80,3 +90,12 @@
 #endif
 
 #import "FishLampTesting.h"
+
+#define FLGetTestCase() [self testCaseForSelector:_cmd]
+
+#define FLDisableTest() \
+            do { \
+                [[self testCaseForSelector:_cmd] setDisabled:YES]; \
+                return; \
+            } while(0)
+

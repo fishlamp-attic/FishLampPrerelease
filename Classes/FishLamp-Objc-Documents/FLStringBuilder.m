@@ -142,6 +142,10 @@
     return [self buildStringWithWhitespace:[FLWhitespace defaultWhitespace]];
 }
 
+- (NSAttributedString*) buildAttributedString {
+    return nil;
+}
+
 - (NSString*) buildStringWithWhitespace:(FLWhitespace*) whitespace {
     FLPrettyString* prettyString = [FLPrettyString prettyString:whitespace];
     [prettyString appendString:self];

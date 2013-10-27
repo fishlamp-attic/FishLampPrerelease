@@ -11,7 +11,7 @@
 #import "FLErrorException.h"
 @class FLStackTrace;
 
-@interface FLAssertionFailedError : NSError
+@interface NSError (FLAssertions)
 + (id) assertionFailedError:(NSInteger) code 
                      reason:(NSString*) reason 
                     comment:(NSString*) comment
@@ -20,5 +20,4 @@
 
 extern NSString* const FLAssertionFailedExceptionName;
 
-@interface FLAssertionFailedException : FLErrorException
-@end
+

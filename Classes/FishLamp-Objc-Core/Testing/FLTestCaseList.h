@@ -15,16 +15,18 @@
     NSMutableArray* _testCases;
 }
 
+@property (readonly, copy, nonatomic) NSArray* testCases;
+
 + (id) testCaseList;
++ (id) testCaseListWithArrayOfTestCases:(NSArray*) testCases;
 
 - (void) addTestCase:(FLTestCase*) testCase;
 
 - (FLTestCase*) testCaseForName:(NSString*) name;
 - (FLTestCase*) testCaseForSelector:(SEL) selector;
 
-- (void) setRunOrder:(long) order forSelector:(SEL) selector;
-- (void) setRunOrder:(long) order forTestCase:(FLTestCase*) testCase;
-
-- (void) sort;
+- (void) setRunOrder:(NSUInteger) order forSelector:(SEL) selector;
+- (void) setRunOrder:(NSUInteger) order forTestCase:(FLTestCase*) testCase;
+- (NSUInteger) runOrderForTestCase:(FLTestCase*) testCase;
 
 @end

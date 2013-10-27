@@ -32,7 +32,8 @@
 #if __MAC_10_8
     NSTimeInterval done = [NSDate timeIntervalSinceReferenceDate] + 2.0;
     [FLDispatchQueue sleepForTimeInterval:2.1];
-    FLTest(done < [NSDate timeIntervalSinceReferenceDate]);
+    NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+    FLTest(now > done);
 #endif
     
     FLAssert(timer.timedOut == YES);

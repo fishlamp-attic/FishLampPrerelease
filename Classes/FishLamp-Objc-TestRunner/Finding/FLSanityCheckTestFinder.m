@@ -14,7 +14,6 @@
 #import "FLTestCase.h"
 //#import "FishLampAsync.h"
 //#import "FLTestOperation.h"
-//#import "FLTestCaseOperation.h"
 
 #import "FLTestMethod.h"
 
@@ -23,21 +22,6 @@
 + (id) sanityCheckTestFinder {
     return FLAutorelease([[[self class] alloc] init]);
 }
-
-/*
-- (FLPromisedResult) performSynchronously {
-    
-    NSMutableArray* tests = FLAutorelease([[_sanityTests allObjects] mutableCopy]);
-    
-    [tests sortedArrayUsingSelector:@selector(compare:)];
-    
-    for(FLTestCase* test in tests) {
-        FLThrowIfError([self runChildSynchronously:[FLTestCaseOperation testCaseOperation:test]]);
-    }
-    
-    return [FLSuccessfulResult successfulResult];
-}
-*/
 
 - (FLTestMethod*) findPossibleTestMethod:(FLRuntimeInfo) info {
     if([NSStringFromSelector(info.selector) hasPrefix:FLSanityCheckStaticTestMethodPrefix]) {

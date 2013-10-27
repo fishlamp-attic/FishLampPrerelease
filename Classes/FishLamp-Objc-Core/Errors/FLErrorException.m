@@ -9,6 +9,7 @@
 
 #import "FLErrorException.h"
 #import "FLErrorCodes.h"
+#import "NSError+FLExtras.h"
 
 NSString* const FLErrorExceptionName = @"error";
 
@@ -66,8 +67,24 @@ NSString* const FLErrorExceptionName = @"error";
     return FLAutorelease([[[self class] alloc] initWithName:name reason:reason userInfo:userInfo error:error]);
 }
 
+- (id) initWithError:(NSError*) error {
+    return [self initWithName:[error nameForException]
+                       reason:[error reasonForException]
+                     userInfo:nil
+                        error:error];
+}
+
++ (id) exceptionWithError:(NSError*) error {
+    return FLAutorelease([[[self class] alloc] initWithError:error]);
+}
+
 @end
 
-@implementation FLErrorException
-@end
-
+//@implementation FLErrorException
+//
+//+ (id) errorException:(NSError*) error {
+//    return FLAutorelease([[[self class] alloc] initWithError:error]);
+//}
+//
+//@end
+//

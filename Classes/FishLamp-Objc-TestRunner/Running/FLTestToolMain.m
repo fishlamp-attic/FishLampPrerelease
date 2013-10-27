@@ -19,12 +19,6 @@
 int FLTestToolMain(int argc, const char *argv[], NSString* bundleIdentifier, NSString* appName, NSString* version) {
     @autoreleasepool {
         @try {
-
-            [FLPrintf appendLine:@"hello world"];
-            [FLPrintf appendLine:@"this is a test"];
-            [FLPrintf appendLine:@"hello"];
-
-
             [FLAppInfo setAppInfo:bundleIdentifier
                           appName:appName
                           version:version];            

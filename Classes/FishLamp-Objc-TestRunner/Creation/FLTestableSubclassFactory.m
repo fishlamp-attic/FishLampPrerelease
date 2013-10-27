@@ -11,41 +11,48 @@
 #import "FLObjcRuntime.h"
 #import "FLAssembledTest.h"
 
-@implementation FLTestableSubclassFactory
+@interface FLTestable (Internal)
+@property (readwrite, strong) FLTestCaseList* testCaseList;
+@end
 
-@synthesize testableClass = _unitTestClass;
+@implementation FLTestable (TestCases)
 
-- (id) initWithUnitTestClass:(Class) aClass {
+- (id) initWithTestCaseCreation {
 	self = [super init];
 	if(self) {
-        FLAssertNotNil(aClass);
-		_unitTestClass = aClass;
+		self.testCaseList = [self createTestCases];
 	}
 	return self;
 }
 
-+ (id) testableSubclassFactory:(Class) aClass {
-    return FLAutorelease([[[self class] alloc] initWithUnitTestClass:aClass]);
+- (void) sortTestCaseList:(NSMutableArray*) list {
+    [list sortUsingComparator:^NSComparisonResult(FLTestCase* obj1, FLTestCase* obj2) {
+
+        NSString* lhs = obj1.selector.name;
+        NSString* rhs = obj2.selector.name;
+
+        if( [lhs rangeOfString:@"firstTest" options:NSCaseInsensitiveSearch].length > 0 ||
+            [rhs rangeOfString:@"lastTest" options:NSCaseInsensitiveSearch].length > 0) {
+            return NSOrderedAscending;
+        }
+        else if ([rhs rangeOfString:@"firstTest" options:NSCaseInsensitiveSearch].length > 0 ||
+                 [lhs rangeOfString:@"lastTest" options:NSCaseInsensitiveSearch].length > 0) {
+            return NSOrderedDescending;
+        }
+
+        if(obj1.runOrder != obj2.runOrder) {
+            return obj1.runOrder < obj2.runOrder ? NSOrderedAscending : NSOrderedDescending;
+        }
+
+        return [lhs compare:rhs];
+    }];
 }
 
-- (id) createTestableObject {
-    FLTestable* unitTest = FLAutorelease([[self.testableClass alloc] init]);
-
-    FLAssertNotNil(unitTest);
-    FLAssertWithComment([unitTest conformsToProtocol:@protocol(FLTestable)],
-                            @"%@ is not a testable object",
-                            NSStringFromClass([unitTest class]));
-
-    return unitTest;
-}
-
-- (FLTestCaseList*) createTestCaseListForUnitTest:(id) unitTest {
-
-    FLAssertNotNil(unitTest);
+- (FLTestCaseList*) createTestCases {
 
     NSMutableSet* set = [NSMutableSet set];
 
-    FLRuntimeVisitEachSelectorInClassAndSuperclass([unitTest class],
+    FLRuntimeVisitEachSelectorInClassAndSuperclass([self class],
         ^(FLRuntimeInfo info, BOOL* stop) {
             if(!info.isMetaClass) {
                 if(info.class == [FLTestable class]) {
@@ -65,32 +72,69 @@
             }
         });
 
-    FLTestCaseList* testCaseList = [FLTestCaseList testCaseList];
 
-    NSString* myName = NSStringFromClass([unitTest class]);
+    NSMutableArray* testCaseList = [NSMutableArray array];
+
+    NSString* myName = NSStringFromClass([self class]);
     
     for(NSString* selectorName in set) {
 
         NSString* testName = [NSString stringWithFormat:@"-[%@ %@]", myName, selectorName];
 
         FLTestCase* testCase = [FLTestCase testCase:testName
-                                           unitTest:unitTest
-                                             target:unitTest
+                                           testable:self
+                                             target:self
                                            selector:NSSelectorFromString(selectorName)];
-        [testCaseList addTestCase:testCase];
+        [testCaseList addObject:testCase];
+   }
 
-//        if([selector argumentCount] != 0) {
-//            [testCase setDisabledWithReason:[NSString stringWithFormat:@"expecting zero arguments but found %d.", [selector argumentCount]]];
-//        }
-    }
+    [self sortTestCaseList:testCaseList];
 
-    return testCaseList;
+    return [FLTestCaseList testCaseListWithArrayOfTestCases:testCaseList];
+}
+
+@end
+
+@implementation FLTestableSubclassFactory
+
+@synthesize testableClass = _unitTestClass;
+
+- (id) initWithUnitTestClass:(Class) aClass {
+	self = [super init];
+	if(self) {
+        FLConfirmNotNil(aClass);
+//        FLConfirmWithComment([aClass isKindOfClass:[FLTestable class]],
+//                            @"%@ is not a testable object",
+//                            NSStringFromClass([aClass class]));
+
+		_unitTestClass = aClass;
+	}
+	return self;
+}
+
++ (id) testableSubclassFactory:(Class) aClass {
+    return FLAutorelease([[[self class] alloc] initWithUnitTestClass:aClass]);
+}
+
+- (id) createTestableObject {
+
+//    FLConfirmWithComment([self.testableClass isKindOfClass:[FLTestable class]],
+//                            @"%@ is not a testable object",
+//                            NSStringFromClass([self.testableClass class]));
+
+    FLTestable* testable = FLAutorelease([[self.testableClass alloc] initWithTestCaseCreation]);
+
+    FLConfirmNotNil(testable);
+    FLConfirmWithComment([testable isKindOfClass:[FLTestable class]],
+                            @"%@ is not a testable object",
+                            NSStringFromClass([testable class]));
+
+    return testable;
 }
 
 - (FLAssembledTest*) createAssembledTest {
-    id testObject = [self createTestableObject];
-    FLTestCaseList* list = [self createTestCaseListForUnitTest:testObject];
-    return [FLAssembledTest assembledUnitTest:testObject testCases:list];
+    FLTestable* testObject = [self createTestableObject];
+    return [FLAssembledTest assembledUnitTest:testObject testCases:testObject.testCaseList];
 }
 
 - (FLTestGroup*) testGroup {
@@ -99,6 +143,5 @@
     }
     return nil;
 }
-
 
 @end

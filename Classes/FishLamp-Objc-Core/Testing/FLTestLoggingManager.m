@@ -101,5 +101,15 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter {
     return [[self logger] formattedAttributedString];
 }
 
+- (void) logger:(id<FLStringFormatter>) logger logInBlock:(dispatch_block_t) block {
+    @try {
+        [[FLTestLoggingManager instance] pushLogger:logger];
+        block();
+    }
+    @finally {
+        [[FLTestLoggingManager instance] popLogger];
+    }
+}
+
 
 @end

@@ -34,21 +34,21 @@
 }
 #endif
 
-- (id) setTestResultForSelector:(SEL) selector {
-    return [self setTestResultForKey:NSStringFromSelector(selector)];
-}
+//- (id) setTestResultForSelector:(SEL) selector {
+//    return [self setTestResultForKey:NSStringFromSelector(selector)];
+//}
+//
+//- (id) setTestResultForNumber:(int) number {
+//    return [self setTestResultForKey:[NSNumber numberWithInt:number]];
+//}
+//
+//- (id) setTestResultForKey:(id) key {
+//    id test = [FLTestResult testResult];
+//    [self setTestResult:test forKey:key];
+//    return test;
+//}
 
-- (id) setTestResultForNumber:(int) number {
-    return [self setTestResultForKey:[NSNumber numberWithInt:number]];
-}
-
-- (id) setTestResultForKey:(id) key {
-    id test = [FLTestResult testResult];
-    [self setTestResult:test forKey:key];
-    return test;
-}
-
-- (void) setTestResult:(id<FLTestResult>) result forKey:(id) key {
+- (void) setTestResult:(FLTestResult*) result forKey:(id) key {
 
     FLConfirmIsNotNil(result);
     FLConfirmIsNotNil(key);
@@ -122,4 +122,7 @@
 
 
 @implementation FLExpectedTestResult
++ (id) expectedTestResult {
+    return FLAutorelease([[[self class] alloc] init]);
+}
 @end

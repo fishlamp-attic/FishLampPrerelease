@@ -10,6 +10,7 @@
 #import "FLCoreRequired.h"
 #import "FLStackTrace.h"
 #import "NSError+FLExtras.h"
+#import "FLErrorException.h"
 
 #ifndef __INCLUDE_STACK_TRACE__
 #define __INCLUDE_STACK_TRACE__ YES
@@ -28,7 +29,7 @@ extern FLWillThrowExceptionHandler* FLGetWillThrowExceptionHandler();
                     __error = [NSError errorWithError:__error stackTrace:FLCreateStackTrace(__INCLUDE_STACK_TRACE__)]; \
                 } \
                 \
-                __THROWER__([__error createContainingException]); \
+                __THROWER__([NSException exceptionWithError:__error]); \
             } \
             while(0)
 
@@ -37,17 +38,6 @@ extern FLWillThrowExceptionHandler* FLGetWillThrowExceptionHandler();
 
 #define FLThrowError(__ERROR__) \
             FL_THROW_ERROR(__ERROR__, FLThrowException)
-
-//            do {  \
-//                NSError* __error = __ERROR__; \
-//                if(!__error.stackTrace) { \
-//                    __error = [NSError errorWithError:__error stackTrace:FLCreateStackTrace(__INCLUDE_STACK_TRACE__)]; \
-//                } \
-//                \
-//                FLThrowException([__error createContainingException]); \
-//            } \
-//            while(0)
-
 
 #define FLThrowIfError(__OBJECT__) \
             do { \

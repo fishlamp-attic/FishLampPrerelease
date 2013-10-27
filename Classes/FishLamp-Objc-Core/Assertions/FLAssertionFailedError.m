@@ -11,7 +11,7 @@
 #import "FLErrorException.h"
 #import "FLAssertions.h"
 
-@implementation FLAssertionFailedError
+@implementation NSError (FLAssertions)
 
 + (id) assertionFailedError:(NSInteger) code 
                      reason:(NSString*) reason 
@@ -21,17 +21,7 @@
     return [self errorWithDomain:FLAssertionFailureErrorDomain code:code localizedDescription:reason userInfo:nil comment:comment stackTrace:stackTrace];
 }                    
 
-- (NSException*) createContainingException {
-    return [FLAssertionFailedException exceptionWithName:FLAssertionFailedExceptionName
-                                                  reason:self.localizedDescription
-                                                userInfo:nil
-                                                   error:self];
-}
-
 @end
 
 NSString* const FLAssertionFailedExceptionName = @"assert";
 
-@implementation FLAssertionFailedException
-
-@end

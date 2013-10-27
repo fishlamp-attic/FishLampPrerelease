@@ -56,23 +56,18 @@
     return [_testableObject unitTestName];
 }
 
-- (void) willRunTestCases:(FLTestCaseList*) testCases
-       withExpectedResult:(FLExpectedTestResult*) expected {
+- (void) willRunTestCases:(FLTestCaseList*) testCases {
 
-    if([_testableObject respondsToSelector:@selector(willRunTestCases:withExpectedResult:)]) {
-        [_testableObject willRunTestCases:testCases withExpectedResult:expected];
+    if([_testableObject respondsToSelector:@selector(willRunTestCases:)]) {
+        [_testableObject willRunTestCases:testCases];
     }
 
 }
 
-- (void) didRunTestCases:(FLTestCaseList*) testCases
-      withExpectedResult:(FLExpectedTestResult*) expected
-        withActualResult:(FLTestResultCollection*) actual {
+- (void) didRunTestCases:(FLTestCaseList*) testCases {
 
-    if([_testableObject respondsToSelector:@selector(didRunTestCases:withExpectedResult:withActualResult:)]) {
-        [_testableObject didRunTestCases:testCases
-                      withExpectedResult:expected
-                        withActualResult:actual];
+    if([_testableObject respondsToSelector:@selector(didRunTestCases:)]) {
+        [_testableObject didRunTestCases:testCases];
     }
 
 }

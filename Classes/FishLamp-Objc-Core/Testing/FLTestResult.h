@@ -11,31 +11,37 @@
 
 @protocol FLStringFormatter;
 
-@protocol FLTestResult <NSObject>
-@property (readonly, strong) id<FLStringFormatter> loggerOutput;
-- (BOOL) passed;
-- (NSError*) error;
-- (NSString*) testName;
+//@protocol FLTestResult <NSObject>
+//
+//@optional
+//- (NSString*) runSummary;
+//- (NSString*) failureDescription;
+//
+//@end
 
-@optional
-- (NSString*) runSummary;
-- (NSString*) failureDescription;
-@end
-
-@protocol FLMutableTestResult <FLTestResult>
-- (void) setError:(NSError*) error;
-- (void) setPassed; // only passes if error is nil
-@end
-
-@interface FLTestResult : NSObject<FLMutableTestResult> {
+@interface FLTestResult : NSObject {
 @private 
     NSError* _error;
+    NSException* _exception;
     NSString* _testName;
     id<FLStringFormatter> _loggerOutput;
     BOOL _passed;
 }
 
-+ (id) testResult;
+- (id) initWithTestName:(NSString*) name;
++ (id) testResult:(NSString*) name;
+
+@property (readonly, strong) id<FLStringFormatter> loggerOutput;
+@property (readonly, assign) BOOL passed;
+@property (readonly, strong) NSString* testName;
+
+// error data
+@property (readonly, copy) NSException* exception;
+@property (readonly, copy) NSError* error;
+
+- (void) setPassed; // only passes if error is nil
+- (void) setFailedWithError:(NSError*) error;
+- (void) setFailedWithException:(NSException*) ex;
 
 @end
 
@@ -48,6 +54,9 @@
 @property (readonly, assign) NSUInteger expectedCount;
 @property (readonly, assign) NSUInteger count;
 
-+ (id) countedTestResult:(NSUInteger) expectedCount;
+- (id) initWithTestName:(NSString*) testName expectedCount:(NSUInteger) count;
++ (id) countedTestResult:(NSString*) testName expectedCount:(NSUInteger) count;
+
+- (void) increment;
 
 @end

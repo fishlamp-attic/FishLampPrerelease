@@ -9,29 +9,32 @@
 
 #import "FLSelector.h"
 #import "FLObjcRuntime.h"
+#import "FishLampMinimum.h"
 
 @implementation FLSelector 
 
 @synthesize selector = _selector;
-@synthesize originalSelector = _originalSelector;
 
 - (id) init {
-    return [self initWithSelector:nil argCount:-1];
+    return [self initWithSelector:nil];
 }
 
-- (id) initWithSelector:(SEL) selector  {
-    return [self initWithSelector:selector argCount:-1];
-}
+- (id) initWithSelector:(SEL) selector {
 
-- (id) initWithSelector:(SEL) selector  
-               argCount:(NSUInteger) argCount {
-               
-    self = [self initWithSelector:selector];
+    self = [super init];
     if(self) {
-        _originalSelector = selector;
         _selector = selector;
-        _argumentCount = argCount;
+        _argumentCount = ULONG_MAX;
     }
+    return self;
+}
+
+- (id) initWithString:(NSString*) string {
+    self = [self initWithSelector:NSSelectorFromString(string)];
+    if(self) {
+        _name = FLRetain(string);
+    }
+
     return self;
 }
 
@@ -39,59 +42,93 @@
     return FLAutorelease([[[self class] alloc] initWithSelector:selector]);
 }
 
-+ (id) selector:(SEL) selector argCount:(NSUInteger) argCount {
-    return FLAutorelease([[[self class] alloc] initWithSelector:selector argCount:argCount]);
++ (id) selectorWithString:(NSString*) string {
+    return FLAutorelease([[[self class] alloc] initWithString:string]);
 }
 
 #if FL_MRC
 - (void) dealloc {
-    [_selectorValue release];
-    [_selectorString release];
+    [_name release];
     [super dealloc];
 }
 #endif
 
-- (NSString*) selectorString {
-    dispatch_once(&_predicates[0], ^{
-        _selectorString = FLRetain(NSStringFromSelector(_originalSelector));
-    });
-    return _selectorString;
-}
-
-- (NSValue*) selectorValue {
-    dispatch_once(&_predicates[1], ^{
-        _selectorValue = FLRetain([NSValue valueWithPointer:_originalSelector]); 
-    });
-    return _selectorValue;
-}
-
-- (int) argumentCount {
-    if(_argumentCount == -1) {
-        dispatch_once(&_predicates[2], ^{
-            _argumentCount = FLArgumentCountForSelector(_originalSelector);
-        });
+- (NSString*) name {
+    if(!_name) {
+        _name = FLRetain(NSStringFromSelector(_selector));
     }
-    
+    return _name;
+}
+
+- (NSUInteger) argumentCount {
+    if(_argumentCount == ULONG_MAX) {
+        _argumentCount = FLArgumentCountForSelector(_selector);
+    }
     return _argumentCount;
 }
 
 - (id) copyWithZone:(NSZone *)zone {
-
-    FLSelector* selector = [[FLSelector alloc] initWithSelector:self.originalSelector argCount:self.argumentCount];
-    selector.selector = self.selector;
-    return selector;
+    return FLRetain(self);
 }
 
-//- (BOOL)isEqual:(id)object {
-//    return FLSelectorsAreEqual(_selector, [object selector]);
-//}
-//
-//- (NSUInteger)hash {
-//    return (NSUInteger) [self.selectorString hash];
-//}
+- (BOOL) isEqualToSelector:(SEL) selector {
+    return FLSelectorsAreEqual(selector, _selector);
+}
+
+- (BOOL) isEqual:(id)object {
+    return [self.name isEqualToString:[object name]];
+}
+
+- (NSUInteger)hash {
+    return (NSUInteger) [self.name hash];
+}
 
 - (NSString*) description {
-    return self.selectorString;
+    return self.name;
 }
+
+- (BOOL) willPerformOnTarget:(id) target {
+    return [target respondsToSelector:_selector];
+}
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warc-performSelector-leaks"
+
+- (void) performWithTarget:(id) target {
+    FLAssert(self.argumentCount == 0);
+    [target performSelector:_selector];
+}
+
+- (void) performWithTarget:(id) target
+                withObject:(id) object {
+    FLAssert(self.argumentCount == 1);
+    [target performSelector:_selector withObject:object];
+}
+
+- (void) performWithTarget:(id) target
+                withObject:(id) object1
+                withObject:(id) object2 {
+    FLAssert(self.argumentCount == 2);
+    [target performSelector:_selector withObject:object1 withObject:object2];
+}
+
+- (void) performWithTarget:(id) target
+                withObject:(id) object1
+                withObject:(id) object2
+                withObject:(id) object3 {
+    FLAssert(self.argumentCount == 3);
+    [target performSelector_fl:_selector withObject:object1 withObject:object2 withObject:object3];
+}
+
+- (void) performWithTarget:(id) target
+                withObject:(id) object1
+                withObject:(id) object2
+                withObject:(id) object3
+                withObject:(id) object4 {
+    FLAssert(self.argumentCount == 4);
+    [target performSelector_fl:_selector withObject:object1 withObject:object2 withObject:object3 withObject:object4];
+}
+
+#pragma GCC diagnostic pop
 
 @end

@@ -30,6 +30,10 @@ extern NSString* const FLStackTraceKey;
 
 - (id) initWithDomain:(NSString*) domain
                  code:(NSInteger) code
+ localizedDescription:(NSString*) localizedDescription;
+
+- (id) initWithDomain:(NSString*) domain
+                 code:(NSInteger) code
  localizedDescription:(NSString*) localizedDescription
              userInfo:(NSDictionary *)dict
               comment:(NSString*) comment
@@ -54,10 +58,11 @@ extern NSString* const FLStackTraceKey;
 
 - (BOOL) isErrorDomain:(NSString*) domain;
 
-- (NSException*) createContainingException;
-
 - (BOOL) isError;
 
+- (NSString*) nameForException;
+
+- (NSString*) reasonForException;
 @end
 
 

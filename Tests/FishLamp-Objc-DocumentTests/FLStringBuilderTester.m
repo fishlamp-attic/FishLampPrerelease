@@ -23,8 +23,23 @@
     return [FLStringBuilder stringBuilder];
 }
 
-- (NSString*) disableAll {
-    return @"Tests don't work with formtter tests";
+- (NSString*) formattedString:(id) formatter
+                   whitespace:(FLWhitespace*) whitespace {
+
+    NSString* theString = [formatter buildStringWithWhitespace:whitespace];
+    return theString;
 }
+
+- (NSAttributedString*) formattedAttributedString:(id) formatter
+                   whitespace:(FLWhitespace*) whitespace {
+
+    NSAttributedString* string = [[NSAttributedString alloc] initWithString:[self formattedString:formatter whitespace:whitespace]];
+
+    return FLAutorelease(string);
+}
+
+//- (NSString*) disableAll {
+//    return @"Tests don't work with formtter tests";
+//}
 
 @end

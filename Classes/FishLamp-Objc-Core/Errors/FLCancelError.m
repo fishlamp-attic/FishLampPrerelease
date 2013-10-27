@@ -15,31 +15,10 @@
 
 NSString* const FLCancelExceptionName = @"cancel";
 
-@implementation FLCancelError
-- (BOOL) isCancelError {
-    return YES;
-}
-
-- (NSException*) createContainingException {
-    return [FLCancelException exceptionWithName:FLAssertionFailedExceptionName
-                                         reason:self.localizedDescription
-                                       userInfo:nil
-                                          error:self];
-}
-
-
-#if DEBUG
-- (id)initWithDomain:(NSString *)domain code:(NSInteger)code userInfo:(NSDictionary *)dict {
-    return [super initWithDomain:domain code:code userInfo:dict];
-}
-#endif
-
-@end
-
 @implementation NSError (FLCancelling)
 
 + (NSError*) cancelError {
-    return [FLCancelError errorWithDomain:FLErrorDomain
+    return [NSError errorWithDomain:FLErrorDomain
                                code:FLErrorCodeCancel
                localizedDescription:NSLocalizedString(@"Cancelled", @"used in cancel error localized description")];
 
@@ -49,7 +28,4 @@ NSString* const FLCancelExceptionName = @"cancel";
 	return	FLStringsAreEqual(FLErrorDomain, self.domain) && self.code == FLErrorCodeCancel; 
 }
 
-@end
-
-@implementation FLCancelException
 @end

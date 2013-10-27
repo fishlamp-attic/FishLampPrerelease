@@ -51,6 +51,12 @@ FLSynthesizeDictionaryGetterProperty(stackTrace, FLStackTrace*, FLStackTraceKey,
 
 - (id) initWithDomain:(NSString*) domain
                  code:(NSInteger) code
+ localizedDescription:(NSString*) localizedDescription {
+    return [self initWithDomain:domain code:code localizedDescription:localizedDescription userInfo:nil comment:nil stackTrace:nil];
+}
+
+- (id) initWithDomain:(NSString*) domain
+                 code:(NSInteger) code
  localizedDescription:(NSString*) localizedDescription
              userInfo:(NSDictionary *) userInfo
               comment:(NSString*) comment
@@ -141,15 +147,16 @@ FLSynthesizeDictionaryGetterProperty(stackTrace, FLStackTrace*, FLStackTraceKey,
     return FLRetainWithAutorelease(error);
 }
 
-- (NSException*) createContainingException {
-    return [FLErrorException exceptionWithName:FLErrorExceptionName
-                                        reason:self.localizedDescription
-                                      userInfo:nil
-                                         error:self];
-}
-
 - (BOOL) isError {
     return YES;
+}
+
+- (NSString*) nameForException {
+    return [NSString stringWithFormat:@"%@:%ld", self.domain, self.code];
+}
+
+- (NSString*) reasonForException {
+    return [self localizedDescription];
 }
 @end
 

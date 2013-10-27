@@ -13,24 +13,44 @@
 #import "FLAssertions.h"
 
 @interface FLTestResult ()
-@property (readwrite, strong, nonatomic) NSError* error;
-@property (readwrite, strong, nonatomic) NSString* testName;
+@property (readwrite, copy) NSError* error;
+@property (readwrite, copy) NSException* exception;
 @end
 
 @implementation FLTestResult 
 @synthesize error = _error;
 @synthesize testName = _testName;
 @synthesize loggerOutput = _loggerOutput;
+@synthesize passed = _passed;
+@synthesize exception = _exception;
 
-+ (id) testResult {
-    return FLAutorelease([[[self class] alloc] init]);
+- (id) initWithTestName:(NSString*) name {
+
+    FLAssertStringIsNotEmpty(name);
+
+	self = [super init];
+	if(self) {
+        _testName = FLRetain(name);
+        _loggerOutput = [[FLPrettyString alloc] init];
+	}
+	return self;
 }
+
+- (id) init {	
+    return [self initWithTestName:nil];
+}
+
++ (id) testResult:(NSString*) name {
+    return FLAutorelease([[[self class] alloc] initWithTestName:name]);
+}
+
 
 #if FL_MRC
 - (void) dealloc {
     [_loggerOutput release];
     [_testName release];
     [_error release];
+    [_exception release];
     [super dealloc];
 }
 #endif
@@ -41,19 +61,14 @@
     _passed = YES;
 }
 
-- (BOOL) passed {
-    return !self.error && _passed;
+- (void) setFailedWithError:(NSError*) error {
+    self.error = error;
+    _passed = NO;
 }
-
-- (id) init {
-    self = [super init];
-    if(self) {
-        self.testName = NSStringFromClass([self class]);
-        _loggerOutput = [[FLPrettyString alloc] init];
-    }
-    return self;
+- (void) setFailedWithException:(NSException*) ex {
+    self.exception = ex;
+    _passed = NO;
 }
-
 
 //- (NSString*) description {
 //    return [NSString stringWithFormat:@"%@ { testName: %@, passed: %@, error: %@ }", [super description], self.testName, self.passed ? @"YES" : [NSString stringWithFormat:@"NO (%d of %d)", (int)_count, (int)_expectedCount], 
@@ -64,27 +79,18 @@
 @end
 
 @interface FLCountedTestResult ()
-@property (readwrite, assign, nonatomic) NSUInteger expectedCount;
-@property (readwrite, assign, nonatomic) NSUInteger count;
+@property (readwrite, assign) NSUInteger expectedCount;
+@property (readwrite, assign) NSUInteger count;
 @end
 
 @implementation FLCountedTestResult 
 @synthesize count =_count;
 @synthesize expectedCount = _expectedCount;
 
-- (id) init {	
-	self = [super init];
-	if(self) {
-		
-	}
-	return self;
-}
-
-- (id) initWithExpectedCount:(NSUInteger) count {
-    self = [super init];
+- (id) initWithTestName:(NSString*) testName expectedCount:(NSUInteger) count {
+    self = [super initWithTestName:testName];
     if(self) {
         _expectedCount = count;
-        self.testName = NSStringFromClass([self class]);
     }
     return self;
 }
@@ -95,16 +101,16 @@
 //}
 
 
-- (void) setPassed {
-    ++_count;
+- (void) increment {
+    self.count++;
 }
 
 - (BOOL) passed {
-    return !self.error && _count == _expectedCount;
+    return [super passed] && self.count == self.expectedCount;
 }
 
-+ (id) countedTestResult:(NSUInteger) expectedCount {
-    return FLAutorelease([[[self class] alloc] initWithExpectedCount:expectedCount]);
++ (id) countedTestResult:(NSString*) testName expectedCount:(NSUInteger) expectedCount {
+    return FLAutorelease([[[self class] alloc] initWithTestName:testName expectedCount:expectedCount]);
 }
 
 @end

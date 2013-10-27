@@ -8,50 +8,70 @@
 //
 
 #import "FLCoreRequired.h"
+#import "FLSelector.h"
 
-#define FLTestCaseFlagOffString                 @"__off"
-
-@class FLTestCase;
 @class FLTestable;
-@protocol FLTestCaseRunner;
-
-typedef void (^FLTestBlock)();
+@class FLTestCaseList;
+@class FLTestResult;
 
 #define FLTestCaseOrderDefault  NSIntegerMax
 
 @interface FLTestCase : NSObject {
 @private
-    long _runOrder;
     NSString* _testCaseName;
-    FLTestBlock _testCaseBlock;
-    SEL _testCaseSelector;
-    __unsafe_unretained id _testCaseTarget;
-    NSString* _disabledReason;
-    BOOL _disabled;
+    FLSelector* _selector;
+    FLSelector* _willTestSelector;
+    FLSelector* _didTestSelector;
+    FLTestResult* _result;
 
+    NSString* _disabledReason;
+
+    __unsafe_unretained id _target;
     __unsafe_unretained FLTestable* _unitTest;
+    __unsafe_unretained FLTestCaseList* _testCaseList;
+    BOOL _disabled;
 }
 
-@property (readonly, assign) FLTestable* unitTest;
+// info
+@property (readonly, strong) FLSelector* selector;
+@property (readonly, assign) FLTestable* testable;
+@property (readonly, strong) NSString* testCaseName;
+@property (readonly, assign) id target;
+@property (readonly, strong) FLTestResult* result;
+
+// creation
+
+- (id) initWithName:(NSString*) name
+           testable:(FLTestable*) testable;
+
+- (id) initWithName:(NSString*) name
+           testable:(FLTestable*) testable
+             target:(id) target
+           selector:(SEL) selector;
+
++ (FLTestCase*) testCase:(NSString*) name
+                testable:(FLTestable*) testable
+                  target:(id) target
+                selector:(SEL) selector;
+
+// disabling
+@property (readonly, assign, nonatomic) BOOL isDisabled;
 @property (readonly, strong, nonatomic) NSString* disabledReason;
-@property (readonly, strong, nonatomic) NSString* testCaseName;
-@property (readonly, assign, nonatomic) SEL testCaseSelector;
-@property (readonly, assign, nonatomic) id testCaseTarget;
-@property (readonly, copy, nonatomic) FLTestBlock testCaseBlock;
+- (void) disable:(NSString*) reason;
 
-@property (readwrite, assign, nonatomic) long runOrder;
-@property (readwrite, assign, nonatomic, getter=isDisabled) BOOL disabled;
-
-- (void) setDisabledWithReason:(NSString*) reason;
-
-- (id) initWithName:(NSString*) name unitTest:(FLTestable*) unitTest;
-- (id) initWithName:(NSString*) name unitTest:(FLTestable*) unitTest testBlock:(FLTestBlock) block;
-- (id) initWithName:(NSString*) name unitTest:(FLTestable*) unitTest target:(id) target selector:(SEL) selector;
-
-+ (FLTestCase*) testCase:(NSString*) name unitTest:(FLTestable*) unitTest target:(id) target selector:(SEL) selector;
-+ (FLTestCase*) testCase:(NSString*) name unitTest:(FLTestable*) unitTest testBlock:(FLTestBlock) block;
-
+// performing
+- (void) willPerformTest;
 - (void) performTest;
+- (void) didPerformTest;
+
+// configuring
+@property (readwrite, assign, nonatomic) NSUInteger runOrder;
+- (void) runSooner;
+- (void) runLater;
+- (void) runFirst;
+- (void) runLast;
+- (void) runBefore:(FLTestCase*) anotherTestCase;
+- (void) runAfter:(FLTestCase*) anotherTestCase;
 
 @end
 

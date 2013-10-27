@@ -11,26 +11,43 @@
 
 @interface FLSelector : NSObject<NSCopying> {
 @private
-    SEL _originalSelector;
     SEL _selector;
-    int _argumentCount;
-    NSString* _selectorString;
-    NSValue* _selectorValue;
-    
-    dispatch_once_t _predicates[3];
+    NSUInteger _argumentCount;
+    NSString* _name;
 }
 
-@property (readonly, nonatomic) SEL originalSelector;
-@property (readwrite, nonatomic) SEL selector;
+@property (readonly, assign, nonatomic) SEL selector;
+@property (readonly, assign, nonatomic) NSUInteger argumentCount;
+@property (readonly, strong, nonatomic) NSString* name;
 
-@property (readonly, assign) int argumentCount;
-@property (readonly, strong) NSString* selectorString;
-@property (readonly, strong) NSValue* selectorValue;
-
-
+- (id) initWithString:(NSString*) string;
 - (id) initWithSelector:(SEL) selector;
-- (id) initWithSelector:(SEL) selector argCount:(NSUInteger) argCount;
+
 + (id) selector:(SEL) selector;
-+ (id) selector:(SEL) selector argCount:(NSUInteger) argCount;
++ (id) selectorWithString:(NSString*) string;
+
+- (BOOL) isEqualToSelector:(SEL) selector;
+
+- (void) performWithTarget:(id) target;
+
+- (void) performWithTarget:(id) target
+                withObject:(id) object;
+
+- (void) performWithTarget:(id) target
+                withObject:(id) object1
+                withObject:(id) object2;
+
+- (void) performWithTarget:(id) target
+                withObject:(id) object1
+                withObject:(id) object2
+                withObject:(id) object3;
+
+- (void) performWithTarget:(id) target
+                withObject:(id) object1
+                withObject:(id) object2
+                withObject:(id) object3
+                withObject:(id) object4;
+
+- (BOOL) willPerformOnTarget:(id) target;
 
 @end

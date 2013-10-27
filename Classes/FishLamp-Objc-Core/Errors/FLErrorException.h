@@ -25,7 +25,8 @@ extern NSString* const FLErrorExceptionName;
           userInfo:(NSDictionary *)aUserInfo 
              error:(NSError*) error;
 
++ (id) exceptionWithError:(NSError*) error;
+- (id) initWithError:(NSError*) error;
+
 @end
 
-@interface FLErrorException : NSException
-@end

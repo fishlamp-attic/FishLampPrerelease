@@ -12,7 +12,6 @@
 #import "FLTestCase.h"
 
 @interface FLTestCaseResult ()
-@property (readwrite, strong) FLTestCase* testCase;
 @end
 
 @implementation FLTestCaseResult
@@ -22,7 +21,7 @@
 - (id) initWithTestCase:(FLTestCase*) testCase {
     self = [super init];
     if(self) {
-        self.testCase = testCase;
+        _testCase = testCase;
     }
 
     return self;

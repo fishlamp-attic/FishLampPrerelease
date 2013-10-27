@@ -91,6 +91,7 @@
 	self = [super init];
 	if(self) {
 		_stringFormatterDelegate = self;
+        self.preprocessor = [FLStringFormatterLineProprocessor instance];
 	}
 	return self;
 }

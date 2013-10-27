@@ -10,56 +10,77 @@
 #import "FLStringUtils.h"
 #import "FLTestable.h"
 #import "FLSelectorPerforming.h"
-
-//#define FLTestCaseFlagBrokenString              @"_broken"
-//#define FLTestCaseFlagVerboseString             @"_debug"
-//#define FLTestCaseFlagExpectingExceptionString  @"_exception"
+#import "FLTestCaseList.h"
+#import "FLTestResult.h"
+#import "FLTestLoggingManager.h"
 
 @interface FLTestCase ()
-@property (readwrite, strong, nonatomic) NSString* testCaseName;
-@property (readwrite, assign, nonatomic) SEL testCaseSelector;
-@property (readwrite, copy, nonatomic) FLTestBlock testCaseBlock;
-@property (readwrite, assign, nonatomic) id testCaseTarget;
-@property (readwrite, strong, nonatomic) NSString* disabledReason;
+@property (readwrite, strong) NSString* testCaseName;
+@property (readwrite, strong) FLSelector* selector;
+@property (readwrite, assign) id target;
+@property (readwrite, strong) NSString* disabledReason;
+@property (readwrite, assign) FLTestCaseList* testCaseList;
+@property (readwrite, strong) FLTestCaseResult* result;
 @end
 
-typedef enum {
-    FLTestCaseFlagNone                  = 0,
-    FLTestCaseFlagDisabled              = (1 << 1),
-//    FLTestCaseFlagBroken                = (1 << 2),
-//    FLTestCaseFlagDebug                 = (1 << 3),
-//    FLTestCaseFlagExpectingException    = (1 << 4),
-} FLTestCaseFlag;
-
-typedef struct {
-    __unsafe_unretained NSString* name;
-    long flag;
-} FLTestCaseFlagPair;
-
-FLTestCaseFlagPair s_flagPairs[] = {
-    { FLTestCaseFlagOffString,  FLTestCaseFlagDisabled},
-//    { FLTestCaseOrderFirstString, FLTestCaseOrderFirst},
-//    { FLTestCaseOrderLastString,  FLTestCaseOrderLast},
-//    { FLTestCaseFlagBroken, FLTestCaseFlagBrokenString },
-//    { FLTestCaseFlagDebug, FLTestCaseFlagVerboseString },
-//    { FLTestCaseFlagExpectingException, FLTestCaseFlagExpectingExceptionString }
-};
-
 @implementation FLTestCase
-@synthesize disabled = _disabled;
+@synthesize isDisabled = _disabled;
 @synthesize disabledReason = _disabledReason;
-@synthesize testCaseBlock = _testCaseBlock;
-@synthesize testCaseSelector = _testCaseSelector;
-@synthesize testCaseTarget = _testCaseTarget;
+@synthesize selector = _selector;
+@synthesize target = _target;
 @synthesize testCaseName = _testCaseName;
-@synthesize runOrder =_runOrder;
-@synthesize unitTest = _unitTest;
+@synthesize testable = _unitTest;
+@synthesize testCaseList = _testCaseList;
+@synthesize result = _result;
 
-- (void) setDisabledWithReason:(NSString*) reason {
-    self.disabled = YES;
+- (id) initWithName:(NSString*) name testable:(FLTestable*) testable {
+    self = [super init];
+    if(self) {
+        _testCaseName = FLRetain(name);
+        _unitTest = testable;
+    }
+
+    return self;
+}
+
+- (id) initWithName:(NSString*) name
+           testable:(FLTestable*) testable
+             target:(id) target
+           selector:(SEL) selector {
+
+    self = [self initWithName:name testable:testable];
+    if(self) {
+        _target = target;
+        _selector = [[FLSelector alloc] initWithSelector:selector];
+        _willTestSelector = [[FLSelector alloc] initWithString:[NSString stringWithFormat:@"will%@", [_selector.name stringWithUppercaseFirstLetter_fl]]];
+        _didTestSelector = [[FLSelector alloc] initWithString:[NSString stringWithFormat:@"did%@", [_selector.name stringWithUppercaseFirstLetter_fl]]];
+    }
+    return self;
+}
+
+#if FL_MRC
+- (void) dealloc {
+    [_disabledReason release];
+    [_testCaseName release];
+	[_selector release];
+    [_willTestSelector release];
+    [_didTestSelector release];
+    [_result release];
+    [super dealloc];
+}
+#endif
+
++ (FLTestCase*) testCase:(NSString*) name testable:(FLTestable*) testable target:(id) target selector:(SEL) selector {
+    return FLAutorelease([[FLTestCase alloc] initWithName:name testable:testable target:target selector:selector]);
+}
+
+
+- (void) disable:(NSString*) reason {
+    _disabled = YES;
     self.disabledReason = reason;
 }
 
+/*
 - (void) setNameAndFlagsWithFormattedName:(NSString*) string {
     
     // quickly look to see if there's a _ in the method name, search backward
@@ -105,68 +126,93 @@ FLTestCaseFlagPair s_flagPairs[] = {
 
     self.testCaseName = theString;
 }
+*/
 
-- (id) initWithName:(NSString*) name unitTest:(FLTestable*) unitTest {
-    self = [super init];
-    if(self) {
-        [self setNameAndFlagsWithFormattedName:name];
-        _unitTest = unitTest;
-        _runOrder = FLTestCaseOrderDefault;
+- (void) performTestCaseSelector:(FLSelector*) selector optional:(id) optional{
+
+    switch(selector.argumentCount) {
+        case 0:
+            [selector performWithTarget:_target];
+        break;
+
+        case 1:
+            [selector performWithTarget:_target withObject:optional];
+        break;
+
+        default:
+            [self disable:[NSString stringWithFormat:@"[%@ %@] has too many paramaters (%ld).",
+                NSStringFromClass([_target class]),
+                selector.name,
+                selector.argumentCount]];
+        break;
     }
-
-    return self;
 }
 
-
-- (id) initWithName:(NSString*) name unitTest:(FLTestable*) unitTest testBlock:(FLTestBlock) block  {
-    self = [self initWithName:name unitTest:unitTest];
-    if(self) {
-        _testCaseBlock = [block copy];
+- (void) willPerformTest {
+    self.result = [FLTestResult testResult:self.testCaseName];
+    if(!self.isDisabled && [_willTestSelector willPerformOnTarget:_target]) {
+        [[FLTestLoggingManager instance] logger:self.result.loggerOutput logInBlock:^{
+            [self performTestCaseSelector:_willTestSelector optional:self];
+        }];
     }
-    return self;
-}
-
-
-- (id) initWithName:(NSString*) name unitTest:(FLTestable*) unitTest target:(id) target selector:(SEL) selector {
-    self = [self initWithName:name unitTest:unitTest];
-    if(self) {
-        _testCaseTarget = target;
-        _testCaseSelector = selector;
-    }
-    return self;
-}
-
-+ (FLTestCase*) testCase:(NSString*) name unitTest:(FLTestable*) unitTest target:(id) target selector:(SEL) selector {
-    return FLAutorelease([[FLTestCase alloc] initWithName:name unitTest:unitTest target:target selector:selector]);
-}
-
-+ (FLTestCase*) testCase:(NSString*) name unitTest:(FLTestable*) unitTest testBlock:(FLTestBlock) block {
-    return FLAutorelease([[FLTestCase alloc] initWithName:name unitTest:unitTest testBlock:block]);
 }
 
 - (void) performTest {
     if(!self.isDisabled) {
-        if(_testCaseTarget && _testCaseSelector) {
-            FLPerformSelector0(_testCaseTarget, _testCaseSelector);
+        @try {
+            [[FLTestLoggingManager instance] logger:self.result.loggerOutput logInBlock:^{
+                [self performTestCaseSelector:_selector optional:self];
+            }];
+
+            [self.result setPassed];
         }
-        if(_testCaseBlock) {
-            _testCaseBlock();
+        @catch(NSException* exception) {
+            [self.result setFailedWithException:exception];
         }
     }
 }
 
-//- (id<FLTestCaseRunner>) testCaseRunner {
-//    return [FLTestCaseRunner testCaseRunner];
-//}
-
-#if FL_MRC
-- (void) dealloc {
-    [_disabledReason release];
-    [_testCaseName release];
-    [_testCaseBlock release];
-    [super dealloc];
+- (void) didPerformTest {
+    if(!self.isDisabled && [_willTestSelector willPerformOnTarget:_didTestSelector]) {
+        [[FLTestLoggingManager instance] logger:self.result.loggerOutput logInBlock:^{
+            [self performTestCaseSelector:_didTestSelector optional:self];
+        }];
+    }
 }
-#endif
+
+- (NSUInteger) runOrder {
+    return [_testCaseList runOrderForTestCase:self];
+}
+
+- (void) setRunOrder:(NSUInteger) runOrder {
+    [_testCaseList setRunOrder:runOrder forTestCase:self];
+}
+
+- (void) runSooner {
+    [_testCaseList setRunOrder:self.runOrder - 1 forTestCase:self];
+}
+
+- (void) runLater {
+    [_testCaseList setRunOrder:self.runOrder + 1 forTestCase:self];
+}
+
+- (void) runFirst {
+    [_testCaseList setRunOrder:0 forTestCase:self];
+}
+
+- (void) runLast {
+    [_testCaseList setRunOrder:INT_MAX forTestCase:self];
+}
+
+- (void) runBefore:(FLTestCase*) anotherTestCase {
+    NSUInteger idx = [anotherTestCase runOrder];
+    [self setRunOrder:idx - 1];
+}
+
+- (void) runAfter:(FLTestCase*) anotherTestCase {
+    NSUInteger idx = [anotherTestCase runOrder];
+    [self setRunOrder:idx + 1];
+}
 
 #if DEPRECATED
 + (void) runTestWithExpectedFailure:(void (^)()) test
@@ -185,7 +231,6 @@ FLTestCaseFlagPair s_flagPairs[] = {
     
     FLAssertIsTrueWithComment(passed, @"Didn't catch expected exception");
 }
-
 
 + (void) runTestWithExpectedFailure:(void (^)()) test {
     [self runTestWithExpectedFailure:test checkResults:nil];
@@ -217,5 +262,24 @@ FLTestCaseFlagPair s_flagPairs[] = {
 
 @end
 
+/*
 
+@property (readwrite, copy, nonatomic) FLTestBlock testCaseBlock;
 
++ (FLTestCase*) testCase:(NSString*) name testable:(FLTestable*) testable testBlock:(FLTestBlock) block {
+    return FLAutorelease([[FLTestCase alloc] initWithName:name testable:testable testBlock:block]);
+}
+
+@property (readonly, copy, nonatomic) FLTestBlock testCaseBlock;
+- (id) initWithName:(NSString*) name testable:(FLTestable*) testable testBlock:(FLTestBlock) block;
++ (FLTestCase*) testCase:(NSString*) name testable:(FLTestable*) testable testBlock:(FLTestBlock) block;
+
+- (id) initWithName:(NSString*) name testable:(FLTestable*) testable testBlock:(FLTestBlock) block  {
+    self = [self initWithName:name testable:testable];
+    if(self) {
+        _testCaseBlock = [block copy];
+    }
+    return self;
+}
+
+*/

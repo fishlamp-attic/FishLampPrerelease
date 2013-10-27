@@ -27,11 +27,8 @@
 
 + (id) assembledUnitTest:(id) testableObject testCases:(FLTestCaseList*) testCases;
 
-- (void) willRunTestCases:(FLTestCaseList*) testCases
-       withExpectedResult:(FLExpectedTestResult*) expected;
+- (void) willRunTestCases:(FLTestCaseList*) testCases;
 
-- (void) didRunTestCases:(FLTestCaseList*) testCases
-      withExpectedResult:(FLExpectedTestResult*) expected
-        withActualResult:(FLTestResultCollection*) actual;
+- (void) didRunTestCases:(FLTestCaseList*) testCases;
 
 @end

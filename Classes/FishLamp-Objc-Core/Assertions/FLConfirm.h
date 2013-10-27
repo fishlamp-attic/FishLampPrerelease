@@ -10,7 +10,7 @@
 #import "FL_ASSERT.h"
 
 #define FL_CONFIRM_THROWER(__CODE__, __REASON__, __COMMENT__) \
-            FLThrowError([FLAssertionFailedError assertionFailedError:__CODE__ reason:__REASON__ comment:__COMMENT__ stackTrace:FLCreateStackTrace(YES)])
+            FLThrowError([NSError assertionFailedError:__CODE__ reason:__REASON__ comment:__COMMENT__ stackTrace:FLCreateStackTrace(YES)])
 
 #define FLConfirmationFailed() \
             FL_ASSERT_FAILED(FL_CONFIRM_THROWER)

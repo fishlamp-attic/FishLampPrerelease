@@ -22,6 +22,6 @@ FLSingletonProperty(FLPrintfStringFormatter);
 
 @end
 
-//#define FLPrintf(__FORMAT__, ...) [[FLPrintfStringFormatter instance] appendLineWithFormat:__FORMAT__, ##__VA_ARGS__]
+#define FLPrintf(__FORMAT__, ...) [[FLPrintfStringFormatter instance] appendLineWithFormat:__FORMAT__, ##__VA_ARGS__]
 
-#define FLPrintf [FLPrintfStringFormatter instance]
+//#define FLPrintf [FLPrintfStringFormatter instance]

@@ -9,16 +9,23 @@
 
 #import "FLCoreRequired.h"
 #import "FLErrorException.h"
+#import "FLExceptions.h"
 
 extern NSString* const FLCancelExceptionName;
 
-@interface FLCancelError : NSError
-@end
-
-@interface FLCancelException : FLErrorException
-@end
+//@interface FLCancelError : NSError
+//+ (id) cancelError;
+//@end
+//
+//@interface FLCancelException : FLErrorException
+//+ (id) cancelException;
+//@end
 
 @interface NSError (FLCancelling)
 + (NSError*) cancelError;
 @property (readonly, nonatomic, assign) BOOL isCancelError;
 @end
+
+#define FLThrowCancel() \
+            FLThrowErrorCodeWithComment(FLErrorDomain, FLErrorCodeCancel, @"Cancelled")
+

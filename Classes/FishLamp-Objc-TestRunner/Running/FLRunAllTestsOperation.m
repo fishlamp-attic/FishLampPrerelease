@@ -63,9 +63,12 @@
                     FLTestOperation* unitTestOperation =
                         [FLTestOperation unitTestOperation:test];
 
-                    FLTestResultCollection* result =
-                        [FLTestResultCollection fromPromisedResult:
-                            [FLBackgroundQueue runSynchronously:unitTestOperation]];
+
+                    FLPromisedResult result = [FLBackgroundQueue runSynchronously:unitTestOperation];
+
+//                    FLTestResultCollection* result =
+//                        [FLTestResultCollection fromPromisedResult:
+//                            ];
 
                     [resultArray addObject:result];
                 }];

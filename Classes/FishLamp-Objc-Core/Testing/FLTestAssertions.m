@@ -8,6 +8,7 @@
 
 #import "FLTestAssertions.h"
 #import "FLTestLoggingManager.h"
+#import "FishLampMinimum.h"
 
 NSException* FLLogTestException(NSException* ex) {
 

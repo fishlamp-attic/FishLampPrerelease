@@ -6,9 +6,11 @@
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FL_ASSERT.h"
-#import "FLAssertions.h"
+#import "FLCoreRequired.h"
+#import "FLTestLoggingManager.h"
+#import "FLPrintf.h"
 #import "FLExceptions.h"
+#import "NSError+FLTestable.h"
 
 extern NSException* FLLogTestException(NSException* ex);
 
@@ -18,8 +20,9 @@ extern NSException* FLLogTestException(NSException* ex);
 #define FLThrowTestError(__ERROR__) \
             FL_THROW_ERROR(__ERROR__, FLThrowTestException)
 
-#define FL_TEST_THROWER(__CODE__, __REASON__, __COMMENT__) \
-            FLThrowTestError([FLAssertionFailedError assertionFailedError:__CODE__ reason:__REASON__ comment:__COMMENT__ stackTrace:FLCreateStackTrace(YES)])
+#define FL_TEST_THROWER(__CODE__, __CONDITION__, __COMMENT__) \
+            FLPrintf(@"Test Failure: \"%@\" %@", __CONDITION__, __COMMENT__); \
+            FLThrowTestError([NSError testFailedError:__CODE__ condition:__CONDITION__ comment:__COMMENT__ stackTrace:FLCreateStackTrace(YES)])
 
 #define FLTestFailed() \
             FL_ASSERT_FAILED(FL_TEST_THROWER)
@@ -28,40 +31,56 @@ extern NSException* FLLogTestException(NSException* ex);
             FL_ASSERT_FAILED__WITH_COMMENT(FL_TEST_THROWER, __FORMAT__, ##__VA_ARGS__)
 
 #define FLTest(__CONDITION__) \
-            FL_ASSERT(FL_TEST_THROWER, __CONDITION__)
+            do { \
+                if(!(__CONDITION__)) { \
+                    FL_TEST_THROWER(0,  FLStringWithFormatOrNil(@"%s", #__CONDITION__), nil); \
+                } \
+            } while(0)
 
 #define FLTestWithComment(__CONDITION__, __FORMAT__, ...) \
-            FL_ASSERT_WITH_COMMENT(FL_TEST_THROWER, __CONDITION__, __FORMAT__, ##__VA_ARGS__)
+            do { \
+                if(!(__CONDITION__)) { \
+                    FL_TEST_THROWER(0, FLStringWithFormatOrNil(@"%s", #__CONDITION__), FLStringWithFormatOrNil(__FORMAT__, ##__VA_ARGS__)); \
+                } \
+            } while(0)
 
 #define FLTestNil(__PTR__) \
-            FL_ASSERT_IS_NIL(FL_TEST_THROWER, __PTR__)
+            FLTestWithComment((__PTR__) == nil, @"expecting nil value")
 
 #define FLTestNilWithComment(__PTR__, __FORMAT__, ...) \
-            FL_ASSERT_IS_NIL_WITH_COMMENT(FL_TEST_THROWER, __PTR__, __FORMAT__, ##__VA_ARGS__)
+            FLTestWithComment((__PTR__) == nil, __FORMAT__, ##__VA_ARGS__)
 
 #define FLTestNotNil(__PTR__) \
-            FL_ASSERT_IS_NOT_NIL(FL_TEST_THROWER, __PTR__)
+            FLTestWithComment((__PTR__) != nil, @"expecting non nil value")
 
 #define FLTestNotNilWithComment(__PTR__, __FORMAT__, ...) \
-            FL_ASSERT_IS_NOT_NIL_WITH_COMMENT(FL_TEST_THROWER, __PTR__, __FORMAT__, ##__VA_ARGS__)
+            FLTestWithComment((__PTR__) != nil, __FORMAT__, ##__VA_ARGS__)
 
 #define FLTestStringIsNotEmpty(__STRING__) \
-            FL_ASSERT_STRING_IS_NOT_EMPTY(FL_TEST_THROWER, __STRING__)
+            FLTestWithComment([__STRING__ length] != 0, @"expecting a string with non zero length")
 
 #define FLTestStringIsNotEmptyWithComment(__STRING__, __FORMAT__, ...) \
-            FL_ASSERT_STRING_IS_NOT_EMPTY_WITH_COMMENT(FL_TEST_THROWER, __STRING__, __FORMAT__, ##__VA_ARGS__)
+            FLTestWithComment([__STRING__ length] != 0, __FORMAT__, ##__VA_ARGS__)
 
 #define FLTestStringIsEmpty(__STRING__) \
-            FL_ASSERT_STRING_IS_EMPTY(FL_TEST_THROWER, __STRING__)
+            FLTestWithComment([__STRING__ length] == 0, @"expecting zero length string")
 
 #define FLTestStringIsEmptyWithComment(__STRING__, __FORMAT__, ...) \
-            FL_ASSERT_STRING_IS_EMPTY_WITH_COMMENT(FL_TEST_THROWER, __STRING__, __FORMAT__, ##__VA_ARGS__)
+            FLTestWithComment([__STRING__ length] == 0, __FORMAT__, ##__VA_ARGS__)
 
 #define FLTestStringsAreEqual(a,b) \
-            FLTestWithComment(FLStringsAreEqual(a,b), @"\"%@\" != \"%@\"", a, b)
+            do { \
+                NSString* __a = a; \
+                NSString* __b = b; \
+                FLTestWithComment(FLStringsAreEqual(__a, __b), @"\"%@\" != \"%@\"", __a, __b); \
+            } while(0)
 
-#define FLTestStringsNotEqual(a,b) \
-            FLTest(!FLStringsAreEqual(a,b));
+#define FLTestStringsNotEqual(a,b) \ \
+            do { \
+                NSString* __a = a; \
+                NSString* __b = b; \
+                FLTestWithComment(!FLStringsAreEqual(__a, __b), @"\"%@\" == \"%@\"", __a, __b); \
+            } while(0)
 
 #define FLTestIsKindOfClass(__OBJ__, __CLASS__) \
             FLTest([__OBJ__ isKindOfClass:[__CLASS__ class]])

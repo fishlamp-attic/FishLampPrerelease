@@ -11,12 +11,12 @@
 #import "FLTestable.h"
 
 @interface FLUnitTestResult ()
-@property (readwrite, strong) id<FLTestable> unitTest;
+@property (readwrite, strong) id<FLTestable> testable;
 @end
 
 @implementation FLUnitTestResult
 
-@synthesize unitTest = _unitTest;
+@synthesize testable = _unitTest;
 
 #if FL_MRC
 - (void) dealloc {
@@ -35,19 +35,19 @@
 }
 
 - (NSString*) testName {
-    return NSStringFromClass([self.unitTest class]);
+    return NSStringFromClass([self.testable class]);
 }
 
-- (id) initWithUnitTest:(id<FLTestable>) unitTest {
+- (id) initWithUnitTest:(id<FLTestable>) testable {
     self = [super init];
     if(self) {
-        self.unitTest = unitTest;
+        self.testable = testable;
     }
     return self;
 }
 
-+ (FLUnitTestResult*) unitTestResult:(id<FLTestable>) unitTest {
-    return FLAutorelease([[[self class] alloc] initWithUnitTest:unitTest]);
++ (FLUnitTestResult*) unitTestResult:(id<FLTestable>) testable {
+    return FLAutorelease([[[self class] alloc] initWithUnitTest:testable]);
 }
 
 

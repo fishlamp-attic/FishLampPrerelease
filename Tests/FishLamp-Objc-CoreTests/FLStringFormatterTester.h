@@ -12,4 +12,15 @@
 @interface FLStringFormatterTester : FLCoreFrameworkTest
 - (id<FLStringFormatter>) createStringFormatter;
 - (id<FLStringFormatter>) createStringFormatter:(FLWhitespace*) whiteSpace;
+
+- (NSString*) formattedString:(id) formatter
+                   whitespace:(FLWhitespace*) whitespace;
+
+- (NSAttributedString*) formattedAttributedString:(id) formatter
+                                       whitespace:(FLWhitespace*) whitespace;
+
+@end
+
+@interface FLTestWhitespace : FLRepeatingCharTabWhitespace
++ (id) testWhitespace;
 @end

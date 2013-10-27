@@ -18,7 +18,7 @@
     FLAssembledTest* _unitTest;
 }
 
-+ (id) unitTestOperation:(FLAssembledTest*) unitTest;
++ (id) unitTestOperation:(FLAssembledTest*) testable;
 
 @end
 

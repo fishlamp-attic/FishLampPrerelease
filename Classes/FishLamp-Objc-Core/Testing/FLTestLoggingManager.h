@@ -41,6 +41,9 @@ FLSingletonProperty(FLTestLoggingManager);
 
 
 - (id<FLStringFormatter>) logger;
+
+- (void) logger:(id<FLStringFormatter>) logger logInBlock:(dispatch_block_t) block;
+
 @end
 
 /**

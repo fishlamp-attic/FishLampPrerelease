@@ -15,6 +15,6 @@
     id<FLTestable> _unitTest;
 }
 
-@property (readonly, strong) id<FLTestable> unitTest;
+@property (readonly, strong) id<FLTestable> testable;
 
 @end

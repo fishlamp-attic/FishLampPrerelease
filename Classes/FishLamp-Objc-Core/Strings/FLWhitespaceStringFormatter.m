@@ -22,7 +22,6 @@
     if(self) {
         _whitespace = FLRetain(whitespace);
         _whitespaceStringFormatterDelegate = self;
-        self.preprocessor = [FLStringFormatterLineProprocessor instance];
     }
     return self;
 }

@@ -14,28 +14,26 @@
 #import "FLObjcRuntime.h"
 #import "FLTestResult.h"
 #import "FLAsyncQueue.h"
-#import "FLTestCaseOperation.h"
 #import "FLTestable.h"
 
 #import "FLTestFactory.h"
 #import "FLAssembledTest.h"
 
-#import "FLTestCaseRunner.h"
 #import "FLTestResultCollection.h"
 
 @implementation FLTestOperation
 
-- (id) initWithUnitTest:(FLAssembledTest*) unitTest {
+- (id) initWithUnitTest:(FLAssembledTest*) testable {
 	self = [super init];
 	if(self) {
-        FLAssertNotNil(unitTest);
-		_unitTest = FLRetain(unitTest);
+        FLAssertNotNil(testable);
+		_unitTest = FLRetain(testable);
 	}
 	return self;
 }
 
-+ (id) unitTestOperation:(FLAssembledTest*) unitTest {
-   return FLAutorelease([[[self class] alloc] initWithUnitTest:unitTest]);
++ (id) unitTestOperation:(FLAssembledTest*) testable {
+   return FLAutorelease([[[self class] alloc] initWithUnitTest:testable]);
 }
 
 #if FL_MRC
@@ -47,28 +45,55 @@
 
 - (FLPromisedResult) performSynchronously {
 
-    FLExpectedTestResult* testCaseResults = [FLExpectedTestResult testResultCollection];
-
     FLTestCaseList* testCases = _unitTest.testCaseList;
-    [_unitTest willRunTestCases:testCases withExpectedResult:testCaseResults];
 
-    FLTestCaseRunner* runner = [FLTestCaseRunner testCaseRunner];
-    [testCases sort];
+    NSArray* startList = FLCopyWithAutorelease(testCases.testCases);
 
-    for(FLTestCase* testCase in testCases) {
-
-        FLPromisedResult result = [runner performTestCase:testCase];
-
-        FLTestCaseResult* testCaseResult = [FLTestCaseResult fromPromisedResult:result];
-
-        [testCaseResults setTestResult:result forKey:testCase.testCaseName];
+    for(FLTestCase* testCase in startList) {
+        // note that this can alter the run order which is why we're iterating on a copy of the list.
+        [testCase willPerformTest];
     }
 
-    [_unitTest didRunTestCases:testCases withExpectedResult:testCaseResults withActualResult:testCaseResults];
+    if([_unitTest respondsToSelector:@selector(willRunTestCases:)]) {
+        [_unitTest willRunTestCases:testCases];
+    }
 
-    return testCaseResults;
+    for(FLTestCase* testCase in testCases) {
+        [testCase performTest];
+        [testCase didPerformTest];
+
+        if(testCase.isDisabled) {
+            NSString* reason = testCase.disabledReason;
+            if(![reason length]) {
+                reason = @"NO REASON";
+            }
+            FLTestLog(@"DISABLED: %@ (%@)", testCase.testCaseName, reason);
+        }
+        else if(testCase.result.passed) {
+            FLTestLog(@"Passed: %@", testCase.testCaseName);
+        }
+        else {
+            FLTestLog(@"FAILED: %@", testCase.testCaseName);
+
+            [[FLTestLoggingManager instance] indent:^{
+                [[FLTestLoggingManager instance] appendString:testCase.result.loggerOutput];
+            }];
+        }
+
+    }
+
+    if([_unitTest respondsToSelector:@selector(didRunTestCases:)]) {
+        [_unitTest didRunTestCases:testCases];
+    }
+
+    for(FLTestCase* testCase in testCases) {
+       if(!testCase.result.passed) {
+            return FLFailedResult;
+       }
+    }
+
+    return FLSuccessfulResult;
 }
-
 
 @end
 

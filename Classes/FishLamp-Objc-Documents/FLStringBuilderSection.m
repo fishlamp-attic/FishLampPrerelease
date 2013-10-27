@@ -22,6 +22,15 @@
 + (id) documentSectionOutdent;
 @end
 
+@interface FLDocumentSectionEOL : NSObject<FLAppendableString>
++ (id) documentSectionEOL;
+@end
+
+@interface FLDocumentSectionBlankLine : NSObject<FLAppendableString>
++ (id) documentSectionBlankLine;
+@end
+
+
 @implementation FLDocumentSectionIndent
 + (id) documentSectionIndent {
     FLReturnStaticObject(FLAutorelease([[[self class] alloc] init]));
@@ -30,7 +39,7 @@
     [stringFormatter indent];
 }
 - (NSString*) description {
-    return @"INDENT";
+    return @"-->";
 }
 @end
 
@@ -42,7 +51,34 @@
     [stringFormatter outdent];
 }
 - (NSString*) description {
-    return @"OUTDENT";
+    return @"<--";
+}
+
+@end
+
+@implementation FLDocumentSectionEOL
++ (id) documentSectionEOL {
+    FLReturnStaticObject(FLAutorelease([[[self class] alloc] init]));
+}
+- (void) appendToStringFormatter:(id<FLStringFormatter>) stringFormatter  {
+    [stringFormatter closeLine];
+}
+- (NSString*) description {
+    return @"EOL";
+}
+
+@end
+
+
+@implementation FLDocumentSectionBlankLine
++ (id) documentSectionBlankLine {
+    FLReturnStaticObject(FLAutorelease([[[self class] alloc] init]));
+}
+- (void) appendToStringFormatter:(id<FLStringFormatter>) stringFormatter  {
+    [stringFormatter appendBlankLine];
+}
+- (NSString*) description {
+    return @"LINE";
 }
 
 @end
@@ -81,7 +117,9 @@
     FLAssertNotNil(_lines);
     FLAssertNotNil(stringFormatter);
 
-    [_lines addObject:@""];
+    [_lines addObject:[FLDocumentSectionBlankLine documentSectionBlankLine]];
+    _needsLine = YES;
+    _lineOpen = NO;
 }
 
 - (void) stringFormatterOpenLine:(FLStringFormatter*) stringFormatter {
@@ -94,6 +132,9 @@
 - (BOOL) stringFormatterCloseLine:(FLStringFormatter*) stringFormatter {
     FLAssertNotNil(_lines);
     FLAssertNotNil(stringFormatter);
+
+    [_lines addObject:[FLDocumentSectionEOL documentSectionEOL]];
+
     _needsLine = YES;
     if(_lineOpen) {
         _lineOpen = NO;
@@ -158,8 +199,7 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter  
     [self willBuildWithStringFormatter:anotherStringFormatter];
 
     for(id<FLStringFormatter> line in _lines) {
-        [line appendToStringFormatter:anotherStringFormatter];
-        [line closeLine];
+        [anotherStringFormatter appendString:line];
     }
 
     [self didBuildWithStringFormatter:anotherStringFormatter];
