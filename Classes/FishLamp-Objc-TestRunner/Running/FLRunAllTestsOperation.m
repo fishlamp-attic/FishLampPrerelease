@@ -54,15 +54,9 @@
             @autoreleasepool {
                 FLAssembledTest* test = [factory createAssembledTest];
 
-                if(test.isDisabled) {
-                    FLTestLog(@"Unit test disabled: %@, Reason: %@", test.testName, test.disabledReason);
-                    continue;
-                }
-
                 [FLTestOutput indent:^{
                     FLTestOperation* unitTestOperation =
                         [FLTestOperation unitTestOperation:test];
-
 
                     FLPromisedResult result = [FLBackgroundQueue runSynchronously:unitTestOperation];
 

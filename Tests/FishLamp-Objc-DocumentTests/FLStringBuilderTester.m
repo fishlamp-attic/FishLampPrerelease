@@ -38,8 +38,9 @@
     return FLAutorelease(string);
 }
 
-//- (NSString*) disableAll {
-//    return @"Tests don't work with formtter tests";
-//}
+- (void) willRunTestCases:(FLTestCaseList *)testCases {
+//    [testCases disableAllTests:@"my name is fred"];
+}
+
 
 @end

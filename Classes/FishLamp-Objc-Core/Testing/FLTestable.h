@@ -23,16 +23,6 @@
 
 // all other tests are run in alphebetical order.
 
-- (void) test;
-
-/**
- *  Defining this disables all the tests in this testable.
- *  
- *  @return Optional string describing why the test is disabled.
- */
-- (NSString*) disableAll;
-
-
 /**
  *  Return a custom name for the unit test. By default this is the name of the class.
  */

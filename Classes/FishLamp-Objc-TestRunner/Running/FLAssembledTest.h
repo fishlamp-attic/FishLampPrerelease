@@ -19,8 +19,8 @@
 }
 
 @property (readonly, strong, nonatomic) NSString* testName;
-@property (readonly, assign, nonatomic) BOOL isDisabled;
-@property (readonly, strong, nonatomic) NSString* disabledReason;
+//@property (readonly, assign, nonatomic) BOOL isDisabled;
+//@property (readonly, strong, nonatomic) NSString* disabledReason;
 
 @property (readonly, strong, nonatomic) id testableObject;
 @property (readonly, strong, nonatomic) FLTestCaseList* testCaseList;

@@ -15,10 +15,18 @@
 @property (readwrite, assign) FLTestCaseList* testCaseList;
 @end
 
+@interface FLTestCaseList ()
+@property (readwrite, strong) NSString* disabledReason;
+@end
+
 @implementation FLTestCaseList
 
+@synthesize isDisabled = _isDisabled;
+@synthesize disabledReason = _disabledReason;
+
 - (id) initWithArrayOfTestCases:(NSArray*) array {
-	self = [super init];
+
+    self = [super init];
 	if(self) {
 		_testCases = [array mutableCopy];
 	}
@@ -43,10 +51,20 @@
 
 #if FL_MRC
 - (void)dealloc {
+    [_disabledReason release];
     [_testCases release];
 	[super dealloc];
 }
 #endif
+
+- (void) disableAllTests:(NSString*) reason {
+    _disabled = YES;
+    self.disabledReason = reason;
+
+    for(FLTestCase* testCase in _testCases) {
+        [testCase disable:reason];
+    }
+}
 
 - (FLTestCase*) testCaseForName:(NSString*) name {
 

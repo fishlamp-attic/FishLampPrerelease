@@ -13,7 +13,12 @@
 @interface FLTestCaseList : NSObject<NSFastEnumeration> {
 @private
     NSMutableArray* _testCases;
+    BOOL _disabled;
+    NSString* _disabledReason;
 }
+
+@property (readonly, assign, nonatomic) BOOL isDisabled;
+@property (readonly, strong, nonatomic) NSString* disabledReason;
 
 @property (readonly, copy, nonatomic) NSArray* testCases;
 
@@ -28,5 +33,7 @@
 - (void) setRunOrder:(NSUInteger) order forSelector:(SEL) selector;
 - (void) setRunOrder:(NSUInteger) order forTestCase:(FLTestCase*) testCase;
 - (NSUInteger) runOrderForTestCase:(FLTestCase*) testCase;
+
+- (void) disableAllTests:(NSString*) reason;
 
 @end
