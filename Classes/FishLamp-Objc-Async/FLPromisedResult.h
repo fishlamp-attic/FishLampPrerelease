@@ -8,6 +8,9 @@
 
 #import "FishLampMinimum.h"
 
+/**
+ *  Abstract type for a unfufilled promise. This will either be an error or a valid value.
+ */
 #define FLPromisedResult id
 
 @interface NSObject (FLPromisedResult)

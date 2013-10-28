@@ -8,6 +8,7 @@
 //
 
 #import "FLTcpConnectionTests.h"
+#import "FishLampTesting.h"
 
 //#import "FLTcpConnection.h"
 

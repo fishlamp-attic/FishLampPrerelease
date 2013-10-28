@@ -13,6 +13,7 @@
 #import "FLTestable.h"
 #import "FLTestGroup.h"
 #import "FLTestGroupOrganizer.h"
+#import "FLTestableRunOrder.h"
 
 @interface FLTestOrganizer ()
 @property (readwrite, strong, nonatomic) NSArray* unitTestFactories;
@@ -191,8 +192,10 @@ dependsOnUnitTestClass:(Class) anotherClass {
     FLConfirmWithComment(theClass != anotherClass, @"%@ can't depend on self", NSStringFromClass(theClass));
 
     NSArray* dependencies = nil;
-    if([theClass respondsToSelector:@selector(testDependencies)]) {
-        dependencies = [theClass testDependencies];
+    if([theClass respondsToSelector:@selector(specifyRunOrder:)]) {
+        FLTestableRunOrder* runOrder = [FLTestableRunOrder testableRunOrder];
+        [theClass specifyRunOrder:runOrder];
+        dependencies = FLRetainWithAutorelease([runOrder dependencies]);
     }
 
     if(!dependencies) {
@@ -232,8 +235,11 @@ dependsOnUnitTestClass:(Class) anotherClass {
         for(int j = i - 1; j >= 0; j--) {
             id<FLTestFactory> top = [newList objectAtIndex:j];
 
-            BOOL  bottomDependsOnTop = [self testableClass:bottom.testableClass dependsOnUnitTestClass:top.testableClass];
-            BOOL  topDependsOnBottom = [self testableClass:top.testableClass dependsOnUnitTestClass:bottom.testableClass];
+            BOOL  bottomDependsOnTop = [self testableClass:bottom.testableClass
+                                    dependsOnUnitTestClass:top.testableClass];
+
+            BOOL  topDependsOnBottom = [self testableClass:top.testableClass
+                                    dependsOnUnitTestClass:bottom.testableClass];
 
             FLConfirmWithComment(bottomDependsOnTop == NO || topDependsOnBottom == NO,
                 @"%@ and %@ can't depend on each other", NSStringFromClass(top.testableClass), NSStringFromClass(bottom.testableClass));

@@ -15,12 +15,15 @@
     NSMutableArray* _testCases;
     BOOL _disabled;
     NSString* _disabledReason;
+
+    NSMutableArray* _prerequisiteTestClasses;
 }
 
 @property (readonly, assign, nonatomic) BOOL isDisabled;
 @property (readonly, strong, nonatomic) NSString* disabledReason;
 
 @property (readonly, copy, nonatomic) NSArray* testCases;
+@property (readonly, copy, nonatomic) NSArray* prerequisiteTestClasses;
 
 + (id) testCaseList;
 + (id) testCaseListWithArrayOfTestCases:(NSArray*) testCases;
@@ -35,5 +38,7 @@
 - (NSUInteger) runOrderForTestCase:(FLTestCase*) testCase;
 
 - (void) disableAllTests:(NSString*) reason;
+
+- (void) addPrerequisiteTestClass:(Class) aClass;
 
 @end

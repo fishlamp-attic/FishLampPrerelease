@@ -19,7 +19,7 @@
     [builder appendString:@"hello"];
     [builder closeSection];
 
-    FLTestStringsAreEqual([builder buildStringWithNoWhitespace], xml);
+    FLTAssertStringsAreEqual([builder buildStringWithNoWhitespace], xml);
 }
 
 

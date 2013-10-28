@@ -12,7 +12,7 @@
 #import "FLErrorException.h"
 #import "FLStackTrace.h"
 
-extern NSString* const FLTestFailedErrorDomain;
+extern NSString* const FLTAssertFailedErrorDomain;
 
 @interface NSError (FLTestable)
 + (id) testFailedError:(NSInteger) code

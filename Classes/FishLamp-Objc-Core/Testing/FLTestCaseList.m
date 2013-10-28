@@ -23,6 +23,7 @@
 
 @synthesize isDisabled = _isDisabled;
 @synthesize disabledReason = _disabledReason;
+@synthesize prerequisiteTestClasses = _prerequisiteTestClasses;
 
 - (id) initWithArrayOfTestCases:(NSArray*) array {
 
@@ -125,6 +126,14 @@
 
 - (NSString*) description {
     return [_testCases description];
+}
+
+- (void) addPrerequisiteTestClass:(Class) aClass {
+    if(!_prerequisiteTestClasses) {
+        _prerequisiteTestClasses = [[NSMutableArray alloc] init];
+    }
+
+    [_prerequisiteTestClasses addObject:aClass];
 }
 
 @end

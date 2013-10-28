@@ -8,6 +8,7 @@
 
 #import "FLTestable.h"
 #import "FLCoreFrameworkTest.h"
+#import "FishLampTesting.h"
 
 @interface FLStringFormatterTester : FLCoreFrameworkTest
 - (id<FLStringFormatter>) createStringFormatter;

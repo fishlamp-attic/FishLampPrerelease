@@ -13,7 +13,6 @@
 @interface FLPromise ()
 @property (readwrite, strong) FLPromisedResult result;
 @property (readwrite, strong) FLPromise* nextPromise;
-//@property (readwrite, assign, getter=isFinished) BOOL finished;
 @property (readwrite, copy) fl_completion_block_t completion;
 @end
 
@@ -32,7 +31,6 @@ static NSInteger s_max = 0;
 
 @synthesize nextPromise = _nextPromise;
 @synthesize result = _result;
-//@synthesize finished = _finished;
 @synthesize completion = _completion;
 @synthesize semaphore = _semaphore;
 
@@ -106,6 +104,14 @@ static NSInteger s_max = 0;
 
 - (BOOL) isFinished {
     return self.semaphore == nil;
+}
+
+- (FLPromiseState) state {
+    if(self.isFinished) {
+        return [self.result isError] ? FLPromiseStateRejected : FLPromiseStateResolved;
+    }
+
+    return FLPromiseStateUnfufilled;
 }
 
 - (FLPromisedResult) waitUntilFinished {

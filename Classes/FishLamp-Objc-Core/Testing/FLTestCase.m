@@ -20,7 +20,7 @@
 @property (readwrite, assign) id target;
 @property (readwrite, strong) NSString* disabledReason;
 @property (readwrite, assign) FLTestCaseList* testCaseList;
-@property (readwrite, strong) FLTestCaseResult* result;
+@property (readwrite, strong) FLTestResult* result;
 @end
 
 @implementation FLTestCase

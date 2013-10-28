@@ -19,8 +19,8 @@
     return [FLTestGroup frameworkTestGroup];
 }
 
-+ (NSArray*) testDependencies {
-    return [NSArray arrayWithObject:[FLTimeoutTests class]];
++ (void) specifyRunOrder:(FLTestableRunOrder*) runOrder {
+    [runOrder runTestsForClass:self afterTestsForClass:[FLTimeoutTests class]];
 }
 
 - (void) _didExecuteOperation:(FLPerformSelectorOperation*) operation {

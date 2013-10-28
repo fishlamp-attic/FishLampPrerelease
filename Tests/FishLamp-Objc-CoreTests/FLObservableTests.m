@@ -8,6 +8,7 @@
 //
 
 #import "FLObservableTests.h"
+#import "FishLampTesting.h"
 
 @implementation FLObservableTests
 

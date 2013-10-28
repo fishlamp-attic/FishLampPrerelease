@@ -11,14 +11,18 @@
 #import "FLTimeoutTests.h"
 #import "FishLampAsync.h"
 
+@interface FLPromise (Testing)
+@property (readonly, strong) FLPromise* nextPromise;
+@end
+
 @implementation FLFinisherTests
 
 + (FLTestGroup*) testGroup {
     return [FLTestGroup frameworkTestGroup];
 }
 
-+ (NSArray*) testDependencies {
-    return [NSArray arrayWithObject:[FLTimeoutTests class]];
++ (void) specifyRunOrder:(FLTestableRunOrder*) runOrder {
+    [runOrder runTestsForClass:self afterTestsForClass:[FLTimeoutTests class]];
 }
 
 - (void) testSingleCount {
@@ -31,11 +35,11 @@
     
     FLPromise* promise = [finisher addPromise];
     
-    FLAssert(!promise.isFinished);
-    FLAssert(fired == NO);
+    Assert(!promise.isFinished);
+    Assert(fired == NO);
     [finisher setFinished];
-    FLAssert(promise.isFinished);
-    FLAssert(fired == YES);
+    Assert(promise.isFinished);
+    Assert(fired == YES);
 }
 
 - (void) willTestDoubleCount:(FLTestCase*) testCase {
@@ -52,10 +56,10 @@
     
     FLPromise* promise = [finisher addPromise];
 
-    FLAssert(!promise.isFinished);
-    FLAssert(fired == NO);
+    Assert(!promise.isFinished);
+    Assert(fired);
     [finisher setFinished];
-    FLAssert(promise.isFinished);
+    Assert(promise.isFinished);
 
     BOOL gotError = NO;
     @try {
@@ -66,7 +70,7 @@
         gotError = YES;
     }
     
-    FLAssertWithComment(gotError == YES, @"expecting an error");
+    AssertWithComment(gotError == YES, @"expecting an error");
 }
 
 - (void) testBasicAsyncTest {
@@ -74,16 +78,41 @@
     FLTestLog(@"async self test");
     
     FLFinisher* finisher = [FLFinisher finisher];
-    FLPromise* promise = [finisher addPromise];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         [NSThread sleepForTimeInterval:0.25];
         FLTestLog(@"done in thread");
         [finisher setFinished];
         });
-    
-    [promise waitUntilFinished];
-    FLAssert(promise.isFinished);
+
+    FLPromisedResult result = [finisher waitUntilFinished];
+    AssertNotNil(result);
+    Assert(finisher.isFinished);
+}
+
+- (void) testPromiseAdding {
+    FLPromise* promise = [FLPromise promise];
+    AssertNotNil(promise);
+    AssertNil(promise.nextPromise);
+
+    NSMutableArray* array = [NSMutableArray array];
+    [array addObject:promise];
+
+    for(int i = 0; i < 5; i++) {
+        FLPromise* anotherPromise = [FLPromise promise];
+        [array addObject:anotherPromise];
+
+        [promise addPromise:anotherPromise];
+    }
+
+    FLPromise* walker = promise;
+    FLAssert(walker == [array objectAtIndex:0]);
+
+    int i = 0;
+    while(walker) {
+        Assert(walker == [array objectAtIndex:i++]);
+        walker = walker.nextPromise;
+    }
 }
 
 

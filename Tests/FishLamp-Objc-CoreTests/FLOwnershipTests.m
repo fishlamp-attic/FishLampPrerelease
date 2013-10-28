@@ -50,19 +50,19 @@ static BOOL s_deleted = NO;
 - (void) testMethodForwarding {
 
     FLObjectProxyTestObject* testObject = [FLObjectProxyTestObject objectProxyTestObject];
-    FLTest(!testObject.propertyWasCalled);
+    FLTAssert(!testObject.propertyWasCalled);
     testObject.propertyWasCalled = YES;
-    FLTest(testObject.propertyWasCalled);
+    FLTAssert(testObject.propertyWasCalled);
 
     testObject.propertyWasCalled = NO;
     id proxy = [FLRetainedObject retainedObject:testObject];
 
-    FLTest([proxy representedObject] == testObject);
-    FLTest(![proxy propertyWasCalled]);
+    FLTAssert([proxy representedObject] == testObject);
+    FLTAssert(![proxy propertyWasCalled]);
     [proxy setPropertyWasCalled:YES];
 
-    FLTest(testObject.propertyWasCalled);
-    FLTest([proxy propertyWasCalled]);
+    FLTAssert(testObject.propertyWasCalled);
+    FLTAssert([proxy propertyWasCalled]);
 }
 
 - (void) testRetainedObjectProxy {
@@ -70,9 +70,9 @@ static BOOL s_deleted = NO;
 
     @autoreleasepool {
         FLRetainedObject* object = [FLRetainedObject retainedObject:[FLObjectProxyTestObject objectProxyTestObject]];
-        FLTest(!s_deleted);
+        FLTAssert(!s_deleted);
     }
-    FLTest(s_deleted);
+    FLTAssert(s_deleted);
 }
 
 @end

@@ -10,7 +10,7 @@
 #import "FLErrorException.h"
 #import "FLAssertions.h"
 
-NSString* const FLTestFailedErrorDomain = @"FLTestFailedErrorDomain";
+NSString* const FLTAssertFailedErrorDomain = @"FLTAssertFailedErrorDomain";
 
 @implementation NSError (FLTestable)
 
@@ -19,7 +19,7 @@ NSString* const FLTestFailedErrorDomain = @"FLTestFailedErrorDomain";
                comment:(NSString*) comment
             stackTrace:(FLStackTrace*) stackTrace{
  
-    return [self errorWithDomain:FLTestFailedErrorDomain
+    return [self errorWithDomain:FLTAssertFailedErrorDomain
                             code:code
             localizedDescription:condition
                         userInfo:nil

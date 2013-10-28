@@ -48,10 +48,6 @@
     return [NSString stringWithFormat:@"%@ { group=%@ }", [super description], [[[self class] testGroup] description]];
 }
 
-+ (NSArray*) testDependencies {
-    return nil;
-}
-
 - (FLTestCase*) testCaseForSelector:(SEL) selector {
     return [self.testCaseList testCaseForSelector:selector];
 }

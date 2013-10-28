@@ -1792,6 +1792,11 @@
 		27B4BCB7181DB95B0027007A /* FLXmlEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */; };
 		27B4BCB8181DB95B0027007A /* FLXmlEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */; };
 		27B4BCB9181DB95B0027007A /* FLXmlEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */; };
+		27D79398181EC3DB0046E5DA /* FLTestableRunOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D79397181EC3DB0046E5DA /* FLTestableRunOrder.m */; };
+		27D79399181EC3DB0046E5DA /* FLTestableRunOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D79397181EC3DB0046E5DA /* FLTestableRunOrder.m */; };
+		27D7939A181EC3DB0046E5DA /* FLTestableRunOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D79397181EC3DB0046E5DA /* FLTestableRunOrder.m */; };
+		27D7939B181EC3DB0046E5DA /* FLTestableRunOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D79397181EC3DB0046E5DA /* FLTestableRunOrder.m */; };
+		27D7939C181EC3DB0046E5DA /* FLTestableRunOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D79397181EC3DB0046E5DA /* FLTestableRunOrder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2694,6 +2699,9 @@
 		27B4BCB3181DB95B0027007A /* FLXmlEncodingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXmlEncodingTests.h; sourceTree = "<group>"; };
 		27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXmlEncodingTests.m; sourceTree = "<group>"; };
 		27CBC1F416768BA600753D0A /* FishLamp-Objc-OSX-Universal-MRC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-Universal-MRC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27D79396181EC3DB0046E5DA /* FLTestableRunOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestableRunOrder.h; sourceTree = "<group>"; };
+		27D79397181EC3DB0046E5DA /* FLTestableRunOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestableRunOrder.m; sourceTree = "<group>"; };
+		27D793A0181ED5A20046E5DA /* FLAssertUndef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAssertUndef.h; sourceTree = "<group>"; };
 		B214727B17DE7BBC00985872 /* FishLamp-Objc-iOS-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-iOS-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B263E0E317DE7CF80049EF94 /* PiecemealCompilerFlagOverrides.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PiecemealCompilerFlagOverrides.h; sourceTree = "<group>"; };
 		B263E0E417DE7D4C0049EF94 /* PiecemealCompilerFlagOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PiecemealCompilerFlagOverrides.h; path = "Piecemeal-XcodeConfigs/PiecemealCompilerFlagOverrides.h"; sourceTree = "<group>"; };
@@ -3389,6 +3397,7 @@
 				2767D59718132B1A001EF21C /* FLAssertions.m */,
 				2767D59818132B1A001EF21C /* FLConfirm.h */,
 				2767D59918132B1A001EF21C /* FLConfirm.m */,
+				27D793A0181ED5A20046E5DA /* FLAssertUndef.h */,
 			);
 			path = Assertions;
 			sourceTree = "<group>";
@@ -3573,6 +3582,8 @@
 				2767E1091813540A001EF21C /* FLTestable+Utils.m */,
 				27B4BCAC181DACE50027007A /* NSError+FLTestable.h */,
 				27B4BCAD181DACE50027007A /* NSError+FLTestable.m */,
+				27D79396181EC3DB0046E5DA /* FLTestableRunOrder.h */,
+				27D79397181EC3DB0046E5DA /* FLTestableRunOrder.m */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -5187,6 +5198,7 @@
 				2767D96B18132B1B001EF21C /* FLNonretainedArray.m in Sources */,
 				2767D9ED18132B1B001EF21C /* FLPrintf.m in Sources */,
 				2767DBF518132B1C001EF21C /* FLNetworkErrors.m in Sources */,
+				27D79399181EC3DB0046E5DA /* FLTestableRunOrder.m in Sources */,
 				2767DC2718132B1C001EF21C /* FLNetworkServerContext.m in Sources */,
 				2767DA3D18132B1B001EF21C /* FLRuntimeInfo.m in Sources */,
 				2767D89918132B1B001EF21C /* NSBundle+FLCurrentBundle.m in Sources */,
@@ -5570,6 +5582,7 @@
 				2767D96D18132B1B001EF21C /* FLNonretainedArray.m in Sources */,
 				2767D9EF18132B1B001EF21C /* FLPrintf.m in Sources */,
 				2767DBF718132B1C001EF21C /* FLNetworkErrors.m in Sources */,
+				27D7939B181EC3DB0046E5DA /* FLTestableRunOrder.m in Sources */,
 				2767DC2918132B1C001EF21C /* FLNetworkServerContext.m in Sources */,
 				2767DA3F18132B1B001EF21C /* FLRuntimeInfo.m in Sources */,
 				2767D89B18132B1B001EF21C /* NSBundle+FLCurrentBundle.m in Sources */,
@@ -5967,6 +5980,7 @@
 				2767D96A18132B1B001EF21C /* FLNonretainedArray.m in Sources */,
 				2767D9EC18132B1B001EF21C /* FLPrintf.m in Sources */,
 				2767DBF418132B1C001EF21C /* FLNetworkErrors.m in Sources */,
+				27D79398181EC3DB0046E5DA /* FLTestableRunOrder.m in Sources */,
 				2767DC2618132B1C001EF21C /* FLNetworkServerContext.m in Sources */,
 				2767DA3C18132B1B001EF21C /* FLRuntimeInfo.m in Sources */,
 				2767D89818132B1B001EF21C /* NSBundle+FLCurrentBundle.m in Sources */,
@@ -6318,6 +6332,7 @@
 				2767D96C18132B1B001EF21C /* FLNonretainedArray.m in Sources */,
 				2767D9EE18132B1B001EF21C /* FLPrintf.m in Sources */,
 				2767DBF618132B1C001EF21C /* FLNetworkErrors.m in Sources */,
+				27D7939A181EC3DB0046E5DA /* FLTestableRunOrder.m in Sources */,
 				2767DC2818132B1C001EF21C /* FLNetworkServerContext.m in Sources */,
 				2767DA3E18132B1B001EF21C /* FLRuntimeInfo.m in Sources */,
 				2767D89A18132B1B001EF21C /* NSBundle+FLCurrentBundle.m in Sources */,
@@ -6669,6 +6684,7 @@
 				2767D96E18132B1B001EF21C /* FLNonretainedArray.m in Sources */,
 				2767D9F018132B1B001EF21C /* FLPrintf.m in Sources */,
 				2767DBF818132B1C001EF21C /* FLNetworkErrors.m in Sources */,
+				27D7939C181EC3DB0046E5DA /* FLTestableRunOrder.m in Sources */,
 				2767DC2A18132B1C001EF21C /* FLNetworkServerContext.m in Sources */,
 				2767DA4018132B1B001EF21C /* FLRuntimeInfo.m in Sources */,
 				2767D89C18132B1B001EF21C /* NSBundle+FLCurrentBundle.m in Sources */,

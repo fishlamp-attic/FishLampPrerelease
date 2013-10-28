@@ -7,26 +7,23 @@
 //
 
 #import "FLCoreRequired.h"
-#import "FLTestGroup.h"
-#import "FLTestCaseList.h"
-#import "FLTestResultCollection.h"
 
-@protocol FLTestable <NSObject>
-
-@optional
-
-// any method with "test" in it (no params) will be run.
-
-// tests with "first" and "test" will be run first
-
-// tests with "last" and "test" will be run last;
-
-// all other tests are run in alphebetical order.
+@class FLTestCase;
+@class FLTestGroup;
+@class FLTestCaseList;
+@class FLExpectedTestResult;
+@class FLTestResultCollection;
+@class FLTestableRunOrder;
 
 /**
- *  Return a custom name for the unit test. By default this is the name of the class.
+ *  A FLTestable is an object that represents a automoated test of some kind. Either a unit or functional test.
+ *  Any method with "test" in it (no params) will be run.
+ *  Tests with "first" and "test" will be run first
+ *  Tests with "last" and "test" will be run last;
+ *  All other tests are run in alphebetical order.
  */
-@property (readonly, strong) NSString* unitTestName;
+@protocol FLTestable <NSObject>
+@optional
 
 /**
  *  Called before test is run.
@@ -46,11 +43,12 @@
 - (void) didRunTestCases:(FLTestCaseList*) testCases;
 
 /**
- *  Optionally return Array of Classes that this test depends on
+ *  Optionally set dependencies in run order at the class level for running FLTestable subclasses.
+ *  This is called while the tests are getting setup by the Test Organizer.
  *  
- *  @return Array of Classes
+ *  @param runOrder FLTestableRunOrder specifies dependencies.
  */
-+ (NSArray*) testDependencies;
++ (void) specifyRunOrder:(FLTestableRunOrder*) runOrder;
 
 /**
  *  Optionally add this test to a test group.
@@ -68,6 +66,10 @@
     FLTestResultCollection* _testResults;
 }
 
+/**
+ *  Return a custom name for the unit test. By default this is the name of the class.
+ */
+@property (readonly, strong) NSString* unitTestName;
 
 - (FLTestCase*) testCaseForSelector:(SEL) selector;
 
@@ -77,28 +79,3 @@
 - (void) didFinishExecutingTestCases;
 
 @end
-
-#ifndef TESTS
-#define TESTS 1
-#endif
-
-#import "FishLampTesting.h"
-
-#define FLGetTestCase() [self testCaseForSelector:_cmd]
-
-#define FLDisableTest() \
-            do { \
-                [[self testCaseForSelector:_cmd] setDisabled:YES]; \
-                return; \
-            } while(0)
-
-#define FLTestMode(YESNO) \
-            [[self testCaseForSelector:_cmd] setDebugMode:YESNO]
-
-#define FLConfirmPrerequisiteTestCasePassed(NAME) \
-            do { \
-                NSString* __name = @#NAME; \
-                FLTestCase* testCase = [self testCaseForName:__name]; \
-                FLTestNotNilWithComment(testCase, @"prerequisite test case not found: %@", __name); \
-                FLTestWithComment([[testCase result] passed], @"prerequisite test case \"%@\" failed", testCase.testCaseName); \
-            } while(0);
