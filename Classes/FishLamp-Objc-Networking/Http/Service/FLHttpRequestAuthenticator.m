@@ -134,8 +134,9 @@
         if([myself shouldAuthenticateUser:user]) {
             authenticatedUser = FLRetainWithAutorelease([myself synchronouslyAuthenticateUser:user]);
         }
-
-        [myself.delegate httpRequestAuthenticator:self didAuthenticateUser:user];
+        else {
+            [myself.delegate httpRequestAuthenticator:self didAuthenticateUser:user];
+        }
 
         FLReleaseWithNil(user);
         FLReleaseWithNil(myself);

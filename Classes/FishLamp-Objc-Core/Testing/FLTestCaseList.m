@@ -69,7 +69,7 @@
 - (FLTestCase*) testCaseForName:(NSString*) name {
 
     for(FLTestCase* testCase in _testCases) {
-        if([testCase.testCaseName isEqual:name]) {
+        if([testCase.selector.selectorName isEqual:name] ) {
             return testCase;
         }
     }
@@ -121,6 +121,10 @@
 
 - (NSArray*) testCases {
     return FLCopyWithAutorelease(_testCases);
+}
+
+- (NSString*) description {
+    return [_testCases description];
 }
 
 @end

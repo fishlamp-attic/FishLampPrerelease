@@ -117,6 +117,5 @@ int32_t _FLAtomicGet32(int32_t *target) {
 #define FLAtomicSetPointer_(__POINTER__, __NEW_POINTER__) \
             FLAtomicSetInteger((fl_atomic_integer_t*) &(__POINTER__), (fl_atomic_integer_t*) __NEW_POINTER__)
 
-
-extern void FLAtomicBlock(dispatch_once_t* shared_addr, dispatch_block_t block);
+extern void FLCriticalSection(void* shared_addr, dispatch_block_t block);
 

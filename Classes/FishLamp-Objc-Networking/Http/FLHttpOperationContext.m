@@ -1,5 +1,5 @@
 //
-//  FLHttpController.m
+//  FLHttpOperationContext.m
 //  FishLampConnect
 //
 //  Created by Mike Fullerton on 3/27/13.
@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLHttpController.h"
+#import "FLHttpOperationContext.h"
 #import "FLHttpRequest.h"
 #import "FLHttpUser.h"
 #import "FLHttpRequestAuthenticator.h"
@@ -16,7 +16,7 @@
 
 NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDidLogoutUserNotification";
 
-@interface FLHttpController ()
+@interface FLHttpOperationContext ()
 @property (readwrite, strong) id<FLUserService> userService;
 @property (readwrite, strong) id<FLStorageService> storageService;
 @property (readwrite, strong) FLHttpRequestAuthenticator* httpRequestAuthenticator;
@@ -24,7 +24,8 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 @property (readwrite, strong) FLServiceList* serviceList;
 @end
 
-@implementation FLHttpController
+@implementation FLHttpOperationContext
+
 @synthesize userService = _userService;
 @synthesize storageService = _storageService;
 @synthesize httpRequestAuthenticator = _httpRequestAuthenticator;
@@ -53,6 +54,7 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
         self.httpRequestAuthenticator = [self createHttpRequestAuthenticator];
         FLAssertNotNil(self.httpRequestAuthenticator);
         self.httpRequestAuthenticator.delegate = self;
+
     }
     return self;
 }
@@ -122,10 +124,7 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 
 - (void) httpRequestAuthenticator:(FLHttpRequestAuthenticator*) authenticator
                 didAuthenticateUser:(FLHttpUser*) user {
-
-    if(self.storageService) {
-        [self.storageService openService:nil];
-    }
+    [self setAuthenticatedUser:user];
 }
 
 - (FLOperationContext*) httpRequestAuthenticatorGetOperationContext:(FLHttpRequestAuthenticator*) context {
@@ -150,6 +149,14 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 
 - (FLHttpRequestAuthenticator*) createHttpRequestAuthenticator {
     return nil;
+}
+
+- (void) setAuthenticatedUser:(FLHttpUser*) user {
+    self.httpUser = user;
+
+    if(self.storageService) {
+        [self.storageService openService:nil];
+    }
 }
 
 @end

@@ -11,8 +11,15 @@
 #import "FLObjcRuntime.h"
 #import "FishLampMinimum.h"
 
+@interface FLSelector ()
+@property (readwrite, strong, nonatomic) NSString* selectorName;
+@property (readwrite, strong, nonatomic) NSString* selectorString;
+@end
+
 @implementation FLSelector 
 
+@synthesize selectorString = _selectorString;
+@synthesize selectorName = _selectorName;
 @synthesize selector = _selector;
 
 - (id) init {
@@ -32,7 +39,7 @@
 - (id) initWithString:(NSString*) string {
     self = [self initWithSelector:NSSelectorFromString(string)];
     if(self) {
-        _name = FLRetain(string);
+        _selectorString = FLRetain(string);
     }
 
     return self;
@@ -48,16 +55,35 @@
 
 #if FL_MRC
 - (void) dealloc {
-    [_name release];
+    [_selectorString release];
     [super dealloc];
 }
 #endif
 
-- (NSString*) name {
-    if(!_name) {
-        _name = FLRetain(NSStringFromSelector(_selector));
+- (NSString*) selectorName {
+
+    if(!_selectorName) {
+
+        if(self.argumentCount == 0) {
+            self.selectorName = FLRetain([self selectorString]);
+        }
+
+        NSString* string = [self selectorString];
+        for(int i = 0; i < string.length; i++) {
+            if([string characterAtIndex:i] == ':') {
+                self.selectorName = [string substringToIndex:i];
+            }
+        }
     }
-    return _name;
+
+    return _selectorName;
+}
+
+- (NSString*) selectorString {
+    if(!_selectorString) {
+        self.selectorString = NSStringFromSelector(_selector);
+    }
+    return _selectorString;
 }
 
 - (NSUInteger) argumentCount {
@@ -76,15 +102,15 @@
 }
 
 - (BOOL) isEqual:(id)object {
-    return [self.name isEqualToString:[object name]];
+    return [self.selectorString isEqualToString:[object selectorString]];
 }
 
 - (NSUInteger)hash {
-    return (NSUInteger) [self.name hash];
+    return (NSUInteger) [self.selectorString hash];
 }
 
 - (NSString*) description {
-    return self.name;
+    return self.selectorString;
 }
 
 - (BOOL) willPerformOnTarget:(id) target {

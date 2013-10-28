@@ -22,7 +22,9 @@
 @property (readonly, strong, nonatomic) FLStringBuilderSection* openedSection;
 
 - (void) openSection:(FLStringBuilderSection*) section;
+
 - (void) closeSection;
+
 - (void) appendSection:(FLStringBuilderSection*) section;
 
 - (void) closeAllSections;

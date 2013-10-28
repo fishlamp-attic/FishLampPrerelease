@@ -16,15 +16,26 @@
 @property (readonly, strong, nonatomic) NSArray* stack;
 @end
 
+@interface FLStringBuilderSection (Internal)
+@property (readwrite, assign, nonatomic) id parent;
+@property (readwrite, assign, nonatomic) id document;
+@end
+
 @implementation FLStringBuilder 
 
 @synthesize stack = _stack;
+
+- (void) addRootSection {
+    FLStringBuilderSection* section = [FLStringBuilderSection stringBuilderSection];
+    section.document = self;
+    [_stack addObject:section];
+}
 
 - (id) init {
     self = [super init];
     if(self) {
         _stack = [[NSMutableArray alloc] init];
-        [_stack addObject:[FLStringBuilderSection stringBuilder]];
+        [self addRootSection];
     }
     return self;
 }
@@ -42,7 +53,7 @@
 
 - (void) deleteAllStringBuilders {
     [_stack removeAllObjects];
-    [_stack addObject:[FLStringBuilderSection stringBuilder]];
+    [self addRootSection];
 }
 
 - (id<FLStringFormatter>) rootStringBuilder {
@@ -62,14 +73,15 @@
 //                             withPreprocessor:[FLStringFormatterLineProprocessor instance]];
 //}
 
-- (void) openSection:(FLStringBuilderSection*) section {
-    [self appendSection:section];
-    [_stack addObject:section];
-}
 
 - (void) appendSection:(FLStringBuilderSection*) section {
     FLAssert(_stack.count > 0);
     [[self openedSection] appendSection:section];
+}
+
+- (void) openSection:(FLStringBuilderSection*) section {
+    [self appendSection:section];
+    [_stack addObject:section];
 }
 
 - (void) closeSection {

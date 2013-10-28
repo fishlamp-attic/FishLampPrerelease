@@ -9,10 +9,10 @@
 
 #import "FishLampMinimum.h"
 
-#import "FLXmlDocumentBuilder.h"
+#import "FLXmlStringBuilder.h"
 #import "FLObjectXmlElement.h"
 
-@interface FLSoapStringBuilder : FLXmlDocumentBuilder {
+@interface FLSoapStringBuilder : FLXmlStringBuilder {
 @private
     FLXmlElement* _envelopeElement;
     FLXmlElement* _bodyElement;

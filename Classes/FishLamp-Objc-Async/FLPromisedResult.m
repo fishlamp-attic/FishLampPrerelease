@@ -14,7 +14,7 @@
 }
 
 + (id) fromPromisedResult:(FLPromisedResult) promisedResult {
-
+    FLAssertNotNil(promisedResult);
     FLThrowIfError(promisedResult);
 
     FLConfirmWithComment(

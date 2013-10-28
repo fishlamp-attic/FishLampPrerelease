@@ -9,7 +9,7 @@
 
 #import "FishLampMinimum.h"
 
-#import "FLXmlDocumentBuilder.h"
+#import "FLXmlStringBuilder.h"
 #import "FLXmlElement.h"
 
 // html
@@ -23,7 +23,7 @@ extern NSString* const FLXmlDocTypeXHtml1_0Transitional;
 extern NSString* const FLXmlDocTypeXHtml1_0Frameset;
 extern NSString* const FLXMLDocTypeXHtml1_1;
 
-@interface FLHtmlStringBuilder : FLXmlDocumentBuilder {
+@interface FLHtmlStringBuilder : FLXmlStringBuilder {
 @private
     FLXmlElement* _htmlElement;
     FLXmlElement* _headElement;

@@ -11,7 +11,9 @@
 #import "FLWhitespace.h"
 
 @interface FLStringBuilderSection ()
-//@property (readwrite, strong, nonatomic) NSMutableString* openLine;
+@property (readwrite, assign, nonatomic) id parent;
+@property (readwrite, assign, nonatomic) id document;
+- (void) appendSection:(FLStringBuilderSection*) section;
 @end
 
 @interface FLDocumentSectionIndent : NSObject<FLAppendableString>
@@ -87,6 +89,7 @@
 
 @synthesize lines = _lines;
 @synthesize parent = _parent;
+@synthesize document = _document;
 
 - (id) init {
     self = [super init];
@@ -96,7 +99,7 @@
     return self;
 }
 
-+ (id) stringBuilder {
++ (id) stringBuilderSection {
     return FLAutorelease([[[self class] alloc] init]);
 }
 
@@ -205,13 +208,21 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter  
     [self didBuildWithStringFormatter:anotherStringFormatter];
 }
 
+- (void) setDocument:(FLStringBuilder*) document {
+    _document = document;
+    for(id line in _lines) {
+        if([line respondsToSelector:@selector(setDocument:)]) {
+            [line setDocument:document];
+        }
+    }
+}
+
 - (void) setParent:(FLStringBuilderSection*) parent {
     if(_parent) {
         [self didMoveToParent:nil];
     }
 
     _parent = parent;
-
     [self didMoveToParent:_parent];
 }
 
@@ -222,6 +233,7 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter  
 
     [_lines addObject:section];
     _needsLine = YES;
+    [section setDocument:self.document];
     [section setParent:self];
 }
 

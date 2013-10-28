@@ -55,17 +55,20 @@
 - (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) object
                  withDelay:(NSTimeInterval) delay
                 completion:(fl_completion_block_t) completionOrNil {
+    FLAssertNotNil(object);
 
     return [self queueAsyncInitiator:[object asyncInitiatorForAsyncQueue:self withDelay:delay] completion:completionOrNil];
 }
 
 - (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) object
                 completion:(fl_completion_block_t) completionOrNil {
+    FLAssertNotNil(object);
 
     return [self queueObject:object withDelay:0 completion:completionOrNil];
 }
 
 - (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) object {
+    FLAssertNotNil(object);
 
     return [self queueObject:object withDelay:0 completion:nil];
 }
@@ -74,17 +77,33 @@
 #pragma GCC diagnostic ignored "-Warc-performSelector-leaks"
 
 - (FLPromise*) queueTarget:(id) target
-                 action:(SEL) action {
+                    action:(SEL) action {
+
+    FLAssertNotNil(target);
+    FLAssertNotNil(action);
+
+    __block id theTarget = FLRetain(target);
+
     return [self queueBlock:^{
-        [target performSelector:action];
+        [theTarget performSelector:action];
+
+        FLReleaseWithNil(theTarget);
     }];
 }
 
 - (FLPromise*) queueTarget:(id) target
                  action:(SEL) action
                 withObject:(id) object {
+
+    FLAssertNotNil(target);
+    FLAssertNotNil(action);
+
+    __block id theTarget = FLRetain(target);
+
     return [self queueBlock:^{
         [target performSelector:action withObject:object];
+
+        FLReleaseWithNil(theTarget);
     }];
 }
 
@@ -92,9 +111,14 @@
                  action:(SEL) action
                 withObject:(id) object1
                 withObject:(id) object2 {
+    FLAssertNotNil(target);
+    FLAssertNotNil(action);
+
+    __block id theTarget = FLRetain(target);
 
     return [self queueBlock:^{
         [target performSelector:action withObject:object1 withObject:object2];
+        FLReleaseWithNil(theTarget);
     }];
 }
 
@@ -105,20 +129,32 @@
                 withObject:(id) object1
                 withObject:(id) object2
                 withObject:(id) object3 {
+
+    FLAssertNotNil(target);
+    FLAssertNotNil(action);
+    __block id theTarget = FLRetain(target);
+
     return [self queueBlock:^{
         [target performSelector_fl:action withObject:object1 withObject:object2 withObject:object3];
+        FLReleaseWithNil(theTarget);
     }];
 
 }
 
 - (FLPromise*) queueTarget:(id) target
-                 action:(SEL) action
+                    action:(SEL) action
                 withObject:(id) object1
                 withObject:(id) object2
                 withObject:(id) object3
                 withObject:(id) object4 {
+
+    FLAssertNotNil(target);
+    FLAssertNotNil(action);
+    __block id theTarget = FLRetain(target);
+
     return [self queueBlock:^{
         [target performSelector_fl:action withObject:object1 withObject:object2 withObject:object3 withObject:object4];
+        FLReleaseWithNil(theTarget);
     }];
 }
 

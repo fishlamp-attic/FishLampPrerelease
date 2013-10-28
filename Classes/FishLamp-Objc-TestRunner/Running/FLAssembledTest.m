@@ -44,7 +44,10 @@
 
 - (void) willRunTestCases:(FLTestCaseList*) testCases {
 
-    if([_testableObject respondsToSelector:@selector(willRunTestCases:)]) {
+    if([_testableObject respondsToSelector:@selector(willBeginExecutingTestCases:)]) {
+        [_testableObject willBeginExecutingTestCases:testCases];
+    }
+    else if([_testableObject respondsToSelector:@selector(willRunTestCases:)]) {
         [_testableObject willRunTestCases:testCases];
     }
 
@@ -52,10 +55,12 @@
 
 - (void) didRunTestCases:(FLTestCaseList*) testCases {
 
-    if([_testableObject respondsToSelector:@selector(didRunTestCases:)]) {
+    if([_testableObject respondsToSelector:@selector(didFinishExecutingTestCases)]) {
+        [_testableObject didFinishExecutingTestCases];
+    }
+    else if([_testableObject respondsToSelector:@selector(didRunTestCases:)]) {
         [_testableObject didRunTestCases:testCases];
     }
-
 }
 
 

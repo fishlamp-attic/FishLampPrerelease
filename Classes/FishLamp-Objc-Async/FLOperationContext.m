@@ -70,6 +70,8 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 
 - (void) visitOperations:(FLOperationVisitor) visitor {
 
+    FLAssertNotNil(visitor);
+
     @synchronized(self) {
         BOOL stop = NO;
         for(id operation in _operations) {
@@ -128,7 +130,9 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 }
 
 - (void) queueOperation:(FLOperation*) operation  {
-    
+
+    FLAssertNotNil(operation);
+
     @synchronized(self) {
     
 #if TRACE
@@ -154,6 +158,8 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 
 - (void) removeOperation:(FLOperation*) operation {
 
+    FLAssertNotNil(operation);
+
     BOOL didStop = NO;
     
     @synchronized(self) {
@@ -174,13 +180,20 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 - (FLPromise*) beginOperation:(FLOperation*) operation
                    completion:(fl_completion_block_t) completion {
 
-    operation.context = self;
-    return [operation runAsynchronously:completion];
+    FLAssertNotNil(operation);
+    [self queueOperation:operation];
+
+    return [FLDefaultQueue queueObject:operation completion:completion];
 }
 
 - (FLPromisedResult) runOperation:(FLOperation*) operation {
-    operation.context = self;
-    return [operation runSynchronously];
+
+    FLAssertNotNil(operation);
+
+    [self queueOperation:operation];
+
+    return [FLDefaultQueue runSynchronously:operation];
+
 }
 
    

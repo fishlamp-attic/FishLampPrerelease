@@ -32,23 +32,6 @@
 - (void) removeOperation:(FLOperation*) operation;
 @end
 
-/*
-@interface FLOperation (Synchronous)
-// run synchronously
-- (FLPromisedResult) runSynchronously;
-@end
-
-@interface FLOperation (ChildOperations)
-// these call willRunInParent on the child before operation
-// is run or started.
-- (FLPromisedResult) runChildSynchronously:(FLOperation*) operation;
-
-- (FLPromise*) runChildAsynchronously:(FLOperation*) operation;
-
-- (FLPromise*) runChildAsynchronously:(FLOperation*) operation 
-                            completion:(fl_completion_block_t) completionOrNil;
-@end
-*/
 
 @interface FLOperationFinisher : FLFinisher {
 @private
@@ -91,7 +74,7 @@
 
 @synthesize context = _context;
 @synthesize contextID = _contextID;
-@synthesize asyncQueue = _asyncQueue;
+//@synthesize asyncQueue = _asyncQueue;
 @synthesize identifier = _identifier;
 @synthesize cancelled = _cancelled;
 @synthesize finisher = _finisher;
@@ -99,7 +82,7 @@
 - (id) init {
     self = [super init];
     if(self) {
-        self.asyncQueue = [FLDispatchQueue defaultQueue];
+//        self.asyncQueue = [FLDispatchQueue defaultQueue];
   		static int32_t s_counter = 0;
         _identifier = [[NSNumber alloc] initWithInt:FLAtomicIncrement32(s_counter)];
         _finisher = [[FLOperationFinisher alloc] initWithOperation:self];
@@ -126,29 +109,58 @@
 }
 
 - (FLFinisher*) willStartInQueue:(id<FLAsyncQueue>) asyncQueue {
+    FLAssertNotNil(asyncQueue);
+//    self.asyncQueue = asyncQueue;
     return self.finisher;
 }
 
 - (void) willStartOperation {
 }
 
+//- (id<FLAsyncQueue>) asyncQueue {
+//    if(!_)
+//    [self queueOperation:operation];
+//
+//}
+
 - (void) startInQueue:(id<FLAsyncQueue>) asyncQueue {
-    self.asyncQueue = asyncQueue;
+    FLAssertNotNil(asyncQueue);
+
+//    self.asyncQueue = asyncQueue;
+
     [self willStartOperation];
     [self startOperation];
     [self notify:@selector(operationWillBegin:) withObject:self];
 }
 
 - (FLPromisedResult) runSynchronouslyInQueue:(id<FLAsyncQueue>) asyncQueue {
-    self.asyncQueue = asyncQueue;
-    return [self runSynchronously];
+    FLAssertNotNil(asyncQueue);
+
+//    self.asyncQueue = asyncQueue;
+//    return [self runSynchronously];
+
+    FLAssertNotNil(self.finisher);
+    [self startInQueue:asyncQueue];
+
+    FLPromisedResult result = [self.finisher waitUntilFinished];
+    FLAssertNotNil(result);
+    return result;
+
 }
 
+/*
 - (FLPromisedResult) runSynchronously {
+    FLAssertNotNil(self.finisher);
+    FLAssertNotNil(self.asyncQueue);
+
     FLPromise* promise = [self.finisher addPromise];
     [self startInQueue:self.asyncQueue];
-    return [promise waitUntilFinished];
+
+    FLPromisedResult result = [promise waitUntilFinished];
+    FLAssertNotNil(result);
+    return result;
 }
+*/
 
 - (void) startOperation {
     FLLog(@"%@ operation did nothing, you must override startOperation.", NSStringFromClass([self class]));
@@ -169,6 +181,7 @@
 }
 
 - (void) wasAddedToContext:(FLOperationContext*) context {
+    FLAssertNotNil(context);
     if(_context != context) {
         _context = context;
         _contextID = [context contextID];
@@ -190,6 +203,8 @@
 }
 
 - (void) wasRemovedFromContext:(FLOperationContext*) context {
+    FLAssertNotNil(context);
+
     if(_context == context) {
         _context = nil;
         _contextID = 0;
@@ -197,9 +212,102 @@
 }
 
 - (id) objectFromResult:(id) result {
+    FLAssertNotNil(result);
     FLThrowIfError(result);
     return result;
 }
+
+- (void) abortIfCancelled {
+    if(self.wasCancelled) {
+        FLThrowCancel();
+    }
+}
+
+- (void) finisherDidFinish:(FLFinisher*) finisher
+                withResult:(FLPromisedResult) result {
+
+    FLAssertNotNil(finisher);
+    FLAssertNotNil(result);
+
+    [self didFinishWithResult:result];
+    [self notify:@selector(operationDidFinish:withResult:) withObject:self withObject:result];
+    self.context = nil;
+    self.cancelled = NO;
+}
+
+- (void) didFinishWithResult:(FLPromisedResult) result {
+}
+
+- (void) setFinishedWithResult:(id) result {
+    FLAssertNotNil(result);
+
+    [self.finisher setFinishedWithResult:result];
+}
+
+- (void) setFinishedWithFailedResult {
+    [self setFinishedWithResult:FLFailedResult];
+}
+
+- (void) setFinished {
+    [self setFinishedWithResult:FLSuccessfulResult];
+}
+
+- (void) setFinishedWithCancel {
+    [self setFinishedWithResult:[NSError cancelError]];
+}
+
+- (FLAsyncInitiator*) asyncInitiatorForAsyncQueue:(id<FLAsyncQueue>) queue withDelay:(NSTimeInterval) delay {
+    FLAssertNotNil(queue);
+
+    return [FLOperationAsyncInitiator operationEventWithDelay:delay operation:self];
+}
+
+@end
+
+@implementation FLOperationAsyncInitiator : FLAsyncInitiator
+
+@synthesize operation = _operation;
+
+- (id) init {	
+    return [self initWithDelay:0 operation:nil];
+}
+
+- (id) initWithDelay:(NSTimeInterval) delay
+           operation:(FLOperation*) operation {
+
+    self = [super initWithDelay:delay];
+    if(self) {
+        FLAssertNotNil(operation);
+        _operation = FLRetain(operation);
+    }
+
+    return self;
+}
+
+#if FL_MRC
+- (void)dealloc {
+	[_operation release];
+	[super dealloc];
+}
+#endif
+
++ (id) operationEventWithDelay:(NSTimeInterval) timeInterval operation:(FLOperation*) operation {
+   return FLAutorelease([[[self class] alloc] initWithDelay:timeInterval operation:operation]);
+}
+
+- (FLFinisher*) finisher {
+    return [self.operation finisher];
+}
+
+- (void) startAsyncOperation:(FLFinisher*) finisher inQueue:(id<FLAsyncQueue>) queue {
+    [self.operation startInQueue:queue];
+}
+
+- (FLPromisedResult) runSynchronousOperation:(FLFinisher*) finisher
+                                     inQueue:(id<FLAsyncQueue>) queue {
+    return [self.operation runSynchronouslyInQueue:queue];
+}
+@end
 
 
 /*
@@ -298,85 +406,20 @@
 }
 */
 
-- (void) abortIfCancelled {
-    if(self.wasCancelled) {
-        FLThrowError([NSError cancelError]);
-    }
-}
-
-- (void) finisherDidFinish:(FLFinisher*) finisher
-                withResult:(FLPromisedResult) result {
-            
-    [self didFinishWithResult:result];
-    [self notify:@selector(operationDidFinish:withResult:) withObject:self withObject:result];
-    self.context = nil;
-    self.cancelled = NO;
-}
-
-- (void) didFinishWithResult:(FLPromisedResult) result {
-}
-
-- (void) setFinishedWithResult:(id) result {
-    [self.finisher setFinishedWithResult:result];
-}
-
-- (void) setFinishedWithFailedResult {
-    [self setFinishedWithResult:FLFailedResult];
-}
-
-- (void) setFinished {
-    [self setFinishedWithResult:FLSuccessfulResult];
-}
-
-- (void) setFinishedWithCancel {
-    [self setFinishedWithResult:[NSError cancelError]];
-}
-
-- (FLAsyncInitiator*) asyncInitiatorForAsyncQueue:(id<FLAsyncQueue>) queue withDelay:(NSTimeInterval) delay {
-    return [FLOperationAsyncInitiator operationEventWithDelay:delay operation:self];
-}
-
+/*
+@interface FLOperation (Synchronous)
+// run synchronously
+- (FLPromisedResult) runSynchronously;
 @end
 
-@implementation FLOperationAsyncInitiator : FLAsyncInitiator
+@interface FLOperation (ChildOperations)
+// these call willRunInParent on the child before operation
+// is run or started.
+- (FLPromisedResult) runChildSynchronously:(FLOperation*) operation;
 
-@synthesize operation = _operation;
+- (FLPromise*) runChildAsynchronously:(FLOperation*) operation;
 
-- (id) init {	
-    return [self initWithDelay:0 operation:nil];
-}
-
-- (id) initWithDelay:(NSTimeInterval) delay operation:(FLOperation*) operation {
-    self = [super initWithDelay:delay];
-    if(self) {
-        FLAssertNotNil(operation);
-        _operation = FLRetain(operation);
-    }
-
-    return self;
-}
-
-#if FL_MRC
-- (void)dealloc {
-	[_operation release];
-	[super dealloc];
-}
-#endif
-
-+ (id) operationEventWithDelay:(NSTimeInterval) timeInterval operation:(FLOperation*) operation {
-   return FLAutorelease([[[self class] alloc] initWithDelay:timeInterval operation:operation]);
-}
-
-- (FLFinisher*) finisher {
-    return [self.operation finisher];
-}
-
-- (void) startAsyncOperation:(FLFinisher*) finisher inQueue:(id<FLAsyncQueue>) queue {
-    [self.operation startInQueue:queue];
-}
-
-- (FLPromisedResult) runSynchronousOperation:(FLFinisher*) finisher
-                                     inQueue:(id<FLAsyncQueue>) queue {
-    return [self.operation runSynchronouslyInQueue:queue];
-}
+- (FLPromise*) runChildAsynchronously:(FLOperation*) operation 
+                            completion:(fl_completion_block_t) completionOrNil;
 @end
+*/

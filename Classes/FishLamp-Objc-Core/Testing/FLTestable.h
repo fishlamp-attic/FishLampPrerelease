@@ -68,10 +68,13 @@
     FLTestResultCollection* _testResults;
 }
 
+
 - (FLTestCase*) testCaseForSelector:(SEL) selector;
 
 - (FLTestCase*) testCaseForName:(NSString*) name;
 
+- (void) willBeginExecutingTestCases:(FLTestCaseList*) testCases;
+- (void) didFinishExecutingTestCases;
 
 @end
 
@@ -89,3 +92,13 @@
                 return; \
             } while(0)
 
+#define FLTestMode(YESNO) \
+            [[self testCaseForSelector:_cmd] setDebugMode:YESNO]
+
+#define FLConfirmPrerequisiteTestCasePassed(NAME) \
+            do { \
+                NSString* __name = @#NAME; \
+                FLTestCase* testCase = [self testCaseForName:__name]; \
+                FLTestNotNilWithComment(testCase, @"prerequisite test case not found: %@", __name); \
+                FLTestWithComment([[testCase result] passed], @"prerequisite test case \"%@\" failed", testCase.testCaseName); \
+            } while(0);

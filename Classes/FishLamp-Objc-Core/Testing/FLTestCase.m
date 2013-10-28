@@ -32,6 +32,7 @@
 @synthesize testable = _unitTest;
 @synthesize testCaseList = _testCaseList;
 @synthesize result = _result;
+@synthesize debugMode = _debugMode;
 
 - (id) initWithName:(NSString*) name testable:(FLTestable*) testable {
     self = [super init];
@@ -52,8 +53,8 @@
     if(self) {
         _target = target;
         _selector = [[FLSelector alloc] initWithSelector:selector];
-        _willTestSelector = [[FLSelector alloc] initWithString:[NSString stringWithFormat:@"will%@", [_selector.name stringWithUppercaseFirstLetter_fl]]];
-        _didTestSelector = [[FLSelector alloc] initWithString:[NSString stringWithFormat:@"did%@", [_selector.name stringWithUppercaseFirstLetter_fl]]];
+        _willTestSelector = [[FLSelector alloc] initWithString:[NSString stringWithFormat:@"will%@", [_selector.selectorString stringWithUppercaseFirstLetter_fl]]];
+        _didTestSelector = [[FLSelector alloc] initWithString:[NSString stringWithFormat:@"did%@", [_selector.selectorString stringWithUppercaseFirstLetter_fl]]];
     }
     return self;
 }
@@ -70,63 +71,18 @@
 }
 #endif
 
-+ (FLTestCase*) testCase:(NSString*) name testable:(FLTestable*) testable target:(id) target selector:(SEL) selector {
++ (FLTestCase*) testCase:(NSString*) name
+                testable:(FLTestable*) testable
+                  target:(id) target
+                selector:(SEL) selector {
+
     return FLAutorelease([[FLTestCase alloc] initWithName:name testable:testable target:target selector:selector]);
 }
-
 
 - (void) disable:(NSString*) reason {
     _disabled = YES;
     self.disabledReason = reason;
 }
-
-/*
-- (void) setNameAndFlagsWithFormattedName:(NSString*) string {
-    
-    // quickly look to see if there's a _ in the method name, search backward
-    
-    BOOL lookForFlags = NO;
-    for(int i = string.length - 1; i >= 0; i--) {
-        if([string characterAtIndex:i] == '[') {
-            lookForFlags = YES;
-            break;
-        }
-    }
-
-    NSString* theString = string;
-    if(lookForFlags) {
-        NSMutableString* newString = FLAutorelease([string mutableCopy]);
-
-        for(int i = 0; i < (sizeof(s_flagPairs) / sizeof(FLTestCaseFlagPair)); i++) {
-            
-            // set the flag and remove the setting from the test case name
-            NSRange range = [newString rangeOfString:s_flagPairs[i].name];
-            if(range.length) {
-                BOOL deleteChars = YES;
-                switch(s_flagPairs[i].flag) {
-
-                    default:
-                    case FLTestCaseFlagNone:
-                        deleteChars = NO;
-                        break;
-                
-                    case FLTestCaseFlagDisabled:
-                        [self setDisabledWithReason: @"\"[off]\" found in test case name"];
-                        break;
-                }
-
-                if(deleteChars) {
-                    [newString deleteCharactersInRange:range];
-                }
-            }
-        }
-        
-        theString = newString;
-    }
-
-    self.testCaseName = theString;
-}
-*/
 
 - (void) performTestCaseSelector:(FLSelector*) selector optional:(id) optional{
 
@@ -142,7 +98,7 @@
         default:
             [self disable:[NSString stringWithFormat:@"[%@ %@] has too many paramaters (%ld).",
                 NSStringFromClass([_target class]),
-                selector.name,
+                selector.selectorString,
                 selector.argumentCount]];
         break;
     }
@@ -212,6 +168,10 @@
 - (void) runAfter:(FLTestCase*) anotherTestCase {
     NSUInteger idx = [anotherTestCase runOrder];
     [self setRunOrder:idx + 1];
+}
+
+- (NSString*) description {
+    return [NSString stringWithFormat:@"%@ %@", [super description], self.testCaseName];
 }
 
 #if DEPRECATED

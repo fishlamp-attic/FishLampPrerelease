@@ -527,11 +527,6 @@
 		2767D97118132B1B001EF21C /* FLObjectCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D57F18132B1A001EF21C /* FLObjectCache.m */; };
 		2767D97218132B1B001EF21C /* FLObjectCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D57F18132B1A001EF21C /* FLObjectCache.m */; };
 		2767D97318132B1B001EF21C /* FLObjectCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D57F18132B1A001EF21C /* FLObjectCache.m */; };
-		2767D97418132B1B001EF21C /* FLObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D58118132B1A001EF21C /* FLObjectPool.m */; };
-		2767D97518132B1B001EF21C /* FLObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D58118132B1A001EF21C /* FLObjectPool.m */; };
-		2767D97618132B1B001EF21C /* FLObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D58118132B1A001EF21C /* FLObjectPool.m */; };
-		2767D97718132B1B001EF21C /* FLObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D58118132B1A001EF21C /* FLObjectPool.m */; };
-		2767D97818132B1B001EF21C /* FLObjectPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D58118132B1A001EF21C /* FLObjectPool.m */; };
 		2767D97918132B1B001EF21C /* FLOrderedCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D58318132B1A001EF21C /* FLOrderedCollection.m */; };
 		2767D97A18132B1B001EF21C /* FLOrderedCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D58318132B1A001EF21C /* FLOrderedCollection.m */; };
 		2767D97B18132B1B001EF21C /* FLOrderedCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D58318132B1A001EF21C /* FLOrderedCollection.m */; };
@@ -932,11 +927,11 @@
 		2767DB3818132B1B001EF21C /* FLXmlComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66718132B1A001EF21C /* FLXmlComment.m */; };
 		2767DB3918132B1B001EF21C /* FLXmlComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66718132B1A001EF21C /* FLXmlComment.m */; };
 		2767DB3A18132B1B001EF21C /* FLXmlComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66718132B1A001EF21C /* FLXmlComment.m */; };
-		2767DB3B18132B1B001EF21C /* FLXmlDocumentBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66918132B1A001EF21C /* FLXmlDocumentBuilder.m */; };
-		2767DB3C18132B1B001EF21C /* FLXmlDocumentBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66918132B1A001EF21C /* FLXmlDocumentBuilder.m */; };
-		2767DB3D18132B1B001EF21C /* FLXmlDocumentBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66918132B1A001EF21C /* FLXmlDocumentBuilder.m */; };
-		2767DB3E18132B1B001EF21C /* FLXmlDocumentBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66918132B1A001EF21C /* FLXmlDocumentBuilder.m */; };
-		2767DB3F18132B1B001EF21C /* FLXmlDocumentBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66918132B1A001EF21C /* FLXmlDocumentBuilder.m */; };
+		2767DB3B18132B1B001EF21C /* FLXmlStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66918132B1A001EF21C /* FLXmlStringBuilder.m */; };
+		2767DB3C18132B1B001EF21C /* FLXmlStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66918132B1A001EF21C /* FLXmlStringBuilder.m */; };
+		2767DB3D18132B1B001EF21C /* FLXmlStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66918132B1A001EF21C /* FLXmlStringBuilder.m */; };
+		2767DB3E18132B1B001EF21C /* FLXmlStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66918132B1A001EF21C /* FLXmlStringBuilder.m */; };
+		2767DB3F18132B1B001EF21C /* FLXmlStringBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66918132B1A001EF21C /* FLXmlStringBuilder.m */; };
 		2767DB4018132B1B001EF21C /* FLXmlElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66B18132B1A001EF21C /* FLXmlElement.m */; };
 		2767DB4118132B1B001EF21C /* FLXmlElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66B18132B1A001EF21C /* FLXmlElement.m */; };
 		2767DB4218132B1B001EF21C /* FLXmlElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D66B18132B1A001EF21C /* FLXmlElement.m */; };
@@ -1077,11 +1072,11 @@
 		2767DBFB18132B1C001EF21C /* FLNetworkOperationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C418132B1A001EF21C /* FLNetworkOperationContext.m */; };
 		2767DBFC18132B1C001EF21C /* FLNetworkOperationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C418132B1A001EF21C /* FLNetworkOperationContext.m */; };
 		2767DBFD18132B1C001EF21C /* FLNetworkOperationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C418132B1A001EF21C /* FLNetworkOperationContext.m */; };
-		2767DBFE18132B1C001EF21C /* FLHttpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C718132B1A001EF21C /* FLHttpController.m */; };
-		2767DBFF18132B1C001EF21C /* FLHttpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C718132B1A001EF21C /* FLHttpController.m */; };
-		2767DC0018132B1C001EF21C /* FLHttpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C718132B1A001EF21C /* FLHttpController.m */; };
-		2767DC0118132B1C001EF21C /* FLHttpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C718132B1A001EF21C /* FLHttpController.m */; };
-		2767DC0218132B1C001EF21C /* FLHttpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C718132B1A001EF21C /* FLHttpController.m */; };
+		2767DBFE18132B1C001EF21C /* FLHttpOperationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C718132B1A001EF21C /* FLHttpOperationContext.m */; };
+		2767DBFF18132B1C001EF21C /* FLHttpOperationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C718132B1A001EF21C /* FLHttpOperationContext.m */; };
+		2767DC0018132B1C001EF21C /* FLHttpOperationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C718132B1A001EF21C /* FLHttpOperationContext.m */; };
+		2767DC0118132B1C001EF21C /* FLHttpOperationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C718132B1A001EF21C /* FLHttpOperationContext.m */; };
+		2767DC0218132B1C001EF21C /* FLHttpOperationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C718132B1A001EF21C /* FLHttpOperationContext.m */; };
 		2767DC0318132B1C001EF21C /* FLHttpErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C918132B1A001EF21C /* FLHttpErrors.m */; };
 		2767DC0418132B1C001EF21C /* FLHttpErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C918132B1A001EF21C /* FLHttpErrors.m */; };
 		2767DC0518132B1C001EF21C /* FLHttpErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C918132B1A001EF21C /* FLHttpErrors.m */; };
@@ -1792,6 +1787,11 @@
 		27B4BCB0181DACE60027007A /* NSError+FLTestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCAD181DACE50027007A /* NSError+FLTestable.m */; };
 		27B4BCB1181DACE60027007A /* NSError+FLTestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCAD181DACE50027007A /* NSError+FLTestable.m */; };
 		27B4BCB2181DACE60027007A /* NSError+FLTestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCAD181DACE50027007A /* NSError+FLTestable.m */; };
+		27B4BCB5181DB95B0027007A /* FLXmlEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */; };
+		27B4BCB6181DB95B0027007A /* FLXmlEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */; };
+		27B4BCB7181DB95B0027007A /* FLXmlEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */; };
+		27B4BCB8181DB95B0027007A /* FLXmlEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */; };
+		27B4BCB9181DB95B0027007A /* FLXmlEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2120,8 +2120,6 @@
 		2767D57D18132B1A001EF21C /* FLNonretainedArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLNonretainedArray.m; sourceTree = "<group>"; };
 		2767D57E18132B1A001EF21C /* FLObjectCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjectCache.h; sourceTree = "<group>"; };
 		2767D57F18132B1A001EF21C /* FLObjectCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObjectCache.m; sourceTree = "<group>"; };
-		2767D58018132B1A001EF21C /* FLObjectPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjectPool.h; sourceTree = "<group>"; };
-		2767D58118132B1A001EF21C /* FLObjectPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObjectPool.m; sourceTree = "<group>"; };
 		2767D58218132B1A001EF21C /* FLOrderedCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLOrderedCollection.h; sourceTree = "<group>"; };
 		2767D58318132B1A001EF21C /* FLOrderedCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLOrderedCollection.m; sourceTree = "<group>"; };
 		2767D58518132B1A001EF21C /* FLBlockLinkedListElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBlockLinkedListElement.h; sourceTree = "<group>"; };
@@ -2308,8 +2306,8 @@
 		2767D66518132B1A001EF21C /* FLObjectXmlElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObjectXmlElement.m; sourceTree = "<group>"; };
 		2767D66618132B1A001EF21C /* FLXmlComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXmlComment.h; sourceTree = "<group>"; };
 		2767D66718132B1A001EF21C /* FLXmlComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXmlComment.m; sourceTree = "<group>"; };
-		2767D66818132B1A001EF21C /* FLXmlDocumentBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXmlDocumentBuilder.h; sourceTree = "<group>"; };
-		2767D66918132B1A001EF21C /* FLXmlDocumentBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXmlDocumentBuilder.m; sourceTree = "<group>"; };
+		2767D66818132B1A001EF21C /* FLXmlStringBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXmlStringBuilder.h; sourceTree = "<group>"; };
+		2767D66918132B1A001EF21C /* FLXmlStringBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXmlStringBuilder.m; sourceTree = "<group>"; };
 		2767D66A18132B1A001EF21C /* FLXmlElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXmlElement.h; sourceTree = "<group>"; };
 		2767D66B18132B1A001EF21C /* FLXmlElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXmlElement.m; sourceTree = "<group>"; };
 		2767D66C18132B1A001EF21C /* NSObject+FLXmlSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FLXmlSerialization.h"; sourceTree = "<group>"; };
@@ -2369,8 +2367,8 @@
 		2767D6C218132B1A001EF21C /* FLNetworkErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLNetworkErrors.m; sourceTree = "<group>"; };
 		2767D6C318132B1A001EF21C /* FLNetworkOperationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLNetworkOperationContext.h; sourceTree = "<group>"; };
 		2767D6C418132B1A001EF21C /* FLNetworkOperationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLNetworkOperationContext.m; sourceTree = "<group>"; };
-		2767D6C618132B1A001EF21C /* FLHttpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLHttpController.h; sourceTree = "<group>"; };
-		2767D6C718132B1A001EF21C /* FLHttpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLHttpController.m; sourceTree = "<group>"; };
+		2767D6C618132B1A001EF21C /* FLHttpOperationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLHttpOperationContext.h; sourceTree = "<group>"; };
+		2767D6C718132B1A001EF21C /* FLHttpOperationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLHttpOperationContext.m; sourceTree = "<group>"; };
 		2767D6C818132B1A001EF21C /* FLHttpErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLHttpErrors.h; sourceTree = "<group>"; };
 		2767D6C918132B1A001EF21C /* FLHttpErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLHttpErrors.m; sourceTree = "<group>"; };
 		2767D6CA18132B1A001EF21C /* FLHttpOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLHttpOperation.h; sourceTree = "<group>"; };
@@ -2693,6 +2691,8 @@
 		27B4BCA2181C87DC0027007A /* FLStringFormatterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringFormatterDelegate.h; sourceTree = "<group>"; };
 		27B4BCAC181DACE50027007A /* NSError+FLTestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+FLTestable.h"; sourceTree = "<group>"; };
 		27B4BCAD181DACE50027007A /* NSError+FLTestable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+FLTestable.m"; sourceTree = "<group>"; };
+		27B4BCB3181DB95B0027007A /* FLXmlEncodingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXmlEncodingTests.h; sourceTree = "<group>"; };
+		27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXmlEncodingTests.m; sourceTree = "<group>"; };
 		27CBC1F416768BA600753D0A /* FishLamp-Objc-OSX-Universal-MRC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-Universal-MRC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B214727B17DE7BBC00985872 /* FishLamp-Objc-iOS-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-iOS-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B263E0E317DE7CF80049EF94 /* PiecemealCompilerFlagOverrides.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PiecemealCompilerFlagOverrides.h; sourceTree = "<group>"; };
@@ -3087,6 +3087,8 @@
 		27188CAA18148D6D0060FED6 /* FishLamp-Objc-EncodingTests */ = {
 			isa = PBXGroup;
 			children = (
+				27B4BCB3181DB95B0027007A /* FLXmlEncodingTests.h */,
+				27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */,
 			);
 			path = "FishLamp-Objc-EncodingTests";
 			sourceTree = "<group>";
@@ -3330,8 +3332,6 @@
 				2767D57D18132B1A001EF21C /* FLNonretainedArray.m */,
 				2767D57E18132B1A001EF21C /* FLObjectCache.h */,
 				2767D57F18132B1A001EF21C /* FLObjectCache.m */,
-				2767D58018132B1A001EF21C /* FLObjectPool.h */,
-				2767D58118132B1A001EF21C /* FLObjectPool.m */,
 				2767D58218132B1A001EF21C /* FLOrderedCollection.h */,
 				2767D58318132B1A001EF21C /* FLOrderedCollection.m */,
 				2767D58418132B1A001EF21C /* LinkedList */,
@@ -3700,8 +3700,8 @@
 				2767D66518132B1A001EF21C /* FLObjectXmlElement.m */,
 				2767D66618132B1A001EF21C /* FLXmlComment.h */,
 				2767D66718132B1A001EF21C /* FLXmlComment.m */,
-				2767D66818132B1A001EF21C /* FLXmlDocumentBuilder.h */,
-				2767D66918132B1A001EF21C /* FLXmlDocumentBuilder.m */,
+				2767D66818132B1A001EF21C /* FLXmlStringBuilder.h */,
+				2767D66918132B1A001EF21C /* FLXmlStringBuilder.m */,
 				2767D66A18132B1A001EF21C /* FLXmlElement.h */,
 				2767D66B18132B1A001EF21C /* FLXmlElement.m */,
 				2767D66C18132B1A001EF21C /* NSObject+FLXmlSerialization.h */,
@@ -3814,8 +3814,8 @@
 		2767D6C518132B1A001EF21C /* Http */ = {
 			isa = PBXGroup;
 			children = (
-				2767D6C618132B1A001EF21C /* FLHttpController.h */,
-				2767D6C718132B1A001EF21C /* FLHttpController.m */,
+				2767D6C618132B1A001EF21C /* FLHttpOperationContext.h */,
+				2767D6C718132B1A001EF21C /* FLHttpOperationContext.m */,
 				2767D6C818132B1A001EF21C /* FLHttpErrors.h */,
 				2767D6C918132B1A001EF21C /* FLHttpErrors.m */,
 				2767D6CA18132B1A001EF21C /* FLHttpOperation.h */,
@@ -5015,7 +5015,6 @@
 				2767DA8318132B1B001EF21C /* FLTestGroup.m in Sources */,
 				2767DD5818132B1C001EF21C /* FLService.m in Sources */,
 				2767DD5318132B1C001EF21C /* FLLastUserService.m in Sources */,
-				2767D97518132B1B001EF21C /* FLObjectPool.m in Sources */,
 				27188CA618148CF90060FED6 /* FLStringBuilderTester.m in Sources */,
 				2767DCEF18132B1C001EF21C /* FLReadStream.m in Sources */,
 				2767DBC318132B1C001EF21C /* FLObjectChangeTracker.m in Sources */,
@@ -5031,7 +5030,7 @@
 				2767DCDB18132B1C001EF21C /* FLSoapFault11.m in Sources */,
 				27188C9818148C450060FED6 /* FLTimeoutTests.m in Sources */,
 				2767DD4E18132B1C001EF21C /* NSNotification+FLExtras.m in Sources */,
-				2767DBFF18132B1C001EF21C /* FLHttpController.m in Sources */,
+				2767DBFF18132B1C001EF21C /* FLHttpOperationContext.m in Sources */,
 				2767DA4C18132B1B001EF21C /* FLPrettyAttributedString.m in Sources */,
 				2767DE1118132B1C001EF21C /* FLTimedObject.m in Sources */,
 				2767DCC218132B1C001EF21C /* FLFileSink.m in Sources */,
@@ -5054,6 +5053,7 @@
 				2767DC6D18132B1C001EF21C /* FLOAuth.m in Sources */,
 				2767D88518132B1B001EF21C /* FLCredentialsStorage.m in Sources */,
 				2767D88A18132B1B001EF21C /* FLUserDefaultsCredentialStorage.m in Sources */,
+				27B4BCB6181DB95B0027007A /* FLXmlEncodingTests.m in Sources */,
 				2767DB0018132B1B001EF21C /* FLXmlStringEncoding.m in Sources */,
 				2767D93918132B1B001EF21C /* NSImage+FLCompatibility.m in Sources */,
 				2767DAF618132B1B001EF21C /* FLSoapStringBuilder.m in Sources */,
@@ -5200,7 +5200,7 @@
 				2767DCA418132B1C001EF21C /* FLOAuthRequestAccessTokenHttpRequest.m in Sources */,
 				2767DC5E18132B1C001EF21C /* FLJsonParser.m in Sources */,
 				2767D8F318132B1B001EF21C /* FLCommandLineProcessor.m in Sources */,
-				2767DB3C18132B1B001EF21C /* FLXmlDocumentBuilder.m in Sources */,
+				2767DB3C18132B1B001EF21C /* FLXmlStringBuilder.m in Sources */,
 				2767D95218132B1B001EF21C /* FLBatchDictionary.m in Sources */,
 				2767DA7E18132B1B001EF21C /* FLTestCaseResult.m in Sources */,
 				2767D92018132B1B001EF21C /* FLCompatibleView+OSX.m in Sources */,
@@ -5398,7 +5398,6 @@
 				2767DA8518132B1B001EF21C /* FLTestGroup.m in Sources */,
 				2767DD5A18132B1C001EF21C /* FLService.m in Sources */,
 				2767DD5518132B1C001EF21C /* FLLastUserService.m in Sources */,
-				2767D97718132B1B001EF21C /* FLObjectPool.m in Sources */,
 				27188CA818148CF90060FED6 /* FLStringBuilderTester.m in Sources */,
 				2767DCF118132B1C001EF21C /* FLReadStream.m in Sources */,
 				2767DBC518132B1C001EF21C /* FLObjectChangeTracker.m in Sources */,
@@ -5414,7 +5413,7 @@
 				2767DCDD18132B1C001EF21C /* FLSoapFault11.m in Sources */,
 				27188C9A18148C450060FED6 /* FLTimeoutTests.m in Sources */,
 				2767DD5018132B1C001EF21C /* NSNotification+FLExtras.m in Sources */,
-				2767DC0118132B1C001EF21C /* FLHttpController.m in Sources */,
+				2767DC0118132B1C001EF21C /* FLHttpOperationContext.m in Sources */,
 				2767DA4E18132B1B001EF21C /* FLPrettyAttributedString.m in Sources */,
 				2767DE1318132B1C001EF21C /* FLTimedObject.m in Sources */,
 				2767DCC418132B1C001EF21C /* FLFileSink.m in Sources */,
@@ -5437,6 +5436,7 @@
 				2767DC6F18132B1C001EF21C /* FLOAuth.m in Sources */,
 				2767D88718132B1B001EF21C /* FLCredentialsStorage.m in Sources */,
 				2767D88C18132B1B001EF21C /* FLUserDefaultsCredentialStorage.m in Sources */,
+				27B4BCB8181DB95B0027007A /* FLXmlEncodingTests.m in Sources */,
 				2767DB0218132B1B001EF21C /* FLXmlStringEncoding.m in Sources */,
 				2767D93B18132B1B001EF21C /* NSImage+FLCompatibility.m in Sources */,
 				2767DAF818132B1B001EF21C /* FLSoapStringBuilder.m in Sources */,
@@ -5583,7 +5583,7 @@
 				2767DCA618132B1C001EF21C /* FLOAuthRequestAccessTokenHttpRequest.m in Sources */,
 				2767DC6018132B1C001EF21C /* FLJsonParser.m in Sources */,
 				2767D8F518132B1B001EF21C /* FLCommandLineProcessor.m in Sources */,
-				2767DB3E18132B1B001EF21C /* FLXmlDocumentBuilder.m in Sources */,
+				2767DB3E18132B1B001EF21C /* FLXmlStringBuilder.m in Sources */,
 				2767D95418132B1B001EF21C /* FLBatchDictionary.m in Sources */,
 				2767DA8018132B1B001EF21C /* FLTestCaseResult.m in Sources */,
 				2767D92218132B1B001EF21C /* FLCompatibleView+OSX.m in Sources */,
@@ -5795,7 +5795,6 @@
 				2767DA8218132B1B001EF21C /* FLTestGroup.m in Sources */,
 				2767DD5718132B1C001EF21C /* FLService.m in Sources */,
 				2767DD5218132B1C001EF21C /* FLLastUserService.m in Sources */,
-				2767D97418132B1B001EF21C /* FLObjectPool.m in Sources */,
 				27188CA518148CF90060FED6 /* FLStringBuilderTester.m in Sources */,
 				2767DCEE18132B1C001EF21C /* FLReadStream.m in Sources */,
 				2767DBC218132B1C001EF21C /* FLObjectChangeTracker.m in Sources */,
@@ -5811,7 +5810,7 @@
 				2767DCDA18132B1C001EF21C /* FLSoapFault11.m in Sources */,
 				27188C9718148C450060FED6 /* FLTimeoutTests.m in Sources */,
 				2767DD4D18132B1C001EF21C /* NSNotification+FLExtras.m in Sources */,
-				2767DBFE18132B1C001EF21C /* FLHttpController.m in Sources */,
+				2767DBFE18132B1C001EF21C /* FLHttpOperationContext.m in Sources */,
 				2767DA4B18132B1B001EF21C /* FLPrettyAttributedString.m in Sources */,
 				2767DE1018132B1C001EF21C /* FLTimedObject.m in Sources */,
 				2767DCC118132B1C001EF21C /* FLFileSink.m in Sources */,
@@ -5834,6 +5833,7 @@
 				2767DC6C18132B1C001EF21C /* FLOAuth.m in Sources */,
 				2767D88418132B1B001EF21C /* FLCredentialsStorage.m in Sources */,
 				2767D88918132B1B001EF21C /* FLUserDefaultsCredentialStorage.m in Sources */,
+				27B4BCB5181DB95B0027007A /* FLXmlEncodingTests.m in Sources */,
 				2767DAFF18132B1B001EF21C /* FLXmlStringEncoding.m in Sources */,
 				2767D93818132B1B001EF21C /* NSImage+FLCompatibility.m in Sources */,
 				2767DAF518132B1B001EF21C /* FLSoapStringBuilder.m in Sources */,
@@ -5980,7 +5980,7 @@
 				2767DCA318132B1C001EF21C /* FLOAuthRequestAccessTokenHttpRequest.m in Sources */,
 				2767DC5D18132B1C001EF21C /* FLJsonParser.m in Sources */,
 				2767D8F218132B1B001EF21C /* FLCommandLineProcessor.m in Sources */,
-				2767DB3B18132B1B001EF21C /* FLXmlDocumentBuilder.m in Sources */,
+				2767DB3B18132B1B001EF21C /* FLXmlStringBuilder.m in Sources */,
 				2767D95118132B1B001EF21C /* FLBatchDictionary.m in Sources */,
 				2767DA7D18132B1B001EF21C /* FLTestCaseResult.m in Sources */,
 				2767D91F18132B1B001EF21C /* FLCompatibleView+OSX.m in Sources */,
@@ -6146,7 +6146,6 @@
 				2767DA8418132B1B001EF21C /* FLTestGroup.m in Sources */,
 				2767DD5918132B1C001EF21C /* FLService.m in Sources */,
 				2767DD5418132B1C001EF21C /* FLLastUserService.m in Sources */,
-				2767D97618132B1B001EF21C /* FLObjectPool.m in Sources */,
 				27188CA718148CF90060FED6 /* FLStringBuilderTester.m in Sources */,
 				2767DCF018132B1C001EF21C /* FLReadStream.m in Sources */,
 				2767DBC418132B1C001EF21C /* FLObjectChangeTracker.m in Sources */,
@@ -6162,7 +6161,7 @@
 				2767DCDC18132B1C001EF21C /* FLSoapFault11.m in Sources */,
 				27188C9918148C450060FED6 /* FLTimeoutTests.m in Sources */,
 				2767DD4F18132B1C001EF21C /* NSNotification+FLExtras.m in Sources */,
-				2767DC0018132B1C001EF21C /* FLHttpController.m in Sources */,
+				2767DC0018132B1C001EF21C /* FLHttpOperationContext.m in Sources */,
 				2767DA4D18132B1B001EF21C /* FLPrettyAttributedString.m in Sources */,
 				2767DE1218132B1C001EF21C /* FLTimedObject.m in Sources */,
 				2767DCC318132B1C001EF21C /* FLFileSink.m in Sources */,
@@ -6185,6 +6184,7 @@
 				2767DC6E18132B1C001EF21C /* FLOAuth.m in Sources */,
 				2767D88618132B1B001EF21C /* FLCredentialsStorage.m in Sources */,
 				2767D88B18132B1B001EF21C /* FLUserDefaultsCredentialStorage.m in Sources */,
+				27B4BCB7181DB95B0027007A /* FLXmlEncodingTests.m in Sources */,
 				2767DB0118132B1B001EF21C /* FLXmlStringEncoding.m in Sources */,
 				2767D93A18132B1B001EF21C /* NSImage+FLCompatibility.m in Sources */,
 				2767DAF718132B1B001EF21C /* FLSoapStringBuilder.m in Sources */,
@@ -6331,7 +6331,7 @@
 				2767DCA518132B1C001EF21C /* FLOAuthRequestAccessTokenHttpRequest.m in Sources */,
 				2767DC5F18132B1C001EF21C /* FLJsonParser.m in Sources */,
 				2767D8F418132B1B001EF21C /* FLCommandLineProcessor.m in Sources */,
-				2767DB3D18132B1B001EF21C /* FLXmlDocumentBuilder.m in Sources */,
+				2767DB3D18132B1B001EF21C /* FLXmlStringBuilder.m in Sources */,
 				2767D95318132B1B001EF21C /* FLBatchDictionary.m in Sources */,
 				2767DA7F18132B1B001EF21C /* FLTestCaseResult.m in Sources */,
 				2767D92118132B1B001EF21C /* FLCompatibleView+OSX.m in Sources */,
@@ -6497,7 +6497,6 @@
 				2767DA8618132B1B001EF21C /* FLTestGroup.m in Sources */,
 				2767DD5B18132B1C001EF21C /* FLService.m in Sources */,
 				2767DD5618132B1C001EF21C /* FLLastUserService.m in Sources */,
-				2767D97818132B1B001EF21C /* FLObjectPool.m in Sources */,
 				27188CA918148CF90060FED6 /* FLStringBuilderTester.m in Sources */,
 				2767DCF218132B1C001EF21C /* FLReadStream.m in Sources */,
 				2767DBC618132B1C001EF21C /* FLObjectChangeTracker.m in Sources */,
@@ -6513,7 +6512,7 @@
 				2767DCDE18132B1C001EF21C /* FLSoapFault11.m in Sources */,
 				27188C9B18148C450060FED6 /* FLTimeoutTests.m in Sources */,
 				2767DD5118132B1C001EF21C /* NSNotification+FLExtras.m in Sources */,
-				2767DC0218132B1C001EF21C /* FLHttpController.m in Sources */,
+				2767DC0218132B1C001EF21C /* FLHttpOperationContext.m in Sources */,
 				2767DA4F18132B1B001EF21C /* FLPrettyAttributedString.m in Sources */,
 				2767DE1418132B1C001EF21C /* FLTimedObject.m in Sources */,
 				2767DCC518132B1C001EF21C /* FLFileSink.m in Sources */,
@@ -6536,6 +6535,7 @@
 				2767DC7018132B1C001EF21C /* FLOAuth.m in Sources */,
 				2767D88818132B1B001EF21C /* FLCredentialsStorage.m in Sources */,
 				2767D88D18132B1B001EF21C /* FLUserDefaultsCredentialStorage.m in Sources */,
+				27B4BCB9181DB95B0027007A /* FLXmlEncodingTests.m in Sources */,
 				2767DB0318132B1B001EF21C /* FLXmlStringEncoding.m in Sources */,
 				2767D93C18132B1B001EF21C /* NSImage+FLCompatibility.m in Sources */,
 				2767DAF918132B1B001EF21C /* FLSoapStringBuilder.m in Sources */,
@@ -6682,7 +6682,7 @@
 				2767DCA718132B1C001EF21C /* FLOAuthRequestAccessTokenHttpRequest.m in Sources */,
 				2767DC6118132B1C001EF21C /* FLJsonParser.m in Sources */,
 				2767D8F618132B1B001EF21C /* FLCommandLineProcessor.m in Sources */,
-				2767DB3F18132B1B001EF21C /* FLXmlDocumentBuilder.m in Sources */,
+				2767DB3F18132B1B001EF21C /* FLXmlStringBuilder.m in Sources */,
 				2767D95518132B1B001EF21C /* FLBatchDictionary.m in Sources */,
 				2767DA8118132B1B001EF21C /* FLTestCaseResult.m in Sources */,
 				2767D92318132B1B001EF21C /* FLCompatibleView+OSX.m in Sources */,

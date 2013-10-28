@@ -8,7 +8,7 @@
 //
 
 #import "FLObjectXmlElement.h"
-#import "FLXmlDocumentBuilder.h"
+#import "FLXmlStringBuilder.h"
 
 @interface FLObjectXmlElement ()
 @property (readwrite, strong, nonatomic) id object;

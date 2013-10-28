@@ -108,7 +108,7 @@
                                                                  xmlElementTag:self.operationName
                                                                   xmlNamespace:self.targetNamespace];
 
-	[soapStringBuilder addElement:element];
+	[soapStringBuilder appendSection:element];
     NSString* soap = [soapStringBuilder buildStringWithNoWhitespace];
     [self.requestHeaders setValue:self.soapAction forHTTPHeaderField:@"SOAPAction"];
     [self.requestBody setUtf8Content:soap];

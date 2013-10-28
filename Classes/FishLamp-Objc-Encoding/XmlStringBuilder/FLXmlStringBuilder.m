@@ -1,5 +1,5 @@
 //
-//	FLXmlDocumentBuilder.m
+//	FLXmlStringBuilder.m
 //	FishLamp
 //
 //	Created by Mike Fullerton on 6/11/09.
@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLXmlDocumentBuilder.h"
+#import "FLXmlStringBuilder.h"
 #import "FLStringUtils.h"
 #import "FLStringToObjectConversionManager.h"
 #import "FLXmlElement.h"
@@ -16,11 +16,11 @@
 
 #define EOL @"\r\n"
 
-@interface FLXmlDocumentBuilder ()
+@interface FLXmlStringBuilder ()
  
 @end
 
-@implementation FLXmlDocumentBuilder
+@implementation FLXmlStringBuilder
 
 @synthesize dataEncoder = _dataEncoder;
 
@@ -29,17 +29,18 @@ FLSynthesizeLazyGetter(dateEncoder, FLStringToObjectConversionManager*, _dataEnc
 - (id) init {
     self = [super init];
     if(self) {
-        [self openDocument];
+        [self openXmlDocument];
     }
     return self;
 }
 
-+ (FLXmlDocumentBuilder*) xmlStringBuilder {
++ (FLXmlStringBuilder*) xmlStringBuilder {
 	return FLAutorelease([[[self class] alloc] init]);
 }
 
-- (void) openDocument {
+- (void) openXmlDocument {
 }
+
 #if FL_MRC
 - (void) dealloc {
     [_dataEncoder release];
@@ -47,9 +48,9 @@ FLSynthesizeLazyGetter(dateEncoder, FLStringToObjectConversionManager*, _dataEnc
 }
 #endif
 
--(void) appendXmlVersionHeader:(NSString*) version 
-               andEncodingHeader:(NSString*) encoding
-               standalone:(BOOL) standalone {
+-(void) appendXmlVersionHeader:(NSString*) version
+             andEncodingHeader:(NSString*) encoding
+                    standalone:(BOOL) standalone {
     
     [self appendLineWithFormat:@"<?xml version=\"%@\" encoding=\"%@\" standalone=\"%@\"?>", version, encoding, standalone ? @"yes" : @"no"];
 }
@@ -58,21 +59,21 @@ FLSynthesizeLazyGetter(dateEncoder, FLStringToObjectConversionManager*, _dataEnc
     [self appendXmlVersionHeader:FLXmlVersion1_0 andEncodingHeader:FLXmlEncodingUtf8 standalone:YES];
 }
 
-- (void) openElement:(FLXmlElement*) element {
-    [self openSection:element];
-}
-
-- (void) addElement:(FLXmlElement*) element {
-    [self appendSection:element];
-}
-
-- (void) closeElement {
-    [self closeSection];
-}
-
-- (id) openedElement {
-    return [self openedSection];
-}
+//- (void) openSection:(FLXmlElement*) element {
+//    [self openSection:element];
+//}
+//
+//- (void) appendSection:(FLXmlElement*) element {
+//    [self appendSection:element];
+//}
+//
+//- (void) closeElement {
+//    [self closeSection];
+//}
+//
+//- (id) openedElement {
+//    return [self openedSection];
+//}
 
 
 @end

@@ -38,7 +38,7 @@
 //            FLLog(@"%@.%@ = %@", NSStringFromClass([self class]), property.propertyName, [object description])
 
             if(object) {
-                [xmlElement addElement:[FLObjectXmlElement objectXmlElement:object 
+                [xmlElement appendSection:[FLObjectXmlElement objectXmlElement:object
                                                               xmlElementTag:property.serializationKey 
                                                           propertyDescriber:property]];
             }
@@ -83,7 +83,7 @@
 			FLPropertyDescriber* elementDesc = [propertyDescriber.containedTypes objectAtIndex:0];
 
 			for(id obj in self){
-                [xmlElement addElement:[FLObjectXmlElement objectXmlElement:obj xmlElementTag:elementDesc.serializationKey propertyDescriber:elementDesc]];
+                [xmlElement appendSection:[FLObjectXmlElement objectXmlElement:obj xmlElementTag:elementDesc.serializationKey propertyDescriber:elementDesc]];
 			}
 		}
 		else {
@@ -93,7 +93,7 @@
                 
                 FLPropertyDescriber* containedType = [propertyDescriber containedTypeForClass:[obj class]];
                 if(containedType) {
-                    [xmlElement addElement:[FLObjectXmlElement objectXmlElement:obj 
+                    [xmlElement appendSection:[FLObjectXmlElement objectXmlElement:obj 
                                                                   xmlElementTag:containedType.serializationKey 
                                                               propertyDescriber:containedType]];
                 }
@@ -104,7 +104,7 @@
 //                BOOL found = NO;
 //                for(FLPropertyDescriber* subType in propertyDescriber.containedTypes) {
 //					if([obj isKindOfClass:[subType propertyClass]]) {
-//                        [xmlElement addElement:[FLObjectXmlElement objectXmlElement:obj xmlElementTag:subType.propertyName propertyDescriber:subType]];
+//                        [xmlElement appendSection:[FLObjectXmlElement objectXmlElement:obj xmlElementTag:subType.propertyName propertyDescriber:subType]];
 //                        found = YES;
 //						break;
 //					}

@@ -12,7 +12,7 @@
 @class FLStringToObjectConversionManager;
 @class FLXmlComment;
 
-// This is for WRITING Xml Elements only with the FLXmlDocumentBuilder.
+// This is for WRITING Xml Elements only with the FLXmlStringBuilder.
 @interface FLXmlElement : FLStringBuilderSection {
 @private
 	NSMutableDictionary* _attributes;
@@ -43,7 +43,6 @@ xmlElementCloseTag:(NSString*) xmlElementCloseTag;
 - (void) setAttribute:(NSString*) attributeValue forKey:(NSString*) key;
 - (void) appendAttribute:(NSString*) attributeValue forKey:(NSString*) key;
 
-- (void) addElement:(FLXmlElement*) element;
 
 @end
 

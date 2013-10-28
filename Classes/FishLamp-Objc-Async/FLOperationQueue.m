@@ -14,6 +14,8 @@
 #import "FLOperation.h"
 #import "FLSynchronousOperation.h"
 
+#import "FLOperationContext.h"
+
 @interface FLOperationQueue ()
 @property (readwrite, assign) NSInteger finishedCount;
 @property (readwrite, assign) NSInteger totalCount;
@@ -108,6 +110,7 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
 
 - (void) willStartOperation:(FLOperation*) operation
             forQueuedObject:(id) object {
+
 
     [FLBackgroundQueue queueBlock:^{
         [self.notify operationQueue:self
@@ -256,8 +259,10 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
         FLStringFromClass([operation class]),
         [object description]);
 
+    FLAssertNotNil(self.context);
+
 // TODO: give operations chance to run in whatever queue they want?
-    [FLBackgroundQueue queueObject:operation
+    [self.context beginOperation:operation
                         completion:^(FLPromisedResult result) {
 
         [self.schedulingQueue queueBlock: ^{

@@ -88,3 +88,5 @@ extern NSException* FLLogTestException(NSException* ex);
 #define FLTestConformsToProcol(__OBJ__, __PROTOCOL__) \
             FLTest([__OBJ__ conformsToProtocol:@protocol(__PROTOCOL__)])
 
+#define FLTestNotError(__OBJ__) \
+            FLThrowIfError(__OBJ__)

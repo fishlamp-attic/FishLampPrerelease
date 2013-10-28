@@ -13,7 +13,7 @@
 @interface FLPromise ()
 @property (readwrite, strong) FLPromisedResult result;
 @property (readwrite, strong) FLPromise* nextPromise;
-@property (readwrite, assign, getter=isFinished) BOOL finished;
+//@property (readwrite, assign, getter=isFinished) BOOL finished;
 @property (readwrite, copy) fl_completion_block_t completion;
 @end
 
@@ -24,12 +24,17 @@ static NSInteger s_promiseCount = 0;
 static NSInteger s_max = 0;
 #endif
 
+@interface FLPromise ()
+@property (readwrite, assign) dispatch_semaphore_t semaphore;
+@end
+
 @implementation FLPromise
 
 @synthesize nextPromise = _nextPromise;
 @synthesize result = _result;
-@synthesize finished = _finished;
+//@synthesize finished = _finished;
 @synthesize completion = _completion;
+@synthesize semaphore = _semaphore;
 
 - (id) initWithCompletion:(fl_completion_block_t) completion {
     
@@ -99,6 +104,10 @@ static NSInteger s_max = 0;
     return FLAutorelease([[[self class] alloc] initWithCompletion:completion]);
 }
 
+- (BOOL) isFinished {
+    return self.semaphore == nil;
+}
+
 - (FLPromisedResult) waitUntilFinished {
     
     FLRetainObject(self);
@@ -112,9 +121,15 @@ static NSInteger s_max = 0;
             }
         } 
         else {
-//            FLLog(@"waiting for semaphor for %X, thread %@", (void*) _semaphore, [NSThread currentThread]);
-            dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
-//            FLLog(@"finished waiting for %X", (void*) _semaphore);
+
+            FLTrace(@"waiting for semaphore for %X, thread %@", (void*) self.semaphore, [NSThread currentThread]);
+
+            if(self.semaphore) {
+                // HMM could there be an edge case here?
+                dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+            }
+
+            FLTrace(@"finished waiting for %X", (void*) self.semaphore);
         } 
     }
     @finally {
@@ -127,8 +142,9 @@ static NSInteger s_max = 0;
 }
 
 - (void) fufillPromiseWithResult:(FLPromisedResult) result {
-    
-    FLAssertIsNilWithComment(self.result, @"already finished");
+
+    FLAssertNotNilWithComment(self.semaphore, @"already finished");
+    FLAssertIsNilWithComment(self.result, @"should not already have result");
 
     if(result == nil) {
        result = [NSError failedResultError];
@@ -145,15 +161,19 @@ static NSInteger s_max = 0;
     _target = nil;
     _action = nil;
 
-    self.finished = YES;
+    if(self.semaphore) {
+    // this shouldn't be nil, but if it is dispatch_semaphore_signal
+    // will crash.
+        FLTrace(@"releasing semaphore for %X, ont thread %@",
+                    (void*) self.semaphore,
+                    [NSThread currentThread]);
 
-    if(_semaphore) {
-    //       FLLog(@"releasing semaphor for %X, ont thread %@", (void*) _semaphore, [NSThread currentThread]);
-        dispatch_semaphore_signal(_semaphore);
+        dispatch_semaphore_signal(self.semaphore);
+
 #if !OS_OBJECT_USE_OBJC
-        dispatch_release(_semaphore);
+        dispatch_release(self.semaphore);
 #endif
-        _semaphore = nil;
+        self.semaphore = nil;
     }
 }
 

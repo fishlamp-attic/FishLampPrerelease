@@ -28,7 +28,7 @@
     [_expectedTestResult release];
     [_testResults release];
 
-[super dealloc];
+    [super dealloc];
 }
 #endif
 

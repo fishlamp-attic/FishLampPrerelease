@@ -18,7 +18,7 @@
 @implementation FLTestable (TestCases)
 
 - (id) initWithTestCaseCreation {
-	self = [super init];
+	self = [self init];
 	if(self) {
 		self.testCaseList = [self createTestCases];
 	}
@@ -28,8 +28,8 @@
 - (void) sortTestCaseList:(NSMutableArray*) list {
     [list sortUsingComparator:^NSComparisonResult(FLTestCase* obj1, FLTestCase* obj2) {
 
-        NSString* lhs = obj1.selector.name;
-        NSString* rhs = obj2.selector.name;
+        NSString* lhs = obj1.selector.selectorString;
+        NSString* rhs = obj2.selector.selectorString;
 
         if( [lhs rangeOfString:@"firstTest" options:NSCaseInsensitiveSearch].length > 0 ||
             [rhs rangeOfString:@"lastTest" options:NSCaseInsensitiveSearch].length > 0) {

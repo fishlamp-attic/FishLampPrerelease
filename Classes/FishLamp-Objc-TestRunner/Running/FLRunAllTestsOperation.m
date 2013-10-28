@@ -46,8 +46,8 @@
     for(FLTestGroupOrganizer* group in sortedGroupList) {
     
         [FLTestOutput appendLineWithFormat:@"UnitTest Group: %@ (priority: %ld)",
-         group.testGroup.groupName,
-         (long) group.testGroup.groupPriority];
+                                                group.testGroup.groupName,
+                                                (long) group.testGroup.groupPriority];
 
         for(id<FLTestFactory> factory in group.testList) {
 

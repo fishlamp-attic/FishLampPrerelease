@@ -33,20 +33,20 @@
 }
 #endif
 
-- (void) openDocument {
+- (void) openXmlDocument {
     self.dataEncoder = [FLXmlDataEncoder instance];
     
     [self appendDefaultXmlHeader];
 
     _envelopeElement = [[FLXmlElement alloc] initWithXmlElementTag:@"soap:Envelope"];
-    [self openElement:_envelopeElement];
+    [self openSection:_envelopeElement];
 
     [_envelopeElement setAttribute:@"http://www.w3.org/2001/XMLSchema-instance"  forKey:@"xmlns:xsi"];
     [_envelopeElement setAttribute:@"http://www.w3.org/2001/XMLSchema" forKey:@"xmlns:xsd"];
     [_envelopeElement setAttribute:@"http://schemas.xmlsoap.org/soap/envelope/"forKey:@"xmlns:soap" ];
     
     _bodyElement = [[FLXmlElement alloc] initWithXmlElementTag:@"soap:Body"];
-    [self openElement:_bodyElement];
+    [self openSection:_bodyElement];
 }
 
 -(void) appendXmlVersionHeader:(NSString*) version 
@@ -76,7 +76,7 @@
 - (void) addSoapParameter:(NSString*) name value:(NSString*) value {
     FLXmlElement* element = [FLXmlElement xmlElement:name];
     [element appendLine:value];
-	[self addElement:element];
+	[self appendSection:element];
 }
 
 - (void) addSoapParameters:(NSDictionary*) parameters {

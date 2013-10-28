@@ -184,7 +184,7 @@
 - (BOOL) hasListener:(id) listener {
     __block BOOL hasListener = NO;
 
-    FLAtomicBlock(&_predicate, ^{
+    FLCriticalSection(&_predicate, ^{
         hasListener = [self.notify hasListener:listener];
     });
 
@@ -192,26 +192,26 @@
 }
 
 - (void) addListener:(id) listener {
-    FLAtomicBlock(&_predicate, ^{
+    FLCriticalSection(&_predicate, ^{
         [self.notify addListener:listener];
     });
 }
 
 - (void) removeListener:(id) listener {
-    FLAtomicBlock(&_predicate, ^{
+    FLCriticalSection(&_predicate, ^{
         [self.notify removeListener:listener];
     });
 }
 
 - (void) notify:(SEL) selector {
-    FLAtomicBlock(&_predicate, ^{
+    FLCriticalSection(&_predicate, ^{
         [self.notify notify:selector];
     });
 }
 
 - (void) notify:(SEL) selector  
                      withObject:(id) object {
-    FLAtomicBlock(&_predicate, ^{
+    FLCriticalSection(&_predicate, ^{
         [self.notify notify:selector withObject:object];
     });
 }
@@ -219,7 +219,7 @@
 - (void) notify:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2 {
-    FLAtomicBlock(&_predicate, ^{
+    FLCriticalSection(&_predicate, ^{
         [self.notify notify:selector withObject:object1 withObject:object2];
     });
 }
@@ -228,7 +228,7 @@
                      withObject:(id) object1
                      withObject:(id) object2
                      withObject:(id) object3 {
-    FLAtomicBlock(&_predicate, ^{
+    FLCriticalSection(&_predicate, ^{
         [self.notify notify:selector withObject:object1 withObject:object2 withObject:object3];
     });
 }
@@ -238,7 +238,7 @@
                      withObject:(id) object2
                      withObject:(id) object3
                      withObject:(id) object4 {
-    FLAtomicBlock(&_predicate, ^{
+    FLCriticalSection(&_predicate, ^{
         [self.notify notify:selector withObject:object1 withObject:object2 withObject:object3 withObject:object4];
     });
 }

@@ -1,5 +1,5 @@
 //
-//  FLHttpController.h
+//  FLHttpOperationContext.h
 //  FishLampCocoa
 //
 //  Created by Mike Fullerton on 3/30/13.
@@ -22,7 +22,7 @@
 
 extern NSString* const FLHttpControllerDidLogoutUserNotification;
 
-@interface FLHttpController : FLOperationContext<FLHttpRequestAuthenticatorDelegate> {
+@interface FLHttpOperationContext : FLOperationContext<FLHttpRequestAuthenticatorDelegate> {
 @private
     FLHttpUser* _httpUser;
     id<FLUserService> _userService;
@@ -39,6 +39,7 @@ extern NSString* const FLHttpControllerDidLogoutUserNotification;
 @property (readonly, strong) FLHttpUser* httpUser;
 
 - (void) logoutUser;
+- (void) setAuthenticatedUser:(FLHttpUser*) user;
 
 // Optional overrides
 
@@ -59,13 +60,13 @@ extern NSString* const FLHttpControllerDidLogoutUserNotification;
 @protocol FLHttpControllerMessages <NSObject>
 @optional
 
-- (void) httpController:(FLHttpController*) controller
+- (void) httpController:(FLHttpOperationContext*) controller
     didAuthenticateUser:(FLHttpUser*) userLogin;
 
-- (void) httpController:(FLHttpController*) controller 
+- (void) httpController:(FLHttpOperationContext*) controller 
           didLogoutUser:(FLHttpUser*) userLogin;
 
-- (void) httpControllerDidClose:(FLHttpController*) controller;
-- (void) httpControllerDidOpen:(FLHttpController*) controller;
+- (void) httpControllerDidClose:(FLHttpOperationContext*) controller;
+- (void) httpControllerDidOpen:(FLHttpOperationContext*) controller;
 @end
 

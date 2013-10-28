@@ -30,6 +30,7 @@
     __unsafe_unretained FLTestable* _unitTest;
     __unsafe_unretained FLTestCaseList* _testCaseList;
     BOOL _disabled;
+    BOOL _debugMode;
 }
 
 // info
@@ -72,6 +73,8 @@
 - (void) runLast;
 - (void) runBefore:(FLTestCase*) anotherTestCase;
 - (void) runAfter:(FLTestCase*) anotherTestCase;
+
+@property (readwrite, assign) BOOL debugMode;
 
 @end
 

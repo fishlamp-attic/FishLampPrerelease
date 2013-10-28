@@ -54,9 +54,7 @@
         [testCase willPerformTest];
     }
 
-    if([_unitTest respondsToSelector:@selector(willRunTestCases:)]) {
-        [_unitTest willRunTestCases:testCases];
-    }
+    [_unitTest willRunTestCases:testCases];
 
     for(FLTestCase* testCase in testCases) {
         [testCase performTest];
@@ -82,9 +80,7 @@
 
     }
 
-    if([_unitTest respondsToSelector:@selector(didRunTestCases:)]) {
-        [_unitTest didRunTestCases:testCases];
-    }
+    [_unitTest didRunTestCases:testCases];
 
     for(FLTestCase* testCase in testCases) {
        if(!testCase.result.passed) {

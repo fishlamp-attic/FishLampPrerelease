@@ -98,10 +98,15 @@
 
 - (FLPromise*) queueAsyncInitiator:(FLAsyncInitiator*) event
                         completion:(fl_completion_block_t) completion {
+
+    FLAssertNotNil(event);
+
     return [event dispatchAsyncInQueue:self completion:completion];
 }
 
 - (FLPromisedResult) queueSynchronousInitiator:(FLAsyncInitiator*) event {
+    FLAssertNotNil(event);
+
     return [event dispatchSyncInQueue:self];
 }
 
@@ -141,6 +146,10 @@
 #pragma GCC diagnostic ignored "-Warc-performSelector-leaks"
 
 - (void) dispatch_target:(id) target action:(SEL) action {
+
+    FLAssertNotNil(target);
+    FLAssertNotNil(action);
+
     __block id theTarget = FLRetain(target);
     [self dispatch_async:^{
         [theTarget performSelector:action];
@@ -149,6 +158,9 @@
 }
 
 - (void) dispatch_target:(id) target action:(SEL) action withObject:(id) object {
+    FLAssertNotNil(target);
+    FLAssertNotNil(action);
+
     __block id theTarget = FLRetain(target);
     __block id theObject = FLRetain(object);
 
@@ -197,18 +209,6 @@
 #else 
     return [super initWithLabel:[NSString stringWithFormat:@"com.fishlamp.queue.fifo%d", s_count++] attr:nil];
 #endif
-}
-
-//+ (FLObjectPool*) pool {
-//    static FLObjectPoolFactory s_factory = ^{
-//        return [FLFifoAsyncQueue fifoAsyncQueue];
-//    };
-//
-//    FLReturnStaticObject([[FLObjectPool alloc] initWithObjectFactory:s_factory]); 
-//}
-
-- (void) releaseToPool {
-
 }
 
 @end

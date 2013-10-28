@@ -85,12 +85,18 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter {
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
             appendString:(NSString*) string {
-    [[self logger] appendString:string];
+//    [[self logger] appendString:string];
+
+    for(id logger in _loggers) {
+        [logger appendString:string];
+    }
+
 }
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
   appendAttributedString:(NSAttributedString*) attributedString {
     [[self logger] appendString:attributedString];
+
 }
 
 - (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter {

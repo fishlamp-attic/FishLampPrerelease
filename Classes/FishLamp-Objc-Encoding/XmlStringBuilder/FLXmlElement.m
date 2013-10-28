@@ -8,7 +8,7 @@
 //
 
 #import "FLXmlElement.h"
-#import "FLXmlDocumentBuilder.h"
+#import "FLXmlStringBuilder.h"
 #import "FLStringToObjectConversionManager.h"
 #import "FLXmlComment.h"
 
@@ -60,25 +60,30 @@
 #endif
 
 - (FLStringToObjectConversionManager*) dataEncoder {
-    if(!_dataEncoder) {
-        id walker = self.parent;
-        while(walker) {
-            if([walker respondsToSelector:@selector(dataEncoder)]) {
-                id dataEncoder = [walker dataEncoder];
-                if(dataEncoder) {
-                    self.dataEncoder = dataEncoder;
-                    break;
-                }
+//    if(!_dataEncoder) {
+//        id walker = self.parent;
+//        while(walker) {
+//            if([walker respondsToSelector:@selector(dataEncoder)]) {
+//                id dataEncoder = [walker dataEncoder];
+//                if(dataEncoder) {
+//                    self.dataEncoder = dataEncoder;
+//                    break;
+//                }
+//
+//            }
+//            walker = [walker parent];
+//        }
+//    
+//        FLAssertNotNil(_dataEncoder);
+//    }
+//
+//
+    FLAssertNotNil(self.document);
 
-            }
-            walker = [walker parent];
-        }
-    
-        FLAssertNotNil([self dataEncoder]);
-    }
+    FLStringToObjectConversionManager* encoder = [self.document dataEncoder];
+    FLAssertNotNil(encoder);
 
-
-    return _dataEncoder;
+    return encoder;
 }
 
 
@@ -141,10 +146,10 @@
     return _comments;
 }
 
-- (void) addElement:(FLXmlElement*) element {
-    FLAssertNotNil(element);
-    [self appendSection:element];
-}
+//- (void) appendSection:(FLXmlElement*) element {
+//    FLAssertNotNil(element);
+//    [self appendSection:element];
+//}
 
 - (NSString*) xmlOpenTag:(BOOL) isEmpty {
     

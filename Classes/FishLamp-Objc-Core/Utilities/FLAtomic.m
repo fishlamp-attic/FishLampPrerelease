@@ -16,7 +16,7 @@
 #define GOODHASH(x) (((long)x >> 5) & GOODMASK)
 static OSSpinLock s_spinlocks[1 << GOODPOWER] = { 0 };
 
-void FLAtomicBlock(dispatch_once_t* addr, dispatch_block_t block) {
+void FLCriticalSection(void* addr, dispatch_block_t block) {
     FLAssertNotNil(addr);
     FLAssertNotNil(block);
 

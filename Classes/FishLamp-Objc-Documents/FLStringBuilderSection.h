@@ -13,6 +13,8 @@
 #import "FLPrettyString.h"
 #import "FLWhitespaceStringFormatter.h"
 
+@class FLStringBuilder;
+
 @interface FLStringBuilderSection : FLStringFormatter<FLStringFormatterDelegate> {
 @private
     NSMutableArray* _lines;
@@ -20,13 +22,14 @@
     BOOL _lineOpen;
 
     NSInteger _indentLevel;
-    __unsafe_unretained FLStringBuilderSection* _parent;
+    __unsafe_unretained id _parent;
+    __unsafe_unretained id _document;
 }
-
-+ (id) stringBuilder;
-
-@property (readonly, assign, nonatomic) FLStringBuilderSection* parent;
 @property (readonly, strong, nonatomic) NSArray* lines;
+@property (readonly, assign, nonatomic) id parent;
+@property (readonly, assign, nonatomic) id document;
+
++ (id) stringBuilderSection;
 
 - (void) appendSection:(FLStringBuilderSection*) section;
 

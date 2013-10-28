@@ -55,7 +55,7 @@
 
 // DEPRECATED
 // note that if you start an operation directly in a queue (e.g. you don't call start or run) the asyncQueue is ignored 
-@property (readwrite, strong, nonatomic) id<FLAsyncQueue> asyncQueue;
+//@property (readwrite, strong, nonatomic) id<FLAsyncQueue> asyncQueue;
 
 @end
 
@@ -93,8 +93,10 @@
 
 #define FLSynthesizeExpectedResult(__CLASS_NAME__) \
     + (__CLASS_NAME__*) objectFromResult:(FLPromisedResult) result { \
+        FLAssertNotNil(result); \
         return [__CLASS_NAME__ fromPromisedResult:result]; \
     } \
     - (__CLASS_NAME__*) objectFromResult:(FLPromisedResult) result { \
+        FLAssertNotNil(result); \
         return [__CLASS_NAME__ fromPromisedResult:result]; \
     }
