@@ -35,11 +35,11 @@
     
     FLPromise* promise = [finisher addPromise];
     
-    Assert(!promise.isFinished);
-    Assert(fired == NO);
+    FLConfirm(!promise.isFinished);
+    FLConfirm(fired == NO);
     [finisher setFinished];
-    Assert(promise.isFinished);
-    Assert(fired == YES);
+    FLConfirm(promise.isFinished);
+    FLConfirm(fired == YES);
 }
 
 - (void) willTestDoubleCount:(FLTestCase*) testCase {
@@ -56,10 +56,10 @@
     
     FLPromise* promise = [finisher addPromise];
 
-    Assert(!promise.isFinished);
-    Assert(fired);
+    FLConfirm(!promise.isFinished);
+    FLConfirm(fired);
     [finisher setFinished];
-    Assert(promise.isFinished);
+    FLConfirm(promise.isFinished);
 
     BOOL gotError = NO;
     @try {
@@ -70,7 +70,7 @@
         gotError = YES;
     }
     
-    AssertWithComment(gotError == YES, @"expecting an error");
+    FLConfirmWithComment(gotError == YES, @"expecting an error");
 }
 
 - (void) testBasicAsyncTest {
@@ -86,14 +86,14 @@
         });
 
     FLPromisedResult result = [finisher waitUntilFinished];
-    AssertNotNil(result);
-    Assert(finisher.isFinished);
+    FLConfirmNotNil(result);
+    FLConfirm(finisher.isFinished);
 }
 
 - (void) testPromiseAdding {
     FLPromise* promise = [FLPromise promise];
-    AssertNotNil(promise);
-    AssertNil(promise.nextPromise);
+    FLConfirmNotNil(promise);
+    FLConfirmNil(promise.nextPromise);
 
     NSMutableArray* array = [NSMutableArray array];
     [array addObject:promise];
@@ -106,11 +106,11 @@
     }
 
     FLPromise* walker = promise;
-    FLAssert(walker == [array objectAtIndex:0]);
+    FLConfirm(walker == [array objectAtIndex:0]);
 
     int i = 0;
     while(walker) {
-        Assert(walker == [array objectAtIndex:i++]);
+        FLConfirm(walker == [array objectAtIndex:i++]);
         walker = walker.nextPromise;
     }
 }

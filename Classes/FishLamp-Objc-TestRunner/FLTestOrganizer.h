@@ -6,28 +6,21 @@
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "FLTestFinder.h"
+#import "FishLampMinimum.h"
+#import "FLSortedTestGroupList.h"
 
 @class FLTestable;
+@class FLTestGroupFinder;
 
 @interface FLTestOrganizer : NSObject {
 @private
-    NSMutableArray* _unitTestFinders;
-    NSArray* _unitTests;
-    NSDictionary* _unitTestGroups;
-    NSDictionary* _testMethods;
-    NSArray* _sortedGroupList;
+    FLSortedTestGroupList* _sortedGroupList;
 }
 
-+ (id) unitTestOrganizer;
+@property (readonly, strong, nonatomic) FLSortedTestGroupList* sortedGroupList;
 
-@property (readonly, strong, nonatomic) NSDictionary* unitTestGroups;
-@property (readonly, strong, nonatomic) NSArray* sortedGroupList;
-@property (readonly, strong, nonatomic) NSArray* unitTestFactories;
++ (id) testOrganizer;
 
-- (void) addUnitTestFinder:(FLTestFinder*) finder;
-
-- (void) findAndOrganizeUnitTests;
+- (void) organizeTests;
 
 @end

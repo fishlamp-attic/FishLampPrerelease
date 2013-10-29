@@ -17,7 +17,7 @@
 #import "FLDispatchQueue.h"
 
 #import "FLTestOrganizer.h"
-#import "FLTestGroupOrganizer.h"
+#import "FLSortedTestGroup.h"
 
 #import "FLTestFactory.h"
 #import "FLAssembledTest.h"
@@ -30,26 +30,24 @@
 
 - (FLPromisedResult) performSynchronously {
 
-    FLTestOrganizer* organizer = [FLTestOrganizer unitTestOrganizer];
-    [organizer findAndOrganizeUnitTests];
+    FLTestOrganizer* organizer = [FLTestOrganizer testOrganizer];
+    [organizer organizeTests];
 
-    NSArray* allClassesList = [organizer unitTestFactories];
-    
-    NSArray* sortedGroupList = [organizer sortedGroupList];
+    FLSortedTestGroupList* sortedGroupList = [organizer sortedGroupList];
 
     [FLTestOutput appendLineWithFormat:@"Found %ld unit test classes in %ld groups",
-        (unsigned long) allClassesList.count,
-        (unsigned long) sortedGroupList.count];
+        (unsigned long) sortedGroupList.testCount,
+        (unsigned long) sortedGroupList.groupCount];
     
     NSMutableArray* resultArray = [NSMutableArray array];
 
-    for(FLTestGroupOrganizer* group in sortedGroupList) {
+    for(FLSortedTestGroup* group in sortedGroupList) {
     
         [FLTestOutput appendLineWithFormat:@"UnitTest Group: %@ (priority: %ld)",
                                                 group.testGroup.groupName,
                                                 (long) group.testGroup.groupPriority];
 
-        for(id<FLTestFactory> factory in group.testList) {
+        for(id<FLTestFactory> factory in group) {
 
             @autoreleasepool {
                 FLAssembledTest* test = [factory createAssembledTest];

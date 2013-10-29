@@ -13,7 +13,7 @@
 
 @implementation FLTestableSubclassFinder
 
-+ (id) unitTestSubclassFinder {
++ (id) testableSubclassFinder {
     return FLAutorelease([[[self class] alloc] init]);
 }
 

@@ -11,17 +11,20 @@
 @class FLTestGroup;
 @protocol FLTestFactory;
 
-@interface FLTestGroupOrganizer : NSObject {
+@interface FLSortedTestGroup : NSObject<NSFastEnumeration> {
 @private
     FLTestGroup* _testGroup;
-    NSMutableArray* _testList;
+    NSMutableArray* _testFactories;
 }
 
-@property (readonly, strong, nonatomic) NSArray* testList;
-@property (readonly, strong, nonatomic) FLTestGroup* testGroup;
+@property (readonly, assign, nonatomic) NSUInteger testCount;
 
-+ (id) unitTestGroupOrganizer:(FLTestGroup*) group;
+@property (readonly, strong, nonatomic) FLTestGroup* testGroup;
+@property (readonly, strong, nonatomic) NSArray* testFactories;
+
++ (id) sortedTestGroup:(FLTestGroup*) group;
 
 - (void) addUnitTestFactory:(id<FLTestFactory>) unitTestFactory;
+- (void) organizeTests;
 
 @end

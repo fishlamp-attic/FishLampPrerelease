@@ -72,6 +72,8 @@
 #define FLConfirmNilWithComment \
             FLConfirmIsNilWithComment
 
+#define FLConfirmNotError(__OBJ__) \
+            FLConfirm(![__OBJ__ isKindOfClass:[NSError class]])
 
 /*
 

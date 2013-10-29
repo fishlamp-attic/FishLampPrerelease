@@ -12,6 +12,6 @@
 
 @interface FLTestableSubclassFinder : FLTestFinder
 
-+ (id) unitTestSubclassFinder;
++ (id) testableSubclassFinder;
 
 @end

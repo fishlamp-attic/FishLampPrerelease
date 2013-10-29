@@ -1652,11 +1652,11 @@
 		2767DEC118132B1C001EF21C /* FLStaticTestMethodRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D80B18132B1B001EF21C /* FLStaticTestMethodRunner.m */; };
 		2767DEC218132B1C001EF21C /* FLStaticTestMethodRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D80B18132B1B001EF21C /* FLStaticTestMethodRunner.m */; };
 		2767DEC318132B1C001EF21C /* FLStaticTestMethodRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D80B18132B1B001EF21C /* FLStaticTestMethodRunner.m */; };
-		2767DECE18132B1C001EF21C /* FLTestGroupOrganizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81118132B1B001EF21C /* FLTestGroupOrganizer.m */; };
-		2767DECF18132B1C001EF21C /* FLTestGroupOrganizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81118132B1B001EF21C /* FLTestGroupOrganizer.m */; };
-		2767DED018132B1C001EF21C /* FLTestGroupOrganizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81118132B1B001EF21C /* FLTestGroupOrganizer.m */; };
-		2767DED118132B1C001EF21C /* FLTestGroupOrganizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81118132B1B001EF21C /* FLTestGroupOrganizer.m */; };
-		2767DED218132B1C001EF21C /* FLTestGroupOrganizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81118132B1B001EF21C /* FLTestGroupOrganizer.m */; };
+		2767DECE18132B1C001EF21C /* FLSortedTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81118132B1B001EF21C /* FLSortedTestGroup.m */; };
+		2767DECF18132B1C001EF21C /* FLSortedTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81118132B1B001EF21C /* FLSortedTestGroup.m */; };
+		2767DED018132B1C001EF21C /* FLSortedTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81118132B1B001EF21C /* FLSortedTestGroup.m */; };
+		2767DED118132B1C001EF21C /* FLSortedTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81118132B1B001EF21C /* FLSortedTestGroup.m */; };
+		2767DED218132B1C001EF21C /* FLSortedTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81118132B1B001EF21C /* FLSortedTestGroup.m */; };
 		2767DED318132B1C001EF21C /* FLTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81318132B1B001EF21C /* FLTestOperation.m */; };
 		2767DED418132B1C001EF21C /* FLTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81318132B1B001EF21C /* FLTestOperation.m */; };
 		2767DED518132B1C001EF21C /* FLTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D81318132B1B001EF21C /* FLTestOperation.m */; };
@@ -1797,6 +1797,16 @@
 		27D7939A181EC3DB0046E5DA /* FLTestableRunOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D79397181EC3DB0046E5DA /* FLTestableRunOrder.m */; };
 		27D7939B181EC3DB0046E5DA /* FLTestableRunOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D79397181EC3DB0046E5DA /* FLTestableRunOrder.m */; };
 		27D7939C181EC3DB0046E5DA /* FLTestableRunOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D79397181EC3DB0046E5DA /* FLTestableRunOrder.m */; };
+		27D793A3182022A00046E5DA /* FLSortedTestGroupList.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D793A2182022A00046E5DA /* FLSortedTestGroupList.m */; };
+		27D793A4182022A00046E5DA /* FLSortedTestGroupList.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D793A2182022A00046E5DA /* FLSortedTestGroupList.m */; };
+		27D793A5182022A00046E5DA /* FLSortedTestGroupList.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D793A2182022A00046E5DA /* FLSortedTestGroupList.m */; };
+		27D793A6182022A00046E5DA /* FLSortedTestGroupList.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D793A2182022A00046E5DA /* FLSortedTestGroupList.m */; };
+		27D793A7182022A00046E5DA /* FLSortedTestGroupList.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D793A2182022A00046E5DA /* FLSortedTestGroupList.m */; };
+		27D793AA182023B80046E5DA /* FLTestGroupFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D793A9182023B80046E5DA /* FLTestGroupFinder.m */; };
+		27D793AB182023B80046E5DA /* FLTestGroupFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D793A9182023B80046E5DA /* FLTestGroupFinder.m */; };
+		27D793AC182023B80046E5DA /* FLTestGroupFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D793A9182023B80046E5DA /* FLTestGroupFinder.m */; };
+		27D793AD182023B80046E5DA /* FLTestGroupFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D793A9182023B80046E5DA /* FLTestGroupFinder.m */; };
+		27D793AE182023B80046E5DA /* FLTestGroupFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D793A9182023B80046E5DA /* FLTestGroupFinder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2613,8 +2623,8 @@
 		2767D80918132B1B001EF21C /* FLAssembledTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAssembledTest.m; sourceTree = "<group>"; };
 		2767D80A18132B1B001EF21C /* FLStaticTestMethodRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStaticTestMethodRunner.h; sourceTree = "<group>"; };
 		2767D80B18132B1B001EF21C /* FLStaticTestMethodRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStaticTestMethodRunner.m; sourceTree = "<group>"; };
-		2767D81018132B1B001EF21C /* FLTestGroupOrganizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestGroupOrganizer.h; sourceTree = "<group>"; };
-		2767D81118132B1B001EF21C /* FLTestGroupOrganizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestGroupOrganizer.m; sourceTree = "<group>"; };
+		2767D81018132B1B001EF21C /* FLSortedTestGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSortedTestGroup.h; sourceTree = "<group>"; };
+		2767D81118132B1B001EF21C /* FLSortedTestGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSortedTestGroup.m; sourceTree = "<group>"; };
 		2767D81218132B1B001EF21C /* FLTestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestOperation.h; sourceTree = "<group>"; };
 		2767D81318132B1B001EF21C /* FLTestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestOperation.m; sourceTree = "<group>"; };
 		2767D81418132B1B001EF21C /* FLRunAllTestsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRunAllTestsOperation.h; sourceTree = "<group>"; };
@@ -2702,6 +2712,10 @@
 		27D79396181EC3DB0046E5DA /* FLTestableRunOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestableRunOrder.h; sourceTree = "<group>"; };
 		27D79397181EC3DB0046E5DA /* FLTestableRunOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestableRunOrder.m; sourceTree = "<group>"; };
 		27D793A0181ED5A20046E5DA /* FLAssertUndef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAssertUndef.h; sourceTree = "<group>"; };
+		27D793A1182022A00046E5DA /* FLSortedTestGroupList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSortedTestGroupList.h; sourceTree = "<group>"; };
+		27D793A2182022A00046E5DA /* FLSortedTestGroupList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSortedTestGroupList.m; sourceTree = "<group>"; };
+		27D793A8182023B80046E5DA /* FLTestGroupFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestGroupFinder.h; sourceTree = "<group>"; };
+		27D793A9182023B80046E5DA /* FLTestGroupFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestGroupFinder.m; sourceTree = "<group>"; };
 		B214727B17DE7BBC00985872 /* FishLamp-Objc-iOS-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-iOS-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B263E0E317DE7CF80049EF94 /* PiecemealCompilerFlagOverrides.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PiecemealCompilerFlagOverrides.h; sourceTree = "<group>"; };
 		B263E0E417DE7D4C0049EF94 /* PiecemealCompilerFlagOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PiecemealCompilerFlagOverrides.h; path = "Piecemeal-XcodeConfigs/PiecemealCompilerFlagOverrides.h"; sourceTree = "<group>"; };
@@ -4265,6 +4279,8 @@
 				2767D80218132B1B001EF21C /* FLTestableSubclassFinder.m */,
 				2767D80318132B1B001EF21C /* FLTestFinder.h */,
 				2767D80418132B1B001EF21C /* FLTestFinder.m */,
+				27D793A8182023B80046E5DA /* FLTestGroupFinder.h */,
+				27D793A9182023B80046E5DA /* FLTestGroupFinder.m */,
 			);
 			path = Finding;
 			sourceTree = "<group>";
@@ -4274,14 +4290,16 @@
 			children = (
 				2767D80818132B1B001EF21C /* FLAssembledTest.h */,
 				2767D80918132B1B001EF21C /* FLAssembledTest.m */,
-				2767D80A18132B1B001EF21C /* FLStaticTestMethodRunner.h */,
-				2767D80B18132B1B001EF21C /* FLStaticTestMethodRunner.m */,
-				2767D81018132B1B001EF21C /* FLTestGroupOrganizer.h */,
-				2767D81118132B1B001EF21C /* FLTestGroupOrganizer.m */,
-				2767D81218132B1B001EF21C /* FLTestOperation.h */,
-				2767D81318132B1B001EF21C /* FLTestOperation.m */,
 				2767D81418132B1B001EF21C /* FLRunAllTestsOperation.h */,
 				2767D81518132B1B001EF21C /* FLRunAllTestsOperation.m */,
+				2767D81018132B1B001EF21C /* FLSortedTestGroup.h */,
+				2767D81118132B1B001EF21C /* FLSortedTestGroup.m */,
+				27D793A1182022A00046E5DA /* FLSortedTestGroupList.h */,
+				27D793A2182022A00046E5DA /* FLSortedTestGroupList.m */,
+				2767D80A18132B1B001EF21C /* FLStaticTestMethodRunner.h */,
+				2767D80B18132B1B001EF21C /* FLStaticTestMethodRunner.m */,
+				2767D81218132B1B001EF21C /* FLTestOperation.h */,
+				2767D81318132B1B001EF21C /* FLTestOperation.m */,
 				2767D81618132B1B001EF21C /* FLTestToolMain.h */,
 				2767D81718132B1B001EF21C /* FLTestToolMain.m */,
 			);
@@ -5188,6 +5206,7 @@
 				2767DC5418132B1C001EF21C /* FLJsonHttpRequest.m in Sources */,
 				2767D8AD18132B1B001EF21C /* FLCodeChunk.m in Sources */,
 				2767DC7C18132B1C001EF21C /* __FLOAuthAuthencationData.m in Sources */,
+				27D793AB182023B80046E5DA /* FLTestGroupFinder.m in Sources */,
 				2767DDC618132B1C001EF21C /* FLObjectDatabase.m in Sources */,
 				2767DDB218132B1C001EF21C /* FLSqlStatement.m in Sources */,
 				2767DDFD18132B1C001EF21C /* FLStringParser.m in Sources */,
@@ -5227,7 +5246,7 @@
 				27188C0418148A820060FED6 /* FLDispatchQueue.m in Sources */,
 				2767D86718132B1B001EF21C /* SDKImage+Resize.m in Sources */,
 				2767DA9718132B1B001EF21C /* FLTestResultCollection.m in Sources */,
-				2767DECF18132B1C001EF21C /* FLTestGroupOrganizer.m in Sources */,
+				2767DECF18132B1C001EF21C /* FLSortedTestGroup.m in Sources */,
 				2767DEB118132B1C001EF21C /* FLTestFinder.m in Sources */,
 				2767D91118132B1B001EF21C /* FLUsageToolTask.m in Sources */,
 				2767DA9218132B1B001EF21C /* FLTestResult.m in Sources */,
@@ -5237,6 +5256,7 @@
 				27B4BCAF181DACE50027007A /* NSError+FLTestable.m in Sources */,
 				2767DC6318132B1C001EF21C /* FLJsonStringBuilder.m in Sources */,
 				2767D96618132B1B001EF21C /* FLKeyValuePair.m in Sources */,
+				27D793A4182022A00046E5DA /* FLSortedTestGroupList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5572,6 +5592,7 @@
 				2767DC5618132B1C001EF21C /* FLJsonHttpRequest.m in Sources */,
 				2767D8AF18132B1B001EF21C /* FLCodeChunk.m in Sources */,
 				2767DC7E18132B1C001EF21C /* __FLOAuthAuthencationData.m in Sources */,
+				27D793AD182023B80046E5DA /* FLTestGroupFinder.m in Sources */,
 				2767DDC818132B1C001EF21C /* FLObjectDatabase.m in Sources */,
 				2767DDB418132B1C001EF21C /* FLSqlStatement.m in Sources */,
 				2767DDFF18132B1C001EF21C /* FLStringParser.m in Sources */,
@@ -5611,7 +5632,7 @@
 				27188C0618148A820060FED6 /* FLDispatchQueue.m in Sources */,
 				2767D86918132B1B001EF21C /* SDKImage+Resize.m in Sources */,
 				2767DA9918132B1B001EF21C /* FLTestResultCollection.m in Sources */,
-				2767DED118132B1C001EF21C /* FLTestGroupOrganizer.m in Sources */,
+				2767DED118132B1C001EF21C /* FLSortedTestGroup.m in Sources */,
 				2767DEB318132B1C001EF21C /* FLTestFinder.m in Sources */,
 				2767D91318132B1B001EF21C /* FLUsageToolTask.m in Sources */,
 				2767DA9418132B1B001EF21C /* FLTestResult.m in Sources */,
@@ -5621,6 +5642,7 @@
 				27B4BCB1181DACE60027007A /* NSError+FLTestable.m in Sources */,
 				2767DC6518132B1C001EF21C /* FLJsonStringBuilder.m in Sources */,
 				2767D96818132B1B001EF21C /* FLKeyValuePair.m in Sources */,
+				27D793A6182022A00046E5DA /* FLSortedTestGroupList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5970,6 +5992,7 @@
 				2767DC5318132B1C001EF21C /* FLJsonHttpRequest.m in Sources */,
 				2767D8AC18132B1B001EF21C /* FLCodeChunk.m in Sources */,
 				2767DC7B18132B1C001EF21C /* __FLOAuthAuthencationData.m in Sources */,
+				27D793AA182023B80046E5DA /* FLTestGroupFinder.m in Sources */,
 				2767DDC518132B1C001EF21C /* FLObjectDatabase.m in Sources */,
 				2767DDB118132B1C001EF21C /* FLSqlStatement.m in Sources */,
 				2767DDFC18132B1C001EF21C /* FLStringParser.m in Sources */,
@@ -6009,7 +6032,7 @@
 				27188C0318148A820060FED6 /* FLDispatchQueue.m in Sources */,
 				2767D86618132B1B001EF21C /* SDKImage+Resize.m in Sources */,
 				2767DA9618132B1B001EF21C /* FLTestResultCollection.m in Sources */,
-				2767DECE18132B1C001EF21C /* FLTestGroupOrganizer.m in Sources */,
+				2767DECE18132B1C001EF21C /* FLSortedTestGroup.m in Sources */,
 				2767DEB018132B1C001EF21C /* FLTestFinder.m in Sources */,
 				2767D91018132B1B001EF21C /* FLUsageToolTask.m in Sources */,
 				2767DA9118132B1B001EF21C /* FLTestResult.m in Sources */,
@@ -6019,6 +6042,7 @@
 				27B4BCAE181DACE50027007A /* NSError+FLTestable.m in Sources */,
 				2767DC6218132B1C001EF21C /* FLJsonStringBuilder.m in Sources */,
 				2767D96518132B1B001EF21C /* FLKeyValuePair.m in Sources */,
+				27D793A3182022A00046E5DA /* FLSortedTestGroupList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6322,6 +6346,7 @@
 				2767DC5518132B1C001EF21C /* FLJsonHttpRequest.m in Sources */,
 				2767D8AE18132B1B001EF21C /* FLCodeChunk.m in Sources */,
 				2767DC7D18132B1C001EF21C /* __FLOAuthAuthencationData.m in Sources */,
+				27D793AC182023B80046E5DA /* FLTestGroupFinder.m in Sources */,
 				2767DDC718132B1C001EF21C /* FLObjectDatabase.m in Sources */,
 				2767DDB318132B1C001EF21C /* FLSqlStatement.m in Sources */,
 				2767DDFE18132B1C001EF21C /* FLStringParser.m in Sources */,
@@ -6361,7 +6386,7 @@
 				27188C0518148A820060FED6 /* FLDispatchQueue.m in Sources */,
 				2767D86818132B1B001EF21C /* SDKImage+Resize.m in Sources */,
 				2767DA9818132B1B001EF21C /* FLTestResultCollection.m in Sources */,
-				2767DED018132B1C001EF21C /* FLTestGroupOrganizer.m in Sources */,
+				2767DED018132B1C001EF21C /* FLSortedTestGroup.m in Sources */,
 				2767DEB218132B1C001EF21C /* FLTestFinder.m in Sources */,
 				2767D91218132B1B001EF21C /* FLUsageToolTask.m in Sources */,
 				2767DA9318132B1B001EF21C /* FLTestResult.m in Sources */,
@@ -6371,6 +6396,7 @@
 				27B4BCB0181DACE60027007A /* NSError+FLTestable.m in Sources */,
 				2767DC6418132B1C001EF21C /* FLJsonStringBuilder.m in Sources */,
 				2767D96718132B1B001EF21C /* FLKeyValuePair.m in Sources */,
+				27D793A5182022A00046E5DA /* FLSortedTestGroupList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6674,6 +6700,7 @@
 				2767DC5718132B1C001EF21C /* FLJsonHttpRequest.m in Sources */,
 				2767D8B018132B1B001EF21C /* FLCodeChunk.m in Sources */,
 				2767DC7F18132B1C001EF21C /* __FLOAuthAuthencationData.m in Sources */,
+				27D793AE182023B80046E5DA /* FLTestGroupFinder.m in Sources */,
 				2767DDC918132B1C001EF21C /* FLObjectDatabase.m in Sources */,
 				2767DDB518132B1C001EF21C /* FLSqlStatement.m in Sources */,
 				2767DE0018132B1C001EF21C /* FLStringParser.m in Sources */,
@@ -6713,7 +6740,7 @@
 				27188C0718148A820060FED6 /* FLDispatchQueue.m in Sources */,
 				2767D86A18132B1B001EF21C /* SDKImage+Resize.m in Sources */,
 				2767DA9A18132B1B001EF21C /* FLTestResultCollection.m in Sources */,
-				2767DED218132B1C001EF21C /* FLTestGroupOrganizer.m in Sources */,
+				2767DED218132B1C001EF21C /* FLSortedTestGroup.m in Sources */,
 				2767DEB418132B1C001EF21C /* FLTestFinder.m in Sources */,
 				2767D91418132B1B001EF21C /* FLUsageToolTask.m in Sources */,
 				2767DA9518132B1B001EF21C /* FLTestResult.m in Sources */,
@@ -6723,6 +6750,7 @@
 				27B4BCB2181DACE60027007A /* NSError+FLTestable.m in Sources */,
 				2767DC6618132B1C001EF21C /* FLJsonStringBuilder.m in Sources */,
 				2767D96918132B1B001EF21C /* FLKeyValuePair.m in Sources */,
+				27D793A7182022A00046E5DA /* FLSortedTestGroupList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

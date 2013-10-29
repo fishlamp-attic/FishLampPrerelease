@@ -33,7 +33,7 @@
     NSTimeInterval done = [NSDate timeIntervalSinceReferenceDate] + 2.0;
     [FLDispatchQueue sleepForTimeInterval:2.1];
     NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
-    FLTAssert(now > done);
+    FLConfirm(now > done);
 #endif
     
     FLAssert(timer.timedOut == YES);
