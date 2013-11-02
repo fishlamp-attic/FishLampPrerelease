@@ -29,8 +29,8 @@
 //    }
 }
 
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup frameworkTestGroup];
-}
+//+ (Class) testGroup {
+//    return @"FishLampNetworking";
+//}
 
 @end

@@ -15,9 +15,6 @@
 
 @implementation FLAssertionTests
 
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup frameworkTestGroup];
-}
 
 //- (void) testNotImplemented_broken_debug_verbose:(FLTestCase*) test {
 //    [FLTestCase runTestWithExpectedFailure:^{  FLAssertIsImplementedWithComment(@"this is a test"); }];

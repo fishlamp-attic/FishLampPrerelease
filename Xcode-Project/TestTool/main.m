@@ -22,9 +22,9 @@
 //    return 0;
 //}
 
-#import "FLTestToolMain.h"
+#import "FLTTestToolMain.h"
 
 int main(int argc, const char * argv[]) {
-    return FLTestToolMain(argc, argc, @"com.fishlamp.cocoa.tests", @"FLCocoaTestTool", @"1.0.0");
+    return FLTTestToolMain(argc, argc, @"com.fishlamp.cocoa.tests", @"FLCocoaTestTool", @"1.0.0");
 }
 

@@ -10,14 +10,7 @@
 
 @class FLTestCase;
 
-@interface FLTestCaseList : NSObject<NSFastEnumeration> {
-@private
-    NSMutableArray* _testCases;
-    BOOL _disabled;
-    NSString* _disabledReason;
-
-    NSMutableArray* _prerequisiteTestClasses;
-}
+@protocol FLTestCaseList <NSObject>
 
 @property (readonly, assign, nonatomic) BOOL isDisabled;
 @property (readonly, strong, nonatomic) NSString* disabledReason;
@@ -25,17 +18,12 @@
 @property (readonly, copy, nonatomic) NSArray* testCases;
 @property (readonly, copy, nonatomic) NSArray* prerequisiteTestClasses;
 
-+ (id) testCaseList;
-+ (id) testCaseListWithArrayOfTestCases:(NSArray*) testCases;
-
-- (void) addTestCase:(FLTestCase*) testCase;
-
-- (FLTestCase*) testCaseForName:(NSString*) name;
-- (FLTestCase*) testCaseForSelector:(SEL) selector;
+- (id<FLTestCase>) testCaseForName:(NSString*) name;
+- (id<FLTestCase>) testCaseForSelector:(SEL) selector;
 
 - (void) setRunOrder:(NSUInteger) order forSelector:(SEL) selector;
-- (void) setRunOrder:(NSUInteger) order forTestCase:(FLTestCase*) testCase;
-- (NSUInteger) runOrderForTestCase:(FLTestCase*) testCase;
+- (void) setRunOrder:(NSUInteger) order forTestCase:(id<FLTestCase>) testCase;
+- (NSUInteger) runOrderForTestCase:(id<FLTestCase>) testCase;
 
 - (void) disableAllTests:(NSString*) reason;
 

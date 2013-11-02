@@ -11,6 +11,7 @@
 #import "FLOperation.h"
 #import "FLSynchronousOperation.h"
 #import "FLDispatchQueue.h"
+#import "FLAsyncTestGroup.h"
 
 @implementation FLOperation (Tests)
 
@@ -65,8 +66,8 @@
 @end
 @implementation FLOperationUnitTest
 
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup frameworkTestGroup];
++ (Class) testGroup {
+    return [FLAsyncTestGroup class];
 }
 
 - (void) testSimpleCase {

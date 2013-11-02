@@ -17,9 +17,9 @@
 
 @implementation FLHttpTests
 
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup frameworkTestGroup];
-}
+//+ (Class) testGroup {
+//    return @"FishLampNetworking";
+//}
 
 - (void) testConnectionToGoogle {
     FLHttpRequest *request = [FLHttpRequest httpRequestWithURL:[NSURL URLWithString:@"http://www.google.com"] httpMethod:@"GET"];

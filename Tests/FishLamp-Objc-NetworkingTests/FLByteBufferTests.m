@@ -17,9 +17,10 @@ FLSynthesizeFixedSizedBuffer(2)
 
 @implementation FLByteBufferTests
 
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup frameworkTestGroup];
-}
+
+//+ (Class) testGroup {
+//    return @"FishLampNetworking";
+//}
 
 - (void) testSimpleCopy {
     

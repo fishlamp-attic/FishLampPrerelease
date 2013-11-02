@@ -8,12 +8,14 @@
 
 #import "FLTestable.h"
 #import "FLAssertions.h"
-#import "FLTestGroup.h"
+
+#import "FLTestCaseList.h"
+#import "FLTestResultCollection.h"
 
 @interface FLTestable ()
-@property (readwrite, strong) FLTestCaseList* testCaseList;
-@property (readwrite, strong) FLExpectedTestResult* expectedTestResult;
-@property (readwrite, strong) FLTestResultCollection* testResults;
+@property (readwrite, strong) id<FLTestCaseList> testCaseList;
+@property (readwrite, strong) id<FLExpectedTestResult> expectedTestResult;
+@property (readwrite, strong) id<FLTestResultCollection> testResults;
 @end
 
 @implementation FLTestable
@@ -32,44 +34,43 @@
 }
 #endif
 
-+ (NSInteger) unitTestPriority {
-    return FLTestPriorityNormal;
-}
-
-- (NSString*) unitTestName {
++ (NSString*) testName {
     return NSStringFromClass([self class]);
-}
-
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup defaultTestGroup];
 }
 
 - (NSString*) description {
     return [NSString stringWithFormat:@"%@ { group=%@ }", [super description], [[[self class] testGroup] description]];
 }
 
-- (FLTestCase*) testCaseForSelector:(SEL) selector {
+- (id<FLTestCase>) testCaseForSelector:(SEL) selector {
     return [self.testCaseList testCaseForSelector:selector];
 }
 
-- (FLTestCase*) testCaseForName:(NSString*) name {
+- (id<FLTestCase>) testCaseForName:(NSString*) name {
     return [self.testCaseList testCaseForName:name];
 }
 
-- (void) willRunTestCases:(FLTestCaseList*) testCases {
+- (void) willRunTestCases:(id<FLTestCaseList>) testCases {
 }
 
-- (void) didRunTestCases:(FLTestCaseList*) testCases {
+- (void) didRunTestCases:(id<FLTestCaseList>) testCases {
 }
 
-- (void) willBeginExecutingTestCases:(FLTestCaseList*) testCases {
-    self.testCaseList = testCases;
-    [self willRunTestCases:self.testCaseList];
++ (void) specifyRunOrder:(id<FLTestableRunOrder>) runOrder {
 }
 
-- (void) didFinishExecutingTestCases {
-    [self didRunTestCases:self.testCaseList];
-    self.testCaseList = nil;
++ (Class) testGroup {
+    return [FLTestGroup class];
 }
 
 @end
+
+static id<FLStringFormatter> s_logger = nil;
+
+void FLTestableSetLogger(id<FLStringFormatter> logger) {
+    FLSetObjectWithRetain(s_logger, logger);
+}
+
+id<FLStringFormatter> FLTestLogger() {
+    return s_logger;
+}

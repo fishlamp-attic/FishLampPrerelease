@@ -10,6 +10,7 @@
 #import "FLFinisherTests.h"
 #import "FLTimeoutTests.h"
 #import "FishLampAsync.h"
+#import "FLAsyncTestGroup.h"
 
 @interface FLPromise (Testing)
 @property (readonly, strong) FLPromise* nextPromise;
@@ -17,12 +18,12 @@
 
 @implementation FLFinisherTests
 
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup frameworkTestGroup];
++ (Class) testGroup {
+    return [FLAsyncTestGroup class];
 }
 
-+ (void) specifyRunOrder:(FLTestableRunOrder*) runOrder {
-    [runOrder runTestsForClass:self afterTestsForClass:[FLTimeoutTests class]];
++ (void) specifyRunOrder:(id<FLTestableRunOrder>) runOrder {
+    [runOrder orderClass:[self class] afterClass:[FLTimeoutTests class]];
 }
 
 - (void) testSingleCount {

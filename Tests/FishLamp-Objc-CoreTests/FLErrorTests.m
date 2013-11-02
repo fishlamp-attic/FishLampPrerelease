@@ -13,10 +13,6 @@
 
 @implementation FLErrorTests
 
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup frameworkTestGroup];
-}
-
 - (void) testCancelError {
     NSError* error  = [NSError cancelError];
     FLAssert(error.isCancelError);

@@ -11,10 +11,6 @@
 
 @implementation FLBitFlagTests
 
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup frameworkTestGroup];
-}
-
 - (void) testBitFlags1 {
 
     FLBitFlags_t mask1 = 0;

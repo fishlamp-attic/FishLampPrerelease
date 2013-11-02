@@ -14,9 +14,10 @@
 
 @implementation FLDnsConnectionTests
 
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup frameworkTestGroup];
-}
+
+//+ (Class) testGroup {
+//    return @"FishLampNetworking";
+//}
 
 - (void) testCreateHostByName {
 

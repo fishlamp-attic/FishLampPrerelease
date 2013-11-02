@@ -11,30 +11,14 @@
 /**
  *  FLTestableRunOrder specifies run order for FLTestable objects. This is passed into FLTestable 
  */
-@interface FLTestableRunOrder : NSObject {
-@private
-    NSMutableArray* _dependencies;
-}
-+ (id) testableRunOrder;
+@protocol FLTestableRunOrder <NSObject>
+- (void) orderClassFirst:(Class) aClass;
+- (void) orderClassEarly:(Class) aClass;
+- (void) orderClassLate:(Class) aClass;
+- (void) orderClassLast:(Class) aClass;
 
-@property (readonly, strong, nonatomic) NSArray* dependencies;
+- (void) orderClass:(Class) aClass afterClass:(Class) anotherClass;
 
-- (void) runTestsForClass:(Class) aClass afterTestsForClass:(Class) anotherTestable;
-
+- (void) orderClass:(Class) aClass beforeClass:(Class) anotherClass;
 @end
-
-
-//@private
-//    NSMutableArray* _testList;
-//}
-//- (id) initWithTestList:(NSMutableArray*) list;
-//+ (id) testableRunOrder:(NSMutableArray*) list;
-//
-//@property (readwrite, assign, nonatomic) NSUInteger runOrder;
-//- (void) runSooner;
-//- (void) runLater;
-//- (void) runFirst;
-//- (void) runLast;
-//- (void) runBefore:(Class) anotherTestable;
-//- (void) runAfter:(Class) anotherTestable;
 

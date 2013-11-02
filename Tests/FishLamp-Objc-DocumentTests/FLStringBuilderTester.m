@@ -8,11 +8,22 @@
 
 #import "FLStringBuilderTester.h"
 #import "FLStringBuilder.h"
+#import "FLCoreTestGroup.h"
+
+@interface FLStringBuilderTestGroup : FLTestGroup
+@end
+
+@implementation FLStringBuilderTestGroup
+
++ (void) specifyRunOrder:(id<FLTestableRunOrder>)runOrder {
+    [runOrder orderClass:[self class] afterClass:[FLCoreTestGroup class]];
+}
+@end
 
 @implementation FLStringBuilderTester
 
-+ (FLTestGroup*) testGroup {
-    FLReturnStaticObject( [[FLTestGroup alloc] initWithGroupName:@"String Document Tests" priority:FLTestPriorityFramework]);
++ (Class) testGroup {
+    return [FLStringBuilderTestGroup class];
 }
 
 - (id<FLStringFormatter>) createStringFormatter:(FLWhitespace*) whiteSpace {
@@ -38,7 +49,7 @@
     return FLAutorelease(string);
 }
 
-- (void) willRunTestCases:(FLTestCaseList *)testCases {
+- (void) willRunTestCases:(id<FLTestCaseList>) testCases {
 //    [testCases disableAllTests:@"my name is fred"];
 }
 

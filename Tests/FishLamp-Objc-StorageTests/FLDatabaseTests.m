@@ -25,9 +25,9 @@
 }
 #endif
 
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup frameworkTestGroup];
-}
+//+ (Class) testGroup {
+//    return @"FishLampNetworking";
+//}
 
 - (id) createDatabase:(NSString*) filePath {
     return FLAutorelease([[FLDatabase alloc] initWithFilePath:filePath]);

@@ -12,8 +12,7 @@
 
 @implementation FLObservableTests
 
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup frameworkTestGroup];
-}
+
+
 
 @end

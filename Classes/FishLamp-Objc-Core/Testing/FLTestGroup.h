@@ -1,38 +1,22 @@
 //
-//  FLTestGroup.h
-//  FLCore
+//  FLTestableGroup.h
+//  FishLamp-Objc
 //
-//  Created by Mike Fullerton on 11/1/12.
-//  Copyright (c) 2013 GreenTongue Software LLC, Mike Fullerton. 
-//  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
+//  Created by Mike Fullerton on 11/2/13.
+//  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FLCoreRequired.h"
+#import <Foundation/Foundation.h>
 
-#define FLTestPriorityLow           0
-#define FLTestPriorityNormal        1000
-#define FLTestPriorityHigh          2000
-#define FLTestPriorityFramework     3000
-#define FLTestPrioritySanityCheck   4000
+#import "FLTestableRunOrder.h"
 
-@interface FLTestGroup : NSObject<NSCopying> {
-@private
-    NSString* _groupName;
-    SInt32 _groupPriority;
-}
+@protocol FLTestGroup <NSObject>
 
-@property (readonly, strong) NSString* groupName;
-@property (readonly, assign) SInt32 groupPriority;
++ (void) specifyRunOrder:(id<FLTestableRunOrder>) runOrder;
 
-+ (id) testGroup:(NSString*) name priority:(SInt32) priority;
++ (NSString*) groupName;
 
-- (id) initWithGroupName:(NSString*) name priority:(SInt32) priority;
+@end
 
-// default groups
-+ (FLTestGroup*) sanityCheckTestGroup;
-+ (FLTestGroup*) frameworkTestGroup;
-+ (FLTestGroup*) importantTestGroup;
-+ (FLTestGroup*) defaultTestGroup;
-+ (FLTestGroup*) lastTestGroup;
-
+@interface FLTestGroup : NSObject<FLTestGroup>
 @end

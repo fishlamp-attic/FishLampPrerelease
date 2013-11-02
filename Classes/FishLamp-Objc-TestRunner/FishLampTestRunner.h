@@ -1,5 +1,5 @@
 //
-//  FLRunAllTestsOperation.h
+//  FLTRunAllTestsOperation.h
 //  FishLamp-Objc
 //
 //  Created by Mike Fullerton on 10/19/13.
@@ -11,6 +11,6 @@
 #import "FishLampMinimum.h"
 #import "FishLampAsync.h"
 
-#import "FLRunAllTestsOperation.h"
-#import "FLTestLoggingManager.h"
-#import "FLTestOrganizer.h"
+#import "FLTRunAllTestsOperation.h"
+#import "FLTTestLoggingManager.h"
+#import "FLTTestOrganizer.h"

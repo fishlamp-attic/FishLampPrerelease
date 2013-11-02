@@ -13,18 +13,20 @@
 #import "FLTestable.h"
 #import "FLTimeoutTests.h"
 
+#import "FLAsyncTestGroup.h"
+
 @implementation FLAsyncTests
 
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup frameworkTestGroup];
++ (Class) testGroup {
+    return [FLAsyncTestGroup class];
 }
 
-+ (void) specifyRunOrder:(FLTestableRunOrder*) runOrder {
-    [runOrder runTestsForClass:self afterTestsForClass:[FLTimeoutTests class]];
++ (void) specifyRunOrder:(id<FLTestableRunOrder>) runOrder {
+    [runOrder orderClass:[self class] afterClass:[FLTimeoutTests class]];
 }
 
 - (void) _didExecuteOperation:(FLPerformSelectorOperation*) operation {
-	[FLTestOutput appendLine:@"did execute"];
+	FLTestLog(@"did execute");
 }
 
 - (void) _asyncDone:(FLPerformSelectorOperation*) operation

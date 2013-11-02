@@ -8,13 +8,12 @@
 
 #import "FLCoreFrameworkTest.h"
 #import "FishLampTesting.h"
+#import "FLCoreTestGroup.h"
 
 @implementation FLCoreFrameworkTest
 
-+ (FLTestGroup*) testGroup {
-
-    FLReturnStaticObject( [[FLTestGroup alloc] initWithGroupName:@"Core Framework Tests" priority:FLTestPriorityFramework]);
-
++ (Class) testGroup {
+    return [FLCoreTestGroup class];
 }
 
 @end
