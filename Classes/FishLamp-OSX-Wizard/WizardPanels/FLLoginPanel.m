@@ -28,7 +28,7 @@
 @synthesize credentialDataSource = _credentialDataSource;
 
 - (id) init {
-    return [self initWithNibName:@"FLLoginPanel" bundle:[NSBundle currentBundle]];
+    return [self initWithNibName:@"FLLoginPanel" bundle:[FLBundleStack currentBundle]];
 }
 
 - (void) windowDidUpdate:(id) update {

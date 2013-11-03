@@ -32,7 +32,7 @@
         NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
         if(_nextUpdate < now) {
             for(NSAttributedString* string in _queue) {
-                [self.logger appendAttributedString:string];
+                [self.logger appendString:string];
             }
             [_queue removeAllObjects];
             [self.textView scrollRangeToVisible:NSMakeRange([[self.textView string] length], 0)];

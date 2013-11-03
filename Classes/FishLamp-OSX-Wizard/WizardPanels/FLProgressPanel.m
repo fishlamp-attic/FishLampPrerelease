@@ -18,7 +18,7 @@
 @implementation FLProgressPanel
 
 - (id) init {
-    return [self initWithNibName:@"FLProgressPanel" bundle:[NSBundle currentBundle]];
+    return [self initWithNibName:@"FLProgressPanel" bundle:[FLBundleStack currentBundle]];
 }
 
 + (id) progressPanel {

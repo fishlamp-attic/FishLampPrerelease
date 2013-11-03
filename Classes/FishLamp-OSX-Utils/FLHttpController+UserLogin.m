@@ -11,7 +11,7 @@
 #import "FLLoginPanel.h"
 #import "FLUserService.h"
 
-@implementation FLHttpController (UserLogin)
+@implementation FLHttpOperationContext (UserLogin)
 
 - (FLCredentialsEditor*) loginPanelGetCredentials:(FLLoginPanel*) panel {
     return self.userService.credentialEditor;

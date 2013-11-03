@@ -10,7 +10,7 @@
 #import "FLStringFormatter.h"
 #import "FLWhitespaceStringFormatter.h"
 
-@interface FLTextViewLogger : FLWhitespaceStringFormatter<FLWhitespaceStringFormatterImplementation> {
+@interface FLTextViewLogger : FLWhitespaceStringFormatter<FLWhitespaceStringFormatterDelegate> {
 @private
     NSTextView* _textView;
     NSMutableAttributedString* _buffer;

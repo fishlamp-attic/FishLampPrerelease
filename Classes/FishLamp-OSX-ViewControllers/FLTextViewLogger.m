@@ -107,9 +107,9 @@
     return [FLWhitespace tabbedWithSpacesWhitespace];
 }
 
-- (void) appendEOL {
-    [self appendStringToStorage:self.whitespace.eolString];
-}
+//- (void) appendEOL {
+//    [self appendStringToStorage:self.whitespace.eolString];
+//}
 
 - (void) clearContents {
     [self queueBlock:^{
@@ -118,36 +118,57 @@
     }];
 }
 
-- (void) stringFormatterOpenLine:(FLStringFormatter*) stringFormatter {
-    [self appendStringToStorage:[self.whitespace tabStringForScope:self.indentLevel]];
-}
-
-- (void) stringFormatterAppendBlankLine:(FLStringFormatter*) stringFormatter {
-    [self appendEOL];
-}
-
-- (void) stringFormatterCloseLine:(FLStringFormatter*) stringFormatter {
-    [self appendEOL];
-}
-
-- (void) stringFormatter:(FLStringFormatter*) stringFormatter appendString:(NSString*) string {
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+                      appendString:(NSString*) string {
     [self appendStringToStorage:string];
 }
 
-- (void) stringFormatter:(FLStringFormatter*) stringFormatter appendAttributedString:(NSAttributedString*) attributedString {
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+            appendAttributedString:(NSAttributedString*) attributedString {
     [self appendAttributedStringToStorage:attributedString];
 }
 
+- (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
+       appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
+}
 
-
-- (NSUInteger) stringFormatterGetLength:(FLStringFormatter*) stringFormatter {
+- (NSUInteger) whitespaceStringFormatterGetLength:(FLWhitespaceStringFormatter*) stringFormatter {
     return [_textView textStorage].length + _buffer.length;
 }
 
-- (void) stringFormatter:(FLStringFormatter*) stringFormatter
-appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
-
+- (NSString*) whitespaceStringFormatterExportString:(FLWhitespaceStringFormatter*) formatter {
+    return nil;
 }
+
+- (NSAttributedString*) whitespaceStringFormatterExportAttributedString:(FLWhitespaceStringFormatter*) formatter {
+    return nil;
+}
+
+
+
+
+
+
+//- (void) stringFormatterOpenLine:(FLStringFormatter*) stringFormatter {
+//    [self appendStringToStorage:[self.whitespace tabStringForScope:self.indentLevel]];
+//}
+//
+//- (void) stringFormatterAppendBlankLine:(FLStringFormatter*) stringFormatter {
+//    [self appendEOL];
+//}
+//
+//- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) stringFormatter {
+//    [self appendEOL];
+//}
+
+
+
+
+
+//- (void) stringFormatter:(FLStringFormatter*) stringFormatter
+//appendSelfToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter {
+//
+//}
 
 @end
 

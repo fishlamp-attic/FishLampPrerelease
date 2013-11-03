@@ -7,8 +7,8 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLHttpController.h"
+#import "FLHttpOperationContext.h"
 
-@interface FLHttpController (UserLogin)
+@interface FLHttpOperationContext (UserLogin)
 
 @end

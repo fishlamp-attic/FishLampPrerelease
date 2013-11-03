@@ -24,7 +24,7 @@
 @synthesize headerViewController = _headerViewController;
 
 - (id) init {
-    return [self initWithNibName:@"FLWizardViewController" bundle:[NSBundle currentBundle]];
+    return [self initWithNibName:@"FLWizardViewController" bundle:[FLBundleStack currentBundle]];
 }
 
 + (id) wizardViewController {
