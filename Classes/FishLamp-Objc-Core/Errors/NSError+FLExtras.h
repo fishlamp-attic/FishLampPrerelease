@@ -16,10 +16,7 @@ extern NSString* const FLStackTraceKey;
 
 @interface NSError (FLExtras) 
 
-// this is stored as an associated object.
-
 // fishlamp properties
-@property (readonly, strong, nonatomic) NSString* comment;
 @property (readonly, strong, nonatomic) FLStackTrace* stackTrace;
 
 // sdk helpers
@@ -36,7 +33,6 @@ extern NSString* const FLStackTraceKey;
                  code:(NSInteger) code
  localizedDescription:(NSString*) localizedDescription
              userInfo:(NSDictionary *)dict
-              comment:(NSString*) comment
            stackTrace:(FLStackTrace*) stackTrace;
 
 + (NSError*) errorWithDomain:(id) domainStringOrDomainObject
@@ -47,7 +43,6 @@ extern NSString* const FLStackTraceKey;
                         code:(NSInteger)code
         localizedDescription:(NSString*) localizedDescription
                     userInfo:(NSDictionary *)dict
-                     comment:(NSString*) commentOrNil
                   stackTrace:(FLStackTrace*) stackTrace;
 
 + (NSError*) errorWithError:(NSError*) error stackTrace:(FLStackTrace*) stackTrace;

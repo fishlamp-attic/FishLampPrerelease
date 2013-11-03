@@ -18,7 +18,7 @@ FLSynthesizeFixedSizedBuffer(2)
 @implementation FLByteBufferTests
 
 
-//+ (Class) testGroup {
+//+ (Class) testGroupClass {
 //    return @"FishLampNetworking";
 //}
 

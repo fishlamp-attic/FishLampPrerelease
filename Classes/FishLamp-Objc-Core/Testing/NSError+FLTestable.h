@@ -14,10 +14,10 @@
 
 extern NSString* const FLTAssertFailedErrorDomain;
 
-@interface NSError (FLTestable)
-+ (id) testFailedError:(NSInteger) code
-             condition:(NSString*) condition
-               comment:(NSString*) comment
-            stackTrace:(FLStackTrace*) stackTrace;
-
-@end
+//@interface NSError (FLTestable)
+//+ (id) testFailedError:(NSInteger) code
+//             condition:(NSString*) condition
+//               comment:(NSString*) comment
+//            stackTrace:(FLStackTrace*) stackTrace;
+//
+//@end

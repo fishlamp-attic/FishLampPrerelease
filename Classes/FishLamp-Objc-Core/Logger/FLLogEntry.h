@@ -16,6 +16,7 @@
     NSString* _logString;
     NSString* _logType;
     NSString* _logName;
+    NSString* _logStringContext;
     uint32_t _logCount;
     NSTimeInterval _timestamp;
     FLStackTrace* _stackTrace;
@@ -36,10 +37,13 @@
 
 @end
 
-@interface NSError (FLLogging)
+@interface NSObject (FLLogging)
+- (NSString*) moreDescriptionForLogging;
 - (FLLogEntry*) logEntryForSelf;
 @end
 
+@interface NSError (FLLogging)
+@end
+
 @interface NSException (FLLogging)
-- (FLLogEntry*) logEntryForSelf;
 @end

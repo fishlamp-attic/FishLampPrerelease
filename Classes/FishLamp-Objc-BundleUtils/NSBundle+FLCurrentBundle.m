@@ -9,7 +9,7 @@
 
 #import "NSBundle+FLCurrentBundle.h"
 
-@implementation NSBundle (FLCurrentBundle)
+@implementation FLBundleStack 
 
 static NSMutableArray* s_bundleStack = nil;
 

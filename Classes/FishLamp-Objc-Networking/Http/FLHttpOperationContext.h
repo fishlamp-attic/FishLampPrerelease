@@ -60,10 +60,10 @@ extern NSString* const FLHttpControllerDidLogoutUserNotification;
 @protocol FLHttpControllerMessages <NSObject>
 @optional
 
-- (void) httpController:(FLHttpOperationContext*) controller
+- (void) httpContext:(FLHttpOperationContext*) controller
     didAuthenticateUser:(FLHttpUser*) userLogin;
 
-- (void) httpController:(FLHttpOperationContext*) controller 
+- (void) httpContext:(FLHttpOperationContext*) controller 
           didLogoutUser:(FLHttpUser*) userLogin;
 
 - (void) httpControllerDidClose:(FLHttpOperationContext*) controller;

@@ -55,7 +55,9 @@
  *  
  *  @return return Class of a FLTestGroup subclass or nil.
  */
-+ (Class) testGroup;
++ (Class) testGroupClass;
+
++ (NSString*) testGroupName;
 
 /**
  *  Name of the testable class.

@@ -75,7 +75,7 @@
     return newList;
 }
 
-- (void) addTestFinder:(FLTTestFinder*) finder {
+- (void) addTestFinder:(id) finder {
     [_testFinders addObject:finder];
 }
 
@@ -86,22 +86,37 @@
     return nil;
 }
 
-- (NSDictionary*) sortClassesIntoGroups:(NSArray*) allTestFactories {
+- (NSDictionary*) sortClassesIntoGroups:(NSArray*) allTestFactories
+                       discoveredGroups:(NSDictionary*) discoveredGroups {
+
     FLAssertNotNil(allTestFactories);
+    FLAssertNotNil(discoveredGroups);
 
     NSMutableDictionary* groups = [NSMutableDictionary dictionary];
 
     for(id<FLTTestFactory> factory in allTestFactories) {
 
-        Class testGroupClass = [[factory testableClass] testGroup];
+        Class testGroupClass = nil;
+
+        NSString* testGroupName = [[factory testableClass] testGroupName];
+        if(testGroupName) {
+            testGroupClass = [discoveredGroups objectForKey:testGroupName];
+
+            FLConfirmNotNilWithComment(testGroupClass, @"Unknown test group: %@", testGroupName);
+        }
+
+        if(!testGroupClass) {
+            testGroupClass = [[factory testableClass] testGroupClass];
+        }
+
         if(!testGroupClass) {
             testGroupClass = [FLTestGroup class];
         }
 
-        FLTTestFactoryList* factoryList = [groups objectForKey:[testGroupClass groupName]];
+        FLTTestFactoryList* factoryList = [groups objectForKey:[testGroupClass testGroupName]];
         if(!factoryList) {
             factoryList = [FLTTestFactoryList testFactoryList:testGroupClass];
-            [groups setObject:factoryList forKey:[testGroupClass groupName]];
+            [groups setObject:factoryList forKey:[testGroupClass testGroupName]];
         }
         
         [factoryList addObject:factory];
@@ -119,30 +134,44 @@
 
     NSMutableArray* unitTestFactories = [NSMutableArray array];
     NSMutableDictionary* testMethods = [NSMutableDictionary dictionary];
+    NSMutableDictionary* testGroups = [NSMutableDictionary dictionary];
 
     FLRuntimeVisitEveryClass(
         ^(FLRuntimeInfo classInfo, BOOL* stop) {
             for(FLTTestFinder* finder in _testFinders) {
-                id<FLTTestFactory> factory = [finder findPossibleUnitTestClass:classInfo];
-                if(factory) {
-                    [unitTestFactories addObject:factory];
+
+                // find test subclasses
+                if([finder respondsToSelector:@selector(findPossibleUnitTestClass:)]) {
+                    id<FLTTestFactory> factory = [finder findPossibleUnitTestClass:classInfo];
+                    if(factory) {
+                        [unitTestFactories addObject:factory];
+                    }
+                }
+
+                // find test groups
+                if([finder respondsToSelector:@selector(findPossibleTestGroup:)]) {
+                    Class testGroup = [finder findPossibleTestGroup:classInfo];
+                    if(testGroup) {
+                        [testGroups setObject:testGroup forKey:[testGroup testGroupName]];
+                    }
                 }
             }
 
             FLRuntimeVisitEachSelectorInClass(classInfo.class,
                 ^(FLRuntimeInfo methodInfo, BOOL* stopInner) {
                     for(FLTTestFinder* finder in _testFinders) {
-                        FLTTestMethod* testMethod = [finder findPossibleTestMethod:methodInfo];
+                        if([finder respondsToSelector:@selector(findPossibleTestMethod:)]) {
+                            FLTTestMethod* testMethod = [finder findPossibleTestMethod:methodInfo];
 
-                        if(testMethod) {
-                            NSMutableArray* methods = [testMethods objectForKey:testMethod.className];
-                            if(!methods) {
-                                methods = [NSMutableArray array];
-                                [testMethods setObject:methods forKey:testMethod.className];
+                            if(testMethod) {
+                                NSMutableArray* methods = [testMethods objectForKey:testMethod.className];
+                                if(!methods) {
+                                    methods = [NSMutableArray array];
+                                    [testMethods setObject:methods forKey:testMethod.className];
+                                }
+                                [methods addObject:testMethod];
                             }
-                            [methods addObject:testMethod];
                         }
-
                     }
                 }
             );
@@ -157,7 +186,7 @@
 
     NSArray* finalizedFactoryList = [self removeUnitTestBaseClasses:unitTestFactories];
 
-    return [self sortClassesIntoGroups:finalizedFactoryList];
+    return [self sortClassesIntoGroups:finalizedFactoryList discoveredGroups:testGroups];
 }
 
 @end

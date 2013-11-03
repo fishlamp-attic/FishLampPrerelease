@@ -14,11 +14,12 @@
 @interface FLTTestGroupFinder : NSObject {
 @private
     NSMutableArray* _testFinders;
+    NSMutableArray* _groupFinders;
 }
 
 + (id) testGroupFinder;
 
-- (void) addTestFinder:(FLTTestFinder*) finder;
+- (void) addTestFinder:(id) finder;
 
 - (NSDictionary*) findTestGroups;
 

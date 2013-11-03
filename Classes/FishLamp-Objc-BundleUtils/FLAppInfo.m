@@ -18,7 +18,7 @@ static NSDictionary* s_infoDictionary = nil;
 }
 
 + (NSBundle*) bundleForInfo {
-    NSBundle* bundle = [NSBundle currentBundle];
+    NSBundle* bundle = [FLBundleStack currentBundle];
     if(!bundle) {
         bundle = [NSBundle mainBundle];
     }

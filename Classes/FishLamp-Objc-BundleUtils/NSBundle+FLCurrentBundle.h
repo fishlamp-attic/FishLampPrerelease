@@ -9,7 +9,7 @@
 
 #import "FishLampMinimum.h"
 
-@interface NSBundle (FLCurrentBundle)
+@interface FLBundleStack : NSObject
 
 + (NSBundle*) currentBundle;
 

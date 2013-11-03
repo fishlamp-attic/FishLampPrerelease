@@ -59,7 +59,7 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
     return self;
 }
 
-+ (id) httpController {
++ (id) httpContext {
     return FLAutorelease([[[self class] alloc] init]);
 }
 
@@ -74,7 +74,7 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 - (void) userServiceDidClose:(id<FLUserService>) service {
     [self.serviceList closeService:^(FLPromisedResult result) {
         if(self.httpUser) {
-            [self.notify httpController:self didLogoutUser:self.httpUser];
+            [self.notify httpContext:self didLogoutUser:self.httpUser];
             [[NSNotificationCenter defaultCenter] postNotificationName:FLHttpControllerDidLogoutUserNotification object:self];
             self.httpUser = nil;
         }

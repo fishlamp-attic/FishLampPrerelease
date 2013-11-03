@@ -12,19 +12,19 @@
 
 NSString* const FLTAssertFailedErrorDomain = @"FLTAssertFailedErrorDomain";
 
-@implementation NSError (FLTestable)
-
-+ (id) testFailedError:(NSInteger) code
-             condition:(NSString*) condition
-               comment:(NSString*) comment
-            stackTrace:(FLStackTrace*) stackTrace{
- 
-    return [self errorWithDomain:FLTAssertFailedErrorDomain
-                            code:code
-            localizedDescription:condition
-                        userInfo:nil
-                         comment:comment
-                      stackTrace:stackTrace];
-}                    
-
-@end
+//@implementation NSError (FLTestable)
+//
+//+ (id) testFailedError:(NSInteger) code
+//             condition:(NSString*) condition
+//               comment:(NSString*) comment
+//            stackTrace:(FLStackTrace*) stackTrace{
+// 
+//    return [self errorWithDomain:FLTAssertFailedErrorDomain
+//                            code:code
+//            localizedDescription:condition
+//                        userInfo:nil
+//                         comment:comment
+//                      stackTrace:stackTrace];
+//}                    
+//
+//@end

@@ -12,6 +12,10 @@
  *  FLTestableRunOrder specifies run order for FLTestable objects. This is passed into FLTestable 
  */
 @protocol FLTestableRunOrder <NSObject>
+
+//- (void) orderObject:(id) object afterObject:(id) object;
+//- (void) orderObject:(id) object afterObject:(id) anotherObject;
+
 - (void) orderClassFirst:(Class) aClass;
 - (void) orderClassEarly:(Class) aClass;
 - (void) orderClassLate:(Class) aClass;

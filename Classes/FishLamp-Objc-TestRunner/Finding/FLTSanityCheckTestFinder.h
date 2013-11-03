@@ -12,8 +12,7 @@
 
 #define FLSanityCheckStaticTestMethodPrefix @"sanityCheck_"
 
-@interface FLTSanityCheckTestFindler : FLTTestFinder {
-}
+@interface FLTSanityCheckTestFindler : NSObject<FLTTestMethodFinder>
 + (id) sanityCheckTestFinder;
 @end
 

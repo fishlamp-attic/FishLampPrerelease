@@ -12,7 +12,7 @@
 
 @implementation FLCoreFrameworkTest
 
-+ (Class) testGroup {
++ (Class) testGroupClass {
     return [FLCoreTestGroup class];
 }
 

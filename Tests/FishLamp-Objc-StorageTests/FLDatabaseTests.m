@@ -25,7 +25,7 @@
 }
 #endif
 
-//+ (Class) testGroup {
+//+ (Class) testGroupClass {
 //    return @"FishLampNetworking";
 //}
 

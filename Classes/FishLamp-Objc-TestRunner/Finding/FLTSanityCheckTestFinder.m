@@ -37,9 +37,6 @@
     return nil;
 }
 
-- (id<FLTTestFactory>) findPossibleUnitTestClass:(FLRuntimeInfo) info {
 
-    return nil;
-}
 
 @end

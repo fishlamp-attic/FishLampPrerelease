@@ -23,7 +23,7 @@
 	if(self) {
         FLAssertNotNil(group);
         _testGroup = group;
-		_groupName = FLRetain([group groupName]);
+		_groupName = FLRetain([group testGroupName]);
 	}
 	return self;
 }

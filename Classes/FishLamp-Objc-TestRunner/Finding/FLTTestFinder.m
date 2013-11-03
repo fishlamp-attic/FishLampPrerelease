@@ -8,14 +8,14 @@
 
 #import "FLTTestFinder.h"
 
-@implementation FLTTestFinder
-
-- (id<FLTTestFactory>) findPossibleUnitTestClass:(FLRuntimeInfo) info {
-    return nil;
-}
-
-- (FLTTestMethod*) findPossibleTestMethod:(FLRuntimeInfo) info {
-    return nil;
-}
-
-@end
+//@implementation FLTTestFinder
+//
+//- (id<FLTTestFactory>) findPossibleUnitTestClass:(FLRuntimeInfo) info {
+//    return nil;
+//}
+//
+//- (FLTTestMethod*) findPossibleTestMethod:(FLRuntimeInfo) info {
+//    return nil;
+//}
+//
+//@end

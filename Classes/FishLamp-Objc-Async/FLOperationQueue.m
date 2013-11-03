@@ -57,16 +57,13 @@
 @synthesize activeQueue = _activeQueue;
 @synthesize objectQueue = _objectQueue;
 @synthesize schedulingQueue = _schedulingQueue;
-@synthesize queueName = _queueName;
 @synthesize errorStrategy = _errorStrategy;
 
 FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories, NSMutableArray);
 
-- (id) initWithName:(NSString*) name
-      errorStrategy:(id<FLOperationQueueErrorStrategy>) errorStrategy {
+- (id) initWithErrorStrategy:(id<FLOperationQueueErrorStrategy>) errorStrategy {
 	self = [super init];
 	if(self) {
-        _queueName = FLRetain(name);
         _schedulingQueue = [[FLFifoAsyncQueue alloc] init];
         _activeQueue = [[NSMutableArray alloc] init];
         _objectQueue = [[NSMutableArray alloc] init];
@@ -77,28 +74,20 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
 	return self;
 }
 
-- (id) initWithName:(NSString*) name {
-    return [self initWithName:name errorStrategy:nil];
-}
-
-- (id) init {	
-    return [self initWithName:nil];
+- (id) init {
+    return [self initWithErrorStrategy:nil];
 }
 
 + (id) operationQueue {
     return FLAutorelease([[[self class] alloc] init]);
 }
 
-+ (id) operationQueueWithName:(NSString*) name {
-    return FLAutorelease([[[self class] alloc] initWithName:name]);
-}
-
-+ (id) operationQueueWithName:(NSString*) name
-                errorStrategy:(id<FLOperationQueueErrorStrategy>) errorStrategy {
-    return FLAutorelease([[[self class] alloc] initWithName:name errorStrategy:errorStrategy]);
++ (id) operationQueueWithErrorStrategy:(id<FLOperationQueueErrorStrategy>) errorStrategy {
+    return FLAutorelease([[[self class] alloc] initWithErrorStrategy:errorStrategy]);
 }
 
 - (void) addOperationFactory:(id<FLOperationQueueOperationFactory>)factory {
+    FLAssertNotNil(factory);
     FLAssertWithComment(self.processing == NO, @"can't add a factory while processing");
 
     [self.operationFactories addObject:factory];
@@ -155,6 +144,14 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
 }
 
 - (void) startProcessing {
+
+    FLAssertNotNil(self.context);
+    FLAssert(self.maxConcurrentOperations > 1);
+    FLAssertNotNil(self.schedulingQueue);
+    FLAssert(self.processing == NO);
+    FLAssertNotNil(self.objectQueue);
+    FLAssertNotNil(self.activeQueue);
+
     [self.errorStrategy operationQueueDidBeginProcessing:self];
     self.processing = YES;
     [self processQueue];
@@ -171,7 +168,6 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
 
 #if FL_MRC 
 - (void) dealloc {
-    [_queueName release];
     [_errorStrategy release];
     [_operationFactories release];
     [_activeQueue release];
@@ -284,21 +280,23 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
 }
 
 - (void) respondToProcessQueueEvent {
-    FLAssertWithComment(self.maxConcurrentOperations > 0, @"zero max concurrent operations");
-    FLTrace(@"max connections: %d", self.maxConcurrentOperations);
+    if(self.processing) {
+        FLAssertWithComment(self.maxConcurrentOperations > 0, @"zero max concurrent operations");
+        FLTrace(@"max connections: %d", self.maxConcurrentOperations);
 
-    while([self shouldStartAnotherOperation]) {
-        [self startOperationForObject:[_objectQueue removeFirstObject_fl]];
-    }
-
-    if([self shouldFinish]) {
-
-        id result = [self.errorStrategy errorResult];
-        if(!result) {
-            result = FLSuccessfulResult;
+        while([self shouldStartAnotherOperation]) {
+            [self startOperationForObject:[_objectQueue removeFirstObject_fl]];
         }
 
-        [self setFinishedWithResult:result];
+        if([self shouldFinish]) {
+
+            id result = [self.errorStrategy errorResult];
+            if(!result) {
+                result = FLSuccessfulResult;
+            }
+
+            [self setFinishedWithResult:result];
+        }
     }
 }
 @end
@@ -327,6 +325,7 @@ static NSInteger s_threadCount = FLQueueableAsyncOperationQueueOperationDefaultM
     if(!max) {
         max = [FLBatchOperationQueue defaultConnectionLimit];
     }
+    FLAssert(max > 0);
     return max;
 }
 

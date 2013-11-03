@@ -42,34 +42,6 @@
     return [object testGroup];
 }
 
-//- (NSArray*) sortedGroupListWithGroupDictionary:(NSDictionary*) groups {
-//    FLAssertNotNil(groups);
-//
-//    NSMutableArray* masterList = FLMutableCopyWithAutorelease(groups.allValues);
-//    NSArray* immutableList = FLCopyWithAutorelease(masterList);
-//
-//    for(FLTTestFactoryList* group in immutableList) {
-//
-//
-//    }
-//
-//
-////    return [[groups allValues] sortedArrayUsingComparator:
-////        ^NSComparisonResult(FLTTestFactoryList* obj1, FLTTestFactoryList* obj2) {
-////        if(obj1.testGroup.runOrder == obj2.testGroup.runOrder) {
-////            return NSOrderedSame;
-////        }
-////    
-////        return obj1.testGroup.runOrder  > obj2.testGroup.runOrder ? NSOrderedAscending : NSOrderedDescending;
-////    }];
-//
-//    return nil;
-//}
-
-//- (FLTTestFactoryList*) groupAtIndex:(NSUInteger) aIndex {
-//    return [self.groups objectAtIndex:aIndex];
-//}
-
 - (NSUInteger) testCount {
 
     if(_totalTestCount == 0) {
@@ -90,14 +62,6 @@
             [runList addObject:factory];
         }
     }
-
-//    self.unitTestFactories = [self removeUnitTestBaseClasses:self.unitTestFactories];
-//
-//    self.unitTestFactories = [self sortFactoryList:self.unitTestFactories];
-//
-//    self.testGroups = [self sortClassesIntoGroups:self.unitTestFactories];
-//
-//    self.sortedGroupList = [self sortedGroupListWithGroupDictionary:self.testGroups];
 
     return runList;
 }

@@ -66,7 +66,7 @@
 @end
 @implementation FLOperationUnitTest
 
-+ (Class) testGroup {
++ (Class) testGroupClass {
     return [FLAsyncTestGroup class];
 }
 

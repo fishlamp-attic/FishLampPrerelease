@@ -38,16 +38,12 @@
 // concurrent operations, defaults to 1
 @property (readwrite, assign) UInt32 maxConcurrentOperations;
 
-- (id) initWithName:(NSString*) name;
-- (id) initWithName:(NSString*) name
-      errorStrategy:(id<FLOperationQueueErrorStrategy>) errorStrategy;
+- (id) initWithErrorStrategy:(id<FLOperationQueueErrorStrategy>) errorStrategy;
 
 + (id) operationQueue;
-+ (id) operationQueueWithName:(NSString*) name
-                errorStrategy:(id<FLOperationQueueErrorStrategy>) errorStrategy;
++ (id) operationQueueWithErrorStrategy:(id<FLOperationQueueErrorStrategy>) errorStrategy;
 
 // info
-@property (readonly, strong) NSString* queueName;
 @property (readonly, assign) NSInteger finishedCount;
 @property (readonly, assign) NSInteger totalCount;
 

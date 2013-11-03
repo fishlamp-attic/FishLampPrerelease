@@ -18,7 +18,7 @@
 
 @implementation FLFinisherTests
 
-+ (Class) testGroup {
++ (Class) testGroupClass {
     return [FLAsyncTestGroup class];
 }
 

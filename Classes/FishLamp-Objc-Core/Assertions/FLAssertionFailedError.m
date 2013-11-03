@@ -17,8 +17,20 @@
                      reason:(NSString*) reason 
                     comment:(NSString*) comment
                  stackTrace:(FLStackTrace*) stackTrace{
- 
-    return [self errorWithDomain:FLAssertionFailureErrorDomain code:code localizedDescription:reason userInfo:nil comment:comment stackTrace:stackTrace];
+
+    NSString* localizedDescription = nil;
+    if(FLStringIsNotEmpty(comment)) {
+        localizedDescription = [NSString stringWithFormat:@"%@ (%@)", comment, reason];
+    }
+    else {
+        localizedDescription = reason;
+    }
+
+    return [self errorWithDomain:FLAssertionFailureErrorDomain
+                            code:code
+            localizedDescription:localizedDescription
+                        userInfo:nil
+                      stackTrace:stackTrace];
 }                    
 
 @end

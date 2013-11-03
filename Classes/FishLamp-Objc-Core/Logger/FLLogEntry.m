@@ -107,6 +107,19 @@ static NSMutableArray* s_cache = nil;
     return _logString ? _logString : @"";
 }
 
+- (NSString*) moreDescriptionForLogging {
+    return nil;
+}
+
+@end
+
+@implementation NSObject (FLLogging)
+- (NSString*) moreDescriptionForLogging {
+    return nil;
+}
+- (FLLogEntry*) logEntryForSelf {
+    return nil;
+}
 @end
 
 @implementation NSError (FLLogging)
@@ -123,10 +136,15 @@ static NSMutableArray* s_cache = nil;
 @implementation NSException (FLLogging)
 - (FLLogEntry*) logEntryForSelf {
     FLLogEntry* entry = [FLLogEntry logEntry];
-    entry.logString = [NSString stringWithFormat:@"%@: %@", self.name, self.reason];
+    entry.logString = self.reason;
     entry.logType = FLLogTypeException;
     entry.object = self;
     entry.stackTrace = self.error.stackTrace;
     return entry;
 }
+
+- (NSString*) moreDescriptionForLogging {
+    return self.name;
+}
+
 @end

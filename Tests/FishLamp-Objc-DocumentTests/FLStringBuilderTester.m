@@ -22,7 +22,7 @@
 
 @implementation FLStringBuilderTester
 
-+ (Class) testGroup {
++ (Class) testGroupClass {
     return [FLStringBuilderTestGroup class];
 }
 

@@ -17,7 +17,7 @@
 
 @implementation FLHttpTests
 
-//+ (Class) testGroup {
+//+ (Class) testGroupClass {
 //    return @"FishLampNetworking";
 //}
 

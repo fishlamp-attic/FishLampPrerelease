@@ -14,7 +14,7 @@
 
 + (void) specifyRunOrder:(id<FLTestableRunOrder>) runOrder;
 
-+ (NSString*) groupName;
++ (NSString*) testGroupName;
 
 @end
 

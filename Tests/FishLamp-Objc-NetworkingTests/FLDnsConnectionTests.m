@@ -15,7 +15,7 @@
 @implementation FLDnsConnectionTests
 
 
-//+ (Class) testGroup {
+//+ (Class) testGroupClass {
 //    return @"FishLampNetworking";
 //}
 

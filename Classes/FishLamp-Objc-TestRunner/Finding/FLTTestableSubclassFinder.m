@@ -10,6 +10,7 @@
 #import "FLTestable.h"
 #import "FLTTestableSubclassFactory.h"
 #import "FLTTestMethod.h"
+#import "FLTestGroup.h"
 
 @implementation FLTTestableSubclassFinder
 
@@ -43,6 +44,18 @@
     }
 
     return nil;
+}
+
+- (Class) findPossibleTestGroup:(FLRuntimeInfo) info {
+    if(!info.isMetaClass) {
+        if(FLRuntimeClassHasSubclass([FLTestGroup class], info.class) ||
+            FLClassConformsToProtocol(info.class, @protocol(FLTestGroup))) {
+            return info.class;
+        }
+    }
+
+    return nil;
+
 }
 
 @end

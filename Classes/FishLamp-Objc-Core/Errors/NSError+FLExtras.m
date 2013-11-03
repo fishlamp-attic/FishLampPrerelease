@@ -14,9 +14,6 @@
 #import "FLStackTrace.h"
 
 
-NSString* const FLErrorCommentKey = @"com.fishlamp.error.comment";;
-//NSString* const FLErrorDomainKey = @"com.fishlamp.error.domain";
-
 NSString* const FLStackTraceKey = @"stacktrace";
 
 
@@ -26,7 +23,6 @@ FLSynthesizeDictionaryGetterProperty(underlyingError, NSError*, NSUnderlyingErro
 FLSynthesizeDictionaryGetterProperty(stringEncoding, NSArray*, NSStringEncodingErrorKey, self.userInfo)
 FLSynthesizeDictionaryGetterProperty(URL, NSURL*, NSURLErrorKey, self.userInfo)
 FLSynthesizeDictionaryGetterProperty(filePath, NSString*, NSFilePathErrorKey, self.userInfo)
-FLSynthesizeDictionaryGetterProperty(comment, NSString*, FLErrorCommentKey, self.userInfo)
 FLSynthesizeDictionaryGetterProperty(stackTrace, FLStackTrace*, FLStackTraceKey, self.userInfo);
 
 + (NSError*) errorWithDomain:(id) domain
@@ -37,7 +33,6 @@ FLSynthesizeDictionaryGetterProperty(stackTrace, FLStackTrace*, FLStackTraceKey,
                                                          code:code
                                          localizedDescription:localizedDescription
                                                      userInfo:nil
-                                                      comment:nil
                                                    stackTrace:nil]);
 }
 
@@ -52,17 +47,10 @@ FLSynthesizeDictionaryGetterProperty(stackTrace, FLStackTrace*, FLStackTraceKey,
 - (id) initWithDomain:(NSString*) domain
                  code:(NSInteger) code
  localizedDescription:(NSString*) localizedDescription {
-    return [self initWithDomain:domain code:code localizedDescription:localizedDescription userInfo:nil comment:nil stackTrace:nil];
+    return [self initWithDomain:domain code:code localizedDescription:localizedDescription userInfo:nil stackTrace:nil];
 }
 
-- (id) initWithDomain:(NSString*) domain
-                 code:(NSInteger) code
- localizedDescription:(NSString*) localizedDescription
-             userInfo:(NSDictionary *) userInfo
-              comment:(NSString*) comment
-           stackTrace:(FLStackTrace*) stackTrace {
-
-
+/*
 #if 0
     NSString* errorCodeString = nil; // [[FLErrorDomainInfo instance] stringFromErrorCode:code withDomain:domain];
     NSString* commentAddOn = nil;
@@ -88,21 +76,19 @@ FLSynthesizeDictionaryGetterProperty(stackTrace, FLStackTrace*, FLStackTraceKey,
         comment = commentAddOn;
     }
 #endif    
+*/
 
+- (id) initWithDomain:(NSString*) domain
+                 code:(NSInteger) code
+ localizedDescription:(NSString*) localizedDescription
+             userInfo:(NSDictionary *) userInfo
+           stackTrace:(FLStackTrace*) stackTrace {
 
-//    if(comment) {
-//        localizedDescription = [NSString stringWithFormat:@"%@ (%@)", localizedDescription, comment];
-//    }
 
     NSMutableDictionary* newUserInfo = userInfo != nil ?
                                             FLMutableCopyWithAutorelease(userInfo) :
                                             [NSMutableDictionary dictionaryWithCapacity:5];
 
-//        [userInfo setObject:reason forKey:NSLocalizedFailureReasonErrorKey];
-
-    if(FLStringIsNotEmpty(comment)) {
-        [newUserInfo setObject:comment forKey:FLErrorCommentKey];
-    }
     if(FLStringIsNotEmpty(localizedDescription)) {
         [newUserInfo setObject:localizedDescription forKey:NSLocalizedDescriptionKey];
     }
@@ -117,14 +103,12 @@ FLSynthesizeDictionaryGetterProperty(stackTrace, FLStackTrace*, FLStackTraceKey,
                         code:(NSInteger)code
         localizedDescription:localizedDescription
                     userInfo:(NSDictionary *)dict
-                     comment:(NSString*) commentOrNil
                   stackTrace:(FLStackTrace*) stackTrace {
 
     return FLAutorelease([[[self class] alloc] initWithDomain:domain
                                                         code:code
                                          localizedDescription:localizedDescription
                                                     userInfo:dict
-                                                     comment:commentOrNil
                                                      stackTrace:stackTrace]);
 }
 

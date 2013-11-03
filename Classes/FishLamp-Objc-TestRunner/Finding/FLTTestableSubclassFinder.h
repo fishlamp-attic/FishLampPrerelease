@@ -10,7 +10,7 @@
 
 #define FLTestStaticMethodPrefix @"unitTest_"
 
-@interface FLTTestableSubclassFinder : FLTTestFinder
+@interface FLTTestableSubclassFinder : NSObject<FLTTestGroupClassFinder,  FLTTestClassFinder, FLTTestMethodFinder>
 
 + (id) testableSubclassFinder;
 

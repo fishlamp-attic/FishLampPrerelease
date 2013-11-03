@@ -54,6 +54,10 @@
     [stringFormatter appendActualString:self];
 }
 
+- (NSString*) stringFormatterString:(FLStringFormatter*) stringFormatter {
+    return self;
+}
+
 @end
 
 @implementation NSAttributedString (FLStringFormatter)
@@ -78,6 +82,11 @@
 - (void) appendToStringFormatter:(FLStringFormatter*) stringFormatter {
     [stringFormatter appendActualString:self];
 }
+
+- (NSString*) stringFormatterString:(FLStringFormatter*) stringFormatter {
+    return self.string;
+}
+
 
 @end
 
@@ -129,7 +138,7 @@
             [self closeLine];
         };
 
-        NSRange range = [_preprocessor processString:string foundLineRangeBlock:block];
+        NSRange range = [_preprocessor processString:[string stringFormatterString:self] foundLineRangeBlock:block];
 
         if(range.length) {
             [self openLine];

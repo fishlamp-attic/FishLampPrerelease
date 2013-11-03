@@ -14,7 +14,7 @@
 
 @implementation FLTimeoutTests
 
-+ (Class) testGroup {
++ (Class) testGroupClass {
     return [FLAsyncTestGroup class];
 }
 

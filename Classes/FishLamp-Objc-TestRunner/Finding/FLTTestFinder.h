@@ -12,11 +12,14 @@
 @protocol FLTTestFactory;
 @class FLTTestMethod;
 
-@interface FLTTestFinder : NSObject {
-@private
-}
-
+@protocol FLTTestClassFinder <NSObject>
 - (id<FLTTestFactory>) findPossibleUnitTestClass:(FLRuntimeInfo) info;
-- (FLTTestMethod*) findPossibleTestMethod:(FLRuntimeInfo) info;
+@end
 
+@protocol FLTTestMethodFinder <NSObject>
+- (FLTTestMethod*) findPossibleTestMethod:(FLRuntimeInfo) info;
+@end
+
+@protocol FLTTestGroupClassFinder <NSObject>
+- (Class) findPossibleTestGroup:(FLRuntimeInfo) info;
 @end

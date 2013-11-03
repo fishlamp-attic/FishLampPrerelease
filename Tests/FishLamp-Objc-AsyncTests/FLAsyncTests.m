@@ -17,7 +17,7 @@
 
 @implementation FLAsyncTests
 
-+ (Class) testGroup {
++ (Class) testGroupClass {
     return [FLAsyncTestGroup class];
 }
 

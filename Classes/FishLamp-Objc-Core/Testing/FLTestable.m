@@ -39,7 +39,7 @@
 }
 
 - (NSString*) description {
-    return [NSString stringWithFormat:@"%@ { group=%@ }", [super description], [[[self class] testGroup] description]];
+    return [NSString stringWithFormat:@"%@ { group=%@ }", [super description], [[self class] testGroupName]];
 }
 
 - (id<FLTestCase>) testCaseForSelector:(SEL) selector {
@@ -59,8 +59,12 @@
 + (void) specifyRunOrder:(id<FLTestableRunOrder>) runOrder {
 }
 
-+ (Class) testGroup {
++ (Class) testGroupClass {
     return [FLTestGroup class];
+}
+
++ (NSString*) testGroupName {
+    return NSStringFromClass([self testGroupClass]);
 }
 
 @end

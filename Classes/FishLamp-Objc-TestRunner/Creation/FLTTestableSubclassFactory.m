@@ -108,10 +108,6 @@
 	self = [super init];
 	if(self) {
         FLConfirmNotNil(aClass);
-//        FLConfirmWithComment([aClass isKindOfClass:[FLTestable class]],
-//                            @"%@ is not a testable object",
-//                            NSStringFromClass([aClass class]));
-
 		_testableClass = aClass;
 	}
 	return self;
@@ -121,15 +117,7 @@
     return FLAutorelease([[[self class] alloc] initWithUnitTestClass:aClass]);
 }
 
-//- (FLTestableRunOrder) testableRunOrder {
-//    return [_testableClass testableRunOrder];
-//}
-
 - (id) createTestableObject {
-
-//    FLConfirmWithComment([self.testableClass isKindOfClass:[FLTestable class]],
-//                            @"%@ is not a testable object",
-//                            NSStringFromClass([self.testableClass class]));
 
     id<FLTestable> testable = FLAutorelease([[self.testableClass alloc] initWithTestCaseCreation]);
 
@@ -148,7 +136,10 @@
 
 
 - (NSString*) description {
-    return [NSString stringWithFormat:@"%@ Group:%@, Class:%@", [super description], [self.testableClass testGroup], NSStringFromClass(self.testableClass)];
+    return [NSString stringWithFormat:@"%@ Group:%@, Class:%@",
+                [super description],
+                [self.testableClass testGroupName],
+                NSStringFromClass(self.testableClass)];
 }
 
 @end

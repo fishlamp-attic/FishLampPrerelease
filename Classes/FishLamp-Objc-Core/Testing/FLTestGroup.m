@@ -14,7 +14,7 @@
 
 }
 
-+ (NSString*) groupName {
++ (NSString*) testGroupName {
     return NSStringFromClass([self class]);
 }
 
