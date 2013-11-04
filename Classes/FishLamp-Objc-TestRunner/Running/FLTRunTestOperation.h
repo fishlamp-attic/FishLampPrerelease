@@ -11,14 +11,15 @@
 #import "FLTTestResult.h"
 #import "FLTTestResultCollection.h"
 
-@class FLTAssembledTest;
+@class FLTTest;
 
-@interface FLTRunAssembledTestOperation : FLSynchronousOperation {
+@interface FLTRunTestOperation : FLOperation {
 @private
-    FLTAssembledTest* _unitTest;
+    FLTTest* _unitTest;
+    NSMutableArray* _queue;
 }
 
-+ (id) unitTestOperation:(FLTAssembledTest*) testable;
++ (id) runTestOperation:(FLTTest*) testable;
 
 @end
 

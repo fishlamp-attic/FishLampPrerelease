@@ -115,17 +115,20 @@ static NSString* indent_result = @"foo\n>hello\n>>world\n>bar\nfoobar\n";
     id<FLStringFormatter> string = [self createStringFormatter:[FLTestWhitespace testWhitespace]];
     FLConfirmStringsAreEqual(@"", [self formattedString:string whitespace:[FLTestWhitespace testWhitespace]]);
     FLConfirm(string.indentLevel == 0);
+
+    FLIndentIntegrity* integrity = [FLIndentIntegrity indentIntegrity];
+
     [string appendLine:@"foo"];
-    [string indent];
+    [string indent:integrity];
         FLConfirm(string.indentLevel == 1);
         [string appendLine:@"hello"];
-        [string indent];
+        [string indent:integrity];
             FLConfirm(string.indentLevel == 2);
             [string appendLine:@"world"];
-            [string outdent];
+            [string outdent:integrity];
         FLConfirm(string.indentLevel == 1);
         [string appendLine:@"bar"];
-        [string outdent];
+        [string outdent:integrity];
     FLConfirm(string.indentLevel == 0);
     [string appendLine:@"foobar"];
 
@@ -138,11 +141,11 @@ static NSString* indent_result = @"foo\n>hello\n>>world\n>bar\nfoobar\n";
     [string appendLine:@"foo"];
     FLConfirm(string.indentLevel == 0);
 
-    [string indent:^{
+    [string indentedBlock:^{
         FLConfirm(string.indentLevel == 1);
         [string appendLine:@"hello"];
 
-        [string indent:^{
+        [string indentedBlock:^{
             FLConfirm(string.indentLevel == 2);
             [string appendLine:@"world"];
         }];
@@ -192,12 +195,12 @@ static NSString* indent_result = @"foo\n>hello\n>>world\n>bar\nfoobar\n";
 - (void) testIndentedStringFormatterAppend {
     id<FLStringFormatter> string1 = [self createStringFormatter:[FLTestWhitespace testWhitespace]];
     [string1 appendLine:@"a"];
-    [string1 indent:^{
+    [string1 indentedBlock:^{
         [string1 appendLine:@"b"];
 
         id<FLStringFormatter> string2 = [self createStringFormatter:[FLTestWhitespace testWhitespace]];
         [string2 appendLine:@"c"];
-        [string2 indent:^{
+        [string2 indentedBlock:^{
             [string2 appendLine:@"d"];
         }];
 

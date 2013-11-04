@@ -14,7 +14,6 @@
 @private
     BOOL _editingLine;
     FLWhitespace* _whitespace;
-    NSInteger _indentLevel;
 
     __unsafe_unretained id _whitespaceStringFormatterDelegate;
 }

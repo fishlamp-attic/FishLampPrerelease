@@ -16,6 +16,8 @@
 #import "FLDispatchQueue.h"
 #import "FLTestLoggingManager.h"
 
+#import "FishLampAsync.h"
+
 int FLTTestToolMain(int argc, const char *argv[], NSString* bundleIdentifier, NSString* appName, NSString* version) {
     @autoreleasepool {
         @try {
@@ -29,8 +31,9 @@ int FLTTestToolMain(int argc, const char *argv[], NSString* bundleIdentifier, NS
 
             FLTestableSetLogger(logger);
 
-            FLTRunAllTestsOperation* runner = [FLTRunAllTestsOperation testRunner];
-            FLPromisedResult result = [FLBackgroundQueue runSynchronously:runner];
+            FLOperationContext* testContext = [FLOperationContext operationContext];
+
+            FLPromisedResult result = [testContext runOperation:[FLTRunAllTestsOperation testRunner]];
 
             if([result isError]) {
                 return 1;

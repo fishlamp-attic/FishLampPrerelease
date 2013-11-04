@@ -39,6 +39,7 @@ typedef NS_ENUM(NSInteger, FLPromiseState) {
     FLPromise* _nextPromise;
     __unsafe_unretained id _target;
     SEL _action;
+    BOOL _isFinished;
 }
 
 /**

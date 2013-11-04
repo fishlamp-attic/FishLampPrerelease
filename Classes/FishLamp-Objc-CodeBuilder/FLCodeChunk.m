@@ -30,7 +30,7 @@ appendContentsToStringFormatter:(id<FLStringFormatter>)anotherStringFormatter {
 
     if(FLStringIsNotEmpty(_openScopeString)) {
         [anotherStringFormatter appendLine:_openScopeString];
-        [anotherStringFormatter indent:^{
+        [anotherStringFormatter indentedBlock:^{
             [super stringFormatter:formatter appendContentsToStringFormatter:anotherStringFormatter];
         }];
         

@@ -183,7 +183,7 @@
 - (void) stringFormatterIndent:(FLStringFormatter*) formatter {
     [self dispatchBlock: ^{
         for(id<FLLogSink> sink in _sinks) {
-            [sink indent];
+            [sink indent:self.indentIntegrity];
         }
     }];
 }
@@ -191,7 +191,7 @@
 - (void) stringFormatterOutdent:(FLStringFormatter*) formatter {
     [self dispatchBlock: ^{
         for(id<FLLogSink> sink in _sinks) {
-            [sink outdent];
+            [sink outdent:self.indentIntegrity];
         }
     }];
 }
@@ -225,9 +225,6 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter  {
 
 }
 
-- (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter {
-    return 0;
-}
 
 
 //- (void) logException:(NSException*) exception withComment:(NSString*) comment {

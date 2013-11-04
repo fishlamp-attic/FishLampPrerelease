@@ -21,7 +21,6 @@
     BOOL _needsLine;
     BOOL _lineOpen;
 
-    NSInteger _indentLevel;
     __unsafe_unretained id _parent;
     __unsafe_unretained id _document;
 }

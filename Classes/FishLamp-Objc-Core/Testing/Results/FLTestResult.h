@@ -22,6 +22,8 @@
 @protocol FLTestResult <NSObject>
 
 @property (readonly, strong) id<FLStringFormatter> loggerOutput;
+@property (readonly, assign) BOOL started;
+@property (readonly, assign) BOOL finished;
 @property (readonly, assign) BOOL passed;
 @property (readonly, strong) NSString* testName;
 
@@ -29,6 +31,8 @@
 @property (readonly, copy) NSException* exception;
 @property (readonly, copy) NSError* error;
 
+- (void) setStarted;
+- (void) setFinished;
 - (void) setPassed; // only passes if error is nil
 - (void) setFailedWithError:(NSError*) error;
 - (void) setFailedWithException:(NSException*) ex;

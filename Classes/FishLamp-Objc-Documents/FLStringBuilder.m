@@ -133,11 +133,11 @@
 }
 
 - (void) stringFormatterIndent:(FLStringFormatter*) formatter {
-    [[self openedSection] indent];
+    [[self openedSection] indent:self.indentIntegrity];
 }
 
 - (void) stringFormatterOutdent:(FLStringFormatter*) formatter {
-    [[self openedSection] outdent];
+    [[self openedSection] outdent:self.indentIntegrity];
 }
 
 - (NSUInteger) stringFormatterLength:(FLStringFormatter*) formatter {

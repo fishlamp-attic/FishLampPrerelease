@@ -23,6 +23,8 @@
 @synthesize loggerOutput = _loggerOutput;
 @synthesize passed = _passed;
 @synthesize exception = _exception;
+@synthesize started = _started;
+@synthesize finished = _finished;
 
 - (id) initWithTestName:(NSString*) name {
 
@@ -55,6 +57,15 @@
 }
 #endif
 
+- (void) setStarted {
+    FLAssert(!_started);
+    _started = YES;
+}
+
+- (void) setFinished {
+    FLAssert(!_finished);
+    _finished = YES;
+}
 
 - (void) setPassed {
     FLAssert(!_passed);
@@ -65,6 +76,7 @@
     self.error = error;
     _passed = NO;
 }
+
 - (void) setFailedWithException:(NSException*) ex {
     self.exception = ex;
     _passed = NO;

@@ -28,6 +28,8 @@
     NSString* _testName;
     id<FLStringFormatter> _loggerOutput;
     BOOL _passed;
+    BOOL _started;
+    BOOL _finished;
 }
 
 - (id) initWithTestName:(NSString*) name;

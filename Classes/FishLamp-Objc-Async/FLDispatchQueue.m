@@ -111,10 +111,10 @@
 }
 
 #if __MAC_10_8
-+ (void) sleepForTimeInterval:(NSTimeInterval)milliseconds {
++ (void) sleepForTimeInterval:(NSTimeInterval) seconds {
     
     if([NSThread isMainThread]) {
-        NSTimeInterval timeout = [NSDate timeIntervalSinceReferenceDate] + milliseconds;
+        NSTimeInterval timeout = [NSDate timeIntervalSinceReferenceDate] + seconds;
         while([NSDate timeIntervalSinceReferenceDate] < timeout) {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
         }
@@ -122,7 +122,7 @@
     else {
         dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         dispatch_semaphore_wait(semaphore, 
-                                dispatch_time(DISPATCH_TIME_NOW, (milliseconds * NSEC_PER_MSEC)));
+                                dispatch_time(0, ((seconds * 1000.0) * NSEC_PER_MSEC)));
 #if !OS_OBJECT_USE_OBJC
         dispatch_release(semaphore);
 #endif

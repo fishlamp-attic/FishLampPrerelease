@@ -38,7 +38,7 @@
     FLReturnStaticObject(FLAutorelease([[[self class] alloc] init]));
 }
 - (void) appendToStringFormatter:(id<FLStringFormatter>) stringFormatter  {
-    [stringFormatter indent];
+    [stringFormatter indent:nil];
 }
 - (NSString*) description {
     return @"-->";
@@ -50,7 +50,7 @@
     FLReturnStaticObject(FLAutorelease([[[self class] alloc] init]));
 }
 - (void) appendToStringFormatter:(id<FLStringFormatter>) stringFormatter  {
-    [stringFormatter outdent];
+    [stringFormatter outdent:nil];
 }
 - (NSString*) description {
     return @"<--";
@@ -168,19 +168,13 @@
       [self stringFormatter:formatter appendString:attributedString.string];
 }
 
-- (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter {
-    return _indentLevel;
-}
-
 - (void) stringFormatterIndent:(FLStringFormatter*) formatter {
     FLAssertNotNil(_lines);
-    ++_indentLevel;
     [_lines addObject:[FLDocumentSectionIndent documentSectionIndent]];
 }
 
 - (void) stringFormatterOutdent:(FLStringFormatter*) formatter {
     FLAssertNotNil(_lines);
-    --_indentLevel;
     [_lines addObject:[FLDocumentSectionOutdent documentSectionOutdent]];
 }
 

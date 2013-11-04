@@ -1,15 +1,15 @@
 //
-//  FLTAssembledTest.m
+//  FLTTest.m
 //  FishLampCocoa
 //
 //  Created by Mike Fullerton on 9/1/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FLTAssembledTest.h"
+#import "FLTTest.h"
 #import "FLTTestCaseList.h"
 
-@implementation FLTAssembledTest
+@implementation FLTTest
 
 @synthesize testableObject = _testableObject;
 @synthesize testCaseList = _testCaseList;

@@ -31,10 +31,10 @@
 - (void) logEntry:(FLLogEntry*) entry stopPropagating:(BOOL*) stop {
 }
 
-- (void) indent {
+- (void) indent:(FLIndentIntegrity*) integrity {
 }
 
-- (void) outdent {
+- (void) outdent:(FLIndentIntegrity*) integrity {
 }
 
 @end

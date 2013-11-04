@@ -174,7 +174,7 @@ static NSMutableDictionary* s_registry = nil;
 - (NSString*) description {
     
     FLPrettyString* contained = [FLPrettyString prettyString];
-    [contained indent];
+    [contained indent:nil];
     
     for(FLPropertyDescriber* describer in [_properties objectEnumerator]) {
         [contained appendBlankLine];

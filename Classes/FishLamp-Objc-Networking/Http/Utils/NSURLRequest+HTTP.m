@@ -41,7 +41,7 @@ static NSString* s_defaultUserAgent = nil;
     [prettyString appendLineWithFormat:@"URL: %@", [[self.URL absoluteString] urlDecodeString:NSUTF8StringEncoding]];
     [prettyString appendLine:@"All Headers:"];
     
-    [prettyString indent: ^{
+    [prettyString indentedBlock: ^{
         for(id key in headers) {
             [prettyString appendLineWithFormat:@"%@: %@", [key description], [[headers objectForKey:key] description]];
             [prettyString closeLine];
@@ -54,7 +54,7 @@ static NSString* s_defaultUserAgent = nil;
 	NSData* data = [self HTTPBody];
 	NSString* stringData = FLAutorelease([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 	if(FLStringIsNotEmpty(stringData)) {
-        [prettyString indent:^{
+        [prettyString indentedBlock:^{
             [prettyString appendLine:stringData];
             [prettyString closeLine];
 

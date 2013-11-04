@@ -10,19 +10,21 @@
 
 #import "FLTTestCase.h"
 #import "FLTestCaseList.h"
+#import "FLTOrderedRunList.h"
 
 @protocol FLTTestCase;
 
 @interface FLTTestCaseList : NSObject<FLTestCaseList, NSFastEnumeration> {
 @private
-    NSMutableArray* _testCases;
+    NSMutableArray* _testCaseArray;
     BOOL _disabled;
     NSString* _disabledReason;
-    NSMutableArray* _prerequisiteTestClasses;
 }
 
+@property (readonly, strong, nonatomic) NSArray* testCaseArray;
+
 + (id) testCaseList;
-+ (id) testCaseListWithArrayOfTestCases:(NSArray*) testCases;
++ (id) testCaseListWithArrayOfTestCases:(NSArray*) testCaseArray;
 
 - (void) addTestCase:(FLTTestCase*) testCase;
 

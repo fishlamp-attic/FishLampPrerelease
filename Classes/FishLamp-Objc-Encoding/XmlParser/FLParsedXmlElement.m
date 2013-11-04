@@ -147,7 +147,7 @@
         [stringFormatter appendFormat:@" %@=\"%@\"", attr, [self.attributes objectForKey:attr]];
     }
     [stringFormatter appendLine:@">"];
-    [stringFormatter indent:^{
+    [stringFormatter indentedBlock:^{
         if(FLStringIsNotEmpty(self.elementValue)) {
             [stringFormatter appendLineWithFormat:@"%@", self.elementValue];
         }

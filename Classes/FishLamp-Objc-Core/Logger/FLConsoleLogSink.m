@@ -17,6 +17,13 @@
 
 @implementation FLConsoleLogSink
 
+- (id) init {	
+	self = [super init];
+	if(self) {
+	}
+	return self;
+}
+
 + (id) consoleLogSink {
     return FLAutorelease([[[self class] alloc] init]);
 }
@@ -26,12 +33,12 @@
 }
 
 
-- (void) indent {
-    [[FLPrintfStringFormatter instance] indent];
+- (void) indent:(FLIndentIntegrity*) integrity {
+    [[FLPrintfStringFormatter instance] indent:integrity];
 }
 
-- (void) outdent {
-    [[FLPrintfStringFormatter instance] outdent];
+- (void) outdent:(FLIndentIntegrity*) integrity {
+    [[FLPrintfStringFormatter instance] outdent:integrity];
 }
 
 - (void) logEntry:(FLLogEntry*) entry stopPropagating:(BOOL*) stop {
@@ -39,7 +46,7 @@
     FLPrintf(entry.logString);
 
     if(FLTestAnyBit(self.outputFlags, FLLogOutputWithLocation | FLLogOutputWithStackTrace)) { 
-        [[FLPrintfStringFormatter instance] indent:^{
+        [[FLPrintfStringFormatter instance] indentedBlock:^{
             NSString* moreInfo = [entry.object moreDescriptionForLogging];
             if(moreInfo) {
                 FLPrintf(moreInfo);
@@ -53,7 +60,7 @@
 
     if(FLTestBits(self.outputFlags, FLLogOutputWithStackTrace)) {
 
-        [[FLPrintfStringFormatter instance] indent:^{
+        [[FLPrintfStringFormatter instance] indentedBlock:^{
             if(entry.stackTrace.callStack.depth) {
                 for(int i = 0; i < entry.stackTrace.callStack.depth; i++) {
                     FLPrintf(@"%s", [entry.stackTrace stackEntryAtIndex:i]);

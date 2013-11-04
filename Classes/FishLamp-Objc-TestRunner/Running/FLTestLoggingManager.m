@@ -21,12 +21,14 @@ FLSynthesizeSingleton(FLTestLoggingManager)
 	self = [super init];
 	if(self) {
         _loggers = [[NSMutableArray alloc] init];
+        _indentIntegrity = [[FLIndentIntegrity alloc] init];
 	}
 	return self;
 }
 
 #if FL_MRC
 - (void)dealloc {
+    [_indentIntegrity release];
 	[_loggers release];
 	[super dealloc];
 }
@@ -63,11 +65,11 @@ FLSynthesizeSingleton(FLTestLoggingManager)
 }
 
 - (void) stringFormatterIndent:(FLStringFormatter*) formatter {
-    [[self logger] indent];
+    [[self logger] indent:self.indentIntegrity];
 }
 
 - (void) stringFormatterOutdent:(FLStringFormatter*) formatter {
-    [[self logger] outdent];
+    [[self logger] outdent:self.indentIntegrity];
 }
 
 - (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter {
@@ -85,11 +87,11 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter {
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
             appendString:(NSString*) string {
-//    [[self logger] appendString:string];
+    [[self logger] appendString:string];
 
-    for(id logger in _loggers) {
-        [logger appendString:string];
-    }
+//    for(id logger in _loggers) {
+//        [logger appendString:string];
+//    }
 
 }
 

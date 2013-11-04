@@ -27,7 +27,7 @@
     #define FLLogIf(__CONDITION__, __FORMAT__, ...) \
                 if(__CONDITION__) FLLogDebug(__FORMAT__, ##__VA_ARGS__)
 
-    #define FLLogIndent(__BLOCK__) [[FLLogLogger instance] indent:__BLOCK__]
+    #define FLLogIndent(__BLOCK__) [[FLLogLogger instance] indentedBlock:__BLOCK__]
 
     #define FLLogFileLocation() \
                 FLLog(@"%s, file: %s:%d", __PRETTY_FUNCTION__, __FILE__, __LINE__)

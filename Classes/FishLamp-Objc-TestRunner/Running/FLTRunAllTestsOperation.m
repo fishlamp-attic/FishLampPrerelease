@@ -13,14 +13,14 @@
 #import "FLObjcRuntime.h"
 #import "FLTestable.h"
 
-#import "FLTRunAssembledTestOperation.h"
+#import "FLTRunTestOperation.h"
 #import "FLDispatchQueue.h"
 
 #import "FLTTestOrganizer.h"
 #import "FLTTestFactoryList.h"
 
 #import "FLTTestFactory.h"
-#import "FLTAssembledTest.h"
+#import "FLTTest.h"
 
 @implementation FLTRunAllTestsOperation
 
@@ -29,6 +29,8 @@
 }
 
 - (FLPromisedResult) performSynchronously {
+
+    FLAssertNotNil(self.context);
 
     FLTTestOrganizer* organizer = [FLTTestOrganizer testOrganizer];
     [organizer organizeTests];
@@ -48,13 +50,12 @@
         for(id<FLTTestFactory> factory in group) {
 
             @autoreleasepool {
-                FLTAssembledTest* test = [factory createAssembledTest];
+                FLTTest* test = [factory createTest];
 
-                [FLTestLogger() indent:^{
-                    FLTRunAssembledTestOperation* unitTestOperation =
-                        [FLTRunAssembledTestOperation unitTestOperation:test];
+                [FLTestLogger() indentedBlock:^{
 
-                    FLPromisedResult result = [FLBackgroundQueue runSynchronously:unitTestOperation];
+                    FLPromisedResult result = [self.context runOperation:
+                                                    [FLTRunTestOperation runTestOperation:test]];
 
 //                    FLTTestResultCollection* result =
 //                        [FLTTestResultCollection fromPromisedResult:

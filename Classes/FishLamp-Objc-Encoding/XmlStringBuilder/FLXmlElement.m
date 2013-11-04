@@ -202,7 +202,7 @@ appendContentsToStringFormatter:(id<FLStringFormatter>)stringFormatter {
 
     [stringFormatter appendLine:[self xmlOpenTag:!hasLines]];
     if(hasLines) {
-        [stringFormatter indent:^{
+        [stringFormatter indentedBlock:^{
             [super stringFormatter:self appendContentsToStringFormatter:stringFormatter];
         }];
 

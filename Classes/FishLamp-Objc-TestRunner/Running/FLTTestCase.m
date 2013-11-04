@@ -22,6 +22,7 @@
 @property (readwrite, strong) NSString* disabledReason;
 @property (readwrite, assign) id<FLTestCaseList> testCaseList;
 @property (readwrite, strong) id<FLTestResult> result;
+@property (readonly, strong) FLIndentIntegrity* indentIntegrity;
 @end
 
 @implementation FLTTestCase
@@ -35,9 +36,18 @@
 @synthesize testCaseList = _testCaseList;
 @synthesize result = _result;
 @synthesize debugMode = _debugMode;
+@synthesize indentIntegrity = _indentIntegrity;
+
+- (id) init {	
+	self = [super init];
+	if(self) {
+		_indentIntegrity = [[FLIndentIntegrity alloc] init];
+	}
+	return self;
+}
 
 - (id) initWithName:(NSString*) name testable:(id<FLTestable>) testable {
-    self = [super init];
+    self = [self init];
     if(self) {
         _testCaseName = FLRetain(name);
         _unitTest = testable;
@@ -63,6 +73,7 @@
 
 #if FL_MRC
 - (void) dealloc {
+    [_indentIntegrity release];
     [_disabledReason release];
     [_testCaseName release];
 	[_selector release];
@@ -106,7 +117,7 @@
     }
 }
 
-- (void) willPerformTest {
+- (void) prepareTestCase {
     self.result = [FLTTestResult testResult:self.testCaseName];
     if(!self.isDisabled && [_willTestSelector willPerformOnTarget:_target]) {
         [[FLTestLoggingManager instance] logger:self.result.loggerOutput logInBlock:^{
@@ -115,61 +126,54 @@
     }
 }
 
-- (void) performTest {
-    if(!self.isDisabled) {
-        @try {
-            [[FLTestLoggingManager instance] logger:self.result.loggerOutput logInBlock:^{
-                [self performTestCaseSelector:_selector optional:self];
-            }];
+- (void) startOperation {
+    [[FLTestLoggingManager instance] addLogger:self.result.loggerOutput];
+    [[FLTestLoggingManager instance] indent:self.indentIntegrity];
 
-            [self.result setPassed];
-        }
-        @catch(NSException* exception) {
-            [self.result setFailedWithException:exception];
-        }
+    if(self.isDisabled) {
+        [self setFinished];
+    }
+
+    [self.result setStarted];
+    
+    switch(_selector.argumentCount) {
+        case 0:
+            [_selector performWithTarget:_target];
+            [self setFinished];
+        break;
+
+        case 1:
+            [_selector performWithTarget:_target withObject:self];
+        break;
+
+        default:
+            [self disable:[NSString stringWithFormat:@"[%@ %@] has too many paramaters (%ld).",
+                NSStringFromClass([_target class]),
+                _selector.selectorString,
+                _selector.argumentCount]];
+        break;
     }
 }
 
-- (void) didPerformTest {
+- (void) setFinishedWithResult:(id)result {
+
+    [self.result setFinished];
+
+    if([result isError]) {
+        [self.result setFailedWithError:result];
+    }
+    else {
+        [self.result setPassed];
+    }
+
     if(!self.isDisabled && [_willTestSelector willPerformOnTarget:_didTestSelector]) {
-        [[FLTestLoggingManager instance] logger:self.result.loggerOutput logInBlock:^{
-            [self performTestCaseSelector:_didTestSelector optional:self];
-        }];
+        [self performTestCaseSelector:_didTestSelector optional:self];
     }
-}
 
-- (NSUInteger) runOrder {
-    return [_testCaseList runOrderForTestCase:self];
-}
+    [[FLTestLoggingManager instance] outdent:self.indentIntegrity];
+    [[FLTestLoggingManager instance] popLogger];
 
-- (void) setRunOrder:(NSUInteger) runOrder {
-    [_testCaseList setRunOrder:runOrder forTestCase:self];
-}
-
-- (void) runSooner {
-    [_testCaseList setRunOrder:self.runOrder - 1 forTestCase:self];
-}
-
-- (void) runLater {
-    [_testCaseList setRunOrder:self.runOrder + 1 forTestCase:self];
-}
-
-- (void) runFirst {
-    [_testCaseList setRunOrder:0 forTestCase:self];
-}
-
-- (void) runLast {
-    [_testCaseList setRunOrder:INT_MAX forTestCase:self];
-}
-
-- (void) runBefore:(id<FLTestCase>) anotherTestCase {
-    NSUInteger idx = [anotherTestCase runOrder];
-    [self setRunOrder:idx - 1];
-}
-
-- (void) runAfter:(id<FLTestCase>) anotherTestCase {
-    NSUInteger idx = [anotherTestCase runOrder];
-    [self setRunOrder:idx + 1];
+    [super setFinishedWithResult:self.result];
 }
 
 - (NSString*) description {

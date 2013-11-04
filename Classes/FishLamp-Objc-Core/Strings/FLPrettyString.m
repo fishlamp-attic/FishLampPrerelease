@@ -103,13 +103,22 @@
 }
 
 - (void) prettyDescription:(FLPrettyString*) string {
-    [string indent: ^{
+    [string indentedBlock: ^{
         [self describeSelf:string];
     }];
 }
 
 - (void) describeSelf:(FLPrettyString*) string {
     [string appendLine:[self description]];
+}
+
+@end
+
+@implementation NSArray (FLPrettyString)
+- (void) describeSelf:(FLPrettyString*) string {
+    for(id object in self) {
+        [object prettyDescription:string];
+    }
 }
 
 @end

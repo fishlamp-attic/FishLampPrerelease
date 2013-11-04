@@ -65,11 +65,9 @@
 }
 
 - (void) stringFormatterIndent:(FLStringFormatter*) formatter {
-    ++_indentLevel;
 }
 
 - (void) stringFormatterOutdent:(FLStringFormatter*) formatter {
-    --_indentLevel;
 }
 
 - (void) appendEOL {
@@ -104,10 +102,6 @@
 
     [_whitespaceStringFormatterDelegate whitespaceStringFormatter:self
                                   appendContentsToStringFormatter:stringFormatter];
-}
-
-- (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter {
-    return _indentLevel;
 }
 
 - (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter {

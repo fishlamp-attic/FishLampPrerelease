@@ -22,7 +22,7 @@ appendContentsToStringFormatter:(id<FLStringFormatter>)stringFormatter {
     if(hasLines) {
         [stringFormatter appendLine:@"<--"];
 
-        [stringFormatter indent:^{
+        [stringFormatter indentedBlock:^{
             [super stringFormatter:self appendContentsToStringFormatter:stringFormatter];
         }];
         

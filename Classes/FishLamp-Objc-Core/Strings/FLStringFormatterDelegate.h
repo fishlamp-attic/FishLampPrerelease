@@ -27,8 +27,6 @@
 
 - (void) stringFormatterOutdent:(FLStringFormatter*) formatter;
 
-- (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter;
-
 - (NSUInteger) stringFormatterLength:(FLStringFormatter*) formatter;
 
 - (void)stringFormatter:(FLStringFormatter*) formatter

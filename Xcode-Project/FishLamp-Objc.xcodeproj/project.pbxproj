@@ -1742,11 +1742,11 @@
 		27CF85A518256648002B5C3E /* FLTTestableResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855718256648002B5C3E /* FLTTestableResult.m */; };
 		27CF85A618256648002B5C3E /* FLTTestableResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855718256648002B5C3E /* FLTTestableResult.m */; };
 		27CF85A718256648002B5C3E /* FLTTestableResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855718256648002B5C3E /* FLTTestableResult.m */; };
-		27CF85A818256648002B5C3E /* FLTAssembledTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855B18256648002B5C3E /* FLTAssembledTest.m */; };
-		27CF85A918256648002B5C3E /* FLTAssembledTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855B18256648002B5C3E /* FLTAssembledTest.m */; };
-		27CF85AA18256648002B5C3E /* FLTAssembledTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855B18256648002B5C3E /* FLTAssembledTest.m */; };
-		27CF85AB18256648002B5C3E /* FLTAssembledTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855B18256648002B5C3E /* FLTAssembledTest.m */; };
-		27CF85AC18256648002B5C3E /* FLTAssembledTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855B18256648002B5C3E /* FLTAssembledTest.m */; };
+		27CF85A818256648002B5C3E /* FLTTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855B18256648002B5C3E /* FLTTest.m */; };
+		27CF85A918256648002B5C3E /* FLTTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855B18256648002B5C3E /* FLTTest.m */; };
+		27CF85AA18256648002B5C3E /* FLTTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855B18256648002B5C3E /* FLTTest.m */; };
+		27CF85AB18256648002B5C3E /* FLTTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855B18256648002B5C3E /* FLTTest.m */; };
+		27CF85AC18256648002B5C3E /* FLTTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855B18256648002B5C3E /* FLTTest.m */; };
 		27CF85AD18256648002B5C3E /* FLTTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855D18256648002B5C3E /* FLTTestCase.m */; };
 		27CF85AE18256648002B5C3E /* FLTTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855D18256648002B5C3E /* FLTTestCase.m */; };
 		27CF85AF18256648002B5C3E /* FLTTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF855D18256648002B5C3E /* FLTTestCase.m */; };
@@ -1777,11 +1777,11 @@
 		27CF85C818256648002B5C3E /* FLTStaticTestMethodRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856718256648002B5C3E /* FLTStaticTestMethodRunner.m */; };
 		27CF85C918256648002B5C3E /* FLTStaticTestMethodRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856718256648002B5C3E /* FLTStaticTestMethodRunner.m */; };
 		27CF85CA18256648002B5C3E /* FLTStaticTestMethodRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856718256648002B5C3E /* FLTStaticTestMethodRunner.m */; };
-		27CF85CB18256648002B5C3E /* FLTRunAssembledTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunAssembledTestOperation.m */; };
-		27CF85CC18256648002B5C3E /* FLTRunAssembledTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunAssembledTestOperation.m */; };
-		27CF85CD18256648002B5C3E /* FLTRunAssembledTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunAssembledTestOperation.m */; };
-		27CF85CE18256648002B5C3E /* FLTRunAssembledTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunAssembledTestOperation.m */; };
-		27CF85CF18256648002B5C3E /* FLTRunAssembledTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunAssembledTestOperation.m */; };
+		27CF85CB18256648002B5C3E /* FLTRunTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunTestOperation.m */; };
+		27CF85CC18256648002B5C3E /* FLTRunTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunTestOperation.m */; };
+		27CF85CD18256648002B5C3E /* FLTRunTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunTestOperation.m */; };
+		27CF85CE18256648002B5C3E /* FLTRunTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunTestOperation.m */; };
+		27CF85CF18256648002B5C3E /* FLTRunTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunTestOperation.m */; };
 		27CF85D018256648002B5C3E /* FLTTestToolMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856B18256648002B5C3E /* FLTTestToolMain.m */; };
 		27CF85D118256648002B5C3E /* FLTTestToolMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856B18256648002B5C3E /* FLTTestToolMain.m */; };
 		27CF85D218256648002B5C3E /* FLTTestToolMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856B18256648002B5C3E /* FLTTestToolMain.m */; };
@@ -2701,8 +2701,8 @@
 		27CF855618256648002B5C3E /* FLTTestableResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTTestableResult.h; sourceTree = "<group>"; };
 		27CF855718256648002B5C3E /* FLTTestableResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTTestableResult.m; sourceTree = "<group>"; };
 		27CF855818256648002B5C3E /* FLTTestResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTTestResult.h; sourceTree = "<group>"; };
-		27CF855A18256648002B5C3E /* FLTAssembledTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTAssembledTest.h; sourceTree = "<group>"; };
-		27CF855B18256648002B5C3E /* FLTAssembledTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTAssembledTest.m; sourceTree = "<group>"; };
+		27CF855A18256648002B5C3E /* FLTTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTTest.h; sourceTree = "<group>"; };
+		27CF855B18256648002B5C3E /* FLTTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTTest.m; sourceTree = "<group>"; };
 		27CF855C18256648002B5C3E /* FLTTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTTestCase.h; sourceTree = "<group>"; };
 		27CF855D18256648002B5C3E /* FLTTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTTestCase.m; sourceTree = "<group>"; };
 		27CF855E18256648002B5C3E /* FLTTestCaseList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTTestCaseList.h; sourceTree = "<group>"; };
@@ -2715,8 +2715,8 @@
 		27CF856518256648002B5C3E /* FLTSortedTestGroupList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTSortedTestGroupList.m; sourceTree = "<group>"; };
 		27CF856618256648002B5C3E /* FLTStaticTestMethodRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTStaticTestMethodRunner.h; sourceTree = "<group>"; };
 		27CF856718256648002B5C3E /* FLTStaticTestMethodRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTStaticTestMethodRunner.m; sourceTree = "<group>"; };
-		27CF856818256648002B5C3E /* FLTRunAssembledTestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTRunAssembledTestOperation.h; sourceTree = "<group>"; };
-		27CF856918256648002B5C3E /* FLTRunAssembledTestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTRunAssembledTestOperation.m; sourceTree = "<group>"; };
+		27CF856818256648002B5C3E /* FLTRunTestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTRunTestOperation.h; sourceTree = "<group>"; };
+		27CF856918256648002B5C3E /* FLTRunTestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTRunTestOperation.m; sourceTree = "<group>"; };
 		27CF856A18256648002B5C3E /* FLTTestToolMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTTestToolMain.h; sourceTree = "<group>"; };
 		27CF856B18256648002B5C3E /* FLTTestToolMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTTestToolMain.m; sourceTree = "<group>"; };
 		27CF85E31825965C002B5C3E /* FLTestGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestGroup.h; sourceTree = "<group>"; };
@@ -4469,8 +4469,8 @@
 				27CF86061825A8CC002B5C3E /* Lists */,
 				27CF85F818259CD9002B5C3E /* FLTestLoggingManager.h */,
 				27CF85F918259CD9002B5C3E /* FLTestLoggingManager.m */,
-				27CF855A18256648002B5C3E /* FLTAssembledTest.h */,
-				27CF855B18256648002B5C3E /* FLTAssembledTest.m */,
+				27CF855A18256648002B5C3E /* FLTTest.h */,
+				27CF855B18256648002B5C3E /* FLTTest.m */,
 				27CF855C18256648002B5C3E /* FLTTestCase.h */,
 				27CF855D18256648002B5C3E /* FLTTestCase.m */,
 				27CF856A18256648002B5C3E /* FLTTestToolMain.h */,
@@ -4501,8 +4501,8 @@
 				27CF856118256648002B5C3E /* FLTRunAllTestsOperation.m */,
 				27CF856618256648002B5C3E /* FLTStaticTestMethodRunner.h */,
 				27CF856718256648002B5C3E /* FLTStaticTestMethodRunner.m */,
-				27CF856818256648002B5C3E /* FLTRunAssembledTestOperation.h */,
-				27CF856918256648002B5C3E /* FLTRunAssembledTestOperation.m */,
+				27CF856818256648002B5C3E /* FLTRunTestOperation.h */,
+				27CF856918256648002B5C3E /* FLTRunTestOperation.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -4982,7 +4982,7 @@
 				2767DD9418132B1C001EF21C /* FLDatabaseColumnDecoder.m in Sources */,
 				2767DAF118132B1B001EF21C /* FLSoapParser.m in Sources */,
 				27CF857C18256648002B5C3E /* FLTSanityCheckTestFinder.m in Sources */,
-				27CF85A918256648002B5C3E /* FLTAssembledTest.m in Sources */,
+				27CF85A918256648002B5C3E /* FLTTest.m in Sources */,
 				2767DACE18132B1B001EF21C /* NSArray+FLExtras.m in Sources */,
 				2767DAE218132B1B001EF21C /* FLBase64Data.m in Sources */,
 				2767D8B218132B1B001EF21C /* FLCStyleCodeBuilder.m in Sources */,
@@ -5196,7 +5196,7 @@
 				2767DE1618132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBEB18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD5D18132B1C001EF21C /* FLServiceList.m in Sources */,
-				27CF85CC18256648002B5C3E /* FLTRunAssembledTestOperation.m in Sources */,
+				27CF85CC18256648002B5C3E /* FLTRunTestOperation.m in Sources */,
 				2767DBD218132B1C001EF21C /* FLPropertyDescriber.m in Sources */,
 				2767DC2218132B1C001EF21C /* FLHttpUser.m in Sources */,
 				27CF85C218256648002B5C3E /* FLTSortedTestGroupList.m in Sources */,
@@ -5369,7 +5369,7 @@
 				2767DD9618132B1C001EF21C /* FLDatabaseColumnDecoder.m in Sources */,
 				2767DAF318132B1B001EF21C /* FLSoapParser.m in Sources */,
 				27CF857E18256648002B5C3E /* FLTSanityCheckTestFinder.m in Sources */,
-				27CF85AB18256648002B5C3E /* FLTAssembledTest.m in Sources */,
+				27CF85AB18256648002B5C3E /* FLTTest.m in Sources */,
 				2767DAD018132B1B001EF21C /* NSArray+FLExtras.m in Sources */,
 				2767DAE418132B1B001EF21C /* FLBase64Data.m in Sources */,
 				2767D8B418132B1B001EF21C /* FLCStyleCodeBuilder.m in Sources */,
@@ -5583,7 +5583,7 @@
 				2767DE1818132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBED18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD5F18132B1C001EF21C /* FLServiceList.m in Sources */,
-				27CF85CE18256648002B5C3E /* FLTRunAssembledTestOperation.m in Sources */,
+				27CF85CE18256648002B5C3E /* FLTRunTestOperation.m in Sources */,
 				2767DBD418132B1C001EF21C /* FLPropertyDescriber.m in Sources */,
 				2767DC2418132B1C001EF21C /* FLHttpUser.m in Sources */,
 				27CF85C418256648002B5C3E /* FLTSortedTestGroupList.m in Sources */,
@@ -5770,7 +5770,7 @@
 				2767DD9318132B1C001EF21C /* FLDatabaseColumnDecoder.m in Sources */,
 				2767DAF018132B1B001EF21C /* FLSoapParser.m in Sources */,
 				27CF857B18256648002B5C3E /* FLTSanityCheckTestFinder.m in Sources */,
-				27CF85A818256648002B5C3E /* FLTAssembledTest.m in Sources */,
+				27CF85A818256648002B5C3E /* FLTTest.m in Sources */,
 				2767DACD18132B1B001EF21C /* NSArray+FLExtras.m in Sources */,
 				2767DAE118132B1B001EF21C /* FLBase64Data.m in Sources */,
 				2767D8B118132B1B001EF21C /* FLCStyleCodeBuilder.m in Sources */,
@@ -5984,7 +5984,7 @@
 				2767DE1518132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBEA18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD5C18132B1C001EF21C /* FLServiceList.m in Sources */,
-				27CF85CB18256648002B5C3E /* FLTRunAssembledTestOperation.m in Sources */,
+				27CF85CB18256648002B5C3E /* FLTRunTestOperation.m in Sources */,
 				2767DBD118132B1C001EF21C /* FLPropertyDescriber.m in Sources */,
 				2767DC2118132B1C001EF21C /* FLHttpUser.m in Sources */,
 				27CF85C118256648002B5C3E /* FLTSortedTestGroupList.m in Sources */,
@@ -6125,7 +6125,7 @@
 				2767DD9518132B1C001EF21C /* FLDatabaseColumnDecoder.m in Sources */,
 				2767DAF218132B1B001EF21C /* FLSoapParser.m in Sources */,
 				27CF857D18256648002B5C3E /* FLTSanityCheckTestFinder.m in Sources */,
-				27CF85AA18256648002B5C3E /* FLTAssembledTest.m in Sources */,
+				27CF85AA18256648002B5C3E /* FLTTest.m in Sources */,
 				2767DACF18132B1B001EF21C /* NSArray+FLExtras.m in Sources */,
 				2767DAE318132B1B001EF21C /* FLBase64Data.m in Sources */,
 				2767D8B318132B1B001EF21C /* FLCStyleCodeBuilder.m in Sources */,
@@ -6339,7 +6339,7 @@
 				2767DE1718132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBEC18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD5E18132B1C001EF21C /* FLServiceList.m in Sources */,
-				27CF85CD18256648002B5C3E /* FLTRunAssembledTestOperation.m in Sources */,
+				27CF85CD18256648002B5C3E /* FLTRunTestOperation.m in Sources */,
 				2767DBD318132B1C001EF21C /* FLPropertyDescriber.m in Sources */,
 				2767DC2318132B1C001EF21C /* FLHttpUser.m in Sources */,
 				27CF85C318256648002B5C3E /* FLTSortedTestGroupList.m in Sources */,
@@ -6480,7 +6480,7 @@
 				2767DD9718132B1C001EF21C /* FLDatabaseColumnDecoder.m in Sources */,
 				2767DAF418132B1B001EF21C /* FLSoapParser.m in Sources */,
 				27CF857F18256648002B5C3E /* FLTSanityCheckTestFinder.m in Sources */,
-				27CF85AC18256648002B5C3E /* FLTAssembledTest.m in Sources */,
+				27CF85AC18256648002B5C3E /* FLTTest.m in Sources */,
 				2767DAD118132B1B001EF21C /* NSArray+FLExtras.m in Sources */,
 				2767DAE518132B1B001EF21C /* FLBase64Data.m in Sources */,
 				2767D8B518132B1B001EF21C /* FLCStyleCodeBuilder.m in Sources */,
@@ -6694,7 +6694,7 @@
 				2767DE1918132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBEE18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD6018132B1C001EF21C /* FLServiceList.m in Sources */,
-				27CF85CF18256648002B5C3E /* FLTRunAssembledTestOperation.m in Sources */,
+				27CF85CF18256648002B5C3E /* FLTRunTestOperation.m in Sources */,
 				2767DBD518132B1C001EF21C /* FLPropertyDescriber.m in Sources */,
 				2767DC2518132B1C001EF21C /* FLHttpUser.m in Sources */,
 				27CF85C518256648002B5C3E /* FLTSortedTestGroupList.m in Sources */,

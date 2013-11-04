@@ -13,20 +13,26 @@
 @protocol FLTestCaseList <NSObject>
 
 @property (readonly, assign, nonatomic) BOOL isDisabled;
+
 @property (readonly, strong, nonatomic) NSString* disabledReason;
 
-@property (readonly, copy, nonatomic) NSArray* testCases;
-@property (readonly, copy, nonatomic) NSArray* prerequisiteTestClasses;
-
 - (id<FLTestCase>) testCaseForName:(NSString*) name;
-- (id<FLTestCase>) testCaseForSelector:(SEL) selector;
 
-- (void) setRunOrder:(NSUInteger) order forSelector:(SEL) selector;
-- (void) setRunOrder:(NSUInteger) order forTestCase:(id<FLTestCase>) testCase;
-- (NSUInteger) runOrderForTestCase:(id<FLTestCase>) testCase;
+- (id<FLTestCase>) testCaseForSelector:(SEL) selector;
 
 - (void) disableAllTests:(NSString*) reason;
 
-- (void) addPrerequisiteTestClass:(Class) aClass;
+- (id<FLTestCase>) orderFirst:(id) testCase;
+
+- (id<FLTestCase>) orderLast:(id) testCase;
+
+- (id<FLTestCase>) order:(id) testCase
+                   after:(id) anotherTestCase;
+
+- (id<FLTestCase>) order:(id) testCase
+                  before:(id) anotherTestCase;
+
 
 @end
+
+

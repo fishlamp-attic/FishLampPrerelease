@@ -10,11 +10,11 @@
 
 #import "FLTestable.h"
 
-@class FLTAssembledTest;
+@class FLTTest;
 
 @protocol FLTTestFactory <NSObject>
 
-- (FLTAssembledTest*) createAssembledTest;
+- (FLTTest*) createTest;
 
 - (Class) testableClass;
 

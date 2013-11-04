@@ -125,7 +125,7 @@
     }
     [output closeLine];
     
-    [output indent:^{
+    [output indentedBlock:^{
         for(FLToolCommand* subcommand in _subcommands) {
             [subcommand printUsage:output];
         }

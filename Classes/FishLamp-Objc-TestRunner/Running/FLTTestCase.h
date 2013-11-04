@@ -8,8 +8,10 @@
 #import "FishLampMinimum.h"
 
 #import "FLTestCase.h"
+#import "FLFinisher.h"
+#import "FLOperation.h"
 
-@interface FLTTestCase : NSObject<FLTestCase> {
+@interface FLTTestCase : FLOperation<FLTestCase> {
 @private
     NSString* _testCaseName;
     FLSelector* _selector;
@@ -24,6 +26,8 @@
     __unsafe_unretained id<FLTestCaseList> _testCaseList;
     BOOL _disabled;
     BOOL _debugMode;
+
+    FLIndentIntegrity* _indentIntegrity;
 }
 
 // creation
@@ -41,10 +45,7 @@
          target:(id) target
        selector:(SEL) selector;
 
-// performing
-- (void) willPerformTest;
-- (void) performTest;
-- (void) didPerformTest;
+- (void) prepareTestCase;
 
 @property (readwrite, assign) BOOL debugMode;
 

@@ -8,6 +8,7 @@
 //
 
 #import "FLCoreRequired.h"
+#import "FLStringFormatter.h"
 
 @class FLLogEntry;
 
@@ -22,8 +23,8 @@ typedef enum {
 @protocol FLLogSink <NSObject>
 - (void) logEntry:(FLLogEntry*) entry stopPropagating:(BOOL*) stop;
 
-- (void) indent;
-- (void) outdent;
+- (void) indent:(FLIndentIntegrity*) integrity;
+- (void) outdent:(FLIndentIntegrity*) integrity;
 
 @end
 

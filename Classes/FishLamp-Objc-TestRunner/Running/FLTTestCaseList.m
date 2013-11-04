@@ -19,19 +19,25 @@
 
 @interface FLTTestCaseList ()
 @property (readwrite, strong) NSString* disabledReason;
+
+
+- (id<FLTestCase>) setRunOrder:(NSUInteger) order forSelector:(SEL) selector;
+- (id<FLTestCase>) setRunOrder:(NSUInteger) order forTestCase:(id<FLTestCase>) testCase;
+- (NSUInteger) runOrderForTestCase:(id<FLTestCase>) testCase;
+
 @end
 
 @implementation FLTTestCaseList
 
 @synthesize isDisabled = _isDisabled;
 @synthesize disabledReason = _disabledReason;
-@synthesize prerequisiteTestClasses = _prerequisiteTestClasses;
+@synthesize testCaseArray = _testCaseArray;
 
 - (id) initWithArrayOfTestCases:(NSArray*) array {
 
     self = [super init];
 	if(self) {
-		_testCases = [array mutableCopy];
+		_testCaseArray = [array mutableCopy];
 	}
 	return self;
 }
@@ -39,7 +45,7 @@
 - (id) init {	
 	self = [super init];
 	if(self) {
-        _testCases = [[NSMutableArray alloc] init];
+        _testCaseArray = [[NSMutableArray alloc] init];
 	}
 	return self;
 }
@@ -55,7 +61,7 @@
 #if FL_MRC
 - (void)dealloc {
     [_disabledReason release];
-    [_testCases release];
+    [_testCaseArray release];
 	[super dealloc];
 }
 #endif
@@ -64,24 +70,29 @@
     _disabled = YES;
     self.disabledReason = reason;
 
-    for(id<FLTestCase> testCase in _testCases) {
+    for(id<FLTestCase> testCase in _testCaseArray) {
         [testCase disable:reason];
     }
 }
 
 - (id<FLTestCase>) testCaseForName:(NSString*) name {
 
-    for(id<FLTestCase> testCase in _testCases) {
+    id<FLTestCase> outTestCase = nil;
+
+    for(id<FLTestCase> testCase in _testCaseArray) {
         if([testCase.selector.selectorName isEqual:name] ) {
-            return testCase;
+            outTestCase  = testCase;
+            break;
         }
     }
+
+    FLConfirmNotNilWithComment(outTestCase, @"unable to find test case for \"%@\"", name);
     
-    return nil;
+    return outTestCase;
 }
 
 - (id<FLTestCase>) testCaseForSelector:(SEL) selector {
-    for(id<FLTestCase> testCase in _testCases) {
+    for(id<FLTestCase> testCase in _testCaseArray) {
         if([testCase.selector isEqualToSelector:selector]) {
             return testCase;
         }
@@ -89,53 +100,100 @@
     return nil;
 }
 
+- (id<FLTestCase>) testCaseForObject:(id) object {
+    return [object conformsToProtocol:@protocol(FLTestCase)] ? object : [self testCaseForName:object];
+}
+
 - (NSUInteger) runOrderForTestCase:(id<FLTestCase>) testCase {
-    return [_testCases indexOfObject:testCase];
+    return [_testCaseArray indexOfObject:testCase];
 }
 
 - (void) addTestCase:(FLTTestCase*) testCase {
-    [_testCases addObject:testCase];
+    [_testCaseArray addObject:testCase];
     testCase.testCaseList = self;
 }
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len {
-    return [_testCases countByEnumeratingWithState:state objects:buffer count:len];
+    return [_testCaseArray countByEnumeratingWithState:state objects:buffer count:len];
 }
 
-- (void) setRunOrder:(NSUInteger) order forTestCase:(id<FLTestCase>) testCase {
+- (id<FLTestCase>) setRunOrder:(NSUInteger) order forTestCase:(id<FLTestCase>) testCase {
     FLConfirmNotNil(testCase);
 
-    [_testCases removeObject:FLRetainWithAutorelease(testCase)];
+    [_testCaseArray removeObject:FLRetainWithAutorelease(testCase)];
 
     if(order == 0) {
-        [_testCases insertObject:testCase atIndex:0];
+        [_testCaseArray insertObject:testCase atIndex:0];
     }
-    else if(order >= (_testCases.count - 1)) {
-        [_testCases addObject:testCase];
+    else if(order >= (_testCaseArray.count - 1)) {
+        [_testCaseArray addObject:testCase];
     }
     else {
-        [_testCases insertObject:testCase atIndex:order];
+        [_testCaseArray insertObject:testCase atIndex:order];
     }
+
+    return testCase;
 }
 
-- (void) setRunOrder:(NSUInteger) order forSelector:(SEL) selector {
-    [self setRunOrder:order forTestCase:[self testCaseForSelector:selector]];
-}
-
-- (NSArray*) testCases {
-    return FLCopyWithAutorelease(_testCases);
+- (id<FLTestCase>) setRunOrder:(NSUInteger) order forSelector:(SEL) selector {
+    return [self setRunOrder:order forTestCase:[self testCaseForSelector:selector]];
 }
 
 - (NSString*) description {
-    return [_testCases description];
+    return [_testCaseArray description];
 }
 
-- (void) addPrerequisiteTestClass:(Class) aClass {
-    if(!_prerequisiteTestClasses) {
-        _prerequisiteTestClasses = [[NSMutableArray alloc] init];
-    }
+//- (void) orderTestCaseFirst:(id<FLTestCase>) testCase {
+//    [self setRunOrder:0 forTestCase:testCase];
+//}
+//
+//- (void) orderTestCaseLast:(id<FLTestCase>) testCase {
+//    [self setRunOrder:_testCases.count - 1 forTestCase:testCase];
+//}
+//
+//- (void) orderTestCase:(id<FLTestCase>) testCase
+//         afterTestCase:(id<FLTestCase>) anotherTestCase {
+//    NSInteger idx = [_testCases indexOfObject:anotherTestCase];
+//    if(idx != NSNotFound) {
+//        [self setRunOrder:idx + 1 forTestCase:anotherTestCase];
+//    }
+//}
+//
+//- (void) orderTestCase:(id<FLTestCase>) testCase
+//        beforeTestCase:(id<FLTestCase>) anotherTestCase {
+//    NSInteger idx = [_testCases indexOfObject:anotherTestCase];
+//    if(idx != NSNotFound) {
+//        [self setRunOrder:idx - 1 forTestCase:anotherTestCase];
+//    }
+//}
 
-    [_prerequisiteTestClasses addObject:aClass];
+
+- (id<FLTestCase>) orderFirst:(id) testCase {
+    return [self setRunOrder:0 forTestCase:[self testCaseForObject:testCase]];
 }
+
+- (id<FLTestCase>) orderLast:(id) testCase {
+    return [self setRunOrder:_testCaseArray.count - 1 forTestCase:[self testCaseForObject:testCase]];
+}
+
+- (id<FLTestCase>) order:(id) testCase
+                   after:(id) anotherTestCase {
+    NSInteger idx = [_testCaseArray indexOfObject:[self testCaseForObject:anotherTestCase]];
+    FLConfirmWithComment(idx != NSNotFound, @"run order for %@ not found", testCase);
+    return [self setRunOrder:idx + 1 forTestCase:[self testCaseForObject:testCase]];
+}
+
+- (id<FLTestCase>) order:(id) testCase
+                  before:(id) anotherTestCase {
+    NSInteger idx = [_testCaseArray indexOfObject:[self testCaseForObject:anotherTestCase]];
+    FLConfirmWithComment(idx != NSNotFound, @"run order for %@ not found", testCase);
+    return [self setRunOrder:idx - 1 forTestCase:[self testCaseForObject:testCase]];
+}
+
+
+
+
+
+
 
 @end

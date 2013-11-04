@@ -43,7 +43,7 @@
 	[prettyString appendString:@"headers:"];
     [prettyString closeLine];
 
-    [prettyString indent:^{
+    [prettyString indentedBlock:^{
         for(id key in headers) {
             [prettyString appendLineWithFormat:@"%@: %@", [key description], [[headers objectForKey:key] description]];
         }

@@ -16,6 +16,7 @@
 @interface FLTestLoggingManager: FLStringFormatter<FLStringFormatterDelegate> {
 @private
     NSMutableArray* _loggers;
+    FLIndentIntegrity* _indentIntegrity;
 }
 
 FLSingletonProperty(FLTestLoggingManager);

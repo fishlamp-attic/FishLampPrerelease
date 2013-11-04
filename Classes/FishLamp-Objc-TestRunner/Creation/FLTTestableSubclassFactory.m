@@ -9,7 +9,7 @@
 #import "FLTTestableSubclassFactory.h"
 #import "FLTestable.h"
 #import "FLObjcRuntime.h"
-#import "FLTAssembledTest.h"
+#import "FLTTest.h"
 
 #import "FLTTestCase.h"
 #import "FLTTestCaseList.h"
@@ -28,24 +28,46 @@
 	return self;
 }
 
+- (BOOL) isFirstTest:(NSString*) name {
+    return FLStringsAreEqual(name, @"setup") || [name rangeOfString:@"firstTest" options:NSCaseInsensitiveSearch].length > 0;
+
+}
+
+- (BOOL) isLastTest:(NSString*) name {
+    return FLStringsAreEqual(name, @"teardown") || [name rangeOfString:@"lastTest" options:NSCaseInsensitiveSearch].length > 0;
+}
+
+- (BOOL) isTest:(NSString*) name {
+    return [name hasPrefix:@"test"];
+}
+
 - (void) sortTestCaseList:(NSMutableArray*) list {
+
     [list sortUsingComparator:^NSComparisonResult(id<FLTestCase> obj1, id<FLTestCase> obj2) {
 
         NSString* lhs = obj1.selector.selectorString;
         NSString* rhs = obj2.selector.selectorString;
 
-        if( [lhs rangeOfString:@"firstTest" options:NSCaseInsensitiveSearch].length > 0 ||
-            [rhs rangeOfString:@"lastTest" options:NSCaseInsensitiveSearch].length > 0) {
+        if( [self isFirstTest:lhs] || [self isLastTest:rhs] ) {
             return NSOrderedAscending;
         }
-        else if ([rhs rangeOfString:@"firstTest" options:NSCaseInsensitiveSearch].length > 0 ||
-                 [lhs rangeOfString:@"lastTest" options:NSCaseInsensitiveSearch].length > 0) {
+        else if( [self isFirstTest:rhs] || [self isLastTest:lhs]) {
             return NSOrderedDescending;
         }
 
-        if(obj1.runOrder != obj2.runOrder) {
-            return obj1.runOrder < obj2.runOrder ? NSOrderedAscending : NSOrderedDescending;
-        }
+
+//        if( [lhs rangeOfString:@"firstTest" options:NSCaseInsensitiveSearch].length > 0 ||
+//            [rhs rangeOfString:@"lastTest" options:NSCaseInsensitiveSearch].length > 0) {
+//            return NSOrderedAscending;
+//        }
+//        else if ([rhs rangeOfString:@"firstTest" options:NSCaseInsensitiveSearch].length > 0 ||
+//                 [lhs rangeOfString:@"lastTest" options:NSCaseInsensitiveSearch].length > 0) {
+//            return NSOrderedDescending;
+//        }
+
+//        if(obj1.runOrder != obj2.runOrder) {
+//            return obj1.runOrder < obj2.runOrder ? NSOrderedAscending : NSOrderedDescending;
+//        }
 
         return [lhs compare:rhs];
     }];
@@ -66,10 +88,9 @@
 
                     NSString* name = NSStringFromSelector(info.selector);
 
-                    if(     [name hasPrefix:@"test"] ||
-                            FLStringsAreEqual(name, @"firstTest") ||
-                            FLStringsAreEqual(name, @"lastTest")) {
-
+                    if( [self isTest:name] ||
+                        [self isFirstTest:name] ||
+                        [self isLastTest:name] ) {
                         [set addObject:NSStringFromSelector(info.selector)];
                     };
                 }
@@ -129,9 +150,9 @@
     return testable;
 }
 
-- (FLTAssembledTest*) createAssembledTest {
+- (FLTTest*) createTest {
     FLTestable* testObject = [self createTestableObject];
-    return [FLTAssembledTest assembledUnitTest:testObject testCases:testObject.testCaseList];
+    return [FLTTest assembledUnitTest:testObject testCases:testObject.testCaseList];
 }
 
 

@@ -95,18 +95,22 @@
 
 @synthesize stringFormatterDelegate = _stringFormatterDelegate;
 @synthesize preprocessor = _preprocessor;
+@synthesize indentLevel = _indentLevel;
+@synthesize indentIntegrity = _indentIntegrity;
 
 - (id) init {	
 	self = [super init];
 	if(self) {
 		_stringFormatterDelegate = self;
         self.preprocessor = [FLStringFormatterLineProprocessor instance];
-	}
+        _indentIntegrity = [[FLIndentIntegrity alloc] init];
+    }
 	return self;
 }
 
 #if FL_MRC
 - (void)dealloc {
+    [_indentIntegrity release];
 	[_preprocessor release];
 	[super dealloc];
 }
@@ -168,20 +172,18 @@
     return [_stringFormatterDelegate stringFormatterCloseLine:self];
 }
 
-- (void) indent {
+- (void) indent:(FLIndentIntegrity*) integrity {
+    [integrity push:++_indentLevel];
     [_stringFormatterDelegate stringFormatterIndent:self];
 }
 
-- (void) outdent {
+- (void) outdent:(FLIndentIntegrity*) integrity {
     [_stringFormatterDelegate stringFormatterOutdent:self];
+    [integrity pop:_indentLevel--];
 }
 
 - (NSUInteger) length {
     return [_stringFormatterDelegate stringFormatterLength:self];
-}
-
-- (NSInteger) indentLevel {
-    return [_stringFormatterDelegate stringFormatterIndentLevel:self];
 }
 
 - (void) appendBlankLine {
@@ -211,13 +213,13 @@
     [self closeLine];
 }
 
-- (void) indent:(FLStringFormatterIndentedBlock) block {
+- (void) indentedBlock:(FLStringFormatterIndentedBlock) block {
     [self closeLine];
-    [self indent];
+    [self indent:_indentIntegrity];
     // subsequent calls to us will open a line, etc..
     block();
     [self closeLine];
-    [self outdent];
+    [self outdent:_indentIntegrity];
 }
 
 - (BOOL) isEmpty {
@@ -228,7 +230,7 @@
             closeScope:(NSString*) closeScope
              withBlock:(FLStringFormatterIndentedBlock) block {
     [self appendLine:openScope];
-    [self indent:block];
+    [self indentedBlock:block];
     [self appendLine:closeScope];
 }
 
@@ -332,4 +334,50 @@
 }
 @end
 
+#import "FLStackTrace.h"
+#import "FLLog.h"
+
+@implementation FLIndentIntegrity
++ (id) indentIntegrity {
+    return FLAutorelease([[[self class] alloc] init]);
+}
+
+- (id) init {	
+	self = [super init];
+	if(self) {
+		_top = -1;
+        _stackTraces = [[NSMutableArray alloc] init];
+	}
+	return self;
+}
+
+#if FL_MRC
+- (void)dealloc {
+	[_stackTraces release];
+	[super dealloc];
+}
+#endif
+
+- (void) push:(NSUInteger) level {
+    _stack[++_top] = level;
+    [_stackTraces addObject:FLCreateStackTrace(YES)];
+}
+
+- (NSUInteger) top {
+    return _top >= 0 ? _stack[_top] : NSNotFound;
+}
+
+- (void) pop:(NSUInteger) level {
+    FLAssertWithComment(_top >= 0, @"outdenting too far");
+
+    if(self.top != level) {
+        FLLog(@"popping incorrect indent level %ld, should be %ld\ntraces: %@", level, self.top, [_stackTraces prettyDescription]);
+    }
+    if(_top >= 0) {
+        --_top;
+        [_stackTraces removeLastObject];
+    }
+}
+
+@end
 

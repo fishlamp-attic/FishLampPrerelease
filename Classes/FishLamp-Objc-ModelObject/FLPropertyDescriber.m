@@ -266,7 +266,7 @@ LazySelectorGetter(selector, _selector, _attributes.selector)
     for(FLPropertyDescriber* describer in _containedTypes) {
         if(!contained) {
             contained = [FLPrettyString prettyString];
-            [contained indent];
+            [contained indent:nil];
         }
     
         [contained appendBlankLine];

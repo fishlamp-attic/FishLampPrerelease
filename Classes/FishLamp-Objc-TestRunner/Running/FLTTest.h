@@ -1,5 +1,5 @@
 //
-//  FLTAssembledTest.h
+//  FLTTest.h
 //  FishLampCocoa
 //
 //  Created by Mike Fullerton on 9/1/13.
@@ -12,7 +12,7 @@
 @class FLTTestCaseList;
 @class FLTTestResultCollection;
 
-@interface FLTAssembledTest : NSObject {
+@interface FLTTest : NSObject {
 @private
     id _testableObject;
     FLTTestCaseList* _testCaseList;

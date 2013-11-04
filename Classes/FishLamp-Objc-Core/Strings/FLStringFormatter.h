@@ -12,6 +12,8 @@
 
 typedef void (^FLStringFormatterIndentedBlock)();
 
+@class FLIndentIntegrity;
+
 @protocol FLStringFormatter;
 @protocol FLStringPreprocessor;
 
@@ -69,11 +71,11 @@ typedef void (^FLStringFormatterIndentedBlock)();
  *
  *  @param block the block in which to append content to this formatter
  */
-- (void) indent:(FLStringFormatterIndentedBlock) block;
+- (void) indentedBlock:(FLStringFormatterIndentedBlock) block;
 
-- (void) indent;
+- (void) indent:(FLIndentIntegrity*) integrity;
 
-- (void) outdent;
+- (void) outdent:(FLIndentIntegrity*) integrity;
 
 /**
  *  Export a NSString version of the string
@@ -98,6 +100,8 @@ typedef void (^FLStringFormatterIndentedBlock)();
 @private
     __unsafe_unretained id _stringFormatterDelegate;
     id<FLStringPreprocessor> _preprocessor;
+    NSInteger _indentLevel;
+    FLIndentIntegrity* _rootIndentIntegrity;
 }
 
 /**
@@ -113,8 +117,9 @@ typedef void (^FLStringFormatterIndentedBlock)();
             closeScope:(NSString*) closeScope 
              withBlock:(FLStringFormatterIndentedBlock) block;
 
-@end
+@property (readonly, strong, nonatomic) FLIndentIntegrity* indentIntegrity;
 
+@end
 
 
 @interface NSString (FLStringFormatter)
@@ -125,4 +130,17 @@ typedef void (^FLStringFormatterIndentedBlock)();
 - (void) appendToStringFormatter:(id<FLStringFormatter>) stringFormatter;
 @end
 
+@interface FLIndentIntegrity : NSObject {
+@private
+    NSInteger _top;
+    NSUInteger _stack[64];
+
+    NSMutableArray* _stackTraces;
+}
++ (id) indentIntegrity;
+
+@property (readonly, assign, nonatomic) NSUInteger top;
+- (void) push:(NSUInteger) level;
+- (void) pop:(NSUInteger) level;
+@end
 

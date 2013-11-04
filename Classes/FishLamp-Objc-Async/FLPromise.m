@@ -14,18 +14,16 @@
 @property (readwrite, strong) FLPromisedResult result;
 @property (readwrite, strong) FLPromise* nextPromise;
 @property (readwrite, copy) fl_completion_block_t completion;
+@property (readwrite, assign) BOOL isFinished;
+@property (readwrite, assign) dispatch_semaphore_t semaphore;
 @end
 
-#define CHECK_COUNT 1
+#define CHECK_COUNT 0
 
 #if CHECK_COUNT
 static NSInteger s_promiseCount = 0;
 static NSInteger s_max = 0;
 #endif
-
-@interface FLPromise ()
-@property (readwrite, assign) dispatch_semaphore_t semaphore;
-@end
 
 @implementation FLPromise
 
@@ -33,6 +31,7 @@ static NSInteger s_max = 0;
 @synthesize result = _result;
 @synthesize completion = _completion;
 @synthesize semaphore = _semaphore;
+@synthesize isFinished = _isFinished;
 
 - (id) initWithCompletion:(fl_completion_block_t) completion {
     
@@ -100,10 +99,6 @@ static NSInteger s_max = 0;
 
 + (id) promise:(fl_completion_block_t) completion {
     return FLAutorelease([[[self class] alloc] initWithCompletion:completion]);
-}
-
-- (BOOL) isFinished {
-    return self.semaphore == nil;
 }
 
 - (FLPromiseState) state {
@@ -174,6 +169,7 @@ static NSInteger s_max = 0;
                     (void*) self.semaphore,
                     [NSThread currentThread]);
 
+        self.isFinished = YES;
         dispatch_semaphore_signal(self.semaphore);
 
 #if !OS_OBJECT_USE_OBJC
