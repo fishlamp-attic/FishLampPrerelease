@@ -19,21 +19,21 @@
 @protocol FLBroadcaster <NSObject>
 - (id) notify;
 
-- (void) notify:(SEL) messageSelector;
+- (void) sendMessageToListeners:(SEL) messageSelector;
 
-- (void) notify:(SEL) messageSelector
+- (void) sendMessageToListeners:(SEL) messageSelector
               withObject:(id) object;
 
-- (void) notify:(SEL) messageSelector
+- (void) sendMessageToListeners:(SEL) messageSelector
               withObject:(id) object1
               withObject:(id) object2;
 
-- (void) notify:(SEL) messageSelector
+- (void) sendMessageToListeners:(SEL) messageSelector
               withObject:(id) object1
               withObject:(id) object2
               withObject:(id) object3;
 
-- (void) notify:(SEL) messageSelector
+- (void) sendMessageToListeners:(SEL) messageSelector
               withObject:(id) object1
               withObject:(id) object2
               withObject:(id) object3

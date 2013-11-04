@@ -62,7 +62,7 @@
     }
 }
 
-- (void) notify:(SEL) selector {
+- (void) sendMessageToListeners:(SEL) selector {
     for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
         @try {
             [[_listeners objectAtIndex:i] performOptionalSelector_fl:selector];
@@ -72,7 +72,7 @@
     }
 }
 
-- (void) notify:(SEL) selector  
+- (void) sendMessageToListeners:(SEL) selector  
                      withObject:(id) object {
     for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
         @try {
@@ -84,7 +84,7 @@
     }
 }
 
-- (void) notify:(SEL) selector 
+- (void) sendMessageToListeners:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2 {
 
@@ -99,7 +99,7 @@
     }
 }
 
-- (void) notify:(SEL) selector 
+- (void) sendMessageToListeners:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2
                      withObject:(id) object3 {
@@ -115,7 +115,7 @@
     }
 }
 
-- (void) notify:(SEL) selector 
+- (void) sendMessageToListeners:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2
                      withObject:(id) object3
@@ -203,43 +203,43 @@
     });
 }
 
-- (void) notify:(SEL) selector {
+- (void) sendMessageToListeners:(SEL) selector {
     FLCriticalSection(&_predicate, ^{
-        [self.notify notify:selector];
+        [self.notify sendMessageToListeners:selector];
     });
 }
 
-- (void) notify:(SEL) selector  
+- (void) sendMessageToListeners:(SEL) selector  
                      withObject:(id) object {
     FLCriticalSection(&_predicate, ^{
-        [self.notify notify:selector withObject:object];
+        [self.notify sendMessageToListeners:selector withObject:object];
     });
 }
 
-- (void) notify:(SEL) selector 
+- (void) sendMessageToListeners:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2 {
     FLCriticalSection(&_predicate, ^{
-        [self.notify notify:selector withObject:object1 withObject:object2];
+        [self.notify sendMessageToListeners:selector withObject:object1 withObject:object2];
     });
 }
 
-- (void) notify:(SEL) selector 
+- (void) sendMessageToListeners:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2
                      withObject:(id) object3 {
     FLCriticalSection(&_predicate, ^{
-        [self.notify notify:selector withObject:object1 withObject:object2 withObject:object3];
+        [self.notify sendMessageToListeners:selector withObject:object1 withObject:object2 withObject:object3];
     });
 }
 
-- (void) notify:(SEL) selector 
+- (void) sendMessageToListeners:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2
                      withObject:(id) object3
                      withObject:(id) object4 {
     FLCriticalSection(&_predicate, ^{
-        [self.notify notify:selector withObject:object1 withObject:object2 withObject:object3 withObject:object4];
+        [self.notify sendMessageToListeners:selector withObject:object1 withObject:object2 withObject:object3 withObject:object4];
     });
 }
 

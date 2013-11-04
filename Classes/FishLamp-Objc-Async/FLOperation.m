@@ -104,7 +104,7 @@
 - (void) startAsyncOperationInQueue:(id<FLAsyncQueue>) asyncQueue {
     FLAssertNotNil(asyncQueue);
     FLAssertNotNil(self.finisher);
-    [self notify:@selector(operationWillBegin:) withObject:self];
+    [self sendMessageToListeners:@selector(operationWillBegin:) withObject:self];
     [self willStartOperation];
     [self startOperation];
 }
@@ -185,7 +185,7 @@
     FLAssertNotNil(result);
 
     [self didFinishWithResult:result];
-    [self notify:@selector(operationDidFinish:withResult:) withObject:self withObject:result];
+    [self sendMessageToListeners:@selector(operationDidFinish:withResult:) withObject:self withObject:result];
     self.context = nil;
     self.cancelled = NO;
 }
