@@ -1,63 +1,60 @@
 //
-//  FLAbstractDispatcher.m
-//  FishLampCocoa
+//  FLAbstractAsyncQueue.m
+//  FishLamp-Objc
 //
-//  Created by Mike Fullerton on 1/12/13.
-//  Copyright (c) 2013 GreenTongue Software LLC, Mike Fullerton. 
-//  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
+//  Created by Mike Fullerton on 11/3/13.
+//  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FLAsyncQueue.h"
-#import "FLAsyncInitiator.h"
-#import "FLQueueableAsyncOperation.h"
+#import "FLAbstractAsyncQueue.h"
 
+@interface FLQueueableBlockOperation : FLFinisher<FLQueueableAsyncOperation> {
+@private
+    fl_block_t _block;
+}
+- (id) initWithBlock:(fl_block_t) block;
++ (id) queueableBlockOperation:(fl_block_t) block;
+@end
+
+@interface FLQueuableFinisherBlockOperation : FLFinisher<FLQueueableAsyncOperation> {
+@private
+    fl_finisher_block_t _block;
+}
+
+- (id) initWithFinisherBlock:(fl_finisher_block_t) block;
++ (id) queueableFinisherBlockOperation:(fl_finisher_block_t) block;
+@end
 
 @implementation FLAbstractAsyncQueue
-
-- (FLPromise*) queueAsyncInitiator:(FLAsyncInitiator*) event completion:(fl_completion_block_t) completion {
-    return nil;
-}
-
-- (FLPromisedResult) queueSynchronousInitiator:(FLAsyncInitiator*) event {
-    return nil;
-}
 
 - (FLPromise*) queueBlockWithDelay:(NSTimeInterval) delay
                              block:(fl_block_t) block
                         completion:(fl_completion_block_t) completion {
 
-    return [self queueAsyncInitiator:[FLBlockAsyncInitiator blockEventWithDelay:delay block:block] completion:completion];
+    return [self queueObject:[FLQueueableBlockOperation queueableBlockOperation:block] withDelay:delay completion:completion];
 }
 
 - (FLPromise*) queueBlockWithDelay:(NSTimeInterval) delay
                              block:(fl_block_t) block {
-    return [self queueAsyncInitiator:[FLBlockAsyncInitiator blockEventWithDelay:delay block:block] completion:nil];
+    return [self queueObject:[FLQueueableBlockOperation queueableBlockOperation:block] withDelay:0 completion:nil];
 }
 
 - (FLPromise*) queueBlock:(fl_block_t) block {
-    return [self queueAsyncInitiator:[FLBlockAsyncInitiator blockEvent:block] completion:nil];
+    return [self queueObject:[FLQueueableBlockOperation queueableBlockOperation:block] withDelay:0 completion:nil];
 }
 
 - (FLPromise*) queueBlock:(fl_block_t) block
                completion:(fl_completion_block_t) completionOrNil {
-    return [self queueAsyncInitiator:[FLBlockAsyncInitiator blockEvent:block] completion:completionOrNil];
+    return [self queueObject:[FLQueueableBlockOperation queueableBlockOperation:block] withDelay:0 completion:completionOrNil];
 }
 
 - (FLPromise*) queueFinishableBlock:(fl_finisher_block_t) block
                          completion:(fl_completion_block_t) completionOrNil {
-    return [self queueAsyncInitiator:[FLFinisherBlockAsyncInitiator finisherBlockEvent:block] completion:completionOrNil];
+    return [self queueObject:[FLQueuableFinisherBlockOperation queueableFinisherBlockOperation:block] withDelay:0 completion:completionOrNil];
 }
 
 - (FLPromise*) queueFinishableBlock:(fl_finisher_block_t) block {
-    return [self queueAsyncInitiator:[FLFinisherBlockAsyncInitiator finisherBlockEvent:block] completion:nil];
-}
-
-- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) object
-                 withDelay:(NSTimeInterval) delay
-                completion:(fl_completion_block_t) completionOrNil {
-    FLAssertNotNil(object);
-
-    return [self queueAsyncInitiator:[object asyncInitiatorForAsyncQueue:self withDelay:delay] completion:completionOrNil];
+    return [self queueObject:[FLQueuableFinisherBlockOperation queueableFinisherBlockOperation:block] withDelay:0 completion:nil];
 }
 
 - (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) object
@@ -159,16 +156,101 @@
 }
 
 - (FLPromisedResult) runBlockSynchronously:(fl_block_t) block {
-    return [self queueSynchronousInitiator:[FLBlockAsyncInitiator blockEvent:block]];
+    return [self runSynchronously:[FLQueueableBlockOperation queueableBlockOperation:block]];
 }
 
 - (FLPromisedResult) runFinisherBlockSynchronously:(fl_finisher_block_t) block {
-    return [self queueSynchronousInitiator:[FLFinisherBlockAsyncInitiator finisherBlockEvent:block]];
+    return [self runSynchronously:[FLQueuableFinisherBlockOperation queueableFinisherBlockOperation:block]];
 }
 
-- (FLPromisedResult) runSynchronously:(id) object {
-    return [self queueSynchronousInitiator:[object asyncInitiatorForAsyncQueue:self withDelay:0]];
+- (FLPromisedResult) runSynchronously:(id<FLQueueableAsyncOperation>) object {
+    return nil;
+}
+
+
+- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) object
+                 withDelay:(NSTimeInterval) delay
+                completion:(fl_completion_block_t) completionOrNil {
+    FLAssertNotNil(object);
+
+    return nil;
 }
 
 @end
 
+@implementation FLQueueableBlockOperation
+
+- (id) initWithBlock:(fl_block_t) block {
+	self = [super init];
+	if(self) {
+ 		_block = [block copy];
+	}
+	return self;
+}
+
++ (id) queueableBlockOperation:(fl_block_t) block {
+    return FLAutorelease([[[self class] alloc] initWithBlock:block]);
+}
+
+#if FL_MRC
+- (void)dealloc {
+	[_block release];
+	[super dealloc];
+}
+#endif
+
+- (void) startAsyncOperationInQueue:(id<FLAsyncQueue>) queue {
+    if(_block) {
+        _block();
+    }
+    FLReleaseBlockWithNil(_block);
+    [self setFinished];
+}
+
+- (FLPromisedResult) runSynchronousOperationInQueue:(id<FLAsyncQueue>) queue {
+    [self startAsyncOperationInQueue:queue];
+    return self.result;
+}
+
+- (FLFinisher*) finisher {
+    return self;
+}
+@end
+
+@implementation FLQueuableFinisherBlockOperation
+
+- (FLFinisher*) finisher {
+    return self;
+}
+
+- (id) initWithFinisherBlock:(fl_finisher_block_t) block {
+	self = [super init];
+	if(self) {
+		_block = [block copy];
+	}
+	return self;
+}
+
++ (id) queueableFinisherBlockOperation:(fl_finisher_block_t) block {
+    return FLAutorelease([[[self class] alloc] initWithFinisherBlock:block]);
+}
+
+#if FL_MRC
+- (void)dealloc {
+	[_block release];
+	[super dealloc];
+}
+#endif
+
+- (void) startAsyncOperationInQueue:(id<FLAsyncQueue>) queue {
+    if(_block) {
+        _block(self);
+    }
+    FLReleaseBlockWithNil(_block);
+}
+
+- (FLPromisedResult) runSynchronousOperationInQueue:(id<FLAsyncQueue>) queue {
+    [self startAsyncOperationInQueue:queue];
+    return self.result;
+}
+@end

@@ -10,12 +10,10 @@
 #import "FishLampMinimum.h"
 #import "FLAsyncBlockTypes.h"
 #import "FLPromisedResult.h"
+#import "FLPromise.h"
+#import "FLFinisher.h"
 
-@protocol FLAsyncQueue;
 @protocol FLQueueableAsyncOperation;
-
-@class FLPromise;
-@class FLAsyncInitiator;
 
 @protocol FLAsyncQueue <NSObject>
 
@@ -74,26 +72,16 @@
 
 - (FLPromisedResult) runFinisherBlockSynchronously:(fl_finisher_block_t) block;
 
-- (FLPromisedResult) runSynchronously:(id) asyncObject;
-
-// all queueing goes through these.
-
-- (FLPromise*) queueAsyncInitiator:(FLAsyncInitiator*) event
-                        completion:(fl_completion_block_t) completion;
-
-- (FLPromisedResult) queueSynchronousInitiator:(FLAsyncInitiator*) event;
-
+- (FLPromisedResult) runSynchronously:(id<FLQueueableAsyncOperation>) asyncObject;
 
 @end
 
-@interface FLAbstractAsyncQueue : NSObject<FLAsyncQueue>
+@protocol FLQueueableAsyncOperation <NSObject>
+- (FLFinisher*) finisher;
 
-// required overrides
+- (void) startAsyncOperationInQueue:(id<FLAsyncQueue>) queue;
 
-- (FLPromise*) queueAsyncInitiator:(FLAsyncInitiator*) event
-                        completion:(fl_completion_block_t) completion;
-
-- (FLPromisedResult) queueSynchronousInitiator:(FLAsyncInitiator*) event;
-
-
+- (FLPromisedResult) runSynchronousOperationInQueue:(id<FLAsyncQueue>) queue;
 @end
+
+

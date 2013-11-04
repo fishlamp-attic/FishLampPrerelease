@@ -9,8 +9,7 @@
 
 #import <dispatch/dispatch.h>
 
-#import "FishLampMinimum.h"
-#import "FLAsyncQueue.h"
+#import "FLAbstractAsyncQueue.h"
 
 @class FLFifoAsyncQueue;
 
@@ -94,6 +93,7 @@
 + (id) fifoAsyncQueue;
 @end
 
+#define FLTimeIntervalToNanoSeconds(TIME_INTERVAL) (TIME_INTERVAL * NSEC_PER_USEC * NSEC_PER_SEC)
 
 #define FLForegroundQueue       [FLDispatchQueue mainThreadQueue]
 #define FLBackgroundQueue       [FLDispatchQueue defaultQueue]

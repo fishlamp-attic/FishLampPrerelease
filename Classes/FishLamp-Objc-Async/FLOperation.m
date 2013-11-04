@@ -8,7 +8,6 @@
 //
 
 #import "FLOperation.h"
-#import "FLAsyncInitiator.h"
 #import "FLAsyncQueue.h"
 
 #import "FLFinisher.h"
@@ -20,7 +19,6 @@
 @interface FLOperation ()
 @property (readwrite, assign, getter=wasCancelled) BOOL cancelled;
 @property (readwrite, strong) FLFinisher* finisher; 
-//@property (readwrite, assign) id<FLAsyncQueue> asyncQueue;
 
 - (void) finisherDidFinish:(FLFinisher*) finisher
                 withResult:(FLPromisedResult) resultOrNil;
@@ -32,7 +30,6 @@
 - (void) removeOperation:(FLOperation*) operation;
 @end
 
-
 @interface FLOperationFinisher : FLFinisher {
 @private
     __unsafe_unretained FLOperation* _operation;
@@ -41,33 +38,6 @@
 
 - (id) initWithOperation:(FLOperation*) operation;
 
-@end
-
-@interface FLOperationAsyncInitiator : FLAsyncInitiator {
-@private
-    FLOperation* _operation;
-}
-
-@property (readonly, strong) FLOperation* operation;
-
-+ (id) operationEventWithDelay:(NSTimeInterval) timeInterval operation:(FLOperation*) operation;
-@end
-
-@implementation FLOperationFinisher
-
-@synthesize operation = _operation;
-
-- (id) initWithOperation:(FLOperation*) operation {
-	self = [super init];
-	if(self) {
-		_operation = operation;
-	}
-	return self;
-}
-
-- (void) didFinishWithResult:(id)result {
-    [_operation finisherDidFinish:self withResult:result];
-}
 @end
 
 @implementation FLOperation
@@ -107,19 +77,6 @@
     return FLSuccessfulResult;
 }
 
-- (FLPromisedResult) runSynchronouslyInQueue:(id<FLAsyncQueue>) asyncQueue {
-    FLAssertNotNil(asyncQueue);
-
-    FLAssertNotNil(self.finisher);
-    [self startInQueue:asyncQueue];
-
-    // if the operation is implemented as synchronous, the finisher will be done already, else it will block on the GCD semaphor in the finisher.
-    FLPromisedResult result = [self.finisher waitUntilFinished];
-    FLAssertNotNil(result);
-    return result;
-
-}
-
 - (void) startOperation {
 
     id result = nil;
@@ -144,20 +101,21 @@
     [self setFinishedWithResult:result];
 }
 
-- (FLFinisher*) willStartInQueue:(id<FLAsyncQueue>) asyncQueue {
+- (void) startAsyncOperationInQueue:(id<FLAsyncQueue>) asyncQueue {
     FLAssertNotNil(asyncQueue);
-    return self.finisher;
-}
-
-
-- (void) startInQueue:(id<FLAsyncQueue>) asyncQueue {
-    FLAssertNotNil(asyncQueue);
-
-//    self.asyncQueue = asyncQueue;
-
+    FLAssertNotNil(self.finisher);
+    [self notify:@selector(operationWillBegin:) withObject:self];
     [self willStartOperation];
     [self startOperation];
-    [self notify:@selector(operationWillBegin:) withObject:self];
+}
+
+- (FLPromisedResult) runSynchronousOperationInQueue:(id<FLAsyncQueue>) asyncQueue {
+    [self startAsyncOperationInQueue:asyncQueue];
+
+    // if the operation is implemented as synchronous, the finisher will be done already, else it will block on the GCD semaphor in the finisher.
+    FLPromisedResult result = [self.finisher waitUntilFinished];
+    FLAssertNotNil(result);
+    return result;
 }
 
 - (void) abortIfNeeded {
@@ -169,8 +127,6 @@
 - (BOOL) abortNeeded {
     return self.wasCancelled;
 }
-
-
 
 - (void) requestCancel {
     self.cancelled = YES;
@@ -250,55 +206,22 @@
     [self setFinishedWithResult:[NSError cancelError]];
 }
 
-- (FLAsyncInitiator*) asyncInitiatorForAsyncQueue:(id<FLAsyncQueue>) queue withDelay:(NSTimeInterval) delay {
-    FLAssertNotNil(queue);
-
-    return [FLOperationAsyncInitiator operationEventWithDelay:delay operation:self];
-}
-
 @end
 
-@implementation FLOperationAsyncInitiator : FLAsyncInitiator
+
+@implementation FLOperationFinisher
 
 @synthesize operation = _operation;
 
-- (id) init {	
-    return [self initWithDelay:0 operation:nil];
+- (id) initWithOperation:(FLOperation*) operation {
+	self = [super init];
+	if(self) {
+		_operation = operation;
+	}
+	return self;
 }
 
-- (id) initWithDelay:(NSTimeInterval) delay
-           operation:(FLOperation*) operation {
-
-    self = [super initWithDelay:delay];
-    if(self) {
-        FLAssertNotNil(operation);
-        _operation = FLRetain(operation);
-    }
-
-    return self;
-}
-
-#if FL_MRC
-- (void)dealloc {
-	[_operation release];
-	[super dealloc];
-}
-#endif
-
-+ (id) operationEventWithDelay:(NSTimeInterval) timeInterval operation:(FLOperation*) operation {
-   return FLAutorelease([[[self class] alloc] initWithDelay:timeInterval operation:operation]);
-}
-
-- (FLFinisher*) finisher {
-    return [self.operation finisher];
-}
-
-- (void) startAsyncOperation:(FLFinisher*) finisher inQueue:(id<FLAsyncQueue>) queue {
-    [self.operation startInQueue:queue];
-}
-
-- (FLPromisedResult) runSynchronousOperation:(FLFinisher*) finisher
-                                     inQueue:(id<FLAsyncQueue>) queue {
-    return [self.operation runSynchronouslyInQueue:queue];
+- (void) didFinishWithResult:(id)result {
+    [_operation finisherDidFinish:self withResult:result];
 }
 @end

@@ -9,11 +9,11 @@
 #import "FishLampMinimum.h"
 #import "FLAsyncBlockTypes.h"
 #import "FLPromisedResult.h"
-#import "FLQueueableAsyncOperation.h"
 #import "FLFinishable.h"
 #import "FLBroadcaster.h"
 #import "FLSuccessfulResult.h"
 #import "NSError+FLFailedResult.h"
+#import "FLAsyncQueue.h"
 
 @class FLOperationContext;
 @class FLOperationFinisher;

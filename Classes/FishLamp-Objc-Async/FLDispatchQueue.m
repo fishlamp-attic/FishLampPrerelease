@@ -12,7 +12,6 @@
 #import "FLFinisher.h"
 #import "FLPromisedResult.h"
 #import "FLPromise.h"
-#import "FLAsyncInitiator+FLDispatchQueue.h"
 
 @implementation FLDispatchQueue
 
@@ -96,18 +95,61 @@
     return [NSString stringWithFormat:@"%@ %@", [super description], self.label];
 }
 
-- (FLPromise*) queueAsyncInitiator:(FLAsyncInitiator*) event
-                        completion:(fl_completion_block_t) completion {
+- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) operation
+                 withDelay:(NSTimeInterval) delay
+                completion:(fl_completion_block_t) completion {
 
-    FLAssertNotNil(event);
+    FLAssertNotNil(operation);
 
-    return [event dispatchAsyncInQueue:self completion:completion];
+    __block id<FLQueueableAsyncOperation> theOperation = FLRetain(operation);
+    __block FLDispatchQueue* theQueue = FLRetain(self);
+
+    if(completion) {
+        [[theOperation finisher] addPromiseWithBlock:completion];
+    }
+
+    fl_block_t block = ^{
+        @try {
+            [theOperation startAsyncOperationInQueue:theQueue];
+        }
+        @catch(NSException* ex) {
+            [[theOperation finisher] setFinishedWithResult:ex.error];
+        }
+
+        FLReleaseWithNil(theOperation);
+        FLReleaseWithNil(theQueue);
+    };
+
+    if(0.0f != delay) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, FLTimeIntervalToNanoSeconds(delay)), theQueue.dispatch_queue_t, block);
+    }
+    else {
+        dispatch_async(theQueue.dispatch_queue_t, block);
+    }
+
+    return [operation finisher];
 }
 
-- (FLPromisedResult) queueSynchronousInitiator:(FLAsyncInitiator*) event {
-    FLAssertNotNil(event);
+- (FLPromisedResult) runSynchronously:(id<FLQueueableAsyncOperation>) operation {
 
-    return [event dispatchSyncInQueue:self];
+    FLAssertNotNil(operation);
+
+    __block FLPromisedResult result = nil;
+    __block id<FLQueueableAsyncOperation> theOperation = FLRetain(operation);
+    __block FLDispatchQueue* theQueue = FLRetain(self);
+
+    dispatch_sync(self.dispatch_queue_t, ^{
+        @try {
+            result = FLRetain([theOperation runSynchronousOperationInQueue:theQueue]);
+        }
+        @catch(NSException* ex) {
+            [theOperation.finisher setFinishedWithResult:ex.error];
+        }
+        FLReleaseWithNil(theQueue);
+        FLReleaseWithNil(theOperation);
+    });
+
+    return FLAutorelease(result);
 }
 
 #if __MAC_10_8
@@ -122,7 +164,7 @@
     else {
         dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         dispatch_semaphore_wait(semaphore, 
-                                dispatch_time(0, ((seconds * 1000.0) * NSEC_PER_MSEC)));
+                                dispatch_time(0, FLTimeIntervalToNanoSeconds(seconds)));
 #if !OS_OBJECT_USE_OBJC
         dispatch_release(semaphore);
 #endif
@@ -139,7 +181,7 @@
 }
 
 - (void) dispatch_after:(NSTimeInterval) seconds block:(dispatch_block_t) block {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (seconds * NSEC_PER_SEC)), self.dispatch_queue_t, block);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, FLTimeIntervalToNanoSeconds(seconds)), self.dispatch_queue_t, block);
 }
 
 #pragma GCC diagnostic push

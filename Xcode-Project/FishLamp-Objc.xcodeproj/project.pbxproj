@@ -62,21 +62,6 @@
 		27188B99181489880060FED6 /* FLStringFormatterTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B72181489880060FED6 /* FLStringFormatterTester.m */; };
 		27188B9A181489880060FED6 /* FLStringFormatterTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B72181489880060FED6 /* FLStringFormatterTester.m */; };
 		27188B9B181489880060FED6 /* FLStringFormatterTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188B72181489880060FED6 /* FLStringFormatterTester.m */; };
-		27188BD118148A820060FED6 /* FLAsyncInitiator+FLDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA218148A810060FED6 /* FLAsyncInitiator+FLDispatchQueue.m */; };
-		27188BD218148A820060FED6 /* FLAsyncInitiator+FLDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA218148A810060FED6 /* FLAsyncInitiator+FLDispatchQueue.m */; };
-		27188BD318148A820060FED6 /* FLAsyncInitiator+FLDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA218148A810060FED6 /* FLAsyncInitiator+FLDispatchQueue.m */; };
-		27188BD418148A820060FED6 /* FLAsyncInitiator+FLDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA218148A810060FED6 /* FLAsyncInitiator+FLDispatchQueue.m */; };
-		27188BD518148A820060FED6 /* FLAsyncInitiator+FLDispatchQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA218148A810060FED6 /* FLAsyncInitiator+FLDispatchQueue.m */; };
-		27188BD618148A820060FED6 /* FLAsyncInitiator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA418148A810060FED6 /* FLAsyncInitiator.m */; };
-		27188BD718148A820060FED6 /* FLAsyncInitiator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA418148A810060FED6 /* FLAsyncInitiator.m */; };
-		27188BD818148A820060FED6 /* FLAsyncInitiator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA418148A810060FED6 /* FLAsyncInitiator.m */; };
-		27188BD918148A820060FED6 /* FLAsyncInitiator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA418148A810060FED6 /* FLAsyncInitiator.m */; };
-		27188BDA18148A820060FED6 /* FLAsyncInitiator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA418148A810060FED6 /* FLAsyncInitiator.m */; };
-		27188BDB18148A820060FED6 /* FLAsyncQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA618148A810060FED6 /* FLAsyncQueue.m */; };
-		27188BDC18148A820060FED6 /* FLAsyncQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA618148A810060FED6 /* FLAsyncQueue.m */; };
-		27188BDD18148A820060FED6 /* FLAsyncQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA618148A810060FED6 /* FLAsyncQueue.m */; };
-		27188BDE18148A820060FED6 /* FLAsyncQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA618148A810060FED6 /* FLAsyncQueue.m */; };
-		27188BDF18148A820060FED6 /* FLAsyncQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA618148A810060FED6 /* FLAsyncQueue.m */; };
 		27188BE018148A820060FED6 /* FLAsyncQueueDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA818148A810060FED6 /* FLAsyncQueueDecorator.m */; };
 		27188BE118148A820060FED6 /* FLAsyncQueueDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA818148A810060FED6 /* FLAsyncQueueDecorator.m */; };
 		27188BE218148A820060FED6 /* FLAsyncQueueDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BA818148A810060FED6 /* FLAsyncQueueDecorator.m */; };
@@ -1802,6 +1787,11 @@
 		27CF86031825A078002B5C3E /* FLTOrderedRunList.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF86001825A078002B5C3E /* FLTOrderedRunList.m */; };
 		27CF86041825A078002B5C3E /* FLTOrderedRunList.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF86001825A078002B5C3E /* FLTOrderedRunList.m */; };
 		27CF86051825A078002B5C3E /* FLTOrderedRunList.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF86001825A078002B5C3E /* FLTOrderedRunList.m */; };
+		27CF8640182747E3002B5C3E /* FLAbstractAsyncQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF863F182747E3002B5C3E /* FLAbstractAsyncQueue.m */; };
+		27CF8641182747E3002B5C3E /* FLAbstractAsyncQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF863F182747E3002B5C3E /* FLAbstractAsyncQueue.m */; };
+		27CF8642182747E3002B5C3E /* FLAbstractAsyncQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF863F182747E3002B5C3E /* FLAbstractAsyncQueue.m */; };
+		27CF8643182747E3002B5C3E /* FLAbstractAsyncQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF863F182747E3002B5C3E /* FLAbstractAsyncQueue.m */; };
+		27CF8644182747E3002B5C3E /* FLAbstractAsyncQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF863F182747E3002B5C3E /* FLAbstractAsyncQueue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1931,12 +1921,7 @@
 		27188B72181489880060FED6 /* FLStringFormatterTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringFormatterTester.m; sourceTree = "<group>"; };
 		27188B9F18148A810060FED6 /* FishLampAsync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FishLampAsync.h; sourceTree = "<group>"; };
 		27188BA018148A810060FED6 /* FLAsyncBlockTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAsyncBlockTypes.h; sourceTree = "<group>"; };
-		27188BA118148A810060FED6 /* FLAsyncInitiator+FLDispatchQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FLAsyncInitiator+FLDispatchQueue.h"; sourceTree = "<group>"; };
-		27188BA218148A810060FED6 /* FLAsyncInitiator+FLDispatchQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FLAsyncInitiator+FLDispatchQueue.m"; sourceTree = "<group>"; };
-		27188BA318148A810060FED6 /* FLAsyncInitiator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAsyncInitiator.h; sourceTree = "<group>"; };
-		27188BA418148A810060FED6 /* FLAsyncInitiator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAsyncInitiator.m; sourceTree = "<group>"; };
 		27188BA518148A810060FED6 /* FLAsyncQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAsyncQueue.h; sourceTree = "<group>"; };
-		27188BA618148A810060FED6 /* FLAsyncQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAsyncQueue.m; sourceTree = "<group>"; };
 		27188BA718148A810060FED6 /* FLAsyncQueueDecorator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAsyncQueueDecorator.h; sourceTree = "<group>"; };
 		27188BA818148A810060FED6 /* FLAsyncQueueDecorator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAsyncQueueDecorator.m; sourceTree = "<group>"; };
 		27188BA918148A820060FED6 /* FLBatchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBatchOperation.h; sourceTree = "<group>"; };
@@ -1972,7 +1957,6 @@
 		27188BC718148A820060FED6 /* FLPromise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPromise.m; sourceTree = "<group>"; };
 		27188BC818148A820060FED6 /* FLPromisedResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPromisedResult.h; sourceTree = "<group>"; };
 		27188BC918148A820060FED6 /* FLPromisedResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPromisedResult.m; sourceTree = "<group>"; };
-		27188BCA18148A820060FED6 /* FLQueueableAsyncOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLQueueableAsyncOperation.h; sourceTree = "<group>"; };
 		27188BCB18148A820060FED6 /* FLSuccessfulResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSuccessfulResult.h; sourceTree = "<group>"; };
 		27188BCC18148A820060FED6 /* FLSuccessfulResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSuccessfulResult.m; sourceTree = "<group>"; };
 		27188BCF18148A820060FED6 /* NSError+FLFailedResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+FLFailedResult.h"; sourceTree = "<group>"; };
@@ -2715,6 +2699,8 @@
 		27CF85F918259CD9002B5C3E /* FLTestLoggingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTestLoggingManager.m; sourceTree = "<group>"; };
 		27CF85FF1825A078002B5C3E /* FLTOrderedRunList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTOrderedRunList.h; sourceTree = "<group>"; };
 		27CF86001825A078002B5C3E /* FLTOrderedRunList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTOrderedRunList.m; sourceTree = "<group>"; };
+		27CF863E182747E3002B5C3E /* FLAbstractAsyncQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAbstractAsyncQueue.h; sourceTree = "<group>"; };
+		27CF863F182747E3002B5C3E /* FLAbstractAsyncQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAbstractAsyncQueue.m; sourceTree = "<group>"; };
 		27D79396181EC3DB0046E5DA /* FLTestableRunOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestableRunOrder.h; sourceTree = "<group>"; };
 		27D793A0181ED5A20046E5DA /* FLAssertUndef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAssertUndef.h; sourceTree = "<group>"; };
 		B214727B17DE7BBC00985872 /* FishLamp-Objc-iOS-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-iOS-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3009,12 +2995,7 @@
 			children = (
 				27188B9F18148A810060FED6 /* FishLampAsync.h */,
 				27188BA018148A810060FED6 /* FLAsyncBlockTypes.h */,
-				27188BA118148A810060FED6 /* FLAsyncInitiator+FLDispatchQueue.h */,
-				27188BA218148A810060FED6 /* FLAsyncInitiator+FLDispatchQueue.m */,
-				27188BA318148A810060FED6 /* FLAsyncInitiator.h */,
-				27188BA418148A810060FED6 /* FLAsyncInitiator.m */,
 				27188BA518148A810060FED6 /* FLAsyncQueue.h */,
-				27188BA618148A810060FED6 /* FLAsyncQueue.m */,
 				27188BA718148A810060FED6 /* FLAsyncQueueDecorator.h */,
 				27188BA818148A810060FED6 /* FLAsyncQueueDecorator.m */,
 				27188BA918148A820060FED6 /* FLBatchOperation.h */,
@@ -3050,11 +3031,12 @@
 				27188BC718148A820060FED6 /* FLPromise.m */,
 				27188BC818148A820060FED6 /* FLPromisedResult.h */,
 				27188BC918148A820060FED6 /* FLPromisedResult.m */,
-				27188BCA18148A820060FED6 /* FLQueueableAsyncOperation.h */,
 				27188BCB18148A820060FED6 /* FLSuccessfulResult.h */,
 				27188BCC18148A820060FED6 /* FLSuccessfulResult.m */,
 				27188BCF18148A820060FED6 /* NSError+FLFailedResult.h */,
 				27188BD018148A820060FED6 /* NSError+FLFailedResult.m */,
+				27CF863E182747E3002B5C3E /* FLAbstractAsyncQueue.h */,
+				27CF863F182747E3002B5C3E /* FLAbstractAsyncQueue.m */,
 			);
 			path = "FishLamp-Objc-Async";
 			sourceTree = "<group>";
@@ -4995,7 +4977,6 @@
 				2767DCC718132B1C001EF21C /* FLHiddenFolderFileSink.m in Sources */,
 				2767DDAD18132B1C001EF21C /* FLDatabaseTable.m in Sources */,
 				2767DAC418132B1B001EF21C /* FLSelectorPerforming.m in Sources */,
-				27188BD218148A820060FED6 /* FLAsyncInitiator+FLDispatchQueue.m in Sources */,
 				27CF859018256648002B5C3E /* FLTTestOrganizer.m in Sources */,
 				2767DA6A18132B1B001EF21C /* FLTestable.m in Sources */,
 				2767DC7718132B1C001EF21C /* __FLOAuthApp.m in Sources */,
@@ -5136,6 +5117,7 @@
 				2767D96118132B1B001EF21C /* FLInMemoryDataCache.m in Sources */,
 				2767DBC818132B1C001EF21C /* FLObjectDescriber.m in Sources */,
 				2767DC4518132B1C001EF21C /* FLHttpResponse.m in Sources */,
+				27CF8641182747E3002B5C3E /* FLAbstractAsyncQueue.m in Sources */,
 				2767D92518132B1B001EF21C /* FLCompatibleViewController+OSX.m in Sources */,
 				2767DB9618132B1B001EF21C /* FLEdgeInsets.m in Sources */,
 				27188C2C18148A820060FED6 /* FLPromise.m in Sources */,
@@ -5155,7 +5137,6 @@
 				2767DA6018132B1B001EF21C /* FLWhitespace.m in Sources */,
 				2767DD1218132B1C001EF21C /* FLTcpStream.m in Sources */,
 				2767DC3118132B1C001EF21C /* FLHttpMessage.m in Sources */,
-				27188BD718148A820060FED6 /* FLAsyncInitiator.m in Sources */,
 				2767DD6718132B1C001EF21C /* FLUserLogin.m in Sources */,
 				2767DD1C18132B1C001EF21C /* FLParserStack.m in Sources */,
 				2767DD8518132B1C001EF21C /* FLDatabase.m in Sources */,
@@ -5173,7 +5154,6 @@
 				27CF858B18256648002B5C3E /* FLTTestGroupFinder.m in Sources */,
 				2767DCB818132B1C001EF21C /* FLReachableNetwork.m in Sources */,
 				2767DA1018132B1B001EF21C /* FLMainThreadObject.m in Sources */,
-				27188BDC18148A820060FED6 /* FLAsyncQueue.m in Sources */,
 				2767DE1618132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBEB18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD5D18132B1C001EF21C /* FLServiceList.m in Sources */,
@@ -5380,7 +5360,6 @@
 				2767DCC918132B1C001EF21C /* FLHiddenFolderFileSink.m in Sources */,
 				2767DDAF18132B1C001EF21C /* FLDatabaseTable.m in Sources */,
 				2767DAC618132B1B001EF21C /* FLSelectorPerforming.m in Sources */,
-				27188BD418148A820060FED6 /* FLAsyncInitiator+FLDispatchQueue.m in Sources */,
 				27CF859218256648002B5C3E /* FLTTestOrganizer.m in Sources */,
 				2767DA6C18132B1B001EF21C /* FLTestable.m in Sources */,
 				2767DC7918132B1C001EF21C /* __FLOAuthApp.m in Sources */,
@@ -5521,6 +5500,7 @@
 				2767D96318132B1B001EF21C /* FLInMemoryDataCache.m in Sources */,
 				2767DBCA18132B1C001EF21C /* FLObjectDescriber.m in Sources */,
 				2767DC4718132B1C001EF21C /* FLHttpResponse.m in Sources */,
+				27CF8643182747E3002B5C3E /* FLAbstractAsyncQueue.m in Sources */,
 				2767D92718132B1B001EF21C /* FLCompatibleViewController+OSX.m in Sources */,
 				2767DB9818132B1B001EF21C /* FLEdgeInsets.m in Sources */,
 				27188C2E18148A820060FED6 /* FLPromise.m in Sources */,
@@ -5540,7 +5520,6 @@
 				2767DA6218132B1B001EF21C /* FLWhitespace.m in Sources */,
 				2767DD1418132B1C001EF21C /* FLTcpStream.m in Sources */,
 				2767DC3318132B1C001EF21C /* FLHttpMessage.m in Sources */,
-				27188BD918148A820060FED6 /* FLAsyncInitiator.m in Sources */,
 				2767DD6918132B1C001EF21C /* FLUserLogin.m in Sources */,
 				2767DD1E18132B1C001EF21C /* FLParserStack.m in Sources */,
 				2767DD8718132B1C001EF21C /* FLDatabase.m in Sources */,
@@ -5558,7 +5537,6 @@
 				27CF858D18256648002B5C3E /* FLTTestGroupFinder.m in Sources */,
 				2767DCBA18132B1C001EF21C /* FLReachableNetwork.m in Sources */,
 				2767DA1218132B1B001EF21C /* FLMainThreadObject.m in Sources */,
-				27188BDE18148A820060FED6 /* FLAsyncQueue.m in Sources */,
 				2767DE1818132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBED18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD5F18132B1C001EF21C /* FLServiceList.m in Sources */,
@@ -5779,7 +5757,6 @@
 				2767DCC618132B1C001EF21C /* FLHiddenFolderFileSink.m in Sources */,
 				2767DDAC18132B1C001EF21C /* FLDatabaseTable.m in Sources */,
 				2767DAC318132B1B001EF21C /* FLSelectorPerforming.m in Sources */,
-				27188BD118148A820060FED6 /* FLAsyncInitiator+FLDispatchQueue.m in Sources */,
 				27CF858F18256648002B5C3E /* FLTTestOrganizer.m in Sources */,
 				2767DA6918132B1B001EF21C /* FLTestable.m in Sources */,
 				2767DC7618132B1C001EF21C /* __FLOAuthApp.m in Sources */,
@@ -5920,6 +5897,7 @@
 				2767D96018132B1B001EF21C /* FLInMemoryDataCache.m in Sources */,
 				2767DBC718132B1C001EF21C /* FLObjectDescriber.m in Sources */,
 				2767DC4418132B1C001EF21C /* FLHttpResponse.m in Sources */,
+				27CF8640182747E3002B5C3E /* FLAbstractAsyncQueue.m in Sources */,
 				2767D92418132B1B001EF21C /* FLCompatibleViewController+OSX.m in Sources */,
 				2767DB9518132B1B001EF21C /* FLEdgeInsets.m in Sources */,
 				27188C2B18148A820060FED6 /* FLPromise.m in Sources */,
@@ -5939,7 +5917,6 @@
 				2767DA5F18132B1B001EF21C /* FLWhitespace.m in Sources */,
 				2767DD1118132B1C001EF21C /* FLTcpStream.m in Sources */,
 				2767DC3018132B1C001EF21C /* FLHttpMessage.m in Sources */,
-				27188BD618148A820060FED6 /* FLAsyncInitiator.m in Sources */,
 				2767DD6618132B1C001EF21C /* FLUserLogin.m in Sources */,
 				2767DD1B18132B1C001EF21C /* FLParserStack.m in Sources */,
 				2767DD8418132B1C001EF21C /* FLDatabase.m in Sources */,
@@ -5957,7 +5934,6 @@
 				27CF858A18256648002B5C3E /* FLTTestGroupFinder.m in Sources */,
 				2767DCB718132B1C001EF21C /* FLReachableNetwork.m in Sources */,
 				2767DA0F18132B1B001EF21C /* FLMainThreadObject.m in Sources */,
-				27188BDB18148A820060FED6 /* FLAsyncQueue.m in Sources */,
 				2767DE1518132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBEA18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD5C18132B1C001EF21C /* FLServiceList.m in Sources */,
@@ -6132,7 +6108,6 @@
 				2767DCC818132B1C001EF21C /* FLHiddenFolderFileSink.m in Sources */,
 				2767DDAE18132B1C001EF21C /* FLDatabaseTable.m in Sources */,
 				2767DAC518132B1B001EF21C /* FLSelectorPerforming.m in Sources */,
-				27188BD318148A820060FED6 /* FLAsyncInitiator+FLDispatchQueue.m in Sources */,
 				27CF859118256648002B5C3E /* FLTTestOrganizer.m in Sources */,
 				2767DA6B18132B1B001EF21C /* FLTestable.m in Sources */,
 				2767DC7818132B1C001EF21C /* __FLOAuthApp.m in Sources */,
@@ -6273,6 +6248,7 @@
 				2767D96218132B1B001EF21C /* FLInMemoryDataCache.m in Sources */,
 				2767DBC918132B1C001EF21C /* FLObjectDescriber.m in Sources */,
 				2767DC4618132B1C001EF21C /* FLHttpResponse.m in Sources */,
+				27CF8642182747E3002B5C3E /* FLAbstractAsyncQueue.m in Sources */,
 				2767D92618132B1B001EF21C /* FLCompatibleViewController+OSX.m in Sources */,
 				2767DB9718132B1B001EF21C /* FLEdgeInsets.m in Sources */,
 				27188C2D18148A820060FED6 /* FLPromise.m in Sources */,
@@ -6292,7 +6268,6 @@
 				2767DA6118132B1B001EF21C /* FLWhitespace.m in Sources */,
 				2767DD1318132B1C001EF21C /* FLTcpStream.m in Sources */,
 				2767DC3218132B1C001EF21C /* FLHttpMessage.m in Sources */,
-				27188BD818148A820060FED6 /* FLAsyncInitiator.m in Sources */,
 				2767DD6818132B1C001EF21C /* FLUserLogin.m in Sources */,
 				2767DD1D18132B1C001EF21C /* FLParserStack.m in Sources */,
 				2767DD8618132B1C001EF21C /* FLDatabase.m in Sources */,
@@ -6310,7 +6285,6 @@
 				27CF858C18256648002B5C3E /* FLTTestGroupFinder.m in Sources */,
 				2767DCB918132B1C001EF21C /* FLReachableNetwork.m in Sources */,
 				2767DA1118132B1B001EF21C /* FLMainThreadObject.m in Sources */,
-				27188BDD18148A820060FED6 /* FLAsyncQueue.m in Sources */,
 				2767DE1718132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBEC18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD5E18132B1C001EF21C /* FLServiceList.m in Sources */,
@@ -6485,7 +6459,6 @@
 				2767DCCA18132B1C001EF21C /* FLHiddenFolderFileSink.m in Sources */,
 				2767DDB018132B1C001EF21C /* FLDatabaseTable.m in Sources */,
 				2767DAC718132B1B001EF21C /* FLSelectorPerforming.m in Sources */,
-				27188BD518148A820060FED6 /* FLAsyncInitiator+FLDispatchQueue.m in Sources */,
 				27CF859318256648002B5C3E /* FLTTestOrganizer.m in Sources */,
 				2767DA6D18132B1B001EF21C /* FLTestable.m in Sources */,
 				2767DC7A18132B1C001EF21C /* __FLOAuthApp.m in Sources */,
@@ -6626,6 +6599,7 @@
 				2767D96418132B1B001EF21C /* FLInMemoryDataCache.m in Sources */,
 				2767DBCB18132B1C001EF21C /* FLObjectDescriber.m in Sources */,
 				2767DC4818132B1C001EF21C /* FLHttpResponse.m in Sources */,
+				27CF8644182747E3002B5C3E /* FLAbstractAsyncQueue.m in Sources */,
 				2767D92818132B1B001EF21C /* FLCompatibleViewController+OSX.m in Sources */,
 				2767DB9918132B1B001EF21C /* FLEdgeInsets.m in Sources */,
 				27188C2F18148A820060FED6 /* FLPromise.m in Sources */,
@@ -6645,7 +6619,6 @@
 				2767DA6318132B1B001EF21C /* FLWhitespace.m in Sources */,
 				2767DD1518132B1C001EF21C /* FLTcpStream.m in Sources */,
 				2767DC3418132B1C001EF21C /* FLHttpMessage.m in Sources */,
-				27188BDA18148A820060FED6 /* FLAsyncInitiator.m in Sources */,
 				2767DD6A18132B1C001EF21C /* FLUserLogin.m in Sources */,
 				2767DD1F18132B1C001EF21C /* FLParserStack.m in Sources */,
 				2767DD8818132B1C001EF21C /* FLDatabase.m in Sources */,
@@ -6663,7 +6636,6 @@
 				27CF858E18256648002B5C3E /* FLTTestGroupFinder.m in Sources */,
 				2767DCBB18132B1C001EF21C /* FLReachableNetwork.m in Sources */,
 				2767DA1318132B1B001EF21C /* FLMainThreadObject.m in Sources */,
-				27188BDF18148A820060FED6 /* FLAsyncQueue.m in Sources */,
 				2767DE1918132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBEE18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD6018132B1C001EF21C /* FLServiceList.m in Sources */,

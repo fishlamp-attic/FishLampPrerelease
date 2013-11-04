@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FLAsyncQueue.h"
+#import "FLAbstractAsyncQueue.h"
 
 @interface FLAsyncQueueDecorator : FLAbstractAsyncQueue {
 @private

@@ -37,13 +37,15 @@
     return FLAutorelease([[[self class] alloc] initWithNextQueue:queue]);
 }
 
-- (FLPromise*) queueAsyncInitiator:(FLAsyncInitiator*) event
+- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) event
+                         withDelay:(NSTimeInterval) delay
                         completion:(fl_completion_block_t) completion {
-    return [self.nextQueue queueAsyncInitiator:event completion:completion];
+
+    return [self.nextQueue queueObject:event withDelay:delay completion:completion];
 }
 
-- (FLPromisedResult) queueSynchronousInitiator:(FLAsyncInitiator*) event {
-    return [self.nextQueue queueSynchronousInitiator:event];
+- (FLPromisedResult) runSynchronously:(id<FLQueueableAsyncOperation>) event {
+    return [self.nextQueue runSynchronously:event];
 }
 
 @end

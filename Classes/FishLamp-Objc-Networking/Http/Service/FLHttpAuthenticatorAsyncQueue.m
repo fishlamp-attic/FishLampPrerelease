@@ -9,7 +9,7 @@
 #import "FLHttpAuthenticatorAsyncQueue.h"
 #import "FLHttpRequestAuthenticator.h"
 #import "FLDispatchQueue.h"
-#import "FLQueueableAsyncOperation.h"
+#import "FLAsyncQueue.h"
 #import "FLHttpRequest.h"
 
 @interface FLHttpAuthenticatorAsyncQueue ()

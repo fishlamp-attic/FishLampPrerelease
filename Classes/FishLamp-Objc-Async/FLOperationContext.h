@@ -18,12 +18,9 @@
 @interface FLOperationContext : FLBroadcaster {
 @private
     NSMutableSet* _operations;
-    NSUInteger _contextID;
     BOOL _contextOpen;
 }
 @property (readonly, assign, getter=isContextOpen) BOOL contextOpen; 
-
-@property (readonly, assign) NSUInteger contextID;
 
 + (id) operationContext;
 

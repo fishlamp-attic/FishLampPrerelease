@@ -16,19 +16,12 @@
 
 //#define TRACE 1
 
-NSString* const FLWorkerContextStarting = @"FLWorkerContextStarting";
-NSString* const FLWorkerContextFinished = @"FLWorkerContextFinished";
-
-NSString* const FLWorkerContextClosed = @"FLWorkerContextClosed";
-NSString* const FLWorkerContextOpened = @"FLWorkerContextOpened"; 
-
 #define OperationInQueue(op) op
 
 typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 
 @interface FLOperationContext ()
 @property (readwrite, assign, getter=isContextOpen) BOOL contextOpen; 
-@property (readwrite, assign) NSUInteger contextID;
 
 - (void) queueOperation:(FLOperation*) operation;
 - (void) removeOperation:(FLOperation*) operation;
@@ -37,15 +30,11 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 @end
 
 @interface FLOperation (Protected)
-- (FLPromisedResult) runSynchronously;
-- (FLPromise*) runAsynchronously:(fl_completion_block_t) completionOrNil;
 - (void) setContext:(id) context;
 @end
 
-
 @implementation FLOperationContext
 @synthesize contextOpen = _contextOpen;
-@synthesize contextID = _contextID;
 
 - (id) init {
     self = [super init];
@@ -88,7 +77,10 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 - (void) requestCancel {
 
     @synchronized(self) {
-    
+
+        // the reason we need a copy is because the set is likely going
+        // to change out from under us as we iterate it and cancel the operations
+        // (which then remove themselves from the context).
         NSSet* copy = FLCopyWithAutorelease(_operations);
         for(id operation in copy) {
 #if TRACE
@@ -101,26 +93,12 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 }
 
 - (void) openContext {
-
-    self.contextID++;
-    
-//    [self visitOperations:^(id operation, BOOL *stop) {
-//        [operation contextDidOpen];
-//    }];
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:FLWorkerContextOpened object:self];
-    });
+    self.contextOpen = YES;
 }
 
 - (void) closeContext {
-    [self visitOperations:^(id operation, BOOL *stop) {
-        [operation requestCancel];
-    }];
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:FLWorkerContextClosed object:self];
-    });
+    [self requestCancel];
+    self.contextOpen = NO;
 }
 
 - (void) didAddOperation:(FLOperation*) operation {
@@ -160,8 +138,6 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 
     FLAssertNotNil(operation);
 
-    BOOL didStop = NO;
-    
     @synchronized(self) {
     
 #if TRACE
@@ -177,13 +153,18 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
     [self didRemoveOperation:operation];
 }
 
+- (id<FLAsyncQueue>) asyncQueueForOperation:(FLOperation*) operation {
+    return FLDefaultQueue;
+}
+
 - (FLPromise*) beginOperation:(FLOperation*) operation
                    completion:(fl_completion_block_t) completion {
 
     FLAssertNotNil(operation);
     [self queueOperation:operation];
 
-    return [FLDefaultQueue queueObject:operation completion:completion];
+// TODO: provide way to specify queue
+    return [[self asyncQueueForOperation:operation] queueObject:operation completion:completion];
 }
 
 - (FLPromisedResult) runOperation:(FLOperation*) operation {
@@ -192,11 +173,10 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 
     [self queueOperation:operation];
 
-    return [FLDefaultQueue runSynchronously:operation];
-
+// TODO: provide way to specify queue
+    return [[self asyncQueueForOperation:operation] runSynchronously:operation];
 }
 
-   
 @end
 
 
