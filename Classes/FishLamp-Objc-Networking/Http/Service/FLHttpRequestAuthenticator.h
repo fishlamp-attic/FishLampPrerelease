@@ -11,7 +11,6 @@
 #import "FishLampAsync.h"
 
 @class FLHttpUser;
-@class FLSynchronousOperation;
 
 @protocol FLHttpRequestAuthenticatorDelegate;
 

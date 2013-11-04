@@ -104,9 +104,9 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 
     self.contextID++;
     
-    [self visitOperations:^(id operation, BOOL *stop) {
-        [operation contextDidOpen];
-    }];
+//    [self visitOperations:^(id operation, BOOL *stop) {
+//        [operation contextDidOpen];
+//    }];
 
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:FLWorkerContextOpened object:self];
@@ -115,7 +115,7 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 
 - (void) closeContext {
     [self visitOperations:^(id operation, BOOL *stop) {
-        [operation contextDidClose];
+        [operation requestCancel];
     }];
 
     dispatch_async(dispatch_get_main_queue(), ^{

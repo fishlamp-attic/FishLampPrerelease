@@ -12,8 +12,6 @@
 #import "FLLog.h"
 #import "FLSuccessfulResult.h"
 #import "FLOperation.h"
-#import "FLSynchronousOperation.h"
-
 #import "FLOperationContext.h"
 
 @interface FLOperationQueue ()

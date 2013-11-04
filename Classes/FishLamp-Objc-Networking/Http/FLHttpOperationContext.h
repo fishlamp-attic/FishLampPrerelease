@@ -55,6 +55,8 @@ extern NSString* const FLHttpControllerDidLogoutUserNotification;
 /// @return nil by default
 - (FLHttpRequestAuthenticator*) createHttpRequestAuthenticator;
 
+- (void) prepareAuthenticatedOperation:(id) operation;
+
 @end
 
 @protocol FLHttpControllerMessages <NSObject>

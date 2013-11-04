@@ -16,74 +16,110 @@
 #import "NSError+FLFailedResult.h"
 
 @class FLOperationContext;
-@class FLFinisher;
-@class FLPromise;
 @class FLOperationFinisher;
-
-@protocol FLAsyncQueue;
-@protocol FLOperationEvents;
 
 @interface FLOperation : FLBroadcaster<FLFinishable, FLQueueableAsyncOperation> {
 @private
-	id _identifier;
-    id<FLAsyncQueue> _asyncQueue;
     FLOperationFinisher* _finisher;
-    NSUInteger _contextID;
     BOOL _cancelled;
     __unsafe_unretained FLOperationContext* _context;
 }
 
-// unique id. by default an incrementing integer number
-@property (readwrite, strong) id identifier;
-
-// id of context. 
-@property (readonly, assign) NSUInteger contextID;
-
-// if you want control over your executing operation, run it in a context.
+/*!
+ *  Operations must run in a context. See FLOpertionContext.
+ */
 @property (readonly, assign, nonatomic) id context;
 
-// cancel yourself, and be quick about it.
+/*!
+ *  return YES is was cancelled
+ */
 @property (readonly, assign, getter=wasCancelled) BOOL cancelled;
+
+/*!
+ *  Return the finisher for this operation
+ *  
+ *  @return the finisher
+ */
+@property (readonly, strong) FLFinisher* finisher;
+
+/*!
+ *  someone has cancelled you. stop, and be quick about it.
+ */
 - (void) requestCancel;
 
-// overide points
+
+//
+// Override either startOperation or runSynchronously.
+//
+
+/*!
+ *  Override this for a async operation. You are responsible for calling setFinished (See FLFinishable)
+ */
 - (void) startOperation;
 
-// optional overrides
-- (void) didFinishWithResult:(FLPromisedResult) result;
+/*!
+ *  Override this for a synchronous operation.
+ *  
+ *  @return a result
+ */
+- (FLPromisedResult) runSynchronously;
+
+@end
+
+@interface FLOperation (OptionalOverrides)
+
+/*!
+ *  Optional override. This is called immediately before startOperation or runSynchronously.
+ */
 - (void) willStartOperation;
 
-// DEPRECATED
-// note that if you start an operation directly in a queue (e.g. you don't call start or run) the asyncQueue is ignored 
-//@property (readwrite, strong, nonatomic) id<FLAsyncQueue> asyncQueue;
-
-@end
-
-@interface FLOperation (Finishing)
-
-- (FLFinisher*) finisher;
-
-- (void) setFinished;
-- (void) setFinishedWithResult:(id) result;
-
-- (void) abortIfCancelled; // throws cancelError
-
-// optional override
+/*!
+ *  Optional override. This is called after the finisher fufills promises, etc..
+ *  
+ *  @param result the result the operation will be finishing with.
+ */
 - (void) didFinishWithResult:(FLPromisedResult) result;
 
-@end
+/*!
+ *  Throws a cancel error if this operation has been cancelled. Careful with this, if you're executing an async operation in a thread be mindful of who is catching (handled fine if you're using an FLAsyncQueue).
+ */
+- (void) abortIfCancelled;
 
-@interface FLOperation (OperationContext)
+/*!
+ *  Called when this operation is added to a context.
+ *  
+ *  @param context the context
+ */
 - (void) wasAddedToContext:(FLOperationContext*) context;
+
+/*!
+ *  Called when this operation is removed from a context
+ *  
+ *  @param context the context
+ */
 - (void) wasRemovedFromContext:(FLOperationContext*) context;
-- (void) contextDidClose;
-- (void) contextDidOpen;
-- (void) contextDidCancel;
+
 @end
 
+/*!
+ *  Since a FLOperation is FLBroadcaster, it sends these events to its listeners.
+ */
 @protocol FLOperationEvents <NSObject>
 @optional
+
+/*!
+ *  Called with the operation is about to start.
+ *  
+ *  @param operation the operation sending the message
+ */
 - (void) operationWillBegin:(id) operation;
+
+/*!
+ *  The operation has completed.
+ *  
+ *  @param operation the operation that has finished
+ *  @param result    the results of the operation.
+ */
 - (void) operationDidFinish:(id) operation withResult:(FLPromisedResult) result;
 @end
 

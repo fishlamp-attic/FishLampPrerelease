@@ -167,11 +167,6 @@
 		27188C3718148A820060FED6 /* FLSuccessfulResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BCC18148A820060FED6 /* FLSuccessfulResult.m */; };
 		27188C3818148A820060FED6 /* FLSuccessfulResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BCC18148A820060FED6 /* FLSuccessfulResult.m */; };
 		27188C3918148A820060FED6 /* FLSuccessfulResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BCC18148A820060FED6 /* FLSuccessfulResult.m */; };
-		27188C3A18148A820060FED6 /* FLSynchronousOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BCE18148A820060FED6 /* FLSynchronousOperation.m */; };
-		27188C3B18148A820060FED6 /* FLSynchronousOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BCE18148A820060FED6 /* FLSynchronousOperation.m */; };
-		27188C3C18148A820060FED6 /* FLSynchronousOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BCE18148A820060FED6 /* FLSynchronousOperation.m */; };
-		27188C3D18148A820060FED6 /* FLSynchronousOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BCE18148A820060FED6 /* FLSynchronousOperation.m */; };
-		27188C3E18148A820060FED6 /* FLSynchronousOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BCE18148A820060FED6 /* FLSynchronousOperation.m */; };
 		27188C3F18148A820060FED6 /* NSError+FLFailedResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BD018148A820060FED6 /* NSError+FLFailedResult.m */; };
 		27188C4018148A820060FED6 /* NSError+FLFailedResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BD018148A820060FED6 /* NSError+FLFailedResult.m */; };
 		27188C4118148A820060FED6 /* NSError+FLFailedResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188BD018148A820060FED6 /* NSError+FLFailedResult.m */; };
@@ -1037,11 +1032,6 @@
 		2767DC0518132B1C001EF21C /* FLHttpErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C918132B1A001EF21C /* FLHttpErrors.m */; };
 		2767DC0618132B1C001EF21C /* FLHttpErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C918132B1A001EF21C /* FLHttpErrors.m */; };
 		2767DC0718132B1C001EF21C /* FLHttpErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6C918132B1A001EF21C /* FLHttpErrors.m */; };
-		2767DC0818132B1C001EF21C /* FLHttpOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6CB18132B1A001EF21C /* FLHttpOperation.m */; };
-		2767DC0918132B1C001EF21C /* FLHttpOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6CB18132B1A001EF21C /* FLHttpOperation.m */; };
-		2767DC0A18132B1C001EF21C /* FLHttpOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6CB18132B1A001EF21C /* FLHttpOperation.m */; };
-		2767DC0B18132B1C001EF21C /* FLHttpOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6CB18132B1A001EF21C /* FLHttpOperation.m */; };
-		2767DC0C18132B1C001EF21C /* FLHttpOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6CB18132B1A001EF21C /* FLHttpOperation.m */; };
 		2767DC0D18132B1C001EF21C /* FLHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6CD18132B1A001EF21C /* FLHttpRequest.m */; };
 		2767DC0E18132B1C001EF21C /* FLHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6CD18132B1A001EF21C /* FLHttpRequest.m */; };
 		2767DC0F18132B1C001EF21C /* FLHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D6CD18132B1A001EF21C /* FLHttpRequest.m */; };
@@ -1985,8 +1975,6 @@
 		27188BCA18148A820060FED6 /* FLQueueableAsyncOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLQueueableAsyncOperation.h; sourceTree = "<group>"; };
 		27188BCB18148A820060FED6 /* FLSuccessfulResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSuccessfulResult.h; sourceTree = "<group>"; };
 		27188BCC18148A820060FED6 /* FLSuccessfulResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSuccessfulResult.m; sourceTree = "<group>"; };
-		27188BCD18148A820060FED6 /* FLSynchronousOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSynchronousOperation.h; sourceTree = "<group>"; };
-		27188BCE18148A820060FED6 /* FLSynchronousOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSynchronousOperation.m; sourceTree = "<group>"; };
 		27188BCF18148A820060FED6 /* NSError+FLFailedResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+FLFailedResult.h"; sourceTree = "<group>"; };
 		27188BD018148A820060FED6 /* NSError+FLFailedResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+FLFailedResult.m"; sourceTree = "<group>"; };
 		27188C4718148B8E0060FED6 /* FLAsyncTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAsyncTests.h; sourceTree = "<group>"; };
@@ -2375,8 +2363,6 @@
 		2767D6C718132B1A001EF21C /* FLHttpOperationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLHttpOperationContext.m; sourceTree = "<group>"; };
 		2767D6C818132B1A001EF21C /* FLHttpErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLHttpErrors.h; sourceTree = "<group>"; };
 		2767D6C918132B1A001EF21C /* FLHttpErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLHttpErrors.m; sourceTree = "<group>"; };
-		2767D6CA18132B1A001EF21C /* FLHttpOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLHttpOperation.h; sourceTree = "<group>"; };
-		2767D6CB18132B1A001EF21C /* FLHttpOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLHttpOperation.m; sourceTree = "<group>"; };
 		2767D6CC18132B1A001EF21C /* FLHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLHttpRequest.h; sourceTree = "<group>"; };
 		2767D6CD18132B1A001EF21C /* FLHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLHttpRequest.m; sourceTree = "<group>"; };
 		2767D6CE18132B1A001EF21C /* FLXmlHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXmlHttpRequest.h; sourceTree = "<group>"; };
@@ -3067,8 +3053,6 @@
 				27188BCA18148A820060FED6 /* FLQueueableAsyncOperation.h */,
 				27188BCB18148A820060FED6 /* FLSuccessfulResult.h */,
 				27188BCC18148A820060FED6 /* FLSuccessfulResult.m */,
-				27188BCD18148A820060FED6 /* FLSynchronousOperation.h */,
-				27188BCE18148A820060FED6 /* FLSynchronousOperation.m */,
 				27188BCF18148A820060FED6 /* NSError+FLFailedResult.h */,
 				27188BD018148A820060FED6 /* NSError+FLFailedResult.m */,
 			);
@@ -3848,8 +3832,6 @@
 				2767D6C718132B1A001EF21C /* FLHttpOperationContext.m */,
 				2767D6C818132B1A001EF21C /* FLHttpErrors.h */,
 				2767D6C918132B1A001EF21C /* FLHttpErrors.m */,
-				2767D6CA18132B1A001EF21C /* FLHttpOperation.h */,
-				2767D6CB18132B1A001EF21C /* FLHttpOperation.m */,
 				2767D6CC18132B1A001EF21C /* FLHttpRequest.h */,
 				2767D6CD18132B1A001EF21C /* FLHttpRequest.m */,
 				2767D6CE18132B1A001EF21C /* FLXmlHttpRequest.h */,
@@ -5034,7 +5016,6 @@
 				2767D93E18132B1B001EF21C /* NSTextField+FLCompatibility.m in Sources */,
 				27188B89181489880060FED6 /* FLObservableTests.m in Sources */,
 				2767D97F18132B1B001EF21C /* FLBlockLinkedListElement.m in Sources */,
-				27188C3B18148A820060FED6 /* FLSynchronousOperation.m in Sources */,
 				2767D99318132B1B001EF21C /* FLAssert.m in Sources */,
 				2767DD6218132B1C001EF21C /* FLUserDataStorageService.m in Sources */,
 				27188C1D18148A820060FED6 /* FLOperationQueue.m in Sources */,
@@ -5239,7 +5220,6 @@
 				27188C1318148A820060FED6 /* FLOperation.m in Sources */,
 				2767DB2818132B1B001EF21C /* FLXmlParser.m in Sources */,
 				2767DB4618132B1B001EF21C /* NSObject+FLXmlSerialization.m in Sources */,
-				2767DC0918132B1C001EF21C /* FLHttpOperation.m in Sources */,
 				27188C4018148A820060FED6 /* NSError+FLFailedResult.m in Sources */,
 				27188B58181488DB0060FED6 /* FLStringBuilderSection.m in Sources */,
 				2767DBF018132B1C001EF21C /* FLNetworkHostResolver.m in Sources */,
@@ -5421,7 +5401,6 @@
 				2767D94018132B1B001EF21C /* NSTextField+FLCompatibility.m in Sources */,
 				27188B8B181489880060FED6 /* FLObservableTests.m in Sources */,
 				2767D98118132B1B001EF21C /* FLBlockLinkedListElement.m in Sources */,
-				27188C3D18148A820060FED6 /* FLSynchronousOperation.m in Sources */,
 				2767D99518132B1B001EF21C /* FLAssert.m in Sources */,
 				2767DD6418132B1C001EF21C /* FLUserDataStorageService.m in Sources */,
 				27188C1F18148A820060FED6 /* FLOperationQueue.m in Sources */,
@@ -5626,7 +5605,6 @@
 				27188C1518148A820060FED6 /* FLOperation.m in Sources */,
 				2767DB2A18132B1B001EF21C /* FLXmlParser.m in Sources */,
 				2767DB4818132B1B001EF21C /* NSObject+FLXmlSerialization.m in Sources */,
-				2767DC0B18132B1C001EF21C /* FLHttpOperation.m in Sources */,
 				27188C4218148A820060FED6 /* NSError+FLFailedResult.m in Sources */,
 				27188B5A181488DB0060FED6 /* FLStringBuilderSection.m in Sources */,
 				2767DBF218132B1C001EF21C /* FLNetworkHostResolver.m in Sources */,
@@ -5822,7 +5800,6 @@
 				2767D93D18132B1B001EF21C /* NSTextField+FLCompatibility.m in Sources */,
 				27188B88181489880060FED6 /* FLObservableTests.m in Sources */,
 				2767D97E18132B1B001EF21C /* FLBlockLinkedListElement.m in Sources */,
-				27188C3A18148A820060FED6 /* FLSynchronousOperation.m in Sources */,
 				2767D99218132B1B001EF21C /* FLAssert.m in Sources */,
 				2767DD6118132B1C001EF21C /* FLUserDataStorageService.m in Sources */,
 				27188C1C18148A820060FED6 /* FLOperationQueue.m in Sources */,
@@ -6027,7 +6004,6 @@
 				27188C1218148A820060FED6 /* FLOperation.m in Sources */,
 				2767DB2718132B1B001EF21C /* FLXmlParser.m in Sources */,
 				2767DB4518132B1B001EF21C /* NSObject+FLXmlSerialization.m in Sources */,
-				2767DC0818132B1C001EF21C /* FLHttpOperation.m in Sources */,
 				27188C3F18148A820060FED6 /* NSError+FLFailedResult.m in Sources */,
 				27188B57181488DB0060FED6 /* FLStringBuilderSection.m in Sources */,
 				2767DBEF18132B1C001EF21C /* FLNetworkHostResolver.m in Sources */,
@@ -6177,7 +6153,6 @@
 				2767D93F18132B1B001EF21C /* NSTextField+FLCompatibility.m in Sources */,
 				27188B8A181489880060FED6 /* FLObservableTests.m in Sources */,
 				2767D98018132B1B001EF21C /* FLBlockLinkedListElement.m in Sources */,
-				27188C3C18148A820060FED6 /* FLSynchronousOperation.m in Sources */,
 				2767D99418132B1B001EF21C /* FLAssert.m in Sources */,
 				2767DD6318132B1C001EF21C /* FLUserDataStorageService.m in Sources */,
 				27188C1E18148A820060FED6 /* FLOperationQueue.m in Sources */,
@@ -6382,7 +6357,6 @@
 				27188C1418148A820060FED6 /* FLOperation.m in Sources */,
 				2767DB2918132B1B001EF21C /* FLXmlParser.m in Sources */,
 				2767DB4718132B1B001EF21C /* NSObject+FLXmlSerialization.m in Sources */,
-				2767DC0A18132B1C001EF21C /* FLHttpOperation.m in Sources */,
 				27188C4118148A820060FED6 /* NSError+FLFailedResult.m in Sources */,
 				27188B59181488DB0060FED6 /* FLStringBuilderSection.m in Sources */,
 				2767DBF118132B1C001EF21C /* FLNetworkHostResolver.m in Sources */,
@@ -6532,7 +6506,6 @@
 				2767D94118132B1B001EF21C /* NSTextField+FLCompatibility.m in Sources */,
 				27188B8C181489880060FED6 /* FLObservableTests.m in Sources */,
 				2767D98218132B1B001EF21C /* FLBlockLinkedListElement.m in Sources */,
-				27188C3E18148A820060FED6 /* FLSynchronousOperation.m in Sources */,
 				2767D99618132B1B001EF21C /* FLAssert.m in Sources */,
 				2767DD6518132B1C001EF21C /* FLUserDataStorageService.m in Sources */,
 				27188C2018148A820060FED6 /* FLOperationQueue.m in Sources */,
@@ -6737,7 +6710,6 @@
 				27188C1618148A820060FED6 /* FLOperation.m in Sources */,
 				2767DB2B18132B1B001EF21C /* FLXmlParser.m in Sources */,
 				2767DB4918132B1B001EF21C /* NSObject+FLXmlSerialization.m in Sources */,
-				2767DC0C18132B1C001EF21C /* FLHttpOperation.m in Sources */,
 				27188C4318148A820060FED6 /* NSError+FLFailedResult.m in Sources */,
 				27188B5B181488DB0060FED6 /* FLStringBuilderSection.m in Sources */,
 				2767DBF318132B1C001EF21C /* FLNetworkHostResolver.m in Sources */,

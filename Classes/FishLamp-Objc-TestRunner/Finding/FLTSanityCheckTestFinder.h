@@ -8,7 +8,7 @@
 //
 
 #import "FLTTestFinder.h"
-#import "FLSynchronousOperation.h"
+#import "FLOperation.h"
 
 #define FLSanityCheckStaticTestMethodPrefix @"sanityCheck_"
 

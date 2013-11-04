@@ -17,7 +17,6 @@
 #import "FLSuccessfulResult.h"
 #import "FLPromise.h"
 #import "FLPromisedResult.h"
-#import "FLSynchronousOperation.h"
 #import "FLOperationQueue.h"
 
 

@@ -28,7 +28,7 @@
     return FLAutorelease([[[self class] alloc] init]);
 }
 
-- (FLPromisedResult) performSynchronously {
+- (FLPromisedResult) runSynchronously {
 
     FLAssertNotNil(self.context);
 

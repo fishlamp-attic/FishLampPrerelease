@@ -9,7 +9,6 @@
 
 #import "FLOperationTests.h"
 #import "FLOperation.h"
-#import "FLSynchronousOperation.h"
 #import "FLDispatchQueue.h"
 #import "FLAsyncTestGroup.h"
 
@@ -46,7 +45,7 @@
 
 @end
 
-@interface FLSimpleTestOperation : FLSynchronousOperation {
+@interface FLSimpleTestOperation : FLOperation {
 @private
     BOOL _passed;
 }
@@ -56,7 +55,7 @@
 @implementation FLSimpleTestOperation
 @synthesize passed = _passed;
 
-- (FLPromisedResult) performSynchronously {
+- (FLPromisedResult) runSynchronously {
 
     FLTestLog(@"hello world");
     _passed = YES;

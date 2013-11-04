@@ -12,7 +12,7 @@
 #import "FLToolCommandOption.h"
 #import "FLCommandLineTask.h"
 
-@interface FLToolCommand : FLSynchronousOperation {
+@interface FLToolCommand : FLOperation {
 @private
     NSString* _commandName;
     NSMutableDictionary* _subcommands;

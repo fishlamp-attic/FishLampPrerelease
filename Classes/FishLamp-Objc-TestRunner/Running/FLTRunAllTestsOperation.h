@@ -7,11 +7,10 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLSynchronousOperation.h"
+#import "FLOperation.h"
 #import "FLTTestResultCollection.h"
-#import "FLSynchronousOperation.h"
 
-@interface FLTRunAllTestsOperation : FLSynchronousOperation {
+@interface FLTRunAllTestsOperation : FLOperation {
 @private
 }
 

@@ -55,7 +55,7 @@
 #endif
 
 /*
-- (FLPromisedResult) performSynchronously {
+- (FLPromisedResult) runSynchronously {
 
     FLTTestCaseList* testCases = _unitTest.testCaseList;
 

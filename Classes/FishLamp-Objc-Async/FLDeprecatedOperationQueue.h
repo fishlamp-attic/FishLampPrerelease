@@ -49,7 +49,4 @@
 //- (void) insertOperation:(FLSynchronousOperation*) newOperation
 //          afterOperation:(FLSynchronousOperation*) afterOperation;
 
-
-
-
 #endif

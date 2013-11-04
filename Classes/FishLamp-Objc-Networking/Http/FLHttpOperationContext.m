@@ -159,6 +159,10 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
     }
 }
 
+- (void) prepareAuthenticatedOperation:(id) operation {
+
+}
+
 @end
 
 

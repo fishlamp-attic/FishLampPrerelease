@@ -37,7 +37,7 @@
     [_operations addObject:operation];
 }
 
-- (FLPromisedResult) performSynchronously {
+- (FLPromisedResult) runSynchronously {
     for(FLOperation* operation in _operations) {
         [self.context runOperation:operation];
     }

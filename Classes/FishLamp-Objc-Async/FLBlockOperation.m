@@ -30,7 +30,7 @@
    return FLAutorelease([[[self class] alloc] initWithBlock:block]);
 }
 
-- (FLPromisedResult) performSynchronously {
+- (FLPromisedResult) runSynchronously {
     if(_block) {
         _block();
     }

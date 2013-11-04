@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FLSynchronousOperation.h"
+#import "FLOperation.h"
 
-@interface FLBlockOperation : FLSynchronousOperation {
+@interface FLBlockOperation : FLOperation {
 @private
     fl_block_t _block;
 }
