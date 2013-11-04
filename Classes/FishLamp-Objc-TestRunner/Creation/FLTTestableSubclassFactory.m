@@ -55,20 +55,6 @@
             return NSOrderedDescending;
         }
 
-
-//        if( [lhs rangeOfString:@"firstTest" options:NSCaseInsensitiveSearch].length > 0 ||
-//            [rhs rangeOfString:@"lastTest" options:NSCaseInsensitiveSearch].length > 0) {
-//            return NSOrderedAscending;
-//        }
-//        else if ([rhs rangeOfString:@"firstTest" options:NSCaseInsensitiveSearch].length > 0 ||
-//                 [lhs rangeOfString:@"lastTest" options:NSCaseInsensitiveSearch].length > 0) {
-//            return NSOrderedDescending;
-//        }
-
-//        if(obj1.runOrder != obj2.runOrder) {
-//            return obj1.runOrder < obj2.runOrder ? NSOrderedAscending : NSOrderedDescending;
-//        }
-
         return [lhs compare:rhs];
     }];
 }
@@ -152,7 +138,7 @@
 
 - (FLTTest*) createTest {
     FLTestable* testObject = [self createTestableObject];
-    return [FLTTest assembledUnitTest:testObject testCases:testObject.testCaseList];
+    return [FLTTest testWithTestable:testObject testCases:testObject.testCaseList];
 }
 
 

@@ -127,7 +127,7 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
     [self setAuthenticatedUser:user];
 }
 
-- (FLOperationContext*) httpRequestAuthenticatorGetOperationContext:(FLHttpRequestAuthenticator*) context {
+- (id<FLOperationContext>) httpRequestAuthenticatorGetOperationContext:(FLHttpRequestAuthenticator*) context {
     return self;
 }
 

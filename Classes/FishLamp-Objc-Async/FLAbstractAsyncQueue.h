@@ -7,8 +7,11 @@
 //
 
 #import "FLAsyncQueue.h"
+#import "FLPromise.h"
+#import "FLFinisher.h"
+#import "FLBroadcaster.h"
 
-@interface FLAbstractAsyncQueue : NSObject<FLAsyncQueue>
+@interface FLAbstractAsyncQueue : FLBroadcaster<FLAsyncQueue>
 
 - (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) operation
                  withDelay:(NSTimeInterval) delay

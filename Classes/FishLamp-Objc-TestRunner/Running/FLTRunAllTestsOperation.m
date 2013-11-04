@@ -12,8 +12,6 @@
 #import "FLTStaticTestMethodRunner.h"
 #import "FLObjcRuntime.h"
 #import "FLTestable.h"
-
-#import "FLTRunTestOperation.h"
 #import "FLDispatchQueue.h"
 
 #import "FLTTestOrganizer.h"
@@ -54,8 +52,7 @@
 
                 [FLTestLogger() indentedBlock:^{
 
-                    FLPromisedResult result = [self.context runOperation:
-                                                    [FLTRunTestOperation runTestOperation:test]];
+                    FLPromisedResult result = [self.context runSynchronously:test];
 
 //                    FLTTestResultCollection* result =
 //                        [FLTTestResultCollection fromPromisedResult:

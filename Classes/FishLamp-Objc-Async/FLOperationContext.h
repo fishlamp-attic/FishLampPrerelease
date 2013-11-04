@@ -8,14 +8,28 @@
 //
 
 #import "FishLampMinimum.h"
-#import "FLAsyncBlockTypes.h"
-#import "FLPromisedResult.h"
-#import "FLBroadcaster.h"
+//#import "FLAsyncBlockTypes.h"
+//#import "FLPromisedResult.h"
+//#import "FLBroadcaster.h"
+#import "FLAbstractAsyncQueue.h"
 
 @class FLOperation;
 @class FLPromise;
 
-@interface FLOperationContext : FLBroadcaster {
+@protocol FLOperationContext <FLAsyncQueue>
+
+/**
+ *  Cancel and remove all the current operations.
+ */
+- (void) requestCancel;          
+
+
+
+- (void) addOperation:(id) operation;
+- (void) removeOperation:(id) operation;
+@end
+
+@interface FLOperationContext : FLAbstractAsyncQueue<FLOperationContext> {
 @private
     NSMutableSet* _operations;
     BOOL _contextOpen;
@@ -34,35 +48,21 @@
  */
 - (void) closeContext;
 
-/**
- *  Cancel and remove all the current operations.
- */
-- (void) requestCancel;          
-
-/**
- *  Begin an Operation.
- *  
- *  @param operation  the operation to run
- *  @param completion the completion block or nil
- *  
- *  @return The promise representing the running operation scope.
- */
-- (FLPromise*) beginOperation:(FLOperation*) operation
-                   completion:(fl_completion_block_t) completion;
-
-/**
- *  Execute an operation synchronously.
- *  
- *  @param operation the Operation
- *  
- *  @return the Promise result
- */
-- (FLPromisedResult) runOperation:(FLOperation*) operation;
-
 @end
+//#import "FLPromise.h"
+//#import "FLFinisher.h"
 
 @interface FLOperationContext (OptionalOverrides)
-- (void) didAddOperation:(FLOperation*) operation;
-- (void) didRemoveOperation:(FLOperation*) operation;
+- (void) didAddOperation:(id<FLQueueableAsyncOperation>) operation;
+- (void) didRemoveOperation:(id<FLQueueableAsyncOperation>) operation;
 @end
 
+@protocol FLContextualOperation <FLQueueableAsyncOperation>
+
+
+- (id) context;
+- (void) setContext:(id) context;
+- (void) removeContext:(id) context;
+
+- (void) requestCancel;
+@end

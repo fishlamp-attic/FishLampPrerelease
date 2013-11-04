@@ -8,11 +8,12 @@
 
 #import "FishLampMinimum.h"
 #import "FLTTestResultCollection.h"
+#import "FLOperation.h"
 
 @class FLTTestCaseList;
 @class FLTTestResultCollection;
 
-@interface FLTTest : NSObject {
+@interface FLTTest : FLOperation {
 @private
     id _testableObject;
     FLTTestCaseList* _testCaseList;
@@ -25,7 +26,7 @@
 @property (readonly, strong, nonatomic) id testableObject;
 @property (readonly, strong, nonatomic) FLTTestCaseList* testCaseList;
 
-+ (id) assembledUnitTest:(id) testableObject testCases:(id<FLTestCaseList>) testCases;
++ (id) testWithTestable:(id<FLTestable>) testableObject testCases:(id<FLTestCaseList>) testCases;
 
 - (void) willRunTestCases:(FLTTestCaseList*) testCases;
 

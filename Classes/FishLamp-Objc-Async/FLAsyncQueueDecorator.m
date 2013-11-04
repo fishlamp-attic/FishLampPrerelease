@@ -26,7 +26,7 @@
         _nextQueue = FLRetain(queue);
     }
 
-    return _nextQueue;
+    return self;
 }
 
 - (id) init {	

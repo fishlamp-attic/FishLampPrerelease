@@ -10,8 +10,9 @@
 #import "FishLampMinimum.h"
 #import "FLAsyncBlockTypes.h"
 #import "FLPromisedResult.h"
-#import "FLPromise.h"
-#import "FLFinisher.h"
+
+@class FLFinisher;
+@class FLPromise;
 
 @protocol FLQueueableAsyncOperation;
 

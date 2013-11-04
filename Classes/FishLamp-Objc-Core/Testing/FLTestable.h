@@ -89,6 +89,7 @@
 @end
 
 extern void FLTestableSetLogger(id<FLStringFormatter> logger);
+
 extern id<FLStringFormatter> FLTestLogger();
 
 /**

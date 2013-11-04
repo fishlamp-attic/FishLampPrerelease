@@ -215,6 +215,13 @@
 - (FLFinisher*) finisher {
     return self;
 }
+
+- (void) wasAddedToContext:(id) context {
+}
+
+- (void) wasRemovedFromContext:(id) context {
+}
+
 @end
 
 @implementation FLQueuableFinisherBlockOperation
@@ -253,4 +260,11 @@
     [self startAsyncOperationInQueue:queue];
     return self.result;
 }
+
+- (void) wasAddedToContext:(id) context {
+}
+
+- (void) wasRemovedFromContext:(id) context {
+}
+
 @end

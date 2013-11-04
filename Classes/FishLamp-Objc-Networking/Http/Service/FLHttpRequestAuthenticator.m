@@ -40,7 +40,7 @@
     return [self.delegate httpRequestAuthenticatorGetUser:self];
 }
 
-- (FLOperationContext*) operationContext {
+- (id<FLOperationContext>) operationContext {
     return [self.delegate httpRequestAuthenticatorGetOperationContext:self];
 }
 

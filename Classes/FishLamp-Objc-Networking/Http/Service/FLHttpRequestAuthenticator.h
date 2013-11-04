@@ -32,14 +32,14 @@
 
 - (BOOL) credentialsNeedAuthentication:(FLHttpUser*) user;
 
-@property (readonly, assign, nonatomic) FLOperationContext* operationContext;
+@property (readonly, assign, nonatomic) id<FLOperationContext> operationContext;
 @property (readonly, assign, nonatomic) FLHttpUser* httpUser;
 
 @end
 
 @protocol FLHttpRequestAuthenticatorDelegate <NSObject>
 
-- (FLOperationContext*) httpRequestAuthenticatorGetOperationContext:(FLHttpRequestAuthenticator*) context;
+- (id<FLOperationContext>) httpRequestAuthenticatorGetOperationContext:(FLHttpRequestAuthenticator*) context;
 
 - (FLHttpUser*) httpRequestAuthenticatorGetUser:(FLHttpRequestAuthenticator*) service;
 

@@ -31,9 +31,9 @@ int FLTTestToolMain(int argc, const char *argv[], NSString* bundleIdentifier, NS
 
             FLTestableSetLogger(logger);
 
-            FLOperationContext* testContext = [FLOperationContext operationContext];
+            id<FLOperationContext> testContext = [FLOperationContext operationContext];
 
-            FLPromisedResult result = [testContext runOperation:[FLTRunAllTestsOperation testRunner]];
+            FLPromisedResult result = [testContext runSynchronously:[FLTRunAllTestsOperation testRunner]];
 
             if([result isError]) {
                 return 1;

@@ -39,7 +39,7 @@
 
 - (FLPromisedResult) runSynchronously {
     for(FLOperation* operation in _operations) {
-        [self.context runOperation:operation];
+        [self.context runSynchronously:operation];
     }
     
     return [FLSuccessfulResult successfulResult];

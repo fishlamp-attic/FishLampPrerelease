@@ -81,10 +81,12 @@ static NSInteger s_max = 0;
     }
 #endif
 
+#if !OS_OBJECT_USE_OBJC
     if(_semaphore) {
         dispatch_release(_semaphore);
     }
-    
+#endif
+
 #if FL_MRC
     [_nextPromise release];
     [_completion release];

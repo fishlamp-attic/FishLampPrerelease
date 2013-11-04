@@ -9,6 +9,7 @@
 
 #import "FLCoreRequired.h"
 #import "FLSelector.h"
+//#import "FLOperationContext.h"
 
 @protocol FLTestable;
 @protocol FLTestCaseList;
@@ -28,5 +29,10 @@
 @property (readonly, assign, nonatomic) BOOL isDisabled;
 @property (readonly, strong, nonatomic) NSString* disabledReason;
 - (void) disable:(NSString*) reason;
+
+/*!
+ *  For async tests.
+ */
+- (void) setFinished;
 
 @end

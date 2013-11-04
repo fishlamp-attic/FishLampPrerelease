@@ -55,13 +55,13 @@
 }
 
 - (void) dealloc {
-    if(_context) {
-        FLOperationContext* context = _context;
-        _context = nil;
-        [context removeOperation:self];
-        
-        FLLog(@"Operation last ditch removal from context: %@", [self description]);
-    }
+//    if(_context) {
+//        id<FLOperationContext> context = _context;
+//        _context = nil;
+//        [context removeOperation:self];
+//        
+//        FLLog(@"Operation last ditch removal from context: %@", [self description]);
+//    }
     _finisher.operation = nil;
 
 #if FL_MRC
@@ -132,33 +132,38 @@
     self.cancelled = YES;
 }
 
-- (void) setContext:(FLOperationContext*) context {
-    if(context) {
-        [context queueOperation:self];
-    }
-    else {
-        [self.context removeOperation:self];
+- (void) removeContext:(id) context {
+    FLAssertNotNil(context);
+
+    if(_context && context == _context) {
+        _context = nil;
+        [self wasRemovedFromContext:context];
     }
 }
 
+- (void) setContext:(id) context {
+
+    if(context != _context) {
+
+        if(_context) {
+            [self removeContext:_context];
+        }
+
+        _context = context;
+
+        if(_context) {
+            [self wasAddedToContext:_context];
+        }
+    }
+}
 
 - (void) willStartOperation {
 }
 
-
-- (void) wasAddedToContext:(FLOperationContext*) context {
-    FLAssertNotNil(context);
-    if(_context != context) {
-        _context = context;
-    }
+- (void) wasAddedToContext:(id) context {
 }
 
-- (void) wasRemovedFromContext:(FLOperationContext*) context {
-    FLAssertNotNil(context);
-
-    if(_context == context) {
-        _context = nil;
-    }
+- (void) wasRemovedFromContext:(id) context {
 }
 
 - (id) objectFromResult:(id) result {

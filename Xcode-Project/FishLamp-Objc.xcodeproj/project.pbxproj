@@ -1752,11 +1752,6 @@
 		27CF85C818256648002B5C3E /* FLTStaticTestMethodRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856718256648002B5C3E /* FLTStaticTestMethodRunner.m */; };
 		27CF85C918256648002B5C3E /* FLTStaticTestMethodRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856718256648002B5C3E /* FLTStaticTestMethodRunner.m */; };
 		27CF85CA18256648002B5C3E /* FLTStaticTestMethodRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856718256648002B5C3E /* FLTStaticTestMethodRunner.m */; };
-		27CF85CB18256648002B5C3E /* FLTRunTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunTestOperation.m */; };
-		27CF85CC18256648002B5C3E /* FLTRunTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunTestOperation.m */; };
-		27CF85CD18256648002B5C3E /* FLTRunTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunTestOperation.m */; };
-		27CF85CE18256648002B5C3E /* FLTRunTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunTestOperation.m */; };
-		27CF85CF18256648002B5C3E /* FLTRunTestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856918256648002B5C3E /* FLTRunTestOperation.m */; };
 		27CF85D018256648002B5C3E /* FLTTestToolMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856B18256648002B5C3E /* FLTTestToolMain.m */; };
 		27CF85D118256648002B5C3E /* FLTTestToolMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856B18256648002B5C3E /* FLTTestToolMain.m */; };
 		27CF85D218256648002B5C3E /* FLTTestToolMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF856B18256648002B5C3E /* FLTTestToolMain.m */; };
@@ -2685,8 +2680,6 @@
 		27CF856518256648002B5C3E /* FLTSortedTestGroupList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTSortedTestGroupList.m; sourceTree = "<group>"; };
 		27CF856618256648002B5C3E /* FLTStaticTestMethodRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTStaticTestMethodRunner.h; sourceTree = "<group>"; };
 		27CF856718256648002B5C3E /* FLTStaticTestMethodRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTStaticTestMethodRunner.m; sourceTree = "<group>"; };
-		27CF856818256648002B5C3E /* FLTRunTestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTRunTestOperation.h; sourceTree = "<group>"; };
-		27CF856918256648002B5C3E /* FLTRunTestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTRunTestOperation.m; sourceTree = "<group>"; };
 		27CF856A18256648002B5C3E /* FLTTestToolMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTTestToolMain.h; sourceTree = "<group>"; };
 		27CF856B18256648002B5C3E /* FLTTestToolMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTTestToolMain.m; sourceTree = "<group>"; };
 		27CF85E31825965C002B5C3E /* FLTestGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestGroup.h; sourceTree = "<group>"; };
@@ -4465,8 +4458,6 @@
 				27CF856118256648002B5C3E /* FLTRunAllTestsOperation.m */,
 				27CF856618256648002B5C3E /* FLTStaticTestMethodRunner.h */,
 				27CF856718256648002B5C3E /* FLTStaticTestMethodRunner.m */,
-				27CF856818256648002B5C3E /* FLTRunTestOperation.h */,
-				27CF856918256648002B5C3E /* FLTRunTestOperation.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -5157,7 +5148,6 @@
 				2767DE1618132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBEB18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD5D18132B1C001EF21C /* FLServiceList.m in Sources */,
-				27CF85CC18256648002B5C3E /* FLTRunTestOperation.m in Sources */,
 				2767DBD218132B1C001EF21C /* FLPropertyDescriber.m in Sources */,
 				2767DC2218132B1C001EF21C /* FLHttpUser.m in Sources */,
 				27CF85C218256648002B5C3E /* FLTSortedTestGroupList.m in Sources */,
@@ -5540,7 +5530,6 @@
 				2767DE1818132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBED18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD5F18132B1C001EF21C /* FLServiceList.m in Sources */,
-				27CF85CE18256648002B5C3E /* FLTRunTestOperation.m in Sources */,
 				2767DBD418132B1C001EF21C /* FLPropertyDescriber.m in Sources */,
 				2767DC2418132B1C001EF21C /* FLHttpUser.m in Sources */,
 				27CF85C418256648002B5C3E /* FLTSortedTestGroupList.m in Sources */,
@@ -5937,7 +5926,6 @@
 				2767DE1518132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBEA18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD5C18132B1C001EF21C /* FLServiceList.m in Sources */,
-				27CF85CB18256648002B5C3E /* FLTRunTestOperation.m in Sources */,
 				2767DBD118132B1C001EF21C /* FLPropertyDescriber.m in Sources */,
 				2767DC2118132B1C001EF21C /* FLHttpUser.m in Sources */,
 				27CF85C118256648002B5C3E /* FLTSortedTestGroupList.m in Sources */,
@@ -6288,7 +6276,6 @@
 				2767DE1718132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBEC18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD5E18132B1C001EF21C /* FLServiceList.m in Sources */,
-				27CF85CD18256648002B5C3E /* FLTRunTestOperation.m in Sources */,
 				2767DBD318132B1C001EF21C /* FLPropertyDescriber.m in Sources */,
 				2767DC2318132B1C001EF21C /* FLHttpUser.m in Sources */,
 				27CF85C318256648002B5C3E /* FLTSortedTestGroupList.m in Sources */,
@@ -6639,7 +6626,6 @@
 				2767DE1918132B1C001EF21C /* FLTimer.m in Sources */,
 				2767DBEE18132B1C001EF21C /* FLNetworkHost.m in Sources */,
 				2767DD6018132B1C001EF21C /* FLServiceList.m in Sources */,
-				27CF85CF18256648002B5C3E /* FLTRunTestOperation.m in Sources */,
 				2767DBD518132B1C001EF21C /* FLPropertyDescriber.m in Sources */,
 				2767DC2518132B1C001EF21C /* FLHttpUser.m in Sources */,
 				27CF85C518256648002B5C3E /* FLTSortedTestGroupList.m in Sources */,

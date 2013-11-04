@@ -93,7 +93,7 @@
 + (id) fifoAsyncQueue;
 @end
 
-#define FLTimeIntervalToNanoSeconds(TIME_INTERVAL) (TIME_INTERVAL * NSEC_PER_USEC * NSEC_PER_SEC)
+#define FLTimeIntervalToNanoSeconds(TIME_INTERVAL) (TIME_INTERVAL * NSEC_PER_SEC)
 
 #define FLForegroundQueue       [FLDispatchQueue mainThreadQueue]
 #define FLBackgroundQueue       [FLDispatchQueue defaultQueue]

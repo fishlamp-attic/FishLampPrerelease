@@ -7,13 +7,14 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 #import "FishLampMinimum.h"
+
 #import "FLAsyncBlockTypes.h"
-#import "FLPromisedResult.h"
-#import "FLFinishable.h"
+#import "FLAsyncQueue.h"
 #import "FLBroadcaster.h"
+#import "FLFinishable.h"
+#import "FLPromisedResult.h"
 #import "FLSuccessfulResult.h"
 #import "NSError+FLFailedResult.h"
-#import "FLAsyncQueue.h"
 
 @class FLOperationContext;
 @class FLOperationFinisher;
@@ -22,7 +23,7 @@
 @private
     FLOperationFinisher* _finisher;
     BOOL _cancelled;
-    __unsafe_unretained FLOperationContext* _context;
+    __unsafe_unretained id _context;
 }
 
 /*!
@@ -46,7 +47,6 @@
  *  someone has cancelled you. stop, and be quick about it.
  */
 - (void) requestCancel;
-
 
 //
 // Override either startOperation or runSynchronously.
@@ -85,19 +85,20 @@
  */
 - (void) abortIfCancelled;
 
+
 /*!
  *  Called when this operation is added to a context.
  *  
  *  @param context the context
  */
-- (void) wasAddedToContext:(FLOperationContext*) context;
+- (void) wasAddedToContext:(id) context;
 
 /*!
  *  Called when this operation is removed from a context
  *  
  *  @param context the context
  */
-- (void) wasRemovedFromContext:(FLOperationContext*) context;
+- (void) wasRemovedFromContext:(id) context;
 
 @end
 

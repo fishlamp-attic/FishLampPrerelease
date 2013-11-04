@@ -23,17 +23,11 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 @interface FLOperationContext ()
 @property (readwrite, assign, getter=isContextOpen) BOOL contextOpen; 
 
-- (void) queueOperation:(FLOperation*) operation;
-- (void) removeOperation:(FLOperation*) operation;
 - (void) visitOperations:(FLOperationVisitor) visitor;
-
-@end
-
-@interface FLOperation (Protected)
-- (void) setContext:(id) context;
 @end
 
 @implementation FLOperationContext
+
 @synthesize contextOpen = _contextOpen;
 
 - (id) init {
@@ -101,13 +95,13 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
     self.contextOpen = NO;
 }
 
-- (void) didAddOperation:(FLOperation*) operation {
+- (void) didAddOperation:(id<FLOperationContext>) operation {
 }
 
-- (void) didRemoveOperation:(FLOperation*) operation {
+- (void) didRemoveOperation:(id<FLOperationContext>) operation {
 }
 
-- (void) queueOperation:(FLOperation*) operation  {
+- (void) addOperation:(id) operation  {
 
     FLAssertNotNil(operation);
 
@@ -116,15 +110,11 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 #if TRACE
         FLLog(@"Operation added to context: %@", [operation description]);
 #endif
-
-       
         [_operations addObject:operation];
-         
-        FLOperationContext* oldContext = operation.context;
-        if(oldContext && oldContext != self) {
-            [operation.context removeOperation:operation];
+
+        if([operation respondsToSelector:@selector(setContext:)]) {
+            [operation setContext:self];
         }
-        [operation wasAddedToContext:self];
     }
 
     [self didAddOperation:operation];
@@ -134,7 +124,7 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
     }
 }
 
-- (void) removeOperation:(FLOperation*) operation {
+- (void) removeOperation:(id) operation {
 
     FLAssertNotNil(operation);
 
@@ -145,36 +135,38 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 #endif
 
         [_operations removeObject:FLRetainWithAutorelease(operation)];
-        if(operation.context == self) {
-            [operation wasRemovedFromContext:self];
+
+        if([operation respondsToSelector:@selector(removeContext:)]) {
+            [operation removeContext:nil];
         }
     }
     
     [self didRemoveOperation:operation];
 }
 
-- (id<FLAsyncQueue>) asyncQueueForOperation:(FLOperation*) operation {
+- (id<FLAsyncQueue>) asyncQueueForOperation:(id) operation {
     return FLDefaultQueue;
 }
 
-- (FLPromise*) beginOperation:(FLOperation*) operation
-                   completion:(fl_completion_block_t) completion {
-
-    FLAssertNotNil(operation);
-    [self queueOperation:operation];
-
-// TODO: provide way to specify queue
-    return [[self asyncQueueForOperation:operation] queueObject:operation completion:completion];
-}
-
-- (FLPromisedResult) runOperation:(FLOperation*) operation {
-
+- (FLPromisedResult) runSynchronously:(id<FLQueueableAsyncOperation>) operation {
     FLAssertNotNil(operation);
 
-    [self queueOperation:operation];
+    [self addOperation:operation];
 
 // TODO: provide way to specify queue
     return [[self asyncQueueForOperation:operation] runSynchronously:operation];
+}
+
+
+- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) operation
+                 withDelay:(NSTimeInterval) delay
+                completion:(fl_completion_block_t) completion {
+
+    FLAssertNotNil(operation);
+    [self addOperation:operation];
+
+// TODO: provide way to specify queue
+    return [[self asyncQueueForOperation:operation] queueObject:operation completion:completion];
 }
 
 @end
