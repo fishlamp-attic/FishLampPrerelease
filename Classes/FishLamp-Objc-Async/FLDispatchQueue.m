@@ -15,10 +15,6 @@
 #import "FLQueueableAsyncOperation.h"
 #import "FLOperationStarter.h"
 
-@interface FLDefaultOperationStarter : NSObject<FLOperationStarter>
-FLSingletonProperty(FLDefaultOperationStarter);
-@end
-
 @implementation FLDispatchQueue
 
 @synthesize dispatch_queue_t = _dispatch_queue;
@@ -243,7 +239,7 @@ FLSingletonProperty(FLDefaultOperationStarter);
 }
 
 + (id<FLOperationStarter>) defaultOperationStarter {
-    return [FLDefaultOperationStarter instance];
+    return [self defaultQueue];
 }
 
 @end
@@ -266,14 +262,3 @@ FLSingletonProperty(FLDefaultOperationStarter);
 @end
 
 
-@implementation FLDefaultOperationStarter
-FLSynthesizeSingleton(FLDefaultOperationStarter);
-
-- (FLPromisedResult) runSynchronously:(id<FLQueueableAsyncOperation>) operation {
-    return [FLDefaultQueue runSynchronously:operation];
-}
-- (FLPromise*) startOperation:(id<FLQueueableAsyncOperation>) operation withDelay:(NSTimeInterval) delay completion:(fl_completion_block_t) completion {
-    return [FLDefaultQueue queueOperation:operation withDelay:delay completion:completion];
-}
-
-@end

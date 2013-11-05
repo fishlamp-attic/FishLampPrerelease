@@ -185,6 +185,11 @@
     return [self queueOperation:object withDelay: delay completion:completionOrNil];
 }
 
+- (FLPromisedResult) runOperationSynchronously:(id<FLQueueableAsyncOperation>) asyncObject {
+    return [self runSynchronously:asyncObject];
+}
+
+
 @end
 
 @implementation FLQueueableBlockOperation

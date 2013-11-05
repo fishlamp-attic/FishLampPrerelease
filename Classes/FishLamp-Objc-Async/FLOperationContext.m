@@ -165,7 +165,7 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
     [self addOperation:operation];
 
 // TODO: provide way to specify queue
-    return [[self starterForOperation:operation] runSynchronously:operation];
+    return [[self starterForOperation:operation] runOperationSynchronously:operation];
 }
 
 
