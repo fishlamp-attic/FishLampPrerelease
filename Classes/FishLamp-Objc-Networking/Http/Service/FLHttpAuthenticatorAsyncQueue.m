@@ -55,7 +55,7 @@
 }
 #endif
 
-- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) object
+- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) object
                  withDelay:(NSTimeInterval) delay
                 completion:(fl_completion_block_t) completionOrNil {
 
@@ -63,7 +63,7 @@
         [((id)object) setHttpRequestAuthenticator:self.authenticator];
     }
 
-    return [super queueObject:object withDelay:delay completion:completionOrNil];
+    return [super queueOperation:object withDelay:delay completion:completionOrNil];
 }
 
 @end

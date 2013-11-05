@@ -7,6 +7,7 @@
 //
 
 #import "FLAbstractAsyncQueue.h"
+#import "FLQueueableAsyncOperation.h"
 
 @interface FLQueueableBlockOperation : FLFinisher<FLQueueableAsyncOperation> {
 @private
@@ -31,43 +32,43 @@
                              block:(fl_block_t) block
                         completion:(fl_completion_block_t) completion {
 
-    return [self queueObject:[FLQueueableBlockOperation queueableBlockOperation:block] withDelay:delay completion:completion];
+    return [self queueOperation:[FLQueueableBlockOperation queueableBlockOperation:block] withDelay:delay completion:completion];
 }
 
 - (FLPromise*) queueBlockWithDelay:(NSTimeInterval) delay
                              block:(fl_block_t) block {
-    return [self queueObject:[FLQueueableBlockOperation queueableBlockOperation:block] withDelay:0 completion:nil];
+    return [self queueOperation:[FLQueueableBlockOperation queueableBlockOperation:block] withDelay:0 completion:nil];
 }
 
 - (FLPromise*) queueBlock:(fl_block_t) block {
-    return [self queueObject:[FLQueueableBlockOperation queueableBlockOperation:block] withDelay:0 completion:nil];
+    return [self queueOperation:[FLQueueableBlockOperation queueableBlockOperation:block] withDelay:0 completion:nil];
 }
 
 - (FLPromise*) queueBlock:(fl_block_t) block
                completion:(fl_completion_block_t) completionOrNil {
-    return [self queueObject:[FLQueueableBlockOperation queueableBlockOperation:block] withDelay:0 completion:completionOrNil];
+    return [self queueOperation:[FLQueueableBlockOperation queueableBlockOperation:block] withDelay:0 completion:completionOrNil];
 }
 
 - (FLPromise*) queueFinishableBlock:(fl_finisher_block_t) block
                          completion:(fl_completion_block_t) completionOrNil {
-    return [self queueObject:[FLQueuableFinisherBlockOperation queueableFinisherBlockOperation:block] withDelay:0 completion:completionOrNil];
+    return [self queueOperation:[FLQueuableFinisherBlockOperation queueableFinisherBlockOperation:block] withDelay:0 completion:completionOrNil];
 }
 
 - (FLPromise*) queueFinishableBlock:(fl_finisher_block_t) block {
-    return [self queueObject:[FLQueuableFinisherBlockOperation queueableFinisherBlockOperation:block] withDelay:0 completion:nil];
+    return [self queueOperation:[FLQueuableFinisherBlockOperation queueableFinisherBlockOperation:block] withDelay:0 completion:nil];
 }
 
-- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) object
+- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) object
                 completion:(fl_completion_block_t) completionOrNil {
     FLAssertNotNil(object);
 
-    return [self queueObject:object withDelay:0 completion:completionOrNil];
+    return [self queueOperation:object withDelay:0 completion:completionOrNil];
 }
 
-- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) object {
+- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) object {
     FLAssertNotNil(object);
 
-    return [self queueObject:object withDelay:0 completion:nil];
+    return [self queueOperation:object withDelay:0 completion:nil];
 }
 
 #pragma GCC diagnostic push
@@ -168,12 +169,20 @@
 }
 
 
-- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) object
+- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) object
                  withDelay:(NSTimeInterval) delay
                 completion:(fl_completion_block_t) completionOrNil {
     FLAssertNotNil(object);
 
     return nil;
+}
+
+- (FLPromise*) startOperation:(id<FLQueueableAsyncOperation>) object
+                 withDelay:(NSTimeInterval) delay
+                completion:(fl_completion_block_t) completionOrNil {
+    FLAssertNotNil(object);
+
+    return [self queueOperation:object withDelay: delay completion:completionOrNil];
 }
 
 @end

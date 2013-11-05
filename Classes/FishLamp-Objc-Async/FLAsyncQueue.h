@@ -10,13 +10,14 @@
 #import "FishLampMinimum.h"
 #import "FLAsyncBlockTypes.h"
 #import "FLPromisedResult.h"
+#import "FLOperationStarter.h"
 
 @class FLFinisher;
 @class FLPromise;
 
 @protocol FLQueueableAsyncOperation;
 
-@protocol FLAsyncQueue <NSObject>
+@protocol FLAsyncQueue <NSObject, FLOperationStarter>
 
 - (FLPromise*) queueBlockWithDelay:(NSTimeInterval) delay
                              block:(fl_block_t) block
@@ -35,14 +36,14 @@
 
 - (FLPromise*) queueFinishableBlock:(fl_finisher_block_t) block;
 
-- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) operation
+- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) operation
                  withDelay:(NSTimeInterval) delay
                 completion:(fl_completion_block_t) completionOrNil;
 
-- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) operation
+- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) operation
                 completion:(fl_completion_block_t) completionOrNil;
 
-- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) operation;
+- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) operation;
 
 - (FLPromise*) queueTarget:(id) target
                  action:(SEL) action;
@@ -77,12 +78,5 @@
 
 @end
 
-@protocol FLQueueableAsyncOperation <NSObject>
-- (FLFinisher*) finisher;
-
-- (void) startAsyncOperationInQueue:(id<FLAsyncQueue>) queue;
-
-- (FLPromisedResult) runSynchronousOperationInQueue:(id<FLAsyncQueue>) queue;
-@end
 
 

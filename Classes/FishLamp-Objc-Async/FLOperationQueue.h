@@ -53,7 +53,7 @@
 ///    2. iterate through operationQueue's factory list.
 - (void) queueObject:(id) object;
 
-///    see queueObject comment.
+///    see queueOperation comment.
 ///    Note it is more efficient to send in an array than individual objects.
 - (void) queueObjectsInArray:(NSArray*) queuedObjects;
 

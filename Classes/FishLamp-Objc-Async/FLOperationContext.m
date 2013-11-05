@@ -13,6 +13,7 @@
 #import "FLDispatchQueue.h"
 #import "FLAsyncQueue.h"
 #import "FLOperation.h"
+#import "FLOperationStarter.h"
 
 //#define TRACE 1
 
@@ -29,12 +30,14 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 @implementation FLOperationContext
 
 @synthesize contextOpen = _contextOpen;
+@synthesize operationStarter = _operationStarter;
 
 - (id) init {
     self = [super init];
     if(self) {
         _operations = [[NSMutableSet alloc] init];
         _contextOpen = YES;
+        self.operationStarter = [FLDispatchQueue defaultOperationStarter];
     }
     
     return self;
@@ -42,6 +45,7 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 
 - (void) dealloc {
 #if FL_MRC
+    [_operationStarter release];
     [_operations release];
     [super dealloc];
 #endif
@@ -144,8 +148,15 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
     [self didRemoveOperation:operation];
 }
 
-- (id<FLAsyncQueue>) asyncQueueForOperation:(id) operation {
-    return FLDefaultQueue;
+- (id<FLOperationStarter>) starterForOperation:(id) operation {
+
+    id<FLOperationStarter> starter = nil;
+
+    if([operation respondsToSelector:@selector(operationStarter)]) {
+        starter = [operation operationStarter];
+    }
+
+    return starter ? starter : self.operationStarter;
 }
 
 - (FLPromisedResult) runSynchronously:(id<FLQueueableAsyncOperation>) operation {
@@ -154,11 +165,11 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
     [self addOperation:operation];
 
 // TODO: provide way to specify queue
-    return [[self asyncQueueForOperation:operation] runSynchronously:operation];
+    return [[self starterForOperation:operation] runSynchronously:operation];
 }
 
 
-- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) operation
+- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) operation
                  withDelay:(NSTimeInterval) delay
                 completion:(fl_completion_block_t) completion {
 
@@ -166,7 +177,7 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
     [self addOperation:operation];
 
 // TODO: provide way to specify queue
-    return [[self asyncQueueForOperation:operation] queueObject:operation completion:completion];
+    return [[self starterForOperation:operation] startOperation:operation withDelay:delay completion:completion];
 }
 
 @end

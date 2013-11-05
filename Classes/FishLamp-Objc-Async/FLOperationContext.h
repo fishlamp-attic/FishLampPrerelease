@@ -15,6 +15,7 @@
 
 @class FLOperation;
 @class FLPromise;
+@protocol FLOperationStarter;
 
 @protocol FLOperationContext <FLAsyncQueue>
 
@@ -33,8 +34,11 @@
 @private
     NSMutableSet* _operations;
     BOOL _contextOpen;
+
+    id<FLOperationStarter> _operationStarter;
 }
 @property (readonly, assign, getter=isContextOpen) BOOL contextOpen; 
+@property (readwrite, strong) id<FLOperationStarter> operationStarter;
 
 + (id) operationContext;
 

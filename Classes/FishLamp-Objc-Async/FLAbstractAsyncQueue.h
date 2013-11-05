@@ -13,7 +13,7 @@
 
 @interface FLAbstractAsyncQueue : FLBroadcaster<FLAsyncQueue>
 
-- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) operation
+- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) operation
                  withDelay:(NSTimeInterval) delay
                 completion:(fl_completion_block_t) completionOrNil;
 

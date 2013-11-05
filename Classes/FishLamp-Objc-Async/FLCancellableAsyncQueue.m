@@ -30,7 +30,7 @@
 }
 #endif
 
-- (FLPromise*) queueObject:(id) object
+- (FLPromise*) queueOperation:(id) object
                  withDelay:(NSTimeInterval) delay
                 completion:(fl_completion_block_t) completionOrNil {
 
@@ -42,7 +42,7 @@
         }
     }
 
-    return [super queueObject:object withDelay:delay completion:completionOrNil];
+    return [super queueOperation:object withDelay:delay completion:completionOrNil];
 }
 
 - (void) requestCancel {

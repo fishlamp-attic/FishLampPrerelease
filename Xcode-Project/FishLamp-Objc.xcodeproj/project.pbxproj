@@ -2696,6 +2696,8 @@
 		27CF863F182747E3002B5C3E /* FLAbstractAsyncQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAbstractAsyncQueue.m; sourceTree = "<group>"; };
 		27D79396181EC3DB0046E5DA /* FLTestableRunOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTestableRunOrder.h; sourceTree = "<group>"; };
 		27D793A0181ED5A20046E5DA /* FLAssertUndef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAssertUndef.h; sourceTree = "<group>"; };
+		27EBEA5C182962A80020F177 /* FLQueueableAsyncOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLQueueableAsyncOperation.h; sourceTree = "<group>"; };
+		27EBEA63182966FE0020F177 /* FLOperationStarter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLOperationStarter.h; sourceTree = "<group>"; };
 		B214727B17DE7BBC00985872 /* FishLamp-Objc-iOS-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-iOS-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B263E0E317DE7CF80049EF94 /* PiecemealCompilerFlagOverrides.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PiecemealCompilerFlagOverrides.h; sourceTree = "<group>"; };
 		B263E0E417DE7D4C0049EF94 /* PiecemealCompilerFlagOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PiecemealCompilerFlagOverrides.h; path = "Piecemeal-XcodeConfigs/PiecemealCompilerFlagOverrides.h"; sourceTree = "<group>"; };
@@ -3030,6 +3032,8 @@
 				27188BD018148A820060FED6 /* NSError+FLFailedResult.m */,
 				27CF863E182747E3002B5C3E /* FLAbstractAsyncQueue.h */,
 				27CF863F182747E3002B5C3E /* FLAbstractAsyncQueue.m */,
+				27EBEA5C182962A80020F177 /* FLQueueableAsyncOperation.h */,
+				27EBEA63182966FE0020F177 /* FLOperationStarter.h */,
 			);
 			path = "FishLamp-Objc-Async";
 			sourceTree = "<group>";

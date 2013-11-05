@@ -256,7 +256,7 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
     FLAssertNotNil(self.context);
 
 // TODO: give operations chance to run in whatever queue they want?
-    [self.context queueObject:operation
+    [self.context queueOperation:operation
                         completion:^(FLPromisedResult result) {
 
         [self.schedulingQueue queueBlock: ^{

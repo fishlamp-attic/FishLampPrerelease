@@ -12,6 +12,12 @@
 #import "FLFinisher.h"
 #import "FLPromisedResult.h"
 #import "FLPromise.h"
+#import "FLQueueableAsyncOperation.h"
+#import "FLOperationStarter.h"
+
+@interface FLDefaultOperationStarter : NSObject<FLOperationStarter>
+FLSingletonProperty(FLDefaultOperationStarter);
+@end
 
 @implementation FLDispatchQueue
 
@@ -95,7 +101,7 @@
     return [NSString stringWithFormat:@"%@ %@", [super description], self.label];
 }
 
-- (FLPromise*) queueObject:(id<FLQueueableAsyncOperation>) operation
+- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) operation
                  withDelay:(NSTimeInterval) delay
                 completion:(fl_completion_block_t) completion {
 
@@ -236,6 +242,10 @@
     FLReturnStaticObject([[FLFifoAsyncQueue alloc] init]);
 }
 
++ (id<FLOperationStarter>) defaultOperationStarter {
+    return [FLDefaultOperationStarter instance];
+}
+
 @end
 
 @implementation FLFifoAsyncQueue  
@@ -256,184 +266,14 @@
 @end
 
 
+@implementation FLDefaultOperationStarter
+FLSynthesizeSingleton(FLDefaultOperationStarter);
 
-#if DEPRECATED
-//- (FLPromisedResult) runBlockSynchronously:(dispatch_block_t) block {
-//
-//    __block NSError* error = nil;
-//    
-//    FLPrepareBlockForFutureUse(block);
-//    
-//    dispatch_sync(self.dispatch_queue_t, ^{
-//        @try {
-//            block();
-//        }
-//        @catch(NSException* ex) {
-//            error = ex.error;
-//        }
-//    });
-//    
-//    FLThrowIfError(error);
-//}
+- (FLPromisedResult) runSynchronously:(id<FLQueueableAsyncOperation>) operation {
+    return [FLDefaultQueue runSynchronously:operation];
+}
+- (FLPromise*) startOperation:(id<FLQueueableAsyncOperation>) operation withDelay:(NSTimeInterval) delay completion:(fl_completion_block_t) completion {
+    return [FLDefaultQueue queueOperation:operation withDelay:delay completion:completion];
+}
 
-//- (FLPromisedResult) runFinisherBlockSynchronously:(fl_finisher_block_t) block {
-//
-//    __block FLPromisedResult outResult = nil;
-//    __block FLFinisher* finisher = [FLFinisher finisherWithBlock:^(FLPromisedResult result) {
-//        outResult = FLRetain(result);
-//    }];
-//    FLAssertNotNil(finisher);
-//
-//    FLPrepareBlockForFutureUse(block);
-//
-//    FLRetain(finisher);
-//    dispatch_sync(self.dispatch_queue_t, ^{
-//        @try {
-//            block(finisher);
-//        }
-//        @catch(NSException* ex) {
-//            [finisher setFinishedWithResult:ex.error];
-//        }
-//
-//        FLReleaseWithNil(finisher);
-//    });
-//    
-//    return FLAutorelease(outResult);
-//}
-
-//- (FLPromise*) queueBlock:(fl_block_t) block {
-//    return [self queueBlock:block completion:nil];
-//}
-
-//- (FLPromise*) queueBlock:(fl_block_t) block
-//                completion:(fl_completion_block_t) completion {
-//
-//    __block FLFinisher* finisher = [FLFinisher finisherWithBlock:completion];
-//    FLAssertNotNil(finisher);
-//
-//    FLPrepareBlockForFutureUse(block);
-//
-//    FLRetain(finisher);
-//    dispatch_async(_dispatch_queue, ^{
-//        @try {
-//            if(block) {
-//                block();
-//            }
-//            [finisher setFinished];
-//        }
-//        @catch(NSException* ex) {
-//            [finisher setFinishedWithResult:ex.error];
-//        }
-//
-//        FLReleaseWithNil(finisher);
-//    });
-//
-//
-//    return finisher;
-//}
-
-//- (FLPromise*) queueFinishableBlock:(fl_finisher_block_t) block
-//                          completion:(fl_completion_block_t) completion {
-//
-//    __block FLFinisher* theFinisher = [FLFinisher finisherWithBlock:completion];
-//    FLAssertNotNil(theFinisher);
-//
-//    FLPrepareBlockForFutureUse(block);
-//
-//    FLRetain(theFinisher);
-//    [self dispatch_async:^{
-//        @try {
-//            if(block) {
-//                block(theFinisher);
-//            }
-//        }
-//        @catch(NSException* ex) {
-//            [theFinisher setFinishedWithResult:ex.error];
-//        }
-//
-//        FLReleaseWithNil(theFinisher);
-//    }];
-//
-//    return theFinisher;
-//}
-
-//- (FLPromise*) queueFinishableBlock:(fl_finisher_block_t) block {
-//    return [self queueFinishableBlock:block completion:nil];
-//}
-
-//- (FLPromise*) queueBlockWithDelay:(NSTimeInterval) delay
-//                             block:(fl_block_t) block
-//                        completion:(fl_completion_block_t) completion {
-//
-//    __block FLFinisher* finisher = [FLFinisher finisherWithBlock:completion];
-//    FLAssertNotNil(finisher);
-//
-//    FLRetain(finisher);
-//    [self dispatch_after:delay block:^{
-//        @try {
-//            
-//            if(block) {
-//                block();
-//            }
-//            [finisher setFinished];
-//        }
-//        @catch(NSException* ex) {
-//            [finisher setFinishedWithResult:ex.error];
-//        }
-//
-//        FLReleaseWithNil(finisher);
-//    }];
-//
-//    return finisher;
-//}
-
-
-//- (FLPromise*) queueBlockWithDelay:(NSTimeInterval) delay
-//                             block:(fl_block_t) block {
-//    return [self queueBlockWithDelay:delay block:block completion:nil];
-//}
-//
-//- (FLPromise*) queueOperation:(id<FLDispatchable>) operation
-//                   completion:(fl_result_block_t) completion {
-//
-//    FLAssertNotNil(operation);
-//    
-//    __block FLFinisher* theFinisher = FLRetain([operation asyncQueueWillBeginAsync:self]);
-//    __block id<FLDispatchable> theOperation = FLRetain(operation);
-//
-//    FLPromise* promise = [theFinisher addPromiseWithBlock:completion];
-//
-//    [self dispatch_async:^{
-//        @try {
-//            [theOperation asyncQueue:self beginAsyncWithFinisher:theFinisher];
-//        }
-//        @catch(NSException* ex) {
-//            [theFinisher setFinishedWithResult:ex.error];
-//        }
-//
-//        FLReleaseWithNil(theFinisher);
-//        FLReleaseWithNil(theOperation);
-//    }];
-//    
-//    return promise;
-//}                  
-//
-//- (FLPromise*) queueOperation:(id<FLDispatchable>) operation {
-//    return [self queueOperation:operation completion:nil];
-//}
-//
-//- (FLPromisedResult) runOperationSynchronously:(id<FLDispatchable>) operation {
-//    
-//    __block FLPromisedResult theResult = nil;
-//    __block id<FLDispatchable> theOperation = FLRetainWithAutorelease(operation);
-//
-//    FLRetain(theOperation);
-//    [self dispatch_sync:^{
-//        theResult = FLRetain([theOperation runSynchronouslyInAsyncQueue:self]);
-//
-//        FLReleaseWithNil(theOperation);
-//    }];
-//    
-//    return FLAutorelease(theResult);
-//}
-#endif
+@end

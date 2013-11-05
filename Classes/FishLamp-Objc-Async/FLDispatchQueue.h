@@ -12,6 +12,7 @@
 #import "FLAbstractAsyncQueue.h"
 
 @class FLFifoAsyncQueue;
+@protocol FLOperationStarter;
 
 @interface FLDispatchQueue : FLAbstractAsyncQueue {
 @private
@@ -80,6 +81,8 @@
 
 + (FLFifoAsyncQueue*) fifoQueue;
 
++ (id<FLOperationStarter>) defaultOperationStarter;
+
 // 
 // Utils
 //
@@ -99,3 +102,4 @@
 #define FLBackgroundQueue       [FLDispatchQueue defaultQueue]
 #define FLBackgroundFifoQueue   [FLDispatchQueue fifoQueue]
 #define FLDefaultQueue          [FLDispatchQueue defaultQueue]
+

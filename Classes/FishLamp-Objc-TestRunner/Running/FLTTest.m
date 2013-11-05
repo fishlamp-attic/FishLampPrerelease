@@ -84,7 +84,7 @@
         FLTTestCase* testCase = [_queue objectAtIndex:0];
         [_queue removeObjectAtIndex:0];
 
-        [self.context queueObject:testCase completion:^(FLPromisedResult result) {
+        [self.context queueOperation:testCase completion:^(FLPromisedResult result) {
 
             if(testCase.isDisabled) {
                 NSString* reason = testCase.disabledReason;

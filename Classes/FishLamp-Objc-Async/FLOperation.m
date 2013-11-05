@@ -44,6 +44,7 @@
 @synthesize context = _context;
 @synthesize cancelled = _cancelled;
 @synthesize finisher = _finisher;
+@synthesize operationStarter = _operationStarter;
 
 - (id) init {
     self = [super init];
@@ -65,6 +66,7 @@
     _finisher.operation = nil;
 
 #if FL_MRC
+    [_operationStarter release];
 	[_finisher release];
 	[super dealloc];
 #endif

@@ -8,23 +8,43 @@
 //
 #import "FishLampMinimum.h"
 
-#import "FLAsyncBlockTypes.h"
-#import "FLAsyncQueue.h"
+// needed for declaration
 #import "FLBroadcaster.h"
+#import "FLQueueableAsyncOperation.h"
 #import "FLFinishable.h"
+
+// needed async stuff
+#import "FLAsyncBlockTypes.h"
 #import "FLPromisedResult.h"
+
+// included as convienience.
 #import "FLSuccessfulResult.h"
 #import "NSError+FLFailedResult.h"
 
 @class FLOperationContext;
 @class FLOperationFinisher;
+@protocol FLOperationStarter;
 
+/*!
+ *  This class represents a way to encapsulate a single operation, where in this context an operation is a single thing that needs to be done. This could be anything from downloading an image from a webserver, to sorting a big data set. 
+ *
+ *  Operations are executed with in a context (see FLOperationContext), which can cancel the operation.
+ *
+ *  FLOperations actually do their work in an FLAsyncQueue.
+ *
+ *  There are two ways to define an operation:
+ *  1. synchronously - override runSynchronously. These operations are best for simple tasks that are themselves not asynchrous. Like sorting a big array. When runSynchronously completes, the FLOperations is done - e.g. finishOperation is called automatically.
+ *  2. asynchronously - override startOperation. These operations are for managing tasks that are asynchronous, such as a doing someting on the network. When startOperation completes, the FLOperation is not done. The FLOperation runs until setFinished (see FLFinishable) is called.
+ */
 @interface FLOperation : FLBroadcaster<FLFinishable, FLQueueableAsyncOperation> {
 @private
     FLOperationFinisher* _finisher;
     BOOL _cancelled;
     __unsafe_unretained id _context;
+    id<FLOperationStarter> _operationStarter;
 }
+
+@property (readwrite, strong) id<FLOperationStarter> operationStarter;
 
 /*!
  *  Operations must run in a context. See FLOpertionContext.
