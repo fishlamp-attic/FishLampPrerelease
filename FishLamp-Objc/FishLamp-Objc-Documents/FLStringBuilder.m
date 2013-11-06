@@ -174,4 +174,17 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter  
     [anotherStringFormatter appendString:self.rootStringBuilder];
 }
 
+- (void) appendSection:(FLStringBuilderSection*) section
+   withSubsectionBlock:(fl_block_t) block {
+    @try {
+        [self openSection:section];
+        if(block) {
+            block();
+        }
+    }
+    @finally {
+        [self closeSection];
+    }
+}
+
 @end

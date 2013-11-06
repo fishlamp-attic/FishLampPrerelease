@@ -52,6 +52,8 @@
  */
 - (void) closeContext;
 
++ (id) defaultContext;
+
 @end
 //#import "FLPromise.h"
 //#import "FLFinisher.h"

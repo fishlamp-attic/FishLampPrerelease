@@ -21,12 +21,12 @@
     BOOL _needsLine;
     BOOL _lineOpen;
 
-    __unsafe_unretained id _parent;
-    __unsafe_unretained id _document;
+    __unsafe_unretained id _parentSection;
+    __unsafe_unretained id _stringDocument;
 }
 @property (readonly, strong, nonatomic) NSArray* lines;
-@property (readonly, assign, nonatomic) id parent;
-@property (readonly, assign, nonatomic) id document;
+@property (readonly, assign, nonatomic) id parentSection;
+@property (readonly, assign, nonatomic) id stringDocument;
 
 + (id) stringBuilderSection;
 

@@ -55,6 +55,10 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
     return FLAutorelease([[[self class] alloc] init]);
 }
 
++ (id) defaultContext {
+    FLReturnStaticObject([FLOperationContext operationContext]);
+}
+
 - (void) visitOperations:(FLOperationVisitor) visitor {
 
     FLAssertNotNil(visitor);

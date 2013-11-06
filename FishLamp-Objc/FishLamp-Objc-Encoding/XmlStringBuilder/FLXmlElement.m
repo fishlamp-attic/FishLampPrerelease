@@ -78,9 +78,9 @@
 //    }
 //
 //
-    FLAssertNotNil(self.document);
+    FLAssertNotNil(self.stringDocument);
 
-    FLStringToObjectConversionManager* encoder = [self.document dataEncoder];
+    FLStringToObjectConversionManager* encoder = [self.stringDocument dataEncoder];
     FLAssertNotNil(encoder);
 
     return encoder;
@@ -88,9 +88,9 @@
 
 
 - (void) appendFullPath:(NSMutableString*) path {
-    if(self.parent) {
-        FLAssert([self.parent isKindOfClass:[FLXmlElement class]]);
-        [((id)self.parent) appendFullPath:path];
+    if(self.stringDocument) {
+        FLAssert([self.stringDocument isKindOfClass:[FLXmlElement class]]);
+        [((id)self.stringDocument) appendFullPath:path];
     }
 
     if(path.length) {

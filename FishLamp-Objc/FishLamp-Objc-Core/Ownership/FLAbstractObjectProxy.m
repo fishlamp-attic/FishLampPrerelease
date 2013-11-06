@@ -89,5 +89,9 @@
     return [[self representedObject] respondsToSelector:aSelector];
 }
 
+- (BOOL) isProxy {
+    return YES;
+}
+
 
 @end

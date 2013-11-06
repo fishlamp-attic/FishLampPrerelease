@@ -77,7 +77,7 @@
 
 - (void) testInQueue {
 
-//    FLSynchronousOperationQueueOperation* q = [FLSynchronousOperationQueueOperation operationQueue];
+//    FLOperationQueueOperation* q = [FLOperationQueueOperation operationQueue];
 //    [q assertNotRun];
 //    [q assertNotInQueue];
 //

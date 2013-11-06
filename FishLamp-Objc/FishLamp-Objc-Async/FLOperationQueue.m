@@ -100,9 +100,14 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
 
 
     [FLBackgroundQueue queueBlock:^{
-        [self.notify operationQueue:self
-                           didStartOperation:operation
-                             forQueuedObject:object];
+        [self sendMessageToListeners:@selector(operationQueue:didStartOperation:forQueuedObject:)
+                          withObject:self
+                          withObject:operation
+                          withObject:object];
+        
+//          operationQueue:self
+//                           didStartOperation:operation
+//                             forQueuedObject:object];
         }];
 }
 
@@ -110,19 +115,28 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
             forQueuedObject:(id) object
                  withResult:(FLPromisedResult) result {
 
-    [FLBackgroundQueue queueBlock:^{
-        [self.notify operationQueue:self
-                           didFinishOperation:operation
-                             forQueuedObject:object
-                                   withResult:result];
-    }];
+        [self sendMessageToListeners:@selector(operationQueue:didFinishOperation:forQueuedObject:withResult:)
+                          withObject:self
+                          withObject:operation
+                          withObject:object
+                          withObject:result];
+
+
+//    [FLBackgroundQueue queueBlock:^{
+//        [self.notify operationQueue:self
+//                           didFinishOperation:operation
+//                             forQueuedObject:object
+//                                   withResult:result];
+//    }];
 }
 
 - (void) setFinishedWithResult:(FLPromisedResult) result {
     [super setFinishedWithResult:result];
     self.processing = NO;
-    [self.notify operationQueue:self
-                      didFinishWithResult:result];
+    [self sendMessageToListeners:@selector(operationQueue:didFinishWithResult:) withObject:self withObject:self];
+    
+//        operationQueue:self
+//                      didFinishWithResult:result];
 }
 
 - (void) processQueue {

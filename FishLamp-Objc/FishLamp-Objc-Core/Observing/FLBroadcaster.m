@@ -32,7 +32,7 @@
     return [_listeners containsObject:listener];
 }
 
-- (id) notify {
+- (id) broadcaster {
     return self;
 }
 
@@ -45,7 +45,7 @@
         _listeners = [[NSMutableArray alloc] init];
     }
 
-    if([listener conformsToProtocol:@protocol(FLObjectProxy)]) {
+    if([listener respondsToSelector:@selector(isProxy)]) {
         [_listeners addObject:listener];
     }
     else {
@@ -174,7 +174,7 @@
 }
 #endif
 
-- (id) notify {
+- (id) broadcaster {
     dispatch_once(&_predicate, ^{
         _broadcasterProxy = [[FLBroadcasterProxy alloc] init];}
         );
@@ -185,7 +185,7 @@
     __block BOOL hasListener = NO;
 
     FLCriticalSection(&_predicate, ^{
-        hasListener = [self.notify hasListener:listener];
+        hasListener = [self.broadcaster hasListener:listener];
     });
 
     return hasListener;
@@ -193,26 +193,26 @@
 
 - (void) addListener:(id) listener {
     FLCriticalSection(&_predicate, ^{
-        [self.notify addListener:listener];
+        [self.broadcaster addListener:listener];
     });
 }
 
 - (void) removeListener:(id) listener {
     FLCriticalSection(&_predicate, ^{
-        [self.notify removeListener:listener];
+        [self.broadcaster removeListener:listener];
     });
 }
 
 - (void) sendMessageToListeners:(SEL) selector {
     FLCriticalSection(&_predicate, ^{
-        [self.notify sendMessageToListeners:selector];
+        [self.broadcaster sendMessageToListeners:selector];
     });
 }
 
 - (void) sendMessageToListeners:(SEL) selector  
                      withObject:(id) object {
     FLCriticalSection(&_predicate, ^{
-        [self.notify sendMessageToListeners:selector withObject:object];
+        [self.broadcaster sendMessageToListeners:selector withObject:object];
     });
 }
 
@@ -220,7 +220,7 @@
                      withObject:(id) object1
                      withObject:(id) object2 {
     FLCriticalSection(&_predicate, ^{
-        [self.notify sendMessageToListeners:selector withObject:object1 withObject:object2];
+        [self.broadcaster sendMessageToListeners:selector withObject:object1 withObject:object2];
     });
 }
 
@@ -229,7 +229,7 @@
                      withObject:(id) object2
                      withObject:(id) object3 {
     FLCriticalSection(&_predicate, ^{
-        [self.notify sendMessageToListeners:selector withObject:object1 withObject:object2 withObject:object3];
+        [self.broadcaster sendMessageToListeners:selector withObject:object1 withObject:object2 withObject:object3];
     });
 }
 
@@ -239,7 +239,7 @@
                      withObject:(id) object3
                      withObject:(id) object4 {
     FLCriticalSection(&_predicate, ^{
-        [self.notify sendMessageToListeners:selector withObject:object1 withObject:object2 withObject:object3 withObject:object4];
+        [self.broadcaster sendMessageToListeners:selector withObject:object1 withObject:object2 withObject:object3 withObject:object4];
     });
 }
 

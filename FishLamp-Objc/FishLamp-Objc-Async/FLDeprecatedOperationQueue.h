@@ -46,7 +46,7 @@
 
 // TODO:
 
-//- (void) insertOperation:(FLSynchronousOperation*) newOperation
-//          afterOperation:(FLSynchronousOperation*) afterOperation;
+//- (void) insertOperation:(FLOperation*) newOperation
+//          afterOperation:(FLOperation*) afterOperation;
 
 #endif

@@ -35,7 +35,7 @@
 
 - (void) openSelf {
 
-    [self.notify databaseStorageServiceWillOpen:self];
+    [self sendMessageToListeners:@selector(databaseStorageServiceWillOpen:) withObject:self];
 
     NSString* databasePath = [self databaseFilePath];
     FLConfirmStringIsNotEmpty(databasePath);
@@ -45,7 +45,7 @@
     [self.databaseController dispatchAsync:^(FLObjectDatabase* database) {
         [database openDatabase];
 
-        [self.notify databaseStorageServiceDidOpen:self];
+        [self sendMessageToListeners:@selector(databaseStorageServiceDidOpen:) withObject:self];
     }
     completion:^(FLPromisedResult result) {
         if([result isError]) {
@@ -55,11 +55,11 @@
  }
 
 - (void) closeSelf {
-    [self.notify databaseStorageServiceWillClose:self];
+    [self sendMessageToListeners:@selector(databaseStorageServiceWillClose:) withObject:self];
 
     [self.databaseController dispatchAsync:^(FLObjectDatabase* database) {
         [database closeDatabase];
-        [self.notify databaseStorageServiceDidClose:self];
+        [self sendMessageToListeners:@selector(databaseStorageServiceDidClose:) withObject:self];
     }
     completion:^(FLPromisedResult result) {
         if([result isError]) {

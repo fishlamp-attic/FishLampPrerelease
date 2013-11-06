@@ -27,6 +27,9 @@
 
 - (void) appendSection:(FLStringBuilderSection*) section;
 
+- (void) appendSection:(FLStringBuilderSection*) section
+   withSubsectionBlock:(fl_block_t) block;
+
 - (void) closeAllSections;
 
 - (NSString*) buildString;

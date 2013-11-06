@@ -82,7 +82,7 @@
 	return _operations.count;
 }
 
-- (void) removeOperation:(FLSynchronousOperation*) operation {
+- (void) removeOperation:(FLOperation*) operation {
     [self removeOperationForIdentifier:operation.identifier];
 }
 

@@ -11,8 +11,9 @@
 #import "FLWhitespace.h"
 
 @interface FLStringBuilderSection ()
-@property (readwrite, assign, nonatomic) id parent;
-@property (readwrite, assign, nonatomic) id document;
+@property (readwrite, assign, nonatomic) id parentSection;
+@property (readwrite, assign, nonatomic) id stringDocument;
+
 - (void) appendSection:(FLStringBuilderSection*) section;
 @end
 
@@ -88,8 +89,8 @@
 @implementation FLStringBuilderSection 
 
 @synthesize lines = _lines;
-@synthesize parent = _parent;
-@synthesize document = _document;
+@synthesize parentSection = _parentSection;
+@synthesize stringDocument = _stringDocument;
 
 - (id) init {
     self = [super init];
@@ -184,7 +185,7 @@
 - (void) didBuildWithStringFormatter:(id<FLStringFormatter>) stringFormatter {
 }
 
-- (void) didMoveToParent:(FLStringBuilderSection*) parent {
+- (void) didMoveToParent:(FLStringBuilderSection*) parentSection {
 }
 
 - (void)stringFormatter:(FLStringFormatter*) formatter
@@ -202,22 +203,22 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter  
     [self didBuildWithStringFormatter:anotherStringFormatter];
 }
 
-- (void) setDocument:(FLStringBuilder*) document {
-    _document = document;
+- (void) setStringDocument:(FLStringBuilder*) document {
+    _stringDocument = document;
     for(id line in _lines) {
-        if([line respondsToSelector:@selector(setDocument:)]) {
-            [line setDocument:document];
+        if([line respondsToSelector:@selector(setStringDocument:)]) {
+            [line setStringDocument:document];
         }
     }
 }
 
-- (void) setParent:(FLStringBuilderSection*) parent {
-    if(_parent) {
+- (void) setParentSection:(FLStringBuilderSection*) parentSection {
+    if(_parentSection) {
         [self didMoveToParent:nil];
     }
 
-    _parent = parent;
-    [self didMoveToParent:_parent];
+    _parentSection = parentSection;
+    [self didMoveToParent:_parentSection];
 }
 
 - (void) appendSection:(FLStringBuilderSection*) section {
@@ -227,8 +228,8 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter  
 
     [_lines addObject:section];
     _needsLine = YES;
-    [section setDocument:self.document];
-    [section setParent:self];
+    [section setStringDocument:self.stringDocument];
+    [section setParentSection:self];
 }
 
 //- (void) stringFormatterDeleteAllCharacters:(FLStringFormatter*) stringFormatter {
@@ -249,7 +250,7 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) anotherStringFormatter  
 }
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
-         didMoveToParent:(id) parent {
+         didMoveToParent:(id) parentSection {
 }
 
 - (NSString*) stringFormatterExportString:(FLStringFormatter*) formatter {

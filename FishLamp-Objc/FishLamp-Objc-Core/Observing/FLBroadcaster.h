@@ -17,7 +17,6 @@
 #import "FLMainThreadObject.h"
 
 @protocol FLBroadcaster <NSObject>
-- (id) notify;
 
 - (void) sendMessageToListeners:(SEL) messageSelector;
 
