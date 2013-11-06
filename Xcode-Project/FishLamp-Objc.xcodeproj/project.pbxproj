@@ -692,11 +692,11 @@
 		2767DA4318132B1B001EF21C /* FLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F318132B1A001EF21C /* FLSelector.m */; };
 		2767DA4418132B1B001EF21C /* FLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F318132B1A001EF21C /* FLSelector.m */; };
 		2767DA4518132B1B001EF21C /* FLSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F318132B1A001EF21C /* FLSelector.m */; };
-		2767DA4618132B1B001EF21C /* FLCharString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F618132B1A001EF21C /* FLCharString.m */; };
-		2767DA4718132B1B001EF21C /* FLCharString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F618132B1A001EF21C /* FLCharString.m */; };
-		2767DA4818132B1B001EF21C /* FLCharString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F618132B1A001EF21C /* FLCharString.m */; };
-		2767DA4918132B1B001EF21C /* FLCharString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F618132B1A001EF21C /* FLCharString.m */; };
-		2767DA4A18132B1B001EF21C /* FLCharString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F618132B1A001EF21C /* FLCharString.m */; };
+		2767DA4618132B1B001EF21C /* FLCStringFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F618132B1A001EF21C /* FLCStringFragment.m */; };
+		2767DA4718132B1B001EF21C /* FLCStringFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F618132B1A001EF21C /* FLCStringFragment.m */; };
+		2767DA4818132B1B001EF21C /* FLCStringFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F618132B1A001EF21C /* FLCStringFragment.m */; };
+		2767DA4918132B1B001EF21C /* FLCStringFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F618132B1A001EF21C /* FLCStringFragment.m */; };
+		2767DA4A18132B1B001EF21C /* FLCStringFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F618132B1A001EF21C /* FLCStringFragment.m */; };
 		2767DA4B18132B1B001EF21C /* FLPrettyAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F818132B1A001EF21C /* FLPrettyAttributedString.m */; };
 		2767DA4C18132B1B001EF21C /* FLPrettyAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F818132B1A001EF21C /* FLPrettyAttributedString.m */; };
 		2767DA4D18132B1B001EF21C /* FLPrettyAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767D5F818132B1A001EF21C /* FLPrettyAttributedString.m */; };
@@ -1787,6 +1787,11 @@
 		27CF8642182747E3002B5C3E /* FLAbstractAsyncQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF863F182747E3002B5C3E /* FLAbstractAsyncQueue.m */; };
 		27CF8643182747E3002B5C3E /* FLAbstractAsyncQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF863F182747E3002B5C3E /* FLAbstractAsyncQueue.m */; };
 		27CF8644182747E3002B5C3E /* FLAbstractAsyncQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF863F182747E3002B5C3E /* FLAbstractAsyncQueue.m */; };
+		27EBEA6D182A9FDA0020F177 /* FLOperationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EBEA6C182A9FDA0020F177 /* FLOperationContract.m */; };
+		27EBEA6E182A9FDA0020F177 /* FLOperationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EBEA6C182A9FDA0020F177 /* FLOperationContract.m */; };
+		27EBEA6F182A9FDA0020F177 /* FLOperationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EBEA6C182A9FDA0020F177 /* FLOperationContract.m */; };
+		27EBEA70182A9FDA0020F177 /* FLOperationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EBEA6C182A9FDA0020F177 /* FLOperationContract.m */; };
+		27EBEA71182A9FDA0020F177 /* FLOperationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EBEA6C182A9FDA0020F177 /* FLOperationContract.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2200,8 +2205,8 @@
 		2767D5F118132B1A001EF21C /* FLRuntimeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLRuntimeInfo.m; sourceTree = "<group>"; };
 		2767D5F218132B1A001EF21C /* FLSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSelector.h; sourceTree = "<group>"; };
 		2767D5F318132B1A001EF21C /* FLSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSelector.m; sourceTree = "<group>"; };
-		2767D5F518132B1A001EF21C /* FLCharString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLCharString.h; sourceTree = "<group>"; };
-		2767D5F618132B1A001EF21C /* FLCharString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLCharString.m; sourceTree = "<group>"; };
+		2767D5F518132B1A001EF21C /* FLCStringFragment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLCStringFragment.h; sourceTree = "<group>"; };
+		2767D5F618132B1A001EF21C /* FLCStringFragment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLCStringFragment.m; sourceTree = "<group>"; };
 		2767D5F718132B1A001EF21C /* FLPrettyAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPrettyAttributedString.h; sourceTree = "<group>"; };
 		2767D5F818132B1A001EF21C /* FLPrettyAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPrettyAttributedString.m; sourceTree = "<group>"; };
 		2767D5F918132B1A001EF21C /* FLPrettyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPrettyString.h; sourceTree = "<group>"; };
@@ -2698,6 +2703,8 @@
 		27D793A0181ED5A20046E5DA /* FLAssertUndef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAssertUndef.h; sourceTree = "<group>"; };
 		27EBEA5C182962A80020F177 /* FLQueueableAsyncOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLQueueableAsyncOperation.h; sourceTree = "<group>"; };
 		27EBEA63182966FE0020F177 /* FLOperationStarter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLOperationStarter.h; sourceTree = "<group>"; };
+		27EBEA6B182A9FDA0020F177 /* FLOperationContract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLOperationContract.h; sourceTree = "<group>"; };
+		27EBEA6C182A9FDA0020F177 /* FLOperationContract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLOperationContract.m; sourceTree = "<group>"; };
 		B214727B17DE7BBC00985872 /* FishLamp-Objc-iOS-TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FishLamp-Objc-iOS-TestApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B263E0E317DE7CF80049EF94 /* PiecemealCompilerFlagOverrides.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PiecemealCompilerFlagOverrides.h; sourceTree = "<group>"; };
 		B263E0E417DE7D4C0049EF94 /* PiecemealCompilerFlagOverrides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PiecemealCompilerFlagOverrides.h; path = "Piecemeal-XcodeConfigs/PiecemealCompilerFlagOverrides.h"; sourceTree = "<group>"; };
@@ -3034,6 +3041,8 @@
 				27CF863F182747E3002B5C3E /* FLAbstractAsyncQueue.m */,
 				27EBEA5C182962A80020F177 /* FLQueueableAsyncOperation.h */,
 				27EBEA63182966FE0020F177 /* FLOperationStarter.h */,
+				27EBEA6B182A9FDA0020F177 /* FLOperationContract.h */,
+				27EBEA6C182A9FDA0020F177 /* FLOperationContract.m */,
 			);
 			path = "FishLamp-Objc-Async";
 			sourceTree = "<group>";
@@ -3527,8 +3536,8 @@
 		2767D5F418132B1A001EF21C /* Strings */ = {
 			isa = PBXGroup;
 			children = (
-				2767D5F518132B1A001EF21C /* FLCharString.h */,
-				2767D5F618132B1A001EF21C /* FLCharString.m */,
+				2767D5F518132B1A001EF21C /* FLCStringFragment.h */,
+				2767D5F618132B1A001EF21C /* FLCStringFragment.m */,
 				2767D5F718132B1A001EF21C /* FLPrettyAttributedString.h */,
 				2767D5F818132B1A001EF21C /* FLPrettyAttributedString.m */,
 				2767D5F918132B1A001EF21C /* FLPrettyString.h */,
@@ -4999,6 +5008,7 @@
 				2767D8FD18132B1B001EF21C /* FLHelpToolTask.m in Sources */,
 				27CF858118256648002B5C3E /* FLTTestableSubclassFinder.m in Sources */,
 				2767D8BC18132B1B001EF21C /* FLColorRange+Gradients.m in Sources */,
+				27EBEA6E182A9FDA0020F177 /* FLOperationContract.m in Sources */,
 				2767DABA18132B1B001EF21C /* FLBitFlags.m in Sources */,
 				2767DB1418132B1B001EF21C /* FLXmlObjectBuilder.m in Sources */,
 				2767D8CB18132B1B001EF21C /* FLColorUtilities.m in Sources */,
@@ -5044,7 +5054,7 @@
 				2767D8E418132B1B001EF21C /* SDKColor+NSString.m in Sources */,
 				2767DB0518132B1B001EF21C /* NSString+XML.m in Sources */,
 				2767DAC918132B1B001EF21C /* FLVersion.m in Sources */,
-				2767DA4718132B1B001EF21C /* FLCharString.m in Sources */,
+				2767DA4718132B1B001EF21C /* FLCStringFragment.m in Sources */,
 				2767D8D018132B1B001EF21C /* FLColorValues.m in Sources */,
 				2767DDD018132B1C001EF21C /* FLBlobStorage.m in Sources */,
 				2767DD1718132B1C001EF21C /* FLByteBuffer.m in Sources */,
@@ -5381,6 +5391,7 @@
 				2767D8FF18132B1B001EF21C /* FLHelpToolTask.m in Sources */,
 				27CF858318256648002B5C3E /* FLTTestableSubclassFinder.m in Sources */,
 				2767D8BE18132B1B001EF21C /* FLColorRange+Gradients.m in Sources */,
+				27EBEA70182A9FDA0020F177 /* FLOperationContract.m in Sources */,
 				2767DABC18132B1B001EF21C /* FLBitFlags.m in Sources */,
 				2767DB1618132B1B001EF21C /* FLXmlObjectBuilder.m in Sources */,
 				2767D8CD18132B1B001EF21C /* FLColorUtilities.m in Sources */,
@@ -5426,7 +5437,7 @@
 				2767D8E618132B1B001EF21C /* SDKColor+NSString.m in Sources */,
 				2767DB0718132B1B001EF21C /* NSString+XML.m in Sources */,
 				2767DACB18132B1B001EF21C /* FLVersion.m in Sources */,
-				2767DA4918132B1B001EF21C /* FLCharString.m in Sources */,
+				2767DA4918132B1B001EF21C /* FLCStringFragment.m in Sources */,
 				2767D8D218132B1B001EF21C /* FLColorValues.m in Sources */,
 				2767DDD218132B1C001EF21C /* FLBlobStorage.m in Sources */,
 				2767DD1918132B1C001EF21C /* FLByteBuffer.m in Sources */,
@@ -5777,6 +5788,7 @@
 				2767D8FC18132B1B001EF21C /* FLHelpToolTask.m in Sources */,
 				27CF858018256648002B5C3E /* FLTTestableSubclassFinder.m in Sources */,
 				2767D8BB18132B1B001EF21C /* FLColorRange+Gradients.m in Sources */,
+				27EBEA6D182A9FDA0020F177 /* FLOperationContract.m in Sources */,
 				2767DAB918132B1B001EF21C /* FLBitFlags.m in Sources */,
 				2767DB1318132B1B001EF21C /* FLXmlObjectBuilder.m in Sources */,
 				2767D8CA18132B1B001EF21C /* FLColorUtilities.m in Sources */,
@@ -5822,7 +5834,7 @@
 				2767D8E318132B1B001EF21C /* SDKColor+NSString.m in Sources */,
 				2767DB0418132B1B001EF21C /* NSString+XML.m in Sources */,
 				2767DAC818132B1B001EF21C /* FLVersion.m in Sources */,
-				2767DA4618132B1B001EF21C /* FLCharString.m in Sources */,
+				2767DA4618132B1B001EF21C /* FLCStringFragment.m in Sources */,
 				2767D8CF18132B1B001EF21C /* FLColorValues.m in Sources */,
 				2767DDCF18132B1C001EF21C /* FLBlobStorage.m in Sources */,
 				2767DD1618132B1C001EF21C /* FLByteBuffer.m in Sources */,
@@ -6127,6 +6139,7 @@
 				2767D8FE18132B1B001EF21C /* FLHelpToolTask.m in Sources */,
 				27CF858218256648002B5C3E /* FLTTestableSubclassFinder.m in Sources */,
 				2767D8BD18132B1B001EF21C /* FLColorRange+Gradients.m in Sources */,
+				27EBEA6F182A9FDA0020F177 /* FLOperationContract.m in Sources */,
 				2767DABB18132B1B001EF21C /* FLBitFlags.m in Sources */,
 				2767DB1518132B1B001EF21C /* FLXmlObjectBuilder.m in Sources */,
 				2767D8CC18132B1B001EF21C /* FLColorUtilities.m in Sources */,
@@ -6172,7 +6185,7 @@
 				2767D8E518132B1B001EF21C /* SDKColor+NSString.m in Sources */,
 				2767DB0618132B1B001EF21C /* NSString+XML.m in Sources */,
 				2767DACA18132B1B001EF21C /* FLVersion.m in Sources */,
-				2767DA4818132B1B001EF21C /* FLCharString.m in Sources */,
+				2767DA4818132B1B001EF21C /* FLCStringFragment.m in Sources */,
 				2767D8D118132B1B001EF21C /* FLColorValues.m in Sources */,
 				2767DDD118132B1C001EF21C /* FLBlobStorage.m in Sources */,
 				2767DD1818132B1C001EF21C /* FLByteBuffer.m in Sources */,
@@ -6477,6 +6490,7 @@
 				2767D90018132B1B001EF21C /* FLHelpToolTask.m in Sources */,
 				27CF858418256648002B5C3E /* FLTTestableSubclassFinder.m in Sources */,
 				2767D8BF18132B1B001EF21C /* FLColorRange+Gradients.m in Sources */,
+				27EBEA71182A9FDA0020F177 /* FLOperationContract.m in Sources */,
 				2767DABD18132B1B001EF21C /* FLBitFlags.m in Sources */,
 				2767DB1718132B1B001EF21C /* FLXmlObjectBuilder.m in Sources */,
 				2767D8CE18132B1B001EF21C /* FLColorUtilities.m in Sources */,
@@ -6522,7 +6536,7 @@
 				2767D8E718132B1B001EF21C /* SDKColor+NSString.m in Sources */,
 				2767DB0818132B1B001EF21C /* NSString+XML.m in Sources */,
 				2767DACC18132B1B001EF21C /* FLVersion.m in Sources */,
-				2767DA4A18132B1B001EF21C /* FLCharString.m in Sources */,
+				2767DA4A18132B1B001EF21C /* FLCStringFragment.m in Sources */,
 				2767D8D318132B1B001EF21C /* FLColorValues.m in Sources */,
 				2767DDD318132B1C001EF21C /* FLBlobStorage.m in Sources */,
 				2767DD1A18132B1C001EF21C /* FLByteBuffer.m in Sources */,

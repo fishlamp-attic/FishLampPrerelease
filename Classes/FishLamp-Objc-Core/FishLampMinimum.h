@@ -68,7 +68,7 @@
     #import "FLSelector.h"
 
     // Strings
-    #import "FLCharString.h"
+    #import "FLCStringFragment.h"
 
 */
 

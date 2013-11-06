@@ -213,6 +213,14 @@
     [self setFinishedWithResult:[NSError cancelError]];
 }
 
+- (void) registerContract:(id<FLOperationContract>) contract {
+    if(!_contracts) {
+        _contracts = [[NSMutableArray alloc] init];
+    }
+
+    [_contracts addObject:contract];
+}
+
 @end
 
 

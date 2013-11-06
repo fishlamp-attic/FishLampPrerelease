@@ -63,7 +63,7 @@ const char* FLParsePropertyType(FLPropertyAttributes_t* attributes, const char* 
                 attributes->type = _C_ID;
                 attributes->is_object = 1;
                 if(*str == '\"') {
-                    attributes->className = FLCharStringFromCString(++str, '\"');
+                    attributes->className = FLParseFragmentFromCString(++str, '\"');
                     str += (attributes->className.length + 1);
                 }
             break;
@@ -76,7 +76,7 @@ const char* FLParsePropertyType(FLPropertyAttributes_t* attributes, const char* 
                 // For now just eat the inner ones.
             
                 
-                attributes->structName = FLCharStringFromCString(str, '=');
+                attributes->structName = FLParseFragmentFromCString(str, '=');
                 str += (attributes->structName.length);
 
                 int bracket_count = 1;
@@ -197,7 +197,7 @@ const char* FLParsePropertyType(FLPropertyAttributes_t* attributes, const char* 
                 // TODO parse array type and size.
                 attributes->is_array = 1;
                 
-                FLCharString ignore = FLCharStringFromCString(str, ']');
+                FLCStringFragment ignore = FLParseFragmentFromCString(str, ']');
                 str += (ignore.length + 1);
             }
             break;
@@ -206,7 +206,7 @@ const char* FLParsePropertyType(FLPropertyAttributes_t* attributes, const char* 
                 attributes->type = _C_UNION_B;
                 attributes->is_union = 1;
 
-                attributes->unionName = FLCharStringFromCString(str, '=');
+                attributes->unionName = FLParseFragmentFromCString(str, '=');
                 str += (attributes->unionName.length);
                 
                 int bracket_count = 1;
@@ -278,18 +278,18 @@ const char* FLParseTrailingAttributes(FLPropertyAttributes_t* attributes, const 
         
             case 'G': // custom getter
                     // Ti,GintGetFoo,SintSetFoo:,VintSetterGetter
-                attributes->customGetter = FLCharStringFromCString(str, ',');
+                attributes->customGetter = FLParseFragmentFromCString(str, ',');
                 str += (attributes->customGetter.length);
                 break;
                 
             case 'S': // custom setter
                     // Ti,GintGetFoo,SintSetFoo:,VintSetterGetter
-                attributes->customSetter = FLCharStringFromCString(str, ',');
+                attributes->customSetter = FLParseFragmentFromCString(str, ',');
                 str += (attributes->customSetter.length);
                 break;
             
             case 'V': // iVar
-                attributes->ivar = FLCharStringFromCString(str, 0);
+                attributes->ivar = FLParseFragmentFromCString(str, 0);
                 str += (attributes->ivar.length);
             break;
                 
@@ -355,9 +355,108 @@ FLPropertyAttributes_t FLPropertyAttributesParse(objc_property_t property) {
 //    }
 //}
 
-NSString* FLPropertyNameFromAttributes(FLPropertyAttributes_t attributes) {
+NSString* FLPropertyAttributesGetPropertyName(FLPropertyAttributes_t attributes) {
     return [NSString stringWithCString:attributes.propertyName encoding:NSASCIIStringEncoding];
 }
+
+NSString* FLPropertyAttributesGetClassName(FLPropertyAttributes_t attributes) {
+    return attributes.className.string ? [NSString stringWithCStringFragment:attributes.className] : nil;
+}
+
+SEL FLPropertyAttributesGetSelector(FLPropertyAttributes_t attributes) {
+    return attributes.selector.string ? NSSelectorFromString([NSString stringWithCStringFragment:attributes.selector]) : nil;
+}
+
+NSString* FLPropertyAttributesGetUnionName(FLPropertyAttributes_t attributes) {
+    return attributes.unionName.string ? [NSString stringWithCStringFragment:attributes.unionName] : nil;
+}
+
+NSString* FLPropertyAttributesGetStructName(FLPropertyAttributes_t attributes) {
+    return attributes.structName.string ? [NSString stringWithCStringFragment:attributes.structName] : nil;
+}
+
+SEL FLPropertyAttributesGetCustomGetter(FLPropertyAttributes_t attributes) {
+    return attributes.customGetter.string ? NSSelectorFromString([NSString stringWithCStringFragment:attributes.customGetter]) : nil;
+}
+
+SEL FLPropertyAttributesGetCustomSetter(FLPropertyAttributes_t attributes) {
+    return attributes.customSetter.string ? NSSelectorFromString([NSString stringWithCStringFragment:attributes.customSetter]) : nil;
+}
+
+NSString* FLPropertyAttributesGetIvarName(FLPropertyAttributes_t attributes) {
+    return attributes.ivar.string ? [NSString stringWithCStringFragment:attributes.ivar] : nil;
+}
+
+void FLPropertyAttributesGetAttributesForProtocol(Protocol* protocol, FLPropertyAttributes_t** buffer, unsigned int* outCount) {
+
+    unsigned int count = 0;
+    objc_property_t* propertyList = protocol_copyPropertyList(protocol, &count);
+
+    FLPropertyAttributes_t* outBuffer = malloc(sizeof(FLPropertyAttributes_t) * count);
+    *buffer = outBuffer;
+    *outCount = count;
+
+    for(unsigned int i = 0; i < count; i++) {
+        outBuffer[i] = FLPropertyAttributesParse(propertyList[i]);
+    }
+
+    if(propertyList) {
+        free(propertyList);
+    }
+}
+
+void FLPropertyAttributesGetAttributesForClass(Class aClass, FLPropertyAttributes_t** buffer, unsigned int* outCount) {
+
+    unsigned int count = 0;
+    objc_property_t* propertyList = class_copyPropertyList(aClass, &count);
+
+    FLPropertyAttributes_t* outBuffer = malloc(sizeof(FLPropertyAttributes_t) * count);
+    *buffer = outBuffer;
+    *outCount = count;
+
+    for(unsigned int i = 0; i < count; i++) {
+        outBuffer[i] = FLPropertyAttributesParse(propertyList[i]);
+    }
+
+    if(propertyList) {
+        free(propertyList);
+    }
+}
+
+
+/*
+ NSString* propertyName = FLAutorelease([[NSString alloc] initWithCString:attributes.propertyName encoding:NSASCIIStringEncoding]);
+    FLAssertStringIsNotEmpty(propertyName);
+
+    if(attributes.is_object) {
+
+        Class objectClass = nil;
+        if(attributes.className.string) {
+            objectClass = NSClassFromString([NSString stringWithCStringFragment:attributes.className]);
+        }
+        else {
+            objectClass = [FLAbstractObjectType class];
+        }
+
+        FLAssertNotNilWithComment(objectClass,
+                                  @"Can't find class for: \"%@\"",
+                                  [NSString stringWithCStringFragment:attributes.className] );
+
+        return [[objectClass propertyDescriberClass] propertyDescriber:propertyName
+                                                       objectDescriber:[objectClass objectDescriber]
+                                                            attributes:attributes];
+
+    }
+    else {
+        if(attributes.is_bool_number) {
+            return [FLBoolNumberPropertyDescriber propertyDescriber:propertyName objectDescriber:nil attributes:attributes];
+        }
+        else if(attributes.is_number) {
+            return [FLNumberPropertyDescriber propertyDescriber:propertyName objectDescriber:nil attributes:attributes];
+        }
+    }
+*/
+
 
 //@interface FLPropertyAttributes ()
 //@property (readwrite, strong, nonatomic) NSString* className;
@@ -399,10 +498,10 @@ NSString* FLPropertyNameFromAttributes(FLPropertyAttributes_t attributes) {
 //            self.propertyName = [NSString stringWithCString:attributes.propertyName encoding:NSASCIIStringEncoding];
 //        }
 //        
-//        self.className = [NSString stringWithCharString:attributes.className];
-//        self.structName = [NSString stringWithCharString:attributes.structName];
-//        self.ivalName = [NSString stringWithCharString:attributes.ivar];
-//        self.unionName = [NSString stringWithCharString:attributes.ivar];
+//        self.className = [NSString stringWithCStringFragment:attributes.className];
+//        self.structName = [NSString stringWithCStringFragment:attributes.structName];
+//        self.ivalName = [NSString stringWithCStringFragment:attributes.ivar];
+//        self.unionName = [NSString stringWithCStringFragment:attributes.ivar];
 //        self.customSetter = MakeSelector(attributes.customSetter);
 //        self.customSetter = MakeSelector(attributes.customSetter);
 //	}

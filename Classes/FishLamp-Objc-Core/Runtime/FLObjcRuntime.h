@@ -12,23 +12,18 @@
 
 #import "FLRuntimeInfo.h"
 
-#define FLRuntimeGetSelectorName(__SEL__) sel_getName(__SEL__)
-#define FLSelectorsAreEqual(LHS, RHS) sel_isEqual(LHS, RHS)
 
-typedef void (^FLRuntimeClassVisitor)(FLRuntimeInfo info, BOOL* stop);
-typedef void (^FLRuntimeSelectorVisitor)(FLRuntimeInfo info, BOOL* stop);
-typedef void (^FLRuntimeFilterBlock)(FLRuntimeInfo info, BOOL* passed, BOOL* stop);
+// swizzling
 
 extern void FLSwizzleInstanceMethod(Class c, SEL originalSelector, SEL newSelector);
 
 extern void FLSwizzleClassMethod(Class c, SEL originalSelector, SEL newSelector);
 
-extern int FLArgumentCountForSelector(SEL selector);
+// visiting at runtime
 
-// doesn't count the first two hidden arguments so a selector like this @selector(foo:) will return 1
-extern int FLArgumentCountForClassSelector(Class aClass, SEL selector);
-
-extern NSArray* FLRuntimeMethodsForClass(Class aClass, FLRuntimeFilterBlock filterOrNil);
+typedef void (^FLRuntimeClassVisitor)(FLRuntimeInfo info, BOOL* stop);
+typedef void (^FLRuntimeSelectorVisitor)(FLRuntimeInfo info, BOOL* stop);
+typedef void (^FLRuntimeFilterBlock)(FLRuntimeInfo info, BOOL* passed, BOOL* stop);
 
 extern void FLRuntimeVisitEachSelectorInClassAndSuperclass(Class aClass, FLRuntimeSelectorVisitor visitor); // not including NSObject
 
@@ -38,15 +33,35 @@ extern BOOL FLRuntimeVisitEveryClass(FLRuntimeClassVisitor visitor);
 
 extern NSArray* FLRuntimeAllClassesMatchingFilter(FLRuntimeFilterBlock filter);
 
-extern NSArray* FLRuntimeClassesImplementingInstanceMethod(SEL theMethod);
+// classes
 
 extern NSArray* FLRuntimeSubclassesForClass(Class theClass);
 
 extern BOOL FLRuntimeClassHasSubclass(Class aSuperclass, Class aSubclass);
 
+// selectors and methods
+
+#define FLSelectorsAreEqual(LHS, RHS) sel_isEqual(LHS, RHS)
+
+#define FLRuntimeGetSelectorName(__SEL__) sel_getName(__SEL__)
+
 extern BOOL FLRuntimeClassRespondsToSelector(Class aClass, SEL aSelector);
 
+extern NSArray* FLRuntimeClassesImplementingInstanceMethod(SEL theMethod);
+
+extern NSArray* FLRuntimeMethodsForClass(Class aClass, FLRuntimeFilterBlock filterOrNil);
+
+extern int FLArgumentCountForSelector(SEL selector);
+
+// doesn't count the first two hidden arguments so a selector like this @selector(foo:) will return 1
+extern int FLArgumentCountForClassSelector(Class aClass, SEL selector);
+
+
+// protocols
+
 extern BOOL FLClassConformsToProtocol(Class aClass, Protocol* aProtocol);
+
+extern void FLRuntimeGetSelectorsInProtocol(Protocol* protocol, SEL** list, unsigned int* count);
 
 #if DEBUG
 void FLRuntimeLogMethodsForClass(Class aClass);

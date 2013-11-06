@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FLCharString.h"
+#import "FLCStringFragment.h"
 
 #ifndef FLPropertyAttributesBufferSize
 #define FLPropertyAttributesBufferSize 256
@@ -20,13 +20,13 @@ typedef struct {
     char propertyName[FLPropertyAttributesBufferSize];
 
     // these are pointers into the various strings
-    FLCharString className;
-    FLCharString structName;
-    FLCharString customGetter;
-    FLCharString customSetter;
-    FLCharString ivar;
-    FLCharString selector;
-    FLCharString unionName;
+    FLCStringFragment className;
+    FLCStringFragment structName;
+    FLCStringFragment customGetter;
+    FLCStringFragment customSetter;
+    FLCStringFragment ivar;
+    FLCStringFragment selector;
+    FLCStringFragment unionName;
     
     unsigned int is_object: 1;
     unsigned int is_array: 1;
@@ -47,3 +47,23 @@ typedef struct {
 } FLPropertyAttributes_t;
 
 extern FLPropertyAttributes_t FLPropertyAttributesParse(objc_property_t property);
+
+extern NSString* FLPropertyAttributesGetPropertyName(FLPropertyAttributes_t attributes);
+
+extern NSString* FLPropertyAttributesGetClassName(FLPropertyAttributes_t attributes);
+
+extern NSString* FLPropertyAttributesGetUnionName(FLPropertyAttributes_t attributes);
+
+extern NSString* FLPropertyAttributesGetStructName(FLPropertyAttributes_t attributes);
+
+extern SEL FLPropertyAttributesGetCustomGetter(FLPropertyAttributes_t attributes);
+
+extern SEL FLPropertyAttributesGetCustomSetter(FLPropertyAttributes_t attributes);
+
+extern NSString* FLPropertyAttributesGetIvarName(FLPropertyAttributes_t attributes);
+
+extern SEL FLPropertyAttributesGetSelector(FLPropertyAttributes_t attributes);
+
+extern void FLPropertyAttributesGetAttributesForProtocol(Protocol* protocol, FLPropertyAttributes_t** buffer, unsigned int* outSize);
+
+extern void FLPropertyAttributesGetAttributesForClass(Class aClass, FLPropertyAttributes_t** buffer, unsigned int* outSize);

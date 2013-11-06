@@ -20,6 +20,7 @@
 // included as convienience.
 #import "FLSuccessfulResult.h"
 #import "NSError+FLFailedResult.h"
+#import "FLOperationContract.h"
 
 @class FLOperationContext;
 @class FLOperationFinisher;
@@ -42,6 +43,7 @@
     BOOL _cancelled;
     __unsafe_unretained id _context;
     id<FLOperationStarter> _operationStarter;
+    NSMutableArray* _contracts;
 }
 
 @property (readwrite, strong) id<FLOperationStarter> operationStarter;
@@ -83,6 +85,9 @@
  *  @return a result
  */
 - (FLPromisedResult) runSynchronously;
+
+
+- (void) registerContract:(id<FLOperationContract>) contract;
 
 @end
 

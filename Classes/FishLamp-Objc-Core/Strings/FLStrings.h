@@ -21,4 +21,4 @@
 #import "FLPrettyAttributedString.h"
 
 // low level char* string helper
-#import "FLCharString.h"
+#import "FLCStringFragment.h"

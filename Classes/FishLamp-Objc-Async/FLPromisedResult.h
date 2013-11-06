@@ -15,9 +15,11 @@
 
 @interface NSObject (FLPromisedResult)
 - (BOOL) isError;
-+ (id) fromPromisedResult:(FLPromisedResult) promisedResult;
+//+ (id) fromPromisedResult:(FLPromisedResult) promisedResult;
 @end
 
-
+@protocol FLPromisedResultContract <NSObject>
+- (BOOL) isError;
+@end
 
 

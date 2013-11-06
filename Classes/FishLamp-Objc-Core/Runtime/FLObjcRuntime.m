@@ -13,91 +13,7 @@
 #import <string.h>
 #import <stdio.h>
 #import "FLAssertions.h"
-
-// experimental
-
-//id objc_getProperty(id self, SEL _cmd, ptrdiff_t offset, BOOL atomic);
-//
-//void objc_setProperty(id self, SEL _cmd, ptrdiff_t offset, id newValue, BOOL atomic, BOOL shouldCopy);
-//
-//void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic, BOOL hasStrong);
-//extern NSArray* FLRuntimeFindSubclassesForClass(Class aClass);
-
-//extern BOOL FLRuntimeClassIsSubclassOfClass(Class subclass, Class superclass);
-//extern void FLRuntimeVisitEachInstanceMethodInClass(Class aClass, Class toSuperclassOrNil, FLRuntimeSelectorVisitor visitor);
-
-/**
-    @brief Copies type name from @encoded string
-    for example NT@"NSMutableArray" results in NSMutableArray
-    if this returns a string, call free on it.
- */
-//extern char* copyTypeNameFromProperty(objc_property_t property);
-
-//char* copyTypeNameFromProperty(objc_property_t property)
-//{
-//	const char* attr = property_getAttributes(property);
-//	
-////	printf("%s", attr);
-//	
-//	for(int i = 0; attr[i] != 0; i++)
-//	{
-//		if(attr[i] == '@')
-//		{
-//			if(attr[i + 1] == '\"')
-//			{
-//				i += 2;
-//				
-//				for(int j = i; attr[j] != 0; j++)
-//				{
-//					if(attr[j] == '\"')
-//					{
-//						int len = j - i;
-//                        char* str = malloc(len + 1);
-//                        memcpy(str, attr+i, len);
-//						str[len] = 0;
-//						return str;
-//					}
-//				}
-//			}
-//		}
-//	
-//	}
-//
-//	return nil;
-//	
-///*
-//objc_property_attribute_t* attrList = property_copyAttributeList(properties[i], &attrCount);
-//		for(unsigned int j = 0; j < attrCount; j++)
-//		{
-//			const char* value = attrList[j].value;
-//			const char* name = attrList[j].name;
-//
-//			if(name[0] == 'T' && value[0] == '@')
-//			{
-//				int len = strlen(value);
-//				char* className = malloc(len);
-//				strncpy(className, value + 2, len - 3);
-//				className[len-3] = 0;
-//				
-//				Class c = objc_getClass(className);
-//					free(attrList);
-//	
-//*/
-//}
-//extern const char *getobjectDescriber(objc_property_t property);
-//
-//const char *getobjectDescriber(objc_property_t property) {
-//    const char *attributes = property_getAttributes(property);
-//    char buffer[1 + strlen(attributes)];
-//    strcpy(buffer, attributes);
-//    char *state = buffer, *attribute;
-//    while ((attribute = strsep(&state, ",")) != NULL) {
-//        if (attribute[0] == 'T') {
-//            return (const char *)[[NSData dataWithBytes:(attribute + 3) length:strlen(attribute) - 4] bytes];
-//        }
-//    }
-//    return "@";
-//}
+#import "FLPropertyAttributes.h"
 
 void FLSwizzleInstanceMethod(Class c, SEL originalSelector, SEL newSelector) {
     Method origMethod = class_getInstanceMethod(c, originalSelector);
@@ -123,145 +39,6 @@ void FLSwizzleClassMethod(Class c, SEL originalSelector, SEL newSelector) {
     }
 }
 
-
-//void FLRuntimeVisitEveryMetaClass(void (^visitor)(Class aClass, BOOL* stop)) {
-//
-////    NSMutableSet* processed = [NSMutableSet set];
-////    __block int i = 0;
-//    
-//    FLRuntimeVisitEveryClass(^(Class inClass, BOOL* stop) {
-//        
-////        if(!class_isMetaClass(inClass)) {
-////            inClass = object_getClass(inClass);
-////        }
-//        
-//        if(!inClass) {
-//            return;
-//        }
-//        
-//        visitor(inClass, stop);
-//        
-////        NSString* name = NSStringFromClass(inClass);
-////        if(FLStringIsNotEmpty(name)) {
-////            if(![processed containsObject:name]) {
-////                [processed addObject:name];
-////                visitor(inClass, stop );
-////            }
-////            else {
-////                i++;
-////            }
-////        }
-//    });
-//}
-
-//void FLRuntimeVisitEveryInstanceClass(void (^visitor)(Class aClass, BOOL* stop)) {
-//
-//    FLRuntimeVisitEveryClass(^(Class inClass, BOOL* stop) {
-//        if(!class_isMetaClass(inClass)) {
-//            visitor(inClass, stop );
-//        }
-//    });
-//}
-
-
-
-
-
-//NSArray* FLRuntimeFindSubclassesForClass(Class theClass) {
-//
-//	int count = objc_getClassList(NULL, 0);
-//
-//    NSMutableArray* theClassNames = [NSMutableArray array];
-//
-//    Class* classList = (__unsafe_unretained Class*) malloc(sizeof(Class) * count);
-//	
-//	objc_getClassList(classList, count);
-// 
-//    const char* theClassName = class_getName(theClass);
-//    
-//	for(int i = 0; i < count; i++) {
-//
-//        Class aClass = classList[i];
-//
-//        // some things in the returned don't have classes - e.g. object_getClass returns nil
-////        aClass = object_getClass(aClass);
-////        if(!aClass) {
-////            continue;
-////        }
-//    
-//        // some objects don't have super classes - whatever Apple, whatever.
-//        Class superClass = class_getSuperclass(aClass);
-//        if(!superClass) {
-//            continue;
-//        }
-//        
-//        // okay now we have a class name for the current classes superclass - or do we?
-//        const char* superClassName = class_getName(superClass);
-//        if(!superClassName) {
-//            continue;
-//        }
-//    
-//        // okay fine, we do, see if the superclass is a the class we want, if so Yay. If not, whatever.
-//        if(strcmp(superClassName, theClassName) == 0) {
-//            [theClassNames addObject:aClass];
-//        }
-//	}
-//	
-//	free(classList);
-//    
-//    return theClassNames;
-//}
-
-//NSArray* FLRuntimeInstanceMethods(Class aClass, Class toSuperclassOrNil) {
-//    
-//    NSMutableArray* array = [NSMutableArray array];
-//    Class walker = aClass;
-//
-//    while(walker) {
-//       
-//        FLRuntimeVisitEachSelectorInClass(walker, ^(SEL selector, BOOL *stop) {
-//            [array addObject:[FLCallback callback:aClass action:selector]];
-//        });
-//       
-//        if(!toSuperclassOrNil) {
-//            walker = nil;
-//        }
-//        else {
-//            walker = [walker superclass];
-//            
-//            if( walker == toSuperclassOrNil ||
-//                walker == [NSObject class]) {
-//                walker = nil;
-//            }
-//        }
-//    }
-// 
-//    return array;
-//}
-
-//@implementation NSObject
-//- (NSArray*) findInstanceMethodsByName:(BOOL (^)(NSString* name, BOOL* stop)) nameMatcher {
-//    return [self findInstanceMethodsByNameStopAtSuperclass:nil
-//                                               nameMatcher:nameMatcher];
-//}
-//
-//- (NSArray*) findInstanceMethodsByNameStopAtSuperclass:(Class) superclass
-//                                           nameMatcher:(BOOL (^)(NSString* name, BOOL* stop)) nameMatcher {
-//
-//    NSMutableArray* array = [NSMutableArray array];
-//
-//    NSArray* methods = FLRuntimeInstanceMethodNamesForClass([self class], superclass);
-//
-//    for(FLCallback* callback in methods) {
-//        if(nameMatcher(NSStringFromSelector(callback.action)) {
-//           [list addObject:[FLCallback callback:self action:NSSelectorFromString(methodName)]];
-//        }
-//    }
-//    return array;
-//}
-//
-//
-//@end
 
 BOOL FLRuntimeVisitEachSelectorInClass(Class aClass, FLRuntimeSelectorVisitor visitor) {
 
@@ -492,7 +269,7 @@ NSArray* FLRuntimeSubclassesForClass(Class theClass) {
     return theClassNames;
 }
 
-extern BOOL FLClassConformsToProtocol(Class aClass, Protocol* aProtocol) {
+BOOL FLClassConformsToProtocol(Class aClass, Protocol* aProtocol) {
 
     if(!aClass || !aProtocol) {
         return NO;
@@ -507,29 +284,25 @@ extern BOOL FLClassConformsToProtocol(Class aClass, Protocol* aProtocol) {
     }
 
     return [aClass conformsToProtocol:aProtocol];
-
-//    if(![aClass isKindOfClass:[NSObject class]]) {
-//        NSLog(@"no");
-//    }
-
-return NO;
-
-    Class walker = aClass;
-    while(walker) {
-
-
-
-        if(walker == [NSObject class]) {
-            return [walker conformsToProtocol:aProtocol];
-        }
-        walker = class_getSuperclass(walker);
-    }
-
-    return NO;
 }
 
+void FLRuntimeGetSelectorsInProtocol(Protocol* protocol, SEL** list, unsigned int* count) {
 
-extern BOOL FLRuntimeClassHasSubclass(Class aSuperclass, Class aClass) {
+    objc_property_t* propertyList = protocol_copyPropertyList(protocol, count);
+
+    *list = malloc(*count * sizeof(SEL));
+
+    for(unsigned int i = 0; i < *count; i++) {
+        FLPropertyAttributes_t attributes = FLPropertyAttributesParse(propertyList[i]);
+        (*list)[i] = FLPropertyAttributesGetSelector(attributes);
+    }
+
+    if(propertyList) {
+        free(propertyList);
+    }
+}
+
+BOOL FLRuntimeClassHasSubclass(Class aSuperclass, Class aClass) {
     if(!aSuperclass || !aClass || aSuperclass == aClass) {
         return NO;
     }
@@ -665,3 +438,227 @@ void FLRuntimeLogMethodsForClass(Class aClass) {
 
 
 
+
+//void FLRuntimeVisitEveryMetaClass(void (^visitor)(Class aClass, BOOL* stop)) {
+//
+////    NSMutableSet* processed = [NSMutableSet set];
+////    __block int i = 0;
+//    
+//    FLRuntimeVisitEveryClass(^(Class inClass, BOOL* stop) {
+//        
+////        if(!class_isMetaClass(inClass)) {
+////            inClass = object_getClass(inClass);
+////        }
+//        
+//        if(!inClass) {
+//            return;
+//        }
+//        
+//        visitor(inClass, stop);
+//        
+////        NSString* name = NSStringFromClass(inClass);
+////        if(FLStringIsNotEmpty(name)) {
+////            if(![processed containsObject:name]) {
+////                [processed addObject:name];
+////                visitor(inClass, stop );
+////            }
+////            else {
+////                i++;
+////            }
+////        }
+//    });
+//}
+
+//void FLRuntimeVisitEveryInstanceClass(void (^visitor)(Class aClass, BOOL* stop)) {
+//
+//    FLRuntimeVisitEveryClass(^(Class inClass, BOOL* stop) {
+//        if(!class_isMetaClass(inClass)) {
+//            visitor(inClass, stop );
+//        }
+//    });
+//}
+
+
+
+
+
+//NSArray* FLRuntimeFindSubclassesForClass(Class theClass) {
+//
+//	int count = objc_getClassList(NULL, 0);
+//
+//    NSMutableArray* theClassNames = [NSMutableArray array];
+//
+//    Class* classList = (__unsafe_unretained Class*) malloc(sizeof(Class) * count);
+//	
+//	objc_getClassList(classList, count);
+// 
+//    const char* theClassName = class_getName(theClass);
+//    
+//	for(int i = 0; i < count; i++) {
+//
+//        Class aClass = classList[i];
+//
+//        // some things in the returned don't have classes - e.g. object_getClass returns nil
+////        aClass = object_getClass(aClass);
+////        if(!aClass) {
+////            continue;
+////        }
+//    
+//        // some objects don't have super classes - whatever Apple, whatever.
+//        Class superClass = class_getSuperclass(aClass);
+//        if(!superClass) {
+//            continue;
+//        }
+//        
+//        // okay now we have a class name for the current classes superclass - or do we?
+//        const char* superClassName = class_getName(superClass);
+//        if(!superClassName) {
+//            continue;
+//        }
+//    
+//        // okay fine, we do, see if the superclass is a the class we want, if so Yay. If not, whatever.
+//        if(strcmp(superClassName, theClassName) == 0) {
+//            [theClassNames addObject:aClass];
+//        }
+//	}
+//	
+//	free(classList);
+//    
+//    return theClassNames;
+//}
+
+//NSArray* FLRuntimeInstanceMethods(Class aClass, Class toSuperclassOrNil) {
+//    
+//    NSMutableArray* array = [NSMutableArray array];
+//    Class walker = aClass;
+//
+//    while(walker) {
+//       
+//        FLRuntimeVisitEachSelectorInClass(walker, ^(SEL selector, BOOL *stop) {
+//            [array addObject:[FLCallback callback:aClass action:selector]];
+//        });
+//       
+//        if(!toSuperclassOrNil) {
+//            walker = nil;
+//        }
+//        else {
+//            walker = [walker superclass];
+//            
+//            if( walker == toSuperclassOrNil ||
+//                walker == [NSObject class]) {
+//                walker = nil;
+//            }
+//        }
+//    }
+// 
+//    return array;
+//}
+
+//@implementation NSObject
+//- (NSArray*) findInstanceMethodsByName:(BOOL (^)(NSString* name, BOOL* stop)) nameMatcher {
+//    return [self findInstanceMethodsByNameStopAtSuperclass:nil
+//                                               nameMatcher:nameMatcher];
+//}
+//
+//- (NSArray*) findInstanceMethodsByNameStopAtSuperclass:(Class) superclass
+//                                           nameMatcher:(BOOL (^)(NSString* name, BOOL* stop)) nameMatcher {
+//
+//    NSMutableArray* array = [NSMutableArray array];
+//
+//    NSArray* methods = FLRuntimeInstanceMethodNamesForClass([self class], superclass);
+//
+//    for(FLCallback* callback in methods) {
+//        if(nameMatcher(NSStringFromSelector(callback.action)) {
+//           [list addObject:[FLCallback callback:self action:NSSelectorFromString(methodName)]];
+//        }
+//    }
+//    return array;
+//}
+//
+//
+//@end
+
+// experimental
+
+//id objc_getProperty(id self, SEL _cmd, ptrdiff_t offset, BOOL atomic);
+//
+//void objc_setProperty(id self, SEL _cmd, ptrdiff_t offset, id newValue, BOOL atomic, BOOL shouldCopy);
+//
+//void objc_copyStruct(void *dest, const void *src, ptrdiff_t size, BOOL atomic, BOOL hasStrong);
+//extern NSArray* FLRuntimeFindSubclassesForClass(Class aClass);
+
+//extern BOOL FLRuntimeClassIsSubclassOfClass(Class subclass, Class superclass);
+//extern void FLRuntimeVisitEachInstanceMethodInClass(Class aClass, Class toSuperclassOrNil, FLRuntimeSelectorVisitor visitor);
+
+/**
+    @brief Copies type name from @encoded string
+    for example NT@"NSMutableArray" results in NSMutableArray
+    if this returns a string, call free on it.
+ */
+//extern char* copyTypeNameFromProperty(objc_property_t property);
+
+//char* copyTypeNameFromProperty(objc_property_t property)
+//{
+//	const char* attr = property_getAttributes(property);
+//	
+////	printf("%s", attr);
+//	
+//	for(int i = 0; attr[i] != 0; i++)
+//	{
+//		if(attr[i] == '@')
+//		{
+//			if(attr[i + 1] == '\"')
+//			{
+//				i += 2;
+//				
+//				for(int j = i; attr[j] != 0; j++)
+//				{
+//					if(attr[j] == '\"')
+//					{
+//						int len = j - i;
+//                        char* str = malloc(len + 1);
+//                        memcpy(str, attr+i, len);
+//						str[len] = 0;
+//						return str;
+//					}
+//				}
+//			}
+//		}
+//	
+//	}
+//
+//	return nil;
+//	
+///*
+//objc_property_attribute_t* attrList = property_copyAttributeList(properties[i], &attrCount);
+//		for(unsigned int j = 0; j < attrCount; j++)
+//		{
+//			const char* value = attrList[j].value;
+//			const char* name = attrList[j].name;
+//
+//			if(name[0] == 'T' && value[0] == '@')
+//			{
+//				int len = strlen(value);
+//				char* className = malloc(len);
+//				strncpy(className, value + 2, len - 3);
+//				className[len-3] = 0;
+//				
+//				Class c = objc_getClass(className);
+//					free(attrList);
+//	
+//*/
+//}
+//extern const char *getobjectDescriber(objc_property_t property);
+//
+//const char *getobjectDescriber(objc_property_t property) {
+//    const char *attributes = property_getAttributes(property);
+//    char buffer[1 + strlen(attributes)];
+//    strcpy(buffer, attributes);
+//    char *state = buffer, *attribute;
+//    while ((attribute = strsep(&state, ",")) != NULL) {
+//        if (attribute[0] == 'T') {
+//            return (const char *)[[NSData dataWithBytes:(attribute + 3) length:strlen(attribute) - 4] bytes];
+//        }
+//    }
+//    return "@";
+//}

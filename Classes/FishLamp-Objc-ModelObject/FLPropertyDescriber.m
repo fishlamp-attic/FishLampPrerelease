@@ -31,12 +31,12 @@
 }
 @end
 
-#define LazySelectorGetter(name, ivar, char_string) \
+#define LazySelectorGetter(name, ivar, function) \
 - (SEL) name { \
     if(!ivar) { \
         @synchronized(self) { \
             if(!ivar) { \
-                ivar = NSSelectorFromString([NSString stringWithCharString:_attributes.customSetter]); \
+                ivar = function(_attributes); \
             } \
         } \
     } \
@@ -64,21 +64,23 @@
 @synthesize attributes = _attributes;
 
 FLSynthesizeLazyGetterWithBlock(structName, NSString*, _structName, ^{
-    return [NSString stringWithCharString:_attributes.structName]; }
-    );
-
-FLSynthesizeLazyGetterWithBlock(unionName, NSString*, _unionName, ^{
-    return [NSString stringWithCharString:_attributes.unionName];
-});
-
-FLSynthesizeLazyGetterWithBlock(ivarName, NSString*, _ivarName, ^{
-    return [NSString stringWithCharString:_attributes.ivar]; }
+        return FLPropertyAttributesGetStructName(_attributes);
+    }
 );
 
-LazySelectorGetter(customGetter, _customGetter, _attributes.customGetter)
-LazySelectorGetter(customSetter, _customSetter, _attributes.customSetter)
-LazySelectorGetter(selector, _selector, _attributes.selector)
+FLSynthesizeLazyGetterWithBlock(unionName, NSString*, _unionName, ^{
+        return FLPropertyAttributesGetUnionName(_attributes);
+    }
+);
 
+FLSynthesizeLazyGetterWithBlock(ivarName, NSString*, _ivarName, ^{
+        return FLPropertyAttributesGetIvarName(_attributes);
+    }
+);
+
+LazySelectorGetter(customGetter, _customGetter, FLPropertyAttributesGetCustomGetter)
+LazySelectorGetter(customSetter, _customSetter, FLPropertyAttributesGetCustomSetter)
+LazySelectorGetter(selector, _selector, FLPropertyAttributesGetSelector)
 
 - (id) initWithPropertyName:(NSString*) name
             objectDescriber:(FLObjectDescriber*) objectDescriber {
@@ -131,14 +133,17 @@ LazySelectorGetter(selector, _selector, _attributes.selector)
 
     FLPropertyAttributes_t attributes = FLPropertyAttributesParse(property_t);
 
-    NSString* propertyName = FLAutorelease([[NSString alloc] initWithCString:attributes.propertyName encoding:NSASCIIStringEncoding]);
+    NSString* propertyName = FLPropertyAttributesGetPropertyName(attributes);
+
     FLAssertStringIsNotEmpty(propertyName);
 
     if(attributes.is_object) {
 
+        NSString* className = FLPropertyAttributesGetClassName(attributes);
+
         Class objectClass = nil;
-        if(attributes.className.string) {
-            objectClass = NSClassFromString([NSString stringWithCharString:attributes.className]);
+        if(className) {
+            objectClass = NSClassFromString(className);
         }
         else {
             objectClass = [FLAbstractObjectType class];
@@ -146,7 +151,7 @@ LazySelectorGetter(selector, _selector, _attributes.selector)
 
         FLAssertNotNilWithComment(objectClass,
                                   @"Can't find class for: \"%@\"",
-                                  [NSString stringWithCharString:attributes.className] );
+                                  className );
 
         return [[objectClass propertyDescriberClass] propertyDescriber:propertyName
                                                        objectDescriber:[objectClass objectDescriber]

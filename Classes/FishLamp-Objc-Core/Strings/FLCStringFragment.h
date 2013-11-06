@@ -1,5 +1,5 @@
 //
-//  FLCharString.h
+//  FLCStringFragment.h
 //  FishLampCore
 //
 //  Created by Mike Fullerton on 3/18/13.
@@ -12,16 +12,9 @@
 typedef struct {
     const char* string;
     NSUInteger length;
-} FLCharString;
+} FLCStringFragment;
 
-NS_INLINE
-FLCharString FLCharStringFromCString(const char* string, char stopChar) {
-    FLCharString charString = { string, 0 };
-    while(*string && *string++ != stopChar) {
-        charString.length++;
-    }
-    return charString;
-}
+extern FLCStringFragment FLParseFragmentFromCString(const char* string, char stopChar);
 
 NS_INLINE 
 const char* FLCStringCopyWithLength(const char* str, int len) {
@@ -37,12 +30,12 @@ const char* FLCStringCopy(const char* str) {
 }
 
 NS_INLINE
-const char* FLCStringCopyCharString(FLCharString charString) {
+const char* FLCopyCStringInFragment(FLCStringFragment charString) {
     return FLCStringCopyWithLength(charString.string, charString.length);
 }
 
 
-@interface NSString (FLCharString)
-- (id) initWithCharString:(FLCharString) charString;
-+ (NSString*) stringWithCharString:(FLCharString) charString;
+@interface NSString (FLCStringFragment)
+- (id) initWithCStringFragment:(FLCStringFragment) charString;
++ (NSString*) stringWithCStringFragment:(FLCStringFragment) charString;
 @end
