@@ -9,6 +9,7 @@
 
 #import "FLActivityLogViewController.h"
 #import "FLTextViewLogger.h"
+#import "FishLampAsync.h"
 
 #define kInterval 0.5
 

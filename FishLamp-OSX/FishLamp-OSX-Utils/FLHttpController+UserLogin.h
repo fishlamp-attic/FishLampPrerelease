@@ -9,6 +9,8 @@
 
 #import "FLHttpOperationContext.h"
 
+// TODO: move to FLLoginPanel
+
 @interface FLHttpOperationContext (UserLogin)
 
 @end

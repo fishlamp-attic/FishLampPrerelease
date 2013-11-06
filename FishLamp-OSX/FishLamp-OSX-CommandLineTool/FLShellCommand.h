@@ -8,7 +8,7 @@
 //
 
 #import "FishLampMinimum.h"
-#import "FishLamp.h"
+#import "FishLampMinimum.h"
 #import "FLOperation.h"
 #import "FLCommandLineArgument.h"
 

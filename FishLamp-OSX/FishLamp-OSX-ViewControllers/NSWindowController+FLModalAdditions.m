@@ -8,7 +8,6 @@
 //
 
 #import "NSWindowController+FLModalAdditions.h"
-#import "FLResponderChainState.h"
 
 @implementation NSViewController (FLModalAdditions)
 
@@ -60,7 +59,6 @@
 
 @interface FLSheetHandler ()
 @property (readwrite, assign, nonatomic) NSModalSession modalSession;
-@property (readwrite, strong, nonatomic) FLResponderChainState* responderState;
 @end
 
 @implementation FLSheetHandler 
@@ -70,7 +68,6 @@
 @synthesize hostWindow = _hostWindow;
 @synthesize appModal = _appModal;
 @synthesize defaultButton = _defaultButton;
-@synthesize responderState = _responderState;
 
 + (id) sheetHandler {
     return FLAutorelease([[[self class] alloc] init]);
@@ -96,9 +93,6 @@
 
     [_hostWindow makeFirstResponder:nil];
 
-//    [self.responderState restore];
-
-    self.responderState = nil;
     self.hostWindow = nil;
     self.modalWindow = nil;
     self.modalWindowController = nil;
@@ -121,8 +115,6 @@
 
     FLAssertNotNilWithComment(self.hostWindow, @"host window not set");
     FLAssertNotNilWithComment(self.modalWindow, @"modal window or modal window controller not set");
-
-//    self.responderState = [FLResponderChainState responderState:_hostWindow];
 
     [[NSApplication sharedApplication] beginSheet:self.modalWindow
                                    modalForWindow:self.hostWindow

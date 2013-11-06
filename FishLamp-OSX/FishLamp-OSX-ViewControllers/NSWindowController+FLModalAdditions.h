@@ -8,8 +8,6 @@
 //
 #import "FishLampOSX.h"
 
-@class FLResponderChainState;
-
 @interface FLSheetHandler : NSResponder {
 @private
     NSModalSession _modalSession;
@@ -18,8 +16,6 @@
     NSWindowController* _modalWindowController;
     BOOL _appModal;
     NSButton* _defaultButton;
-
-    FLResponderChainState* _responderState;
 }
 @property (readwrite, strong, nonatomic) NSWindow* modalWindow;
 @property (readwrite, strong, nonatomic) NSWindow* hostWindow;

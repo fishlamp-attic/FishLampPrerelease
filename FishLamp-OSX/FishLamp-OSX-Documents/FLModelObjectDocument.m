@@ -10,7 +10,7 @@
 #import "FLModelObjectDocument.h"
 #import "FLXmlParser.h"
 #import "FLXmlObjectBuilder.h"
-#import "FLXmlDocumentBuilder.h"
+#import "FLXmlStringBuilder.h"
 #import "FLModelObject.h"
 #import "FLObjectXmlElement.h"
 #import "FLObjectDescriber.h"
@@ -40,8 +40,7 @@
 }
 
  - (void)document:(NSDocument *)document didSave:(BOOL)didSaveSuccessfully contextInfo:(void *)contextInfo {
-    
-    FLLog(@"%@ did save document");
+    FLLog(@"%@ did save document", NSStringFromClass([self class]));
  }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -78,11 +77,11 @@
     FLObjectXmlElement* element = [FLObjectXmlElement objectXmlElement:self.modelObject 
                                                          xmlElementTag:NSStringFromClass([self.modelObject class])];
             
-    FLXmlDocumentBuilder* xml = [FLXmlDocumentBuilder xmlStringBuilder];
-	[xml addElement:element];
+    FLXmlStringBuilder* xml = [FLXmlStringBuilder xmlStringBuilder];
+	[xml appendSection:element];
     
     FLPrettyString* string = [FLPrettyString prettyString];
-    [string appendStringFormatter:xml];
+    [string appendString:xml];
 
     return [string.string dataUsingEncoding:NSUTF8StringEncoding];
 
