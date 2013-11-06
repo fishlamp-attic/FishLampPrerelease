@@ -1,0 +1,11 @@
+//
+//  Created by Mike Fullerton on 7/11/12.
+//  Copyright (c) 2012 GreenTongue Software. All rights reserved.
+//
+#include "FishLampXcodeConfigs/FishLampIncludedConfig-TestTool.xcconfig"
+
+GCC_PRECOMPILE_PREFIX_HEADER = YES
+GCC_PREFIX_HEADER = ../Classes/FishLampCodeGenerator-Prefix.pch
+HEADER_SEARCH_PATHS= $(inherited) $(FISHLAMP_COCOA)
+
+

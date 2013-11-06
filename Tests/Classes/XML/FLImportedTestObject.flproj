@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fishlamp>
+        <class name="FLImportedTestObject" protocols="NSCopying, NSCoding">
+                <property name="teddy" type="string"/>
+                <property name="chloe" type="string"/>
+                <property name="sanjo" type="string"/>
+        </class>
+</fishlamp>

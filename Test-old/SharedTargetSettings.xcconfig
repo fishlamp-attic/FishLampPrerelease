@@ -1,0 +1,9 @@
+//
+//  Created by Mike Fullerton on 7/11/12.
+//  Copyright (c) 2012 GreenTongue Software. All rights reserved.
+//
+GCC_PRECOMPILE_PREFIX_HEADER = YES
+GCC_PREFIX_HEADER = TestObjects-Prefix.pch
+WRAPPER_EXTENSION = app
+HEADER_SEARCH_PATHS= $(inherited) $(FISHLAMP_COCOA)
+MACH_O_TYPE = staticlib
