@@ -28,6 +28,8 @@
     if(FLClassConformsToProtocol([object class], _protocol)) {
         return YES;
     }
+    
+    return NO;
 }
 
 @end
