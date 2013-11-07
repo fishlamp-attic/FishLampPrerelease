@@ -1990,6 +1990,7 @@
 		27B15A571819AEB400D17FF7 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		27B4BCB3181DB95B0027007A /* FLXmlEncodingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXmlEncodingTests.h; sourceTree = "<group>"; };
 		27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXmlEncodingTests.m; sourceTree = "<group>"; };
+		27C50F9E182BF284006BD5DF /* FishLamp-Objc-Paths.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "FishLamp-Objc-Paths.xcconfig"; path = "../FishLamp-Objc-Paths.xcconfig"; sourceTree = "<group>"; };
 		27CBC1F416768BA600753D0A /* FishLamp-Objc-OSX-Universal-MRC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-Universal-MRC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CF85EA18259970002B5C3E /* FLAsyncTestGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAsyncTestGroup.h; sourceTree = "<group>"; };
 		27CF85EB18259970002B5C3E /* FLAsyncTestGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAsyncTestGroup.m; sourceTree = "<group>"; };
@@ -3108,6 +3109,7 @@
 		27A43A7115CDCC1B001CB13E = {
 			isa = PBXGroup;
 			children = (
+				27C50F9E182BF284006BD5DF /* FishLamp-Objc-Paths.xcconfig */,
 				B227A116182AD3F400EDC426 /* FishLamp-Objc */,
 				27188B9D181489A90060FED6 /* Targets */,
 				27188B9C1814899B0060FED6 /* Supporting Files */,
