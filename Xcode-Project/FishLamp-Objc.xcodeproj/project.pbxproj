@@ -172,6 +172,11 @@
 		27B4BCB7181DB95B0027007A /* FLXmlEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */; };
 		27B4BCB8181DB95B0027007A /* FLXmlEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */; };
 		27B4BCB9181DB95B0027007A /* FLXmlEncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */; };
+		27C52CD9182C043B006BD5DF /* FLPrerequisiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C52CD8182C043B006BD5DF /* FLPrerequisiteTests.m */; };
+		27C52CDA182C043B006BD5DF /* FLPrerequisiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C52CD8182C043B006BD5DF /* FLPrerequisiteTests.m */; };
+		27C52CDB182C043B006BD5DF /* FLPrerequisiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C52CD8182C043B006BD5DF /* FLPrerequisiteTests.m */; };
+		27C52CDC182C043B006BD5DF /* FLPrerequisiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C52CD8182C043B006BD5DF /* FLPrerequisiteTests.m */; };
+		27C52CDD182C043B006BD5DF /* FLPrerequisiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C52CD8182C043B006BD5DF /* FLPrerequisiteTests.m */; };
 		27CF85EC18259970002B5C3E /* FLAsyncTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF85EB18259970002B5C3E /* FLAsyncTestGroup.m */; };
 		27CF85ED18259970002B5C3E /* FLAsyncTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF85EB18259970002B5C3E /* FLAsyncTestGroup.m */; };
 		27CF85EE18259970002B5C3E /* FLAsyncTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CF85EB18259970002B5C3E /* FLAsyncTestGroup.m */; };
@@ -282,11 +287,11 @@
 		B227A4A6182AD3F900EDC426 /* FLOperationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A149182AD3F400EDC426 /* FLOperationContext.m */; };
 		B227A4A7182AD3F900EDC426 /* FLOperationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A149182AD3F400EDC426 /* FLOperationContext.m */; };
 		B227A4A8182AD3F900EDC426 /* FLOperationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A149182AD3F400EDC426 /* FLOperationContext.m */; };
-		B227A4A9182AD3F900EDC426 /* FLOperationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A14B182AD3F500EDC426 /* FLOperationContract.m */; };
-		B227A4AA182AD3F900EDC426 /* FLOperationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A14B182AD3F500EDC426 /* FLOperationContract.m */; };
-		B227A4AB182AD3F900EDC426 /* FLOperationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A14B182AD3F500EDC426 /* FLOperationContract.m */; };
-		B227A4AC182AD3F900EDC426 /* FLOperationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A14B182AD3F500EDC426 /* FLOperationContract.m */; };
-		B227A4AD182AD3F900EDC426 /* FLOperationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A14B182AD3F500EDC426 /* FLOperationContract.m */; };
+		B227A4A9182AD3F900EDC426 /* FLPrerequisite.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A14B182AD3F500EDC426 /* FLPrerequisite.m */; };
+		B227A4AA182AD3F900EDC426 /* FLPrerequisite.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A14B182AD3F500EDC426 /* FLPrerequisite.m */; };
+		B227A4AB182AD3F900EDC426 /* FLPrerequisite.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A14B182AD3F500EDC426 /* FLPrerequisite.m */; };
+		B227A4AC182AD3F900EDC426 /* FLPrerequisite.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A14B182AD3F500EDC426 /* FLPrerequisite.m */; };
+		B227A4AD182AD3F900EDC426 /* FLPrerequisite.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A14B182AD3F500EDC426 /* FLPrerequisite.m */; };
 		B227A4AE182AD3F900EDC426 /* FLOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A14D182AD3F500EDC426 /* FLOperationQueue.m */; };
 		B227A4AF182AD3F900EDC426 /* FLOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A14D182AD3F500EDC426 /* FLOperationQueue.m */; };
 		B227A4B0182AD3F900EDC426 /* FLOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A14D182AD3F500EDC426 /* FLOperationQueue.m */; };
@@ -1991,6 +1996,8 @@
 		27B4BCB3181DB95B0027007A /* FLXmlEncodingTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLXmlEncodingTests.h; sourceTree = "<group>"; };
 		27B4BCB4181DB95B0027007A /* FLXmlEncodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLXmlEncodingTests.m; sourceTree = "<group>"; };
 		27C50F9E182BF284006BD5DF /* FishLamp-Objc-Paths.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "FishLamp-Objc-Paths.xcconfig"; path = "../FishLamp-Objc-Paths.xcconfig"; sourceTree = "<group>"; };
+		27C52CD7182C043B006BD5DF /* FLPrerequisiteTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPrerequisiteTests.h; sourceTree = "<group>"; };
+		27C52CD8182C043B006BD5DF /* FLPrerequisiteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPrerequisiteTests.m; sourceTree = "<group>"; };
 		27CBC1F416768BA600753D0A /* FishLamp-Objc-OSX-Universal-MRC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-Universal-MRC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CF85EA18259970002B5C3E /* FLAsyncTestGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAsyncTestGroup.h; sourceTree = "<group>"; };
 		27CF85EB18259970002B5C3E /* FLAsyncTestGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAsyncTestGroup.m; sourceTree = "<group>"; };
@@ -2041,8 +2048,8 @@
 		B227A147182AD3F400EDC426 /* FLOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLOperation.m; sourceTree = "<group>"; };
 		B227A148182AD3F400EDC426 /* FLOperationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLOperationContext.h; sourceTree = "<group>"; };
 		B227A149182AD3F400EDC426 /* FLOperationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLOperationContext.m; sourceTree = "<group>"; };
-		B227A14A182AD3F500EDC426 /* FLOperationContract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLOperationContract.h; sourceTree = "<group>"; };
-		B227A14B182AD3F500EDC426 /* FLOperationContract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLOperationContract.m; sourceTree = "<group>"; };
+		B227A14A182AD3F500EDC426 /* FLPrerequisite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPrerequisite.h; sourceTree = "<group>"; };
+		B227A14B182AD3F500EDC426 /* FLPrerequisite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLPrerequisite.m; sourceTree = "<group>"; };
 		B227A14C182AD3F500EDC426 /* FLOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLOperationQueue.h; sourceTree = "<group>"; };
 		B227A14D182AD3F500EDC426 /* FLOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLOperationQueue.m; sourceTree = "<group>"; };
 		B227A14E182AD3F500EDC426 /* FLOperationQueueOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLOperationQueueOperation.h; sourceTree = "<group>"; };
@@ -2996,6 +3003,8 @@
 				27188C4C18148B8E0060FED6 /* FLOperationTests.m */,
 				27CF85EA18259970002B5C3E /* FLAsyncTestGroup.h */,
 				27CF85EB18259970002B5C3E /* FLAsyncTestGroup.m */,
+				27C52CD7182C043B006BD5DF /* FLPrerequisiteTests.h */,
+				27C52CD8182C043B006BD5DF /* FLPrerequisiteTests.m */,
 			);
 			path = "FishLamp-Objc-AsyncTests";
 			sourceTree = "<group>";
@@ -3287,8 +3296,8 @@
 				B227A147182AD3F400EDC426 /* FLOperation.m */,
 				B227A148182AD3F400EDC426 /* FLOperationContext.h */,
 				B227A149182AD3F400EDC426 /* FLOperationContext.m */,
-				B227A14A182AD3F500EDC426 /* FLOperationContract.h */,
-				B227A14B182AD3F500EDC426 /* FLOperationContract.m */,
+				B227A14A182AD3F500EDC426 /* FLPrerequisite.h */,
+				B227A14B182AD3F500EDC426 /* FLPrerequisite.m */,
 				B227A14C182AD3F500EDC426 /* FLOperationQueue.h */,
 				B227A14D182AD3F500EDC426 /* FLOperationQueue.m */,
 				B227A14E182AD3F500EDC426 /* FLOperationQueueOperation.h */,
@@ -5110,7 +5119,8 @@
 				B227A59A182AD3F900EDC426 /* NSTextField+FLCompatibility.m in Sources */,
 				B227A96E182AD3FA00EDC426 /* FLService.m in Sources */,
 				B227A5FE182AD3F900EDC426 /* FLConfirm.m in Sources */,
-				B227A4AA182AD3F900EDC426 /* FLOperationContract.m in Sources */,
+				B227A4AA182AD3F900EDC426 /* FLPrerequisite.m in Sources */,
+				27C52CDA182C043B006BD5DF /* FLPrerequisiteTests.m in Sources */,
 				B227AA27182AD3FA00EDC426 /* FLTSanityCheckTestFinder.m in Sources */,
 				B227A815182AD3FA00EDC426 /* FLNetworkOperationContext.m in Sources */,
 				B227AA54182AD3FA00EDC426 /* FLTestLoggingManager.m in Sources */,
@@ -5493,7 +5503,8 @@
 				B227A59C182AD3F900EDC426 /* NSTextField+FLCompatibility.m in Sources */,
 				B227A970182AD3FA00EDC426 /* FLService.m in Sources */,
 				B227A600182AD3F900EDC426 /* FLConfirm.m in Sources */,
-				B227A4AC182AD3F900EDC426 /* FLOperationContract.m in Sources */,
+				B227A4AC182AD3F900EDC426 /* FLPrerequisite.m in Sources */,
+				27C52CDC182C043B006BD5DF /* FLPrerequisiteTests.m in Sources */,
 				B227AA29182AD3FA00EDC426 /* FLTSanityCheckTestFinder.m in Sources */,
 				B227A817182AD3FA00EDC426 /* FLNetworkOperationContext.m in Sources */,
 				B227AA56182AD3FA00EDC426 /* FLTestLoggingManager.m in Sources */,
@@ -5890,7 +5901,8 @@
 				B227A599182AD3F900EDC426 /* NSTextField+FLCompatibility.m in Sources */,
 				B227A96D182AD3FA00EDC426 /* FLService.m in Sources */,
 				B227A5FD182AD3F900EDC426 /* FLConfirm.m in Sources */,
-				B227A4A9182AD3F900EDC426 /* FLOperationContract.m in Sources */,
+				B227A4A9182AD3F900EDC426 /* FLPrerequisite.m in Sources */,
+				27C52CD9182C043B006BD5DF /* FLPrerequisiteTests.m in Sources */,
 				B227AA26182AD3FA00EDC426 /* FLTSanityCheckTestFinder.m in Sources */,
 				B227A814182AD3FA00EDC426 /* FLNetworkOperationContext.m in Sources */,
 				B227AA53182AD3FA00EDC426 /* FLTestLoggingManager.m in Sources */,
@@ -6241,7 +6253,8 @@
 				B227A59B182AD3F900EDC426 /* NSTextField+FLCompatibility.m in Sources */,
 				B227A96F182AD3FA00EDC426 /* FLService.m in Sources */,
 				B227A5FF182AD3F900EDC426 /* FLConfirm.m in Sources */,
-				B227A4AB182AD3F900EDC426 /* FLOperationContract.m in Sources */,
+				B227A4AB182AD3F900EDC426 /* FLPrerequisite.m in Sources */,
+				27C52CDB182C043B006BD5DF /* FLPrerequisiteTests.m in Sources */,
 				B227AA28182AD3FA00EDC426 /* FLTSanityCheckTestFinder.m in Sources */,
 				B227A816182AD3FA00EDC426 /* FLNetworkOperationContext.m in Sources */,
 				B227AA55182AD3FA00EDC426 /* FLTestLoggingManager.m in Sources */,
@@ -6592,7 +6605,8 @@
 				B227A59D182AD3F900EDC426 /* NSTextField+FLCompatibility.m in Sources */,
 				B227A971182AD3FA00EDC426 /* FLService.m in Sources */,
 				B227A601182AD3F900EDC426 /* FLConfirm.m in Sources */,
-				B227A4AD182AD3F900EDC426 /* FLOperationContract.m in Sources */,
+				B227A4AD182AD3F900EDC426 /* FLPrerequisite.m in Sources */,
+				27C52CDD182C043B006BD5DF /* FLPrerequisiteTests.m in Sources */,
 				B227AA2A182AD3FA00EDC426 /* FLTSanityCheckTestFinder.m in Sources */,
 				B227A818182AD3FA00EDC426 /* FLNetworkOperationContext.m in Sources */,
 				B227AA57182AD3FA00EDC426 /* FLTestLoggingManager.m in Sources */,
@@ -7121,7 +7135,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2712D9C217DE36C8007327C0 /* ProjectSettingsDebug.xcconfig */;
 			buildSettings = {
-				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};

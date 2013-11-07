@@ -87,7 +87,7 @@
 
 - (void) testAsyncTest2:(id<FLTestCase>) testCase {
 
-    
+    [testCase setFinished];
 
 //    FLPromise* promise =
 //    [FLBackgroundQueue queueBlock:^{

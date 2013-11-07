@@ -11,6 +11,8 @@
 #import "FLFinisher.h"
 #import "FLOperation.h"
 
+@class FLTimer;
+
 @interface FLTTestCase : FLOperation<FLTestCase> {
 @private
     NSString* _testCaseName;
@@ -28,6 +30,10 @@
     BOOL _debugMode;
 
     FLIndentIntegrity* _indentIntegrity;
+
+    NSTimeInterval _timeoutInterval;
+
+    FLTimer* _timer;
 }
 
 // creation

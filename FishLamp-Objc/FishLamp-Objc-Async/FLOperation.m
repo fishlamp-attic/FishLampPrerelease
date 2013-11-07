@@ -66,6 +66,7 @@
     _finisher.operation = nil;
 
 #if FL_MRC
+    [_prerequisites release];
     [_operationStarter release];
 	[_finisher release];
 	[super dealloc];
@@ -213,12 +214,12 @@
     [self setFinishedWithResult:[NSError cancelError]];
 }
 
-- (void) registerContract:(id<FLOperationContract>) contract {
-    if(!_contracts) {
-        _contracts = [[NSMutableArray alloc] init];
+- (void) addPrerequisite:(id<FLPrerequisite>) prerequisite {
+    if(!_prerequisites) {
+        _prerequisites = [[NSMutableArray alloc] init];
     }
 
-    [_contracts addObject:contract];
+    [_prerequisites addObject:prerequisite];
 }
 
 @end

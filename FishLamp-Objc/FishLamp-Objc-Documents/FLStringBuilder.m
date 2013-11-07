@@ -18,7 +18,7 @@
 
 @interface FLStringBuilderSection (Internal)
 @property (readwrite, assign, nonatomic) id parent;
-@property (readwrite, assign, nonatomic) id document;
+@property (readwrite, assign, nonatomic) id stringDocument;
 @end
 
 @implementation FLStringBuilder 
@@ -27,7 +27,7 @@
 
 - (void) addRootSection {
     FLStringBuilderSection* section = [FLStringBuilderSection stringBuilderSection];
-    section.document = self;
+    section.stringDocument = self;
     [_stack addObject:section];
 }
 

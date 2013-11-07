@@ -1,16 +1,17 @@
 //
-//  FLOperationContract.m
+//  FLPrerequisite.m
 //  FishLamp-Objc
 //
 //  Created by Mike Fullerton on 11/6/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FLOperationContract.h"
+#import "FLPrerequisite.h"
 
 #import "FLObjcRuntime.h"
 
-@implementation FLOperationContract
+
+@implementation FLProtocolPrerequisite
 
 - (id) initWithProtocol:(Protocol*) protocol {
 	self = [super init];
@@ -20,11 +21,11 @@
 	return self;
 }
 
-+ (id) operationContractWithProtocol:(Protocol*) protocol {
++ (id) protocolPrerequisite:(Protocol*) protocol {
     return FLAutorelease([[[self class] alloc] initWithProtocol:protocol]);
 }
 
-- (BOOL) objectFufillsContract:(id) object {
+- (BOOL) objectMeetsCondition:(id) object {
     if(FLClassConformsToProtocol([object class], _protocol)) {
         return YES;
     }

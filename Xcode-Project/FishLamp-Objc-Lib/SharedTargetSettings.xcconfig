@@ -12,4 +12,4 @@ EXECUTABLE_PREFIX =
 EXECUTABLE_EXTENSION = a
 
 // change this for your project
-HEADER_SEARCH_PATHS = $(inherited) ../Classes/**
+HEADER_SEARCH_PATHS = $(inherited) ../FishLamp-Objc/**

@@ -15,6 +15,8 @@
 #import "FLSelectorPerforming.h"
 #import "FLTestLoggingManager.h"
 
+#import "FLTimer.h"
+
 @interface FLTTestCase ()
 @property (readwrite, strong) NSString* testCaseName;
 @property (readwrite, strong) FLSelector* selector;
@@ -71,8 +73,10 @@
     return self;
 }
 
-#if FL_MRC
 - (void) dealloc {
+    [_timer stopTimer];
+
+#if FL_MRC
     [_indentIntegrity release];
     [_disabledReason release];
     [_testCaseName release];
@@ -81,8 +85,8 @@
     [_didTestSelector release];
     [_result release];
     [super dealloc];
-}
 #endif
+}
 
 + (id) testCase:(NSString*) name
                 testable:(id<FLTestable>) testable
@@ -126,6 +130,10 @@
     }
 }
 
+- (void) timerDidTimeout:(FLTimer*) timer {
+    FLLog(@"Test timed out: %@", [self testCaseName]);
+}
+
 - (void) startOperation {
     [[FLTestLoggingManager instance] addLogger:self.result.loggerOutput];
     [[FLTestLoggingManager instance] indent:self.indentIntegrity];
@@ -143,6 +151,9 @@
         break;
 
         case 1:
+            _timer = [[FLTimer alloc] initWithTimeout:2.0];
+            _timer.delegate = self;
+            [_timer startTimer];
             [_selector performWithTarget:_target withObject:self];
         break;
 
@@ -156,6 +167,10 @@
 }
 
 - (void) setFinishedWithResult:(id)result {
+
+    if(_timer) {
+        [_timer stopTimer];
+    }
 
     [self.result setFinished];
 
