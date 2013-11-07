@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FishLampOSX.h"
+#import "FishLamp-OSX.h"
 #import "FLAttributedString.h"
 #import "FLOrderedCollection.h"
 #import "FLBatchDictionary.h"

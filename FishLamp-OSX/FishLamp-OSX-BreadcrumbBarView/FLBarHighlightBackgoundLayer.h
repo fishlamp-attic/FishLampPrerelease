@@ -8,7 +8,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "FishLampOSX.h"
+#import "FishLamp-OSX.h"
 
 @interface FLBarHighlightBackgoundLayer : CALayer {
 @private

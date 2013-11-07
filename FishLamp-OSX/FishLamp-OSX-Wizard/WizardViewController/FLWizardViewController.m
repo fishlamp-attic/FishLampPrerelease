@@ -11,7 +11,6 @@
 #import "FLFadeAnimation.h"
 #import "FLMoveAnimation.h"
 #import "FLPanelViewController.h"
-#import "FLStatusBarViewController.h"
 #import "FLWizardStyleViewTransition.h"
 #import "NSBundle+FLCurrentBundle.h"
 
