@@ -14,6 +14,7 @@
 #import "FLPromise.h"
 #import "FLQueueableAsyncOperation.h"
 #import "FLOperationStarter.h"
+#import "FLExceptionHandler.h"
 
 @implementation FLDispatchQueue
 
@@ -63,22 +64,24 @@
     return FLAutorelease([[[self class] alloc] initWithLabel:label attr:attr]);
 }
 
-#if __MAC_10_8
 + (FLDispatchQueue*) fifoDispatchQueue:(NSString*) label {
+
+#if defined(__MAC_10_6) && !defined(__MAC_10_7)
+    return FLAutorelease([[[self class] alloc] initWithLabel:label attr:nil]);
+#else
     return FLAutorelease([[[self class] alloc] initWithLabel:label attr:DISPATCH_QUEUE_SERIAL]);
+#endif
+
 }
 
 + (FLDispatchQueue*) concurrentDispatchQueue:(NSString*) label {
-    return FLAutorelease([[[self class] alloc] initWithLabel:label attr:DISPATCH_QUEUE_CONCURRENT]);
-}
+#if defined(__MAC_10_6) && !defined(__MAC_10_7)
+    // TODO
 #else
-
-// 10.6
-+ (FLDispatchQueue*) fifoDispatchQueue:(NSString*) label {
-    return FLAutorelease([[[self class] alloc] initWithLabel:label attr:nil]);
+    return FLAutorelease([[[self class] alloc] initWithLabel:label attr:DISPATCH_QUEUE_CONCURRENT]);
+#endif
 }
 
-#endif
 
 - (void) dealloc {
 #if !OS_OBJECT_USE_OBJC
@@ -95,6 +98,19 @@
 
 - (NSString*) description {
     return [NSString stringWithFormat:@"%@ %@", [super description], self.label];
+}
+
+- (void) addExceptionHandler:(id<FLExceptionHandler>) exceptionHandler {
+    if(!_exceptionHandlers) {
+        _exceptionHandlers = [[NSMutableArray alloc] init];
+    }
+
+    [_exceptionHandlers addObject:exceptionHandler];
+}
+
+
+- (void) handleException:(NSException*) exception {
+
 }
 
 - (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) operation

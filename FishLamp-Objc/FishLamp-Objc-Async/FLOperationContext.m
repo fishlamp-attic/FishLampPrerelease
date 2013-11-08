@@ -37,7 +37,7 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
     if(self) {
         _operations = [[NSMutableSet alloc] init];
         _contextOpen = YES;
-        self.operationStarter = [FLDispatchQueue defaultOperationStarter];
+        self.operationStarter = [FLDispatchQueue defaultQueue];
     }
     
     return self;

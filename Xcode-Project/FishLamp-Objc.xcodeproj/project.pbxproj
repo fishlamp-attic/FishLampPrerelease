@@ -107,6 +107,11 @@
 		27188CA718148CF90060FED6 /* FLStringBuilderTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188CA418148CF90060FED6 /* FLStringBuilderTester.m */; };
 		27188CA818148CF90060FED6 /* FLStringBuilderTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188CA418148CF90060FED6 /* FLStringBuilderTester.m */; };
 		27188CA918148CF90060FED6 /* FLStringBuilderTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188CA418148CF90060FED6 /* FLStringBuilderTester.m */; };
+		2763B1FF182D590C002BD65F /* FLExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2763B1FE182D590C002BD65F /* FLExceptionHandler.m */; };
+		2763B200182D590C002BD65F /* FLExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2763B1FE182D590C002BD65F /* FLExceptionHandler.m */; };
+		2763B201182D590C002BD65F /* FLExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2763B1FE182D590C002BD65F /* FLExceptionHandler.m */; };
+		2763B202182D590C002BD65F /* FLExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2763B1FE182D590C002BD65F /* FLExceptionHandler.m */; };
+		2763B203182D590C002BD65F /* FLExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2763B1FE182D590C002BD65F /* FLExceptionHandler.m */; };
 		2767DFA118133AD9001EF21C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2767DF6A18133AD2001EF21C /* Foundation.framework */; };
 		2767DFC018134011001EF21C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2767DFBE18134011001EF21C /* InfoPlist.strings */; };
 		2767DFC218134011001EF21C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2767DFC118134011001EF21C /* main.m */; };
@@ -1944,6 +1949,8 @@
 		27188CA418148CF90060FED6 /* FLStringBuilderTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringBuilderTester.m; sourceTree = "<group>"; };
 		2727D28D17DE2FF80069F9D2 /* FishLamp-Objc-OSX-64-MRC-TestTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-MRC-TestTool"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27314C79165328400027850D /* FishLamp-Objc-OSX-64-ARC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-ARC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2763B1FD182D590C002BD65F /* FLExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLExceptionHandler.h; sourceTree = "<group>"; };
+		2763B1FE182D590C002BD65F /* FLExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLExceptionHandler.m; sourceTree = "<group>"; };
 		2767DF6818133AD2001EF21C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		2767DF6918133AD2001EF21C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2767DF6A18133AD2001EF21C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -3569,6 +3576,8 @@
 				B227A1FA182AD3F600EDC426 /* FLStackTrace.m */,
 				B227A1FB182AD3F600EDC426 /* NSError+FLExtras.h */,
 				B227A1FC182AD3F600EDC426 /* NSError+FLExtras.m */,
+				2763B1FD182D590C002BD65F /* FLExceptionHandler.h */,
+				2763B1FE182D590C002BD65F /* FLExceptionHandler.m */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -5198,6 +5207,7 @@
 				27CF85F418259AC2002B5C3E /* FLCoreTestGroup.m in Sources */,
 				B227AA7C182AD3FA00EDC426 /* FLTTestFactoryList.m in Sources */,
 				B227A4E6182AD3F900EDC426 /* FLUserDefaultsCredentialStorage.m in Sources */,
+				2763B200182D590C002BD65F /* FLExceptionHandler.m in Sources */,
 				B227A4E1182AD3F900EDC426 /* FLCredentialsStorage.m in Sources */,
 				B227AA81182AD3FA00EDC426 /* FLTTestToolMain.m in Sources */,
 				B227A842182AD3FA00EDC426 /* FLHttpStream.m in Sources */,
@@ -5582,6 +5592,7 @@
 				27CF85F618259AC2002B5C3E /* FLCoreTestGroup.m in Sources */,
 				B227AA7E182AD3FA00EDC426 /* FLTTestFactoryList.m in Sources */,
 				B227A4E8182AD3F900EDC426 /* FLUserDefaultsCredentialStorage.m in Sources */,
+				2763B202182D590C002BD65F /* FLExceptionHandler.m in Sources */,
 				B227A4E3182AD3F900EDC426 /* FLCredentialsStorage.m in Sources */,
 				B227AA83182AD3FA00EDC426 /* FLTTestToolMain.m in Sources */,
 				B227A844182AD3FA00EDC426 /* FLHttpStream.m in Sources */,
@@ -5980,6 +5991,7 @@
 				27CF85F318259AC2002B5C3E /* FLCoreTestGroup.m in Sources */,
 				B227AA7B182AD3FA00EDC426 /* FLTTestFactoryList.m in Sources */,
 				B227A4E5182AD3F900EDC426 /* FLUserDefaultsCredentialStorage.m in Sources */,
+				2763B1FF182D590C002BD65F /* FLExceptionHandler.m in Sources */,
 				B227A4E0182AD3F900EDC426 /* FLCredentialsStorage.m in Sources */,
 				B227AA80182AD3FA00EDC426 /* FLTTestToolMain.m in Sources */,
 				B227A841182AD3FA00EDC426 /* FLHttpStream.m in Sources */,
@@ -6332,6 +6344,7 @@
 				27CF85F518259AC2002B5C3E /* FLCoreTestGroup.m in Sources */,
 				B227AA7D182AD3FA00EDC426 /* FLTTestFactoryList.m in Sources */,
 				B227A4E7182AD3F900EDC426 /* FLUserDefaultsCredentialStorage.m in Sources */,
+				2763B201182D590C002BD65F /* FLExceptionHandler.m in Sources */,
 				B227A4E2182AD3F900EDC426 /* FLCredentialsStorage.m in Sources */,
 				B227AA82182AD3FA00EDC426 /* FLTTestToolMain.m in Sources */,
 				B227A843182AD3FA00EDC426 /* FLHttpStream.m in Sources */,
@@ -6684,6 +6697,7 @@
 				27CF85F718259AC3002B5C3E /* FLCoreTestGroup.m in Sources */,
 				B227AA7F182AD3FA00EDC426 /* FLTTestFactoryList.m in Sources */,
 				B227A4E9182AD3F900EDC426 /* FLUserDefaultsCredentialStorage.m in Sources */,
+				2763B203182D590C002BD65F /* FLExceptionHandler.m in Sources */,
 				B227A4E4182AD3F900EDC426 /* FLCredentialsStorage.m in Sources */,
 				B227AA84182AD3FA00EDC426 /* FLTTestToolMain.m in Sources */,
 				B227A845182AD3FA00EDC426 /* FLHttpStream.m in Sources */,
