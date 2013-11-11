@@ -21,7 +21,12 @@
 beginAuthenticatingWithCredentials:(FLCredentialsEditor*) editor
          completion:(fl_result_block_t) completion {
 
-    [self.httpRequestAuthenticator beginAuthenticatingCredentials:editor.credentials completion:completion];
+    if(self.isServiceOpen) {
+        [self closeService];
+    }
+    [self openServiceWithCredentials:editor.credentials];
+
+    [self beginAuthenticating:completion];
 }
 
 - (void) loginPanelDidCancelAuthentication:(FLLoginPanel*) panel {
