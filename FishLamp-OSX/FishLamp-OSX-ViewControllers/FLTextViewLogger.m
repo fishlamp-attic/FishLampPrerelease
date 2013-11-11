@@ -157,7 +157,7 @@
 //    [self appendEOL];
 //}
 //
-//- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) stringFormatter {
+//- (void) stringFormatterCloseLine:(FLStringFormatter*) stringFormatter {
 //    [self appendEOL];
 //}
 

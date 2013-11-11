@@ -20,7 +20,8 @@
 - (void) loginPanel:(FLLoginPanel*) panel 
 beginAuthenticatingWithCredentials:(FLCredentialsEditor*) editor
          completion:(fl_result_block_t) completion {
-    [self.httpRequestAuthenticator beginAuthenticating:completion];
+
+    [self.httpRequestAuthenticator beginAuthenticatingCredentials:editor.credentials completion:completion];
 }
 
 - (void) loginPanelDidCancelAuthentication:(FLLoginPanel*) panel {

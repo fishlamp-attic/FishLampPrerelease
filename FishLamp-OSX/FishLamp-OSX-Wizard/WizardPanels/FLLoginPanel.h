@@ -11,7 +11,7 @@
 #import "FLPanelViewController.h"
 #import "FLWizardViewController.h"
 #import "FLProgressPanel.h"
-#import "FLCredentials.h"
+#import "FLAuthenticationCredentials.h"
 #import "FLCredentialsEditor.h"
 
 #if OSX
