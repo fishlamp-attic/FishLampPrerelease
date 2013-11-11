@@ -33,6 +33,7 @@ extern NSString* const FLHttpControllerDidLogoutUserNotification;
 }
 @property (readwrite, assign) id<FLHttpAuthenticatorDelegate> authenticationDelegate;
 @property (readwrite, strong) id<FLAuthenticatedEntity> authenticatedEntity;
+@property (readonly, strong) id<FLAuthenticationCredentials> authenticationCredentials;
 
 // getters
 

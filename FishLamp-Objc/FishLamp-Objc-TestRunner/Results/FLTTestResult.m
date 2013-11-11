@@ -86,7 +86,7 @@
     [self setFailedWithError:ex.error];
 }
 
-- (void) appendLogEntry:(id<FLAppendableString>) logEntry {
+- (void) appendLogEntry:(id<FLStringFormatting>) logEntry {
     if(!_logEntries) {
         _logEntries = [[NSMutableArray alloc] init];
     }

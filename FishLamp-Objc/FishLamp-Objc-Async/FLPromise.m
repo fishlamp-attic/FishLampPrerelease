@@ -81,11 +81,9 @@ static NSInteger s_max = 0;
     }
 #endif
 
-#if !OS_OBJECT_USE_OBJC
     if(_semaphore) {
-        dispatch_release(_semaphore);
+        FLDispatchRelease(_semaphore);
     }
-#endif
 
 #if FL_MRC
     [_nextPromise release];
@@ -174,9 +172,8 @@ static NSInteger s_max = 0;
         self.isFinished = YES;
         dispatch_semaphore_signal(self.semaphore);
 
-#if !OS_OBJECT_USE_OBJC
-        dispatch_release(self.semaphore);
-#endif
+        FLDispatchRelease(self.semaphore);
+
         self.semaphore = nil;
     }
 }

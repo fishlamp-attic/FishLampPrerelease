@@ -39,7 +39,7 @@ FLSynthesizeModelObjectMethods();
 #endif
 }
 
-- (void) describeSelf:(FLPrettyString*) string {
+- (void) prettyDescription:(id<FLStringFormatter>) string {
     FLObjectDescriber* typeDesc = [self objectDescriber];
     FLAssertNotNil(typeDesc);
     

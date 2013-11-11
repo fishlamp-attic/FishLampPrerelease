@@ -20,7 +20,7 @@
  */
 - (id) representedObject;
 
-- (BOOL) isProxy;
+- (BOOL) willRetainInBroadcaster;
 
 @end
 

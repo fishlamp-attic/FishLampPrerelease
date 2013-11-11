@@ -8,7 +8,7 @@
 //
 
 #import "FLStackTrace.h"
-#import "FLPrettyString.h"
+#import "NSObject+FLPrettyDescribe.h"
 
 const FLStackTrace_t FLStaceTraceEmpty = { { 0, 0, 0, 0 }, {0, 0}};
 
@@ -132,19 +132,6 @@ FLStackTrace_t FLStackTraceMake(FLLocationInSourceFile_t loc, BOOL withCallStack
     return _stackTrace.stack.depth;
 }
 
-- (void) describeSelf:(FLPrettyString*) string {
-    [string appendLine:[NSString stringWithFormat:@"%s:%d, %s", 
-                            FLFileNameFromLocation(&_stackTrace.location),
-                            _stackTrace.location.line, 
-                            _stackTrace.location.function]];
-
-    [string indentLinesInBlock:^{
-        for(int i = 0; i < self.stackDepth; i++) {
-            [string appendLine:[NSString stringWithFormat:@"%s", [self stackEntryAtIndex:i]]];
-        }
-    }];
-}
-
 - (void) appendToStringFormatter:(id<FLStringFormatter>) string {
     [string appendLineWithFormat:@"%s:%d, %s",
                             FLFileNameFromLocation(&_stackTrace.location),
@@ -156,6 +143,10 @@ FLStackTrace_t FLStackTraceMake(FLLocationInSourceFile_t loc, BOOL withCallStack
             [string appendLineWithFormat:@"%s", [self stackEntryAtIndex:i]];
         }
     }];
+}
+
+- (void) prettyDescription:(id<FLStringFormatter>) string {
+    [self appendToStringFormatter:string];
 }
 
 - (NSString*) description {

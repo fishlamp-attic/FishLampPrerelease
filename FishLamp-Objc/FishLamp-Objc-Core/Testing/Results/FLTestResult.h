@@ -10,17 +10,9 @@
 #import "FLCoreRequired.h"
 
 @class FLStackTrace;
-@protocol FLAppendableString;
+@protocol FLStringFormatting;
 
 @protocol FLStringFormatter;
-
-//@protocol FLTestResult <NSObject>
-//
-//@optional
-//- (NSString*) runSummary;
-//- (NSString*) failureDescription;
-//
-//@end
 
 @protocol FLTestResult <NSObject>
 
@@ -39,7 +31,7 @@
 - (void) setFailedWithError:(NSError*) error;
 - (void) setFailedWithException:(NSException*) ex;
 
-- (void) appendLogEntry:(id<FLAppendableString>) logEntry;
+- (void) appendLogEntry:(id<FLStringFormatting>) logEntry;
 
 @property (readonly, strong, nonatomic) NSArray* logEntries;
 

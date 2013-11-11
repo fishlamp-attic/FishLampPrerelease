@@ -27,7 +27,11 @@
 
 + (id) httpAuthenticatorWithEntity:(id<FLAuthenticatedEntity>) entity;
 
-+ (id) httpAuthenticatorWithCredentials:(id<FLAuthenticationCredentials>) credentials;
++ (id) httpAuthenticatorWithCredentials:(id<FLAuthenticationCredentials>) credentials ;
+
++ (id) httpAuthenticatorWithCredentials:(id<FLAuthenticationCredentials>) credentials withHttpRequest:(FLHttpRequest*) request;
+
+
 
 @end
 

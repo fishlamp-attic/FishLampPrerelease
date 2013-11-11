@@ -48,9 +48,7 @@
         self = [self initWithDispatchQueue:queue];
     }
     @finally {
-#if !OS_OBJECT_USE_OBJC
-        dispatch_release(queue);
-#endif
+        FLDispatchRelease(queue);
     }
 
     return self;
@@ -84,11 +82,9 @@
 
 
 - (void) dealloc {
-#if !OS_OBJECT_USE_OBJC
     if(_dispatch_queue) {
-        dispatch_release(_dispatch_queue);
+        FLDispatchRelease(_dispatch_queue);
     }
-#endif
 
 #if FL_MRC
     [_label release];
@@ -188,9 +184,7 @@
         dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         dispatch_semaphore_wait(semaphore, 
                                 dispatch_time(0, FLTimeIntervalToNanoSeconds(seconds)));
-#if !OS_OBJECT_USE_OBJC
-        dispatch_release(semaphore);
-#endif
+        FLDispatchRelease(semaphore);
     } 
 }    
 #endif

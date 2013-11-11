@@ -98,6 +98,9 @@
     return FLAutorelease([[[self class] alloc] initWithAuthenticatedEntity:entity]);
 }
 
++ (id) httpAuthenticatorWithCredentials:(id<FLAuthenticationCredentials>) credentials withHttpRequest:(FLHttpRequest*) request {
+    return FLAutorelease([[[self class] alloc] initWithHttpRequest:request credentials:credentials]);
+}
 
 - (BOOL) shouldAuthenticateUser:(id<FLAuthenticationCredentials>) creds {
 

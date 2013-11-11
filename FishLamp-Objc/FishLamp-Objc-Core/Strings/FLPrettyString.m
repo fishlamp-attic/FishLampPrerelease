@@ -86,40 +86,4 @@
 
 @end
 
-@implementation NSObject (FLPrettyString)
-
-- (void) describeToString:(FLPrettyString*) string {
-    [string appendInScope:[NSString stringWithFormat:@"%@ {", NSStringFromClass([self class])] 
-               closeScope:@"}"
-                withBlock:^{
-                    [self describeSelf:string];
-                }]; 
-}
-
-- (NSString*) prettyDescription {
-    FLPrettyString* str = [FLPrettyString prettyString];
-    [self describeToString:str];
-    return [str string];
-}
-
-- (void) prettyDescription:(FLPrettyString*) string {
-    [string indentLinesInBlock: ^{
-        [self describeSelf:string];
-    }];
-}
-
-- (void) describeSelf:(FLPrettyString*) string {
-    [string appendLine:[self description]];
-}
-
-@end
-
-@implementation NSArray (FLPrettyString)
-- (void) describeSelf:(FLPrettyString*) string {
-    for(id object in self) {
-        [object prettyDescription:string];
-    }
-}
-
-@end
 

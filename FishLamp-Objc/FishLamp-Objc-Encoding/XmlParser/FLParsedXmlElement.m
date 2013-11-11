@@ -135,7 +135,7 @@
 //    return [[self elementAtPath:parentalPath] childElement];
 //}
 
-- (void) describeToStringFormatter:(id<FLStringFormatter>) stringFormatter {
+- (void) prettyDescription:(id<FLStringFormatter>) stringFormatter {
     [stringFormatter appendFormat:@"<%@", self.elementName];
     if(FLStringIsNotEmpty(self.namespaceURI)) {
         [stringFormatter appendFormat:@" %@=\"%@\"", @"namespace", self.namespaceURI];
@@ -152,13 +152,17 @@
             [stringFormatter appendLineWithFormat:@"%@", self.elementValue];
         }
         for(FLParsedXmlElement* element in [self.childElements objectEnumerator]) {
-            [element describeToStringFormatter:stringFormatter];
+            [stringFormatter appendPrettyDescriptionForObject:element];
         }
     }];
 
     [stringFormatter appendLineWithFormat:@"</%@>", self.elementName];
 
     [stringFormatter appendLineWithFormat:@"<!-- %ld siblings -->", (unsigned long) self.countSiblingElements];
+}
+
+- (NSString*) description {
+    return [self prettyDescription];
 }
 
 - (BOOL) isQualified {
@@ -183,21 +187,8 @@
     
     return _prefix;
 }
-- (NSString*) description {
 
-    FLPrettyString* prettyString = [FLPrettyString prettyString];
-    [self describeToStringFormatter:prettyString];
-    return prettyString.string;
 
-//    return [NSString stringWithFormat:@"elementName:%@, namespace:%@, qualifiedName:%@, attributes:%@, elementValue:%@, elements:%@ \n",
-//        FLEmptyStringOrString(self.elementName),
-//        FLEmptyStringOrString(self.namespaceURI),
-//        FLEmptyStringOrString(self.qualifiedName),
-//        FLEmptyStringOrString([self.attributes description]),
-//        FLEmptyStringOrString(self.elementValue),
-//        FLEmptyStringOrString([self.elements description])
-//    ];
-}
 
 - (NSUInteger) countSiblingElements {
     NSUInteger count = 0;

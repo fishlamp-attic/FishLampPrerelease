@@ -22,3 +22,5 @@
 
 // low level char* string helper
 #import "FLCStringFragment.h"
+
+#import "NSObject+FLPrettyDescribe.h"

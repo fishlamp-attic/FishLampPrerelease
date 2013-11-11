@@ -59,9 +59,5 @@
 - (FLParsedXmlElement*) childElementWithName:(NSString*) name
                               maxSearchDepth:(NSInteger) maxDepth;
 
-
-// TODO: abstract this???
-- (void) describeToStringFormatter:(id<FLStringFormatter>) stringFormatter;
-
 @end
 

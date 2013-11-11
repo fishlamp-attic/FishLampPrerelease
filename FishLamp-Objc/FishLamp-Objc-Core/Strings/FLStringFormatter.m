@@ -128,6 +128,10 @@
     [_stringFormatterDelegate stringFormatter:self appendContentsToStringFormatter:stringFormatter];
 }
 
+- (void) prettyDescription:(id<FLStringFormatter>)stringFormatter {
+    [self appendToStringFormatter:stringFormatter];
+}
+
 - (void) appendString:(id) string {
     [string appendToStringFormatter:self];
 }
@@ -159,10 +163,6 @@
         [string stringFormatter:self appendToDelegate:_stringFormatterDelegate];
     }
 }
-
-//- (void) appendStringFormatter:(id<FLStringFormatter>) aStringFormatter {
-//    [aStringFormatter appendToStringFormatter:self];
-//}
 
 - (void) openLine {
     [_stringFormatterDelegate stringFormatterOpenLine:self];
@@ -330,8 +330,17 @@
 }
 
 - (NSString*) description {
-    return [self formattedString];
+    return [self prettyDescription];
 }
+
+- (void) appendPrettyDescriptionForObject:(id) object {
+    [self appendLineWithFormat:@"%@ {", NSStringFromClass([self class])];
+    [self indentLinesInBlock:^{
+        [object prettyDescription:self];
+    }];
+    [self appendLine:@"}"];
+}
+
 @end
 
 #import "FLStackTrace.h"

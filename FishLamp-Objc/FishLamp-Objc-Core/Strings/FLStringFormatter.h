@@ -17,11 +17,11 @@ typedef void (^FLStringFormatterIndentedBlock)();
 @protocol FLStringFormatter;
 @protocol FLStringPreprocessor;
 
-@protocol FLAppendableString <NSObject>
+@protocol FLStringFormatting <NSObject>
 - (void) appendToStringFormatter:(id<FLStringFormatter>) stringFormatter;
 @end
 
-@protocol FLStringFormatter <FLAppendableString>
+@protocol FLStringFormatter <FLStringFormatting>
 
 @property (readonly, assign, nonatomic) NSUInteger length;
 
@@ -91,6 +91,8 @@ typedef void (^FLStringFormatterIndentedBlock)();
  */
 - (NSAttributedString*) formattedAttributedString;
 
+- (void) appendPrettyDescriptionForObject:(id) object;
+
 @end
 
 /**
@@ -111,11 +113,6 @@ typedef void (^FLStringFormatterIndentedBlock)();
 @property (readwrite, assign, nonatomic) id stringFormatterDelegate;
 
 @property (readwrite, strong, nonatomic) id<FLStringPreprocessor> preprocessor;
-
-// TODO: refactor this?
-- (void) appendInScope:(NSString*) openScope
-            closeScope:(NSString*) closeScope 
-             withBlock:(FLStringFormatterIndentedBlock) block;
 
 @property (readonly, strong, nonatomic) FLIndentIntegrity* indentIntegrity;
 

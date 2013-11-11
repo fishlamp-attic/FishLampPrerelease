@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLCoreRequired.h"
+#import "FishLampMinimum.h"
 #import "FLArrayProxy.h"
 
 // these are here as a convenience
@@ -15,6 +15,10 @@
 #import "FLRetainedObject.h"
 #import "FLNonretainedObjectProxy.h"
 #import "FLMainThreadObject.h"
+
+#define FLBroadcasterDefaultQueue nil
+
+@protocol FLAsyncQueue;
 
 @protocol FLBroadcaster <NSObject>
 
@@ -38,9 +42,9 @@
               withObject:(id) object3
               withObject:(id) object4;
 
-- (BOOL) hasListener:(id) listener;
+//- (BOOL) hasListener:(id) listener;
 
-- (void) addListener:(id) observer;
+- (void) addListener:(id) listener;
 
 - (void) removeListener:(id) listener;
 @end

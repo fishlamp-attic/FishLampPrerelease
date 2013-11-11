@@ -74,11 +74,8 @@
         [testCase executeTestBlock:^{
 
             @try {
-                FLTestLog(self, @"hello this is going to fail");
-
                 FLConfirmFalse(finishedOk);
                 finishedOk = YES;
-                FLConfirmTrue(false);
 
                 [testCase setFinished];
             }
@@ -96,11 +93,7 @@
     FLConfirm(testCase.result.started);
     FLConfirm(testCase.result.finished);
 
-#if !OS_OBJECT_USE_OBJC
-    dispatch_release(semaphor);
-#endif
-
-
+    FLDispatchRelease(semaphor);
 }
 
 - (void) testAsyncTest2:(id<FLTestCase>) testCase {

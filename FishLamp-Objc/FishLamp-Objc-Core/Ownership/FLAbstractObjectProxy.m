@@ -89,7 +89,7 @@
     return [[self representedObject] respondsToSelector:aSelector];
 }
 
-- (BOOL) isProxy {
+- (BOOL) willRetainInBroadcaster {
     return YES;
 }
 

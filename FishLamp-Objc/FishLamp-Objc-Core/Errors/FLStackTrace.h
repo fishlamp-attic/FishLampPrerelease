@@ -76,7 +76,7 @@ const char* FLStackEntryAtIndex(FLCallStack_t stack, NSUInteger index) {
 
 // OBJECT
 
-@interface FLStackTrace : NSObject<FLAppendableString> {
+@interface FLStackTrace : NSObject<FLStringFormatting> {
 @private
     FLStackTrace_t _stackTrace;
 }

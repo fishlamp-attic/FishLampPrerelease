@@ -27,16 +27,6 @@
 
 @end
 
-@interface NSObject (FLStringFormatter)
-// override this one
-- (void) describeSelf:(FLPrettyString*) string;
-
-// call this one
-- (void) prettyDescription:(FLPrettyString*) string;
-
-- (NSString*) prettyDescription;
-@end
-
 
 
 

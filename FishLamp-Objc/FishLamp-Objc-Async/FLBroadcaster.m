@@ -10,6 +10,65 @@
 #import "FLBroadcaster.h"
 #import "FLSelectorPerforming.h"
 #import "FLAtomic.h"
+#import "FLAsyncQueue.h"
+#import "FishLampAsync.h"
+
+@interface FLExecuteInQueueProxy : FLRetainedObject {
+@private
+    id<FLAsyncQueue> _queue;
+}
++ (id) executeInQueueProxy:(id) object queue:(id<FLAsyncQueue>) queue;
+@end
+
+@implementation FLExecuteInQueueProxy
+
+- (id) initWithRetainedObject:(id) object queue:(id<FLAsyncQueue>) queue {
+
+    self = [super initWithRetainedObject:object];
+    if(self) {
+        _queue = FLRetain(queue);
+        FLAssertNotNil(_queue);
+    }
+    return self;
+}
+
++ (id) executeInQueueProxy:(id) object queue:(id<FLAsyncQueue>) queue {
+    return FLAutorelease([[[self class] alloc] initWithRetainedObject:object queue:queue]);
+}
+
+#if FL_MRC
+- (void)dealloc {
+	[_queue release];
+	[super dealloc];
+}
+#endif
+
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+    
+    __block id object = [self representedObject];
+    FLAssertNotNil(object);
+    FLAssertNotNil(_queue);
+
+    if([object respondsToSelector:[anInvocation selector]]) {
+
+        __block NSInvocation* theInvocation = FLRetain(anInvocation);
+        [theInvocation retainArguments];
+
+        FLRetainObject(object);
+
+        [_queue queueBlock: ^{
+            [theInvocation invokeWithTarget:object];
+            FLReleaseWithNil(theInvocation);
+            FLReleaseWithNil(object);
+        }];
+    }
+    else {
+        [super forwardInvocation:anInvocation];
+    }
+}
+
+@end
+
 
 @implementation FLBroadcasterProxy
 
@@ -40,18 +99,30 @@
     return [_listeners countByEnumeratingWithState:state objects:buffer count:len];
 }
 
-- (void) addListener:(id) listener {
+- (void) addListener:(id) listener  withRetain:(BOOL) retain  {
     if(!_listeners) {
         _listeners = [[NSMutableArray alloc] init];
     }
 
-    if([listener respondsToSelector:@selector(isProxy)]) {
-        [_listeners addObject:listener];
+    id object = listener;
+    if(!retain) {
+        object = [FLNonretainedObjectProxy nonretainedObjectProxy:listener];
     }
-    else {
-        [_listeners addObject:[FLNonretainedObjectProxy nonretainedObjectProxy:listener]];
-    }
+
+//    if(withQueue) {
+//        object = [FLExecuteInQueueProxy executeInQueueProxy:object queue:withQueue];
+//    }
+
+    [_listeners addObject:object];
 }
+
+- (void) addListener:(id) listener withQueue:(id<FLAsyncQueue>) queue {
+    [self addListener:listener withRetain:[listener respondsToSelector:@selector(willRetainInBroadcaster)]];
+}
+
+//- (void) addListener:(id) listener {
+//    [self addListener:listener withRetain:[listener respondsToSelector:@selector(isProxy)] withQueue:nil];
+//}
 
 - (void) removeListener:(id) listener {
     for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
@@ -181,56 +252,53 @@
     return _broadcasterProxy;
 }
 
-- (BOOL) hasListener:(id) listener {
-    __block BOOL hasListener = NO;
+//- (BOOL) hasListener:(id) listener {
+//    __block BOOL hasListener = NO;
+//
+//    FLCriticalSection(&_predicate, ^{
+//        hasListener = [self.broadcaster hasListener:listener];
+//    });
+//
+//    return hasListener;
+//}
 
-    FLCriticalSection(&_predicate, ^{
-        hasListener = [self.broadcaster hasListener:listener];
-    });
-
-    return hasListener;
-}
-
-- (void) addListener:(id) listener {
-    FLCriticalSection(&_predicate, ^{
-        [self.broadcaster addListener:listener];
-    });
+- (void) addListener:(id) listener  {
+    [self.broadcaster addListener:listener];
 }
 
 - (void) removeListener:(id) listener {
-    FLCriticalSection(&_predicate, ^{
-        [self.broadcaster removeListener:listener];
-    });
+    [self.broadcaster removeListener:listener];
 }
 
 - (void) sendMessageToListeners:(SEL) selector {
-    FLCriticalSection(&_predicate, ^{
+
+    [FLForegroundQueue queueBlock:^{
         [self.broadcaster sendMessageToListeners:selector];
-    });
+    }];
 }
 
 - (void) sendMessageToListeners:(SEL) selector  
                      withObject:(id) object {
-    FLCriticalSection(&_predicate, ^{
+    [FLForegroundQueue queueBlock:^{
         [self.broadcaster sendMessageToListeners:selector withObject:object];
-    });
+    }];
 }
 
 - (void) sendMessageToListeners:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2 {
-    FLCriticalSection(&_predicate, ^{
+    [FLForegroundQueue queueBlock:^{
         [self.broadcaster sendMessageToListeners:selector withObject:object1 withObject:object2];
-    });
+    }];
 }
 
 - (void) sendMessageToListeners:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2
                      withObject:(id) object3 {
-    FLCriticalSection(&_predicate, ^{
+    [FLForegroundQueue queueBlock:^{
         [self.broadcaster sendMessageToListeners:selector withObject:object1 withObject:object2 withObject:object3];
-    });
+    }];
 }
 
 - (void) sendMessageToListeners:(SEL) selector 
@@ -238,9 +306,9 @@
                      withObject:(id) object2
                      withObject:(id) object3
                      withObject:(id) object4 {
-    FLCriticalSection(&_predicate, ^{
+    [FLForegroundQueue queueBlock:^{
         [self.broadcaster sendMessageToListeners:selector withObject:object1 withObject:object2 withObject:object3 withObject:object4];
-    });
+    }];
 }
 
 @end

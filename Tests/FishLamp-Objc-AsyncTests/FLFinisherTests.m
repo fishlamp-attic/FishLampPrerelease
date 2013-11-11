@@ -11,6 +11,7 @@
 #import "FLTimeoutTests.h"
 #import "FishLampAsync.h"
 #import "FLAsyncTestGroup.h"
+#import "FLAsyncTest.h"
 
 @interface FLPromise (Testing)
 @property (readonly, strong) FLPromise* nextPromise;
@@ -76,21 +77,40 @@
 }
 */
 
-- (void) testBasicAsyncTest {
+- (void) testBasicFinisher {
 
     FLTestLog(self, @"async self test");
-    
-    FLFinisher* finisher = [FLFinisher finisher];
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        [NSThread sleepForTimeInterval:0.25];
-        FLTestLog(self, @"done in thread");
-        [finisher setFinished];
-        });
+    FLAsyncTest* asyncTest = [FLAsyncTest asyncTest];
+
+    __block FLPromisedResult resultFromBlock = nil;
+
+    FLFinisher* finisher = [FLFinisher finisherWithBlock:^(FLPromisedResult result) {
+        resultFromBlock = result;
+    }];
+    FLConfirmFalse(finisher.isFinished);
+
+    __block BOOL finishedOk = NO;
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, nil), ^{
+        [asyncTest verifyAsyncResults:^{
+            finishedOk = YES;
+            FLTestLog(self, @"done in thread");
+            [finisher setFinishedWithResult:@"Hello"];
+        }];
+    });
 
     FLPromisedResult result = [finisher waitUntilFinished];
+    FLConfirmTrue(finisher.isFinished);
+    FLConfirmNotError(result);
+    FLConfirmTrue(finishedOk);
     FLConfirmNotNil(result);
-    FLConfirm(finisher.isFinished);
+    FLConfirmNotNil(resultFromBlock);
+    FLConfirm([result isEqualToString:@"Hello"]);
+    FLConfirm([resultFromBlock isEqualToString:result]);
+
+    [asyncTest wait];
+    [asyncTest finish];
 }
 
 - (void) testPromiseAdding {

@@ -10,9 +10,8 @@
 #import "FishLampMinimum.h"
 
 #import "FLAuthenticationCredentials.h"
-#import "FLUserRepresentation.h"
 
-@interface FLHttpUser : NSObject<FLUserRepresentation, FLAuthenticatedEntity, NSCopying> {
+@interface FLHttpUser : NSObject<FLAuthenticatedEntity, NSCopying> {
 @private
     id _authenticationCredentials;
 }

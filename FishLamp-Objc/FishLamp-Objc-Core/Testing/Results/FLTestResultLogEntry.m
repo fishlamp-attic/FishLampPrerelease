@@ -38,4 +38,17 @@
 	[super dealloc];
 }
 #endif
+
+- (NSString*) description {
+    return [self prettyDescription];
+}
+
+- (void) prettyDescription:(id<FLStringFormatter>)stringFormatter  {
+    [stringFormatter appendLineWithFormat:self.line];
+    if(self.stackTrace) {
+        [stringFormatter appendPrettyDescriptionForObject:self.stackTrace];
+    }
+}
+
+
 @end

@@ -136,9 +136,7 @@ NSString* const FLTimedOutNotification = @"FLTimedOutNotification";
 - (void) killTimer {
     if(_timer) {
         dispatch_source_cancel(_timer);
-#if !OS_OBJECT_USE_OBJC
-        dispatch_release(_timer);
-#endif
+        FLDispatchRelease(_timer);
     }
     _timer = nil;
 }

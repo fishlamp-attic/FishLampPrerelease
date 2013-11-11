@@ -17,19 +17,19 @@
 - (void) appendSection:(FLStringBuilderSection*) section;
 @end
 
-@interface FLDocumentSectionIndent : NSObject<FLAppendableString>
+@interface FLDocumentSectionIndent : NSObject<FLStringFormatting>
 + (id) documentSectionIndent;
 @end
 
-@interface FLDocumentSectionOutdent : NSObject<FLAppendableString>
+@interface FLDocumentSectionOutdent : NSObject<FLStringFormatting>
 + (id) documentSectionOutdent;
 @end
 
-@interface FLDocumentSectionEOL : NSObject<FLAppendableString>
+@interface FLDocumentSectionEOL : NSObject<FLStringFormatting>
 + (id) documentSectionEOL;
 @end
 
-@interface FLDocumentSectionBlankLine : NSObject<FLAppendableString>
+@interface FLDocumentSectionBlankLine : NSObject<FLStringFormatting>
 + (id) documentSectionBlankLine;
 @end
 

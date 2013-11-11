@@ -132,3 +132,10 @@ extern id FLCopyOrRetainObject(id src);
 #ifndef NS_ENUM
 #define NS_ENUM(_type, _name) _type _name; enum 
 #endif
+
+#if OS_OBJECT_USE_OBJC
+#define FLDispatchRelease(__ITEM__)
+#else
+#define FLDispatchRelease(__ITEM__) dispatch_release(__ITEM__)
+#endif
+

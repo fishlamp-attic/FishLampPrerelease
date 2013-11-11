@@ -166,7 +166,7 @@
     return [self prettyDescription];
 }
 
-- (void) describeSelf:(FLPrettyString *)string {
+- (void) prettyDescription:(id<FLStringFormatter>) string {
 
     for(id key in _objects) {
         [string appendLineWithFormat:@"%@ = %@", key, [_objects objectForKey:key]];

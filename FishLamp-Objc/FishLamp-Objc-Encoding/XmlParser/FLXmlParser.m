@@ -191,9 +191,9 @@ didStartElement:(NSString *)elementName
 
         FLThrowIfError(self.error);
         
-        FLPrettyString* string = [FLPrettyString prettyString];
-        [self.rootElement describeToStringFormatter:string];
-        
+//        FLPrettyString* string = [FLPrettyString prettyString];
+//        [self.rootElement describeToStringFormatter:string];
+
         return FLRetainWithAutorelease(self.rootElement);
     }
     @finally {

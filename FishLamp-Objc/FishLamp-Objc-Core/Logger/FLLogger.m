@@ -43,9 +43,7 @@
 }
 
 - (void) dealloc {
-#if !OS_OBJECT_USE_OBJC
-    dispatch_release(_fifoQueue);
-#endif
+    FLDispatchRelease(_fifoQueue);
 #if FL_MRC
     [_line release];
     [_sinks release];

@@ -45,7 +45,6 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
         // create user service
         self.userService = [self createUserService];
         FLAssertNotNil(self.userService);
-        [_serviceList addService:self.userService];
 
         [self.userService addListener:self];
 
@@ -88,6 +87,10 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
     [self.userService openServiceWithCredentials:credentials];
 }
 
+- (id<FLAuthenticationCredentials>) authenticationCredentials {
+    return self.userService.credentials;
+}
+
 - (void) openServiceWithUser:(id<FLAuthenticatedEntity>) entity {
     self.authenticatedEntity = entity;
     [self openServiceWithCredentials:entity.authenticationCredentials];
@@ -99,6 +102,11 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 
 - (void) userServiceDidOpen:(id<FLUserService>) service {
     [self didChangeAuthenticationCredentials:service.credentials];
+
+    if(self.authenticatedEntity) {
+        [self.authenticatedEntity setAuthenticationCredentials:service.credentials];
+    }
+
     [self.storageService openService];
 }
 
@@ -121,8 +129,20 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 }
 
 - (void) authenticateHttpRequest:(FLHttpRequest*) request {
-    FLThrowIfError([self runSynchronously:
-        [FLHttpAuthenticator httpAuthenticatorWithEntity:self.authenticatedEntity withHttpRequest:request]]);
+
+    FLOperation* authenticator = nil;
+
+    if(self.authenticatedEntity) {
+        authenticator = [FLHttpAuthenticator httpAuthenticatorWithEntity:self.authenticatedEntity withHttpRequest:request];
+    }
+    else if(self.authenticationCredentials) {
+        authenticator = [FLHttpAuthenticator httpAuthenticatorWithCredentials:self.authenticationCredentials withHttpRequest:request];
+    }
+
+    FLAssertNotNil(authenticator);
+
+    FLThrowIfError([self runSynchronously:authenticator]);
+
 }
 
 - (void) willStartOperation:(id) operation {
@@ -131,6 +151,8 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
         [operation setAuthenticationDelegate:self.authenticationDelegate];
         [operation setOperationStarter:self.authenticationQueue];
     }
+
+    [operation addListener:self];
 
 //    [self.authenticatedServices startProcessingObject:operation];
 
@@ -147,6 +169,10 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 //    }
 }
 
+- (void) didRemoveOperation:(FLOperation*) operation {
+    [operation removeListener:self];
+}
+
 - (FLPromise*) beginAuthenticating:(fl_completion_block_t) completion {
 
     if(!self.isServiceOpen) {
@@ -158,10 +184,7 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 
 }
 
-//- (void) didRemoveOperation:(FLOperation*) operation {
-//
-////    [self.authenticatedServices stopProcessingObject:operation];
-//}
+
 
 - (void) authenticateHttpRequestOperation:(FLHttpAuthenticator*) operation
                     didAuthenticateEntity:(id<FLAuthenticatedEntity>) entity {
@@ -179,7 +202,6 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 }
 
 - (void) didChangeAuthenticationCredentials:(id<FLAuthenticationCredentials>) credentials {
-    [self.authenticatedEntity setAuthenticationCredentials:credentials];
 }
 
 - (void) prepareAuthenticatedOperation:(id) operation {
