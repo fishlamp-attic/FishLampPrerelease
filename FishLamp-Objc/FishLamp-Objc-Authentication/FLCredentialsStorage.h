@@ -7,9 +7,9 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLCredentials.h"
+#import "FLAuthenticationCredentials.h"
 
 @protocol FLCredentialsStorage <NSObject>
-- (id<FLCredentials>) readCredentialsForLastUser;
-- (void) writeCredentials:(id<FLCredentials>) credentials;
+- (id<FLAuthenticationCredentials>) readCredentialsForLastUser;
+- (void) writeCredentials:(id<FLAuthenticationCredentials>) credentials;
 @end

@@ -9,11 +9,15 @@
 
 #import "FLCoreRequired.h"
 #import "FLSelector.h"
-//#import "FLOperationContext.h"
+#import "FLStringFormatter.h"
+
+typedef void (^FLAsyncTestResultBlock)();
 
 @protocol FLTestable;
 @protocol FLTestCaseList;
 @protocol FLTestResult;
+
+#define FLTestCaseDefaultAsyncTimeout 2.0f
 
 @protocol FLTestCase <NSObject>
 
@@ -24,15 +28,20 @@
 @property (readonly, assign) id<FLTestable> testable;
 @property (readonly, strong) id<FLTestResult> result;
 
-
 // disabling
 @property (readonly, assign, nonatomic) BOOL isDisabled;
 @property (readonly, strong, nonatomic) NSString* disabledReason;
-- (void) disable:(NSString*) reason;
+- (void) setDisabledWithReason:(NSString*) reason;
 
-/*!
- *  For async tests.
- */
+// async testing
+- (BOOL) isAsyncTest;
+- (void) startAsyncTest;
+- (void) startAsyncTestWithTimeout:(NSTimeInterval) timeout;
+- (void) executeTestBlock:(void (^)()) testBlock;
+- (void) finishAsyncTestWithBlock:(void (^)()) finishBlock;
 - (void) setFinished;
+- (void) setFailedWithError:(NSError*) error;
+
+@property (readwrite, assign) BOOL debugMode;
 
 @end

@@ -23,7 +23,11 @@
 
 - (NSString*) trimmedString_fl;
 
-- (NSString*) stringWithPadding_fl:(NSUInteger) width;
++ (NSString*) stringWithTrailingPadding_fl:(NSString*) string
+                              minimumWidth:(NSUInteger) minimumWidth;
+
++ (NSString*) stringWithLeadingPadding_fl:(NSString*) string
+                             minimumWidth:(NSUInteger) minimumWidth;
 
 - (NSString*) stringWithDeletedSubstring_fl:(NSString*) substring;
 

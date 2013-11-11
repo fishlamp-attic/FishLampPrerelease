@@ -12,6 +12,8 @@
 #import <execinfo.h>
 #import <objc/runtime.h>
 
+#import "FLStringFormatter.h"
+
 NS_INLINE
 const char* FLFileNameFromPathNoCopy(const char* filePath) {
     if(filePath) {
@@ -74,7 +76,7 @@ const char* FLStackEntryAtIndex(FLCallStack_t stack, NSUInteger index) {
 
 // OBJECT
 
-@interface FLStackTrace : NSObject {
+@interface FLStackTrace : NSObject<FLAppendableString> {
 @private
     FLStackTrace_t _stackTrace;
 }

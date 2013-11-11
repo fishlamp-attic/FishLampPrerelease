@@ -46,7 +46,7 @@ typedef void (^FLStringFormatterIndentedBlock)();
 - (void) appendFormat:(NSString*) format arguments:(va_list)argList;
 
 // end current line with EOF (only if it hasn't already been ended)
-- (BOOL) closeLine;
+- (void) closeLine;
 
 /// Ends currently open line, then adds a blank line. Leaves no open line.
 - (void) appendBlankLine;
@@ -71,7 +71,7 @@ typedef void (^FLStringFormatterIndentedBlock)();
  *
  *  @param block the block in which to append content to this formatter
  */
-- (void) indentedBlock:(FLStringFormatterIndentedBlock) block;
+- (void) indentLinesInBlock:(FLStringFormatterIndentedBlock) block;
 
 - (void) indent:(FLIndentIntegrity*) integrity;
 

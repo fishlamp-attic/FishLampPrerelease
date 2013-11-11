@@ -27,6 +27,14 @@
     return self;
 }
 
+- (void) openService {
+    if(self.credentialStorage) {
+        self.credentials = [self.credentialStorage readCredentialsForLastUser];
+    }
+
+    [super openService];
+}
+
 @end
 
 

@@ -1,5 +1,5 @@
 //
-//  FLTRunAllTestsOperationBot.m
+//  FLRunAllTestsOperationBot.m
 //  FishLamp
 //
 //  Created by Mike Fullerton on 10/19/12.
@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLTRunAllTestsOperation.h"
+#import "FLRunAllTestsOperation.h"
 #import "FLAsyncQueue.h"
 #import "FLTStaticTestMethodRunner.h"
 #import "FLObjcRuntime.h"
@@ -18,9 +18,9 @@
 #import "FLTTestFactoryList.h"
 
 #import "FLTTestFactory.h"
-#import "FLTTest.h"
+#import "FLTestableOperation.h"
 
-@implementation FLTRunAllTestsOperation
+@implementation FLRunAllTestsOperation
 
 + (id) testRunner {
     return FLAutorelease([[[self class] alloc] init]);
@@ -35,22 +35,22 @@
 
     FLTSortedTestGroupList* sortedGroupList = [organizer sortedGroupList];
 
-    FLTestLog(@"Found %ld unit test classes in %ld groups",
+    [[FLTestLoggingManager instance] appendLineWithFormat:@"Found %ld unit test classes in %ld groups",
         (unsigned long) sortedGroupList.testCount,
-        (unsigned long) sortedGroupList.count);
+        (unsigned long) sortedGroupList.count];
     
     NSMutableArray* resultArray = [NSMutableArray array];
 
     for(FLTTestFactoryList* group in sortedGroupList) {
     
-        FLTestLog(@"Testable Group: %@", group.groupName);
+        [[FLTestLoggingManager instance] appendLineWithFormat:@"Testable Group: %@", group.groupName];
 
         for(id<FLTTestFactory> factory in group) {
 
             @autoreleasepool {
-                FLTTest* test = [factory createTest];
+                FLTestableOperation* test = [factory createTest];
 
-                [FLTestLogger() indentedBlock:^{
+                [FLTestLogger() indentLinesInBlock:^{
 
                     FLPromisedResult result = [self.context runSynchronously:test];
 

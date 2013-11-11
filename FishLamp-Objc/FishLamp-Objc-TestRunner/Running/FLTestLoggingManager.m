@@ -8,8 +8,13 @@
 
 #import "FLTestLoggingManager.h"
 #import "FLAssertions.h"
+#import "FLTestCase.h"
+#import "FLTestResult.h"
+#import "FLTestResultLogEntry.h"
 
 @implementation FLTestLoggingManager
+
+dispatch_once_t s_predicate = 0;
 
 FLSynthesizeSingleton(FLTestLoggingManager)
 
@@ -35,41 +40,73 @@ FLSynthesizeSingleton(FLTestLoggingManager)
 #endif
 
 - (void) addLogger:(id<FLStringFormatter>) formatter {
-    FLAssertNotNil(formatter);
-    [_loggers addObject:formatter];
+    FLCriticalSection(&s_predicate, ^{
+        FLAssertNotNil(formatter);
+        [_loggers addObject:formatter];
+    });
 }
 
 - (void) pushLogger:(id<FLStringFormatter>) formatter {
-    FLAssertNotNil(formatter);
-    [_loggers insertObject:formatter atIndex:0];
+    FLCriticalSection(&s_predicate, ^{
+        FLAssertNotNil(formatter);
+        [_loggers insertObject:formatter atIndex:0];
+    });
 }
 
 - (void) popLogger {
-    [_loggers removeObjectAtIndex:0];
+    FLCriticalSection(&s_predicate, ^{
+        [_loggers removeObjectAtIndex:0];
+    });
 }
 
 - (id<FLStringFormatter>) logger {
     return [_loggers objectAtIndex:0];
 }
 
+- (void) visitLoggers:(void (^)(id<FLStringFormatter> logger)) visitor {
+    FLCriticalSection(&s_predicate, ^{
+        for(id<FLStringFormatter> logger in _loggers) {
+            visitor(logger);
+        }
+    });
+}
+
+- (void) visitLoggersForOutput:(void (^)(id<FLStringFormatter> logger)) visitor {
+    FLCriticalSection(&s_predicate, ^{
+        for(id<FLStringFormatter> logger in _loggers) {
+            visitor(logger);
+        }
+    });
+}
+
 - (void) stringFormatterAppendBlankLine:(FLStringFormatter*) formatter {
-    [[self logger] appendBlankLine];
+    [self visitLoggersForOutput:^(id<FLStringFormatter> logger) {
+        [logger appendBlankLine];
+    }];
 }
 
 - (void) stringFormatterOpenLine:(FLStringFormatter*) formatter {
-    [[self logger] openLine];
+    [self visitLoggersForOutput:^(id<FLStringFormatter> logger) {
+        [[self logger] openLine];
+    }];
 }
 
-- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) formatter {
-    return [[self logger] closeLine];
+- (void) stringFormatterCloseLine:(FLStringFormatter*) formatter {
+    [self visitLoggersForOutput:^(id<FLStringFormatter> logger) {
+        [[self logger] closeLine];
+    }];
 }
 
 - (void) stringFormatterIndent:(FLStringFormatter*) formatter {
-    [[self logger] indent:self.indentIntegrity];
+    [self visitLoggersForOutput:^(id<FLStringFormatter> logger) {
+        [[self logger] indent:self.indentIntegrity];
+    }];
 }
 
 - (void) stringFormatterOutdent:(FLStringFormatter*) formatter {
-    [[self logger] outdent:self.indentIntegrity];
+    [self visitLoggersForOutput:^(id<FLStringFormatter> logger) {
+        [[self logger] outdent:self.indentIntegrity];
+    }];
 }
 
 - (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter {
@@ -82,12 +119,18 @@ FLSynthesizeSingleton(FLTestLoggingManager)
 
 - (void)stringFormatter:(FLStringFormatter*) formatter
 appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter {
-    [stringFormatter appendString:[self logger]];
+
+    [self visitLoggersForOutput:^(id<FLStringFormatter> logger) {
+        [stringFormatter appendString:[self logger]];
+    }];
 }
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
             appendString:(NSString*) string {
-    [[self logger] appendString:string];
+
+    [self visitLoggersForOutput:^(id<FLStringFormatter> logger) {
+        [[self logger] appendString:string];
+    }];
 
 //    for(id logger in _loggers) {
 //        [logger appendString:string];
@@ -97,7 +140,9 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter {
 
 - (void) stringFormatter:(FLStringFormatter*) formatter
   appendAttributedString:(NSAttributedString*) attributedString {
-    [[self logger] appendString:attributedString];
+    [self visitLoggersForOutput:^(id<FLStringFormatter> logger) {
+        [[self logger] appendString:attributedString];
+    }];
 
 }
 
@@ -116,6 +161,23 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter {
     }
     @finally {
         [[FLTestLoggingManager instance] popLogger];
+    }
+}
+
+- (void) appendTestCaseOutput:(id<FLTestCase>) testCase {
+    if(!testCase.result.passed) {
+        [self appendLine:@"Log Entries:"];
+        [self indentLinesInBlock:^{
+            NSArray* logEntries = testCase.result.logEntries;
+            for(FLTestResultLogEntry* entry in logEntries) {
+                [self appendLine:entry.line];
+                if(entry.stackTrace) {
+                    [self indentLinesInBlock:^{
+                        [entry.stackTrace appendToStringFormatter:self];
+                    }];
+                }
+            }
+        }];
     }
 }
 

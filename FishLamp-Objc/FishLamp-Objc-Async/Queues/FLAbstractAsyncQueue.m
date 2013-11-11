@@ -71,6 +71,42 @@
     return [self queueOperation:object withDelay:0 completion:nil];
 }
 
+
+
+- (FLPromisedResult) runBlockSynchronously:(fl_block_t) block {
+    return [self runSynchronously:[FLQueueableBlockOperation queueableBlockOperation:block]];
+}
+
+- (FLPromisedResult) runFinisherBlockSynchronously:(fl_finisher_block_t) block {
+    return [self runSynchronously:[FLQueuableFinisherBlockOperation queueableFinisherBlockOperation:block]];
+}
+
+- (FLPromisedResult) runSynchronously:(id<FLQueueableAsyncOperation>) object {
+    return nil;
+}
+
+
+- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) object
+                 withDelay:(NSTimeInterval) delay
+                completion:(fl_completion_block_t) completionOrNil {
+    FLAssertNotNil(object);
+
+    return nil;
+}
+
+- (FLPromise*) startOperation:(id<FLQueueableAsyncOperation>) object
+                 withDelay:(NSTimeInterval) delay
+                completion:(fl_completion_block_t) completionOrNil {
+    FLAssertNotNil(object);
+
+    return [self queueOperation:object withDelay: delay completion:completionOrNil];
+}
+
+- (FLPromisedResult) runOperationSynchronously:(id<FLQueueableAsyncOperation>) asyncObject {
+    return [self runSynchronously:asyncObject];
+}
+
+
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Warc-performSelector-leaks"
 
@@ -120,8 +156,6 @@
     }];
 }
 
-#pragma GCC diagnostic pop
-
 - (FLPromise*) queueTarget:(id) target
                  action:(SEL) action
                 withObject:(id) object1
@@ -156,39 +190,70 @@
     }];
 }
 
-- (FLPromisedResult) runBlockSynchronously:(fl_block_t) block {
-    return [self runSynchronously:[FLQueueableBlockOperation queueableBlockOperation:block]];
+- (FLPromise*) queueTarget:(id) target
+                asyncAction:(SEL) action {
+
+    FLAssertNotNil(target);
+    FLAssertNotNil(action);
+
+    __block id theTarget = FLRetain(target);
+
+    return [self queueFinishableBlock:^(FLFinisher *finisher) {
+        [theTarget performSelector:action withObject:finisher];
+        FLReleaseWithNil(theTarget);
+    }];
+
 }
 
-- (FLPromisedResult) runFinisherBlockSynchronously:(fl_finisher_block_t) block {
-    return [self runSynchronously:[FLQueuableFinisherBlockOperation queueableFinisherBlockOperation:block]];
+- (FLPromise*) queueTarget:(id) target
+               asyncAction:(SEL) action
+                withObject:(id) object {
+
+    FLAssertNotNil(target);
+    FLAssertNotNil(action);
+
+    __block id theTarget = FLRetain(target);
+
+    return [self queueFinishableBlock:^(FLFinisher *finisher) {
+        [target performSelector:action withObject:finisher withObject:object];
+
+        FLReleaseWithNil(theTarget);
+    }];
 }
 
-- (FLPromisedResult) runSynchronously:(id<FLQueueableAsyncOperation>) object {
-    return nil;
+- (FLPromise*) queueTarget:(id) target
+               asyncAction:(SEL) action
+                withObject:(id) object1
+                withObject:(id) object2 {
+    FLAssertNotNil(target);
+    FLAssertNotNil(action);
+
+    __block id theTarget = FLRetain(target);
+
+    return [self queueFinishableBlock:^(FLFinisher *finisher) {
+        [target performSelector_fl:action withObject:finisher withObject:object1 withObject:object2];
+        FLReleaseWithNil(theTarget);
+    }];
 }
 
+- (FLPromise*) queueTarget:(id) target
+               asyncAction:(SEL) action
+                withObject:(id) object1
+                withObject:(id) object2
+                withObject:(id) object3 {
 
-- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) object
-                 withDelay:(NSTimeInterval) delay
-                completion:(fl_completion_block_t) completionOrNil {
-    FLAssertNotNil(object);
+    FLAssertNotNil(target);
+    FLAssertNotNil(action);
+    __block id theTarget = FLRetain(target);
 
-    return nil;
+    return [self queueFinishableBlock:^(FLFinisher *finisher) {
+        [target performSelector_fl:action withObject:finisher withObject:object1 withObject:object2 withObject:object3];
+        FLReleaseWithNil(theTarget);
+    }];
+
 }
 
-- (FLPromise*) startOperation:(id<FLQueueableAsyncOperation>) object
-                 withDelay:(NSTimeInterval) delay
-                completion:(fl_completion_block_t) completionOrNil {
-    FLAssertNotNil(object);
-
-    return [self queueOperation:object withDelay: delay completion:completionOrNil];
-}
-
-- (FLPromisedResult) runOperationSynchronously:(id<FLQueueableAsyncOperation>) asyncObject {
-    return [self runSynchronously:asyncObject];
-}
-
+#pragma GCC diagnostic pop
 
 @end
 

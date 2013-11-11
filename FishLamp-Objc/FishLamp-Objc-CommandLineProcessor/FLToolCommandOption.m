@@ -66,7 +66,7 @@
 
 - (void) printHelpToStringFormatter:(FLStringFormatter*) output {
     [output appendLineWithFormat:@"%@: %@",
-        [[NSString concatStringArray:self.optionKeys.allObjects] stringWithPadding_fl:20],
+        [NSString stringWithTrailingPadding_fl:[NSString concatStringArray:self.optionKeys.allObjects] minimumWidth:20],
         [self help]];
 }
 

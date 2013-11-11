@@ -26,7 +26,7 @@
     FLAssert(!host.isResolved);
     FLAssertStringsAreEqual(host.hostName, @"google.com");
     
-    FLTestLog(host.hostName);
+    FLTestLog(self, host.hostName);
 }
 
 

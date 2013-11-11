@@ -11,6 +11,7 @@
 #import "FLStringFormatter.h"
 #import "FLPrettyString.h"
 #import "FLAssertions.h"
+#import "FLTestResultLogEntry.h"
 
 @interface FLTTestResult ()
 @property (readwrite, copy) NSError* error;
@@ -20,11 +21,11 @@
 @implementation FLTTestResult 
 @synthesize error = _error;
 @synthesize testName = _testName;
-@synthesize loggerOutput = _loggerOutput;
 @synthesize passed = _passed;
 @synthesize exception = _exception;
 @synthesize started = _started;
 @synthesize finished = _finished;
+@synthesize logEntries = _logEntries;
 
 - (id) initWithTestName:(NSString*) name {
 
@@ -33,7 +34,7 @@
 	self = [super init];
 	if(self) {
         _testName = FLRetain(name);
-        _loggerOutput = [[FLPrettyString alloc] init];
+        _logEntries = [[NSMutableArray alloc] init];
 	}
 	return self;
 }
@@ -49,7 +50,7 @@
 
 #if FL_MRC
 - (void) dealloc {
-    [_loggerOutput release];
+    [_logEntries release];
     [_testName release];
     [_error release];
     [_exception release];
@@ -75,12 +76,24 @@
 - (void) setFailedWithError:(NSError*) error {
     self.error = error;
     _passed = NO;
+
+    [self appendLogEntry:[FLTestResultLogEntry testResultLogEntry:[error localizedDescription]
+                                                       stackTrace:[error stackTrace]]];
+
 }
 
 - (void) setFailedWithException:(NSException*) ex {
-    self.exception = ex;
-    _passed = NO;
+    [self setFailedWithError:ex.error];
 }
+
+- (void) appendLogEntry:(id<FLAppendableString>) logEntry {
+    if(!_logEntries) {
+        _logEntries = [[NSMutableArray alloc] init];
+    }
+
+    [_logEntries addObject:logEntry];
+}
+
 
 //- (NSString*) description {
 //    return [NSString stringWithFormat:@"%@ { testName: %@, passed: %@, error: %@ }", [super description], self.testName, self.passed ? @"YES" : [NSString stringWithFormat:@"NO (%d of %d)", (int)_count, (int)_expectedCount], 

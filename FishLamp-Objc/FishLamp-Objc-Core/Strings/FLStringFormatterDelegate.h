@@ -21,7 +21,7 @@
 
 - (void) stringFormatterOpenLine:(FLStringFormatter*) formatter;
 
-- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) formatter;
+- (void) stringFormatterCloseLine:(FLStringFormatter*) formatter;
 
 - (void) stringFormatterIndent:(FLStringFormatter*) formatter;
 

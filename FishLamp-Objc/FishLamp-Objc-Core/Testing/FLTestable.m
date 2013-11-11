@@ -11,9 +11,10 @@
 
 #import "FLTestCaseList.h"
 #import "FLTestResultCollection.h"
+#import "FLTestCaseResult.h"
 
 @interface FLTestable ()
-@property (readwrite, strong) id<FLTestCaseList> testCaseList;
+//@property (readwrite, strong) FLTestCaseList* testCaseList;
 @property (readwrite, strong) id<FLExpectedTestResult> expectedTestResult;
 @property (readwrite, strong) id<FLTestResultCollection> testResults;
 @end
@@ -23,9 +24,11 @@
 @synthesize testCaseList = _testCaseList;
 @synthesize expectedTestResult = _expectedTestResult;
 @synthesize testResults = _testResults;
+@synthesize currentTestCase = _currentTestCase;
 
 #if FL_MRC
 - (void)dealloc {
+    [_currentTestCase release];
 	[_testCaseList release];
     [_expectedTestResult release];
     [_testResults release];
@@ -50,10 +53,10 @@
     return [self.testCaseList testCaseForName:name];
 }
 
-- (void) willRunTestCases:(id<FLTestCaseList>) testCases {
+- (void) willRunTestCases:(FLTestCaseList*) testCases {
 }
 
-- (void) didRunTestCases:(id<FLTestCaseList>) testCases {
+- (void) didRunTestCases:(FLTestCaseList*) testCases {
 }
 
 + (void) specifyRunOrder:(id<FLTestableRunOrder>) runOrder {

@@ -11,18 +11,17 @@
 #import "FLErrorCodes.h"
 #import "NSError+FLExtras.h"
 
-NSString* const FLErrorExceptionName = @"error";
+NSString* const FLUnderlyingExceptionKey = @"com.fishlamp.exception";
 
-@interface FLUnknownExceptionError : NSError {
-@private
+@implementation NSError (FLException)
+
+- (NSException*) exception {
+    return [self.userInfo objectForKey:FLUnderlyingExceptionKey];
 }
-@end
-
-@implementation FLUnknownExceptionError
 
 - (id) initWithException:(NSException*) exception {
-	return [super initWithDomain:FLErrorDomain code:FLUnknownExceptionErrorCode
-                        userInfo:[NSDictionary dictionaryWithObject:exception forKey:FLErrorExceptionName]];
+	return [self initWithDomain:FLErrorDomain code:FLUnknownExceptionErrorCode
+                        userInfo:[NSDictionary dictionaryWithObject:exception forKey:FLUnderlyingExceptionKey]];
 }
 
 + (id) unknownExceptionError:(NSException*) exception {
@@ -39,7 +38,7 @@ NSString* const FLErrorExceptionName = @"error";
         return error;
     }
 
-    return [FLUnknownExceptionError unknownExceptionError:self];
+    return [NSError unknownExceptionError:self];
 }
 
 - (id)initWithName:(NSString *)aName

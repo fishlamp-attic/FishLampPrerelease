@@ -152,15 +152,12 @@
     [self closeLine];
 }
 
-- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) formatter {
+- (void) stringFormatterCloseLine:(FLStringFormatter*) formatter {
     if(self.line) {
         [self dispatchBlock: ^{
             [self closeCurrentLine];
         }];
-
-        return YES;
     }
-    return NO;
 }
 
 - (void) stringFormatter:(FLStringFormatter*) formatter

@@ -27,7 +27,7 @@
 }
 
 - (void) _didExecuteOperation:(FLPerformSelectorOperation*) operation {
-	FLTestLog(@"did execute");
+	FLTestLog(self, @"did execute");
 }
 
 - (void) _asyncDone:(FLPerformSelectorOperation*) operation
@@ -63,14 +63,30 @@
 
 - (void) testAsyncTest:(id<FLTestCase>) testCase {
 
+    [testCase startAsyncTest];
+
     dispatch_semaphore_t semaphor = dispatch_semaphore_create(0);
 
     __block BOOL finishedOk = NO;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, nil), ^{
-        [testCase setFinished];
-        finishedOk = YES;
-        dispatch_semaphore_signal(semaphor);
+
+        [testCase executeTestBlock:^{
+
+            @try {
+                FLTestLog(self, @"hello this is going to fail");
+
+                FLConfirmFalse(finishedOk);
+                finishedOk = YES;
+                FLConfirmTrue(false);
+
+                [testCase setFinished];
+            }
+            @finally {
+                dispatch_semaphore_signal(semaphor);
+            }
+        }];
+
     });
 
     dispatch_semaphore_wait(semaphor, DISPATCH_TIME_FOREVER);
@@ -83,10 +99,13 @@
 #if !OS_OBJECT_USE_OBJC
     dispatch_release(semaphor);
 #endif
+
+
 }
 
 - (void) testAsyncTest2:(id<FLTestCase>) testCase {
 
+    [testCase startAsyncTest];
     [testCase setFinished];
 
 //    FLPromise* promise =

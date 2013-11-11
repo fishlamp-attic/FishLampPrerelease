@@ -8,14 +8,9 @@
 
 #import "FLServiceList.h"
 
-@interface FLServiceList ()
-@property (readwrite, assign) BOOL isOpen;
-@end
-
 @implementation FLServiceList
 
 @synthesize services = _services;
-@synthesize isOpen = _isOpen;
 
 + (id) serviceList {
     return FLAutorelease([[[self class] alloc] init]);
@@ -36,116 +31,31 @@
 }
 #endif
 
-- (void) willOpen {
-}
+- (void) closeService {
 
-- (void) didCloseWithResult:(FLPromisedResult) result {
-}
-
-- (void) didOpenWithResult:(FLPromisedResult) result {
-}
-
-- (void) willClose {
-
-}
-
-- (FLPromise*) openService:(fl_result_block_t) completion {
-
-    FLConfirmWithComment(!self.isOpen, @"%@ service is already open", [self description]);
-
-    [self willOpen];
-
-    FLFinisher* finisher = [FLForegroundFinisher finisherWithBlock:completion];
-
-    [finisher addPromiseWithBlock:^(FLPromisedResult result) {
-        self.isOpen = YES;
-        [self didOpenWithResult:result];
-    }];
-
-    // For now do nothing
-
-    [finisher setFinished];
-
-    return finisher;
-}
-
-- (FLPromise*) closeService:(fl_result_block_t) completion {
-
-    FLConfirmWithComment(self.isOpen, @"%@ service is already open", [self description]);
-
-    FLFinisher* finisher = [FLForegroundFinisher finisherWithBlock:^(FLPromisedResult result) {
-        self.isOpen = NO;
-        [self didCloseWithResult:result];
-        [[NSNotificationCenter defaultCenter] postNotificationName:FLServiceDidCloseNotificationKey object:self];
-    }];
-
-    NSMutableArray* services = FLMutableCopyWithAutorelease(_services);
-    __block FLPromisedResult savedResult = FLSuccessfulResult;
+    [super closeService];
 
     for(id<FLService> service in _services) {
-
-        if([service isOpen]) {
-            [service closeService:^(FLPromisedResult result) {
-
-                if([result isError]) {
-                    savedResult = [NSError fromPromisedResult:result];
-                }
-
-                [services removeObject:service];
-                if(services.count == 0) {
-                    [finisher setFinishedWithResult:savedResult];
-                }
-            }];
-        }
-        else {
-            [services removeObject:service];
-            if(services.count == 0) {
-                [finisher setFinishedWithResult:savedResult];
-            }
+        if([service isServiceOpen]) {
+            [service closeService];
         }
     }
-
-    return finisher;
 }
 
 - (void) addService:(id<FLService>) service {
-    if(!_services) {
-        _services = [[NSMutableArray alloc] init];
-    }
     [_services addObject:service];
-    [service addListener:self];
 }
 
 - (void) removeService:(id<FLService>) service {
     [_services removeObject:service];
-    [service removeListener:self];
 }
 
 - (void) removeAllServices {
     [_services removeAllObjects];
 }
 
-//- (void) visitServicesWithStop:(void (^)(id service, BOOL* stop)) visitor stop:(BOOL*) stop {
-//    for(id service in _services) {
-//        if(*stop) {
-//            break;
-//        }
-//
-//        visitor(service, stop);
-//
-//        [service visitServicesWithStop:visitor stop:stop];
-//        if(*stop) {
-//            break;
-//        }
-//    }
-//}
-
-//- (void) visitServices:(void (^)(id service, BOOL* stop)) visitor {
-//    BOOL stop = NO;
-//    [self visitServicesWithStop:visitor stop:&stop];
-//}
-
-- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len {
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
+                                  objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len {
     return [_services countByEnumeratingWithState:state objects:buffer count:len];
 }
 

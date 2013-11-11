@@ -18,11 +18,11 @@ NSString* const FLDefaultsKeyWizardSavePasswordKey = @"CredentialStorageServiceS
 
 FLSynthesizeSingleton(FLUserDefaultsCredentialStorage);
 
-- (id<FLCredentials>) readCredentialsForLastUser {
-    return [FLCredentials authCredentialsFromUserDefaults];
+- (id<FLAuthenticationCredentials>) readCredentialsForLastUser {
+    return [FLAuthenticationCredentials authCredentialsFromUserDefaults];
 }
 
-- (void) writePasswordToKeychain:(id<FLCredentials>) creds {
+- (void) writePasswordToKeychain:(id<FLAuthenticationCredentials>) creds {
     FLAssertStringIsNotEmptyWithComment([FLAppInfo bundleIdentifier], @"bundle identifier must be set to use keychain for password");
 
     if(FLStringIsNotEmpty(creds.userName)) {
@@ -40,7 +40,7 @@ FLSynthesizeSingleton(FLUserDefaultsCredentialStorage);
     }
 }
 
-- (void) writeCredentials:(id<FLCredentials>) creds {
+- (void) writeCredentials:(id<FLAuthenticationCredentials>) creds {
     if(FLStringIsEmpty(creds.userName)) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:FLDefaultsKeyWizardLastUserNameKey];
     }
@@ -59,11 +59,10 @@ FLSynthesizeSingleton(FLUserDefaultsCredentialStorage);
 
 @end
 
-@implementation FLCredentials (NSKeychain)
-
+@implementation FLAuthenticationCredentials (NSUserDefaults)
 
 + (id) authCredentialsFromUserDefaults {
-    FLMutableCredentials* credentials = [FLMutableCredentials credentials];
+    FLAuthenticationCredentials* credentials = FLAutorelease([[[self class] alloc] init]);
     [credentials readFromUserDefaults];
     return credentials;
 }
@@ -75,12 +74,6 @@ FLSynthesizeSingleton(FLUserDefaultsCredentialStorage);
 - (void) writePasswordToKeychain {
     [[FLUserDefaultsCredentialStorage instance] writePasswordToKeychain:self];
 }
-
-
-
-@end
-
-@implementation FLMutableCredentials (NSUserDefaults)
 
 - (void) readFromUserDefaults {
     if(!self.userName) {

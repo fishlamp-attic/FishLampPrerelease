@@ -35,7 +35,7 @@
 }
 
 - (void) writeObject:(id) object {
-    FLAssert(self.isOpen);
+    FLAssert(self.isServiceOpen);
     FLAssertNotNil(self.objectStorage);
     
     id key = [object objectStorageKey_fl];
@@ -47,7 +47,7 @@
 }
 
 - (id) readObject:(id) inputObject {
-    FLAssert(self.isOpen);
+    FLAssert(self.isServiceOpen);
     FLAssertNotNil(self.objectStorage);
     
     id key = [inputObject objectStorageKey_fl];
@@ -56,7 +56,7 @@
 }
 
 - (void) deleteObject:(id) inputObject {
-    FLAssert(self.isOpen);
+    FLAssert(self.isServiceOpen);
     FLAssertNotNil(self.objectStorage);
     id key = [inputObject objectStorageKey_fl];
     id previous = FLRetainWithAutorelease([self.objectStorage objectForKey:key]);
@@ -66,19 +66,19 @@
 }
 
 - (BOOL) containsObject:(id) inputObject {
-    FLAssert(self.isOpen);
+    FLAssert(self.isServiceOpen);
     FLAssertNotNil(self.objectStorage);
     return [self.objectStorage objectForKey:[inputObject objectStorageKey_fl]] != nil;
 }
 
-- (void) openSelf:(FLFinisher *)finisher {
+- (void) openService {
+    [super openService];
 	self.objectStorage = [NSMutableDictionary dictionary];
-    [finisher setFinished];
 }
 
-- (void) closeSelf:(FLFinisher *)finisher {
+- (void) closeService {
+    [super closeService];
     self.objectStorage = nil;
-    [finisher setFinished];
 }
 
 @end

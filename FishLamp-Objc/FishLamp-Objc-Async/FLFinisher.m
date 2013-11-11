@@ -72,17 +72,30 @@
 
 - (void) setFinishedWithResult:(FLPromisedResult) result {
 
-    FLPromise* promise = FLRetainWithAutorelease(self);
-    [self willFinishWithResult:result];
+    @try {
+        if(!result) {
+            result = FLFailedResult;
+        }
+        
+        [self willFinishWithResult:result];
 
-    while(promise) {
-        [promise fufillPromiseWithResult:result];
-        promise = promise.nextPromise;
+        FLPromise* promise = FLRetainWithAutorelease(self);
+        while(promise) {
+
+            FLPromise* nextPromise = FLRetainWithAutorelease(promise.nextPromise);
+            promise.nextPromise = nil;
+
+            [promise fufillPromiseWithResult:result];
+
+            promise = nextPromise;
+        }
+
+
+        [self didFinishWithResult:result];
     }
-
-    self.nextPromise = nil;
-
-    [self didFinishWithResult:result];
+    @catch(NSException* ex) {
+        FLLog(@"%@", [ex description])
+    }
 }
 
 - (void) setFinished {

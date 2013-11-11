@@ -8,19 +8,18 @@
 //
 
 #import "FLCredentialsStorage.h"
+#import "FLAuthenticationCredentials.h"
 
 @interface FLUserDefaultsCredentialStorage : NSObject<FLCredentialsStorage>
 FLSingletonProperty(FLUserDefaultsCredentialStorage);
 @end
 
-@interface FLCredentials (NSUserDefaults)
+@interface FLAuthenticationCredentials (NSUserDefaults)
 + (id) authCredentialsFromUserDefaults;
 
 - (void) writeToUserDefaults;
 - (void) writePasswordToKeychain;
-@end
 
-@interface FLMutableCredentials (NSUserDefaults)
 - (void) readFromUserDefaults;
 - (void) readPasswordFromKeychain;
 - (void) removePasswordFromKeychain;

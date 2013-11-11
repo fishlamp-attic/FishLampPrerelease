@@ -121,9 +121,10 @@
 
     __block id<FLQueueableAsyncOperation> theOperation = FLRetain(operation);
     __block FLDispatchQueue* theQueue = FLRetain(self);
+    __block FLPromise* thePromise = nil;
 
     if(completion) {
-        [[theOperation finisher] addPromiseWithBlock:completion];
+        thePromise = FLRetain([[theOperation finisher] addPromiseWithBlock:completion]);
     }
 
     fl_block_t block = ^{
@@ -131,9 +132,13 @@
             [theOperation startAsyncOperationInQueue:theQueue];
         }
         @catch(NSException* ex) {
-            [[theOperation finisher] setFinishedWithResult:ex.error];
+
+            if(![theOperation finisher].isFinished) {
+                [[theOperation finisher] setFinishedWithResult:ex.error];
+            }
         }
 
+        FLReleaseWithNil(thePromise);
         FLReleaseWithNil(theOperation);
         FLReleaseWithNil(theQueue);
     };
@@ -145,7 +150,7 @@
         dispatch_async(theQueue.dispatch_queue_t, block);
     }
 
-    return [operation finisher];
+    return thePromise;
 }
 
 - (FLPromisedResult) runSynchronously:(id<FLQueueableAsyncOperation>) operation {

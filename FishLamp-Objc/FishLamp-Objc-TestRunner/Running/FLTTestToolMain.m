@@ -8,7 +8,7 @@
 //
 
 #import "FLTTestToolMain.h"
-#import "FLTRunAllTestsOperation.h"
+#import "FLRunAllTestsOperation.h"
 #import "FLAsyncQueue.h"
 #import "FLOperation.h"
 #import "FLTestable.h"
@@ -33,7 +33,7 @@ int FLTTestToolMain(int argc, const char *argv[], NSString* bundleIdentifier, NS
 
             id<FLOperationContext> testContext = [FLOperationContext operationContext];
 
-            FLPromisedResult result = [testContext runSynchronously:[FLTRunAllTestsOperation testRunner]];
+            FLPromisedResult result = [testContext runSynchronously:[FLRunAllTestsOperation testRunner]];
 
             if([result isError]) {
                 return 1;

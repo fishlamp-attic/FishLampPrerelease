@@ -49,7 +49,7 @@
     return FLAutorelease(string);
 }
 
-- (void) willRunTestCases:(id<FLTestCaseList>) testCases {
+- (void) willRunTestCases:(FLTestCaseList*) testCases {
 //    [testCases disableAllTests:@"my name is fred"];
 }
 

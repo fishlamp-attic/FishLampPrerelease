@@ -75,6 +75,13 @@
 #define FLConfirmNotError(__OBJ__) \
             FLConfirm(![__OBJ__ isKindOfClass:[NSError class]])
 
+#define FLConfirmTrue(__CONDITION__) \
+            FLConfirm((__CONDITION__) == YES)
+
+#define FLConfirmFalse(__CONDITION__) \
+            FLConfirm(!(__CONDITION__))
+
+
 /*
 
 //#import "FLStackTrace.h"

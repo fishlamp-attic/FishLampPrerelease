@@ -44,9 +44,10 @@
 }
 
 - (void) willTestDoubleCount:(FLTestCase*) testCase {
-    [testCase disable:@"problem with exception propagation"];
+    [testCase setDisabledWithReason:@"problem with exception propagation"];
 }
 
+/*
 - (void) testDoubleCount:(FLTestCase*) testCase {
 
 //    __block BOOL fired = NO;
@@ -73,16 +74,17 @@
 //    
 //    FLConfirmWithComment(gotError == YES, @"expecting an error");
 }
+*/
 
 - (void) testBasicAsyncTest {
 
-    FLTestLog(@"async self test");
+    FLTestLog(self, @"async self test");
     
     FLFinisher* finisher = [FLFinisher finisher];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         [NSThread sleepForTimeInterval:0.25];
-        FLTestLog(@"done in thread");
+        FLTestLog(self, @"done in thread");
         [finisher setFinished];
         });
 

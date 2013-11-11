@@ -59,7 +59,7 @@
 //#import "FLFinisher.h"
 
 @interface FLOperationContext (OptionalOverrides)
-- (void) didAddOperation:(id<FLQueueableAsyncOperation>) operation;
+- (void) willStartOperation:(id<FLQueueableAsyncOperation>) operation;
 - (void) didRemoveOperation:(id<FLQueueableAsyncOperation>) operation;
 @end
 

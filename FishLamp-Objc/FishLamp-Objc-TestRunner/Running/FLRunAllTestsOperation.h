@@ -1,5 +1,5 @@
 //
-//  FLTRunAllTestsOperationBot.h
+//  FLRunAllTestsOperationBot.h
 //  FishLamp
 //
 //  Created by Mike Fullerton on 10/19/12.
@@ -10,7 +10,7 @@
 #import "FLOperation.h"
 #import "FLTTestResultCollection.h"
 
-@interface FLTRunAllTestsOperation : FLOperation {
+@interface FLRunAllTestsOperation : FLOperation {
 @private
 }
 

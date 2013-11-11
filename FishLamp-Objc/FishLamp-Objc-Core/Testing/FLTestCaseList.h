@@ -9,12 +9,24 @@
 #import "FLCoreRequired.h"
 
 @class FLTestCase;
+@protocol FLTestCase;
 
-@protocol FLTestCaseList <NSObject>
+@interface FLTestCaseList : NSObject<NSFastEnumeration> {
+@private
+    NSMutableArray* _testCaseArray;
+    BOOL _disabled;
+    NSString* _disabledReason;
+}
 
 @property (readonly, assign, nonatomic) BOOL isDisabled;
-
 @property (readonly, strong, nonatomic) NSString* disabledReason;
+@property (readonly, strong, nonatomic) NSArray* testCaseArray;
+
++ (id) testCaseList;
+
++ (id) testCaseListWithArrayOfTestCases:(NSArray*) testCaseArray;
+
+- (void) addTestCase:(id<FLTestCase>) testCase;
 
 - (id<FLTestCase>) testCaseForName:(NSString*) name;
 
@@ -31,7 +43,6 @@
 
 - (id<FLTestCase>) order:(id) testCase
                   before:(id) anotherTestCase;
-
 
 @end
 

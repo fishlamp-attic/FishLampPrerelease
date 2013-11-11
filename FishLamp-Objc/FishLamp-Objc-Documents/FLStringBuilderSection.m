@@ -133,19 +133,14 @@
     _lineOpen = YES;
 }
 
-- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) stringFormatter {
+- (void) stringFormatterCloseLine:(FLStringFormatter*) stringFormatter {
     FLAssertNotNil(_lines);
     FLAssertNotNil(stringFormatter);
 
     [_lines addObject:[FLDocumentSectionEOL documentSectionEOL]];
 
     _needsLine = YES;
-    if(_lineOpen) {
-        _lineOpen = NO;
-        return YES;
-    }
-
-    return NO;
+    _lineOpen = NO;
 }
 
 - (void) stringFormatter:(FLStringFormatter*) formatter

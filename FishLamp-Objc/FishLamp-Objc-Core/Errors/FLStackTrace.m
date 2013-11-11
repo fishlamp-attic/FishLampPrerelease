@@ -138,9 +138,22 @@ FLStackTrace_t FLStackTraceMake(FLLocationInSourceFile_t loc, BOOL withCallStack
                             _stackTrace.location.line, 
                             _stackTrace.location.function]];
 
-    [string indentedBlock:^{
+    [string indentLinesInBlock:^{
         for(int i = 0; i < self.stackDepth; i++) {
             [string appendLine:[NSString stringWithFormat:@"%s", [self stackEntryAtIndex:i]]];
+        }
+    }];
+}
+
+- (void) appendToStringFormatter:(id<FLStringFormatter>) string {
+    [string appendLineWithFormat:@"%s:%d, %s",
+                            FLFileNameFromLocation(&_stackTrace.location),
+                            _stackTrace.location.line, 
+                            _stackTrace.location.function];
+
+    [string indentLinesInBlock:^{
+        for(int i = 0; i < self.stackDepth; i++) {
+            [string appendLineWithFormat:@"%s", [self stackEntryAtIndex:i]];
         }
     }];
 }

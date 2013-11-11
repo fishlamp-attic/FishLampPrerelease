@@ -37,14 +37,11 @@
 }
 #endif
 
-- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) formatter {
+- (void) stringFormatterCloseLine:(FLStringFormatter*) formatter {
     if(_editingLine) {
         [self willCloseLine];
         _editingLine = NO;
-        return YES;
     }
-
-    return NO;
 }
 
 - (void) stringFormatterOpenLine:(FLStringFormatter*) formatter {

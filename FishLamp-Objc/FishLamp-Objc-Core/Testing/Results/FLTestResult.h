@@ -9,6 +9,9 @@
 
 #import "FLCoreRequired.h"
 
+@class FLStackTrace;
+@protocol FLAppendableString;
+
 @protocol FLStringFormatter;
 
 //@protocol FLTestResult <NSObject>
@@ -21,7 +24,6 @@
 
 @protocol FLTestResult <NSObject>
 
-@property (readonly, strong) id<FLStringFormatter> loggerOutput;
 @property (readonly, assign) BOOL started;
 @property (readonly, assign) BOOL finished;
 @property (readonly, assign) BOOL passed;
@@ -37,6 +39,10 @@
 - (void) setFailedWithError:(NSError*) error;
 - (void) setFailedWithException:(NSException*) ex;
 
+- (void) appendLogEntry:(id<FLAppendableString>) logEntry;
+
+@property (readonly, strong, nonatomic) NSArray* logEntries;
+
 @end
 
 @protocol FLCountedTestResult <FLTestResult>
@@ -47,3 +53,4 @@
 - (void) increment;
 
 @end
+

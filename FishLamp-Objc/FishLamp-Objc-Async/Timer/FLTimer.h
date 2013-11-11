@@ -9,7 +9,7 @@
 
 #import "FishLampMinimum.h"
 #import "NSError+FLTimeout.h"
-#import "FLCallback.h"
+#import "FLCallback_t.h"
 
 #define FLTimerDefaultCheckTimestampInterval 1.0f
 

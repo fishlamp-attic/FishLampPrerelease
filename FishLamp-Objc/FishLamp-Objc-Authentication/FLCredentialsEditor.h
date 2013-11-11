@@ -9,27 +9,26 @@
 
 #import "FishLampMinimum.h"
 
-@protocol FLCredentials;
-@protocol FLMutableCredentials;
+@protocol FLAuthenticationCredentials;
 @protocol FLCredentialsEditorDelegate;
 
 @interface FLCredentialsEditor : NSObject {
 @private
-    id<FLMutableCredentials> _credentials;
+    id<FLAuthenticationCredentials> _credentials;
     __unsafe_unretained id<FLCredentialsEditorDelegate> _delegate;
     BOOL _editing;
 }
 
 @property (readwrite, assign, nonatomic) id<FLCredentialsEditorDelegate> delegate;
 @property (readonly, assign, nonatomic, getter=isEditing) BOOL editing;
-@property (readonly, strong, nonatomic) id<FLCredentials> credentials;
+@property (readonly, strong, nonatomic) id<FLAuthenticationCredentials> credentials;
 
 @property (readwrite, assign, nonatomic) BOOL rememberPassword;
 @property (readwrite, strong, nonatomic) NSString* userName;
 @property (readwrite, strong, nonatomic) NSString* password;
 
-- (id) initWithCredentials:(id<FLCredentials>) creds;
-+ (id) authCredentialEditor:(id<FLCredentials>) creds;
+- (id) initWithCredentials:(id<FLAuthenticationCredentials>) creds;
++ (id) authCredentialEditor:(id<FLAuthenticationCredentials>) creds;
 
 - (void) startEditing;
 - (void) stopEditing;
@@ -39,12 +38,12 @@
 @protocol FLCredentialsEditorDelegate <NSObject>
 
 - (void) credentialsEditor:(FLCredentialsEditor*) editor
-willStartEditingCredentials:(id<FLCredentials>) credentials;
+willStartEditingCredentials:(id<FLAuthenticationCredentials>) credentials;
 
 - (void) credentialsEditor:(FLCredentialsEditor*) editor
-      credentialsDidChange:(id<FLCredentials>) credentials;
+      credentialsDidChange:(id<FLAuthenticationCredentials>) credentials;
 
 - (void) credentialsEditor:(FLCredentialsEditor*) editor
-didFinishEditingCredentials:(id<FLCredentials>) credentials;
+didFinishEditingCredentials:(id<FLAuthenticationCredentials>) credentials;
 
 @end

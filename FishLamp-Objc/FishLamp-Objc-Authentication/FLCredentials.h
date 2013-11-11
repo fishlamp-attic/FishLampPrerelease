@@ -21,6 +21,7 @@
 @property (readwrite, strong, nonatomic) NSString* userName;
 @property (readwrite, strong, nonatomic) NSString* password;
 - (void) clearCredentials;
+- (void) setUnauthenticated;
 @end
 
 

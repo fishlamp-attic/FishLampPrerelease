@@ -8,7 +8,7 @@
 //
 
 #import "FLCredentialsEditor.h"
-#import "FLCredentials.h"
+#import "FLAuthenticationCredentials.h"
 
 @interface FLCredentialsEditor ()
 @property (readwrite, assign, nonatomic, getter=isEditing) BOOL editing;
@@ -27,15 +27,15 @@
 }
 #endif
 
-- (id) initWithCredentials:(id<FLCredentials>) creds {
+- (id) initWithCredentials:(id<FLAuthenticationCredentials>) creds {
 	self = [super init];
 	if(self) {
-        _credentials = [creds mutableCopyWithZone:nil];
+        _credentials = FLRetain(creds);
     }
 	return self;
 }                 
 
-+ (id) authCredentialEditor:(id<FLCredentials>) creds {
++ (id) authCredentialEditor:(id<FLAuthenticationCredentials>) creds {
      return FLAutorelease([[[self class] alloc] initWithCredentials:creds]);
 }
 
@@ -109,11 +109,11 @@
     }
 }
 
-//- (id<FLCredentials>) credentials {
+//- (id<FLAuthenticationCredentials>) credentials {
 //    return FLCopyWithAutorelease(_credentials);
 //}
 //
-//- (void) setCredentials:(id<FLCredentials>) creds {
+//- (void) setCredentials:(id<FLAuthenticationCredentials>) creds {
 //    FLSetObjectWithMutableCopy(_credentials, creds);
 //}
 

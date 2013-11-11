@@ -45,38 +45,69 @@
 
 - (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) operation;
 
-- (FLPromise*) queueTarget:(id) target
-                 action:(SEL) action;
-
-- (FLPromise*) queueTarget:(id) target
-                 action:(SEL) action
-                withObject:(id) object;
-
-- (FLPromise*) queueTarget:(id) target
-                 action:(SEL) action
-                withObject:(id) object1
-                withObject:(id) object2;
-
-- (FLPromise*) queueTarget:(id) target
-                 action:(SEL) action
-                withObject:(id) object1
-                withObject:(id) object2
-                withObject:(id) object3;
-
-- (FLPromise*) queueTarget:(id) target
-                 action:(SEL) action
-                withObject:(id) object1
-                withObject:(id) object2
-                withObject:(id) object3
-                withObject:(id) object4;
-
 - (FLPromisedResult) runBlockSynchronously:(fl_block_t) block;
 
 - (FLPromisedResult) runFinisherBlockSynchronously:(fl_finisher_block_t) block;
 
 - (FLPromisedResult) runSynchronously:(id<FLQueueableAsyncOperation>) asyncObject;
 
+/*!
+ *   sync target/action
+ */
+
+ - (FLPromise*) queueTarget:(id) target
+                    action:(SEL) action;
+
+- (FLPromise*) queueTarget:(id) target
+                    action:(SEL) action
+                withObject:(id) object;
+
+- (FLPromise*) queueTarget:(id) target
+                    action:(SEL) action
+                withObject:(id) object1
+                withObject:(id) object2;
+
+- (FLPromise*) queueTarget:(id) target
+                    action:(SEL) action
+                withObject:(id) object1
+                withObject:(id) object2
+                withObject:(id) object3;
+
+- (FLPromise*) queueTarget:(id) target
+                    action:(SEL) action
+                withObject:(id) object1
+                withObject:(id) object2
+                withObject:(id) object3
+                withObject:(id) object4;
+
+ /*!
+  *  Queue a target
+  *  
+  *  @param target an object
+  *  @param action selector with first parameter of FLFinisher.
+  *  
+  *  @return a Promise
+  */
+- (FLPromise*) queueTarget:(id) target
+                asyncAction:(SEL) action;
+
+- (FLPromise*) queueTarget:(id) target
+               asyncAction:(SEL) action
+                withObject:(id) object;
+
+- (FLPromise*) queueTarget:(id) target
+               asyncAction:(SEL) action
+                withObject:(id) object1
+                withObject:(id) object2;
+
+- (FLPromise*) queueTarget:(id) target
+               asyncAction:(SEL) action
+                withObject:(id) object1
+                withObject:(id) object2
+                withObject:(id) object3;
+
 @end
+
 
 
 

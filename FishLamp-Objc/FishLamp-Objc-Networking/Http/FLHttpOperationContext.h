@@ -7,44 +7,51 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLServiceList.h"
-#import "FLHttpRequestAuthenticator.h"
+#import "FLOperationContext.h"
+#import "FLService.h"
+#import "FLHttpRequest.h"
+//#import "FLHttpAuthenticator.h"
 
 @protocol FLUserService;
 @protocol FLStorageService;
-@protocol FLCredentials;
+@protocol FLAuthenticationCredentials;
+@protocol FLHttpAuthenticatorDelegate;
+@protocol FLAuthenticatedEntity;
 
-@class FLOperationContext;
-@class FLHttpRequest;
-@class FLHttpUser;
-@class FLHttpRequestAuthenticator;
 @class FLServiceList;
 
 extern NSString* const FLHttpControllerDidLogoutUserNotification;
 
-@interface FLHttpOperationContext : FLOperationContext<FLHttpRequestAuthenticatorDelegate> {
+@interface FLHttpOperationContext : FLOperationContext<FLService, FLHttpRequestAuthenticator> {
 @private
-    FLHttpUser* _httpUser;
     id<FLUserService> _userService;
     id<FLStorageService> _storageService;
-    FLHttpRequestAuthenticator* _httpRequestAuthenticator;
+    id<FLAuthenticatedEntity> _authenticatedEntity;
+    FLFifoAsyncQueue* _authenticationQueue;
     FLServiceList* _serviceList;
+    __unsafe_unretained id<FLHttpAuthenticatorDelegate> _authenticationDelegate;
 }
+@property (readwrite, assign) id<FLHttpAuthenticatorDelegate> authenticationDelegate;
+@property (readwrite, strong) id<FLAuthenticatedEntity> authenticatedEntity;
 
 // getters
-@property (readonly, assign, nonatomic) BOOL isAuthenticated;
+
 @property (readonly, strong) id<FLUserService> userService;
+
+@property (readonly, assign, nonatomic) BOOL isAuthenticated;
 @property (readonly, strong) id<FLStorageService> storageService;
-@property (readonly, strong) FLHttpRequestAuthenticator* httpRequestAuthenticator;
-@property (readonly, strong) FLHttpUser* httpUser;
 
-- (void) logoutUser;
-- (void) setAuthenticatedUser:(FLHttpUser*) user;
+- (void) openServiceWithCredentials:(id<FLAuthenticationCredentials>) credentials;
 
-// Optional overrides
+- (void) openServiceWithUser:(id<FLAuthenticatedEntity>) entity;
 
-/// @return FLHttpUser by default.
-- (FLHttpUser*) createHttpUserForCredentials:(id<FLCredentials>) credentials;
+- (FLPromise*) beginAuthenticating:(fl_completion_block_t) completion;
+
+@end
+
+@interface FLHttpOperationContext (OptionalOverrides)
+
+- (void) didChangeAuthenticationCredentials:(id<FLAuthenticationCredentials>) credentials;
 
 /// @return FLUserService by default.
 - (id<FLUserService>) createUserService;
@@ -52,23 +59,22 @@ extern NSString* const FLHttpControllerDidLogoutUserNotification;
 /// @return FLDatabaseStorageService by default
 - (id<FLStorageService>) createStorageService;
 
-/// @return nil by default
-- (FLHttpRequestAuthenticator*) createHttpRequestAuthenticator;
-
 - (void) prepareAuthenticatedOperation:(id) operation;
 
 @end
 
-@protocol FLHttpControllerMessages <NSObject>
+@protocol FLHttpContextMessages <NSObject>
 @optional
 
 - (void) httpContext:(FLHttpOperationContext*) controller
-    didAuthenticateUser:(FLHttpUser*) userLogin;
+ didAuthenticateUser:(id<FLAuthenticatedEntity>) userLogin;
 
 - (void) httpContext:(FLHttpOperationContext*) controller 
-          didLogoutUser:(FLHttpUser*) userLogin;
+       didLogoutUser:(id<FLAuthenticationCredentials>) userLogin;
 
 - (void) httpControllerDidClose:(FLHttpOperationContext*) controller;
 - (void) httpControllerDidOpen:(FLHttpOperationContext*) controller;
 @end
+
+
 

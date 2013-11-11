@@ -9,13 +9,13 @@
 #import "FLTTestableSubclassFactory.h"
 #import "FLTestable.h"
 #import "FLObjcRuntime.h"
-#import "FLTTest.h"
+#import "FLTestableOperation.h"
 
-#import "FLTTestCase.h"
-#import "FLTTestCaseList.h"
+#import "FLTestCaseOperation.h"
+#import "FLTestCaseList.h"
 
 @interface FLTestable (Internal)
-@property (readwrite, strong) FLTTestCaseList* testCaseList;
+@property (readwrite, strong) FLTestCaseList* testCaseList;
 @end
 
 @implementation FLTestable (TestCases)
@@ -60,7 +60,7 @@
 }
 
 
-- (FLTTestCaseList*) createTestCases {
+- (FLTestCaseList*) createTestCases {
 
     NSMutableSet* set = [NSMutableSet set];
 
@@ -90,9 +90,9 @@
     
     for(NSString* selectorName in set) {
 
-        NSString* testName = [NSString stringWithFormat:@"-[%@ %@]", myName, selectorName];
+        NSString* testName = [NSString stringWithFormat:@"%@.%@", myName, selectorName];
 
-        FLTTestCase* testCase = [FLTTestCase testCase:testName
+        FLTestCaseOperation* testCase = [FLTestCaseOperation testCase:testName
                                            testable:self
                                              target:self
                                            selector:NSSelectorFromString(selectorName)];
@@ -101,7 +101,7 @@
 
     [self sortTestCaseList:testCaseList];
 
-    return [FLTTestCaseList testCaseListWithArrayOfTestCases:testCaseList];
+    return [FLTestCaseList testCaseListWithArrayOfTestCases:testCaseList];
 }
 
 
@@ -136,9 +136,9 @@
     return testable;
 }
 
-- (FLTTest*) createTest {
+- (FLTestableOperation*) createTest {
     FLTestable* testObject = [self createTestableObject];
-    return [FLTTest testWithTestable:testObject testCases:testObject.testCaseList];
+    return [FLTestableOperation testWithTestable:testObject];
 }
 
 

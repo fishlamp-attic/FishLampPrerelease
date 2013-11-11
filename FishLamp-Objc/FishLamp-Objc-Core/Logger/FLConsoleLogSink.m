@@ -46,7 +46,7 @@
     FLPrintf(entry.logString);
 
     if(FLTestAnyBit(self.outputFlags, FLLogOutputWithLocation | FLLogOutputWithStackTrace)) { 
-        [[FLPrintfStringFormatter instance] indentedBlock:^{
+        [[FLPrintfStringFormatter instance] indentLinesInBlock:^{
             NSString* moreInfo = [entry.object moreDescriptionForLogging];
             if(moreInfo) {
                 FLPrintf(moreInfo);
@@ -60,7 +60,7 @@
 
     if(FLTestBits(self.outputFlags, FLLogOutputWithStackTrace)) {
 
-        [[FLPrintfStringFormatter instance] indentedBlock:^{
+        [[FLPrintfStringFormatter instance] indentLinesInBlock:^{
             if(entry.stackTrace.callStack.depth) {
                 for(int i = 0; i < entry.stackTrace.callStack.depth; i++) {
                     FLPrintf(@"%s", [entry.stackTrace stackEntryAtIndex:i]);

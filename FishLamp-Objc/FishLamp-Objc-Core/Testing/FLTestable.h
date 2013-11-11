@@ -13,7 +13,7 @@
 #import "FLTestableRunOrder.h"
 #import "FLTestResultCollection.h"
 #import "FLTestGroup.h"
-
+#import "FLTestResultLogEntry.h"
 
 /**
  *  A FLTestable is an object that represents a automoated test of some kind. Either a unit or functional test.
@@ -31,7 +31,7 @@
  *  @param testCases List of test cases - order of execution can be modified
  *  @param expected  Expected results
  */
-- (void) willRunTestCases:(id<FLTestCaseList>) testCases;
+- (void) willRunTestCases:(FLTestCaseList*) testCases;
 
 /**
  *  Called after test is rull
@@ -40,7 +40,7 @@
  *  @param expected  expected results
  *  @param actual    actual results
  */
-- (void) didRunTestCases:(id<FLTestCaseList>) testCases;
+- (void) didRunTestCases:(FLTestCaseList*) testCases;
 
 /**
  *  Optionally set dependencies in run order at the class level for running FLTestable subclasses.
@@ -66,6 +66,10 @@
  */
 + (NSString*) testName;
 
+@property (readwrite, strong) FLTestCaseList* testCaseList;
+
+@property (readwrite, strong) id<FLTestCase> currentTestCase;
+
 @end
 
 /**
@@ -73,18 +77,20 @@
  */
 @interface FLTestable : NSObject<FLTestable> {
 @private
-    id<FLTestCaseList> _testCases;
+    FLTestCaseList* _testCaseList;
     id<FLExpectedTestResult> _expectedTestResult;
     id<FLTestResultCollection> _testResults;
+    id<FLTestCase> _currentTestCase;
 }
 
 /**
  *  Return a custom name for the unit test. By default this is the name of the class.
  */
-@property (readonly, strong) id<FLTestCaseList> testCaseList;
 
 - (id<FLTestCase>) testCaseForSelector:(SEL) selector;
+
 - (id<FLTestCase>) testCaseForName:(NSString*) name;
+
 
 @end
 
@@ -95,20 +101,20 @@ extern id<FLStringFormatter> FLTestLogger();
 /**
  *  Macro that all the tests should use for output.
  */
-#define FLTestLog(__FORMAT__, ...) \
-            [FLTestLogger() appendLineWithFormat:__FORMAT__, ##__VA_ARGS__]
+#define FLTestLog(__TESTABLE__, __FORMAT__, ...) \
+            [__TESTABLE__.currentTestCase.result appendLogEntry:[FLTestResultLogEntry testResultLogEntry:FLStringWithFormatOrNil(__FORMAT__, ##__VA_ARGS__) stackTrace:nil]]
 
-
-#define FLGetTestCase() [self testCaseForSelector:_cmd]
+#define FLTestLogHeavy(__TESTABLE__, __FORMAT__, ...) \
+            [__TESTABLE__.currentTestCase.result appendLogEntry:[FLTestResultLogEntry testResultLogEntry:FLStringWithFormatOrNil(__FORMAT__, ##__VA_ARGS__) stackTrace:FLCreateStackTrace(YES)]]
 
 #define FLDisableTest() \
             do { \
-                [[self testCaseForSelector:_cmd] setDisabled:YES]; \
+                [self.currentTestCase setDisabled:YES]; \
                 return; \
             } while(0)
 
 #define FLTestMode(YESNO) \
-            [[self testCaseForSelector:_cmd] setDebugMode:YESNO]
+            [self.currentTestCase setDebugMode:YESNO]
 
 #define FLConfirmPrerequisiteTestCasePassed(NAME) \
             do { \

@@ -17,25 +17,28 @@
 
 @protocol FLUserService <FLService, FLCredentialsEditorDelegate>
 - (BOOL) canAuthenticate;
-- (id<FLCredentials>) credentials;
+- (id<FLAuthenticationCredentials>) credentials;
 
 - (FLCredentialsEditor*) credentialEditor;
+
+- (void) openServiceWithCredentials:(id<FLAuthenticationCredentials>) credentials;
 @end
 
 
 @interface FLUserService : FLService<FLUserService> {
 @private
-    id<FLCredentials> _credentials;
+    id<FLAuthenticationCredentials> _credentials;
     id<FLCredentialsStorage> _credentialStorage;
 }
 
-@property (readwrite, strong) id<FLCredentials> credentials;
+@property (readwrite, strong) id<FLAuthenticationCredentials> credentials;
 @property (readwrite, strong) id<FLCredentialsStorage> credentialStorage;
 
 + (id) userService;
-+ (id) userService:(id<FLCredentials>) credentials;
++ (id) userService:(id<FLAuthenticationCredentials>) credentials;
 
-- (id) initWithCredentials:(id<FLCredentials>) credentials;
+- (id) initWithCredentials:(id<FLAuthenticationCredentials>) credentials;
+
 @end
 
 

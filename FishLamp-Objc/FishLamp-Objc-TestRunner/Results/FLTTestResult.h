@@ -26,7 +26,7 @@
     NSError* _error;
     NSException* _exception;
     NSString* _testName;
-    id<FLStringFormatter> _loggerOutput;
+    NSMutableArray* _logEntries;
     BOOL _passed;
     BOOL _started;
     BOOL _finished;
@@ -49,3 +49,4 @@
 - (void) increment;
 
 @end
+

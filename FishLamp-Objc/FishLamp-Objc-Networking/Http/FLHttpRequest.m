@@ -14,7 +14,6 @@
 #import "FLDataSink.h"
 #import "FLGlobalNetworkActivityIndicator.h"
 #import "FLHttpMessage.h"
-#import "FLHttpRequestAuthenticator.h"
 #import "FLHttpRequestBody.h"
 #import "FLHttpRequestByteCount.h"
 #import "FLHttpResponse.h"
@@ -184,10 +183,10 @@ static int s_counter = 0;
 
 - (void) openAuthenticatedStreamWithURL:(NSURL*) url {
 
-//    id context = self.context;
-//    if(!self.httpRequestAuthenticator && (context && [context respondsToSelector:@selector(httpRequestAuthenticator)])) {
-//        self.httpRequestAuthenticator = [context httpRequestAuthenticator];
-//    }
+    id context = self.context;
+    if(!self.httpRequestAuthenticator && (context && [context respondsToSelector:@selector(httpRequestAuthenticator)])) {
+        self.httpRequestAuthenticator = [context httpRequestAuthenticator];
+    }
 
     if(self.httpRequestAuthenticator && !self.disableAuthenticator) {
         [self willAuthenticate];

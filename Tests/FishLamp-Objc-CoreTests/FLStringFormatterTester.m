@@ -141,11 +141,11 @@ static NSString* indent_result = @"foo\n>hello\n>>world\n>bar\nfoobar\n";
     [string appendLine:@"foo"];
     FLConfirm(string.indentLevel == 0);
 
-    [string indentedBlock:^{
+    [string indentLinesInBlock:^{
         FLConfirm(string.indentLevel == 1);
         [string appendLine:@"hello"];
 
-        [string indentedBlock:^{
+        [string indentLinesInBlock:^{
             FLConfirm(string.indentLevel == 2);
             [string appendLine:@"world"];
         }];
@@ -195,12 +195,12 @@ static NSString* indent_result = @"foo\n>hello\n>>world\n>bar\nfoobar\n";
 - (void) testIndentedStringFormatterAppend {
     id<FLStringFormatter> string1 = [self createStringFormatter:[FLTestWhitespace testWhitespace]];
     [string1 appendLine:@"a"];
-    [string1 indentedBlock:^{
+    [string1 indentLinesInBlock:^{
         [string1 appendLine:@"b"];
 
         id<FLStringFormatter> string2 = [self createStringFormatter:[FLTestWhitespace testWhitespace]];
         [string2 appendLine:@"c"];
-        [string2 indentedBlock:^{
+        [string2 indentLinesInBlock:^{
             [string2 appendLine:@"d"];
         }];
 

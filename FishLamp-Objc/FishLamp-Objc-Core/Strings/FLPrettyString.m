@@ -103,7 +103,7 @@
 }
 
 - (void) prettyDescription:(FLPrettyString*) string {
-    [string indentedBlock: ^{
+    [string indentLinesInBlock: ^{
         [self describeSelf:string];
     }];
 }

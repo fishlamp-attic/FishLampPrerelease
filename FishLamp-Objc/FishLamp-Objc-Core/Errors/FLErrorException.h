@@ -9,7 +9,7 @@
 
 #import "FLCoreRequired.h"
 
-extern NSString* const FLErrorExceptionName;
+extern NSString* const FLUnderlyingExceptionKey;
 
 @interface NSException (NSError)
 
@@ -26,7 +26,13 @@ extern NSString* const FLErrorExceptionName;
              error:(NSError*) error;
 
 + (id) exceptionWithError:(NSError*) error;
+
 - (id) initWithError:(NSError*) error;
 
 @end
 
+@interface NSError (FLErrorException)
+- (id) errorWithException:(NSException*) exception;
+- (id) initWithException:(NSException*) exception;
+- (NSException*) exception;
+@end

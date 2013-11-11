@@ -75,6 +75,35 @@ NSString* FLStringWithFormatOrNil(NSString* format, ...) {
     return str;
 }
 
++ (NSString*) stringWithTrailingPadding_fl:(NSString*) string
+                                  minimumWidth:(NSUInteger) padding {
+
+    if(string.length < padding) {
+        NSMutableString* str = [NSMutableString stringWithString:string];
+        for(NSUInteger i = 0; i < padding - string.length; i++) {
+            [str appendString:@" "];
+        }
+        return str;
+    }
+
+    return string;
+}
+
++ (NSString*) stringWithLeadingPadding_fl:(NSString*) string
+                             minimumWidth:(NSUInteger) padding {
+
+    if(string.length < padding) {
+        NSMutableString* str = [NSMutableString string];
+        for(NSUInteger i = 0; i < padding - string.length; i++) {
+            [str appendString:@" "];
+        }
+        [str appendString:string];
+        return str;
+    }
+
+    return string;
+}
+
 - (BOOL)isEqualToString_fl:(NSString *)aString caseSensitive:(BOOL) caseSensitive {
 	return caseSensitive ?	[self isEqualToString:aString] :		
 							[self caseInsensitiveCompare:aString] == NSOrderedSame; 

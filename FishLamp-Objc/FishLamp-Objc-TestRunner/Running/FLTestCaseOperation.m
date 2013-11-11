@@ -1,33 +1,31 @@
 //
-//  FLTTestCase.m
+//  FLTestCaseOperation.m
 //  FishLamp-Objc
 //
 //  Created by Mike Fullerton on 11/2/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FLTTestCase.h"
-#import "FLTTestCaseList.h"
+#import "FLTestCaseOperation.h"
+#import "FLTestCaseList.h"
 #import "FLTTestResult.h"
 
 #import "FLStringUtils.h"
 #import "FLTestable.h"
 #import "FLSelectorPerforming.h"
-#import "FLTestLoggingManager.h"
 
 #import "FLTimer.h"
 
-@interface FLTTestCase ()
+@interface FLTestCaseOperation ()
 @property (readwrite, strong) NSString* testCaseName;
 @property (readwrite, strong) FLSelector* selector;
 @property (readwrite, assign) id target;
 @property (readwrite, strong) NSString* disabledReason;
-@property (readwrite, assign) id<FLTestCaseList> testCaseList;
 @property (readwrite, strong) id<FLTestResult> result;
 @property (readonly, strong) FLIndentIntegrity* indentIntegrity;
 @end
 
-@implementation FLTTestCase
+@implementation FLTestCaseOperation
 
 @synthesize isDisabled = _disabled;
 @synthesize disabledReason = _disabledReason;
@@ -35,7 +33,6 @@
 @synthesize target = _target;
 @synthesize testCaseName = _testCaseName;
 @synthesize testable = _unitTest;
-@synthesize testCaseList = _testCaseList;
 @synthesize result = _result;
 @synthesize debugMode = _debugMode;
 @synthesize indentIntegrity = _indentIntegrity;
@@ -89,14 +86,14 @@
 }
 
 + (id) testCase:(NSString*) name
-                testable:(id<FLTestable>) testable
-                  target:(id) target
-                selector:(SEL) selector {
+       testable:(id<FLTestable>) testable
+         target:(id) target
+       selector:(SEL) selector {
 
     return FLAutorelease([[[self class] alloc] initWithName:name testable:testable target:target selector:selector]);
 }
 
-- (void) disable:(NSString*) reason {
+- (void) setDisabledWithReason:(NSString*) reason {
     _disabled = YES;
     self.disabledReason = reason;
 }
@@ -113,7 +110,7 @@
         break;
 
         default:
-            [self disable:[NSString stringWithFormat:@"[%@ %@] has too many paramaters (%ld).",
+            [self setDisabledWithReason:[NSString stringWithFormat:@"[%@ %@] has too many paramaters (%ld).",
                 NSStringFromClass([_target class]),
                 selector.selectorString,
                 selector.argumentCount]];
@@ -124,9 +121,7 @@
 - (void) prepareTestCase {
     self.result = [FLTTestResult testResult:self.testCaseName];
     if(!self.isDisabled && [_willTestSelector willPerformOnTarget:_target]) {
-        [[FLTestLoggingManager instance] logger:self.result.loggerOutput logInBlock:^{
-            [self performTestCaseSelector:_willTestSelector optional:self];
-        }];
+        [self performTestCaseSelector:_willTestSelector optional:self];
     }
 }
 
@@ -134,35 +129,48 @@
     FLLog(@"Test timed out: %@", [self testCaseName]);
 }
 
+
+- (BOOL) isAsyncTest {
+    return _timer != nil;
+}
+
 - (void) startOperation {
-    [[FLTestLoggingManager instance] addLogger:self.result.loggerOutput];
-    [[FLTestLoggingManager instance] indent:self.indentIntegrity];
 
     if(self.isDisabled) {
         [self setFinished];
     }
 
     [self.result setStarted];
-    
-    switch(_selector.argumentCount) {
-        case 0:
-            [_selector performWithTarget:_target];
-            [self setFinished];
-        break;
 
-        case 1:
-            _timer = [[FLTimer alloc] initWithTimeout:2.0];
-            _timer.delegate = self;
-            [_timer startTimer];
-            [_selector performWithTarget:_target withObject:self];
-        break;
+    @try {
+        switch(_selector.argumentCount) {
+            case 0:
+                [_selector performWithTarget:_target];
+                if(!self.isAsyncTest) {
+                    [self setFinished];
+                }
+            break;
 
-        default:
-            [self disable:[NSString stringWithFormat:@"[%@ %@] has too many paramaters (%ld).",
-                NSStringFromClass([_target class]),
-                _selector.selectorString,
-                _selector.argumentCount]];
-        break;
+            case 1:
+                [_selector performWithTarget:_target withObject:self];
+                if(!self.isAsyncTest) {
+                    [self setFinished];
+                }
+            break;
+
+
+            default:
+                [self setDisabledWithReason:[NSString stringWithFormat:@"[%@ %@] has too many paramaters (%ld).",
+                    NSStringFromClass([_target class]),
+                    _selector.selectorString,
+                    _selector.argumentCount]];
+            break;
+        }
+    }
+    @catch(NSException* ex) {
+        if(!self.finisher.isFinished) {
+            [self setFinishedWithResult:ex.error];
+        }
     }
 }
 
@@ -185,15 +193,50 @@
         [self performTestCaseSelector:_didTestSelector optional:self];
     }
 
-    [[FLTestLoggingManager instance] outdent:self.indentIntegrity];
-    [[FLTestLoggingManager instance] popLogger];
-
     [super setFinishedWithResult:self.result];
 }
 
 - (NSString*) description {
     return [NSString stringWithFormat:@"%@ %@", [super description], self.testCaseName];
 }
+
+- (void) startAsyncTest {
+    [self startAsyncTestWithTimeout:FLTestCaseDefaultAsyncTimeout];
+}
+
+- (void) setFailedWithError:(NSError*) error {
+    [self setFinishedWithResult:error];
+}
+
+- (void) startAsyncTestWithTimeout:(NSTimeInterval) timeout {
+    _timer = [[FLTimer alloc] initWithTimeout:timeout];
+    _timer.delegate = self;
+    [_timer startTimer];
+}
+
+- (void) executeTestBlock:(void (^)()) testBlock {
+    @try {
+        if(testBlock) {
+            testBlock();
+        }
+    }
+    @catch(NSException* ex) {
+        [self setFinishedWithResult:ex.error];
+    }
+}
+
+- (void) finishAsyncTestWithBlock:(void (^)()) finishBlock {
+    @try {
+        if(finishBlock) {
+            finishBlock();
+        }
+        [self setFinished];
+    }
+    @catch(NSException* ex) {
+        [self setFinishedWithResult:ex.error];
+    }
+}
+
 
 #if DEPRECATED
 + (void) runTestWithExpectedFailure:(void (^)()) test

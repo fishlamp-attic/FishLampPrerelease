@@ -124,8 +124,8 @@
     [[self openedSection] openLine];
 }
 
-- (BOOL) stringFormatterCloseLine:(FLStringFormatter*) formatter {
-    return [[self openedSection] closeLine];
+- (void) stringFormatterCloseLine:(FLStringFormatter*) formatter {
+    [[self openedSection] closeLine];
 }
 
 - (NSInteger) stringFormatterIndentLevel:(FLStringFormatter*) formatter{

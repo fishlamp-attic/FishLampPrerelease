@@ -86,4 +86,9 @@
     self.userName = nil;
     self.password = nil;
 }
+
+- (void) setUnauthenticated {
+    self.password = nil;
+
+}
 @end

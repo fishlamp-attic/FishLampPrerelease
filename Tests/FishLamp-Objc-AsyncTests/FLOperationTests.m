@@ -50,18 +50,28 @@
     BOOL _passed;
 }
 @property (readonly, assign, nonatomic) BOOL passed;
+@property (readwrite, strong, nonatomic) FLTestable* testable;
 @end
 
 @implementation FLSimpleTestOperation
 @synthesize passed = _passed;
+@synthesize testable = _testable;
 
 - (FLPromisedResult) runSynchronously {
 
-    FLTestLog(@"hello world");
+    FLTestLog(self.testable, @"hello world");
     _passed = YES;
 
     return FLSuccessfulResult;
 }
+
+#if FL_MRC
+- (void)dealloc {
+	[_testable release];
+	[super dealloc];
+}
+#endif
+
 @end
 @implementation FLOperationUnitTest
 
@@ -71,6 +81,8 @@
 
 - (void) testSimpleCase {
     FLSimpleTestOperation* op = FLAutorelease([[FLSimpleTestOperation alloc] init]);
+    op.testable = self;
+
     FLThrowIfError([FLBackgroundQueue runSynchronously:op]);
     FLAssert(op.passed);
 }

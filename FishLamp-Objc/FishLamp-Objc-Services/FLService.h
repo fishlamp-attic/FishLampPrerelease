@@ -9,28 +9,22 @@
 
 #import "FishLampMinimum.h"
 #import "FLBroadcaster.h"
-#import "FishLampAsync.h"
-
-extern NSString* const FLServiceDidCloseNotificationKey;
-extern NSString* const FLServiceDidOpenNotificationKey;
+//#import "FishLampAsync.h"
+//
+//extern NSString* const FLServiceDidCloseNotificationKey;
+//extern NSString* const FLServiceDidOpenNotificationKey;
 
 @protocol FLService <NSObject, FLBroadcaster>
-@property (readonly, assign) BOOL isOpen;
-- (FLPromise*) openService:(fl_result_block_t) completion;
-- (FLPromise*) closeService:(fl_result_block_t) completion;
+@property (readonly, assign) BOOL canOpenService;
+@property (readonly, assign) BOOL isServiceOpen;
+- (void) openService;
+- (void) closeService;
 @end
 
 @interface FLService : FLBroadcaster<FLService> {
 @private
-    BOOL _isOpen;
-    NSError* _error;
+    BOOL _isServiceOpen;
 }
-
-@property (readonly, strong) NSError* error;
-
-// override these
-- (void) openSelf:(FLFinisher*) finisher;
-- (void) closeSelf:(FLFinisher*) finisher;
 @end
 
 

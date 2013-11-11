@@ -11,13 +11,14 @@
 #import "FLCredentialsEditor.h"
 #import "FLCredentials.h"
 #import "FLCredentialsStorage.h"
+#import "FLAuthenticationCredentials.h"
 
 @implementation FLUserService
 
 @synthesize credentials = _credentials;
 @synthesize credentialStorage = _credentialStorage;
 
-- (id) initWithCredentials:(id<FLCredentials>) credentials {
+- (id) initWithCredentials:(id<FLAuthenticationCredentials>) credentials {
     self = [super init];
     if(self) {
         _credentials = FLRetain(credentials);
@@ -29,7 +30,7 @@
     return FLAutorelease([[[self class] alloc] init]);
 }
 
-+ (id) userService:(id<FLCredentials>) credentials {
++ (id) userService:(id<FLAuthenticationCredentials>) credentials {
     return FLAutorelease([[[self class] alloc] initWithCredentials:credentials]);
 }
 
@@ -42,16 +43,27 @@
 #endif
 
 - (BOOL) canAuthenticate {
-    return [self.credentials canAuthenticate];
+    return self.credentials && [self.credentials canAuthenticate];
 }
 
-- (void) openSelf:(FLFinisher*) finisher {
+- (BOOL) canOpenService {
+    return [self canAuthenticate];
+}
+
+- (void) openService {
+    FLConfirmWithComment([self canAuthenticate], @"no credentials");
+    [super openService];
     [self sendMessageToListeners:@selector(userServiceDidOpen:) withObject:self];
-
-    [finisher setFinished];
 }
 
-- (void) closeSelf:(FLFinisher*) finisher {
+- (void) openServiceWithCredentials:(id<FLAuthenticationCredentials>) credentials {
+    self.credentials = credentials;
+    [self openService];
+}
+
+- (void) closeService {
+
+    [super closeService];
 
     FLCredentialsEditor* editor = [self credentialEditor];
     editor.password = nil;
@@ -59,7 +71,6 @@
 
     [self sendMessageToListeners:@selector(userServiceDidClose:) withObject:self];
 
-    [finisher setFinished];
 }
 
 - (FLCredentialsEditor*) credentialEditor {
@@ -69,25 +80,25 @@
 }
 
 - (void) credentialsEditor:(FLCredentialsEditor*) editor
-willStartEditingCredentials:(id<FLCredentials>) credentials {
+willStartEditingCredentials:(id<FLAuthenticationCredentials>) credentials {
 
-   [self closeService:nil];
+   [self closeService];
 }
 
 - (void) credentialsEditor:(FLCredentialsEditor*) editor
-      credentialsDidChange:(id<FLCredentials>) credentials {
+      credentialsDidChange:(id<FLAuthenticationCredentials>) credentials {
 
     self.credentials = editor.credentials;
 }
 
 - (void) credentialsEditor:(FLCredentialsEditor*) editor
-didFinishEditingCredentials:(id<FLCredentials>) credentials {
+didFinishEditingCredentials:(id<FLAuthenticationCredentials>) credentials {
     self.credentials = editor.credentials;
     if(self.credentialStorage) {
         [self.credentialStorage writeCredentials:self.credentials];
     }
 
-    [self openService:nil];
+    [self openService];
 }
 
 @end

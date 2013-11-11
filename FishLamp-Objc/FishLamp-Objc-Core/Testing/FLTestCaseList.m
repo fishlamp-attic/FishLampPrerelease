@@ -1,25 +1,17 @@
 //
-//  FLTTestCaseList.m
+//  FLTestCaseList.m
 //  FishLamp-Objc
 //
-//  Created by Mike Fullerton on 11/2/13.
+//  Created by Mike Fullerton on 11/10/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FLTTestCaseList.h"
-
 #import "FLTestCaseList.h"
 #import "FLTestCase.h"
-#import "FLObjcRuntime.h"
-#import "FLAssertions.h"
+#import "FishLampMinimum.h"
 
-@interface FLTTestCase (Internal)
-@property (readwrite, assign) FLTTestCaseList* testCaseList;
-@end
-
-@interface FLTTestCaseList ()
+@interface FLTestCaseList ()
 @property (readwrite, strong) NSString* disabledReason;
-
 
 - (id<FLTestCase>) setRunOrder:(NSUInteger) order forSelector:(SEL) selector;
 - (id<FLTestCase>) setRunOrder:(NSUInteger) order forTestCase:(id<FLTestCase>) testCase;
@@ -27,7 +19,7 @@
 
 @end
 
-@implementation FLTTestCaseList
+@implementation FLTestCaseList
 
 @synthesize isDisabled = _isDisabled;
 @synthesize disabledReason = _disabledReason;
@@ -71,7 +63,7 @@
     self.disabledReason = reason;
 
     for(id<FLTestCase> testCase in _testCaseArray) {
-        [testCase disable:reason];
+        [testCase setDisabledWithReason:reason];
     }
 }
 
@@ -108,9 +100,8 @@
     return [_testCaseArray indexOfObject:testCase];
 }
 
-- (void) addTestCase:(FLTTestCase*) testCase {
+- (void) addTestCase:(id<FLTestCase>) testCase {
     [_testCaseArray addObject:testCase];
-    testCase.testCaseList = self;
 }
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len {
@@ -189,11 +180,5 @@
     FLConfirmWithComment(idx != NSNotFound, @"run order for %@ not found", testCase);
     return [self setRunOrder:idx - 1 forTestCase:[self testCaseForObject:testCase]];
 }
-
-
-
-
-
-
 
 @end

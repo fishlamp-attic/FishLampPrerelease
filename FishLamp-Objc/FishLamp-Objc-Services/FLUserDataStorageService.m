@@ -209,7 +209,7 @@ FLAssertFailedWithComment(@"refactor this");
     }
 }
 
-- (FLUserLogin*) userLogin {
+- (FLAuthenticationCredentials*) userLogin {
     return nil; // [self.context resourceForKey:FLUserLoginKey];
 }
 
@@ -222,7 +222,7 @@ FLAssertFailedWithComment(@"refactor this");
     userCacheFolder = [userCacheFolder stringByAppendingPathComponent:[FLAppInfo bundleIdentifier]];
 #endif
 
-    FLUserLogin* userLogin = self.userLogin;
+    FLAuthenticationCredentials* userLogin = self.userLogin;
 
 	if(!_cacheFolder){
 		_cacheFolder = [[FLFolder alloc] initWithFolderPath:[userCacheFolder stringByAppendingPathComponent:userLogin.userGuid]];
@@ -255,7 +255,7 @@ FLAssertFailedWithComment(@"refactor this");
     NSArray* documentsPaths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString* userDocumentsFolder = [documentsPaths objectAtIndex: 0];
 
-    FLUserLogin* userLogin = self.userLogin;
+    FLAuthenticationCredentials* userLogin = self.userLogin;
 
 #if OSX
     userDocumentsFolder = [userDocumentsFolder stringByAppendingPathComponent:[FLAppInfo bundleIdentifier]];
@@ -398,15 +398,15 @@ FLAssertFailedWithComment(@"TODO refactor this");
 	return [self userLogin].isAuthenticatedValue;
 }
 
-+ (FLUserLogin*) loadLastUserLogin {
++ (FLAuthenticationCredentials*) loadLastUserLogin {
 	return [[FLApplicationDataModel instance] loadLastUserLogin];
 }
 
-+ (FLUserLogin*) loadDefaultUser {
-	FLUserLogin* login = [[FLApplicationDataModel instance] loadUserLoginWithGuid:[NSString zeroGuidString]];
++ (FLAuthenticationCredentials*) loadDefaultUser {
+	FLAuthenticationCredentials* login = [[FLApplicationDataModel instance] loadUserLoginWithGuid:[NSString zeroGuidString]];
     if(!login)
     {
-        login = [FLUserLogin userLogin];
+        login = [FLAuthenticationCredentials userLogin];
         login.userName = NSLocalizedString(@"Guest", nil);
         login.isAuthenticatedValue = YES;
         login.userGuid = [NSString zeroGuidString];

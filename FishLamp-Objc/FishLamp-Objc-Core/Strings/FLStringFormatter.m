@@ -168,8 +168,8 @@
     [_stringFormatterDelegate stringFormatterOpenLine:self];
 }
 
-- (BOOL) closeLine {
-    return [_stringFormatterDelegate stringFormatterCloseLine:self];
+- (void) closeLine {
+    [_stringFormatterDelegate stringFormatterCloseLine:self];
 }
 
 - (void) indent:(FLIndentIntegrity*) integrity {
@@ -213,7 +213,7 @@
     [self closeLine];
 }
 
-- (void) indentedBlock:(FLStringFormatterIndentedBlock) block {
+- (void) indentLinesInBlock:(FLStringFormatterIndentedBlock) block {
     [self closeLine];
     [self indent:_indentIntegrity];
     // subsequent calls to us will open a line, etc..
@@ -230,7 +230,7 @@
             closeScope:(NSString*) closeScope
              withBlock:(FLStringFormatterIndentedBlock) block {
     [self appendLine:openScope];
-    [self indentedBlock:block];
+    [self indentLinesInBlock:block];
     [self appendLine:closeScope];
 }
 
@@ -371,7 +371,7 @@
     FLAssertWithComment(_top >= 0, @"outdenting too far");
 
     if(self.top != level) {
-        FLLog(@"popping incorrect indent level %ld, should be %ld\ntraces: %@", level, self.top, [_stackTraces prettyDescription]);
+        FLLog(@"popping incorrect indent level %ld, should be %ld\ntraces: %@", level, self.top, nil /*[_stackTraces prettyDescription]*/);
     }
     if(_top >= 0) {
         --_top;

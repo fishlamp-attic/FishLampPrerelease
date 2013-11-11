@@ -1,5 +1,5 @@
 //
-//  FLTTestCase.h
+//  FLTestCaseOperation.h
 //  FishLamp-Objc
 //
 //  Created by Mike Fullerton on 11/2/13.
@@ -13,7 +13,7 @@
 
 @class FLTimer;
 
-@interface FLTTestCase : FLOperation<FLTestCase> {
+@interface FLTestCaseOperation : FLOperation<FLTestCase> {
 @private
     NSString* _testCaseName;
     FLSelector* _selector;
@@ -25,7 +25,6 @@
 
     __unsafe_unretained id _target;
     __unsafe_unretained id<FLTestable> _unitTest;
-    __unsafe_unretained id<FLTestCaseList> _testCaseList;
     BOOL _disabled;
     BOOL _debugMode;
 
@@ -52,8 +51,6 @@
        selector:(SEL) selector;
 
 - (void) prepareTestCase;
-
-@property (readwrite, assign) BOOL debugMode;
 
 @end
 

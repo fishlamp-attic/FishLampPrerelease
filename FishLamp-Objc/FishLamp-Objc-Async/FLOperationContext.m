@@ -103,7 +103,7 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
     self.contextOpen = NO;
 }
 
-- (void) didAddOperation:(id<FLOperationContext>) operation {
+- (void) willStartOperation:(id<FLOperationContext>) operation {
 }
 
 - (void) didRemoveOperation:(id<FLOperationContext>) operation {
@@ -125,11 +125,10 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
         }
     }
 
-    [self didAddOperation:operation];
-
     if(!self.isContextOpen) {
         [operation requestCancel];
     }
+
 }
 
 - (void) removeOperation:(id) operation {
@@ -167,6 +166,7 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
     FLAssertNotNil(operation);
 
     [self addOperation:operation];
+    [self willStartOperation:operation];
 
 // TODO: provide way to specify queue
     return [[self starterForOperation:operation] runOperationSynchronously:operation];
@@ -179,6 +179,7 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
 
     FLAssertNotNil(operation);
     [self addOperation:operation];
+    [self willStartOperation:operation];
 
 // TODO: provide way to specify queue
     return [[self starterForOperation:operation] startOperation:operation withDelay:delay completion:completion];

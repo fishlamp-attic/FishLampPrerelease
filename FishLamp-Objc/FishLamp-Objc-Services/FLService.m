@@ -9,80 +9,33 @@
 
 #import "FLService.h"
 
-NSString* const FLServiceDidCloseNotificationKey = @"FLServiceDidCloseNotificationKey";
-NSString* const FLServiceDidOpenNotificationKey = @"FLServiceDidOpenNotificationKey";;
+//NSString* const FLServiceDidCloseNotificationKey = @"FLServiceDidCloseNotificationKey";
+//NSString* const FLServiceDidOpenNotificationKey = @"FLServiceDidOpenNotificationKey";;
 
 @interface FLService ()
-@property (readwrite, assign, getter=isOpen) BOOL isOpen;
-@property (readwrite, strong) NSError* error;
+@property (readwrite, assign, nonatomic) BOOL isServiceOpen;
 @end
 
 @implementation FLService
-@synthesize isOpen = _isOpen;
-@synthesize error = _error;
+
+@synthesize isServiceOpen = _isServiceOpen;
 
 + (id) service {
     return FLAutorelease([[[self class] alloc] init]);
 }
 
-#if FL_MRC
-- (void)dealloc {
-	[_error release];
-	[super dealloc];
-}
-#endif
-
-- (void) openSelf:(FLFinisher*) finisher {
-    [finisher setFinished];
+- (BOOL) canOpenService {
+    return YES;
 }
 
-- (void) closeSelf:(FLFinisher*) finisher {
-    [finisher setFinished];
+- (void) openService {
+    FLConfirmWithComment(!self.isServiceOpen, @"%@ service is already open", [self description]);
+    self.isServiceOpen = YES;
 }
 
-- (FLPromise*) openService:(fl_result_block_t) completion {
-
-    FLConfirmWithComment(!self.isOpen, @"%@ service is already open", [self description]);
-
-    self.error = nil;
-
-    FLFinisher* finisher = [FLForegroundFinisher finisherWithBlock:^(FLPromisedResult result) {
-        if([result isError]) {
-            self.error = [NSError fromPromisedResult:result];
-        }
-        else {
-            self.isOpen = YES;
-            [[NSNotificationCenter defaultCenter] postNotificationName:FLServiceDidOpenNotificationKey object:self];
-
-        }
-    }];
-
-    FLPromise* promise = [finisher addPromiseWithBlock:completion];
-    [self openSelf:finisher];
-    return promise;
-}
-
-- (FLPromise*) closeService:(fl_result_block_t) completion {
-
-    FLConfirmWithComment(self.isOpen, @"%@ service is already open", [self description]);
-
-    self.error = nil;
-
-    FLFinisher* finisher = [FLForegroundFinisher finisherWithBlock:^(FLPromisedResult result) {
-        if([result isError]) {
-            self.error = [NSError fromPromisedResult:result];
-        }
-        else {
-            self.isOpen = NO;
-            [[NSNotificationCenter defaultCenter] postNotificationName:FLServiceDidCloseNotificationKey object:self];
-        }
-    }];
-
-    FLPromise* promise = [finisher addPromiseWithBlock:completion];
-
-    [self openSelf:finisher];
-
-    return promise;
+- (void) closeService {
+    FLConfirmWithComment(self.isServiceOpen, @"%@ service is already open", [self description]);
+    self.isServiceOpen = NO;
 }
 
 

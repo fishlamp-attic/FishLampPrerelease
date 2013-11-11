@@ -12,7 +12,7 @@
 
 extern NSString* const FLErrorDomain;
 
-typedef enum {
+typedef NS_ENUM(NSInteger, FLErrorDomainError) {
     FLErrorCodeCancel = kCFURLErrorCancelled,
     FLErrorCodeTimedOut = kCFURLErrorTimedOut,
     

@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FLCallback.h"
+#import "FLCallback_t.h"
 
 const FLCallback_t FLCallbackZero = { nil, nil };
 
