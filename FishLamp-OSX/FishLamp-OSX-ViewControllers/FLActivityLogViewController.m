@@ -11,7 +11,7 @@
 #import "FLTextViewLogger.h"
 #import "FishLampAsync.h"
 
-#define kInterval 0.5
+#define kInterval 0.15
 
 @implementation FLActivityLogViewController
 
@@ -29,40 +29,35 @@
 
 - (void) update {
 
-    if(self.activityLog) {
-        NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
-        if(_nextUpdate < now) {
-            for(NSAttributedString* string in _queue) {
-                [self.logger appendString:string];
-            }
-            [_queue removeAllObjects];
-            [self.textView scrollRangeToVisible:NSMakeRange([[self.textView string] length], 0)];
-
-            _nextUpdate = [NSDate timeIntervalSinceReferenceDate] + kInterval;
-        }
-        else {
-            [FLForegroundQueue dispatch_after:0.1 block:^{
-                [self update];
-            }];
-        }
+    if(self.activityLog && _queue) {
+        [self.logger appendString:_queue];
+        [self.textView scrollRangeToVisible:NSMakeRange([[self.textView string] length], 0)];
+        FLReleaseWithNil(_queue);
     }
-}
 
+    _lastUpdate = [NSDate timeIntervalSinceReferenceDate];
+}
 
 - (void) logWasUpdated:(NSNotification*) note {
 
     NSAttributedString* string = [[note userInfo] objectForKey:FLActivityLogStringKey];
 
     if(string) {
-        [FLForegroundQueue dispatch_async:^{
 
-            if(!_queue) {
-                _queue = [[NSMutableArray alloc] init];
-            }
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(update) object:nil];
 
-            [_queue addObject:string];
+        if(!_queue) {
+            _queue = [[NSMutableAttributedString alloc] init];
+        }
+
+        [_queue appendAttributedString:string];
+
+        if(_lastUpdate + kInterval < [NSDate timeIntervalSinceReferenceDate]) {
             [self update];
-        }];
+        }
+        else {
+            [self performSelector:@selector(update) withObject:nil afterDelay:kInterval];
+        }
     }
 }
 

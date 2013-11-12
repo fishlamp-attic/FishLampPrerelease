@@ -15,8 +15,8 @@
 @interface FLActivityLogViewController : FLTextViewController {
 @private
     FLActivityLog* _activityLog;
-    NSMutableArray* _queue;
-    NSTimeInterval _nextUpdate;
+    NSMutableAttributedString* _queue;
+    NSTimeInterval _lastUpdate;
 }
 
 @property (readwrite, strong, nonatomic) FLActivityLog* activityLog;
