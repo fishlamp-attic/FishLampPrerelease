@@ -197,6 +197,11 @@
 		2767E0FB18134DD4001EF21C /* FishLamp-Objc-OSX-Universal-MRC-Lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CBC1F416768BA600753D0A /* FishLamp-Objc-OSX-Universal-MRC-Lib.a */; };
 		2767E0FE18134DE8001EF21C /* FishLamp-Objc-OSX-32-MRC-Lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27048EF0161CB58600C38ADA /* FishLamp-Objc-OSX-32-MRC-Lib.a */; };
 		2767E10118134DF7001EF21C /* FishLamp-Objc-iOS-ARC-Lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A43AB415CDCC89001CB13E /* FishLamp-Objc-iOS-ARC-Lib.a */; };
+		276F971618329BCD005DB257 /* FLCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F971518329BCD005DB257 /* FLCredentialsProvider.m */; };
+		276F971718329BCD005DB257 /* FLCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F971518329BCD005DB257 /* FLCredentialsProvider.m */; };
+		276F971818329BCD005DB257 /* FLCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F971518329BCD005DB257 /* FLCredentialsProvider.m */; };
+		276F971918329BCD005DB257 /* FLCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F971518329BCD005DB257 /* FLCredentialsProvider.m */; };
+		276F971A18329BCD005DB257 /* FLCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F971518329BCD005DB257 /* FLCredentialsProvider.m */; };
 		27B15A411819AC9600D17FF7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A401819AC9600D17FF7 /* CoreFoundation.framework */; };
 		27B15A441819ACBC00D17FF7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A431819ACBC00D17FF7 /* SystemConfiguration.framework */; };
 		27B15A461819ACC800D17FF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A451819ACC800D17FF7 /* Security.framework */; };
@@ -2003,6 +2008,8 @@
 		2767E0D718134CAE001EF21C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2767E0D818134CAE001EF21C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2767E0DA18134CAE001EF21C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		276F971418329BCD005DB257 /* FLCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLCredentialsProvider.h; sourceTree = "<group>"; };
+		276F971518329BCD005DB257 /* FLCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLCredentialsProvider.m; sourceTree = "<group>"; };
 		27A43AB415CDCC89001CB13E /* FishLamp-Objc-iOS-ARC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-iOS-ARC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A43AC415CDCCCB001CB13E /* FishLamp-Objc-OSX-64-MRC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-MRC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B15A3E1819A99700D17FF7 /* Piecemeal-IncludedConfig-DefaultCompilerWarnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-DefaultCompilerWarnings.xcconfig"; sourceTree = "<group>"; };
@@ -4301,6 +4308,8 @@
 				B227A3A8182AD3F800EDC426 /* FLUserService.h */,
 				B227A3A9182AD3F800EDC426 /* FLUserService.m */,
 				B227A3AA182AD3F800EDC426 /* Generated */,
+				276F971418329BCD005DB257 /* FLCredentialsProvider.h */,
+				276F971518329BCD005DB257 /* FLCredentialsProvider.m */,
 			);
 			path = "FishLamp-Objc-Services";
 			sourceTree = "<group>";
@@ -5321,6 +5330,7 @@
 				B227A7A2182AD3FA00EDC426 /* FLFolderBlobStorage.m in Sources */,
 				B227A536182AD3F900EDC426 /* SDKColor+FLMoreColors.m in Sources */,
 				B227A8BA182AD3FA00EDC426 /* FLOAuthRequestAccessTokenHttpRequest.m in Sources */,
+				276F971718329BCD005DB257 /* FLCredentialsProvider.m in Sources */,
 				27188B84181489880060FED6 /* FLErrorTests.m in Sources */,
 				B227A7ED182AD3FA00EDC426 /* FLPropertyDescriber.m in Sources */,
 				B227A75C182AD3F900EDC426 /* FLXmlStringBuilder.m in Sources */,
@@ -5707,6 +5717,7 @@
 				B227A7A4182AD3FA00EDC426 /* FLFolderBlobStorage.m in Sources */,
 				B227A538182AD3F900EDC426 /* SDKColor+FLMoreColors.m in Sources */,
 				B227A8BC182AD3FA00EDC426 /* FLOAuthRequestAccessTokenHttpRequest.m in Sources */,
+				276F971918329BCD005DB257 /* FLCredentialsProvider.m in Sources */,
 				27188B86181489880060FED6 /* FLErrorTests.m in Sources */,
 				B227A7EF182AD3FA00EDC426 /* FLPropertyDescriber.m in Sources */,
 				B227A75E182AD3F900EDC426 /* FLXmlStringBuilder.m in Sources */,
@@ -6107,6 +6118,7 @@
 				B227A7A1182AD3FA00EDC426 /* FLFolderBlobStorage.m in Sources */,
 				B227A535182AD3F900EDC426 /* SDKColor+FLMoreColors.m in Sources */,
 				B227A8B9182AD3FA00EDC426 /* FLOAuthRequestAccessTokenHttpRequest.m in Sources */,
+				276F971618329BCD005DB257 /* FLCredentialsProvider.m in Sources */,
 				27188B83181489880060FED6 /* FLErrorTests.m in Sources */,
 				B227A7EC182AD3FA00EDC426 /* FLPropertyDescriber.m in Sources */,
 				B227A75B182AD3F900EDC426 /* FLXmlStringBuilder.m in Sources */,
@@ -6461,6 +6473,7 @@
 				B227A7A3182AD3FA00EDC426 /* FLFolderBlobStorage.m in Sources */,
 				B227A537182AD3F900EDC426 /* SDKColor+FLMoreColors.m in Sources */,
 				B227A8BB182AD3FA00EDC426 /* FLOAuthRequestAccessTokenHttpRequest.m in Sources */,
+				276F971818329BCD005DB257 /* FLCredentialsProvider.m in Sources */,
 				27188B85181489880060FED6 /* FLErrorTests.m in Sources */,
 				B227A7EE182AD3FA00EDC426 /* FLPropertyDescriber.m in Sources */,
 				B227A75D182AD3F900EDC426 /* FLXmlStringBuilder.m in Sources */,
@@ -6815,6 +6828,7 @@
 				B227A7A5182AD3FA00EDC426 /* FLFolderBlobStorage.m in Sources */,
 				B227A539182AD3F900EDC426 /* SDKColor+FLMoreColors.m in Sources */,
 				B227A8BD182AD3FA00EDC426 /* FLOAuthRequestAccessTokenHttpRequest.m in Sources */,
+				276F971A18329BCD005DB257 /* FLCredentialsProvider.m in Sources */,
 				27188B87181489880060FED6 /* FLErrorTests.m in Sources */,
 				B227A7F0182AD3FA00EDC426 /* FLPropertyDescriber.m in Sources */,
 				B227A75F182AD3F900EDC426 /* FLXmlStringBuilder.m in Sources */,

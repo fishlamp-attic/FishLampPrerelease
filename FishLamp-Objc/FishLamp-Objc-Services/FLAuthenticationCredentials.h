@@ -24,13 +24,9 @@
 @property (readwrite, assign, nonatomic) NSTimeInterval authTokenLastUpdateTime;
 
 @property (readwrite, strong, nonatomic) NSString* authToken;
-//@property (readwrite, strong, nonatomic) NSString* email;
-//@property (readwrite, strong, nonatomic) NSMutableDictionary* userInfo;
 
 - (void) clearCredentials;
 - (void) setUnauthenticated;
-
-//@property (readwrite, strong, nonatomic) NSString* userGuid;
 
 @property (readonly, assign, nonatomic) BOOL canAuthenticate;
 
@@ -41,6 +37,21 @@
 - (void) resetAuthenticationTimestamp;
 - (void) touchAuthenticationTimestamp;
 
+@end
+
+@protocol FLAuthenticatedEntity <NSObject>
+- (id<FLAuthenticationCredentials>) authenticationCredentials;
+- (void) setAuthenticationCredentials:(id<FLAuthenticationCredentials>) creds;
+
+- (NSString*) userName;
+@end
+
+@protocol FLCredentialsProvider <NSObject>
+- (id<FLAuthenticationCredentials>) authenticationCredentials;
+- (void) updateCredentials:(id<FLAuthenticationCredentials>) authenticationCredentials;
+
+- (id<FLAuthenticatedEntity>) authenticatedEntity;
+- (void) updateEntity:(id<FLAuthenticatedEntity>) entity;
 @end
 
 @interface FLAuthenticationCredentials : FLModelObject<FLAuthenticationCredentials> {
@@ -54,28 +65,9 @@
 
     NSTimeInterval _lastAuthenticationTimestamp;
     NSTimeInterval _timeoutInterval;
-
-//    NSString* _userGuid;
-//    NSString* _email;
-//    NSMutableDictionary* _userInfo;
 }
-
-//@property (readwrite, strong, nonatomic) NSString* password;
-//@property (readwrite, assign, nonatomic) BOOL isAuthenticated;
-//@property (readwrite, assign, nonatomic) BOOL rememberPassword;
-//@property (readwrite, strong, nonatomic) NSString* userName;
-//@property (readwrite, assign, nonatomic) NSTimeInterval authTokenLastUpdateTime;
-//@property (readwrite, strong, nonatomic) NSString* authToken;
-//@property (readwrite, strong, nonatomic) NSString* userGuid;
-//@property (readwrite, strong, nonatomic) NSString* email;
-//@property (readwrite, strong, nonatomic) NSMutableDictionary* userInfo;
 
 + (id) authenticationCredentials;
 + (id) authenticationCredentials:(NSString*) userName password:(NSString*) password;
 
-@end
-
-@protocol FLAuthenticatedEntity <NSObject>
-- (id<FLAuthenticationCredentials>) authenticationCredentials;
-- (void) setAuthenticationCredentials:(id<FLAuthenticationCredentials>) creds;
 @end

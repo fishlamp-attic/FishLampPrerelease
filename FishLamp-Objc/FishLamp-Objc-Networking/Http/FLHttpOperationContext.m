@@ -24,6 +24,9 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 @property (readwrite, strong) FLServiceList* serviceList;
 @property (readonly, strong) FLFifoAsyncQueue* authenticationQueue;
 
+@property (readwrite, strong) id<FLAuthenticatedEntity> authenticatedEntity;
+@property (readonly, strong) id<FLAuthenticationCredentials> authenticationCredentials;
+
 @end
 
 @implementation FLHttpOperationContext
@@ -108,16 +111,20 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
     }
 
     [self.storageService openService];
+
+    [self sendMessageToListeners:@selector(httpOperationContextDidOpen:) withObject:self];
 }
 
 - (void) userServiceDidClose:(id<FLUserService>) service {
     [self.serviceList closeService];
 
-    [self sendMessageToListeners:@selector(httpContext:didLogoutUser:)
+    [self sendMessageToListeners:@selector(httpOperationContext:didLogoutUser:)
                       withObject:self
                       withObject:self.userService.credentials];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:FLHttpControllerDidLogoutUserNotification object:self];
+
+    [self sendMessageToListeners:@selector(httpOperationContextDidClose:) withObject:self];
 }
 
 - (BOOL) isAuthenticated {
@@ -184,13 +191,11 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 
 }
 
-
-
 - (void) authenticateHttpRequestOperation:(FLHttpAuthenticator*) operation
                     didAuthenticateEntity:(id<FLAuthenticatedEntity>) entity {
     self.authenticatedEntity = entity;
 
-    [self sendMessageToListeners:@selector(httpContext:didAuthenticateUser:) withObject:self withObject:entity];
+    [self sendMessageToListeners:@selector(httpOperationContext:didAuthenticateUser:) withObject:self withObject:entity];
 }
 
 - (id<FLUserService>) createUserService {
@@ -205,7 +210,13 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 }
 
 - (void) prepareAuthenticatedOperation:(id) operation {
+}
 
+- (void) updateCredentials:(id<FLAuthenticationCredentials>)authenticationCredentials {
+}
+
+- (void) updateEntity:(id<FLAuthenticatedEntity>) entity {
+    
 }
 
 //- (FLPromise*) beginAuthenticatingCredentials:(id<FLAuthenticationCredentials>) credentials

@@ -45,6 +45,7 @@
 
 // info
 @property (readonly, assign) NSInteger finishedCount;
+
 @property (readonly, assign) NSInteger totalCount;
 
 ///    objects that are queued will attempt to create an operation when it is their turn to execute.
@@ -110,8 +111,8 @@
 - (FLOperation*) createOperationForQueuedObject:(id) object;
 @end
 
-@protocol FLOperationQueueEvents <NSObject>
-@optional
+@protocol FLOperationQueueListener <NSObject>
+
 - (void) operationQueueDidStart:(FLOperationQueue*) operationQueue;
 
 - (void) operationQueue:(FLOperationQueue*) operationQueue

@@ -22,4 +22,4 @@
 - (BOOL) isError;
 @end
 
-
+#define FLPromisedResultType(__TYPE__) FLPromisedResult

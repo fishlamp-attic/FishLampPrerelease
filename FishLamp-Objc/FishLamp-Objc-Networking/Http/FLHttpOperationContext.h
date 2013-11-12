@@ -12,6 +12,8 @@
 #import "FLHttpRequest.h"
 //#import "FLHttpAuthenticator.h"
 
+#import "FLAuthenticationCredentials.h"
+
 @protocol FLUserService;
 @protocol FLStorageService;
 @protocol FLAuthenticationCredentials;
@@ -22,7 +24,7 @@
 
 extern NSString* const FLHttpControllerDidLogoutUserNotification;
 
-@interface FLHttpOperationContext : FLOperationContext<FLService, FLHttpRequestAuthenticator> {
+@interface FLHttpOperationContext : FLOperationContext<FLService, FLHttpRequestAuthenticator, FLCredentialsProvider> {
 @private
     id<FLUserService> _userService;
     id<FLStorageService> _storageService;
@@ -32,14 +34,13 @@ extern NSString* const FLHttpControllerDidLogoutUserNotification;
     __unsafe_unretained id<FLHttpAuthenticatorDelegate> _authenticationDelegate;
 }
 @property (readwrite, assign) id<FLHttpAuthenticatorDelegate> authenticationDelegate;
-@property (readwrite, strong) id<FLAuthenticatedEntity> authenticatedEntity;
-@property (readonly, strong) id<FLAuthenticationCredentials> authenticationCredentials;
-
-// getters
 
 @property (readonly, strong) id<FLUserService> userService;
 
+
+// getters
 @property (readonly, assign, nonatomic) BOOL isAuthenticated;
+
 @property (readonly, strong) id<FLStorageService> storageService;
 
 - (void) openServiceWithCredentials:(id<FLAuthenticationCredentials>) credentials;
@@ -64,17 +65,17 @@ extern NSString* const FLHttpControllerDidLogoutUserNotification;
 
 @end
 
-@protocol FLHttpContextMessages <NSObject>
-@optional
+@protocol FLHttpOperationContextListener <NSObject>
 
-- (void) httpContext:(FLHttpOperationContext*) controller
- didAuthenticateUser:(id<FLAuthenticatedEntity>) userLogin;
+- (void) httpOperationContext:(FLHttpOperationContext*) context
+          didAuthenticateUser:(id<FLAuthenticatedEntity>) userLogin;
 
-- (void) httpContext:(FLHttpOperationContext*) controller 
-       didLogoutUser:(id<FLAuthenticationCredentials>) userLogin;
+- (void) httpOperationContext:(FLHttpOperationContext*) context
+                didLogoutUser:(id<FLAuthenticationCredentials>) userLogin;
 
-- (void) httpControllerDidClose:(FLHttpOperationContext*) controller;
-- (void) httpControllerDidOpen:(FLHttpOperationContext*) controller;
+- (void) httpOperationContextDidClose:(FLHttpOperationContext*) context;
+
+- (void) httpOperationContextDidOpen:(FLHttpOperationContext*) context;
 @end
 
 
