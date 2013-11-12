@@ -144,7 +144,7 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
         [_operations removeObject:FLRetainWithAutorelease(operation)];
 
         if([operation respondsToSelector:@selector(removeContext:)]) {
-            [operation removeContext:nil];
+            [operation removeContext:self];
         }
     }
     

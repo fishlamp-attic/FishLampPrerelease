@@ -23,11 +23,8 @@
  *  Cancel and remove all the current operations.
  */
 - (void) requestCancel;          
-
-
-
-- (void) addOperation:(id) operation;
-- (void) removeOperation:(id) operation;
+//- (void) addOperation:(id) operation;
+//- (void) removeOperation:(id) operation;
 @end
 
 @interface FLOperationContext : FLAbstractAsyncQueue<FLOperationContext> {

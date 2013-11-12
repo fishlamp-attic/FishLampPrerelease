@@ -9,6 +9,8 @@
 #import "FLBatchOperation.h"
 #import "FLOperationQueue.h"
 
+#if REFACTOR
+
 @implementation FLBatchOperation
 
 @synthesize operationQueue = _operationQueue;
@@ -50,3 +52,5 @@ didFinishFinishWithResult:(FLPromisedResult) result {
     [self.operationQueue requestCancel];
 }
 @end
+
+#endif

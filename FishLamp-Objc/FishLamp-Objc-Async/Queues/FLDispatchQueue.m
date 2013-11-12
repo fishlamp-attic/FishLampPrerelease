@@ -16,6 +16,17 @@
 #import "FLOperationStarter.h"
 #import "FLExceptionHandler.h"
 
+@interface FLExecuteInQueueProxy : FLRetainedObject {
+@private
+    FLDispatchQueue* _queue;
+}
++ (id) executeInQueueProxy:(id) object queue:(FLDispatchQueue*) queue;
+@end
+
+@interface FLMainThreadQueue : FLFifoAsyncQueue
++ (id) mainThreadQueue;
+@end
+
 @implementation FLDispatchQueue
 
 @synthesize dispatch_queue_t = _dispatch_queue;
@@ -245,16 +256,21 @@
 + (FLDispatchQueue*) veryLowPriorityQueue {
     FLReturnStaticObject([FLDispatchQueue dispatchQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)]);
 }
+
 + (FLDispatchQueue*) mainThreadQueue {
-    FLReturnStaticObject([FLDispatchQueue dispatchQueue:dispatch_get_main_queue()]);
+    FLReturnStaticObject([FLMainThreadQueue mainThreadQueue ]);
 }
 
 + (FLFifoAsyncQueue*) fifoQueue {
-    FLReturnStaticObject([[FLFifoAsyncQueue alloc] init]);
+    FLReturnStaticObject([FLFifoAsyncQueue fifoAsyncQueue]);
 }
 
-+ (id<FLOperationStarter>) defaultOperationStarter {
-    return [self defaultQueue];
+//+ (id<FLOperationStarter>) defaultOperationStarter {
+//    return [self defaultQueue];
+//}
+
+- (id) scheduleListener:(id) listener {
+    return [FLExecuteInQueueProxy executeInQueueProxy:listener queue:self];
 }
 
 @end
@@ -276,4 +292,66 @@
 
 @end
 
+@implementation FLMainThreadQueue
 
+- (id) init {	
+	return [super initWithDispatchQueue:dispatch_get_main_queue()];
+}
+
++ (id) mainThreadQueue {
+    return FLAutorelease([[[self class] alloc] init]);
+}
+
+- (id) scheduleListener:(id) listener {
+    return [FLMainThreadObject mainThreadObject:listener];
+}
+@end
+
+@implementation FLExecuteInQueueProxy
+
+- (id) initWithRetainedObject:(id) object queue:(FLDispatchQueue*) queue {
+
+    self = [super initWithRetainedObject:object];
+    if(self) {
+        _queue = FLRetain(queue);
+        FLAssertNotNil(_queue);
+    }
+    return self;
+}
+
++ (id) executeInQueueProxy:(id) object queue:(FLDispatchQueue*) queue {
+    return FLAutorelease([[[self class] alloc] initWithRetainedObject:object queue:queue]);
+}
+
+#if FL_MRC
+- (void)dealloc {
+	[_queue release];
+	[super dealloc];
+}
+#endif
+
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+    
+    __block id object = [self representedObject];
+    FLAssertNotNil(object);
+    FLAssertNotNil(_queue);
+
+    if([object respondsToSelector:[anInvocation selector]]) {
+
+        __block NSInvocation* theInvocation = FLRetain(anInvocation);
+        [theInvocation retainArguments];
+
+        FLRetainObject(object);
+
+        [_queue dispatch_async: ^{
+            [theInvocation invokeWithTarget:object];
+            FLReleaseWithNil(theInvocation);
+            FLReleaseWithNil(object);
+        }];
+    }
+    else {
+        [super forwardInvocation:anInvocation];
+    }
+}
+
+@end

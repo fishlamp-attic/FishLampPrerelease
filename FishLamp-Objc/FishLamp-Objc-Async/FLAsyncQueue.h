@@ -37,11 +37,14 @@
 - (FLPromise*) queueFinishableBlock:(fl_finisher_block_t) block;
 
 - (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) operation
-                 withDelay:(NSTimeInterval) delay
-                completion:(fl_completion_block_t) completionOrNil;
+                    withDelay:(NSTimeInterval) delay
+                   completion:(fl_completion_block_t) completionOrNil;
 
 - (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) operation
-                completion:(fl_completion_block_t) completionOrNil;
+                   completion:(fl_completion_block_t) completionOrNil;
+
+- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) operation
+                 withListener:(id) listener;
 
 - (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) operation;
 

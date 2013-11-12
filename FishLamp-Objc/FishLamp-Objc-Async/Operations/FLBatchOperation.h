@@ -5,6 +5,7 @@
 //  Created by Mike Fullerton on 8/25/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
+#if REFACTOR
 
 #import "FishLampMinimum.h"
 #import "FLOperation.h"
@@ -20,3 +21,4 @@
 + (id) batchOperation:(NSArray*) queuedObjects;
 
 @end
+#endif

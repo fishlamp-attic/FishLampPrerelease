@@ -49,19 +49,24 @@
 - (void) removeListener:(id) listener;
 @end
 
-@interface FLBroadcasterProxy : FLAbstractArrayProxy<NSFastEnumeration, FLBroadcaster> {
+@interface FLBroadcasterProxy : NSProxy<FLBroadcaster> {
 @private
     NSMutableArray* _listeners;
+    NSArray* _iteratable;
+    BOOL _dirty;
+    dispatch_once_t _semaphore;
 }
 
 - (id) init;
 @end
 
-
 @interface FLBroadcaster : NSObject<FLBroadcaster> {
 @private
-    FLBroadcasterProxy* _broadcasterProxy;
-    dispatch_once_t _predicate;
+    FLBroadcasterProxy* _broadcaster;
 }
+@end
+
+@protocol FLListener <NSObject>
+- (id) objectAsListener;
 @end
 

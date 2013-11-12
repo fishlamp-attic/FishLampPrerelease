@@ -26,7 +26,6 @@
 @end
 
 @interface FLOperationContext (Protected)
-- (void) queueOperation:(FLOperation*) operation;
 - (void) removeOperation:(FLOperation*) operation;
 @end
 
@@ -140,6 +139,7 @@
 
     if(_context && context == _context) {
         _context = nil;
+        [context removeOperation:self];
         [self wasRemovedFromContext:context];
     }
 }

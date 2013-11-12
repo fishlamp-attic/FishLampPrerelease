@@ -113,6 +113,8 @@
  *  @return the fifoQueue
  */
 + (FLFifoAsyncQueue*) fifoQueue;
+
+- (id) scheduleListener:(id) listener;
 @end
 
 #define FLForegroundQueue       [FLDispatchQueue mainThreadQueue]

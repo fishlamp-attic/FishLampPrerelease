@@ -8,6 +8,7 @@
 
 #import "FLAbstractAsyncQueue.h"
 #import "FLQueueableAsyncOperation.h"
+#import "FLBroadcaster.h"
 
 @interface FLQueueableBlockOperation : FLFinisher<FLQueueableAsyncOperation> {
 @private
@@ -71,6 +72,16 @@
     return [self queueOperation:object withDelay:0 completion:nil];
 }
 
+- (FLPromise*) queueOperation:(id<FLQueueableAsyncOperation>) object
+                 withListener:(id) listener {
+
+    FLAssertNotNil(object);
+    FLAssert([object respondsToSelector:@selector(addListener:)]);
+
+    [((id)object) addListener:listener];
+
+    return [self queueOperation:object withDelay:0 completion:nil];
+}
 
 
 - (FLPromisedResult) runBlockSynchronously:(fl_block_t) block {

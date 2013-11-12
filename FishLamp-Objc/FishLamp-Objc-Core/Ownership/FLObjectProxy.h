@@ -20,7 +20,5 @@
  */
 - (id) representedObject;
 
-- (BOOL) willRetainInBroadcaster;
-
 @end
 

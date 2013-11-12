@@ -13,78 +13,58 @@
 #import "FLAsyncQueue.h"
 #import "FishLampAsync.h"
 
-@interface FLExecuteInQueueProxy : FLRetainedObject {
-@private
-    id<FLAsyncQueue> _queue;
+@implementation NSObject (FLBroadcaster)
+
+- (id) objectAsListener {
+    return [FLNonretainedObjectProxy nonretainedObjectProxy:self];
 }
-+ (id) executeInQueueProxy:(id) object queue:(id<FLAsyncQueue>) queue;
 @end
 
-@implementation FLExecuteInQueueProxy
+@implementation NSProxy (FLBroadcaster)
 
-- (id) initWithRetainedObject:(id) object queue:(id<FLAsyncQueue>) queue {
-
-    self = [super initWithRetainedObject:object];
-    if(self) {
-        _queue = FLRetain(queue);
-        FLAssertNotNil(_queue);
-    }
+- (id) objectAsListener {
     return self;
 }
 
-+ (id) executeInQueueProxy:(id) object queue:(id<FLAsyncQueue>) queue {
-    return FLAutorelease([[[self class] alloc] initWithRetainedObject:object queue:queue]);
-}
-
-#if FL_MRC
-- (void)dealloc {
-	[_queue release];
-	[super dealloc];
-}
-#endif
-
-- (void)forwardInvocation:(NSInvocation *)anInvocation {
-    
-    __block id object = [self representedObject];
-    FLAssertNotNil(object);
-    FLAssertNotNil(_queue);
-
-    if([object respondsToSelector:[anInvocation selector]]) {
-
-        __block NSInvocation* theInvocation = FLRetain(anInvocation);
-        [theInvocation retainArguments];
-
-        FLRetainObject(object);
-
-        [_queue queueBlock: ^{
-            [theInvocation invokeWithTarget:object];
-            FLReleaseWithNil(theInvocation);
-            FLReleaseWithNil(object);
-        }];
-    }
-    else {
-        [super forwardInvocation:anInvocation];
-    }
-}
-
 @end
 
+@interface FLBroadcasterProxy ()
+@property (readwrite, assign) BOOL dirty;
+@end
 
 @implementation FLBroadcasterProxy
 
-- (id) init {	
+@synthesize dirty =_dirty;
+
+- (id) init {
+// NSProxy has no init. Put this here for subclasses
 	return self;
 }
 
 #if FL_MRC
 - (void)dealloc {
-	[_listeners release];
+    [_iteratable release];
+    [_listeners release];
 	[super dealloc];
 }
 #endif
 
-- (NSArray*) array {
-    return _listeners;
+- (NSArray*) iteratable {
+
+    __block NSArray* outArray = nil;
+    FLCriticalSection(&_semaphore, ^{
+        if(_dirty) {
+            FLReleaseWithNil(_iteratable);
+        }
+        if(!_iteratable) {
+            _iteratable = [_listeners copy];
+        }
+        self.dirty = NO;
+
+        outArray = FLRetainWithAutorelease(_iteratable);
+    });
+
+    return outArray;
 }
 
 - (BOOL) hasListener:(id) listener {
@@ -95,48 +75,35 @@
     return self;
 }
 
-- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len {
-    return [_listeners countByEnumeratingWithState:state objects:buffer count:len];
+- (void) addListener:(id) listener  {
+    FLCriticalSection(&_semaphore, ^{
+        if(!_listeners) {
+            _listeners = [[NSMutableArray alloc] init];
+        }
+
+        [_listeners addObject:[listener objectAsListener]];
+
+        self.dirty = YES;
+    });
 }
-
-- (void) addListener:(id) listener  withRetain:(BOOL) retain  {
-    if(!_listeners) {
-        _listeners = [[NSMutableArray alloc] init];
-    }
-
-    id object = listener;
-    if(!retain) {
-        object = [FLNonretainedObjectProxy nonretainedObjectProxy:listener];
-    }
-
-//    if(withQueue) {
-//        object = [FLExecuteInQueueProxy executeInQueueProxy:object queue:withQueue];
-//    }
-
-    [_listeners addObject:object];
-}
-
-- (void) addListener:(id) listener withQueue:(id<FLAsyncQueue>) queue {
-    [self addListener:listener withRetain:[listener respondsToSelector:@selector(willRetainInBroadcaster)]];
-}
-
-//- (void) addListener:(id) listener {
-//    [self addListener:listener withRetain:[listener respondsToSelector:@selector(isProxy)] withQueue:nil];
-//}
 
 - (void) removeListener:(id) listener {
-    for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
-        id object = [_listeners objectAtIndex:i];
-        if([object representedObject] == listener) {
-            [_listeners removeObjectAtIndex:i];
+    FLCriticalSection(&_semaphore, ^{
+        for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
+            id object = [_listeners objectAtIndex:i];
+            if([object representedObject] == listener) {
+                [_listeners removeObjectAtIndex:i];
+            }
         }
-    }
+
+        self.dirty = YES;
+    });
 }
 
 - (void) sendMessageToListeners:(SEL) selector {
-    for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
+    for(id listener in [self iteratable]) {
         @try {
-            [[_listeners objectAtIndex:i] performOptionalSelector_fl:selector];
+            [listener performOptionalSelector_fl:selector];
         }
         @catch(NSException* ex) {
         }
@@ -145,10 +112,11 @@
 
 - (void) sendMessageToListeners:(SEL) selector  
                      withObject:(id) object {
-    for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
+
+    for(id listener in [self iteratable]) {
         @try {
-            [[_listeners objectAtIndex:i] performOptionalSelector_fl:selector
-                                                   withObject:object];
+            [listener performOptionalSelector_fl:selector
+                                      withObject:object];
         }
         @catch(NSException* ex) {
         }
@@ -159,11 +127,11 @@
                      withObject:(id) object1
                      withObject:(id) object2 {
 
-    for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
+    for(id listener in [self iteratable]) {
         @try {
-            [[_listeners objectAtIndex:i] performOptionalSelector_fl:selector
-                                                       withObject:object1
-                                                       withObject:object2];
+            [listener performOptionalSelector_fl:selector
+                                      withObject:object1
+                                      withObject:object2];
         }
         @catch(NSException* ex) {
         }
@@ -174,12 +142,13 @@
                      withObject:(id) object1
                      withObject:(id) object2
                      withObject:(id) object3 {
-    for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
+
+    for(id listener in [self iteratable]) {
         @try {
-            [[_listeners objectAtIndex:i] performOptionalSelector_fl:selector
-                                                       withObject:object1
-                                                       withObject:object2
-                                                       withObject:object3];
+            [listener performOptionalSelector_fl:selector
+                                      withObject:object1
+                                      withObject:object2
+                                      withObject:object3];
         }
         @catch(NSException* ex) {
         }
@@ -192,13 +161,13 @@
                      withObject:(id) object3
                      withObject:(id) object4 {
 
-    for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
+    for(id listener in [self iteratable]) {
         @try {
-            [[_listeners objectAtIndex:i] performOptionalSelector_fl:selector
-                                                       withObject:object1
-                                                       withObject:object2
-                                                       withObject:object3
-                                                       withObject:object4];
+            [listener performOptionalSelector_fl:selector
+                                      withObject:object1
+                                      withObject:object2
+                                      withObject:object3
+                                      withObject:object4];
         }
         @catch(NSException* ex) {
         }
@@ -208,8 +177,8 @@
 - (void)forwardInvocation:(NSInvocation *)anInvocation {
 
     BOOL listenerHandled = NO;
-    for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
-        id listener = [_listeners objectAtIndex:i];
+
+    for(id listener in [self iteratable]) {
         if([listener respondsToSelector:[anInvocation selector]]) {
             [anInvocation invokeWithTarget:listener];
             listenerHandled = YES;
@@ -222,7 +191,7 @@
 
 - (BOOL) respondsToSelector:(SEL) selector {
 
-    for(id listener in _listeners) {
+    for(id listener in [self iteratable]) {
         if([listener respondsToSelector:selector]) {
             return YES;
         }
@@ -231,26 +200,48 @@
     return NO;
 }
 
+- (NSMethodSignature*)methodSignatureForSelector:(SEL)selector {
+
+    NSMethodSignature* signature = nil;
+    for(id listener in [self iteratable]) {
+        signature = [listener methodSignatureForSelector:selector];
+        if(signature) {
+            return signature;
+        }
+    }
+
+    if(!signature) {
+    // saw this on the internet, so it must be true.
+        signature = [NSMethodSignature signatureWithObjCTypes:"@^v^c"];
+    }
+
+    return signature;
+}
+
 @end
 
 @interface FLBroadcaster ()
+@property (readonly, strong) FLBroadcasterProxy* broadcaster;
 @end
 
 @implementation FLBroadcaster
 
+@synthesize broadcaster = _broadcaster;
+
+- (id) init {	
+	self = [super init];
+	if(self) {
+		_broadcaster = [[FLBroadcasterProxy alloc] init];
+    }
+	return self;
+}
+
 #if FL_MRC
 - (void)dealloc {
-	[_broadcasterProxy release];
+	[_broadcaster release];
 	[super dealloc];
 }
 #endif
-
-- (id) broadcaster {
-    dispatch_once(&_predicate, ^{
-        _broadcasterProxy = [[FLBroadcasterProxy alloc] init];}
-        );
-    return _broadcasterProxy;
-}
 
 //- (BOOL) hasListener:(id) listener {
 //    __block BOOL hasListener = NO;
@@ -271,34 +262,26 @@
 }
 
 - (void) sendMessageToListeners:(SEL) selector {
-
-    [FLForegroundQueue queueBlock:^{
-        [self.broadcaster sendMessageToListeners:selector];
-    }];
+    [self.broadcaster sendMessageToListeners:selector];
 }
 
 - (void) sendMessageToListeners:(SEL) selector  
                      withObject:(id) object {
-    [FLForegroundQueue queueBlock:^{
-        [self.broadcaster sendMessageToListeners:selector withObject:object];
-    }];
+   [self.broadcaster sendMessageToListeners:selector withObject:object];
 }
 
 - (void) sendMessageToListeners:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2 {
-    [FLForegroundQueue queueBlock:^{
-        [self.broadcaster sendMessageToListeners:selector withObject:object1 withObject:object2];
-    }];
+
+    [self.broadcaster sendMessageToListeners:selector withObject:object1 withObject:object2];
 }
 
 - (void) sendMessageToListeners:(SEL) selector 
                      withObject:(id) object1
                      withObject:(id) object2
                      withObject:(id) object3 {
-    [FLForegroundQueue queueBlock:^{
-        [self.broadcaster sendMessageToListeners:selector withObject:object1 withObject:object2 withObject:object3];
-    }];
+    [self.broadcaster sendMessageToListeners:selector withObject:object1 withObject:object2 withObject:object3];
 }
 
 - (void) sendMessageToListeners:(SEL) selector 
@@ -306,9 +289,7 @@
                      withObject:(id) object2
                      withObject:(id) object3
                      withObject:(id) object4 {
-    [FLForegroundQueue queueBlock:^{
-        [self.broadcaster sendMessageToListeners:selector withObject:object1 withObject:object2 withObject:object3 withObject:object4];
-    }];
+    [self.broadcaster sendMessageToListeners:selector withObject:object1 withObject:object2 withObject:object3 withObject:object4];
 }
 
 @end

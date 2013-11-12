@@ -171,7 +171,7 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
     NSMutableAttributedString* string = 
         FLAutorelease([[NSMutableAttributedString alloc] initWithString:title attributes:attributes]);
 
-    [self appendLine:string];
+    [self appendString:string];
 }
 
 - (void) appendBoldTitleLine:(NSString*) title {
