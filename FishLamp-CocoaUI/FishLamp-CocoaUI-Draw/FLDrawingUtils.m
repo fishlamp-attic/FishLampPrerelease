@@ -11,7 +11,7 @@
 #import "FLCoreFoundation.h"
 
 void FLDrawLinearGradient(CGContextRef context, 
-    CGRect rect, 
+    SDKRect rect, 
     CGColorRef startColor, 
     CGColorRef endColor) {
 

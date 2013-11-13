@@ -28,7 +28,7 @@
 @property (readwrite, assign, nonatomic) CGFloat cornerRadius;
 
 // override this if you don't set pathRef
-- (void) createPathForShapeInRect:(CGMutablePathRef) path rect:(CGRect) rect;
+- (void) createPathForShapeInRect:(CGMutablePathRef) path rect:(SDKRect) rect;
 @end
 
 

@@ -69,7 +69,7 @@ FLSynthesizeSingleton(FLDropAndSlideInFromRightAnimation);
     finishedBlock: (FLViewControllerAnimationBlock) finishedBlock
 {
 #if IOS
-    CGRect destFrame = viewController.view.superview.bounds;
+    SDKRect destFrame = viewController.view.superview.bounds;
     viewController.view.frame = FLRectSetLeft(destFrame, FLRectGetRight(destFrame));
     
     CGFloat savedAlpha = parentViewController.view.alpha;
@@ -98,7 +98,7 @@ FLSynthesizeSingleton(FLDropAndSlideInFromRightAnimation);
     finishedBlock: (FLViewControllerAnimationBlock) finishedBlock
 {
 #if IOS
-    CGRect destFrame = FLRectSetLeft(viewController.view.frame, FLRectGetRight(viewController.view.superview.bounds));
+    SDKRect destFrame = FLRectSetLeft(viewController.view.frame, FLRectGetRight(viewController.view.superview.bounds));
     CGFloat savedAlpha = parentViewController.view.alpha;
     parentViewController.view.alpha = 0.0;
     
@@ -137,7 +137,7 @@ FLSynthesizeSingleton(FLDropAndSlideInFromLeftAnimation);
 {
 
 #if IOS
-    CGRect destFrame = viewController.view.superview.bounds;
+    SDKRect destFrame = viewController.view.superview.bounds;
     viewController.view.frame = FLRectSetLeft(destFrame, -destFrame.size.width);
     
     CGFloat savedAlpha = parentViewController.view.alpha;
@@ -166,7 +166,7 @@ FLSynthesizeSingleton(FLDropAndSlideInFromLeftAnimation);
                                finishedBlock: (FLViewControllerAnimationBlock) finishedBlock
 {
 #if IOS
-    CGRect destFrame = viewController.view.frame;
+    SDKRect destFrame = viewController.view.frame;
     destFrame.origin.x = -destFrame.size.width;
 
     CGFloat savedAlpha = parentViewController.view.alpha;

@@ -175,7 +175,7 @@
 ////    _position = layer.position;
 ////    _anchorPoint = layer.anchorPoint;
 ////
-////    CGRect frame = layer.frame;
+////    SDKRect frame = layer.frame;
 ////    CGPoint newPosition = _position;
 ////    newPosition.y += (frame.size.height/ 2);
 ////    newPosition.x += (frame.size.width / 2);

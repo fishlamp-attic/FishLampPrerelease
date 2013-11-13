@@ -30,7 +30,7 @@
 }
 #endif
 
-- (void) drawRect:(CGRect) drawRect 
+- (void) drawRect:(CGRect) drawRect
         withFrame:(CGRect) frame 
          inParent:(id) inParent
 drawEnclosedBlock:(void (^)(void)) drawEnclosedBlock {
@@ -98,7 +98,7 @@ return;
 //                                kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
 
     CGPoint startPoint = CGPointMake(0.0, 0.0);
-    CGPoint endPoint = FLRectGetBottomLeft(frame);
+    CGPoint  endPoint = FLRectGetBottomLeft(frame);
     CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0); 
 //                                kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
 

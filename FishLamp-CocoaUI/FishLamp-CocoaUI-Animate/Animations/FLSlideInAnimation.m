@@ -28,8 +28,8 @@
 
 - (CGPoint) offscreenOrigin:(CALayer*) layer {
 
-    CGRect frame = layer.frame;
-    CGRect bounds = layer.superlayer.bounds;
+    SDKRect frame = layer.frame;
+    SDKRect bounds = layer.superlayer.bounds;
 
     switch(self.direction) {
         case FLAnimationDirectionUp:
@@ -37,7 +37,7 @@
         break;
 
         case FLAnimationDirectionDown:
-            return CGPointMake(frame.origin.x, FLRectGetBottom(bounds) - frame.size.height);
+            return CGPointMake(frame.origin.x, CGRectGetBottom(bounds) - frame.size.height);
         break;
         
         case FLAnimationDirectionLeft:
@@ -45,7 +45,7 @@
         break;
         
         case FLAnimationDirectionRight:
-            return CGPointMake(FLRectGetRight(bounds) + frame.size.width, frame.origin.y);
+            return CGPointMake(CGRectGetRight(bounds) + frame.size.width, frame.origin.y);
         break;
     
     }

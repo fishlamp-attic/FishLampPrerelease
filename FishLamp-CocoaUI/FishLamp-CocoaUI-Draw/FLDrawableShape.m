@@ -18,7 +18,7 @@
 @synthesize borderGradient = _borderGradient;
 @synthesize backgroundColor = _backgroundColor;
 
--(void) createPathForShapeInRect:(CGMutablePathRef) path rect:(CGRect) rect {
+-(void) createPathForShapeInRect:(CGMutablePathRef) path rect:(SDKRect) rect {
 }
 
 - (id) init {
@@ -46,7 +46,7 @@
 }
 #endif
 
-- (void) drawBackgoundInRect:(CGRect) shapeRect withColor:(SDKColor*) inColor {
+- (void) drawBackgoundInRect:(SDKRect) shapeRect withColor:(SDKColor*) inColor {
 
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
@@ -77,7 +77,7 @@
     CGContextRestoreGState(context);
 }
 
-//- (void) drawInsetInRect:(CGRect) shapeRect {
+//- (void) drawInsetInRect:(SDKRect) shapeRect {
 //
 //    CGContextRef context = UIGraphicsGetCurrentContext();
 //    CGContextSaveGState(context);
@@ -110,12 +110,12 @@
 //}
 
 
-- (void) drawRect:(CGRect) drawRect 
-        withFrame:(CGRect) frame 
+- (void) drawRect:(SDKRect) drawRect 
+        withFrame:(SDKRect) frame 
          inParent:(id) parent
 drawEnclosedBlock:(void (^)(void)) drawEnclosedBlock {
 	
-    CGRect shapeRect = frame; //CGRectInset(frame, 1, 1);
+    SDKRect shapeRect = frame; //CGRectInset(frame, 1, 1);
     
     if(_edgeInset > 0) {
         [self drawBackgoundInRect:shapeRect withColor:_edgeInsetColor];;
@@ -167,7 +167,7 @@ drawEnclosedBlock:(void (^)(void)) drawEnclosedBlock {
     return self;
 }
 
--(void) createPathForShapeInRect:(CGMutablePathRef) path rect:(CGRect) rect {
+-(void) createPathForShapeInRect:(CGMutablePathRef) path rect:(SDKRect) rect {
 	FLCreateRectPathBackButtonShape(path, rect, self.cornerRadius, _shapeSize);
 }
 
@@ -186,7 +186,7 @@ drawEnclosedBlock:(void (^)(void)) drawEnclosedBlock {
     return self;
 }
 
--(void) createPathForShapeInRect:(CGMutablePathRef) path rect:(CGRect) rect {
+-(void) createPathForShapeInRect:(CGMutablePathRef) path rect:(SDKRect) rect {
 	FLCreateRectPathForwardButtonShape(path, rect, self.cornerRadius, _shapeSize);
 }
 

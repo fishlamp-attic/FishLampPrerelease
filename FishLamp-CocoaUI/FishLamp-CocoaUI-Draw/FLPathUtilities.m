@@ -11,7 +11,7 @@
 #import "FLGeometry.h"
 #import "FLCompatibility.h"
 
-void FLCreateRectPathWithCornerRadii(CGMutablePathRef path, CGRect rect, CGFloat topLeft, CGFloat topRight, CGFloat bottomRight, CGFloat bottomLeft)
+void FLCreateRectPathWithCornerRadii(CGMutablePathRef path, SDKRect rect, CGFloat topLeft, CGFloat topRight, CGFloat bottomRight, CGFloat bottomLeft)
 {
 	//
 	// Create the boundary path
@@ -59,7 +59,7 @@ void FLCreateRectPathWithCornerRadii(CGMutablePathRef path, CGRect rect, CGFloat
 	CGPathCloseSubpath(path);
 }
 
-void FLCreateRectPathWithTopArrow(CGMutablePathRef path, CGRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
+void FLCreateRectPathWithTopArrow(CGMutablePathRef path, SDKRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
 {
 	
 
@@ -89,14 +89,14 @@ void FLCreateRectPathWithTopArrow(CGMutablePathRef path, CGRect rect, CGPoint ar
 		rect.origin.y + arrowSize);
 		
 	CGPathAddLineToPoint(path, NULL,
-		FLRectGetRight(rect) - cornerRadius,
+		CGRectGetRight(rect) - cornerRadius,
 		rect.origin.y + arrowSize);
 
 // top right
 	CGPathAddArcToPoint(path, NULL,
-		FLRectGetRight(rect),
+		CGRectGetRight(rect),
 		rect.origin.y + arrowSize,
-		FLRectGetRight(rect),
+		CGRectGetRight(rect),
 		rect.origin.y + rect.size.height,
 		cornerRadius);
 
@@ -121,13 +121,13 @@ void FLCreateRectPathWithTopArrow(CGMutablePathRef path, CGRect rect, CGPoint ar
 
 }
 
-void FLCreateRectPathBackButtonShape(CGMutablePathRef path, CGRect rect, CGFloat cornerRadius, CGFloat ptSize)
+void FLCreateRectPathBackButtonShape(CGMutablePathRef path, SDKRect rect, CGFloat cornerRadius, CGFloat ptSize)
 {
 	// bottomLeft
 	
 	CGPathMoveToPoint(path, NULL,
 		rect.origin.x + 0.5,
-		FLRectGetCenter(rect).y + 0.5);
+		CGRectGetCenter(rect).y + 0.5);
 
 	CGPathAddArcToPoint(path, NULL,
 		rect.origin.x + ptSize,
@@ -157,7 +157,7 @@ void FLCreateRectPathBackButtonShape(CGMutablePathRef path, CGRect rect, CGFloat
 		rect.origin.x + ptSize,
 		rect.origin.y + rect.size.height,
 		rect.origin.x,
-		FLRectGetCenter(rect).y - 0.5,
+		CGRectGetCenter(rect).y - 0.5,
 		cornerRadius);
 
 	// Close the path at the rounded rect
@@ -165,13 +165,13 @@ void FLCreateRectPathBackButtonShape(CGMutablePathRef path, CGRect rect, CGFloat
 
 }
 
-void FLCreateRectPathForwardButtonShape(CGMutablePathRef path, CGRect rect, CGFloat cornerRadius, CGFloat ptSize)
+void FLCreateRectPathForwardButtonShape(CGMutablePathRef path, SDKRect rect, CGFloat cornerRadius, CGFloat ptSize)
 {
     rect = CGRectInset(rect, 0.5, 0.5);
 
 	CGPathMoveToPoint(path, NULL,
 		rect.origin.x + rect.size.width,
-		FLRectGetCenter(rect).y);
+		CGRectGetCenter(rect).y);
             
     CGPathAddLineToPoint(path, NULL,
         rect.origin.x + rect.size.width - ptSize,
@@ -191,14 +191,14 @@ void FLCreateRectPathForwardButtonShape(CGMutablePathRef path, CGRect rect, CGFl
 
     CGPathAddLineToPoint(path, NULL,
 		rect.origin.x + rect.size.width,
-		FLRectGetCenter(rect).y);
+		CGRectGetCenter(rect).y);
 
 	CGPathCloseSubpath(path);
 
 //// start at point.
 //	CGPathMoveToPoint(path, NULL,
 //		rect.origin.x + rect.size.width - 0.5,
-//		FLRectGetCenter(rect).y);
+//		CGRectGetCenter(rect).y);
 //
 //// to origin
 //	CGPathAddArcToPoint(path, NULL,
@@ -228,7 +228,7 @@ void FLCreateRectPathForwardButtonShape(CGMutablePathRef path, CGRect rect, CGFl
 //		rect.origin.x + ptSize,
 //		rect.origin.y + rect.size.height,
 //		rect.origin.x,
-//		FLRectGetCenter(rect).y - 0.5,
+//		CGRectGetCenter(rect).y - 0.5,
 //		cornerRadius);
 //
 //	// Close the path at the rounded rect
@@ -291,7 +291,7 @@ void FLCreateRectPathForwardButtonShape(CGMutablePathRef path, CGRect rect, CGFl
 }
 
 
-void FLCreateRectPathWithRightArrow(CGMutablePathRef path, CGRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
+void FLCreateRectPathWithRightArrow(CGMutablePathRef path, SDKRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
 {
         // bottom left
 	CGPathMoveToPoint(path, NULL,
@@ -353,14 +353,14 @@ void FLCreateRectPathWithRightArrow(CGMutablePathRef path, CGRect rect, CGPoint 
 
 }
 
-void FLCreateRectPathWithBottomArrow(CGMutablePathRef path, CGRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
+void FLCreateRectPathWithBottomArrow(CGMutablePathRef path, SDKRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
 {
 	
  
 // bottom left
 	CGPathMoveToPoint(path, NULL,
 		rect.origin.x,
-		FLRectGetBottom(rect) - cornerRadius - arrowSize);
+		CGRectGetBottom(rect) - cornerRadius - arrowSize);
 		
 //	// Top left corner
 	CGPathAddArcToPoint(path, NULL,
@@ -372,24 +372,24 @@ void FLCreateRectPathWithBottomArrow(CGMutablePathRef path, CGRect rect, CGPoint
 		
 // top right
 	CGPathAddArcToPoint(path, NULL,
-		FLRectGetRight(rect),
+		CGRectGetRight(rect),
 		rect.origin.y,
-		FLRectGetRight(rect),
-		FLRectGetBottom(rect) - arrowSize,
+		CGRectGetRight(rect),
+		CGRectGetBottom(rect) - arrowSize,
 		cornerRadius);
 
 	// Bottom right corner
 	CGPathAddArcToPoint(path, NULL,
-		FLRectGetRight(rect),
-		FLRectGetBottom(rect) - arrowSize,
-		FLRectGetRight(rect) - cornerRadius,
-		FLRectGetBottom(rect) - arrowSize,
+		CGRectGetRight(rect),
+		CGRectGetBottom(rect) - arrowSize,
+		CGRectGetRight(rect) - cornerRadius,
+		CGRectGetBottom(rect) - arrowSize,
 		cornerRadius);
 
 	// right base of arrow
 	CGPathAddLineToPoint(path, NULL,
 		arrowPoint.x + (arrowSize),
-		FLRectGetBottom(rect) - arrowSize);
+		CGRectGetBottom(rect) - arrowSize);
 
 	// tip of arrow
 	CGPathAddLineToPoint(path, NULL,
@@ -399,26 +399,26 @@ void FLCreateRectPathWithBottomArrow(CGMutablePathRef path, CGRect rect, CGPoint
 	// left base of arrow
 	CGPathAddLineToPoint(path, NULL,
 		arrowPoint.x - (arrowSize),
-		FLRectGetBottom(rect) - arrowSize);
+		CGRectGetBottom(rect) - arrowSize);
 	 
 	CGPathAddLineToPoint(path, NULL,
 		rect.origin.x + cornerRadius,
-		FLRectGetBottom(rect) - arrowSize);
+		CGRectGetBottom(rect) - arrowSize);
 
 
 	// Bottom left corner
 //	CGPathAddArcToPoint(path, NULL,
 //		rect.origin.x,
-//		FLRectGetBottom(rect) - arrowSize - cornerRadius,
+//		CGRectGetBottom(rect) - arrowSize - cornerRadius,
 //		rect.origin.x + cornerRadius,
-//		FLRectGetBottom(rect) - arrowSize,
+//		CGRectGetBottom(rect) - arrowSize,
 //		cornerRadius);
 
 	CGPathAddArcToPoint(path, NULL,
 		rect.origin.x,
-		FLRectGetBottom(rect) - arrowSize,
+		CGRectGetBottom(rect) - arrowSize,
 		rect.origin.x,
-		FLRectGetBottom(rect) - arrowSize - cornerRadius,
+		CGRectGetBottom(rect) - arrowSize - cornerRadius,
 		cornerRadius);
 		
 	// Close the path at the rounded rect
@@ -426,7 +426,7 @@ void FLCreateRectPathWithBottomArrow(CGMutablePathRef path, CGRect rect, CGPoint
 
 }
 
-void FLCreateRectPathWithLeftArrow(CGMutablePathRef path, CGRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
+void FLCreateRectPathWithLeftArrow(CGMutablePathRef path, SDKRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
 {
         // bottom left
 	CGPathMoveToPoint(path, NULL,
@@ -483,7 +483,7 @@ void FLCreateRectPathWithLeftArrow(CGMutablePathRef path, CGRect rect, CGPoint a
 	CGPathCloseSubpath(path);
 }
 
-void FLCreatePartialRectPathTop(CGMutablePathRef path, CGRect rect, CGFloat cornerRadius)
+void FLCreatePartialRectPathTop(CGMutablePathRef path, SDKRect rect, CGFloat cornerRadius)
 {
 	//
 	// Create the boundary path
@@ -520,29 +520,29 @@ void FLCreatePartialRectPathTop(CGMutablePathRef path, CGRect rect, CGFloat corn
 	
 }
 
-void FLCreatePartialRectPathLeft(CGMutablePathRef path, CGRect rect, CGFloat cornerRadius)
+void FLCreatePartialRectPathLeft(CGMutablePathRef path, SDKRect rect, CGFloat cornerRadius)
 {
 	
 	CGPathMoveToPoint(path, NULL,
-		FLRectGetLeft(rect),
-		FLRectGetTop(rect) + cornerRadius);
+		CGRectGetLeft(rect),
+		CGRectGetTop(rect) + cornerRadius);
 	CGPathAddLineToPoint(path, NULL,
-		FLRectGetLeft(rect),
-		FLRectGetBottom(rect) - cornerRadius);	
+		CGRectGetLeft(rect),
+		CGRectGetBottom(rect) - cornerRadius);	
 }
 
-void FLCreatePartialRectPathRight(CGMutablePathRef path, CGRect rect, CGFloat cornerRadius)
+void FLCreatePartialRectPathRight(CGMutablePathRef path, SDKRect rect, CGFloat cornerRadius)
 {
 	
 	CGPathMoveToPoint(path, NULL,
-		FLRectGetRight(rect),
-		FLRectGetTop(rect) + cornerRadius);
+		CGRectGetRight(rect),
+		CGRectGetTop(rect) + cornerRadius);
 	CGPathAddLineToPoint(path, NULL,
-		FLRectGetRight(rect),
-		FLRectGetBottom(rect) - cornerRadius);	
+		CGRectGetRight(rect),
+		CGRectGetBottom(rect) - cornerRadius);	
 }
 
-void FLCreatePartialRectPathBottom(CGMutablePathRef path, CGRect rect, CGFloat cornerRadius)
+void FLCreatePartialRectPathBottom(CGMutablePathRef path, SDKRect rect, CGFloat cornerRadius)
 {
 	//
 	// Create the boundary path
@@ -551,8 +551,8 @@ void FLCreatePartialRectPathBottom(CGMutablePathRef path, CGRect rect, CGFloat c
 	
 	// bottom left
 	CGPathMoveToPoint(path, NULL,
-		FLRectGetRight(rect),
-		FLRectGetTop(rect));
+		CGRectGetRight(rect),
+		CGRectGetTop(rect));
 
 	// Bottom right corner
 	CGPathAddArcToPoint(path, NULL,
@@ -578,33 +578,33 @@ void FLCreatePartialRectPathBottom(CGMutablePathRef path, CGRect rect, CGFloat c
 }
 
 void FLSetPathToTriangleInRectCorner(CGMutablePathRef path, 
-    CGRect rect, 
+    SDKRect rect, 
     FLTriangleCorner cornerInRect) {
     
     switch(cornerInRect) {
         case FLTriangleCornerUpperLeft:
           	CGPathMoveToPoint(path, NULL, rect.origin.x, rect.origin.y);
-            CGPathAddLineToPoint(path, NULL, FLRectGetRight(rect), rect.origin.y);
-            CGPathAddLineToPoint(path, NULL, rect.origin.x, FLRectGetBottom(rect));
+            CGPathAddLineToPoint(path, NULL, CGRectGetRight(rect), rect.origin.y);
+            CGPathAddLineToPoint(path, NULL, rect.origin.x, CGRectGetBottom(rect));
             CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y);
         break;
         case FLTriangleCornerUpperRight:
-          	CGPathMoveToPoint(path, NULL, FLRectGetRight(rect), rect.origin.y);
-            CGPathAddLineToPoint(path, NULL, FLRectGetRight(rect), FLRectGetBottom(rect));
+          	CGPathMoveToPoint(path, NULL, CGRectGetRight(rect), rect.origin.y);
+            CGPathAddLineToPoint(path, NULL, CGRectGetRight(rect), CGRectGetBottom(rect));
             CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y);
-            CGPathAddLineToPoint(path, NULL, FLRectGetRight(rect), rect.origin.y);
+            CGPathAddLineToPoint(path, NULL, CGRectGetRight(rect), rect.origin.y);
         break;
         case FLTriangleCornerBottomRight:
-          	CGPathMoveToPoint(path, NULL, FLRectGetRight(rect), FLRectGetBottom(rect));
-            CGPathAddLineToPoint(path, NULL, rect.origin.x, FLRectGetBottom(rect));
-            CGPathAddLineToPoint(path, NULL, FLRectGetRight(rect), rect.origin.y);
-            CGPathAddLineToPoint(path, NULL, FLRectGetRight(rect), FLRectGetBottom(rect));
+          	CGPathMoveToPoint(path, NULL, CGRectGetRight(rect), CGRectGetBottom(rect));
+            CGPathAddLineToPoint(path, NULL, rect.origin.x, CGRectGetBottom(rect));
+            CGPathAddLineToPoint(path, NULL, CGRectGetRight(rect), rect.origin.y);
+            CGPathAddLineToPoint(path, NULL, CGRectGetRight(rect), CGRectGetBottom(rect));
         break;
         case FLTriangleCornerBottomLeft:
-          	CGPathMoveToPoint(path, NULL, rect.origin.x, FLRectGetBottom(rect));
+          	CGPathMoveToPoint(path, NULL, rect.origin.x, CGRectGetBottom(rect));
             CGPathAddLineToPoint(path, NULL, rect.origin.x, rect.origin.y);
-            CGPathAddLineToPoint(path, NULL, FLRectGetRight(rect), rect.origin.y);
-            CGPathAddLineToPoint(path, NULL, rect.origin.x, FLRectGetBottom(rect));
+            CGPathAddLineToPoint(path, NULL, CGRectGetRight(rect), rect.origin.y);
+            CGPathAddLineToPoint(path, NULL, rect.origin.x, CGRectGetBottom(rect));
         break;
 
     

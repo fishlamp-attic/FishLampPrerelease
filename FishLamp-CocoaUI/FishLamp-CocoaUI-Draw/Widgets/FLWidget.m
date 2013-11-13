@@ -49,7 +49,7 @@
 @synthesize drawable = _drawable;
 
 //
-//- (void) setLayoutFrame:(CGRect) layoutFrame {
+//- (void) setLayoutFrame:(SDKRect) layoutFrame {
 //    [self setFrameOptimizedForLocation:layoutFrame];
 //}
 
@@ -57,7 +57,7 @@
 	return [self initWithFrame:CGRectZero];
 }
 
-- (id) initWithFrame:(CGRect) frame {   
+- (id) initWithFrame:(SDKRect) frame {   
     self = [super init];
 	if(self) {
         _frame = frame;
@@ -67,7 +67,7 @@
 	return self;
 }
 
-+ (id) widgetWithFrame:(CGRect) frame {
++ (id) widgetWithFrame:(SDKRect) frame {
 	return FLAutorelease([[[self class] alloc] initWithFrame:frame]);
 }
 
@@ -178,7 +178,7 @@
 - (void) layoutSubWidgets {
 }
 
-- (void) setFrame:(CGRect) frame {
+- (void) setFrame:(SDKRect) frame {
 #if DEBUG
 	if(frame.origin.x > 5000 || frame.origin.x < -5000) {
 		FLLog(@"widget frame is out of bounds");
@@ -340,11 +340,11 @@
     }
 }
 
-- (CGRect) bounds {
+- (SDKRect) bounds {
     return _frame;
 }
 
-- (void) drawBackgroundColor:(CGRect) drawRect {
+- (void) drawBackgroundColor:(SDKRect) drawRect {
 //  The color with alpha can be created when either the background color or alpha is changed 
 //  and it can be member data instead of the SDKColor for the background.
 
@@ -367,7 +367,7 @@ TODO("MF: optimize this.")
 #endif    
 }
 
-- (void) drawSubWidgets:(CGRect) drawRect {
+- (void) drawSubWidgets:(SDKRect) drawRect {
      for(FLWidget* widget in _subWidgets) {
          if(CGRectIntersectsRect(widget.frame, drawRect) &&  // if widget intersects drawing area.
             CGRectIntersectsRect(widget.frame, self.frame)) { // if widget intersects parent frame
@@ -376,7 +376,7 @@ TODO("MF: optimize this.")
      }
 }
 
-- (void) drawWidget:(CGRect) drawRect {
+- (void) drawWidget:(SDKRect) drawRect {
     FLAssertIsNotNil(self.view);
 
 // TODO: investigate coordinate system
@@ -405,13 +405,13 @@ TODO("MF: optimize this.")
     }
 }
 
-- (void) drawRect:(CGRect) rect 
+- (void) drawRect:(SDKRect) rect 
    drawSubWidgets:(dispatch_block_t) drawSubWidgets {
 
     [self drawRect:rect];
 }
 
-- (void) drawRect:(CGRect) rect {
+- (void) drawRect:(SDKRect) rect {
 }
 
 - (SDKView*) view {
@@ -548,7 +548,7 @@ TODO("MF: optimize this.")
 - (void) layoutSubwidgetsWithArrangement:(BOOL) adjustSize {
     FLArrangement* layout = self.subWidgetArrangement;
     if(layout) {
-        CGRect bounds = [self frame];
+        SDKRect bounds = [self frame];
         bounds.size = [layout performArrangement:[self subWidgets] inBounds:bounds];
         if(adjustSize) {
             [self setFrame:bounds];
@@ -565,8 +565,8 @@ TODO("MF: optimize this.")
 //}
 
 
-//- (void) autoPositionInRect:(CGRect) bounds;
-- (void) autoPositionInRect:(CGRect) bounds {
+//- (void) autoPositionInRect:(SDKRect) bounds;
+- (void) autoPositionInRect:(SDKRect) bounds {
     self.frameOptimizedForLocation = FLRectPositionRectInRectWithpositionInParent(bounds, self.frame, self.positionInParent);
 }
 
@@ -576,13 +576,13 @@ TODO("MF: optimize this.")
 #endif
 
 #if NOT_USED
-void (^FLWidgetSunburstHighlighter)(FLWidget* viewwidget, CGRect rect) = ^(FLWidget* viewwidget, CGRect rect) {
+void (^FLWidgetSunburstHighlighter)(FLWidget* viewwidget, SDKRect rect) = ^(FLWidget* viewwidget, SDKRect rect) {
 	viewwidget.view.clipsToBounds = NO;
 	viewwidget.view.superview.clipsToBounds = NO;
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextSaveGState(context);
 
-//	  CGRect bigRect = FLRectScale(viewwidget.frame, 4.0);
+//	  SDKRect bigRect = FLRectScale(viewwidget.frame, 4.0);
 //	  bigRect = FLRectCenterOnPoint(bigRect, FLRectGetCenter(viewwidget.frame));
 
 	CGPoint startPoint = FLRectGetCenter(viewwidget.frame);

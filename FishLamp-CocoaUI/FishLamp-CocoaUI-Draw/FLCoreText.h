@@ -17,18 +17,18 @@
 extern CGSize CTLineGetSize(CTLineRef line);
 extern CGSize CTFrameGetSize(CTFrameRef frameRef);
 extern CGSize CTRunGetSize(CTRunRef run);
-extern CGRect CTRunGetRect(CTRunRef run, CTLineRef line, CGPoint origin);
+extern SDKRect CTRunGetRect(CTRunRef run, CTLineRef line, CGPoint origin);
 
 extern CGFloat CGGetLineHeightForFont(CTFontRef iFont);
 
 // attributed string drawing
-extern CTFrameRef CTAttributedStringGetFrame(NSAttributedString* string, CGRect inBounds);
-extern CGSize CTAttributedStringGetSize(NSAttributedString* string, CGRect inBounds);
+extern CTFrameRef CTAttributedStringGetFrame(NSAttributedString* string, SDKRect inBounds);
+extern CGSize CTAttributedStringGetSize(NSAttributedString* string, SDKRect inBounds);
 extern void CGContextDrawAttributedString(CGContextRef context, NSAttributedString* string, NSRect rect);
 
 @interface NSAttributedString (FLCoreText)
-- (CGSize) sizeForDrawingInBounds:(CGRect) bounds;
-- (void) drawInRectWithCoreText:(CGRect) rect;
+- (CGSize) sizeForDrawingInBounds:(SDKRect) bounds;
+- (void) drawInRectWithCoreText:(SDKRect) rect;
 @end
 
 

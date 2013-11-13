@@ -60,7 +60,7 @@ CGSize CTFrameGetSize(CTFrameRef frameRef) {
 //
 //    CGPoint lastLineOrigin = { 0, 0 };
 //    CTFrameGetLineOrigins(frameRef, CFRangeMake(lineCount - 1, 0), &lastLineOrigin);
-//    CGRect frameRect = CGPathGetBoundingBox(CTFrameGetPath(frameRef));
+//    SDKRect frameRect = CGPathGetBoundingBox(CTFrameGetPath(frameRef));
 
     // The height needed to draw the text is from the bottom of the last line
     // to the top of the frame.
@@ -69,7 +69,7 @@ CGSize CTFrameGetSize(CTFrameRef frameRef) {
 
 }
 
-CTFrameRef CTAttributedStringGetFrame(NSAttributedString* string, CGRect bounds) {
+CTFrameRef CTAttributedStringGetFrame(NSAttributedString* string, SDKRect bounds) {
        
     CTFramesetterRef framesetter = nil;
     CGMutablePathRef path = CGPathCreateMutable();
@@ -110,14 +110,14 @@ CGSize CTRunGetSize(CTRunRef run) {
     return size;
 }
 
-CGRect CTRunGetRect(CTRunRef run, CTLineRef line, CGPoint origin) {
+SDKRect CTRunGetRect(CTRunRef run, CTLineRef line, CGPoint origin) {
 
     CGFloat ascent = 0;//height above the baseline
     CGFloat descent = 0;//height below the baseline
     
     CGFloat width = CTRunGetTypographicBounds(run, CFRangeMake(0, 0), &ascent, &descent, NULL);
 
-    CGRect bounds;
+    SDKRect bounds;
     bounds.origin.x = origin.x + CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL);
     bounds.origin.y = origin.y - descent;
     bounds.size.width = width;
@@ -125,7 +125,7 @@ CGRect CTRunGetRect(CTRunRef run, CTLineRef line, CGPoint origin) {
     return bounds;
 }
 
-CGSize CTAttributedStringGetSize(NSAttributedString* string, CGRect inBounds) {
+CGSize CTAttributedStringGetSize(NSAttributedString* string, SDKRect inBounds) {
     CTFrameRef frameRef = CTAttributedStringGetFrame(string, inBounds);
     CGSize size = CTFrameGetSize(frameRef);
     CFRelease(frameRef);
@@ -142,7 +142,7 @@ void CGContextDrawAttributedString(CGContextRef context, NSAttributedString* str
 
 #if IOS
     // flip to context coordinates for drawing text.
-    CGRect bounds = rect;
+    SDKRect bounds = rect;
     CGContextTranslateCTM(context, 0.0, rect.size.height);
     CGContextScaleCTM(context, 1.0, -1.0);
 #endif
@@ -159,11 +159,11 @@ void CGContextDrawAttributedString(CGContextRef context, NSAttributedString* str
 
 @implementation NSAttributedString (FLCoreText)
        
-- (CGSize) sizeForDrawingInBounds:(CGRect) bounds {
+- (CGSize) sizeForDrawingInBounds:(SDKRect) bounds {
     return CTAttributedStringGetSize(self, bounds);
 }                   
 
-- (void) drawInRectWithCoreText:(CGRect) rect {
+- (void) drawInRectWithCoreText:(SDKRect) rect {
     CGContextDrawAttributedString(UIGraphicsGetCurrentContext(), self, rect);
 }
 
@@ -193,7 +193,7 @@ CGFloat CGGetLineHeightForFont(CTFontRef iFont)
 //
 //- (FLBatchDictionary*) runFramesForString:(NSAttributedString*) string
 //                                withFrame:(CTFrameRef) frameRef 
-//                                 inBounds:(CGRect) bounds
+//                                 inBounds:(SDKRect) bounds
 //                  withTextAlignmentOffset:(CGPoint) offset {
 //
 //    CFArrayRef lines = CTFrameGetLines(frameRef);
@@ -210,7 +210,7 @@ CGFloat CGGetLineHeightForFont(CTFontRef iFont)
 //            CFArrayRef runs = CTLineGetGlyphRuns(line);
 //            for(CFIndex j = 0; j < CFArrayGetCount(runs); j++) {
 //                CTRunRef run = CFArrayGetValueAtIndex(runs, j);
-//                CGRect runBounds = [self runBounds:run inLine:line lineOrigin:origins[i]];
+//                SDKRect runBounds = [self runBounds:run inLine:line lineOrigin:origins[i]];
 //
 ////                CGFloat ascent = 0;//height above the baseline
 ////                CGFloat descent = 0;//height below the baseline
@@ -240,14 +240,14 @@ CGFloat CGGetLineHeightForFont(CTFontRef iFont)
 //    }
 //}
 
-//+ (CGRect) rectForTextAlignment:(FLTextAlignment) textAlignment 
+//+ (SDKRect) rectForTextAlignment:(FLTextAlignment) textAlignment 
 //                         withFrame:(CTFrameRef) frameRef 
-//                          inBounds:(CGRect) bounds {
+//                          inBounds:(SDKRect) bounds {
 //
 //    CGSize size = [self frameSize:frameRef];
 ////    size.height += 2.0f;
 //    
-//    CGRect frame = CGRectMake(bounds.origin.x, bounds.origin.y, size.width, size.height);
+//    SDKRect frame = CGRectMake(bounds.origin.x, bounds.origin.y, size.width, size.height);
 //            
 //    if(size.height < bounds.size.height) {
 //        switch(textAlignment.vertical) {
