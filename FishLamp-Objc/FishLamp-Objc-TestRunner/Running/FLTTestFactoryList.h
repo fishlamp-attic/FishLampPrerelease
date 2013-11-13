@@ -15,6 +15,7 @@
 @interface FLTTestFactoryList : FLTOrderedRunList {
 @private
     Class _testGroup;
+    NSString* _groupName;
 }
 
 @property (readonly, assign, nonatomic) Class testGroup;

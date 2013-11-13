@@ -7,8 +7,12 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 #import "FishLampMinimum.h"
-#import "FLPointGeometry.h"
-#import "FLSizeGeometry.h"
-#import "FLRectGeometry.h"
+
 #import "FLEdgeInsets.h"
+
 #import "FLRectLayout.h"
+
+#import "CGPointGeometry+FLAdditions.h"
+#import "CGSizeGeometry+FLAdditions.h"
+#import "CGRectGeometry+FLAdditions.h"
+

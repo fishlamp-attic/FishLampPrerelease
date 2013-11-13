@@ -56,7 +56,7 @@
 
 }
 
-- (BOOL) setFrameIfChanged:(CGRect) newFrame {
+- (BOOL) setFrameIfChanged:(SDKRect) newFrame {
 	
     if(!CGRectEqualToRect(newFrame, self.frame)) {
 		self.frame = newFrame;

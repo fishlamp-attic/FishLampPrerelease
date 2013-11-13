@@ -14,7 +14,7 @@
 @interface FLTestCaseList : NSObject<NSFastEnumeration> {
 @private
     NSMutableArray* _testCaseArray;
-    BOOL _disabled;
+    BOOL _isDisabled;
     NSString* _disabledReason;
 }
 

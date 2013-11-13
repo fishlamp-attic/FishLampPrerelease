@@ -10,7 +10,7 @@
 @interface SDKImage (Resize)
 
 #if IOS
-- (SDKImage *)croppedImage:(CGRect)bounds;
+- (SDKImage *)croppedImage:(SDKRect)bounds;
 
 - (SDKImage *)thumbnailImage:(NSInteger)thumbnailSize
 		  transparentBorder:(NSUInteger)borderSize
@@ -27,7 +27,7 @@
 
 #endif
 
-- (CGRect) proportionalBoundsWithMaxSize:(CGSize) maxSize;
+- (SDKRect) proportionalBoundsWithMaxSize:(CGSize) maxSize;
 
 - (CGSize) proportionalSizeWithMaxSize:(CGSize) maxSize;
 

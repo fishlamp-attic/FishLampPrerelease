@@ -103,7 +103,7 @@ typedef void (^FLStringFormatterIndentedBlock)();
     __unsafe_unretained id _stringFormatterDelegate;
     id<FLStringPreprocessor> _preprocessor;
     NSInteger _indentLevel;
-    FLIndentIntegrity* _rootIndentIntegrity;
+    FLIndentIntegrity* _indentIntegrity;
 }
 
 /**

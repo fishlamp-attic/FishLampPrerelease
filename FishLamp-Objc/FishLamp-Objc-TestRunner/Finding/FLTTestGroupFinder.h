@@ -14,7 +14,7 @@
 @interface FLTTestGroupFinder : NSObject {
 @private
     NSMutableArray* _testFinders;
-    NSMutableArray* _groupFinders;
+    NSDictionary* _testGroups;
 }
 
 + (id) testGroupFinder;

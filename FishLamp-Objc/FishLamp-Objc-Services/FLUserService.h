@@ -8,22 +8,19 @@
 //
 #import "FishLampMinimum.h"
 #import "FLService.h"
-#import "FLCredentialsEditor.h"
 
 @protocol FLCredentials;
-@protocol FLCredentialsEditor;
 @protocol FLUserServiceDelegate;
 @protocol FLCredentialsStorage;
+@protocol FLAuthenticationCredentials;
 
-@protocol FLUserService <FLService, FLCredentialsEditorDelegate>
+@protocol FLUserService <FLService>
 - (BOOL) canAuthenticate;
+- (BOOL) isAuthenticated;
 - (id<FLAuthenticationCredentials>) credentials;
-
-- (FLCredentialsEditor*) credentialEditor;
-
-- (void) openServiceWithCredentials:(id<FLAuthenticationCredentials>) credentials;
+- (void) setCredentials:(id<FLAuthenticationCredentials>) credentials;
+- (void) saveCredentials;
 @end
-
 
 @interface FLUserService : FLService<FLUserService> {
 @private
@@ -36,7 +33,6 @@
 
 + (id) userService;
 + (id) userService:(id<FLAuthenticationCredentials>) credentials;
-
 - (id) initWithCredentials:(id<FLAuthenticationCredentials>) credentials;
 
 @end

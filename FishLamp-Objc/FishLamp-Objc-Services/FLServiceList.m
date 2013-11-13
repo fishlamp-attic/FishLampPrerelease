@@ -31,9 +31,21 @@
 }
 #endif
 
-- (void) closeService {
+- (BOOL) canOpenService {
+    return YES;
+}
 
-    [super closeService];
+- (BOOL) hasOpenService {
+    for(id<FLService> service in _services) {
+        if(service.isServiceOpen) {
+            return YES;
+        }
+    }
+
+    return NO;
+}
+
+- (void) closeServices {
 
     for(id<FLService> service in _services) {
         if([service isServiceOpen]) {

@@ -86,7 +86,7 @@
 
 - (void) closeSection {
     FLAssert(_stack.count > 0);
-    id last = FLRetainWithAutorelease(self.openedSection);
+    FLRetainWithAutorelease(self.openedSection);
     [_stack removeLastObject_fl];
 }
 

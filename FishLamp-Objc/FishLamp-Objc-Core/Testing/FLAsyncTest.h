@@ -11,7 +11,7 @@
 @interface FLAsyncTest : NSObject {
 @private
     dispatch_semaphore_t _semaphor;
-    NSException* exception;
+    NSException* _exception;
 }
 
 + (id) asyncTest;

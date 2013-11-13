@@ -18,12 +18,13 @@
 + (NSValue *)valueWithCGPoint:(CGPoint)point;
 + (NSValue *)valueWithCGSize:(CGSize)size;
 + (NSValue *)valueWithCGRect:(CGRect)rect;
-+ (NSValue *)valueWithUIEdgeInsets:(UIEdgeInsets)insets;
+
+//+ (NSValue *)valueWithUIEdgeInsets:(UIEdgeInsets)insets;
 
 - (CGPoint) CGPointValue;
 - (CGSize) CGSizeValue;
 - (CGRect) CGRectValue;
-- (UIEdgeInsets) UIEdgeInsetsValue;
+//- (UIEdgeInsets) UIEdgeInsetsValue;
 
 @end
 

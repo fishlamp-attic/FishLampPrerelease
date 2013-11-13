@@ -31,3 +31,5 @@ BOOL FLIsIntegralValue(CGFloat coord) {
 #define FLFloatMod(__LHS__, __RHS__) ((CGFloat) fmodf(__LHS__, __RHS__))
 #define FLFloatAbs(__CGFLOAT__) ((CGFloat) fabsf(__CGFLOAT__))
 #endif
+
+#define FLCoordinateIntegral(__coordinate__) (CGFloat) round(__coordinate__)

@@ -48,6 +48,7 @@
 @interface FLSimpleTestOperation : FLOperation {
 @private
     BOOL _passed;
+    id _testable;
 }
 @property (readonly, assign, nonatomic) BOOL passed;
 @property (readwrite, strong, nonatomic) FLTestable* testable;

@@ -15,7 +15,7 @@
 
 @synthesize whitespace = _whitespace;
 @synthesize lineIsOpen = _editingLine;
-@synthesize whitespaceStringFormatterDelegate = _delegate;
+@synthesize whitespaceStringFormatterDelegate = _whitespaceStringFormatterDelegate;
 
 - (id) initWithWhitespace:(FLWhitespace*) whitespace {
     self = [super init];

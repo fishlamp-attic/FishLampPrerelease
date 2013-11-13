@@ -14,6 +14,7 @@
 @private
     NSMutableString* _history;
     NSInteger _length;
+    BOOL _rememberHistory;
 }
 
 @property (readwrite, assign, nonatomic) BOOL rememberHistory;

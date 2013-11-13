@@ -9,7 +9,7 @@
 #import "FLService.h"
 #import "FLBroadcaster.h"
 
-@interface FLServiceList : FLService<NSFastEnumeration> {
+@interface FLServiceList : FLBroadcaster {
 @private
     NSMutableArray* _services;
 }
@@ -18,10 +18,12 @@
 
 @property (readonly, strong) NSArray* services;
 
-// NOTE: close the service list closes all the services in it.
+@property (readonly, assign) BOOL hasOpenService;
 
 - (void) addService:(id<FLService>) service;
 - (void) removeService:(id<FLService>) service;
+
+- (void) closeServices;
 
 - (void) removeAllServices;
 

@@ -20,5 +20,7 @@
  */
 - (id) representedObject;
 
+- (BOOL) representsObject:(id) object;
+
 @end
 

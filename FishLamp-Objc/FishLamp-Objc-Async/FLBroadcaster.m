@@ -57,7 +57,7 @@
             FLReleaseWithNil(_iteratable);
         }
         if(!_iteratable) {
-            _iteratable = [_listeners copy];
+            _iteratable = [[_listeners allObjects] copy];
         }
         self.dirty = NO;
 
@@ -78,7 +78,7 @@
 - (void) addListener:(id) listener  {
     FLCriticalSection(&_semaphore, ^{
         if(!_listeners) {
-            _listeners = [[NSMutableArray alloc] init];
+            _listeners = [[NSMutableSet alloc] init];
         }
 
         [_listeners addObject:[listener objectAsListener]];
@@ -89,12 +89,23 @@
 
 - (void) removeListener:(id) listener {
     FLCriticalSection(&_semaphore, ^{
-        for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
-            id object = [_listeners objectAtIndex:i];
-            if([object representedObject] == listener) {
-                [_listeners removeObjectAtIndex:i];
+
+        id theObject = nil;
+        for(id object in _listeners) {
+            if([object representsObject:listener]) {
+                theObject = object;
             }
         }
+        if(theObject) {
+            [_listeners removeObject:theObject];
+        }
+
+//        for(NSInteger i = _listeners.count - 1; i >= 0; i--) {
+//            id object = [_listeners objectAtIndex:i];
+//            if([object representedObject] == listener) {
+//                [_listeners removeObjectAtIndex:i];
+//            }
+//        }
 
         self.dirty = YES;
     });

@@ -59,7 +59,7 @@
 #endif
 
 - (void) disableAllTests:(NSString*) reason {
-    _disabled = YES;
+    _isDisabled = YES;
     self.disabledReason = reason;
 
     for(id<FLTestCase> testCase in _testCaseArray) {

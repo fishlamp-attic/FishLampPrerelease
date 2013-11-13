@@ -30,7 +30,6 @@
     NSInteger _finishedCount;
     NSInteger _totalCount;
     BOOL _processing;
-    NSString* _queueName;
 
     id<FLOperationQueueErrorStrategy> _errorStrategy;
 }

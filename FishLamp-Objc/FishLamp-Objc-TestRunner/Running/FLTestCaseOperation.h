@@ -30,7 +30,7 @@
 
     FLIndentIntegrity* _indentIntegrity;
 
-    NSTimeInterval _timeoutInterval;
+//    NSTimeInterval _timeoutInterval;
 
     FLTimer* _timer;
 }

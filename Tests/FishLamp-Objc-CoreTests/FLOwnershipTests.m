@@ -70,6 +70,7 @@ static BOOL s_deleted = NO;
 
     @autoreleasepool {
         FLRetainedObject* object = [FLRetainedObject retainedObject:[FLObjectProxyTestObject objectProxyTestObject]];
+        FLConfirm(object != nil);
         FLConfirm(!s_deleted);
     }
     FLConfirm(s_deleted);

@@ -15,8 +15,6 @@
 #import "FLAuthenticationCredentials.h"
 #import "FLHttpAuthenticator.h"
 
-NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDidLogoutUserNotification";
-
 @interface FLHttpOperationContext ()
 
 @property (readwrite, strong) id<FLUserService> userService;
@@ -25,7 +23,6 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 @property (readonly, strong) FLFifoAsyncQueue* authenticationQueue;
 
 @property (readwrite, strong) id<FLAuthenticatedEntity> authenticatedEntity;
-@property (readonly, strong) id<FLAuthenticationCredentials> authenticationCredentials;
 
 @end
 
@@ -86,20 +83,21 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
     return [self.userService openService];
 }
 
-- (void) openServiceWithCredentials:(id<FLAuthenticationCredentials>) credentials {
-    [self.userService openServiceWithCredentials:credentials];
-}
+//- (void) openServiceWithCredentials:(id<FLAuthenticationCredentials>) credentials {
+//    [self.userService openServiceWithCredentials:credentials];
+//}
 
 - (id<FLAuthenticationCredentials>) authenticationCredentials {
     return self.userService.credentials;
 }
 
-- (void) openServiceWithUser:(id<FLAuthenticatedEntity>) entity {
-    self.authenticatedEntity = entity;
-    [self openServiceWithCredentials:entity.authenticationCredentials];
-}
+//- (void) openServiceWithUser:(id<FLAuthenticatedEntity>) entity {
+//    self.authenticatedEntity = entity;
+//    [self openServiceWithCredentials:entity.authenticationCredentials];
+//}
 
 - (void) closeService {
+    [self requestCancel];
     [self.userService closeService];
 }
 
@@ -116,13 +114,11 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 }
 
 - (void) userServiceDidClose:(id<FLUserService>) service {
-    [self.serviceList closeService];
+    [self.serviceList closeServices];
 
     [self sendMessageToListeners:@selector(httpOperationContext:didLogoutUser:)
                       withObject:self
                       withObject:self.userService.credentials];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:FLHttpControllerDidLogoutUserNotification object:self];
 
     [self sendMessageToListeners:@selector(httpOperationContextDidClose:) withObject:self];
 }
@@ -212,11 +208,12 @@ NSString* const FLHttpControllerDidLogoutUserNotification = @"FLHttpControllerDi
 - (void) prepareAuthenticatedOperation:(id) operation {
 }
 
-- (void) updateCredentials:(id<FLAuthenticationCredentials>)authenticationCredentials {
-}
+//- (void) updateCredentials:(id<FLAuthenticationCredentials>)authenticationCredentials {
+//    self.userService.credentials = authenticationCredentials;
+//}
 
 - (void) updateEntity:(id<FLAuthenticatedEntity>) entity {
-    
+    self.authenticatedEntity = entity;
 }
 
 //- (FLPromise*) beginAuthenticatingCredentials:(id<FLAuthenticationCredentials>) credentials

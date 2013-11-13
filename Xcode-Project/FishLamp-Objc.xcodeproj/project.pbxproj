@@ -202,6 +202,24 @@
 		276F971818329BCD005DB257 /* FLCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F971518329BCD005DB257 /* FLCredentialsProvider.m */; };
 		276F971918329BCD005DB257 /* FLCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F971518329BCD005DB257 /* FLCredentialsProvider.m */; };
 		276F971A18329BCD005DB257 /* FLCredentialsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F971518329BCD005DB257 /* FLCredentialsProvider.m */; };
+		276F97471833D7BC005DB257 /* NSRectGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F97461833D7BC005DB257 /* NSRectGeometry+FLAdditions.m */; };
+		276F97481833D7BC005DB257 /* NSRectGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F97461833D7BC005DB257 /* NSRectGeometry+FLAdditions.m */; };
+		276F97491833D7BC005DB257 /* NSRectGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F97461833D7BC005DB257 /* NSRectGeometry+FLAdditions.m */; };
+		276F974A1833D7BC005DB257 /* NSRectGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F97461833D7BC005DB257 /* NSRectGeometry+FLAdditions.m */; };
+		276F974D1833D818005DB257 /* CGRectGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F974C1833D818005DB257 /* CGRectGeometry+FLAdditions.m */; };
+		276F974E1833D818005DB257 /* CGRectGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F974C1833D818005DB257 /* CGRectGeometry+FLAdditions.m */; };
+		276F974F1833D818005DB257 /* CGRectGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F974C1833D818005DB257 /* CGRectGeometry+FLAdditions.m */; };
+		276F97501833D818005DB257 /* CGRectGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F974C1833D818005DB257 /* CGRectGeometry+FLAdditions.m */; };
+		276F97511833D818005DB257 /* CGRectGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F974C1833D818005DB257 /* CGRectGeometry+FLAdditions.m */; };
+		276F97631833EB40005DB257 /* NSSizeGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F97621833EB40005DB257 /* NSSizeGeometry+FLAdditions.m */; };
+		276F97641833EB40005DB257 /* NSSizeGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F97621833EB40005DB257 /* NSSizeGeometry+FLAdditions.m */; };
+		276F97651833EB40005DB257 /* NSSizeGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F97621833EB40005DB257 /* NSSizeGeometry+FLAdditions.m */; };
+		276F97661833EB40005DB257 /* NSSizeGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F97621833EB40005DB257 /* NSSizeGeometry+FLAdditions.m */; };
+		276F97691833F508005DB257 /* FLEdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F97681833F508005DB257 /* FLEdgeInsets.m */; };
+		276F976A1833F508005DB257 /* FLEdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F97681833F508005DB257 /* FLEdgeInsets.m */; };
+		276F976B1833F508005DB257 /* FLEdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F97681833F508005DB257 /* FLEdgeInsets.m */; };
+		276F976C1833F508005DB257 /* FLEdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F97681833F508005DB257 /* FLEdgeInsets.m */; };
+		276F976D1833F508005DB257 /* FLEdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 276F97681833F508005DB257 /* FLEdgeInsets.m */; };
 		27B15A411819AC9600D17FF7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A401819AC9600D17FF7 /* CoreFoundation.framework */; };
 		27B15A441819ACBC00D17FF7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A431819ACBC00D17FF7 /* SystemConfiguration.framework */; };
 		27B15A461819ACC800D17FF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27B15A451819ACC800D17FF7 /* Security.framework */; };
@@ -1067,11 +1085,11 @@
 		B227A7AD182AD3FA00EDC426 /* FLTempFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2CF182AD3F700EDC426 /* FLTempFolder.m */; };
 		B227A7AE182AD3FA00EDC426 /* FLTempFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2CF182AD3F700EDC426 /* FLTempFolder.m */; };
 		B227A7AF182AD3FA00EDC426 /* FLTempFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2CF182AD3F700EDC426 /* FLTempFolder.m */; };
-		B227A7B0182AD3FA00EDC426 /* FLEdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D2182AD3F700EDC426 /* FLEdgeInsets.m */; };
-		B227A7B1182AD3FA00EDC426 /* FLEdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D2182AD3F700EDC426 /* FLEdgeInsets.m */; };
-		B227A7B2182AD3FA00EDC426 /* FLEdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D2182AD3F700EDC426 /* FLEdgeInsets.m */; };
-		B227A7B3182AD3FA00EDC426 /* FLEdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D2182AD3F700EDC426 /* FLEdgeInsets.m */; };
-		B227A7B4182AD3FA00EDC426 /* FLEdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D2182AD3F700EDC426 /* FLEdgeInsets.m */; };
+		B227A7B0182AD3FA00EDC426 /* UIEdgeInsets+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D2182AD3F700EDC426 /* UIEdgeInsets+FLAdditions.m */; };
+		B227A7B1182AD3FA00EDC426 /* UIEdgeInsets+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D2182AD3F700EDC426 /* UIEdgeInsets+FLAdditions.m */; };
+		B227A7B2182AD3FA00EDC426 /* UIEdgeInsets+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D2182AD3F700EDC426 /* UIEdgeInsets+FLAdditions.m */; };
+		B227A7B3182AD3FA00EDC426 /* UIEdgeInsets+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D2182AD3F700EDC426 /* UIEdgeInsets+FLAdditions.m */; };
+		B227A7B4182AD3FA00EDC426 /* UIEdgeInsets+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D2182AD3F700EDC426 /* UIEdgeInsets+FLAdditions.m */; };
 		B227A7B5182AD3FA00EDC426 /* FLRectGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D6182AD3F700EDC426 /* FLRectGeometry.m */; };
 		B227A7B6182AD3FA00EDC426 /* FLRectGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D6182AD3F700EDC426 /* FLRectGeometry.m */; };
 		B227A7B7182AD3FA00EDC426 /* FLRectGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D6182AD3F700EDC426 /* FLRectGeometry.m */; };
@@ -1082,11 +1100,11 @@
 		B227A7BC182AD3FA00EDC426 /* FLRectLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D8182AD3F700EDC426 /* FLRectLayout.m */; };
 		B227A7BD182AD3FA00EDC426 /* FLRectLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D8182AD3F700EDC426 /* FLRectLayout.m */; };
 		B227A7BE182AD3FA00EDC426 /* FLRectLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2D8182AD3F700EDC426 /* FLRectLayout.m */; };
-		B227A7BF182AD3FA00EDC426 /* FLSizeGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2DA182AD3F700EDC426 /* FLSizeGeometry.m */; };
-		B227A7C0182AD3FA00EDC426 /* FLSizeGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2DA182AD3F700EDC426 /* FLSizeGeometry.m */; };
-		B227A7C1182AD3FA00EDC426 /* FLSizeGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2DA182AD3F700EDC426 /* FLSizeGeometry.m */; };
-		B227A7C2182AD3FA00EDC426 /* FLSizeGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2DA182AD3F700EDC426 /* FLSizeGeometry.m */; };
-		B227A7C3182AD3FA00EDC426 /* FLSizeGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2DA182AD3F700EDC426 /* FLSizeGeometry.m */; };
+		B227A7BF182AD3FA00EDC426 /* CGSizeGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2DA182AD3F700EDC426 /* CGSizeGeometry+FLAdditions.m */; };
+		B227A7C0182AD3FA00EDC426 /* CGSizeGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2DA182AD3F700EDC426 /* CGSizeGeometry+FLAdditions.m */; };
+		B227A7C1182AD3FA00EDC426 /* CGSizeGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2DA182AD3F700EDC426 /* CGSizeGeometry+FLAdditions.m */; };
+		B227A7C2182AD3FA00EDC426 /* CGSizeGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2DA182AD3F700EDC426 /* CGSizeGeometry+FLAdditions.m */; };
+		B227A7C3182AD3FA00EDC426 /* CGSizeGeometry+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2DA182AD3F700EDC426 /* CGSizeGeometry+FLAdditions.m */; };
 		B227A7C4182AD3FA00EDC426 /* FLDateMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2DD182AD3F700EDC426 /* FLDateMgr.m */; };
 		B227A7C5182AD3FA00EDC426 /* FLDateMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2DD182AD3F700EDC426 /* FLDateMgr.m */; };
 		B227A7C6182AD3FA00EDC426 /* FLDateMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A2DD182AD3F700EDC426 /* FLDateMgr.m */; };
@@ -2010,6 +2028,16 @@
 		2767E0DA18134CAE001EF21C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		276F971418329BCD005DB257 /* FLCredentialsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLCredentialsProvider.h; sourceTree = "<group>"; };
 		276F971518329BCD005DB257 /* FLCredentialsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLCredentialsProvider.m; sourceTree = "<group>"; };
+		276F97451833D7BC005DB257 /* NSRectGeometry+FLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRectGeometry+FLAdditions.h"; sourceTree = "<group>"; };
+		276F97461833D7BC005DB257 /* NSRectGeometry+FLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRectGeometry+FLAdditions.m"; sourceTree = "<group>"; };
+		276F974B1833D818005DB257 /* CGRectGeometry+FLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGRectGeometry+FLAdditions.h"; sourceTree = "<group>"; };
+		276F974C1833D818005DB257 /* CGRectGeometry+FLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGRectGeometry+FLAdditions.m"; sourceTree = "<group>"; };
+		276F97521833DAF5005DB257 /* NSPointGeometry+FLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPointGeometry+FLAdditions.h"; sourceTree = "<group>"; };
+		276F975A1833DB93005DB257 /* CGPointGeometry+FLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGPointGeometry+FLAdditions.h"; sourceTree = "<group>"; };
+		276F975B1833E7CE005DB257 /* NSSizeGeometry+FLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSizeGeometry+FLAdditions.h"; sourceTree = "<group>"; };
+		276F97621833EB40005DB257 /* NSSizeGeometry+FLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSizeGeometry+FLAdditions.m"; sourceTree = "<group>"; };
+		276F97671833F508005DB257 /* FLEdgeInsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEdgeInsets.h; sourceTree = "<group>"; };
+		276F97681833F508005DB257 /* FLEdgeInsets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEdgeInsets.m; sourceTree = "<group>"; };
 		27A43AB415CDCC89001CB13E /* FishLamp-Objc-iOS-ARC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-iOS-ARC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A43AC415CDCCCB001CB13E /* FishLamp-Objc-OSX-64-MRC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-MRC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B15A3E1819A99700D17FF7 /* Piecemeal-IncludedConfig-DefaultCompilerWarnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-DefaultCompilerWarnings.xcconfig"; sourceTree = "<group>"; };
@@ -2418,16 +2446,16 @@
 		B227A2CD182AD3F700EDC426 /* FLFolderFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLFolderFile.m; sourceTree = "<group>"; };
 		B227A2CE182AD3F700EDC426 /* FLTempFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTempFolder.h; sourceTree = "<group>"; };
 		B227A2CF182AD3F700EDC426 /* FLTempFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTempFolder.m; sourceTree = "<group>"; };
-		B227A2D1182AD3F700EDC426 /* FLEdgeInsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEdgeInsets.h; sourceTree = "<group>"; };
-		B227A2D2182AD3F700EDC426 /* FLEdgeInsets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEdgeInsets.m; sourceTree = "<group>"; };
+		B227A2D1182AD3F700EDC426 /* UIEdgeInsets+FLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIEdgeInsets+FLAdditions.h"; sourceTree = "<group>"; };
+		B227A2D2182AD3F700EDC426 /* UIEdgeInsets+FLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIEdgeInsets+FLAdditions.m"; sourceTree = "<group>"; };
 		B227A2D3182AD3F700EDC426 /* FLGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGeometry.h; sourceTree = "<group>"; };
 		B227A2D4182AD3F700EDC426 /* FLPointGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLPointGeometry.h; sourceTree = "<group>"; };
 		B227A2D5182AD3F700EDC426 /* FLRectGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRectGeometry.h; sourceTree = "<group>"; };
 		B227A2D6182AD3F700EDC426 /* FLRectGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLRectGeometry.m; sourceTree = "<group>"; };
 		B227A2D7182AD3F700EDC426 /* FLRectLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRectLayout.h; sourceTree = "<group>"; };
 		B227A2D8182AD3F700EDC426 /* FLRectLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLRectLayout.m; sourceTree = "<group>"; };
-		B227A2D9182AD3F700EDC426 /* FLSizeGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSizeGeometry.h; sourceTree = "<group>"; };
-		B227A2DA182AD3F700EDC426 /* FLSizeGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSizeGeometry.m; sourceTree = "<group>"; };
+		B227A2D9182AD3F700EDC426 /* CGSizeGeometry+FLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGSizeGeometry+FLAdditions.h"; sourceTree = "<group>"; };
+		B227A2DA182AD3F700EDC426 /* CGSizeGeometry+FLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGSizeGeometry+FLAdditions.m"; sourceTree = "<group>"; };
 		B227A2DC182AD3F700EDC426 /* FLDateMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLDateMgr.h; sourceTree = "<group>"; };
 		B227A2DD182AD3F700EDC426 /* FLDateMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLDateMgr.m; sourceTree = "<group>"; };
 		B227A2DE182AD3F700EDC426 /* FLEnumHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEnumHandler.h; sourceTree = "<group>"; };
@@ -3144,6 +3172,30 @@
 				2767E0CD18134CAE001EF21C /* TestApp-iOS-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		276F97581833DB51005DB257 /* NSGeometry */ = {
+			isa = PBXGroup;
+			children = (
+				276F97451833D7BC005DB257 /* NSRectGeometry+FLAdditions.h */,
+				276F97461833D7BC005DB257 /* NSRectGeometry+FLAdditions.m */,
+				276F97521833DAF5005DB257 /* NSPointGeometry+FLAdditions.h */,
+				276F975B1833E7CE005DB257 /* NSSizeGeometry+FLAdditions.h */,
+				276F97621833EB40005DB257 /* NSSizeGeometry+FLAdditions.m */,
+			);
+			name = NSGeometry;
+			sourceTree = "<group>";
+		};
+		276F97591833DB74005DB257 /* CGGeometry */ = {
+			isa = PBXGroup;
+			children = (
+				276F975A1833DB93005DB257 /* CGPointGeometry+FLAdditions.h */,
+				276F974B1833D818005DB257 /* CGRectGeometry+FLAdditions.h */,
+				276F974C1833D818005DB257 /* CGRectGeometry+FLAdditions.m */,
+				B227A2D9182AD3F700EDC426 /* CGSizeGeometry+FLAdditions.h */,
+				B227A2DA182AD3F700EDC426 /* CGSizeGeometry+FLAdditions.m */,
+			);
+			name = CGGeometry;
 			sourceTree = "<group>";
 		};
 		27A43A7115CDCC1B001CB13E = {
@@ -3959,16 +4011,18 @@
 		B227A2D0182AD3F700EDC426 /* FishLamp-Objc-GeometryUtils */ = {
 			isa = PBXGroup;
 			children = (
-				B227A2D1182AD3F700EDC426 /* FLEdgeInsets.h */,
-				B227A2D2182AD3F700EDC426 /* FLEdgeInsets.m */,
+				276F97591833DB74005DB257 /* CGGeometry */,
+				276F97581833DB51005DB257 /* NSGeometry */,
+				B227A2D1182AD3F700EDC426 /* UIEdgeInsets+FLAdditions.h */,
+				B227A2D2182AD3F700EDC426 /* UIEdgeInsets+FLAdditions.m */,
 				B227A2D3182AD3F700EDC426 /* FLGeometry.h */,
 				B227A2D4182AD3F700EDC426 /* FLPointGeometry.h */,
 				B227A2D5182AD3F700EDC426 /* FLRectGeometry.h */,
 				B227A2D6182AD3F700EDC426 /* FLRectGeometry.m */,
 				B227A2D7182AD3F700EDC426 /* FLRectLayout.h */,
 				B227A2D8182AD3F700EDC426 /* FLRectLayout.m */,
-				B227A2D9182AD3F700EDC426 /* FLSizeGeometry.h */,
-				B227A2DA182AD3F700EDC426 /* FLSizeGeometry.m */,
+				276F97671833F508005DB257 /* FLEdgeInsets.h */,
+				276F97681833F508005DB257 /* FLEdgeInsets.m */,
 			);
 			path = "FishLamp-Objc-GeometryUtils";
 			sourceTree = "<group>";
@@ -5138,6 +5192,7 @@
 				B227AA6D182AD3FA00EDC426 /* FLTestableOperation.m in Sources */,
 				27F650A9183001F000588C8E /* FLPromisedResult.m in Sources */,
 				B227A6D0182AD3F900EDC426 /* FLOSVersion.m in Sources */,
+				276F97471833D7BC005DB257 /* NSRectGeometry+FLAdditions.m in Sources */,
 				B227A6BC182AD3F900EDC426 /* FLTestGroup.m in Sources */,
 				B227A676182AD3F900EDC426 /* FLObjcRuntime.m in Sources */,
 				B227A54A182AD3F900EDC426 /* FLCommandLineParser.m in Sources */,
@@ -5151,7 +5206,7 @@
 				27B4BCB6181DB95B0027007A /* FLXmlEncodingTests.m in Sources */,
 				B227A7D4182AD3FA00EDC426 /* FLEnumSet.m in Sources */,
 				B227A5BD182AD3F900EDC426 /* FLInMemoryDataCache.m in Sources */,
-				B227A7C0182AD3FA00EDC426 /* FLSizeGeometry.m in Sources */,
+				B227A7C0182AD3FA00EDC426 /* CGSizeGeometry+FLAdditions.m in Sources */,
 				27F6510D183001F000588C8E /* NSError+FLTimeout.m in Sources */,
 				B227AAA9182AD3FA00EDC426 /* FLUserPreferences.m in Sources */,
 				B227A71B182AD3F900EDC426 /* FLXmlStringEncoding.m in Sources */,
@@ -5254,9 +5309,11 @@
 				B227A4E1182AD3F900EDC426 /* FLCredentialsStorage.m in Sources */,
 				B227AA81182AD3FA00EDC426 /* FLTTestToolMain.m in Sources */,
 				B227A842182AD3FA00EDC426 /* FLHttpStream.m in Sources */,
+				276F976A1833F508005DB257 /* FLEdgeInsets.m in Sources */,
 				2757020E18300D460096EE13 /* FLHttpAuthenticator.m in Sources */,
 				B227A509182AD3F900EDC426 /* FLCodeChunk.m in Sources */,
 				B227A4FA182AD3F900EDC426 /* FLBracketedStringBuilder.m in Sources */,
+				276F974E1833D818005DB257 /* CGRectGeometry+FLAdditions.m in Sources */,
 				B227A80B182AD3FA00EDC426 /* FLNetworkHostResolver.m in Sources */,
 				B227A95A182AD3FA00EDC426 /* FLMutableNotification.m in Sources */,
 				B227A5D6182AD3F900EDC426 /* FLBlockLinkedListElement.m in Sources */,
@@ -5267,6 +5324,7 @@
 				B227A5EF182AD3F900EDC426 /* FLAssertionFailedError.m in Sources */,
 				B227A522182AD3F900EDC426 /* FLColorRangeColorValues.m in Sources */,
 				27188C9018148B8E0060FED6 /* FLObjectDatabaseTests.m in Sources */,
+				276F97631833EB40005DB257 /* NSSizeGeometry+FLAdditions.m in Sources */,
 				B227A8A6182AD3FA00EDC426 /* FLOAuthAuthencationData.m in Sources */,
 				B227A5A4182AD3F900EDC426 /* NSView+FLCompatibility.m in Sources */,
 				B227A9FF182AD3FA00EDC426 /* FLAttributedStringController.m in Sources */,
@@ -5314,7 +5372,7 @@
 				B227A8B0182AD3FA00EDC426 /* FLOAuthSession.m in Sources */,
 				B227A7CF182AD3FA00EDC426 /* FLEnumPair.m in Sources */,
 				B227A923182AD3FA00EDC426 /* FLTcpRequest.m in Sources */,
-				B227A7B1182AD3FA00EDC426 /* FLEdgeInsets.m in Sources */,
+				B227A7B1182AD3FA00EDC426 /* UIEdgeInsets+FLAdditions.m in Sources */,
 				B227A856182AD3FA00EDC426 /* FLHttpRequestHeaders.m in Sources */,
 				27F65103183001F000588C8E /* FLTimer.m in Sources */,
 				B227A9DC182AD3FA00EDC426 /* FLObjectDatabase.m in Sources */,
@@ -5525,6 +5583,7 @@
 				B227AA6F182AD3FA00EDC426 /* FLTestableOperation.m in Sources */,
 				27F650AB183001F000588C8E /* FLPromisedResult.m in Sources */,
 				B227A6D2182AD3F900EDC426 /* FLOSVersion.m in Sources */,
+				276F97491833D7BC005DB257 /* NSRectGeometry+FLAdditions.m in Sources */,
 				B227A6BE182AD3F900EDC426 /* FLTestGroup.m in Sources */,
 				B227A678182AD3F900EDC426 /* FLObjcRuntime.m in Sources */,
 				B227A54C182AD3F900EDC426 /* FLCommandLineParser.m in Sources */,
@@ -5538,7 +5597,7 @@
 				27B4BCB8181DB95B0027007A /* FLXmlEncodingTests.m in Sources */,
 				B227A7D6182AD3FA00EDC426 /* FLEnumSet.m in Sources */,
 				B227A5BF182AD3F900EDC426 /* FLInMemoryDataCache.m in Sources */,
-				B227A7C2182AD3FA00EDC426 /* FLSizeGeometry.m in Sources */,
+				B227A7C2182AD3FA00EDC426 /* CGSizeGeometry+FLAdditions.m in Sources */,
 				27F6510F183001F000588C8E /* NSError+FLTimeout.m in Sources */,
 				B227AAAB182AD3FA00EDC426 /* FLUserPreferences.m in Sources */,
 				B227A71D182AD3F900EDC426 /* FLXmlStringEncoding.m in Sources */,
@@ -5641,9 +5700,11 @@
 				B227A4E3182AD3F900EDC426 /* FLCredentialsStorage.m in Sources */,
 				B227AA83182AD3FA00EDC426 /* FLTTestToolMain.m in Sources */,
 				B227A844182AD3FA00EDC426 /* FLHttpStream.m in Sources */,
+				276F976C1833F508005DB257 /* FLEdgeInsets.m in Sources */,
 				2757021018300D460096EE13 /* FLHttpAuthenticator.m in Sources */,
 				B227A50B182AD3F900EDC426 /* FLCodeChunk.m in Sources */,
 				B227A4FC182AD3F900EDC426 /* FLBracketedStringBuilder.m in Sources */,
+				276F97501833D818005DB257 /* CGRectGeometry+FLAdditions.m in Sources */,
 				B227A80D182AD3FA00EDC426 /* FLNetworkHostResolver.m in Sources */,
 				B227A95C182AD3FA00EDC426 /* FLMutableNotification.m in Sources */,
 				B227A5D8182AD3F900EDC426 /* FLBlockLinkedListElement.m in Sources */,
@@ -5654,6 +5715,7 @@
 				B227A5F1182AD3F900EDC426 /* FLAssertionFailedError.m in Sources */,
 				B227A524182AD3F900EDC426 /* FLColorRangeColorValues.m in Sources */,
 				27188C9218148B8E0060FED6 /* FLObjectDatabaseTests.m in Sources */,
+				276F97651833EB40005DB257 /* NSSizeGeometry+FLAdditions.m in Sources */,
 				B227A8A8182AD3FA00EDC426 /* FLOAuthAuthencationData.m in Sources */,
 				B227A5A6182AD3F900EDC426 /* NSView+FLCompatibility.m in Sources */,
 				B227AA01182AD3FA00EDC426 /* FLAttributedStringController.m in Sources */,
@@ -5701,7 +5763,7 @@
 				B227A8B2182AD3FA00EDC426 /* FLOAuthSession.m in Sources */,
 				B227A7D1182AD3FA00EDC426 /* FLEnumPair.m in Sources */,
 				B227A925182AD3FA00EDC426 /* FLTcpRequest.m in Sources */,
-				B227A7B3182AD3FA00EDC426 /* FLEdgeInsets.m in Sources */,
+				B227A7B3182AD3FA00EDC426 /* UIEdgeInsets+FLAdditions.m in Sources */,
 				B227A858182AD3FA00EDC426 /* FLHttpRequestHeaders.m in Sources */,
 				27F65105183001F000588C8E /* FLTimer.m in Sources */,
 				B227A9DE182AD3FA00EDC426 /* FLObjectDatabase.m in Sources */,
@@ -5909,6 +5971,7 @@
 				2757023B1831686A0096EE13 /* FLBroadcaster.m in Sources */,
 				B227A652182AD3F900EDC426 /* FLArrayProxy.m in Sources */,
 				27F650AD183001F000588C8E /* FLCallback_t.m in Sources */,
+				276F974D1833D818005DB257 /* CGRectGeometry+FLAdditions.m in Sources */,
 				27188CA518148CF90060FED6 /* FLStringBuilderTester.m in Sources */,
 				B227A91D182AD3FA00EDC426 /* FLTcpListener.m in Sources */,
 				B227A5F8182AD3F900EDC426 /* FLAssertions.m in Sources */,
@@ -5916,6 +5979,7 @@
 				B227A89B182AD3FA00EDC426 /* __FLOAuthSession.m in Sources */,
 				27F650B2183001F000588C8E /* FLDeprecatedOperationQueue.m in Sources */,
 				B227A909182AD3FA00EDC426 /* FLRunLoopNetworkStreamEventHandler.m in Sources */,
+				276F97691833F508005DB257 /* FLEdgeInsets.m in Sources */,
 				27F6509E183001F000588C8E /* FLOperationContext.m in Sources */,
 				27188C9718148C450060FED6 /* FLTimeoutTests.m in Sources */,
 				B227A56C182AD3F900EDC426 /* FLUsageToolTask.m in Sources */,
@@ -5939,7 +6003,7 @@
 				27B4BCB5181DB95B0027007A /* FLXmlEncodingTests.m in Sources */,
 				B227A7D3182AD3FA00EDC426 /* FLEnumSet.m in Sources */,
 				B227A5BC182AD3F900EDC426 /* FLInMemoryDataCache.m in Sources */,
-				B227A7BF182AD3FA00EDC426 /* FLSizeGeometry.m in Sources */,
+				B227A7BF182AD3FA00EDC426 /* CGSizeGeometry+FLAdditions.m in Sources */,
 				27F6510C183001F000588C8E /* NSError+FLTimeout.m in Sources */,
 				B227AAA8182AD3FA00EDC426 /* FLUserPreferences.m in Sources */,
 				B227A71A182AD3F900EDC426 /* FLXmlStringEncoding.m in Sources */,
@@ -6102,7 +6166,7 @@
 				B227A8AF182AD3FA00EDC426 /* FLOAuthSession.m in Sources */,
 				B227A7CE182AD3FA00EDC426 /* FLEnumPair.m in Sources */,
 				B227A922182AD3FA00EDC426 /* FLTcpRequest.m in Sources */,
-				B227A7B0182AD3FA00EDC426 /* FLEdgeInsets.m in Sources */,
+				B227A7B0182AD3FA00EDC426 /* UIEdgeInsets+FLAdditions.m in Sources */,
 				B227A855182AD3FA00EDC426 /* FLHttpRequestHeaders.m in Sources */,
 				27F65102183001F000588C8E /* FLTimer.m in Sources */,
 				B227A9DB182AD3FA00EDC426 /* FLObjectDatabase.m in Sources */,
@@ -6281,6 +6345,7 @@
 				B227AA6E182AD3FA00EDC426 /* FLTestableOperation.m in Sources */,
 				27F650AA183001F000588C8E /* FLPromisedResult.m in Sources */,
 				B227A6D1182AD3F900EDC426 /* FLOSVersion.m in Sources */,
+				276F97481833D7BC005DB257 /* NSRectGeometry+FLAdditions.m in Sources */,
 				B227A6BD182AD3F900EDC426 /* FLTestGroup.m in Sources */,
 				B227A677182AD3F900EDC426 /* FLObjcRuntime.m in Sources */,
 				B227A54B182AD3F900EDC426 /* FLCommandLineParser.m in Sources */,
@@ -6294,7 +6359,7 @@
 				27B4BCB7181DB95B0027007A /* FLXmlEncodingTests.m in Sources */,
 				B227A7D5182AD3FA00EDC426 /* FLEnumSet.m in Sources */,
 				B227A5BE182AD3F900EDC426 /* FLInMemoryDataCache.m in Sources */,
-				B227A7C1182AD3FA00EDC426 /* FLSizeGeometry.m in Sources */,
+				B227A7C1182AD3FA00EDC426 /* CGSizeGeometry+FLAdditions.m in Sources */,
 				27F6510E183001F000588C8E /* NSError+FLTimeout.m in Sources */,
 				B227AAAA182AD3FA00EDC426 /* FLUserPreferences.m in Sources */,
 				B227A71C182AD3F900EDC426 /* FLXmlStringEncoding.m in Sources */,
@@ -6397,9 +6462,11 @@
 				B227A4E2182AD3F900EDC426 /* FLCredentialsStorage.m in Sources */,
 				B227AA82182AD3FA00EDC426 /* FLTTestToolMain.m in Sources */,
 				B227A843182AD3FA00EDC426 /* FLHttpStream.m in Sources */,
+				276F976B1833F508005DB257 /* FLEdgeInsets.m in Sources */,
 				2757020F18300D460096EE13 /* FLHttpAuthenticator.m in Sources */,
 				B227A50A182AD3F900EDC426 /* FLCodeChunk.m in Sources */,
 				B227A4FB182AD3F900EDC426 /* FLBracketedStringBuilder.m in Sources */,
+				276F974F1833D818005DB257 /* CGRectGeometry+FLAdditions.m in Sources */,
 				B227A80C182AD3FA00EDC426 /* FLNetworkHostResolver.m in Sources */,
 				B227A95B182AD3FA00EDC426 /* FLMutableNotification.m in Sources */,
 				B227A5D7182AD3F900EDC426 /* FLBlockLinkedListElement.m in Sources */,
@@ -6410,6 +6477,7 @@
 				B227A5F0182AD3F900EDC426 /* FLAssertionFailedError.m in Sources */,
 				B227A523182AD3F900EDC426 /* FLColorRangeColorValues.m in Sources */,
 				27188C9118148B8E0060FED6 /* FLObjectDatabaseTests.m in Sources */,
+				276F97641833EB40005DB257 /* NSSizeGeometry+FLAdditions.m in Sources */,
 				B227A8A7182AD3FA00EDC426 /* FLOAuthAuthencationData.m in Sources */,
 				B227A5A5182AD3F900EDC426 /* NSView+FLCompatibility.m in Sources */,
 				B227AA00182AD3FA00EDC426 /* FLAttributedStringController.m in Sources */,
@@ -6457,7 +6525,7 @@
 				B227A8B1182AD3FA00EDC426 /* FLOAuthSession.m in Sources */,
 				B227A7D0182AD3FA00EDC426 /* FLEnumPair.m in Sources */,
 				B227A924182AD3FA00EDC426 /* FLTcpRequest.m in Sources */,
-				B227A7B2182AD3FA00EDC426 /* FLEdgeInsets.m in Sources */,
+				B227A7B2182AD3FA00EDC426 /* UIEdgeInsets+FLAdditions.m in Sources */,
 				B227A857182AD3FA00EDC426 /* FLHttpRequestHeaders.m in Sources */,
 				27F65104183001F000588C8E /* FLTimer.m in Sources */,
 				B227A9DD182AD3FA00EDC426 /* FLObjectDatabase.m in Sources */,
@@ -6636,6 +6704,7 @@
 				B227AA70182AD3FA00EDC426 /* FLTestableOperation.m in Sources */,
 				27F650AC183001F000588C8E /* FLPromisedResult.m in Sources */,
 				B227A6D3182AD3F900EDC426 /* FLOSVersion.m in Sources */,
+				276F974A1833D7BC005DB257 /* NSRectGeometry+FLAdditions.m in Sources */,
 				B227A6BF182AD3F900EDC426 /* FLTestGroup.m in Sources */,
 				B227A679182AD3F900EDC426 /* FLObjcRuntime.m in Sources */,
 				B227A54D182AD3F900EDC426 /* FLCommandLineParser.m in Sources */,
@@ -6649,7 +6718,7 @@
 				27B4BCB9181DB95B0027007A /* FLXmlEncodingTests.m in Sources */,
 				B227A7D7182AD3FA00EDC426 /* FLEnumSet.m in Sources */,
 				B227A5C0182AD3F900EDC426 /* FLInMemoryDataCache.m in Sources */,
-				B227A7C3182AD3FA00EDC426 /* FLSizeGeometry.m in Sources */,
+				B227A7C3182AD3FA00EDC426 /* CGSizeGeometry+FLAdditions.m in Sources */,
 				27F65110183001F000588C8E /* NSError+FLTimeout.m in Sources */,
 				B227AAAC182AD3FA00EDC426 /* FLUserPreferences.m in Sources */,
 				B227A71E182AD3F900EDC426 /* FLXmlStringEncoding.m in Sources */,
@@ -6752,9 +6821,11 @@
 				B227A4E4182AD3F900EDC426 /* FLCredentialsStorage.m in Sources */,
 				B227AA84182AD3FA00EDC426 /* FLTTestToolMain.m in Sources */,
 				B227A845182AD3FA00EDC426 /* FLHttpStream.m in Sources */,
+				276F976D1833F508005DB257 /* FLEdgeInsets.m in Sources */,
 				2757021118300D460096EE13 /* FLHttpAuthenticator.m in Sources */,
 				B227A50C182AD3F900EDC426 /* FLCodeChunk.m in Sources */,
 				B227A4FD182AD3F900EDC426 /* FLBracketedStringBuilder.m in Sources */,
+				276F97511833D818005DB257 /* CGRectGeometry+FLAdditions.m in Sources */,
 				B227A80E182AD3FA00EDC426 /* FLNetworkHostResolver.m in Sources */,
 				B227A95D182AD3FA00EDC426 /* FLMutableNotification.m in Sources */,
 				B227A5D9182AD3F900EDC426 /* FLBlockLinkedListElement.m in Sources */,
@@ -6765,6 +6836,7 @@
 				B227A5F2182AD3F900EDC426 /* FLAssertionFailedError.m in Sources */,
 				B227A525182AD3F900EDC426 /* FLColorRangeColorValues.m in Sources */,
 				27188C9318148B8E0060FED6 /* FLObjectDatabaseTests.m in Sources */,
+				276F97661833EB40005DB257 /* NSSizeGeometry+FLAdditions.m in Sources */,
 				B227A8A9182AD3FA00EDC426 /* FLOAuthAuthencationData.m in Sources */,
 				B227A5A7182AD3F900EDC426 /* NSView+FLCompatibility.m in Sources */,
 				B227AA02182AD3FA00EDC426 /* FLAttributedStringController.m in Sources */,
@@ -6812,7 +6884,7 @@
 				B227A8B3182AD3FA00EDC426 /* FLOAuthSession.m in Sources */,
 				B227A7D2182AD3FA00EDC426 /* FLEnumPair.m in Sources */,
 				B227A926182AD3FA00EDC426 /* FLTcpRequest.m in Sources */,
-				B227A7B4182AD3FA00EDC426 /* FLEdgeInsets.m in Sources */,
+				B227A7B4182AD3FA00EDC426 /* UIEdgeInsets+FLAdditions.m in Sources */,
 				B227A859182AD3FA00EDC426 /* FLHttpRequestHeaders.m in Sources */,
 				27F65106183001F000588C8E /* FLTimer.m in Sources */,
 				B227A9DF182AD3FA00EDC426 /* FLObjectDatabase.m in Sources */,

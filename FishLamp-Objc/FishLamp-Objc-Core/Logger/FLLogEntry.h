@@ -16,7 +16,6 @@
     NSString* _logString;
     NSString* _logType;
     NSString* _logName;
-    NSString* _logStringContext;
     uint32_t _logCount;
     NSTimeInterval _timestamp;
     FLStackTrace* _stackTrace;

@@ -26,14 +26,12 @@ FLSynthesizeSingleton(FLTestLoggingManager)
 	self = [super init];
 	if(self) {
         _loggers = [[NSMutableArray alloc] init];
-        _indentIntegrity = [[FLIndentIntegrity alloc] init];
 	}
 	return self;
 }
 
 #if FL_MRC
 - (void)dealloc {
-    [_indentIntegrity release];
 	[_loggers release];
 	[super dealloc];
 }

@@ -48,7 +48,7 @@
 
 @protocol FLCredentialsProvider <NSObject>
 - (id<FLAuthenticationCredentials>) authenticationCredentials;
-- (void) updateCredentials:(id<FLAuthenticationCredentials>) authenticationCredentials;
+//- (void) updateCredentials:(id<FLAuthenticationCredentials>) authenticationCredentials;
 
 - (id<FLAuthenticatedEntity>) authenticatedEntity;
 - (void) updateEntity:(id<FLAuthenticatedEntity>) entity;

@@ -51,7 +51,7 @@
 
 @interface FLBroadcasterProxy : NSProxy<FLBroadcaster> {
 @private
-    NSMutableArray* _listeners;
+    NSMutableSet* _listeners;
     NSArray* _iteratable;
     BOOL _dirty;
     dispatch_once_t _semaphore;

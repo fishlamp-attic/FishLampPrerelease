@@ -1,15 +1,11 @@
 //
-//  FLEdgeInsetsUtilities.m
-//  FishLampCocoa
+//  FLEdgeInsets.m
+//  FishLamp-Objc
 //
-//  Created by Mike Fullerton on 12/6/12.
-//  Copyright (c) 2013 GreenTongue Software LLC, Mike Fullerton. 
-//  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
+//  Created by Mike Fullerton on 11/13/13.
+//  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
 #import "FLEdgeInsets.h"
-#import "FLCompatibility.h"
 
-#if OSX
-const UIEdgeInsets UIEdgeInsetsZero = {0,0,0,0};
-#endif
+const FLEdgeInsets FLEdgeInsetsZero = { 0,0,0,0 };

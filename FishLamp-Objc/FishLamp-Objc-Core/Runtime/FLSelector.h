@@ -13,8 +13,8 @@
 @private
     SEL _selector;
     NSUInteger _argumentCount;
-    NSString* selectorString;
-    NSString* selectorName;
+    NSString* _selectorString;
+    NSString* _selectorName;
 }
 
 @property (readonly, assign, nonatomic) SEL selector;

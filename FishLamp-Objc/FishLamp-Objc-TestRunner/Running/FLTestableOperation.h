@@ -17,6 +17,8 @@
 @interface FLTestableOperation : FLOperation {
 @private
     id<FLTestable> _testableObject;
+    NSMutableArray* _queue;
+    FLTestCaseOperation* _currentTestCase;
 }
 
 + (id) testWithTestable:(id<FLTestable>) testableObject;

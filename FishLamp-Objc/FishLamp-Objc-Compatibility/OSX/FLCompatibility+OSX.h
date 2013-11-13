@@ -10,7 +10,7 @@
 // Copyright (c) 2013 GreenTongue Software LLC. All Rights Reserved.
 //
 #if OSX
-#import "FishLampMinimum.h"
+#import "FLCoreRequired.h"
 #import <Cocoa/Cocoa.h>
 
 #if __MAC_10_8
@@ -19,7 +19,6 @@
 
 #import <AppKit/AppKit.h>
 
-#import "FishLampMinimum.h"
 #import "FLCompatibleGeometry+OSX.h"
 
 #import "NSValue+FLCompatibility.h"
@@ -32,7 +31,6 @@
 
 #import "FLCompatibleView+OSX.h"
 #import "FLCompatibleViewController+OSX.h"
-
 
 #define UIGraphicsGetCurrentContext() [[NSGraphicsContext currentContext] graphicsPort]
 

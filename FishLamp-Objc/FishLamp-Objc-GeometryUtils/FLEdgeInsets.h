@@ -1,15 +1,27 @@
 //
-//  FLEdgeInsetsUtilities.h
-//  FishLampCocoa
+//  FLEdgeInsets.h
+//  FishLamp-Objc
 //
-//  Created by Mike Fullerton on 12/6/12.
-//  Copyright (c) 2013 GreenTongue Software LLC, Mike Fullerton. 
-//  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
+//  Created by Mike Fullerton on 11/13/13.
+//  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
 #import "FishLampMinimum.h"
+#import "FLMath.h"
 
-#define FLEdgeInsets10                         UIEdgeInsetsMake(10,10,10,10)
-#define FLEdgeInsets1                          UIEdgeInsetsMake(1,1,1,1)
+typedef struct FLEdgeInsets {
+    CGFloat top;
+    CGFloat left;
+    CGFloat bottom;
+    CGFloat right;
+} FLEdgeInsets;
 
+NS_INLINE
+BOOL FLEdgeInsetsEqualToEdgeInsets(FLEdgeInsets lhs, FLEdgeInsets rhs) {
+    return  FLFloatEqualToFloat(lhs.top, rhs.top) &&
+            FLFloatEqualToFloat(lhs.bottom, rhs.bottom) &&
+            FLFloatEqualToFloat(lhs.left, rhs.left) &&
+            FLFloatEqualToFloat(lhs.right, rhs.right);
+}
 
+extern const FLEdgeInsets FLEdgeInsetsZero;

@@ -6,8 +6,8 @@
 //	Copyright (c) 2013 GreenTongue Software LLC, Mike Fullerton. 
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
-#import "FishLampMinimum.h"
-#import "FLCompatibility.h"
+#import "FLCoreRequired.h"
+#import "FLEdgeInsets.h"
 
 typedef enum {
 	FLRectLayoutVerticalNone		  = 0,
@@ -36,7 +36,7 @@ typedef enum {
 typedef struct FLRectLayout { 
 	FLRectLayoutHorizontal horizontal:16;
 	FLRectLayoutVertical vertical:16;
-	UIEdgeInsets insets;
+	FLEdgeInsets insets;
 } FLRectLayout;
 
 extern const FLRectLayout FLRectLayoutNone;
@@ -54,7 +54,7 @@ extern FLRectLayout FLRectLayoutMake(FLRectLayoutHorizontal horizontalLayout,
 
 extern FLRectLayout FLRectLayoutMakeWithInsets(FLRectLayoutHorizontal horizontalLayout,
                                                  FLRectLayoutVertical verticalLayout,
-                                                 UIEdgeInsets insets);
+                                                 FLEdgeInsets insets);
 
 extern FLRectLayout FLRectLayoutSetVertical(FLRectLayout rectLayout,
                                               FLRectLayoutVertical vertical);
@@ -68,18 +68,5 @@ extern BOOL FLRectLayoutNotNone(FLRectLayout loc);
 
 // FLRect
 
-extern CGRect FLRectLayoutRectInRect(
-	CGRect containerRect,
-	CGRect containeeRect,
-    FLRectLayout rectLayout);
 
-extern CGRect FLRectLayoutRectHorizonallyInRect(
-	CGRect containerRect,
-	CGRect containeeRect,
-    FLRectLayout rectLayout);
-	
-extern CGRect FLRectLayoutRectVerticallyInRect(
-	CGRect containerRect,
-	CGRect containeeRect,
-    FLRectLayout rectLayout);
     

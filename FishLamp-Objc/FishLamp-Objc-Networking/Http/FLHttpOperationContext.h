@@ -22,8 +22,6 @@
 
 @class FLServiceList;
 
-extern NSString* const FLHttpControllerDidLogoutUserNotification;
-
 @interface FLHttpOperationContext : FLOperationContext<FLService, FLHttpRequestAuthenticator, FLCredentialsProvider> {
 @private
     id<FLUserService> _userService;
@@ -37,15 +35,18 @@ extern NSString* const FLHttpControllerDidLogoutUserNotification;
 
 @property (readonly, strong) id<FLUserService> userService;
 
+@property (readonly, strong) id<FLAuthenticationCredentials> authenticationCredentials;
+
+@property (readonly, strong) id<FLAuthenticatedEntity> authenticatedEntity;
 
 // getters
 @property (readonly, assign, nonatomic) BOOL isAuthenticated;
 
 @property (readonly, strong) id<FLStorageService> storageService;
 
-- (void) openServiceWithCredentials:(id<FLAuthenticationCredentials>) credentials;
+//- (void) openServiceWithCredentials:(id<FLAuthenticationCredentials>) credentials;
 
-- (void) openServiceWithUser:(id<FLAuthenticatedEntity>) entity;
+//- (void) openServiceWithUser:(id<FLAuthenticatedEntity>) entity;
 
 - (FLPromise*) beginAuthenticating:(fl_completion_block_t) completion;
 
@@ -77,6 +78,8 @@ extern NSString* const FLHttpControllerDidLogoutUserNotification;
 
 - (void) httpOperationContextDidOpen:(FLHttpOperationContext*) context;
 @end
+
+
 
 
 
