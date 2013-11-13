@@ -21,9 +21,9 @@
     return self;
 }
 
-- (CGRect) subviewFrame {
-    CGRect bounds = self.bounds;
-    bounds.origin = CGPointMake(1,1);
+- (NSRect) subviewFrame {
+    NSRect bounds = self.bounds;
+    bounds.origin = NSMakePoint(1,1);
     bounds.size.width -= 2;
     bounds.size.height -= 2;
     return bounds;
@@ -34,7 +34,7 @@
     [super didAddSubview:subview];
 }
 
-- (void) setFrame:(CGRect) frame {
+- (void) setFrame:(NSRect) frame {
     [super setFrame:frame];
     for(NSView* view in self.subviews) {
         view.frame = self.subviewFrame;

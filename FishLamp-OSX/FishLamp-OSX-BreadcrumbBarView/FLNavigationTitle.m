@@ -200,7 +200,7 @@
     NSAttributedString* string = _stringController.attributedString;
 
     CGContextSetTextMatrix(context, CGAffineTransformIdentity );
-    CGRect frame = CGRectZero;
+    SDKRect frame = CGRectZero;
     frame.size = [string  size];
     frame = FLRectOptimizedForViewLocation(FLRectCenterRectInRect(self.bounds, frame));
     [string  drawInRect:frame];

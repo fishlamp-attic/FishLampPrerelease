@@ -35,10 +35,10 @@
     textRect.origin.x += horizontalAdjust;
 
     if (textRect.size.height < bounds.size.height) {
-        textRect = FLRectCenterRectInRectVertically(bounds, textRect);
+        textRect = NSRectCenterRectInRectVertically(bounds, textRect);
         textRect.origin.y += self.vertAdjustment;
         
-        return FLRectOptimizedForViewSize(textRect);
+        return NSRectOptimizedForViewSize(textRect);
     }
     return titleFrame;
 }
@@ -49,7 +49,7 @@
 //    NSInteger col = 0;
 //    if([controlView getRow:&row column:&col ofCell:self]) {
 //        NSRect cellFrame = [controlView cellFrameAtRow:row column:0];
-//        frame = FLRectCenterRectInRectVertically(cellFrame, frame);
+//        frame = NSRectCenterRectInRectVertically(cellFrame, frame);
 //    }
 //
 //

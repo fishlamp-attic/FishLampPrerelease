@@ -25,7 +25,7 @@
 }
 #endif
 
-- (void) setFrame:(CGRect) frame {
+- (void) setFrame:(SDKRect) frame {
     [super setFrame:frame];
     
     if(self.trackingArea) {

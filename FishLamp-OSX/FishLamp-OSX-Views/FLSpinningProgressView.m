@@ -43,7 +43,7 @@
 //    }
 //}
 //
-//- (void) setFrame:(CGRect) frame {
+//- (void) setFrame:(SDKRect) frame {
 //    [super setFrame:frame];
 //    if(self) {
 //        self.frame = FLRectOptimizedForViewLocation(FLRectCenterRectInRect(self.bounds, self.frame));

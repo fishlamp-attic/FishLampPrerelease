@@ -64,8 +64,8 @@
 
     FLNavigationTitle* highlightedTitle = nil;
 
-    CGRect bounds = self.bounds;
-    CGFloat top = FLRectGetBottom(bounds);
+    SDKRect bounds = self.bounds;
+    CGFloat top = CGRectGetBottom(bounds);
 
     for(FLNavigationTitle* title in _titles) {
         
@@ -73,7 +73,7 @@
             continue;
         }
 
-        CGRect frame = bounds;
+        SDKRect frame = bounds;
         frame.size.height = title.titleHeight; 
         frame.origin.y = top - frame.size.height;
 
@@ -99,7 +99,7 @@
             _highlightLayer.hidden = NO;
         }
         
-        CGRect highlightFrame = FLRectSetWidth(highlightedTitle.frame, highlightedTitle.frame.size.width + 11);
+        SDKRect highlightFrame = CGRectSetWidth(highlightedTitle.frame, highlightedTitle.frame.size.width + 11);
         if(!CGRectEqualToRect(_highlightLayer.frame, highlightFrame)) {
             _highlightLayer.frame = highlightFrame;
         }
@@ -162,7 +162,7 @@
     }
 }
 
-- (void) setFrame:(CGRect) frame {
+- (void) setFrame:(SDKRect) frame {
     [super setFrame:frame];
     [self updateLayout:NO];
 }

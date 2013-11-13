@@ -55,7 +55,7 @@
     [_backgroundColor setFill];
     NSRectFill(dirtyRect);
 
-    CGRect bounds = self.bounds;
+    NSRect bounds = self.bounds;
     bounds.origin.x += 0.5f;
     bounds.origin.y += 0.5f;
     bounds.size.width -= 1.0f;
@@ -63,9 +63,9 @@
     
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, bounds.origin.x, bounds.origin.y); //start point
-    CGContextAddLineToPoint(context, FLRectGetRight(bounds), bounds.origin.y);
-    CGContextAddLineToPoint(context, FLRectGetRight(bounds), FLRectGetBottom(bounds));
-    CGContextAddLineToPoint(context, bounds.origin.x, FLRectGetBottom(bounds)); // end path
+    CGContextAddLineToPoint(context, CGRectGetRight(bounds), bounds.origin.y);
+    CGContextAddLineToPoint(context, CGRectGetRight(bounds), CGRectGetBottom(bounds));
+    CGContextAddLineToPoint(context, bounds.origin.x, CGRectGetBottom(bounds)); // end path
     CGContextClosePath(context); // close path
 
     [_frameColor set];

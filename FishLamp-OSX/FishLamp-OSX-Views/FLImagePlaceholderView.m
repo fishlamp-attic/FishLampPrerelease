@@ -51,7 +51,7 @@
 }
 #endif
 
-- (void) setFrame:(CGRect) frame {
+- (void) setFrame:(SDKRect) frame {
     [super setFrame:frame];
     
     _progress.frame = FLRectOptimizedForViewLocation(FLRectCenterRectInRect(self.bounds, _progress.frame));
@@ -61,9 +61,9 @@
 - (void) resizeToProportionalImageSize {
     if(_imageView.image) {
         
-        CGRect bounds = self.superview.bounds;
+        SDKRect bounds = self.superview.bounds;
     
-        CGRect frame = CGRectInset(bounds, _frameWidth, _frameWidth);
+        SDKRect frame = CGRectInset(bounds, _frameWidth, _frameWidth);
         frame = FLRectFitInRectInRectProportionally(frame,CGRectMake(0,0,_imageView.image.size.width, _imageView.image.size.height));
         frame.size.width += (_frameWidth*2);
         frame.size.height += (_frameWidth*2);

@@ -82,13 +82,13 @@
     
         CGRect iconFrame = CGRectMake(0,0,16,16);
         
-        iconFrame = FLRectCenterRectInRectVertically(bounds, iconFrame);
-        iconFrame.origin = CGPointMake(FLRectGetRight(bounds) - iconFrame.size.width - 10, iconFrame.origin.y); 
+        iconFrame = NSRectCenterRectInRectVertically(bounds, iconFrame);
+        iconFrame.origin = CGPointMake(NSRectGetRight(bounds) - iconFrame.size.width - 10, iconFrame.origin.y); 
 
     
 //        iconFrame.size.width = iconFrame.size.height;
 //        iconFrame.origin.x = frame.origin.x + 6;
-        // FLRectOptimizedForViewLocation(FLRectCenterRectInRectVertically(frame,  iconFrame)) 
+        // NSRectOptimizedForViewLocation(NSRectCenterRectInRectVertically(frame,  iconFrame)) 
         
         [image drawInRect:iconFrame
                 fromRect:NSZeroRect

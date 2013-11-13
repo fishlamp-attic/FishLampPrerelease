@@ -14,18 +14,18 @@
 #import "NSBundle+FLCurrentBundle.h"
 
 @interface FLLoginPanel ()
+@property (readwrite, strong, nonatomic) id<FLAuthenticationCredentials> credentials;
 - (void) updateNextButton;
 - (IBAction) resetLogin:(id) sender;
 - (IBAction) startLogin:(id) sender;
 - (IBAction) passwordCheckboxToggled:(id) sender;
-@property (readwrite, strong, nonatomic) FLCredentialsEditor* credentialsEditor;
 - (void) setNextResponderIfNeeded;
 @end
 
 @implementation FLLoginPanel
 
-@synthesize credentialsEditor = _credentialsEditor;
-@synthesize credentialDataSource = _credentialDataSource;
+@synthesize credentials = _credentials;
+@synthesize authenticationDelegate = _authenticationDelegate;
 
 - (id) init {
     return [self initWithNibName:@"FLLoginPanel" bundle:[FLBundleStack currentBundle]];
@@ -51,7 +51,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
 #if FL_MRC
-    [_credentialsEditor release];
+    [_credentials release];
     [super dealloc];
 #endif
 }
@@ -93,14 +93,15 @@
 }
 
 - (void) updateNextButton {
-    self.canOpenNextPanel = [self.credentialDataSource loginPanel:self credentialsAreAuthenticated:self.credentialsEditor];
+    self.canOpenNextPanel = [self.authenticationDelegate loginPanel:self credentialsAreAuthenticated:self.credentials];
     _loginButton.enabled = self.canLogin;
 }
 
 - (void) updateCredentialsEditor {
-    _credentialsEditor.userName = self.userName;
-    _credentialsEditor.password = self.password;
-    _credentialsEditor.rememberPassword = self.savePasswordInKeychain;
+    [self.credentials clearCredentials];
+    self.credentials.userName = self.userName;
+    self.credentials.password = self.password;
+    self.credentials.rememberPassword = self.savePasswordInKeychain;
 }
 
 
@@ -182,18 +183,18 @@
 }
 
 - (void) progressPanelWasCancelled:(FLProgressPanel*) panel {
-    [self.credentialDataSource loginPanelDidCancelAuthentication:self];
+    [self.authenticationDelegate loginPanelDidCancelAuthentication:self];
     [self showEntryFields:YES completion:nil];
 }
 
 - (void) beginAuthenticating {
 
     [self updateCredentialsEditor];
-    [self.credentialsEditor stopEditing];
 
-    [self.credentialDataSource  loginPanel:self 
- beginAuthenticatingWithCredentials:self.credentialsEditor 
-                         completion:^(FLPromisedResult result) {
+    [self.authenticationDelegate loginPanel:self setCredentials:self.credentials];
+
+    [self.authenticationDelegate  loginPanel:self
+           beginAuthenticatingWithCompletion:^(FLPromisedResult result) {
 
         dispatch_async(dispatch_get_main_queue(), ^{
             if([result isError]) {
@@ -239,10 +240,10 @@
 }
 
 - (void) loadCredentials {
-    self.credentialsEditor = [self.credentialDataSource  loginPanelGetCredentials:self];
-    [self setSavePasswordInKeychain:self.credentialsEditor.rememberPassword];
-    [self setUserName:self.credentialsEditor .userName];
-    [self setPassword:self.credentialsEditor .password];
+    self.credentials = [self.authenticationDelegate  loginPanelGetCredentials:self];
+    [self setSavePasswordInKeychain:self.credentials.rememberPassword];
+    [self setUserName:self.credentials.userName];
+    [self setPassword:self.credentials.password];
 }
 
 - (IBAction) passwordCheckboxToggled:(id) sender {
@@ -296,8 +297,10 @@
     [self.view.window makeFirstResponder:nil];
     [super panelWillDisappear];
     [self updateCredentialsEditor];
-    [self.credentialsEditor stopEditing];
-    self.credentialsEditor = nil;
+
+    [self.authenticationDelegate loginPanel:self setCredentials:self.credentials];
+
+    self.credentials = nil;
 }
 
 - (void) panelDidDisappear {

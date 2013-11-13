@@ -15,7 +15,7 @@
 @implementation FLWizardView 
 
 #if DEBUG
-//- (void) setFrame:(CGRect) frame {
+//- (void) setFrame:(SDKRect) frame {
 ////    [super setFrame:frame];
 //
 //    if(frame.size.height > 0 && frame.size.width > 0) {

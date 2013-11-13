@@ -10,6 +10,8 @@
 #import "FLPanelManager.h"
 #import "FLWizardStyleViewTransition.h"
 
+#import "FLCompatibility.h"
+
 @interface FLPanelViewController()
 @property (readwrite, assign, nonatomic, getter=isSelected) BOOL selected;
 @end
@@ -117,12 +119,12 @@
 
 - (void) setPanelFrame:(FLPanelViewController*) panel {
 
-    CGRect bounds = _contentView.bounds;
+    SDKRect bounds = _contentView.bounds;
     if(panel.panelFillsView) {
         panel.view.frame = _contentView.bounds;
     }
     else {
-        CGRect frame = FLRectCenterRectInRectHorizontally(_contentView.bounds, panel.view.frame);
+        SDKRect frame = FLRectCenterRectInRectHorizontally(_contentView.bounds, panel.view.frame);
         frame.origin.y = FLRectGetBottom(bounds) - frame.size.height - 60.0f; // = FLRectCenterRectInRectVertically(bounds, frame);
         panel.view.frame = FLRectOptimizedForViewLocation(frame);
     }
@@ -158,7 +160,8 @@
     [panel view]; // make sure it's loaded from nib
 
     panel.identifier = identifier;
-    
+    [panel setDelegate:delegate];
+
     FLTrace(@"Added Panel: %@ for identifier: %@", [panel description], [identifier description]);
     
 //    panel.view.wantsLayer = YES;
@@ -167,9 +170,6 @@
     [self didAddPanel:panel];
     [self panelStateDidChange:panel];
     
-    if(delegate) {
-        [panel setDelegate:delegate];
-    }
 }
 
 - (void) setPanelHidden:(BOOL) hidden 
@@ -394,13 +394,13 @@
     if(animated && toHide != nil && OSXVersionIsAtLeast10_8()) {
         completion = FLCopyWithAutorelease(completion);
 
-        CGRect toShowFromFrame = toShow.view.frame;
-        CGRect toShowToFrame = toShowFromFrame;
+        SDKRect toShowFromFrame = toShow.view.frame;
+        SDKRect toShowToFrame = toShowFromFrame;
         
-        CGRect toHideToFrame = toHide.view.frame;
-        CGRect toHideFromFrame = toHideToFrame;
+        SDKRect toHideToFrame = toHide.view.frame;
+        SDKRect toHideFromFrame = toHideToFrame;
         
-        CGRect bounds = _contentView.bounds;
+        SDKRect bounds = _contentView.bounds;
         
         CGFloat offLeft = bounds.origin.x - bounds.size.width;
         CGFloat offRight = FLRectGetRight(bounds);

@@ -10,8 +10,6 @@
 
 @interface FLTextViewLogger()
 @property (readwrite, nonatomic, strong) NSMutableAttributedString* buffer;
-@property (readonly, assign, nonatomic) NSInteger indentLevel;
-
 @end
 
 @implementation FLTextViewLogger

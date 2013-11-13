@@ -13,19 +13,21 @@
 
 @implementation FLHttpOperationContext (UserLogin)
 
-- (FLCredentialsEditor*) loginPanelGetCredentials:(FLLoginPanel*) panel {
-    return self.userService.credentialEditor;
+- (id<FLAuthenticationCredentials>) loginPanelGetCredentials:(FLLoginPanel*) panel {
+    return self.userService.credentials;
+}
+
+- (void) loginPanel:(FLLoginPanel*) panel setCredentials:(id<FLAuthenticationCredentials>) credentials {
+    [self.userService setCredentials:credentials];
+    [self.userService saveCredentials];
 }
 
 - (void) loginPanel:(FLLoginPanel*) panel 
-beginAuthenticatingWithCredentials:(FLCredentialsEditor*) editor
-         completion:(fl_result_block_t) completion {
+beginAuthenticatingWithCompletion:(fl_result_block_t) completion {
 
-    if(self.isServiceOpen) {
-        [self closeService];
+    if(!self.isServiceOpen) {
+        [self openService];
     }
-    [self openServiceWithCredentials:editor.credentials];
-
     [self beginAuthenticating:completion];
 }
 
@@ -34,10 +36,8 @@ beginAuthenticatingWithCredentials:(FLCredentialsEditor*) editor
 }
 
 - (BOOL) loginPanel:(FLLoginPanel*) panel 
-credentialsAreAuthenticated:(FLCredentialsEditor*) editor {
-
-    return  [self isAuthenticated];
+credentialsAreAuthenticated:(id<FLAuthenticationCredentials>) editor {
+    return  [self.userService isAuthenticated];
 }
-
 
 @end

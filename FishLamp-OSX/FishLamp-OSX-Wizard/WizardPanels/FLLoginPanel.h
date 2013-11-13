@@ -12,12 +12,11 @@
 #import "FLWizardViewController.h"
 #import "FLProgressPanel.h"
 #import "FLAuthenticationCredentials.h"
-#import "FLCredentialsEditor.h"
 
 #if OSX
 
-
 @protocol FLLoginPanelDelegate;
+@protocol FLLoginPanelAthenticationDelegate;
 
 @interface FLLoginPanel : FLPanelViewController<NSTextFieldDelegate, FLProgressPanelDelegate>  {
 @private
@@ -26,30 +25,26 @@
     IBOutlet NSButton* _savePasswordCheckBox;
     IBOutlet NSButton* _forgotPasswordButton;
     IBOutlet NSButton* _loginButton;
-    FLCredentialsEditor* _credentialsEditor;
-    __unsafe_unretained id _credentialDataSource;
+    id<FLAuthenticationCredentials> _credentials;
+    __unsafe_unretained id<FLLoginPanelAthenticationDelegate> _authenticationDelegate;
 }
 + (id) loginPanel;
-@property (readwrite, assign, nonatomic) id credentialDataSource;
+@property (readwrite, assign, nonatomic) id<FLLoginPanelAthenticationDelegate> authenticationDelegate;
 @end
 
-@protocol FLLoginPanelDataSource <NSObject>
-- (FLCredentialsEditor*) loginPanelGetCredentials:(FLLoginPanel*) panel;
+@protocol FLLoginPanelAthenticationDelegate <NSObject>
 
-//- (void) loginPanel:(FLLoginPanel*) loginPanel 
-//didChangeCredentials:(FLCredentialsEditor*) user;
+- (id<FLAuthenticationCredentials>) loginPanelGetCredentials:(FLLoginPanel*) panel;
 
-- (void) loginPanel:(FLLoginPanel*) panel 
-beginAuthenticatingWithCredentials:(FLCredentialsEditor*) credentials
-         completion:(fl_result_block_t) completion;
+- (void) loginPanel:(FLLoginPanel*) panel setCredentials:(id<FLAuthenticationCredentials>) credentials;
+
+- (void) loginPanel:(FLLoginPanel*) loginPanel
+beginAuthenticatingWithCompletion:(fl_result_block_t) completion;
 
 - (void) loginPanelDidCancelAuthentication:(FLLoginPanel*) panel;
 
-//- (void) loginPanel:(FLLoginPanel*) loginPanel 
-//   saveCredentials:(FLCredentialsEditor*) credentials;
-
 - (BOOL) loginPanel:(FLLoginPanel*) panel 
-credentialsAreAuthenticated:(FLCredentialsEditor*) credentials;
+credentialsAreAuthenticated:(id<FLAuthenticationCredentials>) credentials;
    
 @end
 

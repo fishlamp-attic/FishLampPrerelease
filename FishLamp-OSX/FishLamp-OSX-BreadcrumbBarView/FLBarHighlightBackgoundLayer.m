@@ -37,12 +37,12 @@
     
     CGMutablePathRef path = CGPathCreateMutable();
     CGRect bounds = CGRectInset(self.bounds, 0.5, 0.5);
-    CGPathMoveToPoint(path, nil, bounds.origin.x, FLRectGetBottom(bounds));
-    CGPathAddLineToPoint(path, nil, FLRectGetRight(bounds)- ArrowWidth, FLRectGetBottom(bounds));
-    CGPathAddLineToPoint(path, nil, FLRectGetRight(bounds), FLRectGetBottom(bounds) - (bounds.size.height / 2.0f));
-    CGPathAddLineToPoint(path, nil, FLRectGetRight(bounds)- ArrowWidth, bounds.origin.y);
+    CGPathMoveToPoint(path, nil, bounds.origin.x, CGRectGetBottom(bounds));
+    CGPathAddLineToPoint(path, nil, CGRectGetRight(bounds)- ArrowWidth, CGRectGetBottom(bounds));
+    CGPathAddLineToPoint(path, nil, CGRectGetRight(bounds), CGRectGetBottom(bounds) - (bounds.size.height / 2.0f));
+    CGPathAddLineToPoint(path, nil, CGRectGetRight(bounds)- ArrowWidth, bounds.origin.y);
     CGPathAddLineToPoint(path, nil, bounds.origin.x, bounds.origin.y);
-    CGPathAddLineToPoint(path, nil, bounds.origin.x, FLRectGetBottom(bounds));
+    CGPathAddLineToPoint(path, nil, bounds.origin.x, CGRectGetBottom(bounds));
 	CGPathCloseSubpath(path);
 
     CGColorRef fillColor = [[NSColor whiteColor] copyCGColorRef];
