@@ -11,6 +11,7 @@
 #import "FLCoreText.h"
 #import "FLColorRange+Gradients.h"
 #import "FLColorUtilities.h"
+#import "FLGeometry.h"
 
 #define ArrowWidth 10.0f
 #define kWideWidth 100
@@ -64,8 +65,8 @@
 
     FLNavigationTitle* highlightedTitle = nil;
 
-    SDKRect bounds = self.bounds;
-    CGFloat top = CGRectGetBottom(bounds);
+    CGRect bounds = NSRectToCGRect(self.bounds);
+    CGFloat top = NSMaxY(NSRectFromCGRect(bounds));
 
     for(FLNavigationTitle* title in _titles) {
         
@@ -73,7 +74,7 @@
             continue;
         }
 
-        SDKRect frame = bounds;
+        CGRect frame = bounds;
         frame.size.height = title.titleHeight; 
         frame.origin.y = top - frame.size.height;
 
@@ -99,7 +100,7 @@
             _highlightLayer.hidden = NO;
         }
         
-        SDKRect highlightFrame = CGRectSetWidth(highlightedTitle.frame, highlightedTitle.frame.size.width + 11);
+        CGRect highlightFrame = CGRectSetWidth(highlightedTitle.frame, highlightedTitle.frame.size.width + 11);
         if(!CGRectEqualToRect(_highlightLayer.frame, highlightFrame)) {
             _highlightLayer.frame = highlightFrame;
         }
@@ -162,7 +163,7 @@
     }
 }
 
-- (void) setFrame:(SDKRect) frame {
+- (void) setFrame:(NSRect) frame {
     [super setFrame:frame];
     [self updateLayout:NO];
 }

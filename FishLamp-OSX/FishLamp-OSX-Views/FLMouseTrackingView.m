@@ -25,7 +25,7 @@
 }
 #endif
 
-- (void) setFrame:(SDKRect) frame {
+- (void) setFrame:(NSRect) frame {
     [super setFrame:frame];
     
     if(self.trackingArea) {
@@ -55,8 +55,8 @@
 }
 
 - (CGPoint) mouseUpdate:(NSEvent*) event {
-    NSPoint location = [self convertPoint:[event locationInWindow] fromView:nil];
-    BOOL mouseIn = CGRectContainsPoint(self.bounds, location);
+    CGPoint location = NSPointToCGPoint([self convertPoint:[event locationInWindow] fromView:nil]);
+    BOOL mouseIn = CGRectContainsPoint(NSRectToCGRect(self.bounds), location);
     if(mouseIn != _mouseIn) {
         _mouseIn = mouseIn;
     }

@@ -119,14 +119,14 @@
 
 - (void) setPanelFrame:(FLPanelViewController*) panel {
 
-    SDKRect bounds = _contentView.bounds;
+    NSRect bounds = _contentView.bounds;
     if(panel.panelFillsView) {
         panel.view.frame = _contentView.bounds;
     }
     else {
-        SDKRect frame = FLRectCenterRectInRectHorizontally(_contentView.bounds, panel.view.frame);
-        frame.origin.y = FLRectGetBottom(bounds) - frame.size.height - 60.0f; // = FLRectCenterRectInRectVertically(bounds, frame);
-        panel.view.frame = FLRectOptimizedForViewLocation(frame);
+        NSRect frame = NSRectCenterRectInRectHorizontally(_contentView.bounds, panel.view.frame);
+        frame.origin.y = NSRectGetBottom(bounds) - frame.size.height - 60.0f; // = FLRectCenterRectInRectVertically(bounds, frame);
+        panel.view.frame = NSRectOptimizedForViewLocation(frame);
     }
     
 //    FLLog(@"panel frame view %@", NSStringFromRect(panel.view.frame));
@@ -394,16 +394,16 @@
     if(animated && toHide != nil && OSXVersionIsAtLeast10_8()) {
         completion = FLCopyWithAutorelease(completion);
 
-        SDKRect toShowFromFrame = toShow.view.frame;
-        SDKRect toShowToFrame = toShowFromFrame;
+        NSRect toShowFromFrame = toShow.view.frame;
+        NSRect toShowToFrame = toShowFromFrame;
         
-        SDKRect toHideToFrame = toHide.view.frame;
-        SDKRect toHideFromFrame = toHideToFrame;
+        NSRect toHideToFrame = toHide.view.frame;
+        NSRect toHideFromFrame = toHideToFrame;
         
-        SDKRect bounds = _contentView.bounds;
+        NSRect bounds = _contentView.bounds;
         
         CGFloat offLeft = bounds.origin.x - bounds.size.width;
-        CGFloat offRight = FLRectGetRight(bounds);
+        CGFloat offRight = NSRectGetRight(bounds);
         
         if(idx > currentIdx) {
             toShowFromFrame.origin.x = offRight;

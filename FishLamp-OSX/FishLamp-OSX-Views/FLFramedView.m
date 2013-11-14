@@ -55,7 +55,7 @@
     [_backgroundColor setFill];
     NSRectFill(dirtyRect);
 
-    NSRect bounds = self.bounds;
+    CGRect bounds = NSRectToCGRect(self.bounds);
     bounds.origin.x += 0.5f;
     bounds.origin.y += 0.5f;
     bounds.size.width -= 1.0f;

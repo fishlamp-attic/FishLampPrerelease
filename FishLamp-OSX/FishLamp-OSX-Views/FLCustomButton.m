@@ -78,12 +78,12 @@
 - (void)drawImage:(NSImage*)image withFrame:(NSRect)frame inView:(NSView*)controlView
 {
     if(image) {
-        CGRect bounds = controlView.bounds;
+        NSRect bounds = controlView.bounds;
     
-        CGRect iconFrame = CGRectMake(0,0,16,16);
+        NSRect iconFrame = NSRectMake(0,0,16,16);
         
         iconFrame = NSRectCenterRectInRectVertically(bounds, iconFrame);
-        iconFrame.origin = CGPointMake(NSRectGetRight(bounds) - iconFrame.size.width - 10, iconFrame.origin.y); 
+        iconFrame.origin = NSPointMake(NSRectGetRight(bounds) - iconFrame.size.width - 10, iconFrame.origin.y);
 
     
 //        iconFrame.size.width = iconFrame.size.height;

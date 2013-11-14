@@ -200,10 +200,10 @@
     NSAttributedString* string = _stringController.attributedString;
 
     CGContextSetTextMatrix(context, CGAffineTransformIdentity );
-    SDKRect frame = CGRectZero;
-    frame.size = [string  size];
-    frame = FLRectOptimizedForViewLocation(FLRectCenterRectInRect(self.bounds, frame));
-    [string  drawInRect:frame];
+    CGRect frame = CGRectZero;
+    frame.size = NSSizeToCGSize([string  size]);
+    frame = CGRectOptimizedForViewLocation(CGRectCenterRectInRect(self.bounds, frame));
+    [string  drawInRect:NSRectFromCGRect(frame)];
     [NSGraphicsContext restoreGraphicsState];
 
 #if TRACE
