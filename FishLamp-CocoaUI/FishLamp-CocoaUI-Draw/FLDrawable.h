@@ -11,18 +11,18 @@
 #import "FLCompatibility.h"
 
 @protocol FLDrawableParent <NSObject>
-@property (readonly, assign, nonatomic) SDKRect bounds;
+@property (readonly, assign, nonatomic) CGRect bounds;
 @property (readonly, assign, nonatomic) SDKView* view;
 @end
 
 @protocol FLDrawable <NSObject>
 
-- (void) drawRect:(SDKRect) drawRect 
-        withFrame:(SDKRect) frame 
+- (void) drawRect:(CGRect) drawRect 
+        withFrame:(CGRect) frame 
          inParent:(id) parent
 drawEnclosedBlock:(void (^)(void)) drawEnclosedBlock;
 
 @end
 
-//extern void FLDrawRectWithDrawable(id drawable, SDKRect drawRect, SDKRect frame, id parent, dispatch_block_t drawEnclosed);
+//extern void FLDrawRectWithDrawable(id drawable, CGRect drawRect, CGRect frame, id parent, dispatch_block_t drawEnclosed);
 

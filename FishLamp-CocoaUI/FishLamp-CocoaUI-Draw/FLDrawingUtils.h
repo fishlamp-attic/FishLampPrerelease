@@ -10,7 +10,7 @@
 #import "FishLampMinimum.h"
 
 extern void FLDrawLinearGradient(CGContextRef context, 
-    SDKRect rect, 
+    CGRect rect, 
     CGColorRef startColor, 
     CGColorRef endColor);
    

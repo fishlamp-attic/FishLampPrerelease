@@ -9,7 +9,7 @@
 
 #import "FLDrawable.h"
 
-//void FLDrawRectWithDrawable(id drawable, SDKRect drawRect, SDKRect frame, id parent, dispatch_block_t drawEnclosed) {
+//void FLDrawRectWithDrawable(id drawable, CGRect drawRect, CGRect frame, id parent, dispatch_block_t drawEnclosed) {
 //    __block BOOL wasInvoked = NO;
 //    
 //    [drawable drawRect:drawRect withFrame:frame inParent:parent drawEnclosedBlock:^{

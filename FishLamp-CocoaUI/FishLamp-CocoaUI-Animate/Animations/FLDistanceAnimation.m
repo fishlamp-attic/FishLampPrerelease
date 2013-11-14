@@ -24,7 +24,7 @@
     return FLAutorelease([[[self class] alloc] initWithStartScale:startScale finishScale:finishScale]);
 }
 
-- (CATransform3D) transformForFrame:(SDKRect) frame withScale:(CGFloat) scaleAmount {
+- (CATransform3D) transformForFrame:(CGRect) frame withScale:(CGFloat) scaleAmount {
 
     CATransform3D scaleTransform = CATransform3DMakeScale(scaleAmount, scaleAmount, 1);
     CATransform3D translateTransform = CATransform3DMakeTranslation((frame.size.width * (1.0 - scaleAmount)) / 2.0f,  

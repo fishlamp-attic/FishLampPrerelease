@@ -15,7 +15,7 @@
 
 -(CALayer *)layerFromContents {
     CALayer *newLayer = [CALayer layer];
-    newLayer.bounds = self.bounds;
+    newLayer.bounds = NSRectToCGRect(self.bounds);
     NSBitmapImageRep *bitmapRep = [self bitmapImageRepForCachingDisplayInRect:self.bounds];
     [self cacheDisplayInRect:self.bounds toBitmapImageRep:bitmapRep];
     newLayer.contents = (id)bitmapRep.CGImage;
@@ -128,12 +128,12 @@
         bottomLayer.transform = perspective;
     }
     
-    bottomLayer.frame = topView.frame;
+    bottomLayer.frame =  NSRectToCGRect(topView.frame);
     bottomLayer.doubleSided = NO;
     [hostView.layer addSublayer:bottomLayer];
     
     topLayer.doubleSided = NO;
-    topLayer.frame = topView.frame;
+    topLayer.frame = NSRectToCGRect(topView.frame);
     [hostView.layer addSublayer:topLayer];
     
     [CATransaction begin];

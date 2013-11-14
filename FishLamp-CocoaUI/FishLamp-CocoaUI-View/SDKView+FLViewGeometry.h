@@ -76,8 +76,8 @@
 @end
 
 NS_INLINE
-BOOL FLViewSetFrame(SDKView* view, CGRect frame) {
-    if(!CGRectEqualToRect(view.frame, frame)) {
+BOOL FLViewSetFrame(SDKView* view, NSRect frame) {
+    if(!NSRectEqualToRect(view.frame, frame)) {
         view.frame = frame;
         return YES;
     }

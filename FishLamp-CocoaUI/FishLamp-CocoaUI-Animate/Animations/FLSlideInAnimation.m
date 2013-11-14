@@ -28,8 +28,8 @@
 
 - (CGPoint) offscreenOrigin:(CALayer*) layer {
 
-    SDKRect frame = layer.frame;
-    SDKRect bounds = layer.superlayer.bounds;
+    CGRect frame = layer.frame;
+    CGRect bounds = layer.superlayer.bounds;
 
     switch(self.direction) {
         case FLAnimationDirectionUp:
@@ -72,8 +72,8 @@
 
 - (void) commitAnimation:(CALayer*) layer {
     CABasicAnimation *moveFrame = [CABasicAnimation animationWithKeyPath:@"position"];
-    [moveFrame setFromValue:[NSValue valueWithPoint:layer.position]];
-    [moveFrame setToValue:[NSValue valueWithPoint:_onScreenOrigin]];
+    [moveFrame setFromValue:[NSValue valueWithPoint:NSPointFromCGPoint(layer.position)]];
+    [moveFrame setToValue:[NSValue valueWithPoint:NSPointFromCGPoint(_onScreenOrigin)]];
     [self configureAnimation:moveFrame];
     [layer addAnimation:moveFrame forKey:@"position"];
 }
@@ -100,8 +100,8 @@
 
 - (void) commitAnimation:(CALayer*) layer {
     CABasicAnimation *moveFrame = [CABasicAnimation animationWithKeyPath:@"position"];
-    [moveFrame setFromValue:[NSValue valueWithPoint:layer.position]];
-    [moveFrame setToValue:[NSValue valueWithPoint:[self offscreenOrigin:layer]]];
+    [moveFrame setFromValue:[NSValue valueWithPoint:NSPointFromCGPoint(layer.position)]];
+    [moveFrame setToValue:[NSValue valueWithPoint:NSPointFromCGPoint([self offscreenOrigin:layer])]];
     [self configureAnimation:moveFrame];
     [layer addAnimation:moveFrame forKey:@"position"];
 }

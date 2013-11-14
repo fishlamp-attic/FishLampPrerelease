@@ -15,8 +15,8 @@
 @synthesize cornerRadius = _cornerRadius;
 @synthesize lineWidth = _lineWidth;
 
-- (void) drawRect:(SDKRect) drawRect 
-        withFrame:(SDKRect) frame 
+- (void) drawRect:(CGRect) drawRect 
+        withFrame:(CGRect) frame 
          inParent:(id) parent
 drawEnclosedBlock:(void (^)(void)) drawEnclosedBlock {
 

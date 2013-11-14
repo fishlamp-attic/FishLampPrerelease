@@ -98,7 +98,7 @@ return;
 //                                kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
 
     CGPoint startPoint = CGPointMake(0.0, 0.0);
-    CGPoint  endPoint = FLRectGetBottomLeft(frame);
+    CGPoint  endPoint = CGRectGetBottomLeft(frame);
     CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0); 
 //                                kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
 

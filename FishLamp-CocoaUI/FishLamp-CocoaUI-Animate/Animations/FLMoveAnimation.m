@@ -42,8 +42,8 @@
 - (CAAnimation*) CAAnimation {
 
     CABasicAnimation *moveFrame = [CABasicAnimation animationWithKeyPath:@"position"];
-    [moveFrame setFromValue:[NSValue valueWithPoint:_startPoint]];
-    [moveFrame setToValue:[NSValue valueWithPoint:_finishPoint]];
+    [moveFrame setFromValue:[NSValue valueWithPoint:NSPointFromCGPoint(_startPoint)]];
+    [moveFrame setToValue:[NSValue valueWithPoint:NSPointFromCGPoint(_finishPoint)]];
     [self configureAnimation:moveFrame];
     return moveFrame;
 }

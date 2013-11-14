@@ -9,9 +9,8 @@
 
 #import "FLPathUtilities.h"
 #import "FLGeometry.h"
-#import "FLCompatibility.h"
 
-void FLCreateRectPathWithCornerRadii(CGMutablePathRef path, SDKRect rect, CGFloat topLeft, CGFloat topRight, CGFloat bottomRight, CGFloat bottomLeft)
+void FLCreateRectPathWithCornerRadii(CGMutablePathRef path, CGRect rect, CGFloat topLeft, CGFloat topRight, CGFloat bottomRight, CGFloat bottomLeft)
 {
 	//
 	// Create the boundary path
@@ -59,7 +58,7 @@ void FLCreateRectPathWithCornerRadii(CGMutablePathRef path, SDKRect rect, CGFloa
 	CGPathCloseSubpath(path);
 }
 
-void FLCreateRectPathWithTopArrow(CGMutablePathRef path, SDKRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
+void FLCreateRectPathWithTopArrow(CGMutablePathRef path, CGRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
 {
 	
 
@@ -121,7 +120,7 @@ void FLCreateRectPathWithTopArrow(CGMutablePathRef path, SDKRect rect, CGPoint a
 
 }
 
-void FLCreateRectPathBackButtonShape(CGMutablePathRef path, SDKRect rect, CGFloat cornerRadius, CGFloat ptSize)
+void FLCreateRectPathBackButtonShape(CGMutablePathRef path, CGRect rect, CGFloat cornerRadius, CGFloat ptSize)
 {
 	// bottomLeft
 	
@@ -165,7 +164,7 @@ void FLCreateRectPathBackButtonShape(CGMutablePathRef path, SDKRect rect, CGFloa
 
 }
 
-void FLCreateRectPathForwardButtonShape(CGMutablePathRef path, SDKRect rect, CGFloat cornerRadius, CGFloat ptSize)
+void FLCreateRectPathForwardButtonShape(CGMutablePathRef path, CGRect rect, CGFloat cornerRadius, CGFloat ptSize)
 {
     rect = CGRectInset(rect, 0.5, 0.5);
 
@@ -291,7 +290,7 @@ void FLCreateRectPathForwardButtonShape(CGMutablePathRef path, SDKRect rect, CGF
 }
 
 
-void FLCreateRectPathWithRightArrow(CGMutablePathRef path, SDKRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
+void FLCreateRectPathWithRightArrow(CGMutablePathRef path, CGRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
 {
         // bottom left
 	CGPathMoveToPoint(path, NULL,
@@ -353,7 +352,7 @@ void FLCreateRectPathWithRightArrow(CGMutablePathRef path, SDKRect rect, CGPoint
 
 }
 
-void FLCreateRectPathWithBottomArrow(CGMutablePathRef path, SDKRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
+void FLCreateRectPathWithBottomArrow(CGMutablePathRef path, CGRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
 {
 	
  
@@ -426,7 +425,7 @@ void FLCreateRectPathWithBottomArrow(CGMutablePathRef path, SDKRect rect, CGPoin
 
 }
 
-void FLCreateRectPathWithLeftArrow(CGMutablePathRef path, SDKRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
+void FLCreateRectPathWithLeftArrow(CGMutablePathRef path, CGRect rect, CGPoint arrowPoint, CGFloat arrowSize, CGFloat cornerRadius)
 {
         // bottom left
 	CGPathMoveToPoint(path, NULL,
@@ -483,7 +482,7 @@ void FLCreateRectPathWithLeftArrow(CGMutablePathRef path, SDKRect rect, CGPoint 
 	CGPathCloseSubpath(path);
 }
 
-void FLCreatePartialRectPathTop(CGMutablePathRef path, SDKRect rect, CGFloat cornerRadius)
+void FLCreatePartialRectPathTop(CGMutablePathRef path, CGRect rect, CGFloat cornerRadius)
 {
 	//
 	// Create the boundary path
@@ -520,7 +519,7 @@ void FLCreatePartialRectPathTop(CGMutablePathRef path, SDKRect rect, CGFloat cor
 	
 }
 
-void FLCreatePartialRectPathLeft(CGMutablePathRef path, SDKRect rect, CGFloat cornerRadius)
+void FLCreatePartialRectPathLeft(CGMutablePathRef path, CGRect rect, CGFloat cornerRadius)
 {
 	
 	CGPathMoveToPoint(path, NULL,
@@ -531,7 +530,7 @@ void FLCreatePartialRectPathLeft(CGMutablePathRef path, SDKRect rect, CGFloat co
 		CGRectGetBottom(rect) - cornerRadius);	
 }
 
-void FLCreatePartialRectPathRight(CGMutablePathRef path, SDKRect rect, CGFloat cornerRadius)
+void FLCreatePartialRectPathRight(CGMutablePathRef path, CGRect rect, CGFloat cornerRadius)
 {
 	
 	CGPathMoveToPoint(path, NULL,
@@ -542,7 +541,7 @@ void FLCreatePartialRectPathRight(CGMutablePathRef path, SDKRect rect, CGFloat c
 		CGRectGetBottom(rect) - cornerRadius);	
 }
 
-void FLCreatePartialRectPathBottom(CGMutablePathRef path, SDKRect rect, CGFloat cornerRadius)
+void FLCreatePartialRectPathBottom(CGMutablePathRef path, CGRect rect, CGFloat cornerRadius)
 {
 	//
 	// Create the boundary path
@@ -578,7 +577,7 @@ void FLCreatePartialRectPathBottom(CGMutablePathRef path, SDKRect rect, CGFloat 
 }
 
 void FLSetPathToTriangleInRectCorner(CGMutablePathRef path, 
-    SDKRect rect, 
+    CGRect rect, 
     FLTriangleCorner cornerInRect) {
     
     switch(cornerInRect) {

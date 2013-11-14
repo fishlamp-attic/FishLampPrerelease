@@ -34,7 +34,7 @@
 // visible properties
     SDKColor* _backgroundColor;
     CGFloat _alpha;
-    SDKRect _frame;
+    CGRect _frame;
     
 // state    
     BOOL _parentHidden;
@@ -63,12 +63,12 @@
 } 
 
 - (id) init;
-- (id) initWithFrame:(SDKRect) frame;
-+ (id) widgetWithFrame:(SDKRect) frame;
+- (id) initWithWidgetFrame:(CGRect) frame;
++ (id) widgetWithFrame:(CGRect) frame;
 + (id) widget;
 
-@property (readwrite, assign, nonatomic) SDKRect frame;
-@property (readonly, assign, nonatomic) SDKRect bounds; // bounds is the same as frame since we're drawing in view coordinates.
+@property (readwrite, assign, nonatomic) CGRect frame;
+@property (readonly, assign, nonatomic) CGRect bounds; // bounds is the same as frame since we're drawing in view coordinates.
 
 //
 // subWidgets
@@ -123,11 +123,11 @@
 //
 @property (readwrite, strong, nonatomic) id<FLDrawable> drawable;
 
-- (void) drawWidget:(SDKRect) drawRect; // call from view, or superwidget, etc..
+- (void) drawWidget:(CGRect) drawRect; // call from view, or superwidget, etc..
 
 // override either one of these
-- (void) drawRect:(SDKRect) rect;
-- (void) drawRect:(SDKRect) rect 
+- (void) drawRect:(CGRect) rect;
+- (void) drawRect:(CGRect) rect 
    drawSubWidgets:(dispatch_block_t) drawSubWidgets;
 
 // hit test utils
@@ -167,6 +167,6 @@
 //@property (readwrite, assign, nonatomic) FLCustomHighlighter highlighter;
 
 #if NOT_USED
-extern void (^FLWidgetSunburstHighlighter)(FLWidget* widget, SDKRect rect);
+extern void (^FLWidgetSunburstHighlighter)(FLWidget* widget, CGRect rect);
 #endif
 
