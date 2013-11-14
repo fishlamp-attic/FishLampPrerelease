@@ -9,25 +9,6 @@
 #import "FishLampMinimum.h"
 #import "FLMath.h"
 
-//#if OSX
-//#define CGPointMake             NSMakePoint
-//#define FLPointEqualToPoint     NSEqualPoints
-//#define FLPointsAreEqual        NSEqualPoints
-//#else
-//#define CGPointMake             CGPointMake
-//#define FLPointEqualToPoint     CGPointEqualToPoint
-//#define FLPointsAreEqual        CGPointEqualToPoint
-//
-//#endif
-
-//#if IOS
-//
-//#else
-//    #define FLPointFromString       NSPointFromString
-//    #define FLStringFromPoint       NSStringFromPoint
-//    #define CGPointMake             CGPointMake
-//#endif
-
 
 NS_INLINE
 BOOL CGPointIsIntegral(CGPoint p) {

@@ -25,7 +25,7 @@
 // Returns a copy of this image that is cropped to the given bounds.
 // The bounds will be adjusted using CGRectIntegral.
 // This method ignores the image's imageOrientation setting.
-- (SDKImage *)croppedImage:(SDKRect)bounds {
+- (SDKImage *)croppedImage:(CGRect)bounds {
 #if IOS
 	CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], bounds);
 	SDKImage *croppedImage = [SDKImage imageWithCGImage:imageRef];
@@ -53,7 +53,7 @@
 		// Crop out any part of the image that's larger than the thumbnail size
 		// The cropped rect must be centered on the resized image
 		// Round the origin points so that the size isn't altered when CGRectIntegral is later invoked
-		SDKRect cropRect = CGRectMake(round((resizedImage.size.width - thumbnailSize) / 2),
+		CGRect cropRect = CGRectMake(round((resizedImage.size.width - thumbnailSize) / 2),
 									 round((resizedImage.size.height - thumbnailSize) / 2),
 									 thumbnailSize,
 								 thumbnailSize);
@@ -128,8 +128,8 @@
 	 interpolationQuality:(CGInterpolationQuality)quality {
 	
 #if IOS
-    SDKRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
-	SDKRect transposedRect = CGRectMake(0, 0, newRect.size.height, newRect.size.width);
+    CGRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width, newSize.height));
+	CGRect transposedRect = CGRectMake(0, 0, newRect.size.height, newRect.size.width);
 	CGImageRef imageRef = self.CGImage;
 	
 	// Build a context that's the same dimensions as the new size
@@ -220,7 +220,7 @@
 }
 #endif
 
-- (SDKRect) proportionalBoundsWithMaxSize:(CGSize) maxSize
+- (CGRect) proportionalBoundsWithMaxSize:(CGSize) maxSize
 {
 	return CGRectFitInRectInRectProportionally(CGRectMakeWithSize(maxSize), CGRectMakeWithSize(self.size));
 }

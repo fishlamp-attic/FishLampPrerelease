@@ -17,9 +17,9 @@
 //
 #import "FishLampMinimum.h"
 
-#if OSX
-#import "FLMath.h"
+#if __MAC_OS_X_VERSION_MIN_REQUIRED
 
+#import "FLMath.h"
 #import "FLRectLayout.h"
 #import "NSPointGeometry+FLAdditions.h"
 #import "CGRectGeometry+FLAdditions.h"
@@ -30,15 +30,18 @@
 //    #define FLRectInset             NSInsetRect
 //#endif
 
-//#define FLRectMake                  CGRectMake
-//#define FLRectGetMidX               CGRectGetMidX
-//#define FLRectGetMidY               CGRectGetMidY
-//#define FLRectEqualToRect           CGRectEqualToRect
-//#define FLRectIsTaller(__lhs__, __rhs__) ((__lhs__).size.height > (__rhs___).size.height)
-//#define FLRectIsWider(__lhs__, __rhs__) ((__lhs__).size.width > (__rhs__).size.width)
-//#define FLRectGetLeft(__rect__) ((__rect__)).origin.x
-//#define FLRectGetTop(__rect__) ((__rect__)).origin.y
-//#define FLRectGetTopLeft(__rect__) (__rect__).origin
+
+#define NSRectEqualToRect           NSEqualRects
+#define NSRectIsTaller(__lhs__, __rhs__) ((__lhs__).size.height > (__rhs___).size.height)
+#define NSRectIsWider(__lhs__, __rhs__) ((__lhs__).size.width > (__rhs__).size.width)
+#define NSRectGetLeft(__rect__) ((__rect__)).origin.x
+#define NSRectGetTop(__rect__) ((__rect__)).origin.y
+#define NSRectGetTopLeft(__rect__) (__rect__).origin
+
+#define NSRectContainsPoint(rect, point) NSPointInRect(point, rect)
+
+#define NSStringFromNSRect NSStringFromRect
+#define NSRectMake NSMakeRect
 //
 //#if IOS
 //    #define FLRectInsetWithEdgeInsets   UIEdgeInsetsInsetRect
@@ -64,47 +67,47 @@
             NSPointFromCGPoint(CGRectGetCenter(NSRectToCGRect(rect)))
 
 #define NSRectCenterRectInRect(container, containee) \
-            NSRectFromCGRect(CGRectCenterRectInRect(NSRectToCGRect(container), NSRectToCGRect(containee))
+            NSRectFromCGRect(CGRectCenterRectInRect(NSRectToCGRect(container), NSRectToCGRect(containee)))
 
 
 #define NSRectCenterRectInRectVertically(container, containee) \
-            NSRectFromCGRect(CGRectCenterRectInRectVertically(NSRectToCGRect(container), NSRectToCGRect(containee))
+            NSRectFromCGRect(CGRectCenterRectInRectVertically(NSRectToCGRect(container), NSRectToCGRect(containee)))
 
 
 #define NSRectCenterRectInRectHorizontally(container, containee) \
-            NSRectFromCGRect(CGRectCenterRectInRectHorizontally(NSRectToCGRect(container), NSRectToCGRect(containee))
+            NSRectFromCGRect(CGRectCenterRectInRectHorizontally(NSRectToCGRect(container), NSRectToCGRect(containee)))
 
 // justification
 #define NSRectJustifyRectInRectRight(container, containee) \
-            NSRectFromCGRect(CGRectJustifyRectInRectRight(NSRectToCGRect(container), NSRectToCGRect(containee) )
+            NSRectFromCGRect(CGRectJustifyRectInRectRight(NSRectToCGRect(container), NSRectToCGRect(containee) ))
 
 
 #define NSRectJustifyRectInRectLeft(container, containee) \
-            NSRectFromCGRect(CGRectJustifyRectInRectLeft(NSRectToCGRect(container), NSRectToCGRect(containee) )
+            NSRectFromCGRect(CGRectJustifyRectInRectLeft(NSRectToCGRect(container), NSRectToCGRect(containee) ))
 
 
 #define NSRectJustifyRectInRectTop(container, containee) \
-            NSRectFromCGRect(CGRectJustifyRectInRectTop(NSRectToCGRect(container), NSRectToCGRect(containee) )
+            NSRectFromCGRect(CGRectJustifyRectInRectTop(NSRectToCGRect(container), NSRectToCGRect(containee) ))
 
 
 #define NSRectJustifyRectInRectBottom(container, containee) \
-            NSRectFromCGRect(CGRectJustifyRectInRectBottom(NSRectToCGRect(container), NSRectToCGRect(containee) )
+            NSRectFromCGRect(CGRectJustifyRectInRectBottom(NSRectToCGRect(container), NSRectToCGRect(containee) ))
 
 
 #define NSRectJustifyRectInRectTopLeft(container, containee) \
-            NSRectFromCGRect(CGRectJustifyRectInRectTopLeft(NSRectToCGRect(container), NSRectToCGRect(containee) )
+            NSRectFromCGRect(CGRectJustifyRectInRectTopLeft(NSRectToCGRect(container), NSRectToCGRect(containee) ))
 
 
 #define NSRectJustifyRectInRectTopRight(container, containee) \
-            NSRectFromCGRect(CGRectJustifyRectInRectTopRight(NSRectToCGRect(container), NSRectToCGRect(containee) )
+            NSRectFromCGRect(CGRectJustifyRectInRectTopRight(NSRectToCGRect(container), NSRectToCGRect(containee) ))
 
 
 #define NSRectJustifyRectInRectBottomRight(container, containee) \
-            NSRectFromCGRect(CGRectJustifyRectInRectBottomRight(NSRectToCGRect(container), NSRectToCGRect(containee) )
+            NSRectFromCGRect(CGRectJustifyRectInRectBottomRight(NSRectToCGRect(container), NSRectToCGRect(containee) ))
 
 
 #define NSRectJustifyRectInRectBottomLeft(container, containee) \
-            NSRectFromCGRect(CGRectJustifyRectInRectBottomLeft(NSRectToCGRect(container), NSRectToCGRect(containee) )
+            NSRectFromCGRect(CGRectJustifyRectInRectBottomLeft(NSRectToCGRect(container), NSRectToCGRect(containee) ))
 
 
 
@@ -115,84 +118,84 @@
 //            NSRectFromCGRect(CGRectInset(rect, dx, dy))
 
 
-#define NSRectInsetTop(inRect, delta) \
-            NSRectFromCGRect(CGRectInsetTop(rect, dx, dy))
+#define NSRectInsetTop(rect, delta) \
+            NSRectFromCGRect(CGRectInsetTop(NSRectToCGRect(rect), delta))
 
 
-#define NSRectInsetBottom(inRect, delta) \
-            NSRectFromCGRect(CGRectInsetBottom(rect, dx, dy))
+#define NSRectInsetBottom(rect, delta) \
+            NSRectFromCGRect(CGRectInsetBottom(NSRectToCGRect(rect), delta))
 
 
-#define NSRectInsetLeft(inRect, delta) \
-            NSRectFromCGRect(CGRectInsetLeft(rect, dx, dy))
+#define NSRectInsetLeft(rect, delta) \
+            NSRectFromCGRect(CGRectInsetLeft(NSRectToCGRect(rect), delta))
 
 
-#define NSRectInsetRight(inRect, delta) \
-            NSRectFromCGRect(CGRectInsetRight(rect, dx, dy))
+#define NSRectInsetRight(rect, delta) \
+            NSRectFromCGRect(CGRectInsetRight(NSRectToCGRect(rect), delta))
 
 
 #if 0
-extern NSRect NSRectInsetWithEdgeInsets(NSRect inRect, NSEdgeInsets insets);
+extern NSRect NSRectInsetWithEdgeInsets(NSRect rect, NSEdgeInsets insets);
 #endif
 
 // layout
 #define NSRectAlignRectsHorizonally(left, right) \
-            NSRectFromCGRect(CGRectAlignRectsHorizonally(NSRectToCGRect(left), NSRectToCGRect(left))
+            NSRectFromCGRect(CGRectAlignRectsHorizonally(NSRectToCGRect(left), NSRectToCGRect(left)))
 
 
 #define NSRectAlignRectVertically(top, bottom) \
-            NSRectFromCGRect(CGRectAlignRectVertically(NSRectToCGRect(left), NSRectToCGRect(left))
+            NSRectFromCGRect(CGRectAlignRectVertically(NSRectToCGRect(left), NSRectToCGRect(left)))
 
 
 #define NSRectPositionRectInRectVerticallyBottomThird(container, containee) \
-            NSRectFromCGRect(CGRectPositionRectInRectVerticallyBottomThird(NSRectToCGRect(container), NSRectToCGRect(containee))
+            NSRectFromCGRect(CGRectPositionRectInRectVerticallyBottomThird(NSRectToCGRect(container), NSRectToCGRect(containee)))
 
 
 #define NSRectPositionRectInRectVerticallyTopThird(container, containee) \
-            NSRectFromCGRect(CGRectPositionRectInRectVerticallyTopThird(NSRectToCGRect(container), NSRectToCGRect(containee))
+            NSRectFromCGRect(CGRectPositionRectInRectVerticallyTopThird(NSRectToCGRect(container), NSRectToCGRect(containee)))
 
 
 // size
 #define NSRectSetHeight(rect, height) \
-            NSRectFromCGRect(CGRectSetHeight(NSRectToCGRect(rect), height )
+            NSRectFromCGRect(CGRectSetHeight(NSRectToCGRect(rect), height ))
 
 
 #define NSRectAddHeight(rect, height) \
-            NSRectFromCGRect(CGRectAddHeight(NSRectToCGRect(rect), height )
+            NSRectFromCGRect(CGRectAddHeight(NSRectToCGRect(rect), height ))
 
 
 #define NSRectSetWidth(rect, width) \
-            NSRectFromCGRect(NSRectSetWidth(NSRectToCGRect(rect), width )
+            NSRectFromCGRect(CGRectSetWidth(NSRectToCGRect(rect), width ))
 
 
 #define NSRectAddWidth(rect, width) \
-            NSRectFromCGRect(CGRectAddWidth(NSRectToCGRect(rect), width )
+            NSRectFromCGRect(CGRectAddWidth(NSRectToCGRect(rect), width ))
 
 
 #define NSRectSetSize(rect, width, height) \
-            NSRectFromCGRect(CGRectSetSize(NSRectToCGRect(rect), width, height )
+            NSRectFromCGRect(CGRectSetSize(NSRectToCGRect(rect), width, height ))
 
 
 #define NSRectAddSize(rect, width, height) \
-            NSRectFromCGRect(CGRectAddSize(NSRectToCGRect(rect), width, height )
+            NSRectFromCGRect(CGRectAddSize(NSRectToCGRect(rect), width, height ))
 
 
 #define NSRectAddSizeWithSize(rect, size) \
-            NSRectFromCGRect(CGRectAddSizeWithSize(NSRectToCGRect(rect), NSSizeFromCGSize(size) )
+            NSRectFromCGRect(CGRectAddSizeWithSize(NSRectToCGRect(rect), NSSizeFromCGSize(size) ))
 
 #define NSRectSetSizeWithSize(rect, size) \
-            NSRectFromCGRect(CGRectSetSizeWithSize(NSRectToCGRect(rect), NSSizeFromCGSize(size) )
+            NSRectFromCGRect(CGRectSetSizeWithSize(NSRectToCGRect(rect), NSSizeFromCGSize(size) ))
 
 
 #define NSRectScale(rect, scaleFactor) \
-            NSRectFromCGRect(CGRectScale(NSRectToCGRect(rect), scaleFactor)
+            NSRectFromCGRect(CGRectScale(NSRectToCGRect(rect), scaleFactor))
 
 // location
 #define NSRectSetTop(rect, top) \
-            NSRectFromCGRect( CGRectSetTop(NSRectToCGRect(rect), top)
+            NSRectFromCGRect( CGRectSetTop(NSRectToCGRect(rect), top))
 
 #define NSRectSetLeft(rect, left) \
-            NSRectFromCGRect( CGRectSetLeft(NSRectToCGRect(rect), left)
+            NSRectFromCGRect( CGRectSetLeft(NSRectToCGRect(rect), left))
 
 // edges and corners
 #define NSRectGetRight(rect) \
@@ -212,39 +215,39 @@ extern NSRect NSRectInsetWithEdgeInsets(NSRect inRect, NSEdgeInsets insets);
 
 // location
 #define NSRectSetOrigin(rect, x, y) \
-            NSRectFromCGRect(CGRectSetOrigin(NSRectToCGRect(rect), x, y)
+            NSRectFromCGRect(CGRectSetOrigin(NSRectToCGRect(rect), x, y))
 
 #define NSRectSetOriginWithPoint(rect, origin) \
-            NSRectFromCGRect(CGRectSetOriginWithPoint(NSRectToCGRect(rect), NSPointFromCGPoint(origin))
+            NSRectFromCGRect(CGRectSetOriginWithPoint(NSRectToCGRect(rect), NSPointFromCGPoint(origin)))
 
 
 #define NSRectMoveWithPoint(rect, delta) \
-            NSRectFromCGRect(CGRectMoveWithPoint(NSRectToCGRect(rect), NSPointFromCGPoint(origin))
+            NSRectFromCGRect(CGRectMoveWithPoint(NSRectToCGRect(rect), NSPointFromCGPoint(origin)))
 
 
 #define NSRectMoveVertically(rect, delta) \
-            NSRectFromCGRect(CGRectMoveVertically(NSRectToCGRect(rect), NSPointFromCGPoint(origin))
+            NSRectFromCGRect(CGRectMoveVertically(NSRectToCGRect(rect), NSPointFromCGPoint(origin)))
 
 
 #define NSRectMoveHorizontally(rect, delta) \
-            NSRectFromCGRect(CGRectMoveHorizontally(NSRectToCGRect(rect), NSPointFromCGPoint(origin))
+            NSRectFromCGRect(CGRectMoveHorizontally(NSRectToCGRect(rect), NSPointFromCGPoint(origin)))
 
 #define NSRectMove(rect, xDelta, yDelta) \
-            NSRectFromCGRect(CGRectMove(NSRectToCGRect(rect), xDelta, yDelta)
+            NSRectFromCGRect(CGRectMove(NSRectToCGRect(rect), xDelta, yDelta))
 
 // construction
 #define NSRectMakeWithSize(size) \
             NSRectFromCGRect(CGRectMakeWithSize(NSSizeToCGSize(size)))
 
 #define NSRectMakeWithWidthAndHeight(width, height) \
-            NSRectFromCGRect(NSRectMakeWithWidthAndHeight(width, height)
+            NSRectFromCGRect(NSRectMakeWithWidthAndHeight(width, height))
 
 // misc
 #define NSRectEnclosesRect(container, containee) \
-            GGRectEnclosesRect(NSRectToCGRect(container), NSRectToCGRect(containee));
+            GGRectEnclosesRect(NSRectToCGRect(container), NSRectToCGRect(containee))
 
 #define NSRectRotate90Degrees(rect) \
-            NSRectFromCGRect(NSRectRotate90Degrees(NSRectToCGRect(rect))
+            NSRectFromCGRect(NSRectRotate90Degrees(NSRectToCGRect(rect)))
 
 //	This scales the containee rect to completely fill the container.
 //	The containee rect is scaled proportionally so if it has a different
@@ -270,27 +273,23 @@ extern NSRect NSRectInsetWithEdgeInsets(NSRect inRect, NSEdgeInsets insets);
 */ 
 
 #define NSSizeOptimizeForView(aSize) \
-            CGSizeOptimizeForView(NSSizeToCGSize(aSize))
+            NSRectFromCGRect(CGSizeOptimizeForView(NSSizeToCGSize(aSize)))
 
 // optimizing location and size for view frames
 #define NSRectWidthIsOptimizedForView(r) \
-            NSRectWidthIsOptimizedForView(NSRectToCGRect(r))
-
+            NSRectFromCGRect(CGRectWidthIsOptimizedForView(NSRectToCGRect(r)))
 
 #define NSRectHeightIsOptimizedForView(r) \
-            CGRectWidthIsOptimizedForView(NSRectToCGRect(r))
-
+            NSRectFromCGRect(CGRectWidthIsOptimizedForView(NSRectToCGRect(r)))
 
 #define NSRectIsOptimizedForView(r) \
-            CGRectIsOptimizedForView(NSRectToCGRect(r))
-
+            NSRectFromCGRect(CGRectIsOptimizedForView(NSRectToCGRect(r)))
 
 #define NSRectOptimizedForViewSize(r) \
-            CGRectOptimizedForViewSize(NSRectToCGRect(r))
-
+            NSRectFromCGRect(CGRectOptimizedForViewSize(NSRectToCGRect(r)))
 
 #define NSRectOptimizedForViewLocation(r) \
-            CGRectOptimizedForViewLocation(NSRectToCGRect(r))
+            NSRectFromCGRect(CGRectOptimizedForViewLocation(NSRectToCGRect(r)))
 
 #define NSRectLayoutRectInRect(containerRect, containeeRect, rectLayout) \
             NSRectFromCGRect(CGRectLayoutRectInRect(NSRectFromCGRect(containerRect), NSRectToCGRect(containeeRect), rectLayout))

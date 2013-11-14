@@ -7,7 +7,20 @@
 //
 
 #import "FishLampMinimum.h"
-#import "CGRectGeometry+FLAdditions.h"
+
+#if __MAC_OS_X_VERSION_MIN_REQUIRED
+
+#import "CGPointGeometry+FLAdditions.h"
+
+#define NSPointMake             NSMakePoint
+#define NSPointEqualToPoint     NSEqualPoints
+#define NSPointsAreEqual        NSEqualPoints
+
+#if OSX
+//#define FLPointFromString       NSPointFromString
+//#define FLStringFromPoint       NSStringFromPoint
+#endif
+
 
 #define NSPointIsIntegral(p) \
             NSPointFromCGPoint((CGPointIsIntegral(NSPointToCGPoint(pt)))
@@ -41,3 +54,5 @@
 
 #define NSPointMove(pt, xDelta, yDelta) \
             NSPointFromCGPoint(NSPointMove(NSPointToCGPoint(pt), xDelta, yDelta))
+
+#endif

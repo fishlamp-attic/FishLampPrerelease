@@ -8,6 +8,6 @@
 
 #import "NSSizeGeometry+FLAdditions.h"
 
-#if OSX
+#if __MAC_OS_X_VERSION_MIN_REQUIRED
 const NSSize NSSizeMax = { CGFLOAT_MAX, CGFLOAT_MAX };
 #endif

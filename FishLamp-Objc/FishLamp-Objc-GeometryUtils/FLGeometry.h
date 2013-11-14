@@ -6,13 +6,10 @@
 //	Copyright (c) 2013 GreenTongue Software LLC, Mike Fullerton. 
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
+
 #import "FishLampMinimum.h"
+#import "CGGeometry+FLGeometry.h"
 
-#import "FLEdgeInsets.h"
-
-#import "FLRectLayout.h"
-
-#import "CGPointGeometry+FLAdditions.h"
-#import "CGSizeGeometry+FLAdditions.h"
-#import "CGRectGeometry+FLAdditions.h"
-
+#if __MAC_OS_X_VERSION_MIN_REQUIRED
+#import "NSGeometry+FLAdditions.h"
+#endif

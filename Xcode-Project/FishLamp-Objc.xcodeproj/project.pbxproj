@@ -2040,6 +2040,8 @@
 		276F97681833F508005DB257 /* FLEdgeInsets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEdgeInsets.m; sourceTree = "<group>"; };
 		27A43AB415CDCC89001CB13E /* FishLamp-Objc-iOS-ARC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-iOS-ARC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A43AC415CDCCCB001CB13E /* FishLamp-Objc-OSX-64-MRC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-MRC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27A9830018352DF0004E557C /* NSGeometry+FLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSGeometry+FLAdditions.h"; sourceTree = "<group>"; };
+		27A9830618352F70004E557C /* CGGeometry+FLGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+FLGeometry.h"; sourceTree = "<group>"; };
 		27B15A3E1819A99700D17FF7 /* Piecemeal-IncludedConfig-DefaultCompilerWarnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-DefaultCompilerWarnings.xcconfig"; sourceTree = "<group>"; };
 		27B15A3F1819A9C900D17FF7 /* Piecemeal-IncludedConfig-DefaultClangSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Piecemeal-IncludedConfig-DefaultClangSettings.xcconfig"; sourceTree = "<group>"; };
 		27B15A401819AC9600D17FF7 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -3182,6 +3184,7 @@
 				276F97521833DAF5005DB257 /* NSPointGeometry+FLAdditions.h */,
 				276F975B1833E7CE005DB257 /* NSSizeGeometry+FLAdditions.h */,
 				276F97621833EB40005DB257 /* NSSizeGeometry+FLAdditions.m */,
+				27A9830018352DF0004E557C /* NSGeometry+FLAdditions.h */,
 			);
 			name = NSGeometry;
 			sourceTree = "<group>";
@@ -3194,6 +3197,7 @@
 				276F974C1833D818005DB257 /* CGRectGeometry+FLAdditions.m */,
 				B227A2D9182AD3F700EDC426 /* CGSizeGeometry+FLAdditions.h */,
 				B227A2DA182AD3F700EDC426 /* CGSizeGeometry+FLAdditions.m */,
+				27A9830618352F70004E557C /* CGGeometry+FLGeometry.h */,
 			);
 			name = CGGeometry;
 			sourceTree = "<group>";

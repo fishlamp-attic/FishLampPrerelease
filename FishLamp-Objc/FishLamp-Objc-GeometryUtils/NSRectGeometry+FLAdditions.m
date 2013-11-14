@@ -6,13 +6,16 @@
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
+
 #import "NSRectGeometry+FLAdditions.h"
+#if __MAC_OS_X_VERSION_MIN_REQUIRED
+
 #ifdef FL_SHIP_ONLY_INLINE
 #undef FL_SHIP_ONLY_INLINE
 #define FL_SHIP_ONLY_INLINE
 #endif
 
-#if OSX
+
 #if 0
 FL_SHIP_ONLY_INLINE
 NSRect NSRectInsetWithEdgeInsets(NSRect inRect, NSEdgeInsets insets) {
@@ -23,4 +26,5 @@ NSRect NSRectInsetWithEdgeInsets(NSRect inRect, NSEdgeInsets insets) {
     return inRect;
 }
 #endif
+
 #endif

@@ -11,11 +11,11 @@
 #import "FLRectLayout.h"
 #import "CGPointGeometry+FLAdditions.h"
 
-#if DEBUG
-    #define CGRectInset             FLRectInset
-#else
-    #define FLRectInset             NSInsetRect
-#endif
+//#if DEBUG
+//    #define CGRectInset             FLRectInset
+//#else
+//    #define FLRectInset             NSInsetRect
+//#endif
 
 //#define FLRectMake                  CGRectMake
 //#define FLRectGetMidX               CGRectGetMidX
@@ -23,14 +23,14 @@
 //#define FLRectEqualToRect           CGRectEqualToRect
 //#define FLRectIsTaller(__lhs__, __rhs__) ((__lhs__).size.height > (__rhs___).size.height)
 //#define FLRectIsWider(__lhs__, __rhs__) ((__lhs__).size.width > (__rhs__).size.width)
-//#define FLRectGetLeft(__rect__) ((__rect__)).origin.x
-//#define FLRectGetTop(__rect__) ((__rect__)).origin.y
-//#define FLRectGetTopLeft(__rect__) (__rect__).origin
 //
 //#if IOS
 //    #define FLRectInsetWithEdgeInsets   UIEdgeInsetsInsetRect
 //#endif    
 
+#if OSX
+#define NSStringFromCGRect(r) NSStringFromRect(NSRectFromCGRect(r))
+#endif
 
 extern BOOL CGRectIsIntegral(CGRect r);
 
@@ -101,6 +101,9 @@ extern CGFloat CGRectGetBottom(CGRect rect);
 extern CGPoint CGRectGetTopRight(CGRect rect);
 extern CGPoint CGRectGetBottomRight(CGRect rect);
 extern CGPoint CGRectGetBottomLeft(CGRect rect);
+#define CGRectGetLeft(__rect__) ((__rect__)).origin.x
+#define CGRectGetTop(__rect__) ((__rect__)).origin.y
+#define CGRectGetTopLeft(__rect__) (__rect__).origin
 
 // location
 extern CGRect CGRectSetOrigin(CGRect rect, CGFloat x, CGFloat y);

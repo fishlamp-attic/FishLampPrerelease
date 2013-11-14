@@ -467,7 +467,7 @@ CGSize FLSizeOptimizeForView(CGSize aSize) {
 	return size;
 }
 
-CGRect FLRectLayoutRectVerticallyInRect(
+CGRect CGRectLayoutRectVerticallyInRect(
         CGRect containerRect,
         CGRect containeeRect,
 		FLRectLayout contentMode ) {
@@ -540,11 +540,11 @@ CGRect CGRectLayoutRectHorizonallyInRect(
 			break;
 
 		case FLRectLayoutHorizontalRight:
-			containeeRect.origin.x = FLRectGetRight(containerRect) - containeeRect.size.width - contentMode.insets.right;
+			containeeRect.origin.x = CGRectGetRight(containerRect) - containeeRect.size.width - contentMode.insets.right;
 			break;
 
 		case FLRectLayoutHorizontalCentered:
-			containeeRect = FLRectCenterRectInRectHorizontally(containerRect, containeeRect);
+			containeeRect = CGRectCenterRectInRectHorizontally(containerRect, containeeRect);
 			break;
 
 		case FLRectLayoutHorizontalNone:
@@ -552,7 +552,7 @@ CGRect CGRectLayoutRectHorizonallyInRect(
 			
 		case FLRectLayoutHorizontalFill:
 			containeeRect.size.width = (containerRect.size.width - contentMode.insets.left - contentMode.insets.right);
-			containeeRect = FLRectCenterRectInRectHorizontally(containerRect, containeeRect);
+			containeeRect = CGRectCenterRectInRectHorizontally(containerRect, containeeRect);
 			break;
             
         case FLRectLayoutHorizontalFit:
@@ -569,7 +569,7 @@ CGRect FLRectLayoutRectInRect(
 	CGRect containeeRect,
     FLRectLayout rectLayout)
 {
-	return CgRectLayoutRectHorizonallyInRect(
+	return CGRectLayoutRectHorizonallyInRect(
 		containerRect,
 		CGRectLayoutRectVerticallyInRect(containerRect, containeeRect, rectLayout),
 		rectLayout);

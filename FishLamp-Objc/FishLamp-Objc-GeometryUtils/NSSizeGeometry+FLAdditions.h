@@ -6,9 +6,11 @@
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FLCoreRequired.h"
+#import "FishLampMinimum.h"
 
-#if OSX
+#if __MAC_OS_X_VERSION_MIN_REQUIRED
+
+#import "CGSizeGeometry+FLAdditions.h"
 
 extern const NSSize NSSizeMax;
 
