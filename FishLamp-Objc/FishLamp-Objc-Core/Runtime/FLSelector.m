@@ -65,13 +65,14 @@
     if(!_selectorName) {
 
         if(self.argumentCount == 0) {
-            self.selectorName = FLRetain([self selectorString]);
+            self.selectorName = [self selectorString];
         }
-
-        NSString* string = [self selectorString];
-        for(int i = 0; i < string.length; i++) {
-            if([string characterAtIndex:i] == ':') {
-                self.selectorName = [string substringToIndex:i];
+        else {
+            NSString* string = [self selectorString];
+            for(int i = 0; i < string.length; i++) {
+                if([string characterAtIndex:i] == ':') {
+                    self.selectorName = [string substringToIndex:i];
+                }
             }
         }
     }
