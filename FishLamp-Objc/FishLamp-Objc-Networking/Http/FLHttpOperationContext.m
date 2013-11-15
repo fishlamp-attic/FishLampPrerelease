@@ -13,7 +13,11 @@
 #import "FLUserService.h"
 #import "FLServiceList.h"
 #import "FLAuthenticationCredentials.h"
-#import "FLHttpAuthenticator.h"
+#import "FLAuthenticateHttpRequestOperation.h"
+#import "FLAuthenticatedEntity.h"
+
+#import "FLAuthenticateHttpEntityOperation.h"
+#import "FLAuthenticateHttpCredentialsOperation.h"
 
 @interface FLHttpOperationContext ()
 
@@ -99,14 +103,13 @@
 - (void) closeService {
     [self requestCancel];
     [self.userService closeService];
+
+    self.authenticatedEntity = nil;
 }
 
 - (void) userServiceDidOpen:(id<FLUserService>) service {
-    [self didChangeAuthenticationCredentials:service.credentials];
 
-    if(self.authenticatedEntity) {
-        [self.authenticatedEntity setAuthenticationCredentials:service.credentials];
-    }
+    [self didChangeAuthenticationCredentials:service.credentials];
 
     [self.storageService openService];
 
@@ -124,7 +127,7 @@
 }
 
 - (BOOL) isAuthenticated {
-    return [self.userService.credentials isAuthenticated];
+    return [self.authenticatedEntity isAuthenticated];
 }
 
 - (id<FLHttpRequestAuthenticator>) httpRequestAuthenticator {
@@ -136,10 +139,10 @@
     FLOperation* authenticator = nil;
 
     if(self.authenticatedEntity) {
-        authenticator = [FLHttpAuthenticator httpAuthenticatorWithEntity:self.authenticatedEntity withHttpRequest:request];
+        authenticator = [FLAuthenticateHttpEntityOperation authenticateHttpEntityOperation:self.authenticatedEntity withHttpRequest:request];
     }
     else if(self.authenticationCredentials) {
-        authenticator = [FLHttpAuthenticator httpAuthenticatorWithCredentials:self.authenticationCredentials withHttpRequest:request];
+        authenticator = [FLAuthenticateHttpCredentialsOperation authenticateHttpCredentialsOperation:self.authenticationCredentials withHttpRequest:request];
     }
 
     FLAssertNotNil(authenticator);
@@ -182,12 +185,12 @@
         [self openService];
     }
 
-    return [self queueOperation:[FLHttpAuthenticator httpAuthenticatorWithCredentials:self.userService.credentials]
+    return [self queueOperation:[FLAuthenticateHttpCredentialsOperation authenticateHttpCredentialsOperation:self.authenticationCredentials]
                      completion:completion];
 
 }
 
-- (void) authenticateHttpRequestOperation:(FLHttpAuthenticator*) operation
+- (void) authenticateHttpRequestOperation:(FLAuthenticateHttpRequestOperation*) operation
                     didAuthenticateEntity:(id<FLAuthenticatedEntity>) entity {
     self.authenticatedEntity = entity;
 

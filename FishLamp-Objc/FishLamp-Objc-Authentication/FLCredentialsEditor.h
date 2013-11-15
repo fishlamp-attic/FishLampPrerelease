@@ -8,6 +8,7 @@
 //
 
 #import "FishLampMinimum.h"
+#if NOTUSED
 
 @protocol FLAuthenticationCredentials;
 @protocol FLCredentialsEditorDelegate;
@@ -47,3 +48,4 @@ willStartEditingCredentials:(id<FLAuthenticationCredentials>) credentials;
 didFinishEditingCredentials:(id<FLAuthenticationCredentials>) credentials;
 
 @end
+#endif

@@ -10,17 +10,16 @@
 #import "FishLampMinimum.h"
 
 #import "FLAuthenticationCredentials.h"
+#import "FLAuthenticationToken.h"
+#import "FLAuthenticatedEntity.h"
 
 @interface FLHttpUser : NSObject<FLAuthenticatedEntity, NSCopying> {
 @private
     id _authenticationCredentials;
+    id<FLAuthenticationSession> _session;
+
 }
-@property (readwrite, copy, nonatomic) id<FLAuthenticationCredentials> authenticationCredentials;
-
-@property (readonly, strong, nonatomic) NSString* userName;
-
-@property (readonly, assign, nonatomic, getter=isLoginAuthenticated) BOOL loginAuthenticated;
-- (void) setLoginUnathenticated;
+- (id) initWithAutheticationCredentials:(id<FLAuthenticationCredentials>) credentials;
 
 // TODO: abstract this better.
 - (NSString*) cacheFolderPath;

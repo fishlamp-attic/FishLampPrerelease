@@ -14,13 +14,17 @@
 FLSingletonProperty(FLUserDefaultsCredentialStorage);
 @end
 
-@interface FLAuthenticationCredentials (NSUserDefaults)
-+ (id) authCredentialsFromUserDefaults;
+//@interface FLAuthenticationCredentials (NSUserDefaults)
+//+ (id) authCredentialsFromUserDefaults;
+//
+//- (void) writeToUserDefaults;
+//- (void) writePasswordToKeychain;
+//
+//- (void) readFromUserDefaults;
+//- (void) readPasswordFromKeychain;
+//- (void) removePasswordFromKeychain;
+//
+//
+//
+//@end
 
-- (void) writeToUserDefaults;
-- (void) writePasswordToKeychain;
-
-- (void) readFromUserDefaults;
-- (void) readPasswordFromKeychain;
-- (void) removePasswordFromKeychain;
-@end

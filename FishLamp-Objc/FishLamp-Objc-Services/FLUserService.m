@@ -8,35 +8,33 @@
 //
 
 #import "FLUserService.h"
-#import "FLCredentialsEditor.h"
-#import "FLCredentials.h"
 #import "FLCredentialsStorage.h"
 #import "FLAuthenticationCredentials.h"
 
 @implementation FLUserService
 
 @synthesize credentials = _credentials;
-@synthesize credentialStorage = _credentialStorage;
+@synthesize credentialsStorage = _credentialStorage;
 
-- (id) initWithCredentials:(id<FLAuthenticationCredentials>) credentials {
-    self = [super init];
-    if(self) {
-        _credentials = FLRetain(credentials);
-    }
-    return self;
-}
+//- (id) initWithCredentials:(id<FLAuthenticationCredentials>) credentials {
+//    self = [super init];
+//    if(self) {
+//        _credentials = FLRetain(credentials);
+//    }
+//    return self;
+//}
 
 + (id) userService {
     return FLAutorelease([[[self class] alloc] init]);
 }
 
-+ (id) userService:(id<FLAuthenticationCredentials>) credentials {
-    return FLAutorelease([[[self class] alloc] initWithCredentials:credentials]);
-}
+//+ (id) userService:(id<FLAuthenticationCredentials>) credentials {
+//    return FLAutorelease([[[self class] alloc] initWithAuthenticationCredentials:credentials]);
+//}
 
 #if FL_MRC
 - (void) dealloc {
-    [_credentialStorage release];
+    [_credentialsStorage release];
     [_credentials release];
     [super dealloc];
 }
@@ -73,9 +71,9 @@
 
 }
 
-- (BOOL) isAuthenticated {
-    return self.credentials.isAuthenticated;
-}
+//- (BOOL) isAuthenticated {
+//    return self.credentials.isAuthenticated;
+//}
 
 //- (FLCredentialsEditor*) credentialEditor {
 //    FLCredentialsEditor* editor = [FLCredentialsEditor authCredentialEditor:self.credentials];
@@ -97,8 +95,8 @@
 
 - (void) saveCredentials {
 
-    if(self.credentialStorage) {
-        [self.credentialStorage writeCredentials:self.credentials];
+    if(self.credentialsStorage) {
+        [self.credentialsStorage writeCredentials:self.credentials];
     }
 }
 

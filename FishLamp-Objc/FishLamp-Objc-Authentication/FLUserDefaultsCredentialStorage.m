@@ -14,104 +14,150 @@
 NSString* const FLDefaultsKeyWizardLastUserNameKey = @"CredentialStorageLastUser";
 NSString* const FLDefaultsKeyWizardSavePasswordKey = @"CredentialStorageServiceSavePassword";
 
+@interface FLUserDefaultsCredentialStorage ()
+
+- (NSString*) readPasswordForUserName:(NSString*) userName;
+- (void) removePasswordForUser:(NSString*) userName;
+- (void) writePassword:(NSString*) password forUserName:(NSString*) userName;
+
+@end
+
 @implementation FLUserDefaultsCredentialStorage
 
 FLSynthesizeSingleton(FLUserDefaultsCredentialStorage);
 
-- (id<FLAuthenticationCredentials>) readCredentialsForLastUser {
-    return [FLAuthenticationCredentials authCredentialsFromUserDefaults];
+- (id<FLAuthenticationCredentials>) credentialsForLastUser {
+    NSString* userName = [[NSUserDefaults standardUserDefaults] objectForKey:FLDefaultsKeyWizardLastUserNameKey];
+    return FLStringIsNotEmpty(userName) ? [self readCredentialsForUserName:userName] : nil;
 }
 
-- (void) writePasswordToKeychain:(id<FLAuthenticationCredentials>) creds {
+- (void) setCredentialsForLastUser:(id<FLAuthenticationCredentials>) newLastUser {
+    NSString* lastUserName = [[NSUserDefaults standardUserDefaults] objectForKey:FLDefaultsKeyWizardLastUserNameKey];
+    if(lastUserName && ![lastUserName isEqualToString:newLastUser.userName]) {
+        [self removePasswordForUser:lastUserName];
+    }
+    else {
+        [self writeCredentials:newLastUser];
+        [[NSUserDefaults standardUserDefaults] setObject:newLastUser.userName forKey:FLDefaultsKeyWizardLastUserNameKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+- (BOOL) rememberPasswordSetting {
+    NSNumber* remember = [[NSUserDefaults standardUserDefaults] objectForKey:FLDefaultsKeyWizardSavePasswordKey];
+    return remember && [remember boolValue];
+}
+
+- (void) setRememberPasswordSetting:(BOOL)savePasswordSetting {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:savePasswordSetting]
+                                              forKey:FLDefaultsKeyWizardSavePasswordKey];
+
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString*) readPasswordForUserName:(NSString*) userName {
     FLAssertStringIsNotEmptyWithComment([FLAppInfo bundleIdentifier], @"bundle identifier must be set to use keychain for password");
 
-    if(FLStringIsNotEmpty(creds.userName)) {
-        if(creds.rememberPassword && FLStringIsNotEmpty(creds.password)) {
-            
-            NSString* existingPassword = [FLKeychain httpPasswordForUserName:creds.userName withDomain:[FLAppInfo bundleIdentifier]];
-            
-            if(FLStringsAreNotEqual(existingPassword, creds.password)) {
-                [FLKeychain setHttpPassword:creds.password forUserName:creds.userName withDomain:[FLAppInfo bundleIdentifier]];
-            }
-        }
-        else {
-            [FLKeychain removeHttpPasswordForUserName:creds.userName withDomain:[FLAppInfo bundleIdentifier]];
-        }
+    FLAssertStringIsNotEmpty(userName);
+
+    if(userName) {
+        return [FLKeychain httpPasswordForUserName:userName withDomain:[FLAppInfo bundleIdentifier]];
+    }
+
+    return nil;
+}
+
+- (void) writePassword:(NSString*) password forUserName:(NSString*) userName {
+    FLAssertStringIsNotEmptyWithComment([FLAppInfo bundleIdentifier], @"bundle identifier must be set to use keychain for password");
+
+    NSString* existingPassword = [self readPasswordForUserName:userName];
+
+    if(FLStringsAreNotEqual(existingPassword, password)) {
+        [FLKeychain setHttpPassword:password forUserName:userName withDomain:[FLAppInfo bundleIdentifier]];
     }
 }
 
 - (void) writeCredentials:(id<FLAuthenticationCredentials>) creds {
-    if(FLStringIsEmpty(creds.userName)) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:FLDefaultsKeyWizardLastUserNameKey];
-    }
-    else {
-        [[NSUserDefaults standardUserDefaults] setObject:creds.userName 
-                                                  forKey:FLDefaultsKeyWizardLastUserNameKey];
-    }
-
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:creds.rememberPassword] 
-                                              forKey:FLDefaultsKeyWizardSavePasswordKey];
-
-    [[NSUserDefaults standardUserDefaults] synchronize];
-
-    [self writePasswordToKeychain:creds];
-}
-
-@end
-
-@implementation FLAuthenticationCredentials (NSUserDefaults)
-
-+ (id) authCredentialsFromUserDefaults {
-    FLAuthenticationCredentials* credentials = FLAutorelease([[[self class] alloc] init]);
-    [credentials readFromUserDefaults];
-    return credentials;
-}
-
-- (void) writeToUserDefaults {
-    [[FLUserDefaultsCredentialStorage instance] writeCredentials:self];
-}
-
-- (void) writePasswordToKeychain {
-    [[FLUserDefaultsCredentialStorage instance] writePasswordToKeychain:self];
-}
-
-- (void) readFromUserDefaults {
-    if(!self.userName) {
-        self.rememberPassword = NO;
-        self.password = @"";
-        
-        self.userName = [[NSUserDefaults standardUserDefaults] objectForKey:FLDefaultsKeyWizardLastUserNameKey];
-        
-        NSNumber* saved = [[NSUserDefaults standardUserDefaults] objectForKey:FLDefaultsKeyWizardSavePasswordKey];
-        self.rememberPassword = saved ? [saved boolValue] : NO;
-
-        [self readPasswordFromKeychain];
-    }
-}
-
-- (void) readPasswordFromKeychain {
-    FLAssertStringIsNotEmptyWithComment([FLAppInfo bundleIdentifier], @"bundle identifier must be set to use keychain for password");
-
-    if(FLStringIsNotEmpty(self.userName)) {
-        if(self.rememberPassword) {
-            self.password = [FLKeychain httpPasswordForUserName:self.userName withDomain:[FLAppInfo bundleIdentifier]];
+    if(FLStringIsNotEmpty(creds.userName)) {
+        if([self rememberPasswordSetting]) {
+            [self writePassword:creds.password forUserName:creds.userName];
         }
         else {
-            [FLKeychain removeHttpPasswordForUserName:self.userName withDomain:[FLAppInfo bundleIdentifier]];
-            self.password = @"";
+            [self removePasswordForUser:creds.userName];
         }
     }
 }
 
-- (void) removePasswordFromKeychain {
+
+- (void) removePasswordForUser:(NSString*) userName {
     FLAssertStringIsNotEmptyWithComment([FLAppInfo bundleIdentifier], @"bundle identifier must be set to use keychain for password");
 
-    if(FLStringIsNotEmpty(self.userName)) {
-        [FLKeychain removeHttpPasswordForUserName:self.userName withDomain:[FLAppInfo bundleIdentifier]];
-        self.password = @"";
+    if(FLStringIsNotEmpty(userName)) {
+        [FLKeychain removeHttpPasswordForUserName:userName withDomain:[FLAppInfo bundleIdentifier]];
     }
+}
+
+- (void) removeCredentials:(id<FLAuthenticationCredentials>) credentials {
+    FLAssertNotNil(credentials);
+    [self removePasswordForUser:credentials.userName];
+}
+
+- (FLAuthenticationCredentials*) readCredentialsForUserName:(NSString*) userName {
+
+    if(FLStringIsNotEmpty(userName)) {
+
+        if([self rememberPasswordSetting]) {
+
+            return [FLAuthenticationCredentials authenticationCredentials:userName
+                                                                 password:[self readPasswordForUserName:userName]];
+        }
+        else {
+            [self removePasswordForUser:userName];
+
+            return [FLAuthenticationCredentials authenticationCredentials:userName password:nil];
+        }
+
+    }
+
+    return nil;
 }
 
 
 
 @end
+
+//@implementation FLAuthenticationCredentials (NSUserDefaults)
+//
+//+ (id) authCredentialsFromUserDefaults {
+//    FLAuthenticationCredentials* credentials = FLAutorelease([[[self class] alloc] init]);
+//    [credentials readFromUserDefaults];
+//    return credentials;
+//}
+//
+//- (void) writeToUserDefaults {
+//    [[FLUserDefaultsCredentialStorage instance] writeCredentials:self];
+//}
+//
+//- (void) writePasswordToKeychain {
+//    [[FLUserDefaultsCredentialStorage instance] writePasswordToKeychain:self];
+//}
+//
+//- (void) readFromUserDefaults {
+//    if(!self.userName) {
+//        self.rememberPassword = NO;
+//        self.password = @"";
+//        
+//        self.userName =
+//        
+//        NSNumber* saved = [[NSUserDefaults standardUserDefaults] objectForKey:FLDefaultsKeyWizardSavePasswordKey];
+//        self.rememberPassword = saved ? [saved boolValue] : NO;
+//
+//        [self readPasswordFromKeychain];
+//    }
+//}
+//
+//
+//
+//
+//
+//@end

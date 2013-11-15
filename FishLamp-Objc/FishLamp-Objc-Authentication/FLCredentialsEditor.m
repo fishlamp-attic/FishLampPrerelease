@@ -9,6 +9,7 @@
 
 #import "FLCredentialsEditor.h"
 #import "FLAuthenticationCredentials.h"
+#if NOTUSED
 
 @interface FLCredentialsEditor ()
 @property (readwrite, assign, nonatomic, getter=isEditing) BOOL editing;
@@ -119,3 +120,4 @@
 
 
 @end
+#endif

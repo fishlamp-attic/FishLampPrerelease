@@ -21,15 +21,14 @@
 - (id) init {
     self = [super init];
     if(self) {
-        self.credentialStorage = [FLUserDefaultsCredentialStorage instance];
-        self.credentials = [self.credentialStorage readCredentialsForLastUser];
+        self.credentialsStorage = [FLUserDefaultsCredentialStorage instance];
     }
     return self;
 }
 
 - (void) openService {
-    if(self.credentialStorage) {
-        self.credentials = [self.credentialStorage readCredentialsForLastUser];
+    if(self.credentialsStorage) {
+        self.credentials = [self.credentialsStorage credentialsForLastUser];
     }
 
     [super openService];

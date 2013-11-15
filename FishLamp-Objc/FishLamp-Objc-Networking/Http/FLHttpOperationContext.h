@@ -10,14 +10,15 @@
 #import "FLOperationContext.h"
 #import "FLService.h"
 #import "FLHttpRequest.h"
-//#import "FLHttpAuthenticator.h"
+//#import "FLAuthenticateHttpRequestOperation.h"
 
 #import "FLAuthenticationCredentials.h"
+#import "FLCredentialsProvider.h"
 
 @protocol FLUserService;
 @protocol FLStorageService;
 @protocol FLAuthenticationCredentials;
-@protocol FLHttpAuthenticatorDelegate;
+@protocol FLAuthenticateHttpRequestOperationDelegate;
 @protocol FLAuthenticatedEntity;
 
 @class FLServiceList;
@@ -29,9 +30,9 @@
     id<FLAuthenticatedEntity> _authenticatedEntity;
     FLFifoAsyncQueue* _authenticationQueue;
     FLServiceList* _serviceList;
-    __unsafe_unretained id<FLHttpAuthenticatorDelegate> _authenticationDelegate;
+    __unsafe_unretained id<FLAuthenticateHttpRequestOperationDelegate> _authenticationDelegate;
 }
-@property (readwrite, assign) id<FLHttpAuthenticatorDelegate> authenticationDelegate;
+@property (readwrite, assign) id<FLAuthenticateHttpRequestOperationDelegate> authenticationDelegate;
 
 @property (readonly, strong) id<FLUserService> userService;
 

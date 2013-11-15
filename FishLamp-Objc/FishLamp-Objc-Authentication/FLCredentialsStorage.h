@@ -10,6 +10,12 @@
 #import "FLAuthenticationCredentials.h"
 
 @protocol FLCredentialsStorage <NSObject>
-- (id<FLAuthenticationCredentials>) readCredentialsForLastUser;
+@property (readwrite, nonatomic, assign) id<FLAuthenticationCredentials> credentialsForLastUser;
+
+- (FLAuthenticationCredentials*) readCredentialsForUserName:(NSString*) userName;
 - (void) writeCredentials:(id<FLAuthenticationCredentials>) credentials;
+- (void) removeCredentials:(id<FLAuthenticationCredentials>) credentials;
+
+@property (readwrite, nonatomic, assign) BOOL rememberPasswordSetting;
+
 @end

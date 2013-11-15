@@ -13,44 +13,48 @@
 @implementation FLHttpUser
 
 @synthesize authenticationCredentials = _authenticationCredentials;
+@synthesize session= _session;
 
 - (id) init {
+	return [self initWithAutheticationCredentials:nil];
+}
+
+- (id) initWithAutheticationCredentials:(id<FLAuthenticationCredentials>) credentials {
 	self = [super init];
 	if(self) {
+        _authenticationCredentials = [((id)credentials) copy];
 	}
 	return self;
 }
 
-+ (id) httpUser {
-    return FLAutorelease([[[self class] alloc] init]);
++ (id) httpUser:(id<FLAuthenticationCredentials>) credentials {
+    return FLAutorelease([[[self class] alloc] initWithAutheticationCredentials:credentials]);
 }
 
 #if FL_MRC
 - (void) dealloc {
+    [_session release];
     [_authenticationCredentials release];
     [super dealloc];
 }
 #endif
 
-- (void) setAuthenticationCredentials:(id)authenticationCredentials {
-    FLSetObjectWithMutableCopy(_authenticationCredentials, authenticationCredentials);
-}
-
 - (NSString*) userName {
     return [_authenticationCredentials userName];
 }
 
-- (BOOL) isLoginAuthenticated {
-    return [_authenticationCredentials isAuthenticated];
+- (BOOL) isAuthenticated {
+    return self.session != nil;
 }
 
-- (void) setLoginUnathenticated {
-    [_authenticationCredentials setUnauthenticated];
+- (void) setUnathenticated {
+    self.session = nil;
 }
 
 - (id) copyWithZone:(NSZone *)zone {
     FLHttpUser* user = [[[self class] alloc] init];
     user.authenticationCredentials = self.authenticationCredentials;
+    user.session = self.session;
     return user;
 }
 

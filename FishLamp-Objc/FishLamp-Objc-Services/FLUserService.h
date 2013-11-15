@@ -15,25 +15,25 @@
 @protocol FLAuthenticationCredentials;
 
 @protocol FLUserService <FLService>
-- (BOOL) canAuthenticate;
-- (BOOL) isAuthenticated;
-- (id<FLAuthenticationCredentials>) credentials;
-- (void) setCredentials:(id<FLAuthenticationCredentials>) credentials;
+@property (readonly, strong) id<FLCredentialsStorage> credentialsStorage;
+@property (readwrite, strong) id<FLAuthenticationCredentials> credentials;
+
 - (void) saveCredentials;
 @end
 
 @interface FLUserService : FLService<FLUserService> {
 @private
     id<FLAuthenticationCredentials> _credentials;
-    id<FLCredentialsStorage> _credentialStorage;
+    id<FLCredentialsStorage> _credentialsStorage;
 }
 
 @property (readwrite, strong) id<FLAuthenticationCredentials> credentials;
-@property (readwrite, strong) id<FLCredentialsStorage> credentialStorage;
+@property (readwrite, strong) id<FLCredentialsStorage> credentialsStorage;
 
 + (id) userService;
-+ (id) userService:(id<FLAuthenticationCredentials>) credentials;
-- (id) initWithCredentials:(id<FLAuthenticationCredentials>) credentials;
+
+//+ (id) userService:(id<FLAuthenticationCredentials>) credentials;
+//- (id) initWithCredentials:(id<FLAuthenticationCredentials>) credentials;
 
 @end
 
