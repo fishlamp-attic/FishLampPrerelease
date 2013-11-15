@@ -25,7 +25,6 @@
     IBOutlet NSButton* _savePasswordCheckBox;
     IBOutlet NSButton* _forgotPasswordButton;
     IBOutlet NSButton* _loginButton;
-    id<FLAuthenticationCredentials> _credentials;
     __unsafe_unretained id<FLLoginPanelAthenticationDelegate> _authenticationDelegate;
 }
 + (id) loginPanel;
@@ -34,18 +33,28 @@
 
 @protocol FLLoginPanelAthenticationDelegate <NSObject>
 
+// get/set credentials
+
 - (id<FLAuthenticationCredentials>) loginPanelGetCredentials:(FLLoginPanel*) panel;
 
 - (void) loginPanel:(FLLoginPanel*) panel setCredentials:(id<FLAuthenticationCredentials>) credentials;
+
+// authetication
 
 - (void) loginPanel:(FLLoginPanel*) loginPanel
 beginAuthenticatingWithCompletion:(fl_result_block_t) completion;
 
 - (void) loginPanelDidCancelAuthentication:(FLLoginPanel*) panel;
 
-- (BOOL) loginPanel:(FLLoginPanel*) panel 
-credentialsAreAuthenticated:(id<FLAuthenticationCredentials>) credentials;
-   
+//- (BOOL) loginPanel:(FLLoginPanel*) panel 
+//credentialsAreAuthenticated:(id<FLAuthenticationCredentials>) credentials;
+
+// get/set BOOL for saving password
+
+- (BOOL) loginPanelGetSavePassword:(FLLoginPanel*) panel;
+
+- (void) loginPanel:(FLLoginPanel*) panel setSavePassword:(BOOL) savePassword;
+
 @end
 
 @protocol FLLoginPanelDelegate <NSObject>

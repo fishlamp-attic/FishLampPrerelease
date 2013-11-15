@@ -10,6 +10,7 @@
 #import "FLHttpController+UserLogin.h"
 #import "FLLoginPanel.h"
 #import "FLUserService.h"
+#import "FLCredentialsStorage.h"
 
 @implementation FLHttpOperationContext (UserLogin)
 
@@ -35,9 +36,18 @@ beginAuthenticatingWithCompletion:(fl_result_block_t) completion {
     [self requestCancel];
 }
 
-- (BOOL) loginPanel:(FLLoginPanel*) panel 
-credentialsAreAuthenticated:(id<FLAuthenticationCredentials>) editor {
-    return  [self.userService isAuthenticated];
+//- (BOOL) loginPanel:(FLLoginPanel*) panel 
+//credentialsAreAuthenticated:(id<FLAuthenticationCredentials>) editor {
+//    return  [self.userService isAuthenticated];
+//}
+
+- (BOOL) loginPanelGetSavePassword:(FLLoginPanel*) panel {
+    return self.userService.credentialsStorage.rememberPasswordSetting;
 }
+
+- (void) loginPanel:(FLLoginPanel*) panel setSavePassword:(BOOL) savePassword {
+    self.userService.credentialsStorage.rememberPasswordSetting = savePassword;
+}
+
 
 @end
