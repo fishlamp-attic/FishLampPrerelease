@@ -14,7 +14,7 @@
 @implementation FLUserService
 
 @synthesize credentials = _credentials;
-@synthesize credentialsStorage = _credentialStorage;
+@synthesize credentialsStorage = _credentialsStorage;
 
 //- (id) initWithCredentials:(id<FLAuthenticationCredentials>) credentials {
 //    self = [super init];

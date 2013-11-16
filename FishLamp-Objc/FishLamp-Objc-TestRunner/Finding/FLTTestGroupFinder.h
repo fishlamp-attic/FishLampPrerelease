@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "FishLampMinimum.h"
 
-@class FLTTestFinder;
-
 @interface FLTTestGroupFinder : NSObject {
 @private
     NSMutableArray* _testFinders;

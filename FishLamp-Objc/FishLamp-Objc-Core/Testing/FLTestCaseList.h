@@ -8,7 +8,6 @@
 
 #import "FLCoreRequired.h"
 
-@class FLTestCase;
 @protocol FLTestCase;
 
 @interface FLTestCaseList : NSObject<NSFastEnumeration> {

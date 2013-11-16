@@ -13,7 +13,13 @@
 - (id<FLAuthenticationSession>) authenticatedSessionWithUpdatedTimestamp;
 @end
 
-@interface FLAuthenticationToken : NSObject<FLAuthenticationSession>
+@interface FLAuthenticationToken : NSObject<FLAuthenticationSession> {
+@private
+    id _token;
+    NSTimeInterval _authTokenLastUpdateTime;
+    NSTimeInterval _lastAuthenticationTimestamp;
+    NSTimeInterval _timeoutInterval;
+}
 
 @property (readonly, strong, nonatomic) NSString* token;
 @property (readonly, assign, nonatomic) NSTimeInterval lastAuthenticationTimestamp;

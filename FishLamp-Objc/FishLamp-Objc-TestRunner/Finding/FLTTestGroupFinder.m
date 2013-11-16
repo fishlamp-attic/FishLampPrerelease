@@ -12,6 +12,7 @@
 #import "FLTTestMethod.h"
 #import "FLTestable.h"
 #import "FLTTestFactoryList.h"
+#import "FLTTestFinder.h"
 
 @interface FLTTestGroupFinder ()
 @property (readwrite, strong, nonatomic) NSDictionary* testGroups;
@@ -138,7 +139,7 @@
 
     FLRuntimeVisitEveryClass(
         ^(FLRuntimeInfo classInfo, BOOL* stop) {
-            for(FLTTestFinder* finder in _testFinders) {
+            for(id finder in _testFinders) {
 
                 // find test subclasses
                 if([finder respondsToSelector:@selector(findPossibleUnitTestClass:)]) {
@@ -159,7 +160,7 @@
 
             FLRuntimeVisitEachSelectorInClass(classInfo.class,
                 ^(FLRuntimeInfo methodInfo, BOOL* stopInner) {
-                    for(FLTTestFinder* finder in _testFinders) {
+                    for(id finder in _testFinders) {
                         if([finder respondsToSelector:@selector(findPossibleTestMethod:)]) {
                             FLTTestMethod* testMethod = [finder findPossibleTestMethod:methodInfo];
 

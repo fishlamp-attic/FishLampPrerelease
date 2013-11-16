@@ -44,7 +44,7 @@
     FLConfirm(fired == YES);
 }
 
-- (void) willTestDoubleCount:(FLTestCase*) testCase {
+- (void) willTestDoubleCount:(id<FLTestCase>) testCase {
     [testCase setDisabledWithReason:@"problem with exception propagation"];
 }
 
