@@ -51,6 +51,10 @@
 
 + (id) defaultContext;
 
+- (void) addOperation:(id) operation;
+- (void) removeOperation:(id) operation;
+
+- (id<FLOperationStarter>) starterForOperation:(id) operation;
 @end
 //#import "FLPromise.h"
 //#import "FLFinisher.h"

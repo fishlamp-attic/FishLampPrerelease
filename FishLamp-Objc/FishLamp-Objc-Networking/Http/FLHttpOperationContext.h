@@ -24,11 +24,13 @@
 @private
     id<FLStorageService> _storageService;
     id<FLAuthenticatedEntity> _authenticatedEntity;
-    id<FLAuthenticationCredentials> _credentials;
+    id<FLAuthenticationCredentials> _authenticationCredentials;
     id<FLCredentialsStorage> _credentialsStorage;
 
     FLFifoAsyncQueue* _authenticationQueue;
     FLServiceList* _serviceList;
+
+    NSError* _authenticationError;
 
     __unsafe_unretained id<FLAuthenticateHttpRequestOperationDelegate> _authenticationDelegate;
 }
@@ -73,8 +75,4 @@
 
 - (void) httpOperationContextDidOpen:(FLHttpOperationContext*) context;
 @end
-
-
-
-
 

@@ -102,7 +102,6 @@
     else {
         [[FLTestLoggingManager instance] appendLineWithFormat:@"%@: %@", [NSString stringWithLeadingPadding_fl:@"FAILED" minimumWidth:kPadWidth], testCase.testCaseName ];
     }
-    [self.testableObject setCurrentTestCase:nil];
 
     [FLBackgroundQueue queueTarget:self action:@selector(beginNextTest)];
 }
@@ -117,8 +116,6 @@
 
         id<FLTestable> testable = self.testableObject;
         FLAssertNotNil(testable);
-
-        testable.currentTestCase = currentTestCase;
 
         if(!currentTestCase.isDisabled) {
             [[FLTestLoggingManager instance] appendLineWithFormat:@"%@: %@",

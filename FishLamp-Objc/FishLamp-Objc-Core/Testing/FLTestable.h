@@ -14,6 +14,7 @@
 #import "FLTestResultCollection.h"
 #import "FLTestGroup.h"
 #import "FLTestResultLogEntry.h"
+#import "FLAsyncTest.h"
 
 /**
  *  A FLTestable is an object that represents a automoated test of some kind. Either a unit or functional test.
@@ -68,7 +69,10 @@
 
 @property (readwrite, strong) FLTestCaseList* testCaseList;
 
-@property (readwrite, strong) id<FLTestCase> currentTestCase;
+//@property (readwrite, strong) id<FLTestCase> currentTestCase;
+//
+//- (FLAsyncTest*) startAsyncTest;
+//- (FLAsyncTest*) startAsyncTestWithTimeout:(NSTimeInterval) timeout;
 
 @end
 
@@ -80,7 +84,6 @@
     FLTestCaseList* _testCaseList;
     id<FLExpectedTestResult> _expectedTestResult;
     id<FLTestResultCollection> _testResults;
-    id<FLTestCase> _currentTestCase;
 }
 
 /**
@@ -101,11 +104,11 @@ extern id<FLStringFormatter> FLTestLogger();
 /**
  *  Macro that all the tests should use for output.
  */
-#define FLTestLog(__TESTABLE__, __FORMAT__, ...) \
-            [__TESTABLE__.currentTestCase.result appendLogEntry:[FLTestResultLogEntry testResultLogEntry:FLStringWithFormatOrNil(__FORMAT__, ##__VA_ARGS__) stackTrace:nil]]
+#define FLTestLog(__TESTCASE__, __FORMAT__, ...) \
+            [__TESTCASE__.result appendLogEntry:[FLTestResultLogEntry testResultLogEntry:FLStringWithFormatOrNil(__FORMAT__, ##__VA_ARGS__) stackTrace:nil]]
 
 #define FLTestLogHeavy(__TESTABLE__, __FORMAT__, ...) \
-            [__TESTABLE__.currentTestCase.result appendLogEntry:[FLTestResultLogEntry testResultLogEntry:FLStringWithFormatOrNil(__FORMAT__, ##__VA_ARGS__) stackTrace:FLCreateStackTrace(YES)]]
+            [__TESTABLE__.result appendLogEntry:[FLTestResultLogEntry testResultLogEntry:FLStringWithFormatOrNil(__FORMAT__, ##__VA_ARGS__) stackTrace:FLCreateStackTrace(YES)]]
 
 #define FLDisableTest() \
             do { \

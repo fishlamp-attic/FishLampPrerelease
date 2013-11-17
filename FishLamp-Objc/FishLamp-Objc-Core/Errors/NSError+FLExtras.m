@@ -14,8 +14,7 @@
 #import "FLStackTrace.h"
 
 
-NSString* const FLStackTraceKey = @"stacktrace";
-
+NSString* const FLStackTraceKey = @"com.fishlamp.stacktrace";
 
 @implementation NSError (FLExtras)
 
@@ -125,7 +124,7 @@ FLSynthesizeDictionaryGetterProperty(stackTrace, FLStackTrace*, FLStackTraceKey,
             userInfo = [NSDictionary dictionaryWithObject:stackTrace forKey:FLStackTraceKey];
         }
 
-        return FLAutorelease([[[error class] alloc] initWithDomain:error.domain code:error.code userInfo:userInfo]);
+        return FLAutorelease([[NSError alloc] initWithDomain:error.domain code:error.code userInfo:userInfo]);
     }
 
     return FLRetainWithAutorelease(error);
@@ -142,6 +141,11 @@ FLSynthesizeDictionaryGetterProperty(stackTrace, FLStackTrace*, FLStackTraceKey,
 - (NSString*) reasonForException {
     return [self localizedDescription];
 }
+
+- (BOOL) isEqualToError:(NSError*) error {
+    return [self.domain isEqualToString:error.domain] && error.code == self.code;
+}
+
 @end
 
 

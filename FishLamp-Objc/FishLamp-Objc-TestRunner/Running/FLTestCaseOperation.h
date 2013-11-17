@@ -11,7 +11,7 @@
 #import "FLFinisher.h"
 #import "FLOperation.h"
 
-@class FLTimer;
+@class FLTestCaseAsyncTest;
 
 @interface FLTestCaseOperation : FLOperation<FLTestCase> {
 @private
@@ -28,11 +28,8 @@
     BOOL _disabled;
     BOOL _debugMode;
 
+    FLTestCaseAsyncTest* _asyncTest;
     FLIndentIntegrity* _indentIntegrity;
-
-//    NSTimeInterval _timeoutInterval;
-
-    FLTimer* _timer;
 }
 
 // creation

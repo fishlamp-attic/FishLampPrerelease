@@ -24,11 +24,11 @@
 @synthesize testCaseList = _testCaseList;
 @synthesize expectedTestResult = _expectedTestResult;
 @synthesize testResults = _testResults;
-@synthesize currentTestCase = _currentTestCase;
+//@synthesize currentTestCase = _currentTestCase;
 
 #if FL_MRC
 - (void)dealloc {
-    [_currentTestCase release];
+//    [_currentTestCase release];
 	[_testCaseList release];
     [_expectedTestResult release];
     [_testResults release];
@@ -69,6 +69,10 @@
 + (NSString*) testGroupName {
     return NSStringFromClass([self testGroupClass]);
 }
+
+//- (FLAsyncTest*) startAsyncTest {
+//    return [self.currentTestCase startAsyncTest];
+//}
 
 @end
 

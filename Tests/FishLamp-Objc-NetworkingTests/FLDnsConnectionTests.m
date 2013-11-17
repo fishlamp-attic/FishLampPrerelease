@@ -19,14 +19,14 @@
 //    return @"FishLampNetworking";
 //}
 
-- (void) testCreateHostByName {
+- (void) testCreateHostByName:(id<FLTestCase>) testCase {
 
     FLNetworkHost* host = [FLNetworkHost networkHostWithName:@"google.com"];
     
     FLAssert(!host.isResolved);
     FLAssertStringsAreEqual(host.hostName, @"google.com");
     
-    FLTestLog(self, host.hostName);
+    FLTestLog(testCase, host.hostName);
 }
 
 

@@ -77,11 +77,11 @@
 }
 */
 
-- (void) testBasicFinisher {
+- (void) testBasicFinisher:(id<FLTestCase>) testCase {
 
-    FLTestLog(self, @"async self test");
+    FLTestLog(testCase, @"async self test");
 
-    FLAsyncTest* asyncTest = [FLAsyncTest asyncTest];
+    [testCase startAsyncTest];
 
     __block FLPromisedResult resultFromBlock = nil;
 
@@ -93,9 +93,9 @@
     __block BOOL finishedOk = NO;
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, nil), ^{
-        [asyncTest verifyAsyncResults:^{
+        [testCase finishAsyncTestWithBlock:^{
             finishedOk = YES;
-            FLTestLog(self, @"done in thread");
+            FLTestLog(testCase, @"done in thread");
             [finisher setFinishedWithResult:@"Hello"];
         }];
     });
@@ -109,8 +109,7 @@
     FLConfirm([result isEqualToString:@"Hello"]);
     FLConfirm([resultFromBlock isEqualToString:result]);
 
-    [asyncTest wait];
-    [asyncTest finish];
+    [testCase waitUntilAsyncTestIsFinished];
 }
 
 - (void) testPromiseAdding {

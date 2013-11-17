@@ -8,17 +8,40 @@
 
 #import "FLCoreRequired.h"
 
-@interface FLAsyncTest : NSObject {
-@private
-    dispatch_semaphore_t _semaphor;
-    NSException* _exception;
-}
+@class FLTimer;
 
-+ (id) asyncTest;
+#define FLAsyncTestDefaultTimeout 2.0f
 
-- (void) wait;
-- (void) finish;
+@protocol FLAsyncTest <NSObject>
+- (void) waitUntilFinished;
 
 - (void) verifyAsyncResults:(dispatch_block_t) block;
 
+- (void) setFinishedWithBlock:(void (^)()) finishBlock;
+- (void) setFinished;
+- (void) setFinishedWithError:(NSError*) error;
 @end
+
+@interface FLAsyncTest : NSObject<FLAsyncTest> {
+@private
+    dispatch_semaphore_t _semaphor;
+    NSError* _error;
+    FLTimer* _timer;
+}
+
+@property (readonly, copy, nonatomic) NSError* error;
+
++ (id) asyncTest;
++ (id) asyncTestWithTimeout:(NSTimeInterval) timeout;
+- (id) initWithTimeout:(NSTimeInterval) timeout;
+
+- (void) waitUntilFinished;
+
+- (void) verifyAsyncResults:(dispatch_block_t) block;
+
+- (void) setFinishedWithBlock:(void (^)()) finishBlock;
+- (void) setFinished;
+- (void) setFinishedWithError:(NSError*) error;
+
+@end
+

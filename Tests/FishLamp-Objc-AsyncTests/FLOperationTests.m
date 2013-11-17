@@ -60,7 +60,7 @@
 
 - (FLPromisedResult) runSynchronously {
 
-    FLTestLog(self.testable, @"hello world");
+//    FLTestLog(self.testable, @"hello world");
     _passed = YES;
 
     return FLSuccessfulResult;

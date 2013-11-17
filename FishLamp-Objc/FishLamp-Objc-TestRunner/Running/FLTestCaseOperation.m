@@ -16,6 +16,27 @@
 
 #import "FLTimer.h"
 
+@interface FLTestCaseAsyncTest : NSObject<FLAsyncTest> {
+@private
+    __unsafe_unretained FLTestCaseOperation* _operation;
+    dispatch_block_t _finishedBlock;
+    BOOL _finishedStarting;
+    NSError* _error;
+    FLTimer* _timer;
+}
+@property (readwrite, copy) dispatch_block_t finishedBlock;
+@property (readwrite, assign) BOOL finishedStarting;
+
++ (id) testCaseAsyncTest:(FLTestCaseOperation*) operation
+                 timeout:(NSTimeInterval) timeout;
+
+- (id) initWithOperation:(FLTestCaseOperation*) operation
+                 timeout:(NSTimeInterval) timeout;
+
+
+- (void) setTestCaseStarted;
+@end
+
 @interface FLTestCaseOperation ()
 @property (readwrite, strong) NSString* testCaseName;
 @property (readwrite, strong) FLSelector* selector;
@@ -23,6 +44,7 @@
 @property (readwrite, strong) NSString* disabledReason;
 @property (readwrite, strong) id<FLTestResult> result;
 @property (readonly, strong) FLIndentIntegrity* indentIntegrity;
+@property (readwrite, strong) FLTestCaseAsyncTest* asyncTest;
 @end
 
 @implementation FLTestCaseOperation
@@ -36,6 +58,7 @@
 @synthesize result = _result;
 @synthesize debugMode = _debugMode;
 @synthesize indentIntegrity = _indentIntegrity;
+@synthesize asyncTest = _asyncTest;
 
 - (id) init {	
 	self = [super init];
@@ -70,10 +93,9 @@
     return self;
 }
 
-- (void) dealloc {
-    [_timer stopTimer];
-
 #if FL_MRC
+- (void) dealloc {
+    [_asyncTest release];
     [_indentIntegrity release];
     [_disabledReason release];
     [_testCaseName release];
@@ -82,8 +104,8 @@
     [_didTestSelector release];
     [_result release];
     [super dealloc];
-#endif
 }
+#endif
 
 + (id) testCase:(NSString*) name
        testable:(id<FLTestable>) testable
@@ -125,39 +147,26 @@
     }
 }
 
-- (void) timerDidTimeout:(FLTimer*) timer {
-    FLLog(@"Test timed out: %@", [self testCaseName]);
-}
-
-
 - (BOOL) isAsyncTest {
-    return _timer != nil;
+    return _asyncTest != nil;
 }
 
 - (void) startOperation {
-
-    if(self.isDisabled) {
-        [self setFinished];
-    }
-
-    [self.result setStarted];
-
     @try {
+        if(self.isDisabled) {
+            [self setFinished];
+        }
+
+        [self.result setStarted];
+
         switch(_selector.argumentCount) {
             case 0:
                 [_selector performWithTarget:_target];
-                if(!self.isAsyncTest) {
-                    [self setFinished];
-                }
             break;
 
             case 1:
                 [_selector performWithTarget:_target withObject:self];
-                if(!self.isAsyncTest) {
-                    [self setFinished];
-                }
             break;
-
 
             default:
                 [self setDisabledWithReason:[NSString stringWithFormat:@"[%@ %@] has too many paramaters (%ld).",
@@ -172,15 +181,18 @@
             [self setFinishedWithResult:ex.error];
         }
     }
+    @finally {
+        if(self.asyncTest) {
+            [self.asyncTest setTestCaseStarted];
+        }
+        else if (!self.finisher.isFinished) {
+            [self setFinished];
+        }
+    }
 }
 
 - (void) setFinishedWithResult:(id)result {
 
-    if(_timer) {
-        [_timer stopTimer];
-    }
-
-    [self.result setFinished];
 
     if([result isError]) {
         [self.result setFailedWithError:result];
@@ -200,41 +212,31 @@
     return [NSString stringWithFormat:@"%@ %@", [super description], self.testCaseName];
 }
 
-- (void) startAsyncTest {
-    [self startAsyncTestWithTimeout:FLTestCaseDefaultAsyncTimeout];
-}
-
-- (void) setFailedWithError:(NSError*) error {
-    [self setFinishedWithResult:error];
-}
-
 - (void) startAsyncTestWithTimeout:(NSTimeInterval) timeout {
-    _timer = [[FLTimer alloc] initWithTimeout:timeout];
-    _timer.delegate = self;
-    [_timer startTimer];
+    self.asyncTest =  [FLTestCaseAsyncTest testCaseAsyncTest:self timeout:timeout];
 }
 
-- (void) executeTestBlock:(void (^)()) testBlock {
-    @try {
-        if(testBlock) {
-            testBlock();
-        }
-    }
-    @catch(NSException* ex) {
-        [self setFinishedWithResult:ex.error];
-    }
+- (void) startAsyncTest {
+    return [self startAsyncTestWithTimeout:FLAsyncTestDefaultTimeout];
+}
+
+- (void) verifyAsyncResults:(dispatch_block_t) block {
+    [self.asyncTest verifyAsyncResults:block];
 }
 
 - (void) finishAsyncTestWithBlock:(void (^)()) finishBlock {
-    @try {
-        if(finishBlock) {
-            finishBlock();
-        }
-        [self setFinished];
-    }
-    @catch(NSException* ex) {
-        [self setFinishedWithResult:ex.error];
-    }
+    return [self.asyncTest setFinishedWithBlock:finishBlock];
+}
+
+- (void) finishAsyncTest {
+    [self.asyncTest setFinished];
+}
+- (void) finishAsyncTestWithError:(NSError*) error {
+    [self.asyncTest setFinishedWithError:error];
+}
+
+- (void) waitUntilAsyncTestIsFinished {
+
 }
 
 
@@ -283,6 +285,117 @@
 //    FLAssertAreEqualWithComment(failed, failureType, nil);
 }
 #endif
+
+@end
+
+@implementation FLTestCaseAsyncTest
+@synthesize finishedBlock = _finishedBlock;
+@synthesize finishedStarting = _finishedStarting;
+
++ (id) testCaseAsyncTest:(FLTestCaseOperation*) operation timeout:(NSTimeInterval) timeout{
+    return FLAutorelease([[[self class] alloc] initWithOperation:operation timeout:timeout]);
+}
+
+- (id) initWithOperation:(FLTestCaseOperation*) operation
+                 timeout:(NSTimeInterval) timeout{
+	self = [super init];
+	if(self) {
+        _operation = FLRetain(operation);
+
+        _timer = [[FLTimer alloc] initWithTimeout:timeout];
+        _timer.delegate = self;
+        [_timer startTimer];
+	}
+	return self;
+}
+
+- (void) stopTimer {
+    if(_timer) {
+        [_timer stopTimer];
+    }
+}
+- (void)dealloc {
+    [_timer stopTimer];
+
+#if FL_MRC
+    [_timer release];
+    [_finishedBlock release];
+	[_operation release];
+	[super dealloc];
+}
+#endif
+
+- (void) setTestCaseStarted {
+    @synchronized(self) {
+        self.finishedStarting = YES;
+        if(self.finishedBlock) {
+            self.finishedBlock();
+            self.finishedBlock = nil;
+        }
+    }
+}
+
+- (void) setFinishedWithFinishedBlock:(dispatch_block_t) finishedBlock {
+    @synchronized(self) {
+        if(self.finishedStarting) {
+            if(finishedBlock) {
+                finishedBlock();
+            }
+        }
+        else {
+            self.finishedBlock = finishedBlock;
+        }
+    }
+}
+
+- (void) setFinishedWithBlock:(void (^)()) finishBlock {
+    FLPrepareBlockForFutureUse(finishBlock);
+
+    [self setFinishedWithFinishedBlock:^{
+        @try {
+            if(finishBlock) {
+                finishBlock();
+            }
+            [_operation setFinished];
+        }
+        @catch(NSException* ex) {
+            [_operation setFinishedWithResult:ex.error];
+        }
+    }];
+}
+
+- (void) waitUntilFinished {
+//    dispatch_semaphore_wait(_semaphor, DISPATCH_TIME_FOREVER); \
+//    FLThrowError(self.error);
+}
+
+- (void) setFinished {
+    [self setFinishedWithFinishedBlock:^{
+        [_operation setFinished];
+    }];
+}
+
+- (void) setFinishedWithError:(NSError*) error {
+    [self setFinishedWithFinishedBlock:^{
+        [_operation setFinishedWithResult:error];
+    }];
+}
+
+- (void) timerDidTimeout:(FLTimer*) timer {
+    FLLog(@"Test timed out: %@", [_operation testCaseName]);
+    [self setFinishedWithError:[NSError timeoutError]];
+}
+
+- (void) verifyAsyncResults:(dispatch_block_t) block {
+    @try {
+        if(block) {
+            block();
+        }
+    }
+    @catch(NSException* ex) {
+        [self setFinishedWithError:ex.error];
+    }
+}
 
 @end
 

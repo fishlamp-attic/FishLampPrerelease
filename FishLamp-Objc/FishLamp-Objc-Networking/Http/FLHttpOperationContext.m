@@ -28,7 +28,7 @@
 @property (readonly, strong) FLFifoAsyncQueue* authenticationQueue;
 @property (readwrite, strong) id<FLAuthenticatedEntity> authenticatedEntity;
 @property (readwrite, strong) id<FLCredentialsStorage> credentialsStorage;
-
+@property (readwrite, strong) NSError* authenticationError;
 @end
 
 @implementation FLHttpOperationContext
@@ -40,6 +40,7 @@
 @synthesize authenticationDelegate = _authenticationDelegate;
 @synthesize authenticationCredentials = _authenticationCredentials;
 @synthesize credentialsStorage = _credentialsStorage;
+@synthesize authenticationError = _authenticationError;
 
 - (id) init {
     self = [super init];
@@ -60,6 +61,7 @@
 
 #if FL_MRC
 - (void) dealloc {
+    [_authenticationError release];
     [_credentialsStorage release];
     [_authenticationCredentials release];
     [_authenticatedEntity release];
@@ -88,6 +90,7 @@
     [self.serviceList closeServices];
     FLSetObjectWithRetain(_authenticationCredentials, credentials);
     self.authenticatedEntity = nil;
+    self.authenticationError = nil;
 
     [self saveCredentials];
     [self.storageService openService];
@@ -103,6 +106,8 @@
 
 - (void) authenticateHttpRequest:(FLHttpRequest*) request {
 
+    FLThrowIfError(self.authenticationError);
+
     FLOperation* authenticator = nil;
 
     if(self.authenticatedEntity) {
@@ -114,7 +119,12 @@
 
     FLAssertNotNil(authenticator);
 
-    FLThrowIfError([self runSynchronously:authenticator]);
+    FLPromisedResult result = [self runSynchronously:authenticator];
+
+    if([result isError]) {
+        self.authenticationError = result;
+        FLThrowError(result);
+    }
 }
 
 - (void) willStartOperation:(id) operation {
@@ -164,6 +174,8 @@
 }
 
 - (void) logoutEntity {
+    [self requestCancel];
+
     id<FLAuthenticationCredentials> creds = self.authenticationCredentials;
     self.authenticationCredentials = [FLAuthenticationCredentials authenticationCredentials:creds.userName password:nil];
 
@@ -175,6 +187,3 @@
 }
 
 @end
-
-
-

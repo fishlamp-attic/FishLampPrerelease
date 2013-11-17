@@ -129,6 +129,7 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
         [operation requestCancel];
     }
 
+    [self willStartOperation:operation];
 }
 
 - (void) removeOperation:(id) operation {
@@ -166,7 +167,6 @@ typedef void (^FLOperationVisitor)(id operation, BOOL* stop);
     FLAssertNotNil(operation);
 
     [self addOperation:operation];
-    [self willStartOperation:operation];
 
 // TODO: provide way to specify queue
     return [[self starterForOperation:operation] runOperationSynchronously:operation];

@@ -56,7 +56,7 @@ FLLocationInSourceFile_t FLLocationInSourceFileMake(const char* filePath, const 
 
 typedef struct {
     const char** lines;
-    NSUInteger depth;
+    int depth;
 } FLCallStack_t;
 
 typedef struct {

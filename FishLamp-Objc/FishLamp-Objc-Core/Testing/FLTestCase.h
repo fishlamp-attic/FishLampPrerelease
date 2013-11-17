@@ -10,6 +10,7 @@
 #import "FLCoreRequired.h"
 #import "FLSelector.h"
 #import "FLStringFormatter.h"
+#import "FLAsyncTest.h"
 
 typedef void (^FLAsyncTestResultBlock)();
 
@@ -34,14 +35,19 @@ typedef void (^FLAsyncTestResultBlock)();
 - (void) setDisabledWithReason:(NSString*) reason;
 
 // async testing
-- (BOOL) isAsyncTest;
-- (void) startAsyncTest;
-- (void) startAsyncTestWithTimeout:(NSTimeInterval) timeout;
-- (void) executeTestBlock:(void (^)()) testBlock;
-- (void) finishAsyncTestWithBlock:(void (^)()) finishBlock;
-- (void) setFinished;
-- (void) setFailedWithError:(NSError*) error;
 
 @property (readwrite, assign) BOOL debugMode;
 
+- (void) startAsyncTest;
+- (void) startAsyncTestWithTimeout:(NSTimeInterval) timeout;
+
+- (void) verifyAsyncResults:(dispatch_block_t) block;
+
+- (void) finishAsyncTestWithBlock:(void (^)()) finishBlock;
+- (void) finishAsyncTest;
+- (void) finishAsyncTestWithError:(NSError*) error;
+
+- (void) waitUntilAsyncTestIsFinished;
+
 @end
+

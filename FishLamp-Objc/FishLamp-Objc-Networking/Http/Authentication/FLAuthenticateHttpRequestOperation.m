@@ -106,4 +106,12 @@
     [self setFinishedWithResult:authenticatedEntity];
 }
 
+- (void) didFinishWithResult:(id)result {
+    [super didFinishWithResult:result];
+
+    if([result isError]) {
+        [_httpRequest setFinishedWithResult:result];
+    }
+}
+
 @end

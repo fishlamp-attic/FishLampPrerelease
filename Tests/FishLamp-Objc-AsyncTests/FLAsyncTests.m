@@ -26,9 +26,9 @@
     [runOrder orderClass:[self class] afterClass:[FLTimeoutTests class]];
 }
 
-- (void) _didExecuteOperation:(FLPerformSelectorOperation*) operation {
-	FLTestLog(self, @"did execute");
-}
+//- (void) _didExecuteOperation:(FLPerformSelectorOperation*) operation {
+//	FLTestLog(self, @"did execute");
+//}
 
 - (void) _asyncDone:(FLPerformSelectorOperation*) operation
 {
@@ -71,13 +71,11 @@
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, nil), ^{
 
-        [testCase executeTestBlock:^{
+        [testCase finishAsyncTestWithBlock:^{
 
             @try {
                 FLConfirmFalse(finishedOk);
                 finishedOk = YES;
-
-                [testCase setFinished];
             }
             @finally {
                 dispatch_semaphore_signal(semaphor);
@@ -99,7 +97,7 @@
 - (void) testAsyncTest2:(id<FLTestCase>) testCase {
 
     [testCase startAsyncTest];
-    [testCase setFinished];
+    [testCase finishAsyncTest];
 
 //    FLPromise* promise =
 //    [FLBackgroundQueue queueBlock:^{

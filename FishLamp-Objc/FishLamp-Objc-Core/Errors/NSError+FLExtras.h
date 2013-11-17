@@ -55,6 +55,8 @@ extern NSString* const FLStackTraceKey;
 
 - (BOOL) isError;
 
+- (BOOL) isEqualToError:(NSError*) error;
+
 - (NSString*) nameForException;
 
 - (NSString*) reasonForException;

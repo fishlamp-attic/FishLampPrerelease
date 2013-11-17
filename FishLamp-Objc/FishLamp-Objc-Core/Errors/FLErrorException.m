@@ -44,19 +44,23 @@ NSString* const FLUnderlyingExceptionKey = @"com.fishlamp.exception";
 - (id)initWithName:(NSString *)aName
             reason:(NSString *)aReason
           userInfo:(NSDictionary *)aUserInfo
-             error:(NSError*) error {
+             error:(NSError*) aError {
 
-    if(error) {
+    NSDictionary* theUserInfo = aUserInfo;
+
+    if(aError) {
+
         if(aUserInfo) {
             NSMutableDictionary* newUserInfo = FLMutableCopyWithAutorelease(aUserInfo);
-            [newUserInfo setObject:error forKey:NSUnderlyingErrorKey];
-            return [self initWithName:aName reason:aReason userInfo:newUserInfo];
+            [newUserInfo setObject:FLCopyWithAutorelease(aError) forKey:NSUnderlyingErrorKey];
+            theUserInfo = newUserInfo;
         }
-
-        return [self initWithName:aName reason:aReason userInfo:[NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey]];
+        else {
+            theUserInfo = [NSDictionary dictionaryWithObject:FLCopyWithAutorelease(aError) forKey:NSUnderlyingErrorKey];
+        }
     }
 
-    return [self initWithName:aName reason:aReason userInfo:aUserInfo];
+    return [self initWithName:aName reason:aReason userInfo:theUserInfo];
 }
 
 + (NSException *)exceptionWithName:(NSString *)name
