@@ -9,26 +9,21 @@
 
 #import "FLHttpController+UserLogin.h"
 #import "FLLoginPanel.h"
-#import "FLUserService.h"
 #import "FLCredentialsStorage.h"
 
 @implementation FLHttpOperationContext (UserLogin)
 
 - (id<FLAuthenticationCredentials>) loginPanelGetCredentials:(FLLoginPanel*) panel {
-    return self.userService.credentials;
+    return self.authenticationCredentials;
 }
 
 - (void) loginPanel:(FLLoginPanel*) panel setCredentials:(id<FLAuthenticationCredentials>) credentials {
-    [self.userService setCredentials:credentials];
-    [self.userService saveCredentials];
+    self.authenticationCredentials = credentials;
 }
 
 - (void) loginPanel:(FLLoginPanel*) panel 
 beginAuthenticatingWithCompletion:(fl_result_block_t) completion {
 
-    if(!self.isServiceOpen) {
-        [self openService];
-    }
     [self beginAuthenticating:completion];
 }
 
@@ -36,17 +31,12 @@ beginAuthenticatingWithCompletion:(fl_result_block_t) completion {
     [self requestCancel];
 }
 
-//- (BOOL) loginPanel:(FLLoginPanel*) panel 
-//credentialsAreAuthenticated:(id<FLAuthenticationCredentials>) editor {
-//    return  [self.userService isAuthenticated];
-//}
-
 - (BOOL) loginPanelGetSavePassword:(FLLoginPanel*) panel {
-    return self.userService.credentialsStorage.rememberPasswordSetting;
+    return self.credentialsStorage.rememberPasswordSetting;
 }
 
 - (void) loginPanel:(FLLoginPanel*) panel setSavePassword:(BOOL) savePassword {
-    self.userService.credentialsStorage.rememberPasswordSetting = savePassword;
+    self.credentialsStorage.rememberPasswordSetting = savePassword;
 }
 
 
