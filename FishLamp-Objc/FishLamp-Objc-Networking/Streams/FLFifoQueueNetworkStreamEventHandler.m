@@ -44,6 +44,7 @@
 - (void) queueSelector:(SEL) selector withObject:(id) object {
     __block FLNetworkStream* theStream = FLRetain(self.stream);
     __block id theObject = FLRetain(object);
+    FLAssertNotNil(self.asyncQueue);
 
     [self.asyncQueue dispatch_async:^{
         [self.stream performSelector:selector withObject:theObject];
@@ -55,6 +56,7 @@
 
 - (void) queueSelector:(SEL) selector {
     __block FLNetworkStream* theStream = FLRetain(self.stream);
+    FLAssertNotNil(self.asyncQueue);
 
     [self.asyncQueue dispatch_async:^{
         @try {
@@ -75,6 +77,7 @@
 
     FLTrace(@"Read Stream got event %d", eventType);
 
+    FLAssertNotNil(self.stream);
     [self.stream touchTimeoutTimestamp];
 
     switch (eventType)  {

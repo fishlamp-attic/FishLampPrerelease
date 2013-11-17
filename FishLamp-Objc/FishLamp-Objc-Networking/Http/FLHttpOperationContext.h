@@ -8,35 +8,36 @@
 //
 
 #import "FLOperationContext.h"
-#import "FLService.h"
 #import "FLHttpRequest.h"
-//#import "FLAuthenticateHttpRequestOperation.h"
-
 #import "FLAuthenticationCredentials.h"
 #import "FLCredentialsProvider.h"
 
-@protocol FLUserService;
 @protocol FLStorageService;
 @protocol FLAuthenticationCredentials;
 @protocol FLAuthenticateHttpRequestOperationDelegate;
 @protocol FLAuthenticatedEntity;
+@protocol FLCredentialsStorage;
 
 @class FLServiceList;
 
-@interface FLHttpOperationContext : FLOperationContext<FLService, FLHttpRequestAuthenticator, FLCredentialsProvider> {
+@interface FLHttpOperationContext : FLOperationContext<FLHttpRequestAuthenticator, FLCredentialsProvider> {
 @private
-    id<FLUserService> _userService;
     id<FLStorageService> _storageService;
     id<FLAuthenticatedEntity> _authenticatedEntity;
+    id<FLAuthenticationCredentials> _credentials;
+    id<FLCredentialsStorage> _credentialsStorage;
+
     FLFifoAsyncQueue* _authenticationQueue;
     FLServiceList* _serviceList;
+
     __unsafe_unretained id<FLAuthenticateHttpRequestOperationDelegate> _authenticationDelegate;
 }
+
+@property (readonly, strong) id<FLCredentialsStorage> credentialsStorage;
+
 @property (readwrite, assign) id<FLAuthenticateHttpRequestOperationDelegate> authenticationDelegate;
 
-@property (readonly, strong) id<FLUserService> userService;
-
-@property (readonly, strong) id<FLAuthenticationCredentials> authenticationCredentials;
+@property (readwrite, strong, nonatomic) id<FLAuthenticationCredentials> authenticationCredentials;
 
 @property (readonly, strong) id<FLAuthenticatedEntity> authenticatedEntity;
 
@@ -45,20 +46,13 @@
 
 @property (readonly, strong) id<FLStorageService> storageService;
 
-//- (void) openServiceWithCredentials:(id<FLAuthenticationCredentials>) credentials;
-
-//- (void) openServiceWithUser:(id<FLAuthenticatedEntity>) entity;
-
 - (FLPromise*) beginAuthenticating:(fl_completion_block_t) completion;
+
+- (void) logoutEntity;
 
 @end
 
 @interface FLHttpOperationContext (OptionalOverrides)
-
-- (void) didChangeAuthenticationCredentials:(id<FLAuthenticationCredentials>) credentials;
-
-/// @return FLUserService by default.
-- (id<FLUserService>) createUserService;
 
 /// @return FLDatabaseStorageService by default
 - (id<FLStorageService>) createStorageService;

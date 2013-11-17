@@ -10,7 +10,6 @@
 
 @interface FLAuthenticationToken ()
 @property (readwrite, assign, nonatomic) NSTimeInterval authTokenLastUpdateTime;
-@property (readwrite, assign, nonatomic) NSTimeInterval timeoutInterval;
 @property (readwrite, assign, nonatomic) NSTimeInterval lastAuthenticationTimestamp;
 - (void) resetAuthenticationTimestamp;
 - (void) touchAuthenticationTimestamp;
@@ -64,12 +63,12 @@
     return copy;
 }
 
-- (id<FLAuthenticationSession>) authenticatedSessionWithUpdatedTimestamp {
-
-    FLAuthenticationToken* session = [self copy];
-    [session touchAuthenticationTimestamp];
-
-    return session;
-}
+//- (id<FLAuthenticationSession>) authenticatedSessionWithUpdatedTimestamp {
+//
+//    FLAuthenticationToken* session = [self copy];
+//    [session touchAuthenticationTimestamp];
+//
+//    return session;
+//}
 
 @end

@@ -10,7 +10,6 @@
 #import "FLHttpOperationContext.h"
 #import "FLHttpRequest.h"
 #import "FLStorageService.h"
-#import "FLUserService.h"
 #import "FLServiceList.h"
 #import "FLAuthenticationCredentials.h"
 #import "FLAuthenticateHttpRequestOperation.h"
@@ -19,53 +18,52 @@
 #import "FLAuthenticateHttpEntityOperation.h"
 #import "FLAuthenticateHttpCredentialsOperation.h"
 
+#import "FLUserDefaultsCredentialStorage.h"
+
+
 @interface FLHttpOperationContext ()
 
-@property (readwrite, strong) id<FLUserService> userService;
 @property (readwrite, strong) id<FLStorageService> storageService;
 @property (readwrite, strong) FLServiceList* serviceList;
 @property (readonly, strong) FLFifoAsyncQueue* authenticationQueue;
-
 @property (readwrite, strong) id<FLAuthenticatedEntity> authenticatedEntity;
+@property (readwrite, strong) id<FLCredentialsStorage> credentialsStorage;
 
 @end
 
 @implementation FLHttpOperationContext
 
-@synthesize userService = _userService;
 @synthesize storageService = _storageService;
 @synthesize serviceList = _serviceList;
 @synthesize authenticatedEntity = _authenticatedEntity;
 @synthesize authenticationQueue = _authenticationQueue;
 @synthesize authenticationDelegate = _authenticationDelegate;
+@synthesize authenticationCredentials = _authenticationCredentials;
+@synthesize credentialsStorage = _credentialsStorage;
 
 - (id) init {
     self = [super init];
     if(self) {
         _authenticationQueue = [[FLFifoAsyncQueue alloc] init];
-
         _serviceList = [[FLServiceList alloc] init];
-
-        // create user service
-        self.userService = [self createUserService];
-        FLAssertNotNil(self.userService);
-
-        [self.userService addListener:self];
 
         // create storage service
         self.storageService = [self createStorageService];
         if(self.storageService) {
             [_serviceList addService:self.storageService];
         }
+
+   		self.credentialsStorage = [FLUserDefaultsCredentialStorage instance];
     }
     return self;
 }
 
 #if FL_MRC
 - (void) dealloc {
+    [_credentialsStorage release];
+    [_authenticationCredentials release];
     [_authenticatedEntity release];
     [_storageService release];
-    [_userService release];
     [_serviceList release];
     [super dealloc];
 }
@@ -75,55 +73,24 @@
     return FLAutorelease([[[self class] alloc] init]);
 }
 
-- (BOOL) isServiceOpen {
-    return self.userService.isServiceOpen;
+- (BOOL) canAuthenticate {
+    return self.authenticationCredentials && [self.authenticationCredentials canAuthenticate];
 }
-
-- (BOOL) canOpenService {
-    return [self.userService canOpenService];
-}
-
-- (void) openService {
-    return [self.userService openService];
-}
-
-//- (void) openServiceWithCredentials:(id<FLAuthenticationCredentials>) credentials {
-//    [self.userService openServiceWithCredentials:credentials];
-//}
-
-- (id<FLAuthenticationCredentials>) authenticationCredentials {
-    return self.userService.credentials;
-}
-
-//- (void) openServiceWithUser:(id<FLAuthenticatedEntity>) entity {
-//    self.authenticatedEntity = entity;
-//    [self openServiceWithCredentials:entity.authenticationCredentials];
-//}
 
 - (void) closeService {
     [self requestCancel];
-    [self.userService closeService];
-
-    self.authenticatedEntity = nil;
 }
 
-- (void) userServiceDidOpen:(id<FLUserService>) service {
+//- (void) didChangeAuthenticationCredentials:(id<FLAuthenticationCredentials>) credentials {
+//}
 
-    [self didChangeAuthenticationCredentials:service.credentials];
-
-    [self.storageService openService];
-
-    [self sendMessageToListeners:@selector(httpOperationContextDidOpen:) withObject:self];
-}
-
-- (void) userServiceDidClose:(id<FLUserService>) service {
+- (void) setAuthenticationCredentials:(id<FLAuthenticationCredentials>) credentials {
     [self.serviceList closeServices];
+    FLSetObjectWithRetain(_authenticationCredentials, credentials);
+    self.authenticatedEntity = nil;
 
-    [self sendMessageToListeners:@selector(httpOperationContext:didLogoutUser:)
-                      withObject:self
-                      withObject:self.userService.credentials];
-
-    [self sendMessageToListeners:@selector(httpOperationContextDidClose:) withObject:self];
+    [self saveCredentials];
+    [self.storageService openService];
 }
 
 - (BOOL) isAuthenticated {
@@ -148,7 +115,6 @@
     FLAssertNotNil(authenticator);
 
     FLThrowIfError([self runSynchronously:authenticator]);
-
 }
 
 - (void) willStartOperation:(id) operation {
@@ -159,20 +125,6 @@
     }
 
     [operation addListener:self];
-
-//    [self.authenticatedServices startProcessingObject:operation];
-
-//    id object = operation; // for casting
-
-// TODO: abstract this better.    
-
-//    if(_streamSecurity != FLNetworkStreamSecurityNone) {
-//        if([object respondsToSelector:@selector(setStreamSecurity:)]) {
-//            if([object streamSecurity] == FLNetworkStreamSecurityNone) {
-//                [object setStreamSecurity:_streamSecurity]; 
-//            }
-//        }
-//    }
 }
 
 - (void) didRemoveOperation:(FLOperation*) operation {
@@ -180,10 +132,6 @@
 }
 
 - (FLPromise*) beginAuthenticating:(fl_completion_block_t) completion {
-
-    if(!self.isServiceOpen) {
-        [self openService];
-    }
 
     return [self queueOperation:[FLAuthenticateHttpCredentialsOperation authenticateHttpCredentialsOperation:self.authenticationCredentials]
                      completion:completion];
@@ -197,52 +145,34 @@
     [self sendMessageToListeners:@selector(httpOperationContext:didAuthenticateUser:) withObject:self withObject:entity];
 }
 
-- (id<FLUserService>) createUserService {
-    return [FLUserService userService];
-}
-
 - (id<FLStorageService>) createStorageService {
     return [FLNoStorageService noStorageService];
-}
-
-- (void) didChangeAuthenticationCredentials:(id<FLAuthenticationCredentials>) credentials {
 }
 
 - (void) prepareAuthenticatedOperation:(id) operation {
 }
 
-//- (void) updateCredentials:(id<FLAuthenticationCredentials>)authenticationCredentials {
-//    self.userService.credentials = authenticationCredentials;
-//}
-
 - (void) updateEntity:(id<FLAuthenticatedEntity>) entity {
     self.authenticatedEntity = entity;
 }
 
-//- (FLPromise*) beginAuthenticatingCredentials:(id<FLAuthenticationCredentials>) credentials
-//                                   completion:(fl_completion_block_t) completion {
-//
-//    if(!self.isOpen) {
-//        [self openServiceWithCredentials:credentials completion:nil];
-//    }
-//
-//    return [self.httpRequestAuthenticator beginAuthenticatingCredentials:credentials
-//                                                              completion:completion];
-//
-//}
+- (void) saveCredentials {
+    if(self.credentialsStorage) {
+        [self.credentialsStorage writeCredentials:self.authenticationCredentials];
+        [self.credentialsStorage setCredentialsForLastUser:self.authenticationCredentials];
+    }
+}
 
-//- (FLPromise*) beginAuthenticatingUser:(id<FLAuthenticatedEntity>) entity
-//                            completion:(fl_completion_block_t) completion {
-//
-//    if(!self.isOpen) {
-//        [self openServiceWithCredentials:entity.authenticationCredentials completion:nil];
-//    }
-//
-//    return [self.httpRequestAuthenticator beginAuthenticatingEntity:entity
-//                                                         completion:completion];
-//}
+- (void) logoutEntity {
+    id<FLAuthenticationCredentials> creds = self.authenticationCredentials;
+    self.authenticationCredentials = [FLAuthenticationCredentials authenticationCredentials:creds.userName password:nil];
 
+    [self sendMessageToListeners:@selector(httpOperationContext:didLogoutUser:)
+                      withObject:self
+                      withObject:self.authenticationCredentials];
 
+    [self closeService];
+}
 
 @end
 

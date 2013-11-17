@@ -10,7 +10,7 @@
 
 @protocol FLAuthenticationSession <NSObject, NSCopying>
 - (BOOL) hasExpired;
-- (id<FLAuthenticationSession>) authenticatedSessionWithUpdatedTimestamp;
+- (void) touchAuthenticationTimestamp;
 @end
 
 @interface FLAuthenticationToken : NSObject<FLAuthenticationSession> {
@@ -24,10 +24,11 @@
 @property (readonly, strong, nonatomic) NSString* token;
 @property (readonly, assign, nonatomic) NSTimeInterval lastAuthenticationTimestamp;
 @property (readonly, assign, nonatomic) NSTimeInterval authTokenLastUpdateTime;
-@property (readonly, assign, nonatomic) NSTimeInterval timeoutInterval;
+@property (readwrite, assign, nonatomic) NSTimeInterval timeoutInterval;
 
 + (id) authenticationToken:(NSString*) authenticationToken;
 
-- (id<FLAuthenticationSession>) authenticatedSessionWithUpdatedTimestamp;
+- (void) resetAuthenticationTimestamp;
+- (void) touchAuthenticationTimestamp;
 
 @end

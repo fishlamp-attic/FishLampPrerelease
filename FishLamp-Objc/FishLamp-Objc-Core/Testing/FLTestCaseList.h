@@ -33,15 +33,15 @@
 
 - (void) disableAllTests:(NSString*) reason;
 
-- (id<FLTestCase>) orderFirst:(id) testCase;
+- (id<FLTestCase>) orderFirst:(SEL) testCase;
 
-- (id<FLTestCase>) orderLast:(id) testCase;
+- (id<FLTestCase>) orderLast:(SEL) testCase;
 
-- (id<FLTestCase>) order:(id) testCase
-                   after:(id) anotherTestCase;
+- (id<FLTestCase>) order:(SEL) testCase
+                   after:(SEL) anotherTestCase;
 
-- (id<FLTestCase>) order:(id) testCase
-                  before:(id) anotherTestCase;
+- (id<FLTestCase>) order:(SEL) testCase
+                  before:(SEL) anotherTestCase;
 
 @end
 

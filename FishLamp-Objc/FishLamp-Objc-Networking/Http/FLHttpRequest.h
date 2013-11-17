@@ -123,7 +123,7 @@
 - (void) httpRequestDidOpen:(FLHttpRequest*) httpRequest;
 
 - (void) httpRequest:(FLHttpRequest*) httpRequest 
-  didCloseWithResult:(FLPromisedResult) result;
+  didFinishWithResult:(FLPromisedResult) result;
 
 - (void) httpRequest:(FLHttpRequest*) httpRequest didReadBytes:(FLHttpRequestByteCount*) amount;
 

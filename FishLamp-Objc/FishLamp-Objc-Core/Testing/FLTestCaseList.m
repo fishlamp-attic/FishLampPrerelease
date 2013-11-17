@@ -84,12 +84,18 @@
 }
 
 - (id<FLTestCase>) testCaseForSelector:(SEL) selector {
+
+    id<FLTestCase> outTestCase = nil;
+
     for(id<FLTestCase> testCase in _testCaseArray) {
         if([testCase.selector isEqualToSelector:selector]) {
-            return testCase;
+            outTestCase = testCase;
         }
     }
-    return nil;
+
+    FLConfirmNotNilWithComment(outTestCase, @"unable to find test case for \"%@\"", NSStringFromSelector(selector));
+
+    return outTestCase;
 }
 
 - (id<FLTestCase>) testCaseForObject:(id) object {
@@ -159,26 +165,26 @@
 //}
 
 
-- (id<FLTestCase>) orderFirst:(id) testCase {
-    return [self setRunOrder:0 forTestCase:[self testCaseForObject:testCase]];
+- (id<FLTestCase>) orderFirst:(SEL) testCase {
+    return [self setRunOrder:0 forTestCase:[self testCaseForSelector:testCase]];
 }
 
-- (id<FLTestCase>) orderLast:(id) testCase {
-    return [self setRunOrder:_testCaseArray.count - 1 forTestCase:[self testCaseForObject:testCase]];
+- (id<FLTestCase>) orderLast:(SEL) testCase {
+    return [self setRunOrder:_testCaseArray.count - 1 forTestCase:[self testCaseForSelector:testCase]];
 }
 
-- (id<FLTestCase>) order:(id) testCase
-                   after:(id) anotherTestCase {
-    NSInteger idx = [_testCaseArray indexOfObject:[self testCaseForObject:anotherTestCase]];
-    FLConfirmWithComment(idx != NSNotFound, @"run order for %@ not found", testCase);
-    return [self setRunOrder:idx + 1 forTestCase:[self testCaseForObject:testCase]];
+- (id<FLTestCase>) order:(SEL) testCase
+                   after:(SEL) anotherTestCase {
+    NSInteger idx = [_testCaseArray indexOfObject:[self testCaseForSelector:anotherTestCase]];
+    FLConfirmWithComment(idx != NSNotFound, @"run order for %@ not found", NSStringFromSelector(testCase));
+    return [self setRunOrder:idx + 1 forTestCase:[self testCaseForSelector:testCase]];
 }
 
-- (id<FLTestCase>) order:(id) testCase
-                  before:(id) anotherTestCase {
-    NSInteger idx = [_testCaseArray indexOfObject:[self testCaseForObject:anotherTestCase]];
-    FLConfirmWithComment(idx != NSNotFound, @"run order for %@ not found", testCase);
-    return [self setRunOrder:idx - 1 forTestCase:[self testCaseForObject:testCase]];
+- (id<FLTestCase>) order:(SEL) testCase
+                  before:(SEL) anotherTestCase {
+    NSInteger idx = [_testCaseArray indexOfObject:[self testCaseForSelector:anotherTestCase]];
+    FLConfirmWithComment(idx != NSNotFound, @"run order for %@ not found", NSStringFromSelector(testCase));
+    return [self setRunOrder:idx - 1 forTestCase:[self testCaseForSelector:testCase]];
 }
 
 @end

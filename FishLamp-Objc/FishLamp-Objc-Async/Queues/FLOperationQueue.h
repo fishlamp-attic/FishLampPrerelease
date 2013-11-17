@@ -25,13 +25,12 @@
     NSMutableArray* _objectQueue;
     NSMutableArray* _activeQueue;
     NSMutableArray* _operationFactories;
+    id<FLOperationQueueErrorStrategy> _errorStrategy;
 
-    UInt32 _maxConcurrentOperations;
+    UInt32 _maxOperationsCount;
     NSInteger _finishedCount;
     NSInteger _totalCount;
     BOOL _processing;
-
-    id<FLOperationQueueErrorStrategy> _errorStrategy;
 }
 
 // concurrent operations, defaults to 1
@@ -86,20 +85,6 @@
 - (FLOperation*) createOperationForQueuedObject:(id) object;
 @end
 
-@protocol FLOperationQueueErrorStrategy <NSObject>
-- (void) setCancelled;
-- (void) handleError:(NSError*) error forQueuedObject:(id) object;
-- (void) operationQueueDidBeginProcessing:(FLOperationQueue*) operationQueue;
-- (BOOL) operationQueueWillHalt:(FLOperationQueue*) operationQueue;
-- (NSError*) errorResult;
-@end
-
-@interface FLSingleErrorOperationQueueStrategy : NSObject {
-@private
-    NSError* _error;
-}
-
-@end
 
 @protocol FLQueuedObject <NSObject>
 @optional
@@ -128,9 +113,3 @@
 @end
 
 
-#define FLQueueableAsyncOperationQueueOperationDefaultMaxConcurrentOperations 3
-
-@interface FLBatchOperationQueue : FLOperationQueue
-+ (void) setDefaultConnectionLimit:(UInt32) threadCount;
-+ (UInt32) defaultConnectionLimit;
-@end

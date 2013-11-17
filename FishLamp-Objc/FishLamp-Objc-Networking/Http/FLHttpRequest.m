@@ -227,7 +227,7 @@ static int s_counter = 0;
     [self releaseResponseData];
                 
     [self setFinishedWithResult:result];
-    [self sendMessageToListeners:@selector(httpRequest:didCloseWithResult:) withObject:self withObject:result];
+    [self sendMessageToListeners:@selector(httpRequest:didFinishWithResult:) withObject:self withObject:result];
     
     [self.retryHandler resetRetryCount];
 

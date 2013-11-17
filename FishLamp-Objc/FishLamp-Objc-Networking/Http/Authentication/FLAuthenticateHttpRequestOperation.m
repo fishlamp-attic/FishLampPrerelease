@@ -75,7 +75,7 @@
     id<FLAuthenticatedEntity> entity = [self.authenticationDelegate authenticateHttpRequestOperation:self
                                                                                     authenticateUser:credentials];
 
-    entity.session = [entity.session authenticatedSessionWithUpdatedTimestamp];
+    [entity.session touchAuthenticationTimestamp];
 
     [self sendMessageToListeners:@selector(authenticateHttpRequestOperation:didAuthenticateEntity:) withObject:self withObject:entity];
 

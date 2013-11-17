@@ -107,6 +107,16 @@
 		27188CA718148CF90060FED6 /* FLStringBuilderTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188CA418148CF90060FED6 /* FLStringBuilderTester.m */; };
 		27188CA818148CF90060FED6 /* FLStringBuilderTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188CA418148CF90060FED6 /* FLStringBuilderTester.m */; };
 		27188CA918148CF90060FED6 /* FLStringBuilderTester.m in Sources */ = {isa = PBXBuildFile; fileRef = 27188CA418148CF90060FED6 /* FLStringBuilderTester.m */; };
+		271FF61B183847E2004BB485 /* FLOperationQueueErrorStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 271FF61A183847E2004BB485 /* FLOperationQueueErrorStrategy.m */; };
+		271FF61C183847E2004BB485 /* FLOperationQueueErrorStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 271FF61A183847E2004BB485 /* FLOperationQueueErrorStrategy.m */; };
+		271FF61D183847E2004BB485 /* FLOperationQueueErrorStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 271FF61A183847E2004BB485 /* FLOperationQueueErrorStrategy.m */; };
+		271FF61E183847E2004BB485 /* FLOperationQueueErrorStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 271FF61A183847E2004BB485 /* FLOperationQueueErrorStrategy.m */; };
+		271FF61F183847E2004BB485 /* FLOperationQueueErrorStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 271FF61A183847E2004BB485 /* FLOperationQueueErrorStrategy.m */; };
+		271FF62218384B32004BB485 /* FLBatchOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 271FF62118384B32004BB485 /* FLBatchOperationQueue.m */; };
+		271FF62318384B32004BB485 /* FLBatchOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 271FF62118384B32004BB485 /* FLBatchOperationQueue.m */; };
+		271FF62418384B32004BB485 /* FLBatchOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 271FF62118384B32004BB485 /* FLBatchOperationQueue.m */; };
+		271FF62518384B32004BB485 /* FLBatchOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 271FF62118384B32004BB485 /* FLBatchOperationQueue.m */; };
+		271FF62618384B32004BB485 /* FLBatchOperationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 271FF62118384B32004BB485 /* FLBatchOperationQueue.m */; };
 		2757020618300CBF0096EE13 /* FLHttpUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 275701FA18300CBF0096EE13 /* FLHttpUser.m */; };
 		2757020718300CBF0096EE13 /* FLHttpUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 275701FA18300CBF0096EE13 /* FLHttpUser.m */; };
 		2757020818300CBF0096EE13 /* FLHttpUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 275701FA18300CBF0096EE13 /* FLHttpUser.m */; };
@@ -1525,11 +1535,6 @@
 		B227A965182AD3FA00EDC426 /* NSNotification+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A39C182AD3F800EDC426 /* NSNotification+FLExtras.m */; };
 		B227A966182AD3FA00EDC426 /* NSNotification+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A39C182AD3F800EDC426 /* NSNotification+FLExtras.m */; };
 		B227A967182AD3FA00EDC426 /* NSNotification+FLExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A39C182AD3F800EDC426 /* NSNotification+FLExtras.m */; };
-		B227A968182AD3FA00EDC426 /* FLLastUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A39F182AD3F800EDC426 /* FLLastUserService.m */; };
-		B227A969182AD3FA00EDC426 /* FLLastUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A39F182AD3F800EDC426 /* FLLastUserService.m */; };
-		B227A96A182AD3FA00EDC426 /* FLLastUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A39F182AD3F800EDC426 /* FLLastUserService.m */; };
-		B227A96B182AD3FA00EDC426 /* FLLastUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A39F182AD3F800EDC426 /* FLLastUserService.m */; };
-		B227A96C182AD3FA00EDC426 /* FLLastUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A39F182AD3F800EDC426 /* FLLastUserService.m */; };
 		B227A96D182AD3FA00EDC426 /* FLService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3A1182AD3F800EDC426 /* FLService.m */; };
 		B227A96E182AD3FA00EDC426 /* FLService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3A1182AD3F800EDC426 /* FLService.m */; };
 		B227A96F182AD3FA00EDC426 /* FLService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3A1182AD3F800EDC426 /* FLService.m */; };
@@ -1545,11 +1550,6 @@
 		B227A979182AD3FA00EDC426 /* FLUserDataStorageService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3A5182AD3F800EDC426 /* FLUserDataStorageService.m */; };
 		B227A97A182AD3FA00EDC426 /* FLUserDataStorageService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3A5182AD3F800EDC426 /* FLUserDataStorageService.m */; };
 		B227A97B182AD3FA00EDC426 /* FLUserDataStorageService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3A5182AD3F800EDC426 /* FLUserDataStorageService.m */; };
-		B227A981182AD3FA00EDC426 /* FLUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3A9182AD3F800EDC426 /* FLUserService.m */; };
-		B227A982182AD3FA00EDC426 /* FLUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3A9182AD3F800EDC426 /* FLUserService.m */; };
-		B227A983182AD3FA00EDC426 /* FLUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3A9182AD3F800EDC426 /* FLUserService.m */; };
-		B227A984182AD3FA00EDC426 /* FLUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3A9182AD3F800EDC426 /* FLUserService.m */; };
-		B227A985182AD3FA00EDC426 /* FLUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3A9182AD3F800EDC426 /* FLUserService.m */; };
 		B227A986182AD3FA00EDC426 /* FLApplicationDataVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3AC182AD3F800EDC426 /* FLApplicationDataVersion.m */; };
 		B227A987182AD3FA00EDC426 /* FLApplicationDataVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3AC182AD3F800EDC426 /* FLApplicationDataVersion.m */; };
 		B227A988182AD3FA00EDC426 /* FLApplicationDataVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A3AC182AD3F800EDC426 /* FLApplicationDataVersion.m */; };
@@ -1985,6 +1985,10 @@
 		27188C9618148C450060FED6 /* FLTimeoutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTimeoutTests.m; sourceTree = "<group>"; };
 		27188CA318148CF90060FED6 /* FLStringBuilderTester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLStringBuilderTester.h; sourceTree = "<group>"; };
 		27188CA418148CF90060FED6 /* FLStringBuilderTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLStringBuilderTester.m; sourceTree = "<group>"; };
+		271FF619183847E2004BB485 /* FLOperationQueueErrorStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLOperationQueueErrorStrategy.h; sourceTree = "<group>"; };
+		271FF61A183847E2004BB485 /* FLOperationQueueErrorStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLOperationQueueErrorStrategy.m; sourceTree = "<group>"; };
+		271FF62018384B32004BB485 /* FLBatchOperationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLBatchOperationQueue.h; sourceTree = "<group>"; };
+		271FF62118384B32004BB485 /* FLBatchOperationQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLBatchOperationQueue.m; sourceTree = "<group>"; };
 		2727D28D17DE2FF80069F9D2 /* FishLamp-Objc-OSX-64-MRC-TestTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-MRC-TestTool"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27314C79165328400027850D /* FishLamp-Objc-OSX-64-ARC-Lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "FishLamp-Objc-OSX-64-ARC-Lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		275701F918300CBF0096EE13 /* FLHttpUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLHttpUser.h; sourceTree = "<group>"; };
@@ -2643,16 +2647,12 @@
 		B227A39A182AD3F800EDC426 /* FLNotificationListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLNotificationListener.m; sourceTree = "<group>"; };
 		B227A39B182AD3F800EDC426 /* NSNotification+FLExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotification+FLExtras.h"; sourceTree = "<group>"; };
 		B227A39C182AD3F800EDC426 /* NSNotification+FLExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotification+FLExtras.m"; sourceTree = "<group>"; };
-		B227A39E182AD3F800EDC426 /* FLLastUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLastUserService.h; sourceTree = "<group>"; };
-		B227A39F182AD3F800EDC426 /* FLLastUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLastUserService.m; sourceTree = "<group>"; };
 		B227A3A0182AD3F800EDC426 /* FLService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLService.h; sourceTree = "<group>"; };
 		B227A3A1182AD3F800EDC426 /* FLService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLService.m; sourceTree = "<group>"; };
 		B227A3A2182AD3F800EDC426 /* FLServiceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLServiceList.h; sourceTree = "<group>"; };
 		B227A3A3182AD3F800EDC426 /* FLServiceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLServiceList.m; sourceTree = "<group>"; };
 		B227A3A4182AD3F800EDC426 /* FLUserDataStorageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLUserDataStorageService.h; sourceTree = "<group>"; };
 		B227A3A5182AD3F800EDC426 /* FLUserDataStorageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLUserDataStorageService.m; sourceTree = "<group>"; };
-		B227A3A8182AD3F800EDC426 /* FLUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLUserService.h; sourceTree = "<group>"; };
-		B227A3A9182AD3F800EDC426 /* FLUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLUserService.m; sourceTree = "<group>"; };
 		B227A3AB182AD3F800EDC426 /* FLApplicationDataVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLApplicationDataVersion.h; sourceTree = "<group>"; };
 		B227A3AC182AD3F800EDC426 /* FLApplicationDataVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLApplicationDataVersion.m; sourceTree = "<group>"; };
 		B227A3AD182AD3F800EDC426 /* FLApplicationSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLApplicationSession.h; sourceTree = "<group>"; };
@@ -3326,6 +3326,10 @@
 				27F65088183001EF00588C8E /* FLOperationQueue.h */,
 				27F65089183001EF00588C8E /* FLOperationQueue.m */,
 				27F6508A183001F000588C8E /* FLQueueableAsyncOperation.h */,
+				271FF619183847E2004BB485 /* FLOperationQueueErrorStrategy.h */,
+				271FF61A183847E2004BB485 /* FLOperationQueueErrorStrategy.m */,
+				271FF62018384B32004BB485 /* FLBatchOperationQueue.h */,
+				271FF62118384B32004BB485 /* FLBatchOperationQueue.m */,
 			);
 			path = Queues;
 			sourceTree = "<group>";
@@ -4375,16 +4379,12 @@
 		B227A39D182AD3F800EDC426 /* FishLamp-Objc-Services */ = {
 			isa = PBXGroup;
 			children = (
-				B227A39E182AD3F800EDC426 /* FLLastUserService.h */,
-				B227A39F182AD3F800EDC426 /* FLLastUserService.m */,
 				B227A3A0182AD3F800EDC426 /* FLService.h */,
 				B227A3A1182AD3F800EDC426 /* FLService.m */,
 				B227A3A2182AD3F800EDC426 /* FLServiceList.h */,
 				B227A3A3182AD3F800EDC426 /* FLServiceList.m */,
 				B227A3A4182AD3F800EDC426 /* FLUserDataStorageService.h */,
 				B227A3A5182AD3F800EDC426 /* FLUserDataStorageService.m */,
-				B227A3A8182AD3F800EDC426 /* FLUserService.h */,
-				B227A3A9182AD3F800EDC426 /* FLUserService.m */,
 				B227A3AA182AD3F800EDC426 /* Generated */,
 			);
 			path = "FishLamp-Objc-Services";
@@ -5220,7 +5220,6 @@
 				B227A6BC182AD3F900EDC426 /* FLTestGroup.m in Sources */,
 				B227A676182AD3F900EDC426 /* FLObjcRuntime.m in Sources */,
 				B227A54A182AD3F900EDC426 /* FLCommandLineParser.m in Sources */,
-				B227A982182AD3FA00EDC426 /* FLUserService.m in Sources */,
 				B227A6DA182AD3F900EDC426 /* FLVersion.m in Sources */,
 				B227AA9F182AD3FA00EDC426 /* FLPathProvider.m in Sources */,
 				B227A45A182AD3F900EDC426 /* SDKImage+Resize.m in Sources */,
@@ -5305,6 +5304,7 @@
 				27A9831718367FC2004E557C /* FLAuthenticateHttpCredentialsOperation.m in Sources */,
 				B227A739182AD3F900EDC426 /* NSObject+FLXmlObjectBuilder.m in Sources */,
 				B227A5A9182AD3F900EDC426 /* NSViewController+FLCompatibility.m in Sources */,
+				271FF62318384B32004BB485 /* FLBatchOperationQueue.m in Sources */,
 				B227A88D182AD3FA00EDC426 /* __FLOAuthApp.m in Sources */,
 				B227A955182AD3FA00EDC426 /* FLLocalNotification.m in Sources */,
 				B227A6F8182AD3F900EDC426 /* FLStringBuilderSection.m in Sources */,
@@ -5371,7 +5371,6 @@
 				B227A824182AD3FA00EDC426 /* FLHttpRequest.m in Sources */,
 				B227A93C182AD3FA00EDC426 /* FLUrlParameterParser.m in Sources */,
 				B227A987182AD3FA00EDC426 /* FLApplicationDataVersion.m in Sources */,
-				B227A969182AD3FA00EDC426 /* FLLastUserService.m in Sources */,
 				B227A74D182AD3F900EDC426 /* FLObjectXmlElement.m in Sources */,
 				27F65108183001F000588C8E /* FLTimeUtilities.m in Sources */,
 				B227A937182AD3FA00EDC426 /* FLRetryHandler.m in Sources */,
@@ -5417,6 +5416,7 @@
 				B227A7ED182AD3FA00EDC426 /* FLPropertyDescriber.m in Sources */,
 				B227A75C182AD3F900EDC426 /* FLXmlStringBuilder.m in Sources */,
 				27188C8618148B8E0060FED6 /* FLTcpConnectionTests.m in Sources */,
+				271FF61C183847E2004BB485 /* FLOperationQueueErrorStrategy.m in Sources */,
 				B227AAB3182AD3FA00EDC426 /* NSDate+FLAdditions.m in Sources */,
 				B227A865182AD3FA00EDC426 /* FLJsonDataEncoder.m in Sources */,
 				B227A941182AD3FA00EDC426 /* NSError+FLNetworking.m in Sources */,
@@ -5613,7 +5613,6 @@
 				B227A6BE182AD3F900EDC426 /* FLTestGroup.m in Sources */,
 				B227A678182AD3F900EDC426 /* FLObjcRuntime.m in Sources */,
 				B227A54C182AD3F900EDC426 /* FLCommandLineParser.m in Sources */,
-				B227A984182AD3FA00EDC426 /* FLUserService.m in Sources */,
 				B227A6DC182AD3F900EDC426 /* FLVersion.m in Sources */,
 				B227AAA1182AD3FA00EDC426 /* FLPathProvider.m in Sources */,
 				B227A45C182AD3F900EDC426 /* SDKImage+Resize.m in Sources */,
@@ -5698,6 +5697,7 @@
 				27A9831918367FC2004E557C /* FLAuthenticateHttpCredentialsOperation.m in Sources */,
 				B227A73B182AD3F900EDC426 /* NSObject+FLXmlObjectBuilder.m in Sources */,
 				B227A5AB182AD3F900EDC426 /* NSViewController+FLCompatibility.m in Sources */,
+				271FF62518384B32004BB485 /* FLBatchOperationQueue.m in Sources */,
 				B227A88F182AD3FA00EDC426 /* __FLOAuthApp.m in Sources */,
 				B227A957182AD3FA00EDC426 /* FLLocalNotification.m in Sources */,
 				B227A6FA182AD3F900EDC426 /* FLStringBuilderSection.m in Sources */,
@@ -5764,7 +5764,6 @@
 				B227A826182AD3FA00EDC426 /* FLHttpRequest.m in Sources */,
 				B227A93E182AD3FA00EDC426 /* FLUrlParameterParser.m in Sources */,
 				B227A989182AD3FA00EDC426 /* FLApplicationDataVersion.m in Sources */,
-				B227A96B182AD3FA00EDC426 /* FLLastUserService.m in Sources */,
 				B227A74F182AD3F900EDC426 /* FLObjectXmlElement.m in Sources */,
 				27F6510A183001F000588C8E /* FLTimeUtilities.m in Sources */,
 				B227A939182AD3FA00EDC426 /* FLRetryHandler.m in Sources */,
@@ -5810,6 +5809,7 @@
 				B227A7EF182AD3FA00EDC426 /* FLPropertyDescriber.m in Sources */,
 				B227A75E182AD3F900EDC426 /* FLXmlStringBuilder.m in Sources */,
 				27188C8818148B8E0060FED6 /* FLTcpConnectionTests.m in Sources */,
+				271FF61E183847E2004BB485 /* FLOperationQueueErrorStrategy.m in Sources */,
 				B227AAB5182AD3FA00EDC426 /* NSDate+FLAdditions.m in Sources */,
 				B227A867182AD3FA00EDC426 /* FLJsonDataEncoder.m in Sources */,
 				B227A943182AD3FA00EDC426 /* NSError+FLNetworking.m in Sources */,
@@ -5968,6 +5968,7 @@
 				27188B7E181489880060FED6 /* FLCoreFrameworkTest.m in Sources */,
 				B227A760182AD3F900EDC426 /* NSObject+FLXmlSerialization.m in Sources */,
 				B227A594182AD3F900EDC426 /* NSImage+FLCompatibility.m in Sources */,
+				271FF61B183847E2004BB485 /* FLOperationQueueErrorStrategy.m in Sources */,
 				B227A54E182AD3F900EDC426 /* FLCommandLineProcessor.m in Sources */,
 				B227A972182AD3FA00EDC426 /* FLServiceList.m in Sources */,
 				B227A8C8182AD3FA00EDC426 /* FLOldReachability.m in Sources */,
@@ -6020,7 +6021,6 @@
 				B227A6BB182AD3F900EDC426 /* FLTestGroup.m in Sources */,
 				B227A675182AD3F900EDC426 /* FLObjcRuntime.m in Sources */,
 				B227A549182AD3F900EDC426 /* FLCommandLineParser.m in Sources */,
-				B227A981182AD3FA00EDC426 /* FLUserService.m in Sources */,
 				27A9832D18368292004E557C /* FLAuthenticationCredentials.m in Sources */,
 				B227A6D9182AD3F900EDC426 /* FLVersion.m in Sources */,
 				B227AA9E182AD3FA00EDC426 /* FLPathProvider.m in Sources */,
@@ -6144,6 +6144,7 @@
 				27CF85EC18259970002B5C3E /* FLAsyncTestGroup.m in Sources */,
 				B227A8B4182AD3FA00EDC426 /* FLOAuthOperationAuthenticator.m in Sources */,
 				B227A742182AD3F900EDC426 /* FLXmlParser.m in Sources */,
+				271FF62218384B32004BB485 /* FLBatchOperationQueue.m in Sources */,
 				B227A5EE182AD3F900EDC426 /* FLAssertionFailedError.m in Sources */,
 				B227A521182AD3F900EDC426 /* FLColorRangeColorValues.m in Sources */,
 				27188C8F18148B8E0060FED6 /* FLObjectDatabaseTests.m in Sources */,
@@ -6167,7 +6168,6 @@
 				B227A823182AD3FA00EDC426 /* FLHttpRequest.m in Sources */,
 				B227A93B182AD3FA00EDC426 /* FLUrlParameterParser.m in Sources */,
 				B227A986182AD3FA00EDC426 /* FLApplicationDataVersion.m in Sources */,
-				B227A968182AD3FA00EDC426 /* FLLastUserService.m in Sources */,
 				B227A74C182AD3F900EDC426 /* FLObjectXmlElement.m in Sources */,
 				27F65107183001F000588C8E /* FLTimeUtilities.m in Sources */,
 				B227A936182AD3FA00EDC426 /* FLRetryHandler.m in Sources */,
@@ -6379,7 +6379,6 @@
 				B227A6BD182AD3F900EDC426 /* FLTestGroup.m in Sources */,
 				B227A677182AD3F900EDC426 /* FLObjcRuntime.m in Sources */,
 				B227A54B182AD3F900EDC426 /* FLCommandLineParser.m in Sources */,
-				B227A983182AD3FA00EDC426 /* FLUserService.m in Sources */,
 				B227A6DB182AD3F900EDC426 /* FLVersion.m in Sources */,
 				B227AAA0182AD3FA00EDC426 /* FLPathProvider.m in Sources */,
 				B227A45B182AD3F900EDC426 /* SDKImage+Resize.m in Sources */,
@@ -6464,6 +6463,7 @@
 				27A9831818367FC2004E557C /* FLAuthenticateHttpCredentialsOperation.m in Sources */,
 				B227A73A182AD3F900EDC426 /* NSObject+FLXmlObjectBuilder.m in Sources */,
 				B227A5AA182AD3F900EDC426 /* NSViewController+FLCompatibility.m in Sources */,
+				271FF62418384B32004BB485 /* FLBatchOperationQueue.m in Sources */,
 				B227A88E182AD3FA00EDC426 /* __FLOAuthApp.m in Sources */,
 				B227A956182AD3FA00EDC426 /* FLLocalNotification.m in Sources */,
 				B227A6F9182AD3F900EDC426 /* FLStringBuilderSection.m in Sources */,
@@ -6530,7 +6530,6 @@
 				B227A825182AD3FA00EDC426 /* FLHttpRequest.m in Sources */,
 				B227A93D182AD3FA00EDC426 /* FLUrlParameterParser.m in Sources */,
 				B227A988182AD3FA00EDC426 /* FLApplicationDataVersion.m in Sources */,
-				B227A96A182AD3FA00EDC426 /* FLLastUserService.m in Sources */,
 				B227A74E182AD3F900EDC426 /* FLObjectXmlElement.m in Sources */,
 				27F65109183001F000588C8E /* FLTimeUtilities.m in Sources */,
 				B227A938182AD3FA00EDC426 /* FLRetryHandler.m in Sources */,
@@ -6576,6 +6575,7 @@
 				B227A7EE182AD3FA00EDC426 /* FLPropertyDescriber.m in Sources */,
 				B227A75D182AD3F900EDC426 /* FLXmlStringBuilder.m in Sources */,
 				27188C8718148B8E0060FED6 /* FLTcpConnectionTests.m in Sources */,
+				271FF61D183847E2004BB485 /* FLOperationQueueErrorStrategy.m in Sources */,
 				B227AAB4182AD3FA00EDC426 /* NSDate+FLAdditions.m in Sources */,
 				B227A866182AD3FA00EDC426 /* FLJsonDataEncoder.m in Sources */,
 				B227A942182AD3FA00EDC426 /* NSError+FLNetworking.m in Sources */,
@@ -6740,7 +6740,6 @@
 				B227A6BF182AD3F900EDC426 /* FLTestGroup.m in Sources */,
 				B227A679182AD3F900EDC426 /* FLObjcRuntime.m in Sources */,
 				B227A54D182AD3F900EDC426 /* FLCommandLineParser.m in Sources */,
-				B227A985182AD3FA00EDC426 /* FLUserService.m in Sources */,
 				B227A6DD182AD3F900EDC426 /* FLVersion.m in Sources */,
 				B227AAA2182AD3FA00EDC426 /* FLPathProvider.m in Sources */,
 				B227A45D182AD3F900EDC426 /* SDKImage+Resize.m in Sources */,
@@ -6825,6 +6824,7 @@
 				27A9831A18367FC2004E557C /* FLAuthenticateHttpCredentialsOperation.m in Sources */,
 				B227A73C182AD3F900EDC426 /* NSObject+FLXmlObjectBuilder.m in Sources */,
 				B227A5AC182AD3F900EDC426 /* NSViewController+FLCompatibility.m in Sources */,
+				271FF62618384B32004BB485 /* FLBatchOperationQueue.m in Sources */,
 				B227A890182AD3FA00EDC426 /* __FLOAuthApp.m in Sources */,
 				B227A958182AD3FA00EDC426 /* FLLocalNotification.m in Sources */,
 				B227A6FB182AD3F900EDC426 /* FLStringBuilderSection.m in Sources */,
@@ -6891,7 +6891,6 @@
 				B227A827182AD3FA00EDC426 /* FLHttpRequest.m in Sources */,
 				B227A93F182AD3FA00EDC426 /* FLUrlParameterParser.m in Sources */,
 				B227A98A182AD3FA00EDC426 /* FLApplicationDataVersion.m in Sources */,
-				B227A96C182AD3FA00EDC426 /* FLLastUserService.m in Sources */,
 				B227A750182AD3F900EDC426 /* FLObjectXmlElement.m in Sources */,
 				27F6510B183001F000588C8E /* FLTimeUtilities.m in Sources */,
 				B227A93A182AD3FA00EDC426 /* FLRetryHandler.m in Sources */,
@@ -6937,6 +6936,7 @@
 				B227A7F0182AD3FA00EDC426 /* FLPropertyDescriber.m in Sources */,
 				B227A75F182AD3F900EDC426 /* FLXmlStringBuilder.m in Sources */,
 				27188C8918148B8E0060FED6 /* FLTcpConnectionTests.m in Sources */,
+				271FF61F183847E2004BB485 /* FLOperationQueueErrorStrategy.m in Sources */,
 				B227AAB6182AD3FA00EDC426 /* NSDate+FLAdditions.m in Sources */,
 				B227A868182AD3FA00EDC426 /* FLJsonDataEncoder.m in Sources */,
 				B227A944182AD3FA00EDC426 /* NSError+FLNetworking.m in Sources */,

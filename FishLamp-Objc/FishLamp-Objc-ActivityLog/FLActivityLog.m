@@ -109,6 +109,8 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
 - (void) whitespaceStringFormatter:(FLWhitespaceStringFormatter*) stringFormatter
             appendAttributedString:(NSAttributedString*) string {
 
+    FLLog(@"ActivityLog: %@", string.string);
+
     NSAttributedString* theString = string;
     if(_textFont || _textColor) {
     

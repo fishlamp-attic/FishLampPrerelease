@@ -13,6 +13,9 @@
 #import "FLSuccessfulResult.h"
 #import "FLOperation.h"
 #import "FLOperationContext.h"
+#import "FLOperationQueueErrorStrategy.h"
+
+// #import "FLTrace.h"
 
 @interface FLOperationQueue ()
 @property (readwrite, assign) NSInteger finishedCount;
@@ -22,8 +25,10 @@
 @property (readonly, strong) NSMutableArray* activeQueue;
 @property (readonly, strong) NSMutableArray* objectQueue;
 @property (readonly, strong) FLFifoAsyncQueue* schedulingQueue;
+@property (readwrite, assign) UInt32 maxOperationsCount;
 
 @property (readonly, strong) id<FLOperationQueueErrorStrategy> errorStrategy;
+
 
 @end
 
@@ -48,7 +53,7 @@
 
 @implementation FLOperationQueue
 
-@synthesize maxConcurrentOperations = _maxConcurrentOperations;
+@synthesize maxOperationsCount = _maxOperationsCount;
 @synthesize finishedCount = _finishedCount;
 @synthesize totalCount = _totalCount;
 @synthesize processing = _processing;
@@ -65,9 +70,14 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
         _schedulingQueue = [[FLFifoAsyncQueue alloc] init];
         _activeQueue = [[NSMutableArray alloc] init];
         _objectQueue = [[NSMutableArray alloc] init];
-        _maxConcurrentOperations = 1;
+        _maxOperationsCount = INT_MAX;
 
-        _errorStrategy = FLRetain(errorStrategy);
+        if(errorStrategy) {
+            _errorStrategy = FLRetain(errorStrategy);
+        }
+        else {
+            _errorStrategy = [[FLSingleErrorOperationQueueStrategy alloc] init];
+        }
 	}
 	return self;
 }
@@ -93,6 +103,18 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
 
 - (void) startOperation {
     [self startProcessing];
+}
+
+- (UInt32) maxConcurrentOperations {
+    return self.maxOperationsCount;
+}
+
+- (void) setMaxConcurrentOperations:(UInt32) max {
+    self.maxOperationsCount = max;
+
+    if(self.processing) {
+        [self processQueue];
+    }
 }
 
 - (void) willStartOperation:(FLOperation*) operation
@@ -163,28 +185,30 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
     FLAssert(self.processing == NO);
     FLAssertNotNil(self.objectQueue);
     FLAssertNotNil(self.activeQueue);
+    FLAssertNotNil(self.context);
 
-    [self.errorStrategy operationQueueDidBeginProcessing:self];
     self.processing = YES;
     [self processQueue];
 }
 
 - (void) stopProcessing {
+    FLAssertNotNil(self.context);
     self.processing = NO;
 }
 
 - (void) requestCancel {
-    [self.errorStrategy setCancelled];
+    FLAssertNotNil(self.context);
+
+    [super requestCancel];
     [self.schedulingQueue queueTarget:self action:@selector(respondToCancelEvent)];
 }
 
 #if FL_MRC 
 - (void) dealloc {
-    [_errorStrategy release];
-    [_operationFactories release];
-    [_activeQueue release];
     [_schedulingQueue release];
     [_objectQueue release];
+    [_activeQueue release];
+    [_operationFactories release];
     [_errorStrategy release];
     [super dealloc];
 }
@@ -192,10 +216,10 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
 
 - (void) sendCancelRequests {
     for(FLOperation* operation in self.activeQueue) {
-        FLTrace(@"cancelled: %@", [operation description]);
+        FLTrace(@"operation queue cancelled: %@", [operation description]);
         [operation requestCancel];
     }
-    FLTrace(@"cancelled %d queued operations", _objectQueue.count);
+    FLTrace(@"cancelled %ld queued operations", (long) _objectQueue.count);
 }
 
 - (void) respondToCancelEvent {
@@ -222,16 +246,14 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
     self.finishedCount++;
 
     if([result isError]) {
-        [self.errorStrategy handleError:[NSError fromPromisedResult:result] forQueuedObject:queuedObject];
+        [self.errorStrategy operationQueue:self encounteredError:result];
     }
-    else {
 
-        FLTrace(@"finished operation: %@ withResult: %@",
-                element.operation,
-                [element.operationResult isError] ? element.operationResult : @"OK");
+    FLTrace(@"finished operation: %@ withResult: %@",
+            operation,
+            [result isError] ? result : @"OK");
 
-        [self didFinishOperation:operation forQueuedObject:queuedObject withResult:result];
-    }
+    [self didFinishOperation:operation forQueuedObject:queuedObject withResult:result];
 
     [_activeQueue removeObject:operation];
     [self respondToProcessQueueEvent];
@@ -265,7 +287,7 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
     [self willStartOperation:operation forQueuedObject:object];
     
     FLTrace(@"starting operation: %@, queued object: %@",
-        FLStringFromClass([operation class]),
+        NSStringFromClass([operation class]),
         [object description]);
 
     FLAssertNotNil(self.context);
@@ -282,14 +304,14 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
 
 - (BOOL) shouldStartAnotherOperation {
     return  self.processing &&
+            !self.wasCancelled &&
             ![self.errorStrategy operationQueueWillHalt:self] &&
-                _activeQueue.count < self.maxConcurrentOperations &&
-                _objectQueue.count > 0;
+            _activeQueue.count < self.maxConcurrentOperations &&
+            _objectQueue.count > 0;
 }
 
 - (BOOL) shouldFinish {
-    return  _activeQueue.count == 0 &&
-            (_objectQueue.count == 0 || [self.errorStrategy operationQueueWillHalt:self]);
+    return  _activeQueue.count == 0 && _objectQueue.count == 0;
 }
 
 - (void) respondToProcessQueueEvent {
@@ -314,40 +336,3 @@ FLSynthesizeLazyGetter(operationFactories, NSMutableArray*, _operationFactories,
 }
 @end
 
-@implementation FLBatchOperationQueue : FLOperationQueue
-static NSInteger s_threadCount = FLQueueableAsyncOperationQueueOperationDefaultMaxConcurrentOperations;
-
-- (id) init {	
-	self = [super init];
-	if(self) {
-		self.maxConcurrentOperations = 0;
-	}
-	return self;
-}
-
-- (void) setMaxConcurrentOperations:(UInt32)maxConcurrentOperations {
-    [super setMaxConcurrentOperations:maxConcurrentOperations];
-
-    if(self.processing) {
-        [self processQueue];
-    }
-}
-
-- (UInt32) maxConcurrentOperations {
-    UInt32 max = [super maxConcurrentOperations];
-    if(!max) {
-        max = [FLBatchOperationQueue defaultConnectionLimit];
-    }
-    FLAssert(max > 0);
-    return max;
-}
-
-+ (void) setDefaultConnectionLimit:(UInt32) threadCount {
-    FLAtomicSetInteger(s_threadCount, threadCount);
-}
-
-+ (UInt32) defaultConnectionLimit {
-    return FLAtomicGetInteger(s_threadCount);
-}
-
-@end

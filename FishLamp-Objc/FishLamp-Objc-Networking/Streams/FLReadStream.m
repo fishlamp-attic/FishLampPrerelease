@@ -141,6 +141,8 @@ static void ReadStreamClientCallBack(CFReadStreamRef streamRef, CFStreamEventTyp
             if(self.hasError) {
                 [self.inputSink closeSinkWithCommit:NO];
                 result = FLRetainWithAutorelease(self.error);
+
+                FLLog(@"closed stream with error: %@", self.error)
             }
             else {
                 result = [self createSuccessfulResult:self.inputSink];

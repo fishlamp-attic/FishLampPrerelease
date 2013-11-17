@@ -197,6 +197,7 @@ static Class s_eventHandlerClass = nil;
 }
 
 - (void) touchTimeoutTimestamp {
+    FLAssertNotNil(self.timer);
     [self.timer  touchTimestamp];
 }
 
