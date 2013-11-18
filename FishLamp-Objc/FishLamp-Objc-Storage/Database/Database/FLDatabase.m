@@ -14,7 +14,7 @@
 
 #import "FLDatabaseColumnDecoder.h"
 #import "FLDatabase.h"
-#import "FLAppInfo.h"
+#import "NSBundle+FLVersion.h"
 #import "FLSqlStatement.h"
 #import "FishLampAsync.h"
 #import "FLDatabase+Introspection.h"
@@ -41,7 +41,7 @@ static NSString* s_version = nil;
 + (void) initialize {
     static BOOL didInit = NO;
     if(!didInit) {
-        [FLDatabase setCurrentRuntimeVersion:[FLAppInfo appVersion]];
+        [FLDatabase setCurrentRuntimeVersion:[NSBundle appVersionString]];
     }
 }
 

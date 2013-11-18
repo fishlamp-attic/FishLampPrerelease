@@ -13,6 +13,7 @@
 #import "Base64Transcoder.h"
 #import "NSString+GUID.h"
 #import "FLStringUtils.h"
+#import "FLHttpRequestHeaders.h"
 
 @interface FLOAuthAuthorizationHeader ()
 @end

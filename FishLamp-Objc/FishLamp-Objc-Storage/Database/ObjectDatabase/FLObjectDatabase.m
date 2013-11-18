@@ -14,7 +14,7 @@
 #import "NSString+Lists.h"
 #import "FLSqlBuilder.h"
 #import "FLDatabase_Internal.h"
-#import "FLAppInfo.h"
+#import "NSBundle+FLVersion.h"
 #import "FLObjectDescriber.h"
 #import "FLPropertyDescriber.h"
 

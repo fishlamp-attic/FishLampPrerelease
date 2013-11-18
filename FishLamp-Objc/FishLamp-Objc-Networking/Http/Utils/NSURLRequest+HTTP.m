@@ -11,19 +11,9 @@
 #import "NSFileManager+FLExtras.h"
 #import "NSString+URL.h"
 #import "FLPrettyString.h"
-#import "FLAppInfo.h"
+#import "NSBundle+FLVersion.h"
 
 @implementation NSURLRequest (HTTP)
-
-static NSString* s_defaultUserAgent = nil;
-
-+ (void) setDefaultUserAgent:(NSString*) userAgent {
-	FLSetObjectWithRetain(s_defaultUserAgent, userAgent);
-}
-
-+ (NSString*) defaultUserAgent {
-	return s_defaultUserAgent;
-}
 
 - (BOOL) hasHeader:(NSString*) header {
 	return [self valueForHTTPHeaderField:header] != nil;
@@ -77,9 +67,7 @@ static NSString* s_defaultUserAgent = nil;
 }
 
 - (void) setUserAgentHeader {
-	if(FLStringIsNotEmpty([NSURLRequest defaultUserAgent])) {
-		[self setUserAgentHeader:s_defaultUserAgent];
-	}
+    [self setUserAgentHeader:[NSBundle defaultUserAgent]];
 }
 
 -(void) setHeader:(NSString*)headerName data:(NSString*)data

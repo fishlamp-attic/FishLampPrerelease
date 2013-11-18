@@ -9,7 +9,7 @@
 
 #import "FLHttpRequest.h"
 
-#import "FLAppInfo.h"
+#import "NSBundle+FLVersion.h"
 #import "FLCoreFoundation.h"
 #import "FLDataSink.h"
 #import "FLGlobalNetworkActivityIndicator.h"
@@ -23,8 +23,11 @@
 #import "FLRetryHandler.h"
 #import "FLTimer.h"
 #import "FishLampAsync.h"
+#import "FLHttpRequestHeaders.h"
 
+#if 0
 #define FORCE_NO_SSL DEBUG
+#endif
 
 //#define kStreamReadChunkSize 1024
 
@@ -244,10 +247,39 @@ static int s_counter = 0;
 }
 
 - (BOOL) tryRetry {
-    return [self.retryHandler retryWithBlock:^{
+//    return [self.retryHandler retryWithBlock:^{
+//        [self startOperation];
+//    }];
+
+    if(!self.retryHandler.isDisabled && self.retryHandler.retryCount < self.retryHandler.maxRetryCount) {
+        self.retryHandler.retryCount++;
+
         [self releaseResponseData];
-        [self startOperation];
-    }];
+
+        FLLog(@"Retrying HTTP Request %@ (%ld of %ld)",
+            self.requestHeaders.requestURL,
+            self.retryHandler.retryCount,
+            self.retryHandler.maxRetryCount);
+
+        [self.operationStarter startOperation:self withDelay:self.retryHandler.retryDelay completion:nil];
+
+
+//        if(self.retryHandler > 0) {
+//
+//
+//            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(_retryDelay * NSEC_PER_SEC));
+//            dispatch_after(popTime, dispatch_get_current_queue(), FLCopyWithAutorelease(block));
+//        }
+//        else {
+//            dispatch_async(dispatch_get_current_queue(), block);
+//        }
+
+        return YES;
+    }
+
+
+    return NO;
+
 }
 
 - (void) networkStream:(FLHttpStream*) readStream 

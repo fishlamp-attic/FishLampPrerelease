@@ -28,7 +28,7 @@ FLSynthesizeDictionaryGetterProperty(stackTrace, FLStackTrace*, FLStackTraceKey,
                         code:(NSInteger) code
         localizedDescription:(NSString*) localizedDescription {
 
-    return FLAutorelease([[[self class] alloc] initWithDomain:domain 
+    return FLAutorelease([[NSError alloc] initWithDomain:domain
                                                          code:code
                                          localizedDescription:localizedDescription
                                                      userInfo:nil
@@ -104,7 +104,7 @@ FLSynthesizeDictionaryGetterProperty(stackTrace, FLStackTrace*, FLStackTraceKey,
                     userInfo:(NSDictionary *)dict
                   stackTrace:(FLStackTrace*) stackTrace {
 
-    return FLAutorelease([[[self class] alloc] initWithDomain:domain
+    return FLAutorelease([[[NSError class] alloc] initWithDomain:domain
                                                         code:code
                                          localizedDescription:localizedDescription
                                                     userInfo:dict

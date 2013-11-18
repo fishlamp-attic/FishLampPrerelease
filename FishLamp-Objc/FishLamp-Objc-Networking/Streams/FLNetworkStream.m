@@ -201,11 +201,15 @@ static Class s_eventHandlerClass = nil;
     [self.timer  touchTimestamp];
 }
 
+- (NSString*) identifier {
+    return [self description];
+}
+
 - (void) timerWasUpdated:(FLTimer*) timer {
 
 #if DEBUG
     if(timer.idleDuration - self.idleDuration > 5.0f) {
-        FLLog(@"Server hasn't responded for %f seconds", timer.idleDuration);
+        FLLog(@"Server hasn't responded for %f seconds (%@)", timer.idleDuration, self.identifier);
         self.idleDuration = timer.idleDuration;
     }
 #endif

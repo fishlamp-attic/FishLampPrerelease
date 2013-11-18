@@ -40,9 +40,5 @@
 
 - (void) removeHTTPHeaderField:(NSString*) field;
 
-// by default this is loaded from [FLAppInfo userAgent];
-+ (void) setDefaultUserAgent:(NSString*) userAgent;
-
-+ (NSString*) defaultUserAgent;
 
 @end

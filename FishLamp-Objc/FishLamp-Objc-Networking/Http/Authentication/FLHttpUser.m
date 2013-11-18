@@ -8,7 +8,7 @@
 //
 
 #import "FLHttpUser.h"
-#import "FLAppInfo.h"
+#import "NSBundle+FLVersion.h"
 
 @implementation FLHttpUser
 
@@ -59,7 +59,7 @@
 }
 
 - (NSString*) userFolderPath {
-    return [NSString stringWithFormat:@"%@/%@", [FLAppInfo bundleIdentifier], self.userName];
+    return [NSString stringWithFormat:@"%@/%@", [NSBundle bundleIdentifier], self.userName];
 }
 
 - (NSString*) cacheFolderPath {

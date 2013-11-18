@@ -8,13 +8,13 @@
 //
 
 #import "FLHttpRequestHeaders.h"
-#import "FLAppInfo.h"
+#import "NSBundle+FLVersion.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/sysctl.h>
-#import "FLAppInfo.h"
+#import "NSBundle+FLVersion.h"
 
 
 @interface FLHttpRequestHeaders ()
@@ -38,7 +38,7 @@ static NSString* s_defaultUserAgent = nil;
             self.httpMethod = @"GET";
         }
         
-        [self setUserAgentHeader:[FLHttpRequestHeaders defaultUserAgent]];
+        [self setUserAgentHeader:[NSBundle defaultUserAgent]];
     }
     
     return self;
@@ -137,57 +137,6 @@ static NSString* s_defaultUserAgent = nil;
 
 - (void) setUserAgentHeader:(NSString*) userAgent {
 	[self setValue:userAgent forHTTPHeaderField:@"User-Agent"];
-}
-
-
-
-#if OSX
-// TODO: move this to an OSX lib
-NSString* FLMachineModel()
-{
-    size_t len = 0;
-    sysctlbyname("hw.model", NULL, &len, NULL, 0);
-
-    if (len)
-    {
-        char *model = malloc(len*sizeof(char));
-        sysctlbyname("hw.model", model, &len, NULL, 0);
-        NSString *model_ns = [NSString stringWithUTF8String:model];
-        free(model);
-        return model_ns;
-    }
-
-    return @"UnknownMac"; //incase model name can't be read
-}
-
-+ (void) initialize {
-    
-    if(![self defaultUserAgent]) {
-        NSString* defaultUserAgent = [NSString stringWithFormat:@"%@/%@ (%@; %@; %@;)", 
-            [FLAppInfo appName], 
-            [FLAppInfo appVersion],
-            [FLAppInfo bundleIdentifier],
-            FLMachineModel(),
-//                [UIDevice currentDevice].machineName,
-//                [UIDevice currentDevice].systemName,
-//                [UIDevice currentDevice].systemVersion];
-            FLStringFromVersion(FLGetOSVersion())];
-        
-
-        [FLHttpRequestHeaders setDefaultUserAgent:defaultUserAgent];
-//            [NSURLRequest setDefaultUserAgent:defaultUserAgent];
-    
-    }
-
-}
-#endif
-
-+ (NSString*) defaultUserAgent {
-    return s_defaultUserAgent;
-}   
-
-+ (void) setDefaultUserAgent:(NSString*) userAgent {
-    FLSetObjectWithRetain(s_defaultUserAgent, userAgent);
 }
 
 - (id) copyWithZone:(NSZone *)zone {

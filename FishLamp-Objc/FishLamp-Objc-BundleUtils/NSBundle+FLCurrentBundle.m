@@ -13,14 +13,20 @@
 
 static NSMutableArray* s_bundleStack = nil;
 
++ (void) initialize {
+    if(!s_bundleStack) {
+        s_bundleStack = [[NSMutableArray alloc] init];
+        if([NSBundle mainBundle]) {
+            [self pushCurrentBundle:[NSBundle mainBundle]];
+        }
+    }
+}
+
 + (NSBundle*) currentBundle {
     return [s_bundleStack lastObject];
 }
 
 + (void) pushCurrentBundle:(NSBundle*) bundle {
-    if(!s_bundleStack) {
-        s_bundleStack = [[NSMutableArray alloc] init];
-    }
     [s_bundleStack addObject:bundle];
 }
 

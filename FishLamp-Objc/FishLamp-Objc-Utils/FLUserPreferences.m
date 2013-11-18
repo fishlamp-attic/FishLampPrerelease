@@ -7,7 +7,7 @@
 //
 
 #import "FLUserPreferences.h"
-#import "FLAppInfo.h"
+#import "NSBundle+FLVersion.h"
 //#import "NSUserDefaults+FLAdditions.h"
 
 #define kAppVersion @"AppVersion"
@@ -28,11 +28,11 @@
 }
 
 + (NSString*) appSpecificKey:(NSString*) key {
-    return [key hasPrefix:[FLAppInfo bundleIdentifier]] ? key : [NSString stringWithFormat:@"%@.%@", [FLAppInfo bundleIdentifier], key];
+    return [key hasPrefix:[NSBundle bundleIdentifier]] ? key : [NSString stringWithFormat:@"%@.%@", [NSBundle bundleIdentifier], key];
 }
 
 + (BOOL) isAppSpecificKey:(NSString*) key {
-    return [key hasPrefix:[FLAppInfo bundleIdentifier]];
+    return [key hasPrefix:[NSBundle bundleIdentifier]];
 }
 
 - (NSUserDefaults*) userDefaults {
@@ -44,12 +44,12 @@
 }
 
 - (void) writeAppVersion {
-    [[self userDefaults] setObject:[FLAppInfo appVersion] forKey:kAppVersion];
+    [[self userDefaults] setObject:[NSBundle appVersionString] forKey:kAppVersion];
 }
 
 - (void) deleteAllIfVersionChanged {
-    if(FLStringsAreNotEqual(self.readAppVersion, [FLAppInfo appVersion])) {
-        FLLog(@"removing prefs: %@ to %@", self.readAppVersion, [FLAppInfo appVersion]);
+    if(FLStringsAreNotEqual(self.readAppVersion, [NSBundle appVersionString])) {
+        FLLog(@"removing prefs: %@ to %@", self.readAppVersion, [NSBundle appVersionString]);
         NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
         [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
     }

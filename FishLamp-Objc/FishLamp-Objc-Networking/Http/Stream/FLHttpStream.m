@@ -82,9 +82,20 @@
     [super openStream];
 }
 
+
+- (NSString*) identifier {
+    return _requestHeaders.requestURL.absoluteString;
+}
+
 - (CFReadStreamRef) allocReadStreamRef {
+
+#if TRACE
+    FLLog(@"connecting to %@", _requestHeaders.requestURL)
+#endif
+
     if(_bodyStream) {
-        return CFReadStreamCreateForStreamedHTTPRequest(kCFAllocatorDefault, _requestHeaders.messageRef, FLBridge(CFReadStreamRef, _bodyStream));
+        return CFReadStreamCreateForStreamedHTTPRequest(kCFAllocatorDefault,
+            _requestHeaders.messageRef, FLBridge(CFReadStreamRef, _bodyStream));
     }
     
     return CFReadStreamCreateForHTTPRequest(kCFAllocatorDefault, _requestHeaders.messageRef);

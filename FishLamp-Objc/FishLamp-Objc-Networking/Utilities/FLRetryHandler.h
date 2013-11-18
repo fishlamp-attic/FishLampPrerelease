@@ -10,12 +10,10 @@
 
 @protocol FLRetryHandler <NSObject>
 
-@property (readonly, assign) NSUInteger retryCount;
+@property (readwrite, assign) NSUInteger retryCount;
 @property (readwrite, assign) NSUInteger maxRetryCount;
 @property (readwrite, assign) NSTimeInterval retryDelay;
 @property (readwrite, assign, getter=isDisabled) BOOL disabled;
-
-- (BOOL) retryWithBlock:(dispatch_block_t) retryBlock;
 
 - (void) resetRetryCount;
 

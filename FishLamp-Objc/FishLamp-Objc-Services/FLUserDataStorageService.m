@@ -22,7 +22,7 @@
 #import "FLBackgroundTaskMgr.h"
 #import "FLAction.h"
 #import "FLObjectDatabase.h"
-#import "FLAppInfo.h"
+#import "NSBundle+FLVersion.h"
 #import "FLServiceKeys.h"
 
 
@@ -219,7 +219,7 @@ FLAssertFailedWithComment(@"refactor this");
     NSString* userCacheFolder = [cachePaths objectAtIndex: 0];
 
 #if OSX
-    userCacheFolder = [userCacheFolder stringByAppendingPathComponent:[FLAppInfo bundleIdentifier]];
+    userCacheFolder = [userCacheFolder stringByAppendingPathComponent:[NSBundle bundleIdentifier]];
 #endif
 
     FLAuthenticationCredentials* userLogin = self.userLogin;
@@ -258,7 +258,7 @@ FLAssertFailedWithComment(@"refactor this");
     FLAuthenticationCredentials* userLogin = self.userLogin;
 
 #if OSX
-    userDocumentsFolder = [userDocumentsFolder stringByAppendingPathComponent:[FLAppInfo bundleIdentifier]];
+    userDocumentsFolder = [userDocumentsFolder stringByAppendingPathComponent:[NSBundle bundleIdentifier]];
 #endif
     
 	if(!_documentsFolder) {
@@ -305,11 +305,11 @@ FLAssertFailedWithComment(@"refactor this");
 		
     if( (dataVersion == nil) || 
         FLStringIsEmpty(dataVersion.versionString) ||
-        !FLStringsAreEqual(dataVersion.versionString, [FLAppInfo appVersion]))
+        !FLStringsAreEqual(dataVersion.versionString, [NSBundle appVersion]))
     {
         _upgrading = YES;
     
-        _upgradeTaskList = [[FLVersionUpgradeLengthyTaskList alloc] initWithFromVersion:dataVersion.versionString toVersion:[FLAppInfo appVersion]];
+        _upgradeTaskList = [[FLVersionUpgradeLengthyTaskList alloc] initWithFromVersion:dataVersion.versionString toVersion:[NSBundle appVersion]];
         
         if([_cacheDatabase databaseNeedsUpgrade]) {
             [_upgradeTaskList.operations queueOperation:[FLUpgradeDatabaseLengthyTask upgradeDatabaseLengthyTask:_cacheDatabase]];
@@ -323,7 +323,7 @@ FLAssertFailedWithComment(@"refactor this");
 
 /*        
         _upgradeTaskList.progressController = [[self class] createVersionUpgradeProgressViewController];
-        [_upgradeTaskList.progressController setTitle:[NSString stringWithFormat:(NSLocalizedString(@"Updating to Version: %@", nil)), [FLAppInfo appVersion]]];
+        [_upgradeTaskList.progressController setTitle:[NSString stringWithFormat:(NSLocalizedString(@"Updating to Version: %@", nil)), [NSBundle appVersion]]];
 */        
 
 //        [self.context addObject:_upgradeTaskList];
@@ -384,7 +384,7 @@ FLAssertFailedWithComment(@"TODO refactor this");
 		
 		FLApplicationDataVersion* version = [FLApplicationDataVersion applicationDataVersion];
 		version.userGuid = [self userLogin].userGuid;
-		version.versionString = [FLAppInfo appVersion];
+		version.versionString = [NSBundle appVersion];
 		[[FLApplicationDataModel instance].database writeObject:version];
 
 		FLReleaseWithNil(_upgradeTaskList);

@@ -11,11 +11,6 @@
 
 @interface NSURLRequest (HTTP)
 
-// this is set with [FLAppInfo userAgent] by default
-+ (void) setDefaultUserAgent:(NSString*) userAgent;
-
-+ (NSString*) defaultUserAgent;
-
 - (BOOL) hasHeader:(NSString*) header;
 
 - (NSString*) postHeader;

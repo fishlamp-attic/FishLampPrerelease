@@ -21,7 +21,6 @@
     __unsafe_unretained FLTestCaseOperation* _operation;
     dispatch_block_t _finishedBlock;
     BOOL _finishedStarting;
-    NSError* _error;
     FLTimer* _timer;
 }
 @property (readwrite, copy) dispatch_block_t finishedBlock;

@@ -9,10 +9,11 @@
 
 #import "FLCoreRequired.h"
 
-#if DEBUG
 #undef TRACE
 #undef FLTrace
 #undef FLTraceIf
+
+#if DEBUG
 
 #define FLTrace(__FORMAT__, ...) \
             FLLogToLogger([FLLogLogger instance], FLLogTypeTrace, __FORMAT__, ##__VA_ARGS__)
@@ -21,5 +22,11 @@
             if(__CONDITION__) FLTrace(__FORMAT__, ##__VA_ARGS__)
 
 #define TRACE 1
+
+#else
+
+#define FLTrace(__FORMAT__, ...)
+
+#define FLTraceIf(__CONDITION__, __FORMAT__, ...) 
 
 #endif

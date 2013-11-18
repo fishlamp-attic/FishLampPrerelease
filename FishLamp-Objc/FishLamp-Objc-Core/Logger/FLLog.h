@@ -20,7 +20,7 @@
             FLLogToLogger([FLLogLogger instance], FLLogTypeError, __FORMAT__, ##__VA_ARGS__)
 
 
-#if DEBUG
+#if 1
     #define FLLog(__FORMAT__, ...)   \
                 FLLogToLogger([FLLogLogger instance], FLLogTypeLog, __FORMAT__, ##__VA_ARGS__)
 

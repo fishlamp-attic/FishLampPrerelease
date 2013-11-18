@@ -455,11 +455,11 @@
 		B227A4E7182AD3F900EDC426 /* FLUserDefaultsCredentialStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A166182AD3F500EDC426 /* FLUserDefaultsCredentialStorage.m */; };
 		B227A4E8182AD3F900EDC426 /* FLUserDefaultsCredentialStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A166182AD3F500EDC426 /* FLUserDefaultsCredentialStorage.m */; };
 		B227A4E9182AD3F900EDC426 /* FLUserDefaultsCredentialStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A166182AD3F500EDC426 /* FLUserDefaultsCredentialStorage.m */; };
-		B227A4EA182AD3F900EDC426 /* FLAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A169182AD3F500EDC426 /* FLAppInfo.m */; };
-		B227A4EB182AD3F900EDC426 /* FLAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A169182AD3F500EDC426 /* FLAppInfo.m */; };
-		B227A4EC182AD3F900EDC426 /* FLAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A169182AD3F500EDC426 /* FLAppInfo.m */; };
-		B227A4ED182AD3F900EDC426 /* FLAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A169182AD3F500EDC426 /* FLAppInfo.m */; };
-		B227A4EE182AD3F900EDC426 /* FLAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A169182AD3F500EDC426 /* FLAppInfo.m */; };
+		B227A4EA182AD3F900EDC426 /* NSBundle+FLVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A169182AD3F500EDC426 /* NSBundle+FLVersion.m */; };
+		B227A4EB182AD3F900EDC426 /* NSBundle+FLVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A169182AD3F500EDC426 /* NSBundle+FLVersion.m */; };
+		B227A4EC182AD3F900EDC426 /* NSBundle+FLVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A169182AD3F500EDC426 /* NSBundle+FLVersion.m */; };
+		B227A4ED182AD3F900EDC426 /* NSBundle+FLVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A169182AD3F500EDC426 /* NSBundle+FLVersion.m */; };
+		B227A4EE182AD3F900EDC426 /* NSBundle+FLVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A169182AD3F500EDC426 /* NSBundle+FLVersion.m */; };
 		B227A4EF182AD3F900EDC426 /* NSBundle+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A16B182AD3F500EDC426 /* NSBundle+FLAdditions.m */; };
 		B227A4F0182AD3F900EDC426 /* NSBundle+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A16B182AD3F500EDC426 /* NSBundle+FLAdditions.m */; };
 		B227A4F1182AD3F900EDC426 /* NSBundle+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B227A16B182AD3F500EDC426 /* NSBundle+FLAdditions.m */; };
@@ -2164,8 +2164,8 @@
 		B227A164182AD3F500EDC426 /* FLCredentialsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLCredentialsStorage.m; sourceTree = "<group>"; };
 		B227A165182AD3F500EDC426 /* FLUserDefaultsCredentialStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLUserDefaultsCredentialStorage.h; sourceTree = "<group>"; };
 		B227A166182AD3F500EDC426 /* FLUserDefaultsCredentialStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLUserDefaultsCredentialStorage.m; sourceTree = "<group>"; };
-		B227A168182AD3F500EDC426 /* FLAppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAppInfo.h; sourceTree = "<group>"; };
-		B227A169182AD3F500EDC426 /* FLAppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAppInfo.m; sourceTree = "<group>"; };
+		B227A168182AD3F500EDC426 /* NSBundle+FLVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+FLVersion.h"; sourceTree = "<group>"; };
+		B227A169182AD3F500EDC426 /* NSBundle+FLVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+FLVersion.m"; sourceTree = "<group>"; };
 		B227A16A182AD3F500EDC426 /* NSBundle+FLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+FLAdditions.h"; sourceTree = "<group>"; };
 		B227A16B182AD3F500EDC426 /* NSBundle+FLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+FLAdditions.m"; sourceTree = "<group>"; };
 		B227A16C182AD3F500EDC426 /* NSBundle+FLCurrentBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+FLCurrentBundle.h"; sourceTree = "<group>"; };
@@ -3490,8 +3490,8 @@
 		B227A167182AD3F500EDC426 /* FishLamp-Objc-BundleUtils */ = {
 			isa = PBXGroup;
 			children = (
-				B227A168182AD3F500EDC426 /* FLAppInfo.h */,
-				B227A169182AD3F500EDC426 /* FLAppInfo.m */,
+				B227A168182AD3F500EDC426 /* NSBundle+FLVersion.h */,
+				B227A169182AD3F500EDC426 /* NSBundle+FLVersion.m */,
 				B227A16A182AD3F500EDC426 /* NSBundle+FLAdditions.h */,
 				B227A16B182AD3F500EDC426 /* NSBundle+FLAdditions.m */,
 				B227A16C182AD3F500EDC426 /* NSBundle+FLCurrentBundle.h */,
@@ -5376,7 +5376,7 @@
 				B227A937182AD3FA00EDC426 /* FLRetryHandler.m in Sources */,
 				B227A504182AD3F900EDC426 /* FLCodeBuilder.m in Sources */,
 				B227A6AD182AD3F900EDC426 /* FLWhitespaceStringFormatter.m in Sources */,
-				B227A4EB182AD3F900EDC426 /* FLAppInfo.m in Sources */,
+				B227A4EB182AD3F900EDC426 /* NSBundle+FLVersion.m in Sources */,
 				B227A5EA182AD3F900EDC426 /* FLAssert.m in Sources */,
 				B227AA18182AD3FA00EDC426 /* FLTTestableSubclassFactory.m in Sources */,
 				B227A5F4182AD3F900EDC426 /* FLAssertionFailureErrorDomain.m in Sources */,
@@ -5769,7 +5769,7 @@
 				B227A939182AD3FA00EDC426 /* FLRetryHandler.m in Sources */,
 				B227A506182AD3F900EDC426 /* FLCodeBuilder.m in Sources */,
 				B227A6AF182AD3F900EDC426 /* FLWhitespaceStringFormatter.m in Sources */,
-				B227A4ED182AD3F900EDC426 /* FLAppInfo.m in Sources */,
+				B227A4ED182AD3F900EDC426 /* NSBundle+FLVersion.m in Sources */,
 				B227A5EC182AD3F900EDC426 /* FLAssert.m in Sources */,
 				B227AA1A182AD3FA00EDC426 /* FLTTestableSubclassFactory.m in Sources */,
 				B227A5F6182AD3F900EDC426 /* FLAssertionFailureErrorDomain.m in Sources */,
@@ -6173,7 +6173,7 @@
 				B227A936182AD3FA00EDC426 /* FLRetryHandler.m in Sources */,
 				B227A503182AD3F900EDC426 /* FLCodeBuilder.m in Sources */,
 				B227A6AC182AD3F900EDC426 /* FLWhitespaceStringFormatter.m in Sources */,
-				B227A4EA182AD3F900EDC426 /* FLAppInfo.m in Sources */,
+				B227A4EA182AD3F900EDC426 /* NSBundle+FLVersion.m in Sources */,
 				B227A5E9182AD3F900EDC426 /* FLAssert.m in Sources */,
 				B227AA17182AD3FA00EDC426 /* FLTTestableSubclassFactory.m in Sources */,
 				B227A5F3182AD3F900EDC426 /* FLAssertionFailureErrorDomain.m in Sources */,
@@ -6535,7 +6535,7 @@
 				B227A938182AD3FA00EDC426 /* FLRetryHandler.m in Sources */,
 				B227A505182AD3F900EDC426 /* FLCodeBuilder.m in Sources */,
 				B227A6AE182AD3F900EDC426 /* FLWhitespaceStringFormatter.m in Sources */,
-				B227A4EC182AD3F900EDC426 /* FLAppInfo.m in Sources */,
+				B227A4EC182AD3F900EDC426 /* NSBundle+FLVersion.m in Sources */,
 				B227A5EB182AD3F900EDC426 /* FLAssert.m in Sources */,
 				B227AA19182AD3FA00EDC426 /* FLTTestableSubclassFactory.m in Sources */,
 				B227A5F5182AD3F900EDC426 /* FLAssertionFailureErrorDomain.m in Sources */,
@@ -6896,7 +6896,7 @@
 				B227A93A182AD3FA00EDC426 /* FLRetryHandler.m in Sources */,
 				B227A507182AD3F900EDC426 /* FLCodeBuilder.m in Sources */,
 				B227A6B0182AD3F900EDC426 /* FLWhitespaceStringFormatter.m in Sources */,
-				B227A4EE182AD3F900EDC426 /* FLAppInfo.m in Sources */,
+				B227A4EE182AD3F900EDC426 /* NSBundle+FLVersion.m in Sources */,
 				B227A5ED182AD3F900EDC426 /* FLAssert.m in Sources */,
 				B227AA1B182AD3FA00EDC426 /* FLTTestableSubclassFactory.m in Sources */,
 				B227A5F7182AD3F900EDC426 /* FLAssertionFailureErrorDomain.m in Sources */,

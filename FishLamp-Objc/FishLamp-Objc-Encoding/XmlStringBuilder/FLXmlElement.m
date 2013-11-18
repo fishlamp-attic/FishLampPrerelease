@@ -194,7 +194,7 @@ appendContentsToStringFormatter:(id<FLStringFormatter>)stringFormatter {
     BOOL hasLines = self.lines.count > 0;
 //    FLAssert(hasLines); // xml element should always have something, right?
 
-#if DEBUG
+#if TRACE
     if(!hasLines) {
         FLLog(@"xml element %@ has no lines", self.xmlElementTag)
     }

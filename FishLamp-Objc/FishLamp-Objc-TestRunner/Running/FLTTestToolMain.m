@@ -12,7 +12,7 @@
 #import "FLAsyncQueue.h"
 #import "FLOperation.h"
 #import "FLTestable.h"
-#import "FLAppInfo.h"
+#import "NSBundle+FLVersion.h"
 #import "FLDispatchQueue.h"
 #import "FLTestLoggingManager.h"
 
@@ -21,9 +21,9 @@
 int FLTTestToolMain(int argc, const char *argv[], NSString* bundleIdentifier, NSString* appName, NSString* version) {
     @autoreleasepool {
         @try {
-            [FLAppInfo setAppInfo:bundleIdentifier
-                          appName:appName
-                          version:version];            
+
+
+            [NSBundle setFakeBundleIdentifier:bundleIdentifier bundleName:appName appVersion:FLVersionFromString(version)];
         
             FLLogger* logger = [FLLogger logger];
             [logger addLoggerSink:[FLConsoleLogSink consoleLogSink:FLLogOutputSimple]];

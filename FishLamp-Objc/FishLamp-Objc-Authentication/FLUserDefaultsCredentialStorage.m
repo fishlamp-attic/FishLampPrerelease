@@ -8,7 +8,7 @@
 //
 
 #import "FLUserDefaultsCredentialStorage.h"
-#import "FLAppInfo.h"
+#import "NSBundle+FLVersion.h"
 #import "FLKeychain.h"
 
 NSString* const FLDefaultsKeyWizardLastUserNameKey = @"CredentialStorageLastUser";
@@ -56,24 +56,24 @@ FLSynthesizeSingleton(FLUserDefaultsCredentialStorage);
 }
 
 - (NSString*) readPasswordForUserName:(NSString*) userName {
-    FLAssertStringIsNotEmptyWithComment([FLAppInfo bundleIdentifier], @"bundle identifier must be set to use keychain for password");
+    FLAssertStringIsNotEmptyWithComment([NSBundle bundleIdentifier], @"bundle identifier must be set to use keychain for password");
 
     FLAssertStringIsNotEmpty(userName);
 
     if(userName) {
-        return [FLKeychain httpPasswordForUserName:userName withDomain:[FLAppInfo bundleIdentifier]];
+        return [FLKeychain httpPasswordForUserName:userName withDomain:[NSBundle bundleIdentifier]];
     }
 
     return nil;
 }
 
 - (void) writePassword:(NSString*) password forUserName:(NSString*) userName {
-    FLAssertStringIsNotEmptyWithComment([FLAppInfo bundleIdentifier], @"bundle identifier must be set to use keychain for password");
+    FLAssertStringIsNotEmptyWithComment([NSBundle bundleIdentifier], @"bundle identifier must be set to use keychain for password");
 
     NSString* existingPassword = [self readPasswordForUserName:userName];
 
     if(FLStringsAreNotEqual(existingPassword, password)) {
-        [FLKeychain setHttpPassword:password forUserName:userName withDomain:[FLAppInfo bundleIdentifier]];
+        [FLKeychain setHttpPassword:password forUserName:userName withDomain:[NSBundle bundleIdentifier]];
     }
 }
 
@@ -90,10 +90,10 @@ FLSynthesizeSingleton(FLUserDefaultsCredentialStorage);
 
 
 - (void) removePasswordForUser:(NSString*) userName {
-    FLAssertStringIsNotEmptyWithComment([FLAppInfo bundleIdentifier], @"bundle identifier must be set to use keychain for password");
+    FLAssertStringIsNotEmptyWithComment([NSBundle bundleIdentifier], @"bundle identifier must be set to use keychain for password");
 
     if(FLStringIsNotEmpty(userName)) {
-        [FLKeychain removeHttpPasswordForUserName:userName withDomain:[FLAppInfo bundleIdentifier]];
+        [FLKeychain removeHttpPasswordForUserName:userName withDomain:[NSBundle bundleIdentifier]];
     }
 }
 

@@ -44,6 +44,8 @@ typedef enum {
 - (id) initWithStreamSecurity:(FLNetworkStreamSecurity) security
                  eventHandler:(id<FLNetworkStreamEventHandler>) eventHandler;
 
+@property (readonly, strong) NSString* identifier;
+
 // delegate
 @property (readwrite, assign) id<FLNetworkStreamDelegate> delegate;
 

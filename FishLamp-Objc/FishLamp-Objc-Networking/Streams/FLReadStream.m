@@ -104,7 +104,10 @@ static void ReadStreamClientCallBack(CFReadStreamRef streamRef, CFStreamEventTyp
 
     if(self.streamSecurity == FLNetworkStreamSecuritySSL) {
         CFReadStreamSetProperty(_streamRef, kCFStreamSSLLevel, kCFStreamSocketSecurityLevelNegotiatedSSL);
-        
+
+//        CFReadStreamSetProperty(_streamRef, kCFStreamSSLLevel, kCFStreamSocketSecurityLevelSSLv3);
+
+
         NSDictionary *sslSettings = [NSDictionary dictionaryWithObjectsAndKeys:
          (id)kCFBooleanFalse, (id)kCFStreamSSLValidatesCertificateChain, 
          nil];
