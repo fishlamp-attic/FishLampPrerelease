@@ -26,7 +26,6 @@
 @synthesize allHeaders = _headers;
 @synthesize requestURL = _requestURL;
 @synthesize postLength = _postLength;
-static NSString* s_defaultUserAgent = nil;
 
 -(id) initWithHttpMethod:(NSString*) httpMethod {
 
@@ -112,12 +111,14 @@ static NSString* s_defaultUserAgent = nil;
 }
 
 - (BOOL) hasHTTPHeaderField:(NSString*) header {
-    FLAssertStringIsNotEmptyWithComment(header, nil);
+    FLAssertStringIsNotEmpty(header);
 
 	return [_headers objectForKey:header] != nil;
 }
 
 - (void) removeHTTPHeaderField:(NSString*) headerName {
+    FLAssertStringIsNotEmpty(headerName);
+
     [_headers removeObjectForKey:headerName];
 }
 
@@ -136,6 +137,8 @@ static NSString* s_defaultUserAgent = nil;
 }
 
 - (void) setUserAgentHeader:(NSString*) userAgent {
+    FLAssertStringIsNotEmpty(userAgent);
+
 	[self setValue:userAgent forHTTPHeaderField:@"User-Agent"];
 }
 

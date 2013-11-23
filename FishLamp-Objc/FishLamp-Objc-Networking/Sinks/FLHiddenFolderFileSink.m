@@ -51,7 +51,15 @@
 - (void) createDirectoryIfNeeded:(NSString*) path {
     NSError* error = nil;
     [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
-    FLThrowIfError(error);
+
+    if(error) {
+        if([[error domain] isEqualToString:NSCocoaErrorDomain] && error.code == NSFileWriteFileExistsError) {
+            return;
+        }
+
+        FLThrowError(error);
+    }
+
 }
 
 - (void) openSink {

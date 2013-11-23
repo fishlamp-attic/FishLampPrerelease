@@ -125,29 +125,28 @@ static NSDictionary* s_fakeBundle = nil;
 
 #if OSX
 
-+ (void) setUserAgent {
++ (NSString*) defaultUserAgentString {
     
-    if(![self defaultUserAgent]) {
-        NSString* defaultUserAgent = [NSString stringWithFormat:@"%@/%@ (%@; %@; %@;)", 
-            [self bundleName],
-            [self appVersionString],
-            [self bundleIdentifier],
-            FLMachineModel(),
+    NSString* defaultUserAgent = [NSString stringWithFormat:@"%@/%@ (%@; %@; %@;)",
+        [self bundleName],
+        [self appVersionString],
+        [self bundleIdentifier],
+        FLMachineModel(),
 //                [UIDevice currentDevice].machineName,
 //                [UIDevice currentDevice].systemName,
 //                [UIDevice currentDevice].systemVersion];
-            FLStringFromVersion(FLGetOSVersion())];
+        FLStringFromVersion(FLGetOSVersion())];
         
-        [self setDefaultUserAgent:defaultUserAgent];
-    }
-
+    return defaultUserAgent;
 }
 #endif
 
 + (NSString*) defaultUserAgent {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self setUserAgent];
+        if(!s_defaultUserAgent) {
+            [self setDefaultUserAgent:[self defaultUserAgentString]];
+        }
     });
 
     return s_defaultUserAgent;
