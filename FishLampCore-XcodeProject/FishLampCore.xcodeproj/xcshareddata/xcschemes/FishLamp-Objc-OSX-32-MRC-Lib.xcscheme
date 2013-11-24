@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B214727A17DE7BBC00985872"
-               BuildableName = "FishLamp-Objc-iOS-TestApp.app"
-               BlueprintName = "FishLamp-Objc-iOS-TestApp"
-               ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
+               BlueprintIdentifier = "27048B70161CB58600C38ADA"
+               BuildableName = "lib.a"
+               BlueprintName = "FishLampCore-OSX-32-MRC-Lib"
+               ReferencedContainer = "container:FishLampCore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B214727A17DE7BBC00985872"
-            BuildableName = "FishLamp-Objc-iOS-TestApp.app"
-            BlueprintName = "FishLamp-Objc-iOS-TestApp"
-            ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -48,15 +39,6 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B214727A17DE7BBC00985872"
-            BuildableName = "FishLamp-Objc-iOS-TestApp.app"
-            BlueprintName = "FishLamp-Objc-iOS-TestApp"
-            ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -66,15 +48,6 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B214727A17DE7BBC00985872"
-            BuildableName = "FishLamp-Objc-iOS-TestApp.app"
-            BlueprintName = "FishLamp-Objc-iOS-TestApp"
-            ReferencedContainer = "container:FishLamp-Objc.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

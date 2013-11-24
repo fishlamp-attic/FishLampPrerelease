@@ -6,30 +6,24 @@
 #
 Pod::Spec.new do |s|
   s.name         = "FishLampCore"
-  s.version      = "0.1.0"
-  s.summary      = "A short description of FishLampCore."
-  s.description  = <<-DESC
-                    An optional longer description of FishLampCore
-
-                    * Markdown format.
-                    * Don't worry about the indent, we strip it!
-                   DESC
-  s.homepage     = "http://EXAMPLE/NAME"
+  s.version      = "3.0.0"
+  s.summary      = "This is the core functionality of the FishLamp Framework."
+  s.description  = "Long Description"
+  s.homepage     = "http://fishlamp.com"
   s.screenshots  = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license      = 'MIT'
-  s.author       = { "Mike Fullerton" => "" }
-  s.source       = { :git => "http://EXAMPLE/NAME.git", :tag => s.version.to_s }
+  s.author       = { "Mike Fullerton" => "hello@fishlamp.com" }
+  s.source       = { :git => "https://github.com/FishLampCocoa/FishLampCore.git", :tag => s.version.to_s }
 
-  # s.platform     = :ios, '5.0'
-  # s.ios.deployment_target = '5.0'
-  # s.osx.deployment_target = '10.7'
-  s.requires_arc = true
+  s.ios.deployment_target = '6.1'
+  s.osx.deployment_target = '10.6'
+  s.requires_arc = false
 
-  s.source_files = 'Classes'
-  s.resources = 'Assets'
+  s.source_files = 'FishLampCore-Classes'
+  s.resources = 'FishLampCore-Assets'
 
-  s.ios.exclude_files = 'Classes/osx'
-  s.osx.exclude_files = 'Classes/ios'
+#   s.ios.exclude_files = 'FishLampCore-Classes/osx'
+#   s.osx.exclude_files = 'FishLampCore-Classes/ios'
   # s.public_header_files = 'Classes/**/*.h'
   # s.frameworks = 'SomeFramework', 'AnotherFramework'
   # s.dependency 'JSONKit', '~> 1.4'
