@@ -45,9 +45,6 @@
 // Logger
 #import "FLSimpleLogger.h"
 
-// Testing
-#import "FishLampTesting.h"
-
 /*
     // Runtime
     #import "FLObjcRuntime.h"

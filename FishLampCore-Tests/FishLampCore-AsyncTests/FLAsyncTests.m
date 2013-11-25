@@ -61,7 +61,7 @@
 //	  [testCase blockUntilTestCompletes];
 }
 
-- (void) testAsyncTest:(id<FLTestCase>) testCase {
+- (void) testAsyncTest:(FLTestCase*) testCase {
 
     [testCase startAsyncTest];
 
@@ -94,7 +94,7 @@
     FLDispatchRelease(semaphor);
 }
 
-- (void) testAsyncTest2:(id<FLTestCase>) testCase {
+- (void) testAsyncTest2:(FLTestCase*) testCase {
 
     [testCase startAsyncTest];
     [testCase finishAsyncTest];

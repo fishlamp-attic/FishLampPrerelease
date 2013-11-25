@@ -9,16 +9,18 @@
 
 #import "FLRunAllTestsOperation.h"
 #import "FLAsyncQueue.h"
-#import "FLTStaticTestMethodRunner.h"
+#import "FLStaticTestMethodRunner.h"
 #import "FLObjcRuntime.h"
 #import "FLTestable.h"
 #import "FLDispatchQueue.h"
 
-#import "FLTTestOrganizer.h"
-#import "FLTTestFactoryList.h"
+#import "FLTestOrganizer.h"
+#import "FLTestFactoryList.h"
 
-#import "FLTTestFactory.h"
+#import "FLTestFactory.h"
 #import "FLTestableOperation.h"
+
+#import "FLTestLoggingManager.h"
 
 @implementation FLRunAllTestsOperation
 
@@ -30,10 +32,10 @@
 
     FLAssertNotNil(self.context);
 
-    FLTTestOrganizer* organizer = [FLTTestOrganizer testOrganizer];
+    FLTestOrganizer* organizer = [FLTestOrganizer testOrganizer];
     [organizer organizeTests];
 
-    FLTSortedTestGroupList* sortedGroupList = [organizer sortedGroupList];
+    FLSortedTestGroupList* sortedGroupList = [organizer sortedGroupList];
 
     [[FLTestLoggingManager instance] appendLineWithFormat:@"Found %ld unit test classes in %ld groups",
         (unsigned long) sortedGroupList.testCount,
@@ -41,11 +43,11 @@
     
     NSMutableArray* resultArray = [NSMutableArray array];
 
-    for(FLTTestFactoryList* group in sortedGroupList) {
+    for(FLTestFactoryList* group in sortedGroupList) {
     
         [[FLTestLoggingManager instance] appendLineWithFormat:@"Testable Group: %@", group.groupName];
 
-        for(id<FLTTestFactory> factory in group) {
+        for(id<FLTestFactory> factory in group) {
 
             @autoreleasepool {
                 FLTestableOperation* test = [factory createTest];
@@ -54,8 +56,8 @@
 
                     FLPromisedResult result = [self.context runSynchronously:test];
 
-//                    FLTTestResultCollection* result =
-//                        [FLTTestResultCollection fromPromisedResult:
+//                    FLTestResultCollection* result =
+//                        [FLTestResultCollection fromPromisedResult:
 //                            ];
 
                     [resultArray addObject:result];

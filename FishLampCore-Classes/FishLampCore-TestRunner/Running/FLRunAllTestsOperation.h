@@ -8,7 +8,7 @@
 //
 
 #import "FLOperation.h"
-#import "FLTTestResultCollection.h"
+#import "FLTestResultCollection.h"
 
 @interface FLRunAllTestsOperation : FLOperation {
 @private

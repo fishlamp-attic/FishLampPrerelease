@@ -5,4 +5,4 @@
 //
 
 #include "Piecemeal-XcodeConfigs/TargetSettings/Piecemeal-TargetSettings-OSX-64-ARC.xcconfig"
-#include "FishLamp-Objc-Lib/SharedTargetSettings.xcconfig"
+#include "FishLampCore-Lib/SharedTargetSettings.xcconfig"

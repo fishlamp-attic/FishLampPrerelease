@@ -7,18 +7,19 @@
 //
 
 #import "FishLampMinimum.h"
-#import "FLTTestResultCollection.h"
 #import "FLOperation.h"
 
+@protocol FLTestable;
+
 @class FLTestCaseList;
-@class FLTTestResultCollection;
-@class FLTestCaseOperation;
+@class FLTestResultCollection;
+@class FLTestCase;
 
 @interface FLTestableOperation : FLOperation {
 @private
     id<FLTestable> _testableObject;
     NSMutableArray* _queue;
-    FLTestCaseOperation* _currentTestCase;
+    FLTestCase* _currentTestCase;
 }
 
 + (id) testWithTestable:(id<FLTestable>) testableObject;

@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  FishLamp-Objc-OSX-64-MRC-Tester
+//  FishLampCore-OSX-64-MRC-Tester
 //
 //  Created by Mike Fullerton on 10/19/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "FishLampTestRunner.h"
+#import "FLTestLoggingManager.h"
 
 @implementation AppDelegate
 
@@ -27,7 +28,7 @@
 - (IBAction) runAllTests:(id) sender {
     FLLogger* logger = [FLLogger logger];
     [logger addLoggerSink:[FLConsoleLogSink consoleLogSink:FLLogOutputSimple]];
-    [FLTestOutput addLogger:logger];
+    [[FLTestLoggingManager instance] addLogger:logger];
 
     dispatch_async(dispatch_get_main_queue(), ^{
         FLRunAllTestsOperation* runner = [FLRunAllTestsOperation testRunner];

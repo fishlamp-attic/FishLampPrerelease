@@ -1,6 +1,6 @@
 //
 //  FLCoreTestGroup.m
-//  FishLamp-Objc
+//  FishLampCore
 //
 //  Created by Mike Fullerton on 11/2/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.

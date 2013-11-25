@@ -1,6 +1,6 @@
 //
 //  main.m
-//  FishLamp-Objc-Test-OSX-Universal-MRC
+//  FishLampCore-Test-OSX-Universal-MRC
 //
 //  Created by Mike Fullerton on 9/9/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
@@ -17,14 +17,14 @@
 //    @autoreleasepool {
 //        NSLog(@"hello world");
 //        
-////        FLTestToolMain(argc, argv, @"com.mycompany.FishLamp-Objc", "1.0.0");
+////        FLTestToolMain(argc, argv, @"com.mycompany.FishLampCore", "1.0.0");
 //    }
 //    return 0;
 //}
 
-#import "FLTTestToolMain.h"
+#import "FLTestToolMain.h"
 
 int main(int argc, const char * argv[]) {
-    return FLTTestToolMain(argc, argc, @"com.fishlamp.cocoa.tests", @"FLCocoaTestTool", @"1.0.0");
+    return FLTestToolMain(argc, argc, @"com.fishlamp.cocoa.tests", @"FLCocoaTestTool", @"1.0.0");
 }
 

@@ -66,7 +66,7 @@ FLSynthesizeAssociatedProperty(FLAssociationPolicyRetainNonatomic, deleteNotifie
     FLAssert(error.isCancelError);
 }
 
-- (void) testThrowError:(id<FLTestCase>) testCase {
+- (void) testThrowError:(FLTestCase*) testCase {
 
     [testCase startAsyncTest];
 

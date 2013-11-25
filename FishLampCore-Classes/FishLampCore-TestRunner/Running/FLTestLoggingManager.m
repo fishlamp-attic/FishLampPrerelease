@@ -162,7 +162,7 @@ appendContentsToStringFormatter:(id<FLStringFormatter>) stringFormatter {
     }
 }
 
-- (void) appendTestCaseOutput:(id<FLTestCase>) testCase {
+- (void) appendTestCaseOutput:(FLTestCase*) testCase {
     if(!testCase.result.passed) {
         [self appendLine:@"Log Entries:"];
         [self indentLinesInBlock:^{

@@ -1,11 +1,11 @@
 //
-//  FishLamp-Objc-Paths.xcconfig
-//  FishLamp-Objc
+//  FishLampCore-Paths.xcconfig
+//  FishLampCore
 //
 //  Created by Mike Fullerton on 11/7/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-//HEADER_SEARCH_PATHS= $(inherited) $(FISHLAMP_ROOT)/FishLamp-Objc/FishLamp-Objc/** $(FISHLAMP_ROOT)/Zenfolio-Connect/Zenfolio-Connect/** $(FISHLAMP_ROOT)/FishLamp-CocoaUI/FishLamp-CocoaUI/** $(FISHLAMP_ROOT)/FishLamp-OSX/FishLamp-OSX/**
+//HEADER_SEARCH_PATHS= $(inherited) $(FISHLAMP_ROOT)/FishLampCore/FishLampCore/** $(FISHLAMP_ROOT)/Zenfolio-Connect/Zenfolio-Connect/** $(FISHLAMP_ROOT)/FishLamp-CocoaUI/FishLamp-CocoaUI/** $(FISHLAMP_ROOT)/FishLamp-OSX/FishLamp-OSX/**
 
-FISHLAMP_OBJC = $(FISHLAMP_ROOT)/FishLamp-Objc/FishLamp-Objc
+FISHLAMP_OBJC = $(FISHLAMP_ROOT)/FishLampCore/FishLampCore

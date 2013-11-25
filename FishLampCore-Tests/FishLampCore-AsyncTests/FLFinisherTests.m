@@ -44,7 +44,7 @@
     FLConfirm(fired == YES);
 }
 
-- (void) willTestDoubleCount:(id<FLTestCase>) testCase {
+- (void) willTestDoubleCount:(FLTestCase*) testCase {
     [testCase setDisabledWithReason:@"problem with exception propagation"];
 }
 
@@ -77,7 +77,7 @@
 }
 */
 
-- (void) testBasicFinisher:(id<FLTestCase>) testCase {
+- (void) testBasicFinisher:(FLTestCase*) testCase {
 
     FLTestLog(testCase, @"async self test");
 

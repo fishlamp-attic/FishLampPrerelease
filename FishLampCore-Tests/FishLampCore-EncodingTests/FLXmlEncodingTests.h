@@ -1,6 +1,6 @@
 //
 //  FLXmlEncodingTests.h
-//  FishLamp-Objc
+//  FishLampCore
 //
 //  Created by Mike Fullerton on 10/27/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.

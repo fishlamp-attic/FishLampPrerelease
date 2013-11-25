@@ -19,7 +19,7 @@
 //    return @"FishLampNetworking";
 //}
 
-- (void) testCreateHostByName:(id<FLTestCase>) testCase {
+- (void) testCreateHostByName:(FLTestCase*) testCase {
 
     FLNetworkHost* host = [FLNetworkHost networkHostWithName:@"google.com"];
     

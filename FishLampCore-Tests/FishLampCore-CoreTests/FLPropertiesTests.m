@@ -28,8 +28,8 @@
 //}
 
 
-+ (FLTestGroup*) testGroup {
-    return [FLTestGroup frameworkTestGroup];
++ (NSString*) testGroupName {
+    return @"Framework";
 }
 
 @end

@@ -1,6 +1,6 @@
 //
 //  AppDelegate.h
-//  FishLamp-Objc-OSX-64-MRC-Tester
+//  FishLampCore-OSX-64-MRC-Tester
 //
 //  Created by Mike Fullerton on 10/19/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.

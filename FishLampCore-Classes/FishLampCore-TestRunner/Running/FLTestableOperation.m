@@ -10,12 +10,14 @@
 #import "FLTestCaseList.h"
 #import "FLDispatchQueue.h"
 #import "FLOperationContext.h"
-#import "FLTestCaseOperation.h"
+#import "FLTestCase.h"
+#import "FLTestable.h"
+#import "FLTestLoggingManager.h"
 
 @interface FLTestableOperation ()
 @property (readonly, strong, nonatomic) id<FLTestable> testableObject;
 @property (readwrite, strong, nonatomic) NSMutableArray* queue;
-@property (readwrite, strong, nonatomic) FLTestCaseOperation* currentTestCase;
+@property (readwrite, strong, nonatomic) FLTestCase* currentTestCase;
 - (void) willRunTestCases:(FLTestCaseList*) testCases;
 - (void) didRunTestCases:(FLTestCaseList*) testCases;
 @end
@@ -67,7 +69,7 @@
 
 - (id) resultForTest {
 
-    for(FLTestCaseOperation* testCase in self.testableObject.testCaseList) {
+    for(FLTestCase* testCase in self.testableObject.testCaseList) {
        if(!testCase.result.passed) {
             return FLFailedResult;
        }
@@ -79,7 +81,7 @@
 
 #define kPadWidth [@"starting" length]
 
-- (void) finishedTest:(FLTestCaseOperation*) testCase
+- (void) finishedTest:(FLTestCase*) testCase
            withResult:(FLPromisedResult) withResult {
 
     [[FLTestLoggingManager instance] appendTestCaseOutput:testCase];
@@ -110,7 +112,7 @@
 
     if(_queue.count > 0) {
 
-        FLTestCaseOperation* currentTestCase = [_queue objectAtIndex:0];
+        FLTestCase* currentTestCase = [_queue objectAtIndex:0];
         [_queue removeObjectAtIndex:0];
         FLAssertNotNil(currentTestCase);
 
@@ -126,7 +128,7 @@
         [[FLTestLoggingManager instance] indent:nil];
 
         __block FLTestableOperation* SELF = FLRetain(self);
-        __block FLTestCaseOperation* testCase = FLRetain(currentTestCase);
+        __block FLTestCase* testCase = FLRetain(currentTestCase);
         [self.context queueOperation:testCase
                           completion:^(FLPromisedResult result) {
 
@@ -150,7 +152,7 @@
     [self willRunTestCases:self.testableObject.testCaseList];
 
     NSArray* startList = FLCopyWithAutorelease(self.testableObject.testCaseList.testCaseArray);
-    for(FLTestCaseOperation* testCase in startList) {
+    for(FLTestCase* testCase in startList) {
         // note that this can alter the run order which is why we're iterating on a copy of the list.
         [testCase prepareTestCase];
     }

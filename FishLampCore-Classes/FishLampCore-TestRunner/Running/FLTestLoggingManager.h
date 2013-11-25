@@ -10,7 +10,7 @@
 #import "FLStringFormatter.h"
 #import "FLLogger.h"
 
-@protocol FLTestCase;
+@class FLTestCase;
 
 /**
  *  Manages the loggers. A logger is just a destinations for strings.
@@ -46,7 +46,7 @@ FLSingletonProperty(FLTestLoggingManager);
 
 - (void) logger:(id<FLStringFormatter>) logger logInBlock:(dispatch_block_t) block;
 
-- (void) appendTestCaseOutput:(id<FLTestCase>) testCase;
+- (void) appendTestCaseOutput:(FLTestCase*) testCase;
 
 @end
 
