@@ -88,6 +88,6 @@ EXTRAS =  -Wempty-body -Wignored-qualifiers -Wmissing-field-initializers -Wsign-
 //          -Wunused-parameter (only with -Wunused or -Wall)
 //          -Wunused-but-set-parameter (only with -Wunused or -Wall)
 
-WARNING_CFLAGS = $(inherited) $(ALMOST_ALL) $(EXTRAS) -Wformat -Wobjc-method-access
+WARNING_CFLAGS = $(inherited) $(ALMOST_ALL) $(EXTRAS) -Wformat -Wobjc-method-access -Wincompatible-pointer-types
 
 
