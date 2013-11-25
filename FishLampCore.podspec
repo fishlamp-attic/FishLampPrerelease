@@ -6,7 +6,7 @@
 #
 Pod::Spec.new do |s|
   s.name         = "FishLampCore"
-  s.version      = "3.0.0"
+  s.version      = "0.0.1"
   s.summary      = "This is the core functionality of the FishLamp Framework."
   s.description  = "Long Description"
   s.homepage     = "http://fishlamp.com"
@@ -19,8 +19,8 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.6'
   s.requires_arc = false
 
-  s.source_files = 'FishLampCore-Classes'
-  s.resources = 'FishLampCore-Assets'
+  s.source_files = "FishLampCore-Classes/**/*.{h,m}", "FishLampCore-Tests/**/*.{h,m}"
+#  s.resources = 'FishLampCore-Assets'
 
 #   s.ios.exclude_files = 'FishLampCore-Classes/osx'
 #   s.osx.exclude_files = 'FishLampCore-Classes/ios'

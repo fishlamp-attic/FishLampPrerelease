@@ -123,10 +123,10 @@ static NSDictionary* s_fakeBundle = nil;
     return FLStringFromVersion([self appVersion]);
 }
 
-#if OSX
 
 + (NSString*) defaultUserAgentString {
     
+#if OSX
     NSString* defaultUserAgent = [NSString stringWithFormat:@"%@/%@ (%@; %@; %@;)",
         [self bundleName],
         [self appVersionString],
@@ -136,10 +136,24 @@ static NSDictionary* s_fakeBundle = nil;
 //                [UIDevice currentDevice].systemName,
 //                [UIDevice currentDevice].systemVersion];
         FLStringFromVersion(FLGetOSVersion())];
-        
+#else
+
+    NSString* defaultUserAgent = [NSString stringWithFormat:@"%@/%@ (%@; %@; %@;)",
+        [self bundleName],
+        [self appVersionString],
+        [self bundleIdentifier],
+// TODO (MWF): fix this
+        @"iDevice",
+//                [UIDevice currentDevice].machineName,
+//                [UIDevice currentDevice].systemName,
+//                [UIDevice currentDevice].systemVersion];
+        FLStringFromVersion(FLGetOSVersion())];
+
+
+#endif
+
     return defaultUserAgent;
 }
-#endif
 
 + (NSString*) defaultUserAgent {
     static dispatch_once_t onceToken;

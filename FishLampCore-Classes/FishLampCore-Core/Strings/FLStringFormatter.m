@@ -380,7 +380,7 @@
     FLAssertWithComment(_top >= 0, @"outdenting too far");
 
     if(self.top != level) {
-        FLLog(@"popping incorrect indent level %ld, should be %ld\ntraces: %@", level, self.top, nil /*[_stackTraces prettyDescription]*/);
+        FLLog(@"popping incorrect indent level %ld, should be %ld\ntraces: %@", (unsigned long) level, (unsigned long) self.top, nil /*[_stackTraces prettyDescription]*/);
     }
     if(_top >= 0) {
         --_top;

@@ -114,7 +114,7 @@
             [self setDisabledWithReason:[NSString stringWithFormat:@"[%@ %@] has too many paramaters (%ld).",
                 NSStringFromClass([_target class]),
                 selector.selectorString,
-                selector.argumentCount]];
+                (unsigned long) selector.argumentCount]];
         break;
     }
 }
@@ -200,7 +200,7 @@
                 [self setDisabledWithReason:[NSString stringWithFormat:@"[%@ %@] has too many paramaters (%ld).",
                     NSStringFromClass([_target class]),
                     _selector.selectorString,
-                    _selector.argumentCount]];
+                    (unsigned long) _selector.argumentCount]];
             break;
         }
     }

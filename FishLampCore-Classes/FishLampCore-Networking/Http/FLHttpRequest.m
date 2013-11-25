@@ -258,8 +258,8 @@ static int s_counter = 0;
 
         FLLog(@"Retrying HTTP Request %@ (%ld of %ld)",
             self.requestHeaders.requestURL,
-            self.retryHandler.retryCount,
-            self.retryHandler.maxRetryCount);
+            (long)self.retryHandler.retryCount,
+            (long)self.retryHandler.maxRetryCount);
 
         [self.operationStarter startOperation:self withDelay:self.retryHandler.retryDelay completion:nil];
 

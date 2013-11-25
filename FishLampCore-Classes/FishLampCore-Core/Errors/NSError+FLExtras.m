@@ -135,7 +135,7 @@ FLSynthesizeDictionaryGetterProperty(stackTrace, FLStackTrace*, FLStackTraceKey,
 }
 
 - (NSString*) nameForException {
-    return [NSString stringWithFormat:@"%@:%ld", self.domain, self.code];
+    return [NSString stringWithFormat:@"%@:%ld", self.domain, (unsigned long) self.code];
 }
 
 - (NSString*) reasonForException {

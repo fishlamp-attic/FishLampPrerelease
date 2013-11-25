@@ -15,7 +15,7 @@
 @property (readwrite, strong) FLPromise* nextPromise;
 @property (readwrite, copy) fl_completion_block_t completion;
 @property (readwrite, assign) BOOL isFinished;
-@property (readwrite, assign) dispatch_semaphore_t semaphore;
+//@property (readwrite, assign) dispatch_semaphore_t semaphore;
 @end
 
 #define CHECK_COUNT 0
@@ -30,7 +30,7 @@ static NSInteger s_max = 0;
 @synthesize nextPromise = _nextPromise;
 @synthesize result = _result;
 @synthesize completion = _completion;
-@synthesize semaphore = _semaphore;
+//@synthesize semaphore = _semaphore;
 @synthesize isFinished = _isFinished;
 
 - (id) initWithCompletion:(fl_completion_block_t) completion {
@@ -123,14 +123,14 @@ static NSInteger s_max = 0;
         } 
         else {
 
-            FLTrace(@"waiting for semaphore for %X, thread %@", (void*) self.semaphore, [NSThread currentThread]);
+            FLTrace(@"waiting for semaphore for %X, thread %@", (void*) _semaphore, [NSThread currentThread]);
 
-            if(self.semaphore) {
+            if(_semaphore) {
                 // HMM could there be an edge case here?
-                dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+                dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
             }
 
-            FLTrace(@"finished waiting for %X", (void*) self.semaphore);
+            FLTrace(@"finished waiting for %X", (void*) _semaphore);
         } 
     }
     @finally {
@@ -144,7 +144,7 @@ static NSInteger s_max = 0;
 
 - (void) fufillPromiseWithResult:(FLPromisedResult) result {
 
-    FLAssertNotNilWithComment(self.semaphore, @"already finished");
+    FLAssertNotNilWithComment(_semaphore, @"already finished");
     FLAssertIsNilWithComment(self.result, @"should not already have result");
 
     if(result == nil) {
@@ -162,19 +162,19 @@ static NSInteger s_max = 0;
     _target = nil;
     _action = nil;
 
-    if(self.semaphore) {
+    if(_semaphore) {
     // this shouldn't be nil, but if it is dispatch_semaphore_signal
     // will crash.
         FLTrace(@"releasing semaphore for %X, ont thread %@",
-                    (void*) self.semaphore,
+                    (void*) _semaphore,
                     [NSThread currentThread]);
 
         self.isFinished = YES;
-        dispatch_semaphore_signal(self.semaphore);
+        dispatch_semaphore_signal(_semaphore);
 
-        FLDispatchRelease(self.semaphore);
+        FLDispatchRelease(_semaphore);
 
-        self.semaphore = nil;
+        _semaphore = nil;
     }
 }
 

@@ -27,21 +27,6 @@
 		275DA5D9184297A20025930E /* NSData+RSHexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2A71842979F0025930E /* NSData+RSHexDump.m */; };
 		275DA5DA184297A20025930E /* NSData+RSHexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2A71842979F0025930E /* NSData+RSHexDump.m */; };
 		275DA5DB184297A20025930E /* NSData+RSHexDump.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2A71842979F0025930E /* NSData+RSHexDump.m */; };
-		275DA5DC184297A20025930E /* SDKImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AA1842979F0025930E /* SDKImage+Alpha.m */; };
-		275DA5DD184297A20025930E /* SDKImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AA1842979F0025930E /* SDKImage+Alpha.m */; };
-		275DA5DE184297A20025930E /* SDKImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AA1842979F0025930E /* SDKImage+Alpha.m */; };
-		275DA5DF184297A20025930E /* SDKImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AA1842979F0025930E /* SDKImage+Alpha.m */; };
-		275DA5E0184297A20025930E /* SDKImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AA1842979F0025930E /* SDKImage+Alpha.m */; };
-		275DA5E1184297A20025930E /* SDKImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AC1842979F0025930E /* SDKImage+Resize.m */; };
-		275DA5E2184297A20025930E /* SDKImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AC1842979F0025930E /* SDKImage+Resize.m */; };
-		275DA5E3184297A20025930E /* SDKImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AC1842979F0025930E /* SDKImage+Resize.m */; };
-		275DA5E4184297A20025930E /* SDKImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AC1842979F0025930E /* SDKImage+Resize.m */; };
-		275DA5E5184297A20025930E /* SDKImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AC1842979F0025930E /* SDKImage+Resize.m */; };
-		275DA5E6184297A20025930E /* SDKImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AE1842979F0025930E /* SDKImage+RoundedCorner.m */; };
-		275DA5E7184297A20025930E /* SDKImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AE1842979F0025930E /* SDKImage+RoundedCorner.m */; };
-		275DA5E8184297A20025930E /* SDKImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AE1842979F0025930E /* SDKImage+RoundedCorner.m */; };
-		275DA5E9184297A20025930E /* SDKImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AE1842979F0025930E /* SDKImage+RoundedCorner.m */; };
-		275DA5EA184297A20025930E /* SDKImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2AE1842979F0025930E /* SDKImage+RoundedCorner.m */; };
 		275DA5EB184297A20025930E /* FLActivityLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2B11842979F0025930E /* FLActivityLog.m */; };
 		275DA5EC184297A20025930E /* FLActivityLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2B11842979F0025930E /* FLActivityLog.m */; };
 		275DA5ED184297A20025930E /* FLActivityLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 275DA2B11842979F0025930E /* FLActivityLog.m */; };
@@ -2046,12 +2031,6 @@
 		275DA2A41842979F0025930E /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
 		275DA2A61842979F0025930E /* NSData+RSHexDump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+RSHexDump.h"; sourceTree = "<group>"; };
 		275DA2A71842979F0025930E /* NSData+RSHexDump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+RSHexDump.m"; sourceTree = "<group>"; };
-		275DA2A91842979F0025930E /* SDKImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDKImage+Alpha.h"; sourceTree = "<group>"; };
-		275DA2AA1842979F0025930E /* SDKImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDKImage+Alpha.m"; sourceTree = "<group>"; };
-		275DA2AB1842979F0025930E /* SDKImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDKImage+Resize.h"; sourceTree = "<group>"; };
-		275DA2AC1842979F0025930E /* SDKImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDKImage+Resize.m"; sourceTree = "<group>"; };
-		275DA2AD1842979F0025930E /* SDKImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDKImage+RoundedCorner.h"; sourceTree = "<group>"; };
-		275DA2AE1842979F0025930E /* SDKImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDKImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		275DA2B01842979F0025930E /* FLActivityLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLActivityLog.h; sourceTree = "<group>"; };
 		275DA2B11842979F0025930E /* FLActivityLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLActivityLog.m; sourceTree = "<group>"; };
 		275DA2B31842979F0025930E /* FishLampAsync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FishLampAsync.h; sourceTree = "<group>"; };
@@ -3211,7 +3190,6 @@
 				275DA29F1842979F0025930E /* Base64Transcoder-JonathanWight */,
 				275DA2A21842979F0025930E /* ISO8601DateFormatter-PeterHosey */,
 				275DA2A51842979F0025930E /* NSData+RSHexDump-DanielJalkut */,
-				275DA2A81842979F0025930E /* UIImage+TrevorHarmon */,
 			);
 			path = "FishLamp-External";
 			sourceTree = "<group>";
@@ -3241,19 +3219,6 @@
 				275DA2A71842979F0025930E /* NSData+RSHexDump.m */,
 			);
 			path = "NSData+RSHexDump-DanielJalkut";
-			sourceTree = "<group>";
-		};
-		275DA2A81842979F0025930E /* UIImage+TrevorHarmon */ = {
-			isa = PBXGroup;
-			children = (
-				275DA2A91842979F0025930E /* SDKImage+Alpha.h */,
-				275DA2AA1842979F0025930E /* SDKImage+Alpha.m */,
-				275DA2AB1842979F0025930E /* SDKImage+Resize.h */,
-				275DA2AC1842979F0025930E /* SDKImage+Resize.m */,
-				275DA2AD1842979F0025930E /* SDKImage+RoundedCorner.h */,
-				275DA2AE1842979F0025930E /* SDKImage+RoundedCorner.m */,
-			);
-			path = "UIImage+TrevorHarmon";
 			sourceTree = "<group>";
 		};
 		275DA2AF1842979F0025930E /* FishLampCore-ActivityLog */ = {
@@ -5390,7 +5355,6 @@
 				275DA646184297A20025930E /* FLAsyncQueueDecorator.m in Sources */,
 				275DA74A184297A20025930E /* NSTextField+FLCompatibility.m in Sources */,
 				275DAB64184297A30025930E /* FLSqlStatement.m in Sources */,
-				275DA5DD184297A20025930E /* SDKImage+Alpha.m in Sources */,
 				275DAD871842C4340025930E /* FLTestResultLogEntry.m in Sources */,
 				275DAA33184297A30025930E /* FLOAuthAuthorizationHeader.m in Sources */,
 				275DA623184297A20025930E /* NSError+FLFailedResult.m in Sources */,
@@ -5462,7 +5426,6 @@
 				275DA902184297A20025930E /* FLParsedXmlElement.m in Sources */,
 				275DAA60184297A30025930E /* FLOAuthOperationAuthenticator.m in Sources */,
 				275DA853184297A20025930E /* FLStringUtils.m in Sources */,
-				275DA5E7184297A20025930E /* SDKImage+RoundedCorner.m in Sources */,
 				275DA8A3184297A20025930E /* NSArray+FLExtras.m in Sources */,
 				275DAD961842C4340025930E /* FLTestResult.m in Sources */,
 				275DA95C184297A30025930E /* NSRectGeometry+FLAdditions.m in Sources */,
@@ -5488,7 +5451,6 @@
 				275DA8B7184297A20025930E /* FLStringBuilder.m in Sources */,
 				275DA7B3184297A20025930E /* FLCancelError.m in Sources */,
 				275DA8D0184297A20025930E /* FLSoapParser.m in Sources */,
-				275DA5E2184297A20025930E /* SDKImage+Resize.m in Sources */,
 				275DAA06184297A30025930E /* FLHttpResponse.m in Sources */,
 				275DA691184297A20025930E /* FLCredentialsStorage.m in Sources */,
 				275DA70E184297A20025930E /* FLToolCommand.m in Sources */,
@@ -5785,7 +5747,6 @@
 				275DA648184297A20025930E /* FLAsyncQueueDecorator.m in Sources */,
 				275DA74C184297A20025930E /* NSTextField+FLCompatibility.m in Sources */,
 				275DAB66184297A30025930E /* FLSqlStatement.m in Sources */,
-				275DA5DF184297A20025930E /* SDKImage+Alpha.m in Sources */,
 				275DAD891842C4340025930E /* FLTestResultLogEntry.m in Sources */,
 				275DAA35184297A30025930E /* FLOAuthAuthorizationHeader.m in Sources */,
 				275DA625184297A20025930E /* NSError+FLFailedResult.m in Sources */,
@@ -5857,7 +5818,6 @@
 				275DA904184297A20025930E /* FLParsedXmlElement.m in Sources */,
 				275DAA62184297A30025930E /* FLOAuthOperationAuthenticator.m in Sources */,
 				275DA855184297A20025930E /* FLStringUtils.m in Sources */,
-				275DA5E9184297A20025930E /* SDKImage+RoundedCorner.m in Sources */,
 				275DA8A5184297A20025930E /* NSArray+FLExtras.m in Sources */,
 				275DAD981842C4340025930E /* FLTestResult.m in Sources */,
 				275DA95E184297A30025930E /* NSRectGeometry+FLAdditions.m in Sources */,
@@ -5883,7 +5843,6 @@
 				275DA8B9184297A20025930E /* FLStringBuilder.m in Sources */,
 				275DA7B5184297A20025930E /* FLCancelError.m in Sources */,
 				275DA8D2184297A20025930E /* FLSoapParser.m in Sources */,
-				275DA5E4184297A20025930E /* SDKImage+Resize.m in Sources */,
 				275DAA08184297A30025930E /* FLHttpResponse.m in Sources */,
 				275DA693184297A20025930E /* FLCredentialsStorage.m in Sources */,
 				275DA710184297A20025930E /* FLToolCommand.m in Sources */,
@@ -6194,7 +6153,6 @@
 				275DA645184297A20025930E /* FLAsyncQueueDecorator.m in Sources */,
 				275DA749184297A20025930E /* NSTextField+FLCompatibility.m in Sources */,
 				275DAB63184297A30025930E /* FLSqlStatement.m in Sources */,
-				275DA5DC184297A20025930E /* SDKImage+Alpha.m in Sources */,
 				275DAD861842C4340025930E /* FLTestResultLogEntry.m in Sources */,
 				275DAA32184297A30025930E /* FLOAuthAuthorizationHeader.m in Sources */,
 				275DA622184297A20025930E /* NSError+FLFailedResult.m in Sources */,
@@ -6266,7 +6224,6 @@
 				275DA901184297A20025930E /* FLParsedXmlElement.m in Sources */,
 				275DAA5F184297A30025930E /* FLOAuthOperationAuthenticator.m in Sources */,
 				275DA852184297A20025930E /* FLStringUtils.m in Sources */,
-				275DA5E6184297A20025930E /* SDKImage+RoundedCorner.m in Sources */,
 				275DA8A2184297A20025930E /* NSArray+FLExtras.m in Sources */,
 				275DAD951842C4340025930E /* FLTestResult.m in Sources */,
 				275DA95B184297A30025930E /* NSRectGeometry+FLAdditions.m in Sources */,
@@ -6292,7 +6249,6 @@
 				275DA8B6184297A20025930E /* FLStringBuilder.m in Sources */,
 				275DA7B2184297A20025930E /* FLCancelError.m in Sources */,
 				275DA8CF184297A20025930E /* FLSoapParser.m in Sources */,
-				275DA5E1184297A20025930E /* SDKImage+Resize.m in Sources */,
 				275DAA05184297A30025930E /* FLHttpResponse.m in Sources */,
 				275DA690184297A20025930E /* FLCredentialsStorage.m in Sources */,
 				275DA70D184297A20025930E /* FLToolCommand.m in Sources */,
@@ -6557,7 +6513,6 @@
 				275DA647184297A20025930E /* FLAsyncQueueDecorator.m in Sources */,
 				275DA74B184297A20025930E /* NSTextField+FLCompatibility.m in Sources */,
 				275DAB65184297A30025930E /* FLSqlStatement.m in Sources */,
-				275DA5DE184297A20025930E /* SDKImage+Alpha.m in Sources */,
 				275DAD881842C4340025930E /* FLTestResultLogEntry.m in Sources */,
 				275DAA34184297A30025930E /* FLOAuthAuthorizationHeader.m in Sources */,
 				275DA624184297A20025930E /* NSError+FLFailedResult.m in Sources */,
@@ -6629,7 +6584,6 @@
 				275DA903184297A20025930E /* FLParsedXmlElement.m in Sources */,
 				275DAA61184297A30025930E /* FLOAuthOperationAuthenticator.m in Sources */,
 				275DA854184297A20025930E /* FLStringUtils.m in Sources */,
-				275DA5E8184297A20025930E /* SDKImage+RoundedCorner.m in Sources */,
 				275DA8A4184297A20025930E /* NSArray+FLExtras.m in Sources */,
 				275DAD971842C4340025930E /* FLTestResult.m in Sources */,
 				275DA95D184297A30025930E /* NSRectGeometry+FLAdditions.m in Sources */,
@@ -6655,7 +6609,6 @@
 				275DA8B8184297A20025930E /* FLStringBuilder.m in Sources */,
 				275DA7B4184297A20025930E /* FLCancelError.m in Sources */,
 				275DA8D1184297A20025930E /* FLSoapParser.m in Sources */,
-				275DA5E3184297A20025930E /* SDKImage+Resize.m in Sources */,
 				275DAA07184297A30025930E /* FLHttpResponse.m in Sources */,
 				275DA692184297A20025930E /* FLCredentialsStorage.m in Sources */,
 				275DA70F184297A20025930E /* FLToolCommand.m in Sources */,
@@ -6920,7 +6873,6 @@
 				275DA649184297A20025930E /* FLAsyncQueueDecorator.m in Sources */,
 				275DA74D184297A20025930E /* NSTextField+FLCompatibility.m in Sources */,
 				275DAB67184297A30025930E /* FLSqlStatement.m in Sources */,
-				275DA5E0184297A20025930E /* SDKImage+Alpha.m in Sources */,
 				275DAD8A1842C4340025930E /* FLTestResultLogEntry.m in Sources */,
 				275DAA36184297A30025930E /* FLOAuthAuthorizationHeader.m in Sources */,
 				275DA626184297A20025930E /* NSError+FLFailedResult.m in Sources */,
@@ -6992,7 +6944,6 @@
 				275DA905184297A20025930E /* FLParsedXmlElement.m in Sources */,
 				275DAA63184297A30025930E /* FLOAuthOperationAuthenticator.m in Sources */,
 				275DA856184297A20025930E /* FLStringUtils.m in Sources */,
-				275DA5EA184297A20025930E /* SDKImage+RoundedCorner.m in Sources */,
 				275DA8A6184297A20025930E /* NSArray+FLExtras.m in Sources */,
 				275DAD991842C4340025930E /* FLTestResult.m in Sources */,
 				275DA95F184297A30025930E /* NSRectGeometry+FLAdditions.m in Sources */,
@@ -7018,7 +6969,6 @@
 				275DA8BA184297A20025930E /* FLStringBuilder.m in Sources */,
 				275DA7B6184297A20025930E /* FLCancelError.m in Sources */,
 				275DA8D3184297A20025930E /* FLSoapParser.m in Sources */,
-				275DA5E5184297A20025930E /* SDKImage+Resize.m in Sources */,
 				275DAA09184297A30025930E /* FLHttpResponse.m in Sources */,
 				275DA694184297A20025930E /* FLCredentialsStorage.m in Sources */,
 				275DA711184297A20025930E /* FLToolCommand.m in Sources */,

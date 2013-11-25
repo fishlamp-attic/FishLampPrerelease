@@ -11,6 +11,12 @@
 
 #import <Foundation/Foundation.h>
 #import <Availability.h>
+#import <CoreGraphics/CoreGraphics.h>
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+#import <UIKit/UIKit.h>
+#endif
+
 
 #if DEBUG
     #define FL_SHIP_ONLY_INLINE 
