@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2767E09F18134C70001EF21C"
                BuildableName = "FishLampCore-OSX-32-MRC-TestApp.app"
-               BlueprintName = "FishLampCore-OSX-32-MRC-TestApp"
-               ReferencedContainer = "container:FishLampCore.xcodeproj">
+               BlueprintName = "FishLampCocoa-OSX-32-MRC-TestApp"
+               ReferencedContainer = "container:FishLampCocoa.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -30,8 +30,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2767E06718134BD2001EF21C"
                BuildableName = "FishLampCore-OSX-64-ARC-TestApp.app"
-               BlueprintName = "FishLampCore-OSX-64-ARC-TestApp"
-               ReferencedContainer = "container:FishLampCore.xcodeproj">
+               BlueprintName = "FishLampCocoa-OSX-64-ARC-TestApp"
+               ReferencedContainer = "container:FishLampCocoa.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -44,8 +44,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2767DFB418134011001EF21C"
                BuildableName = "FishLampCore-OSX-64-MRC-TestApp.app"
-               BlueprintName = "FishLampCore-OSX-64-MRC-TestApp"
-               ReferencedContainer = "container:FishLampCore.xcodeproj">
+               BlueprintName = "FishLampCocoa-OSX-64-MRC-TestApp"
+               ReferencedContainer = "container:FishLampCocoa.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -58,8 +58,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2767E08318134BF4001EF21C"
                BuildableName = "FishLampCore-OSX-Universal-TestApp.app"
-               BlueprintName = "FishLampCore-OSX-Universal-TestApp"
-               ReferencedContainer = "container:FishLampCore.xcodeproj">
+               BlueprintName = "FishLampCocoa-OSX-Universal-TestApp"
+               ReferencedContainer = "container:FishLampCocoa.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
