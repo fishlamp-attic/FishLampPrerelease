@@ -18,8 +18,6 @@ mkdir -p "$DestFolder"
 
 echo "Searching in \"$SourceDir\""
 
-exit 0
-
 dirs=`find "$SourceDir" -depth 1 -type d`
 
 for dir in $dirs; do	
@@ -31,17 +29,20 @@ for dir in $dirs; do
 	toFind="$dir/$FolderName"
 	
 	if [ -d "$toFind" ]; then
+		
+		echo "Found Files in \"$toFind\""
 
 		files=`find "$toFind" -name "*.[mh]"`
 
+
 		for file in $files; do
-			srcFile="`pwd`/$file"
+			srcFile="$file"
 			destFile=`basename "$file"`
 			destFile="$theFolder/$destFile" 
 # 			echo "old: $srcFile"
 # 			echo "new: $destFile"
 			
-			ln -f "$srcFile" "$destFile"
+			ln -fs "$srcFile" "$destFile"
 		done
 	fi
 done
