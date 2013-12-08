@@ -6,14 +6,12 @@
 #
 Pod::Spec.new do |s|
   s.name         = "FishLampCore"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "This is the core functionality of the FishLamp Framework."
-  s.description  = "Long Description"
   s.homepage     = "http://fishlamp.com"
-  s.screenshots  = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license      = 'MIT'
   s.author       = { "Mike Fullerton" => "hello@fishlamp.com" }
-  s.source       = { :git => "https://github.com/FishLampCocoa/FishLampCore.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/fishlamp/fishlamp-cocoa.git", :tag => s.version.to_s }
 
   s.ios.deployment_target = '6.1'
   s.osx.deployment_target = '10.6'
@@ -27,4 +25,101 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Classes/**/*.h'
   # s.frameworks = 'SomeFramework', 'AnotherFramework'
   # s.dependency 'JSONKit', '~> 1.4'
+  
+  	s.subspec 'Cocoa' do |ss|
+		ss.source_files = 'Pieces/Release/**/*.{h,m}'
+		
+		ns.ios.frameworks = 'CFNetwork', 'Security', 'MobileCoreServices', 'SystemConfiguration'
+	    ns.osx.frameworks = 'CoreServices', 'Security', 'SystemConfiguration', 'ApplicationServices', 'Cocoa', 'Quartz', 'QuartzCore', 'CoreFoundation', 'Foundation'
+
+	end 
+  
+	s.subspec 'Core' do |ss|
+		ss.source_files = 'Pieces/Release/Core/Core/**/*.{h,m}'
+	end
+
+	s.subspec 'ActivityLog' do |ss|
+		ss.source_files = 'Pieces/Release/ActivityLog/ActivityLog/**/*.{h,m}'
+	end
+
+	s.subspec 'Async' do |ss|
+		ss.source_files = 'Pieces/Release/Async/Async/**/*.{h,m}'
+	end
+
+	s.subspec 'Authentication' do |ss|
+		ss.source_files = 'Pieces/Release/Authentication/Authentication/**/*.{h,m}'
+	end
+
+	s.subspec 'BundleUtils' do |ss|
+		ss.source_files = 'Pieces/Release/BundleUtils/BundleUtils/**/*.{h,m}'
+	end
+
+	s.subspec 'CodeBuilder' do |ss|
+		ss.source_files = 'Pieces/Release/CodeBuilder/CodeBuilder/**/*.{h,m}'
+	end
+
+	s.subspec 'ColorUtils' do |ss|
+		ss.source_files = 'Pieces/Release/ColorUtils/ColorUtils/**/*.{h,m}'
+	end
+
+	s.subspec 'Compatiblity' do |ss|
+		ss.source_files = 'Pieces/Release/Compatibility/Compatibility/**/*.{h,m}'
+	end
+
+	s.subspec 'Containers' do |ss|
+		ss.source_files = 'Pieces/Release/Containers/Containers/**/*.{h,m}'
+	end
+
+	s.subspec 'Encoding' do |ss|
+		ss.source_files = 'Pieces/Release/Encoding/Encoding/**/*.{h,m}'
+	end
+
+	s.subspec 'Files' do |ss|
+		ss.source_files = 'Pieces/Release/Files/Files/**/*.{h,m}'
+	end
+
+	s.subspec 'GeometryUtils' do |ss|
+		ss.source_files = 'Pieces/Release/GeometryUtils/GeometryUtils/**/*.{h,m}'
+	end
+
+	s.subspec 'Keychain' do |ss|
+		ss.source_files = 'Pieces/Release/Keychain/Keychain/**/*.{h,m}'
+	end
+
+	s.subspec 'ModelObject' do |ss|
+		ss.source_files = 'Pieces/Release/ModelObject/ModelObject/**/*.{h,m}'
+	end
+
+	s.subspec 'Networking' do |ss|
+		ss.source_files = 'Pieces/Release/Networking/Networking/**/*.{h,m}'
+	end
+
+	s.subspec 'Notifications' do |ss|
+		ss.source_files = 'Pieces/Release/Networking/Notifications/**/*.{h,m}'
+	end
+
+	s.subspec 'Services' do |ss|
+		ss.source_files = 'Pieces/Release/Services/Services/**/*.{h,m}'
+	end
+
+	s.subspec 'Storage' do |ss|
+		ss.source_files = 'Pieces/Release/Storage/Storage/**/*.{h,m}'
+	end
+
+	s.subspec 'Strings' do |ss|
+		ss.source_files = 'Pieces/Release/Strings/Strings/**/*.{h,m}'
+	end
+
+	s.subspec 'Testables' do |ss|
+		ss.source_files = 'Pieces/Release/Testables/Testables/**/*.{h,m}'
+	end
+
+	s.subspec 'Timer' do |ss|
+		ss.source_files = 'Pieces/Release/Timer/Timer/**/*.{h,m}'
+	end
+
+	s.subspec 'Utils' do |ss|
+		ss.source_files = 'Pieces/Release/Utils/Utils/**/*.{h,m}'
+	end
+
 end
