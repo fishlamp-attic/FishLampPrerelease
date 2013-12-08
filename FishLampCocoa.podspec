@@ -5,34 +5,29 @@
 # To learn more about the attributes see http://docs.cocoapods.org/specification.html
 #
 Pod::Spec.new do |s|
-  s.name         = "FishLampCore"
-  s.version      = "0.0.3"
-  s.summary      = "This is the core functionality of the FishLamp Framework."
-  s.homepage     = "http://fishlamp.com"
-  s.license      = 'MIT'
-  s.author       = { "Mike Fullerton" => "hello@fishlamp.com" }
-  s.source       = { :git => "https://github.com/fishlamp/fishlamp-cocoa.git", :tag => s.version.to_s }
+    s.name         = "FishLampCocoa"
+    s.version      = "0.0.3"
+    s.summary      = "This is the core functionality of the FishLamp Framework."
+    s.homepage     = "http://fishlamp.com"
+    s.license      = 'MIT'
+    s.author       = { "Mike Fullerton" => "hello@fishlamp.com" }
+    s.source       = { :git => "https://github.com/fishlamp/fishlamp-cocoa.git", :tag => s.version.to_s }
 
-  s.ios.deployment_target = '6.1'
-  s.osx.deployment_target = '10.6'
-  s.requires_arc = false
+    s.ios.deployment_target = '6.1'
+    s.osx.deployment_target = '10.6'
+    s.requires_arc = false
+    
+    s.ios.frameworks = 'CFNetwork', 'Security', 'MobileCoreServices', 'SystemConfiguration'
+    s.osx.frameworks = 'CoreServices', 'Security', 'SystemConfiguration', 'ApplicationServices', 'Cocoa', 'Quartz', 'QuartzCore', 'CoreFoundation',  'Foundation'
 
-  s.source_files = "FishLampCore-Classes/**/*.{h,m}", "FishLampCore-Tests/**/*.{h,m}"
-#  s.resources = 'FishLampCore-Assets'
+#   	s.default_subspec = 'Pod/Cocoa'
 
-#   s.ios.exclude_files = 'FishLampCore-Classes/osx'
-#   s.osx.exclude_files = 'FishLampCore-Classes/ios'
-  # s.public_header_files = 'Classes/**/*.h'
-  # s.frameworks = 'SomeFramework', 'AnotherFramework'
-  # s.dependency 'JSONKit', '~> 1.4'
+
+# 	s.library 
   
-  	s.subspec 'Cocoa' do |ss|
-		ss.source_files = 'Pieces/Release/**/*.{h,m}'
-		
-		ns.ios.frameworks = 'CFNetwork', 'Security', 'MobileCoreServices', 'SystemConfiguration'
-	    ns.osx.frameworks = 'CoreServices', 'Security', 'SystemConfiguration', 'ApplicationServices', 'Cocoa', 'Quartz', 'QuartzCore', 'CoreFoundation', 'Foundation'
-
-	end 
+#   	s.subspec 'Cocoa' do |ss|
+# 		ss.source_files = 'Pieces/Release/**/*.{h,m}'
+# 	end 
   
 	s.subspec 'Core' do |ss|
 		ss.source_files = 'Pieces/Release/Core/Core/**/*.{h,m}'
@@ -62,7 +57,7 @@ Pod::Spec.new do |s|
 		ss.source_files = 'Pieces/Release/ColorUtils/ColorUtils/**/*.{h,m}'
 	end
 
-	s.subspec 'Compatiblity' do |ss|
+	s.subspec 'Compatibility' do |ss|
 		ss.source_files = 'Pieces/Release/Compatibility/Compatibility/**/*.{h,m}'
 	end
 
@@ -71,15 +66,15 @@ Pod::Spec.new do |s|
 	end
 
 	s.subspec 'Encoding' do |ss|
-		ss.source_files = 'Pieces/Release/Encoding/Encoding/**/*.{h,m}'
+		ss.source_files = 'Pieces/Release/Encoding/Encoding/**/*.{h,m,c}'
 	end
 
 	s.subspec 'Files' do |ss|
 		ss.source_files = 'Pieces/Release/Files/Files/**/*.{h,m}'
 	end
 
-	s.subspec 'GeometryUtils' do |ss|
-		ss.source_files = 'Pieces/Release/GeometryUtils/GeometryUtils/**/*.{h,m}'
+	s.subspec 'Geometry' do |ss|
+		ss.source_files = 'Pieces/Release/Geometry/Geometry/**/*.{h,m}'
 	end
 
 	s.subspec 'Keychain' do |ss|
@@ -104,6 +99,7 @@ Pod::Spec.new do |s|
 
 	s.subspec 'Storage' do |ss|
 		ss.source_files = 'Pieces/Release/Storage/Storage/**/*.{h,m}'
+        ss.library = 'sqlite3.0'
 	end
 
 	s.subspec 'Strings' do |ss|

@@ -8,7 +8,7 @@
 //
 
 #import "FLActivityLog.h"
-#import "FLAttributedString.H"
+#import "FLAttributedString.h"
 #import "FLColorModule.h"
 
 NSString* const FLActivityLogUpdated = @"FLActivityLogUpdated";
