@@ -12,11 +12,11 @@
 #import "FLWizardViewController.h"
 #import "FLProgressPanel.h"
 #import "FLAuthenticationCredentials.h"
-
-#if OSX
+#import "FishLampAsync.h"
 
 @protocol FLLoginPanelDelegate;
-@protocol FLLoginPanelAthenticationDelegate;
+
+@protocol FLLoginPanelAuthenticationProvider;
 
 @interface FLLoginPanel : FLPanelViewController<NSTextFieldDelegate, FLProgressPanelDelegate>  {
 @private
@@ -25,13 +25,13 @@
     IBOutlet NSButton* _savePasswordCheckBox;
     IBOutlet NSButton* _forgotPasswordButton;
     IBOutlet NSButton* _loginButton;
-    __unsafe_unretained id<FLLoginPanelAthenticationDelegate> _authenticationDelegate;
+    __unsafe_unretained id<FLLoginPanelAuthenticationProvider> _authenticationDelegate;
 }
 + (id) loginPanel;
-@property (readwrite, assign, nonatomic) id<FLLoginPanelAthenticationDelegate> authenticationDelegate;
+@property (readwrite, assign, nonatomic) id<FLLoginPanelAuthenticationProvider> authenticationProvider;
 @end
 
-@protocol FLLoginPanelAthenticationDelegate <NSObject>
+@protocol FLLoginPanelAuthenticationProvider <NSObject>
 
 // get/set credentials
 
@@ -63,5 +63,3 @@ beginAuthenticatingWithCompletion:(fl_result_block_t) completion;
 - (void) loginPanelDidAuthenticate:(FLLoginPanel*) panel;
 @end
 
-
-#endif

@@ -23,7 +23,7 @@
 
 @implementation FLLoginPanel
 
-@synthesize authenticationDelegate = _authenticationDelegate;
+@synthesize authenticationProvider = _authenticationProvider;
 
 - (id) init {
     return [self initWithNibName:@"FLLoginPanel" bundle:[FLBundleStack currentBundle]];
@@ -96,7 +96,7 @@
 
 - (void) updateCredentials {
     FLAuthenticationCredentials* creds = [FLAuthenticationCredentials authenticationCredentials:self.userName password:self.password];
-    [self.authenticationDelegate loginPanel:self setCredentials:creds];
+    [self.authenticationProvider loginPanel:self setCredentials:creds];
 }
 
 #if OSX
@@ -177,7 +177,7 @@
 }
 
 - (void) progressPanelWasCancelled:(FLProgressPanel*) panel {
-    [self.authenticationDelegate loginPanelDidCancelAuthentication:self];
+    [self.authenticationProvider loginPanelDidCancelAuthentication:self];
     [self showEntryFields:YES completion:nil];
 }
 
@@ -185,7 +185,7 @@
 
     [self updateCredentials];
 
-    [self.authenticationDelegate  loginPanel:self
+    [self.authenticationProvider  loginPanel:self
            beginAuthenticatingWithCompletion:^(FLPromisedResult result) {
 
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -232,13 +232,13 @@
 }
 
 - (void) loadCredentials {
-    id<FLAuthenticationCredentials> credentials = [self.authenticationDelegate  loginPanelGetCredentials:self];
+    id<FLAuthenticationCredentials> credentials = [self.authenticationProvider  loginPanelGetCredentials:self];
     [self setUserName:credentials.userName];
     [self setPassword:credentials.password];
 }
 
 - (IBAction) passwordCheckboxToggled:(id) sender {
-    [self.authenticationDelegate loginPanel:self setSavePassword:self.savePasswordInKeychain];
+    [self.authenticationProvider loginPanel:self setSavePassword:self.savePasswordInKeychain];
 }
 
 //- (void) applicationWillTerminate:(id)sender {
@@ -278,7 +278,7 @@
     _passwordEntryField.delegate = self;
     _userNameTextField.delegate = self;
 
-    [self setSavePasswordInKeychain:[self.authenticationDelegate loginPanelGetSavePassword:self]];
+    [self setSavePasswordInKeychain:[self.authenticationProvider loginPanelGetSavePassword:self]];
     [self loadCredentials];
     [self updateNextButton];
 }

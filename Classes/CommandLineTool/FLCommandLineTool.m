@@ -10,7 +10,7 @@
 #import "FLCommandLineTool.h"
 #import "FLStringUtils.h"
 #import "NSString+Lists.h"
-#import "FLAppInfo.h"
+#import "NSBundle+FLAdditions.h"
 #import "FishLampAsync.h"
 
 @interface FLCommandLineTool ()
@@ -61,7 +61,7 @@ static id s_instance;
         FLAssertNotNil(imp);
     
         _implementation = imp;
-        [FLAppInfo setAppInfo:self.toolIdentifier appName:self.toolName version:self.toolVersion];
+   //     [FLAppInfo setAppInfo:self.toolIdentifier appName:self.toolName version:self.toolVersion];
     
         self.output = [FLLogger logger];
         [self.output addLoggerSink:[FLConsoleLogSink consoleLogSink:FLLogOutputSimple]];
