@@ -19,16 +19,9 @@ Pod::Spec.new do |s|
     
     s.ios.frameworks = 'CFNetwork', 'Security', 'MobileCoreServices', 'SystemConfiguration'
     s.osx.frameworks = 'CoreServices', 'Security', 'SystemConfiguration', 'ApplicationServices', 'Cocoa', 'Quartz', 'QuartzCore', 'CoreFoundation',  'Foundation'
-
+    
 #   	s.default_subspec = 'Pod/Cocoa'
 
-
-# 	s.library 
-  
-#   	s.subspec 'Cocoa' do |ss|
-# 		ss.source_files = 'Pieces/Release/**/*.{h,m}'
-# 	end 
-  
 	s.subspec 'Core' do |ss|
 		ss.source_files = 'Pieces/Release/Core/Core/**/*.{h,m}'
 	end
@@ -90,7 +83,7 @@ Pod::Spec.new do |s|
 	end
 
 	s.subspec 'Notifications' do |ss|
-		ss.source_files = 'Pieces/Release/Networking/Notifications/**/*.{h,m}'
+		ss.source_files = 'Pieces/Release/Notifications/Notifications/**/*.{h,m}'
 	end
 
 	s.subspec 'Services' do |ss|
@@ -99,7 +92,7 @@ Pod::Spec.new do |s|
 
 	s.subspec 'Storage' do |ss|
 		ss.source_files = 'Pieces/Release/Storage/Storage/**/*.{h,m}'
-        ss.library = 'sqlite3.0'
+	    ss.library = 'sqlite3'
 	end
 
 	s.subspec 'Strings' do |ss|
