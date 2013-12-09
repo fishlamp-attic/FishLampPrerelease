@@ -8,9 +8,8 @@
 //
 
 #import "FLOperation.h"
-#import "FLSynchronousOperation.h"
 
-@interface FLCommandLineTask : FLSynchronousOperation {
+@interface FLCommandLineTask : FLOperation {
 @private
     NSMutableArray* _operations;
 }

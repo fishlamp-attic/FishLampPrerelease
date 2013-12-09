@@ -37,11 +37,14 @@
     [_operations addObject:operation];
 }
 
-- (FLPromisedResult) performSynchronously {
-    for(FLOperation* operation in _operations) {
-        [self runChildSynchronously:operation];
-    }
-    
+- (FLPromisedResult) runSynchronously {
+
+// TODO - run in a context
+
+//    for(FLOperation* operation in _operations) {
+//        [self runChildSynchronously:operation];
+//    }
+
     return [FLSuccessfulResult successfulResult];
 }
 

@@ -10,6 +10,7 @@
 #import "FLToolCommandOption.h"
 #import "FLStringUtils.h"
 #import "NSString+Lists.h"
+#import "FLStringUtils.h"
 
 @implementation FLToolCommandOption
 
@@ -66,7 +67,8 @@
 
 - (void) printHelpToStringFormatter:(FLStringFormatter*) output {
     [output appendLineWithFormat:@"%@: %@",
-        [NSString stringWithTrailingPadding_fl:[NSString concatStringArray:self.optionKeys.allObjects] minimumWidth:20],
+        [NSString concatStringArray:self.optionKeys.allObjects],
+//        [[NSString concatStringArray:self.optionKeys.allObjects] stringWithPadding_fl:20],
         [self help]];
 }
 
