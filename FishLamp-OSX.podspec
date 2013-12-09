@@ -16,8 +16,7 @@ Pod::Spec.new do |s|
     s.osx.deployment_target = '10.6'
     s.requires_arc = false
     s.osx.frameworks = 'Cocoa'
-
-	s.osx.resource_bundle = { "FishLampResources" => "Resources/*" }
+	s.osx.resources = ['Resources/Images/*.png', 'Resources/xib/*']
     
     s.source_files = 'Classes/FishLamp-OSX.h'
     
