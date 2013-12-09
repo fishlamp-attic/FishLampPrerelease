@@ -7,7 +7,10 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
+#if DEPRECATED
+
 #import "SDKView+FLViewGeometry.h"
+#import "FLGeometry.h"
 
 @implementation SDKView (FLViewGeometry)
 
@@ -175,3 +178,4 @@
 }
 
 @end
+#endif

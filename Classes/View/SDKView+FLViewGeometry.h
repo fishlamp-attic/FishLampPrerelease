@@ -6,6 +6,7 @@
 //	Copyright (c) 2013 GreenTongue Software LLC, Mike Fullerton. 
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
+#if DEPRECATED
 
 #import "FishLampMinimum.h"
 #import "FLCompatibility.h"
@@ -83,3 +84,5 @@ BOOL FLViewSetFrame(SDKView* view, NSRect frame) {
     }
     return NO;
 }
+
+#endif

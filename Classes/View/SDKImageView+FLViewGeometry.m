@@ -7,40 +7,40 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 #import "SDKImageView+FLViewGeometry.h"
-#import "SDKImage+Resize.h"
+#import "FLGeometry.h"
 
 @implementation SDKImageView (FLViewGeometryUtils)
 
-- (BOOL) resizeToImageSize {
-	return FLViewSetFrame(self, FLRectSetSizeWithSize(self.frame, self.image.size));
-}
-
-- (CGRect) frameSizedToFitInSuperview:(BOOL) centerInSuperview
-{
-	SDKImage* image = self.image;
-	if(image && self.superview)
-	{
-		CGRect superviewBounds = self.superview.bounds;
-		CGRect newFrame = FLRectFitInRectInRectProportionally(
-			FLRectMakeWithSize(superviewBounds.size), 
-			FLRectMakeWithSize(image.size));
-			
-		if(centerInSuperview)
-		{
-			newFrame = FLRectCenterRectInRect(superviewBounds, newFrame);
-		}
-		
-		return newFrame;
-	}
-	
-	return CGRectZero;
-}
-
-- (void) resizeProportionally:(CGSize) maxSize
-{
-//	  [self setViewSizeToImageSize];
-	CGRect newBounds = [self.image proportionalBoundsWithMaxSize:maxSize];
-	FLViewSetFrame(self, CGRectIntegral(FLRectSetSizeWithSize(self.frame, newBounds.size)));
-}
+//- (BOOL) resizeToImageSize {
+//	return FLViewSetFrame(self, CGRectSetSizeWithSize(self.frame, self.image.size));
+//}
+//
+//- (CGRect) frameSizedToFitInSuperview:(BOOL) centerInSuperview
+//{
+//	SDKImage* image = self.image;
+//	if(image && self.superview)
+//	{
+//		CGRect superviewBounds = self.superview.bounds;
+//		CGRect newFrame = FLRectFitInRectInRectProportionally(
+//			CGRectMakeWithSize(superviewBounds.size),
+//			CGRectMakeWithSize(image.size));
+//			
+//		if(centerInSuperview)
+//		{
+//			newFrame = FLRectCenterRectInRect(superviewBounds, newFrame);
+//		}
+//		
+//		return newFrame;
+//	}
+//	
+//	return CGRectZero;
+//}
+//
+//- (void) resizeProportionally:(CGSize) maxSize
+//{
+////	  [self setViewSizeToImageSize];
+//	CGRect newBounds = [self.image proportionalBoundsWithMaxSize:maxSize];
+//	FLViewSetFrame(self, CGRectIntegral(FLRectSetSizeWithSize(self.frame, newBounds.size)));
+//}
 
 @end

@@ -9,6 +9,7 @@
 
 #import "FLWidget.h"
 #import "SDKView+FLViewGeometry.h"
+#import "FLGeometry.h"
 
 @interface FLWidget ()
 @property (readwrite, assign, nonatomic, getter=isParentHidden) BOOL parentHidden;
@@ -210,7 +211,7 @@
 		[self setNeedsDisplay];
 		[self didChangeFrame];
    
-#if DEBUG
+#if 0
 		[SDKView warnIfNonIntegralFramesInViewHierarchy:self.view];
 #endif
 	}

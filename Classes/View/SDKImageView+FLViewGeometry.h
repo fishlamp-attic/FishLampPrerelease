@@ -14,7 +14,7 @@
 
 @interface SDKImageView (FLViewGeometryUtils)
 // return YES is frame was changed.
-- (BOOL) resizeToImageSize;
-- (void) resizeProportionally:(CGSize) maxSize;
+//- (BOOL) resizeToImageSize;
+//- (void) resizeProportionally:(CGSize) maxSize;
 @end
 
