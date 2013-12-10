@@ -10,7 +10,7 @@
 // Copyright (c) 2013 GreenTongue Software LLC. All Rights Reserved.
 //
 #if OSX
-#import "FLCoreRequired.h"
+#import "FishLampObjc.h"
 #import <Cocoa/Cocoa.h>
 
 #if __MAC_10_8
