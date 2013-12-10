@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "27A43AC315CDCCCB001CB13E"
-               BuildableName = "FishLampCore-OSX-64-MRC-Lib.a"
-               BlueprintName = "FishLampCocoa-OSX-64-MRC-Lib"
+               BlueprintIdentifier = "2712D93E17DE310C007327C0"
+               BuildableName = "FishLampCocoa-OSX-64-ARC-TestTool"
+               BlueprintName = "FishLampCocoa-OSX-64-ARC-TestTool"
                ReferencedContainer = "container:FishLampCocoa.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,6 +29,15 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2712D93E17DE310C007327C0"
+            BuildableName = "FishLampCocoa-OSX-64-ARC-TestTool"
+            BlueprintName = "FishLampCocoa-OSX-64-ARC-TestTool"
+            ReferencedContainer = "container:FishLampCocoa.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -39,6 +48,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2712D93E17DE310C007327C0"
+            BuildableName = "FishLampCocoa-OSX-64-ARC-TestTool"
+            BlueprintName = "FishLampCocoa-OSX-64-ARC-TestTool"
+            ReferencedContainer = "container:FishLampCocoa.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -48,6 +66,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2712D93E17DE310C007327C0"
+            BuildableName = "FishLampCocoa-OSX-64-ARC-TestTool"
+            BlueprintName = "FishLampCocoa-OSX-64-ARC-TestTool"
+            ReferencedContainer = "container:FishLampCocoa.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

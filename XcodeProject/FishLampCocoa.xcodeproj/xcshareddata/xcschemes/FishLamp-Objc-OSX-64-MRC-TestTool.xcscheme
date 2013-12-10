@@ -3,7 +3,7 @@
    LastUpgradeVersion = "0500"
    version = "1.3">
    <BuildAction
-      parallelizeBuildables = "YES"
+      parallelizeBuildables = "NO"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B214727A17DE7BBC00985872"
-               BuildableName = "FishLampCore-iOS-TestApp.app"
-               BlueprintName = "FishLampCocoa-iOS-TestApp"
+               BlueprintIdentifier = "27A43AC315CDCCCB001CB13E"
+               BuildableName = "FishLampCocoa-OSX-64-MRC-Lib.a"
+               BlueprintName = "FishLampCocoa-OSX-64-MRC-Lib"
+               ReferencedContainer = "container:FishLampCocoa.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2727D28C17DE2FF80069F9D2"
+               BuildableName = "FishLampCocoa-OSX-64-MRC-TestTool"
+               BlueprintName = "FishLampCocoa-OSX-64-MRC-TestTool"
                ReferencedContainer = "container:FishLampCocoa.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +46,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B214727A17DE7BBC00985872"
-            BuildableName = "FishLampCore-iOS-TestApp.app"
-            BlueprintName = "FishLampCocoa-iOS-TestApp"
+            BlueprintIdentifier = "2727D28C17DE2FF80069F9D2"
+            BuildableName = "FishLampCocoa-OSX-64-MRC-TestTool"
+            BlueprintName = "FishLampCocoa-OSX-64-MRC-TestTool"
             ReferencedContainer = "container:FishLampCocoa.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,9 +65,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B214727A17DE7BBC00985872"
-            BuildableName = "FishLampCore-iOS-TestApp.app"
-            BlueprintName = "FishLampCocoa-iOS-TestApp"
+            BlueprintIdentifier = "2727D28C17DE2FF80069F9D2"
+            BuildableName = "FishLampCocoa-OSX-64-MRC-TestTool"
+            BlueprintName = "FishLampCocoa-OSX-64-MRC-TestTool"
             ReferencedContainer = "container:FishLampCocoa.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -69,9 +83,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B214727A17DE7BBC00985872"
-            BuildableName = "FishLampCore-iOS-TestApp.app"
-            BlueprintName = "FishLampCocoa-iOS-TestApp"
+            BlueprintIdentifier = "2727D28C17DE2FF80069F9D2"
+            BuildableName = "FishLampCocoa-OSX-64-MRC-TestTool"
+            BlueprintName = "FishLampCocoa-OSX-64-MRC-TestTool"
             ReferencedContainer = "container:FishLampCocoa.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
