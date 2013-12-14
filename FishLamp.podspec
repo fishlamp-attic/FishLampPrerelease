@@ -23,27 +23,27 @@ Pod::Spec.new do |fishlamp|
 
 # these are the core pods
 
-  	fishlamp.subspec 'Cocoa' do |cocoa|
+  	fishlamp.subspec 'FishLampCocoa' do |cocoa|
 
         cocoa.subspec 'Core' do |core|
-            core.source_files = 'Cocoa/Classes/FishLampCore.h'
+            core.source_files = 'FishLampCocoa/Classes/FishLampCore.h'
 
             core.subspec 'Required' do |ss|
-                ss.source_files = 'Cocoa/Classes/Required/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Required/**/*.{h,m}'
             end
 
             core.subspec 'Strings' do |ss|
-                ss.source_files = 'Cocoa/Classes/Strings/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Strings/**/*.{h,m}'
             end
 
             core.subspec 'Errors' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core/Required'
                 ss.dependency 'FishLamp/Cocoa/Core/Strings'
-                ss.source_files = 'Cocoa/Classes/Errors/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Errors/**/*.{h,m}'
             end
 
             core.subspec 'Assertions' do |ss|
-                ss.source_files = 'Cocoa/Classes/Assertions/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Assertions/**/*.{h,m}'
                 ss.dependency 'FishLamp/Cocoa/Core/Strings'
                 ss.dependency 'FishLamp/Cocoa/Core/Errors'
             end
@@ -53,7 +53,7 @@ Pod::Spec.new do |fishlamp|
                 ss.dependency 'FishLamp/Cocoa/Core/Strings'
                 ss.dependency 'FishLamp/Cocoa/Core/Errors'
                 ss.dependency 'FishLamp/Cocoa/Core/Assertions'
-                ss.source_files = 'Cocoa/Classes/SimpleLogger/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/SimpleLogger/**/*.{h,m}'
             end
         end
 
@@ -63,89 +63,89 @@ Pod::Spec.new do |fishlamp|
 
             utils.subspec 'Proxies' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/Proxies/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Proxies/**/*.{h,m}'
             end
 
             utils.subspec 'ActivityLog' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/ActivityLog/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/ActivityLog/**/*.{h,m}'
             end
 
             utils.subspec 'ObjcRuntime' do |ss|
-                ss.source_files = 'Cocoa/Classes/ObjcRuntime/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/ObjcRuntime/**/*.{h,m}'
             end
 
             utils.subspec 'BundleUtils' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/BundleUtils/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/BundleUtils/**/*.{h,m}'
             end
 
             utils.subspec 'CodeBuilder' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/CodeBuilder/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/CodeBuilder/**/*.{h,m}'
             end
 
             utils.subspec 'ColorUtils' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/ColorUtils/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/ColorUtils/**/*.{h,m}'
             end
 
             utils.subspec 'Containers' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/Containers/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Containers/**/*.{h,m}'
             end
 
             utils.subspec 'Events' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/Events/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Events/**/*.{h,m}'
             end
 
             utils.subspec 'Files' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/Files/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Files/**/*.{h,m}'
             end
 
             utils.subspec 'Geometry' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/Geometry/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Geometry/**/*.{h,m}'
             end
 
             utils.subspec 'Keychain' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/Keychain/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Keychain/**/*.{h,m}'
             end
 
             utils.subspec 'Notifications' do |ss|
-                ss.source_files = 'Cocoa/Classes/Notifications/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Notifications/**/*.{h,m}'
                 ss.dependency 'FishLamp/Cocoa/Core'
             end
 
             utils.subspec 'Authentication' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/Authentication/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Authentication/**/*.{h,m}'
             end
 
             utils.subspec 'Compatibility' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/Compatibility/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Compatibility/**/*.{h,m}'
             end
 
             utils.subspec 'Services' do |ss|
-                ss.source_files = 'Cocoa/Classes/Services/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Services/**/*.{h,m}'
                 ss.dependency 'FishLamp/Cocoa/Core'
             end
 
             utils.subspec 'StringBuilder' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/StringBuilder/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/StringBuilder/**/*.{h,m}'
             end
 
             utils.subspec 'Timer' do |ss|
-                ss.source_files = 'Cocoa/Classes/Timer/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Timer/**/*.{h,m}'
             end
 
             utils.subspec 'Utils' do |ss|
-                ss.source_files = 'Cocoa/Classes/Utils/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Utils/**/*.{h,m}'
             end
         end
 
@@ -155,36 +155,36 @@ Pod::Spec.new do |fishlamp|
 
             feature.subspec 'Encoding' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/Encoding/**/*.{h,m,c}'
+                ss.source_files = 'FishLampCocoa/Classes/Encoding/**/*.{h,m,c}'
             end
 
             feature.subspec 'CommandLineProcessor' do |ss|
-                ss.source_files = 'Cocoa/Classes/CommandLineProcessor/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/CommandLineProcessor/**/*.{h,m}'
             end
 
             feature.subspec 'Testables' do |ss|
-                ss.source_files = 'Cocoa/Classes/Testables/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Testables/**/*.{h,m}'
             end
 
             feature.subspec 'ModelObject' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
-                ss.source_files = 'Cocoa/Classes/ModelObject/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/ModelObject/**/*.{h,m}'
             end
 
             feature.subspec 'Async' do |ss|
                 ss.dependency 'FishLamp/Cocoa/Core'
                 ss.dependency 'FishLamp/Cocoa/Utils/Timer'
-                ss.source_files = 'Cocoa/Classes/Async/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Async/**/*.{h,m}'
             end
 
             feature.subspec 'Storage' do |ss|
-                ss.source_files = 'Cocoa/Classes/Storage/**/*.{h,m}'
+                ss.source_files = 'FishLampCocoa/Classes/Storage/**/*.{h,m}'
                 ss.library = 'sqlite3'
                 ss.dependency 'FishLamp/Cocoa/Core'
             end
 
             feature.subspec 'Networking' do |networking|
-                networking.source_files = 'Cocoa/Classes/Networking/**/*.{h,m}'
+                networking.source_files = 'FishLampCocoa/Classes/Networking/**/*.{h,m}'
 
                 networking.dependency 'FishLamp/Cocoa/Core'
                 
@@ -204,5 +204,65 @@ Pod::Spec.new do |fishlamp|
             end
         end
     end
+    
+  	fishlamp.subspec 'FishLampUI' do |ui|
+
+		ui.subspec 'Animate' do |ss|
+			ss.source_files = 'FishLampUI/Classes/Animate/**/*.{h,m}'
+		end
+
+		ui.subspec 'Draw' do |ss|
+			ss.source_files = 'FishLampUI/Classes/Draw/**/*.{h,m}'
+		end
+
+		ui.subspec 'View' do |ss|
+			ss.source_files = 'FishLampUI/Classes/View/**/*.{h,m}'
+		end
+	end
+    
+  	fishlamp.subspec 'FishLampOSX' do |osx|
+	    osx.osx.frameworks = 'FishLampCocoa'
+		osx.osx.resources = ['FishLampOSX/Resources/Images/*.png', 'Resources/xib/*']
+    
+    	osx.source_files = 'FishLampOSX/Classes/FishLamp-OSX.h'
+    
+		osx.subspec 'BreadcrumbBarView' do |ss|
+			ss.source_files = 'FishLampOSX/Classes/BreadcrumbBarView/**/*.{h,m}'
+		end
+
+		osx.subspec 'CommandLineTool' do |ss|
+			ss.source_files = 'FishLampOSX/Classes/CommandLineTool/**/*.{h,m}'
+		end
+
+		osx.subspec 'Documents' do |ss|
+			ss.source_files = 'FishLampOSX/Classes/Documents/**/*.{h,m}'
+		end
+
+		osx.subspec 'Image' do |ss|
+			ss.source_files = 'FishLampOSX/Classes/Image/**/*.{h,m}'
+		end
+
+		osx.subspec 'Menus' do |ss|
+			ss.source_files = 'FishLampOSX/Classes/Menus/**/*.{h,m}'
+		end
+
+		osx.subspec 'Utils' do |ss|
+			ss.source_files = 'FishLampOSX/Classes/Utils/**/*.{h,m}'
+		end
+
+		osx.subspec 'ViewControllers' do |ss|
+			ss.source_files = 'FishLampOSX/Classes/ViewControllers/**/*.{h,m}'
+		end
+
+		osx.subspec 'Views' do |ss|
+			ss.source_files = 'FishLampOSX/Classes/Views/**/*.{h,m}'
+		end
+
+		osx.subspec 'Wizard' do |ss|
+			ss.source_files = 'FishLampOSX/Classes/Wizard/**/*.{h,m}'
+		end
+
+	end
+    
 end
 
