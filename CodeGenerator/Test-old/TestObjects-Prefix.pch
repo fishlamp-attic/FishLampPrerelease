@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'WhittleTestObjects' target in the 'WhittleTestObjects' project
+//
+
+#ifdef __OBJC__
+    #import "FishLampCocoa.h"
+#endif
