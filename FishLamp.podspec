@@ -226,8 +226,8 @@ Pod::Spec.new do |fishlamp|
         osx.dependency 'FishLamp/Cocoa/Core'
         osx.dependency 'FishLamp/UI'
 
-	    osx.osx.frameworks = 'FishLampCocoa'
-		osx.osx.resources = ['FishLampOSX/Resources/Images/*.png', 'Resources/xib/*']
+	    osx.osx.frameworks = 'Cocoa'
+		osx.osx.resources = ['FishLampOSX/Resources/Images/*.png', 'FishLampOSX/Resources/xib/*']
     
     	osx.source_files = 'FishLampOSX/Classes/FishLamp-OSX.h'
     
