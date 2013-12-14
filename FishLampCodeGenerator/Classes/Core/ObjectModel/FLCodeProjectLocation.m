@@ -31,7 +31,7 @@
     return self;
 }
 
-+ (FLCodeProjectLocation*) codeProjectLocation:(NSURL*) url
++ (id) codeProjectLocation:(NSURL*) url
                                   resourceType:(FLCodeProjectLocationType) resourceType {
     return FLAutorelease([[FLCodeProjectLocation alloc] initWithURL:url resourceType:resourceType]);
 }
@@ -69,10 +69,10 @@
     return data;
 }
 
-+ (FLCodeProjectLocation*) codeProjectLocationWithImport:(FLCodeImport*) import
-                                       projectFolderPath:(NSString*) projectFolderPath {
++ (id) codeProjectLocationWithImport:(FLCodeImport*) aImport
+                 pathToProjectFolder:(NSString*) projectFolderPath {
     
-    FLCodeInputTypeEnumSet* enums = import.typeEnumSet;
+    FLCodeInputTypeEnumSet* enums = aImport.typeEnumSet;
     FLCodeProjectLocationType type = FLCodeProjectLocationTypeNone;
 
     if(!enums.count) {
@@ -85,17 +85,17 @@
         switch(number.enumValue) {
             case FLCodeInputTypeFile:
                 type |= FLCodeProjectLocationTypeFile;
-                url = [NSURL fileURLWithPath:[projectFolderPath stringByAppendingPathComponent:import.path]];
+                url = [NSURL fileURLWithPath:[projectFolderPath stringByAppendingPathComponent:aImport.path]];
             break;
 
             case FLCodeInputTypeHttp:
                 type |= FLCodeProjectLocationTypeHttp;
-                url = [NSURL URLWithString:import.path];
+                url = [NSURL URLWithString:aImport.path];
             break;
 
             case FLCodeInputTypeWsdl:
                 type |= FLCodeProjectLocationTypeWsdl;
-                url = [NSURL URLWithString:import.path];
+                url = [NSURL URLWithString:aImport.path];
             break;
 
             default:

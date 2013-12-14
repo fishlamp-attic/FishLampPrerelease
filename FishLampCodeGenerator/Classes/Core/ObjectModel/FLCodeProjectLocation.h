@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 GreenTongue Software. All rights reserved.
 //
 
-#import "FishLampMinimum.h"
+#import "FishLampCore.h"
 
 @class FLCodeImport;
 
@@ -29,11 +29,11 @@ typedef enum {
 - (id) initWithURL:(NSURL*) url 
       resourceType:(FLCodeProjectLocationType) resourceType;
 
-+ (FLCodeProjectLocation*) codeProjectLocation:(NSURL*) url
++ (id) codeProjectLocation:(NSURL*) url
                                   resourceType:(FLCodeProjectLocationType) inputType;
 
-+ (FLCodeProjectLocation*) codeProjectLocationWithImport:(FLCodeImport*) import
-                                       projectFolderPath:(NSString*) projectFolderPath;
++ (id) codeProjectLocationWithImport:(FLCodeImport*) aImport
+                 pathToProjectFolder:(NSString*) pathToProjectFolder;
 
 
 - (BOOL) isLocationType:(FLCodeProjectLocationType) type;

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 GreenTongue Software. All rights reserved.
 //
 
-#import "FishLampMinimum.h"
+#import "FishLampCore.h"
 #import "FLCodeProjectReader.h"
 
 @interface FLXmlCodeProjectReader : NSObject<FLCodeProjectReader>

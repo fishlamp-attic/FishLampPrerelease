@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 
-#import "NSFileManager+FLExtras.h"
-#import "FLStringUtils.h"
+#import "NSFileManager+FishLamp.h"
+#import "NSString+FishLamp.h"
 #import "FLWsdlDocument.h"
 
 @implementation AppDelegate

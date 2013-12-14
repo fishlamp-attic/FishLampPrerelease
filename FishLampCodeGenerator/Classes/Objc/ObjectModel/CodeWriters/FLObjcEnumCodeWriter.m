@@ -105,11 +105,14 @@
 - (void) describeSelf:(FLPrettyString*) string {
     [string appendLineWithFormat:@"enumName = %@", self.enumName];
     [string appendLineWithFormat:@"enumType = %@", self.enumType];
-    [string appendInScope:@"values {" closeScope:@"}" withBlock:^{
+    [string appendLine:@"values {" ];
+    [string indentLinesInBlock:^{
         for(id obj in _enumValues) {
             [string appendLine:[obj description]];
         }
     }];
+    [string appendLine:@"}" ];
+
 }
 
 - (NSString*) description {

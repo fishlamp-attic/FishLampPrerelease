@@ -98,10 +98,10 @@
 }
 
 - (void) loadSubProjectsWithProjectReader:(FLCodeProjectReader*) reader {
-    for(FLCodeImport* import in self.imports) {
+    for(FLCodeImport* aImport in self.imports) {
 
-        FLCodeProjectLocation* location = [FLCodeProjectLocation codeProjectLocationWithImport:import
-                                                                             projectFolderPath:self.projectFolderPath];
+        FLCodeProjectLocation* location = [FLCodeProjectLocation codeProjectLocationWithImport:aImport
+                                                                             pathToProjectFolder:self.projectFolderPath];
 
         FLCodeProject* subProject = [reader readProjectFromLocation:location];
 

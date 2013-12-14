@@ -1,0 +1,1 @@
+../../../../FishLampCocoa/Classes/ModelObject/NSObject+Comparison.h

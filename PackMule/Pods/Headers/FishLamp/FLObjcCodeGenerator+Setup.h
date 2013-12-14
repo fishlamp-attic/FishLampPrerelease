@@ -1,0 +1,1 @@
+../../../../FishLampCodeGenerator/Classes/Objc/Setup-Deprecated/FLObjcCodeGenerator+Setup.h

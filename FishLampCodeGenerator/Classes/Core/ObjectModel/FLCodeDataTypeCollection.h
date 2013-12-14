@@ -5,7 +5,7 @@
 //  Created by Mike Fullerton on 2/6/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
-#import "FishLampMinimum.h"
+#import "FishLampCore.h"
 
 @interface FLCodeDataTypeCollection : NSObject {
 @private

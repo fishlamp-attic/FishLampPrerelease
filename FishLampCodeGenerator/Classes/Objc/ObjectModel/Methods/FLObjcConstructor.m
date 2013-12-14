@@ -10,7 +10,7 @@
 
 #import "FLCodeConstructor.h"
 #import "FLObjcCodeGeneratorHeaders.h"
-#import "FLStringUtils.h"
+#import "NSString+FishLamp.h"
 
 @implementation FLObjcConstructor
 
@@ -75,7 +75,8 @@
         [self.code appendLine:@"self = [super init];"];
     }
 
-    [self.code appendInScope:@"if(self) {" closeScope:@"}" withBlock:^{
+    [self.code appendString:@"if(self) {"];
+    [self.code indentLinesInBlock:^{
         for(FLCodeConstructorParameter* parameter in constructor.parameters) {
             if(FLStringIsNotEmpty(parameter.setProperty)) {
                 FLObjcName* parameterName = [FLObjcParameterName objcParameterName:parameter.name];
@@ -90,6 +91,7 @@
         }
 
     }];
+    [self.code appendString:@"}"];
 
     [self.code appendReturnValue:@"self"];
 

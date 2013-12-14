@@ -8,7 +8,7 @@
 
 #import "FLObjcHeaderFile.h"
 #import "FLObjcCodeGeneratorHeaders.h"
-#import "FLStringUtils.h"
+#import "NSString+FishLamp.h"
 
 @implementation FLObjcHeaderFile
 - (BOOL) isHeaderFile {

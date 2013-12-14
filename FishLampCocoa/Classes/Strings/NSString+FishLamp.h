@@ -1,5 +1,5 @@
 //
-//  _FLStringUtils.h
+//  _NSString+FishLamp.h
 //  Fishlamp
 //
 //  Created by Mike Fullerton on 6/20/12.
@@ -78,7 +78,7 @@ extern BOOL FLStringsAreEqual(NSString* lhs, NSString* rhs);
 extern BOOL FLStringsAreEqualCaseInsensitive(NSString* lhs, NSString* rhs);
 #else
 #define __INLINES__
-#import "FLStringUtils_Inlines.h"
+#import "NSString+FishLamp_Inlines.h"
 #undef __INLINES__
 #endif
 

@@ -19,10 +19,10 @@
 #import "FLCodeGeneratorErrors.h"
 #import "FLWsdlCodeProjectReader.h"
 #import "FLSoapParser.h"
-#import "FLStringUtils.h"
+#import "NSString+FishLamp.h"
 #import "FLXmlStringBuilder.h"
 #import "FLNetworkServerContext.h"
-#import "FLStringUtils.h"
+#import "NSString+FishLamp.h"
 #import "FLCodeProperty.h"
 
 #import "FLWsdlCodeObject.h"

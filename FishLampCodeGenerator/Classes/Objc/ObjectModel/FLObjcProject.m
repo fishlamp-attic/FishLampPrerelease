@@ -8,7 +8,7 @@
 
 #import "FLObjcProject.h"
 #import "FLObjcCodeGeneratorHeaders.h"
-#import "FLStringUtils.h"
+#import "NSString+FishLamp.h"
 
 @interface FLObjcProject ()
 @property (readwrite, strong, nonatomic) FLObjcFileManager* fileManager;

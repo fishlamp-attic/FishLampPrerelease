@@ -264,9 +264,9 @@
         }
     }
 
-    for(FLObjcType* import in imports) {
-        [codeBuilder appendImport:import.importFileName];
-        [fwdRefs removeObject:import];
+    for(FLObjcType* aImport in imports) {
+        [codeBuilder appendImport:aImport.importFileName];
+        [fwdRefs removeObject:aImport];
     }
 
     [codeBuilder appendBlankLine];
@@ -334,8 +334,8 @@
         }
     }
 
-    for(NSString* import in imports) {
-        [codeBuilder appendImport:import];
+    for(NSString* aImport in imports) {
+        [codeBuilder appendImport:aImport];
     }
 
     

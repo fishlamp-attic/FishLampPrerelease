@@ -1,5 +1,5 @@
 //
-//  FLStringUtils.m
+//  NSString+FishLamp.m
 //  Fishlamp
 //
 //  Created by Mike Fullerton on 6/20/12.

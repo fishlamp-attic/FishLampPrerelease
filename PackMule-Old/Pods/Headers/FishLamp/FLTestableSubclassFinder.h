@@ -1,0 +1,1 @@
+../../../../FishLampCocoa/Classes/Testables/Finding/FLTestableSubclassFinder.h

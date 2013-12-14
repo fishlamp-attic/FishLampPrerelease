@@ -6,7 +6,8 @@
 //	Copyright 2009 Greentongue Software. All rights reserved.
 //
 
-#import "FishLampMinimum.h"
+#import "FishLampCore.h"
+#import "FLBroadcaster.h"
 
 @class FLCodeProject;
 @protocol FLCodeGeneratorFile;

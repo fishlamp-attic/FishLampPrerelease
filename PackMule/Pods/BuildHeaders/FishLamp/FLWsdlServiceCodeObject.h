@@ -1,0 +1,1 @@
+../../../../FishLampCodeGenerator/Classes/Core/ProjectReaders/Wsdl/WsdlCodeObjects/FLWsdlServiceCodeObject.h
