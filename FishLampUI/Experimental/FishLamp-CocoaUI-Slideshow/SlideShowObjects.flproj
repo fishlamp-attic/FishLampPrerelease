@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema projectName="FishLamp Mobile">
+    <organization name="GreenTongue Software, LLC"/>
+    <generatorOptions>
+        <typePrefix>FL</typePrefix>
+    </generatorOptions>
+    <typeDefinitions>
+        <!-- <typeDefinition typeName="FLDatabaseObject" dataType="object" import="FLDatabaseObject.h"/> -->
+    </typeDefinitions>
+    <objects>
+        <class name="FLSlideshowOptions" superclass="FLModelObject">
+            <properties>
+                <property type="float" name="speed"/>
+                <property type="BOOL" name="repeat"/>
+                <property type="BOOL" name="autoStart"/>
+                <property type="BOOL" name="autoShowCaptions"/>
+                <property type="BOOL" name="random"/>
+                <property type="BOOL" name="playMusic"/>
+                <property type="NSArray" name="mediaItemList"/>
+            </properties>
+        </class>
+    </objects>
+</schema>
