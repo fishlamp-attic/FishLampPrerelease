@@ -23,7 +23,7 @@ Pod::Spec.new do |fishlamp|
 
 # these are the core pods
 
-  	fishlamp.subspec 'FishLampCocoa' do |cocoa|
+  	fishlamp.subspec 'Cocoa' do |cocoa|
 
         cocoa.subspec 'Core' do |core|
             core.source_files = 'FishLampCocoa/Classes/FishLampCore.h'
@@ -178,13 +178,12 @@ Pod::Spec.new do |fishlamp|
             end
 
             feature.subspec 'Storage' do |ss|
+                ss.dependency 'FishLamp/Cocoa/Core'
                 ss.source_files = 'FishLampCocoa/Classes/Storage/**/*.{h,m}'
                 ss.library = 'sqlite3'
-                ss.dependency 'FishLamp/Cocoa/Core'
             end
 
             feature.subspec 'Networking' do |networking|
-                networking.source_files = 'FishLampCocoa/Classes/Networking/**/*.{h,m}'
 
                 networking.dependency 'FishLamp/Cocoa/Core'
                 
@@ -201,11 +200,14 @@ Pod::Spec.new do |fishlamp|
 
                 networking.ios.frameworks = 'CFNetwork'
                 networking.osx.frameworks = 'CFNetwork'
+
+                networking.source_files = 'FishLampCocoa/Classes/Networking/**/*.{h,m}'
             end
         end
     end
     
-  	fishlamp.subspec 'FishLampUI' do |ui|
+  	fishlamp.subspec 'UI' do |ui|
+        ui.dependency 'FishLamp/Cocoa/Core'
 
 		ui.subspec 'Animate' do |ss|
 			ss.source_files = 'FishLampUI/Classes/Animate/**/*.{h,m}'
@@ -220,7 +222,10 @@ Pod::Spec.new do |fishlamp|
 		end
 	end
     
-  	fishlamp.subspec 'FishLampOSX' do |osx|
+  	fishlamp.subspec 'OSX' do |osx|
+        osx.dependency 'FishLamp/Cocoa/Core'
+        osx.dependency 'FishLamp/UI'
+
 	    osx.osx.frameworks = 'FishLampCocoa'
 		osx.osx.resources = ['FishLampOSX/Resources/Images/*.png', 'Resources/xib/*']
     

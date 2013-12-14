@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 #import "FLLoginPanel.h"
-#import "NSObject+Blocks.h"
+#import "NSObject+FLBlocks.h"
 #import "FLKeychain.h"
 #import "FLProgressPanel.h"
 #import "NSViewController+FLErrorSheet.h"

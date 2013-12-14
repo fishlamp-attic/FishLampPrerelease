@@ -10,7 +10,7 @@
 #import <AppKit/AppKit.h>
 #import <CoreServices/CoreServices.h>
 
-#import "FishLampMinimum.h"
+#import "FishLampCore.h"
 #import "FLCompatibility.h"
 #import "FLGeometry.h"
 

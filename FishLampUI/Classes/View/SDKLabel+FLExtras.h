@@ -8,7 +8,7 @@
 //
 #if DEPRECATED
 
-#import "FishLampMinimum.h"
+#import "FishLampCore.h"
 #import "FLCompatibility.h"
 #import "SDKView+FLViewGeometry.h"
 

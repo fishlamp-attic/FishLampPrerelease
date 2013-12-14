@@ -8,7 +8,7 @@
 //
 
 #import "FLCommandLineTool.h"
-#import "FLStringUtils.h"
+#import "NSString+FishLamp.h"
 #import "NSString+Lists.h"
 #import "NSBundle+FLAdditions.h"
 #import "FishLampAsync.h"
