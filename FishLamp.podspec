@@ -205,6 +205,19 @@ Pod::Spec.new do |fishlamp|
             end
         end
     end
+
+  	fishlamp.subspec 'CodeGenerator' do |code_generator|
+        code_generator.dependency 'FishLamp/Cocoa/Core'
+		code_generator.source_files = 'FishLampCodeGenerator/Classes/**/*.{h,m}'
+
+		code_generator.subspec 'Core' do |ss|
+			ss.source_files = 'FishLampCodeGenerator/Core/**/*.{h,m}'
+		end
+
+		code_generator.subspec 'Objc' do |ss|
+			ss.source_files = 'FishLampCodeGenerator/Objc/**/*.{h,m}'
+		end
+    end
     
   	fishlamp.subspec 'UI' do |ui|
         ui.dependency 'FishLamp/Cocoa/Core'
@@ -221,6 +234,7 @@ Pod::Spec.new do |fishlamp|
 			ss.source_files = 'FishLampUI/Classes/View/**/*.{h,m}'
 		end
 	end
+    
     
   	fishlamp.subspec 'OSX' do |osx|
         osx.dependency 'FishLamp/Cocoa/Core'
