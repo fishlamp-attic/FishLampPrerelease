@@ -1,1 +1,0 @@
-../../../../FishLampCocoa/Classes/Encoding/XmlEncoding/FLXmlStringEncoding.h

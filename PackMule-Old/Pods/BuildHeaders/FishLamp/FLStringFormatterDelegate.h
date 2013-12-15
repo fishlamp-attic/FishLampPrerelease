@@ -1,1 +1,0 @@
-../../../../FishLampCocoa/Classes/Strings/FLStringFormatterDelegate.h
