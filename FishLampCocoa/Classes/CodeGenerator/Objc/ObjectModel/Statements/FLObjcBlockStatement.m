@@ -7,6 +7,7 @@
 //
 
 #import "FLObjcBlockStatement.h"
+#import "FLObjcCodeBuilder.h"
 
 @implementation FLObjcBlockStatement
 

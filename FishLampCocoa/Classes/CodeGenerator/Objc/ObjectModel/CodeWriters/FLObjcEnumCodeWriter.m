@@ -81,7 +81,7 @@
     
         [_defines setObject:aEnum.name forKey:name.generatedName];
     
-        NSString* value = nil;
+        int value = nil;
         if(aEnum.value != 0) {
             value = aEnum.value;
         }
@@ -129,7 +129,7 @@
     [codeBuilder appendLine:@"typedef enum {"];
     [codeBuilder indent:^{
         for(FLObjcEnumValueType* value in _enumValues) {
-            [codeBuilder appendLineWithFormat:@"%@ = %ld,", value.generatedName, value.enumValue];
+            [codeBuilder appendLineWithFormat:@"%@ = %ld,", value.generatedName, (unsigned long) value.enumValue];
          
         } 
     }];

@@ -7,6 +7,7 @@
 //
 
 #import "FLObjcCustomProperty.h"
+#import "FLObjcMethod.h"
 
 @implementation FLObjcCustomProperty
 

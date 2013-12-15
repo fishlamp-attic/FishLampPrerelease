@@ -50,7 +50,7 @@
         return [[obj1 fileName] compare:[obj2 fileName]];
     }];
 
-    [codeBuilder appendComment:[NSString stringWithFormat:@"Imported Count: %ld", copy.count]];
+    [codeBuilder appendComment:[NSString stringWithFormat:@"Imported Count: %ld", (long) copy.count]];
 
     for(FLObjcFile* file in copy) {
         [codeBuilder appendImport:file.fileName];
