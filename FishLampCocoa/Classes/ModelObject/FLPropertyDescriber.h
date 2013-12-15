@@ -9,7 +9,6 @@
 
 #import "FLPropertyAttributes.h"
 #import "FLStringToObjectConverting.h"
-#import "FLDatabase.h"
 
 @class FLObjectDescriber;
 
@@ -71,9 +70,11 @@
 - (BOOL) representsIvar;
 @end
 
+#if MOVE_TO_STORAGE
 @interface FLPropertyDescriber (Database)
 - (FLDatabaseType) databaseColumnType;          
 @end
+#endif
 
 
 @interface FLPropertyDescriber (Deprecated)

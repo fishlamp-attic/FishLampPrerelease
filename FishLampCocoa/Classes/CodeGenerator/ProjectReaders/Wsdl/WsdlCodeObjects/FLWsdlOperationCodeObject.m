@@ -17,7 +17,7 @@
 #import "FLWsdlCodeProjectReader.h"
 #import "FLWsdlBinding.h"
 #import "FLWsdlDefinitions.h"
-#import "FLHttpRequest.h"
+//#import "FLHttpRequest.h"
 #import "FLWsdlMessageCodeObject.h"
 #import "FLCodeProperty.h"
 #import "FLXmlParser.h"

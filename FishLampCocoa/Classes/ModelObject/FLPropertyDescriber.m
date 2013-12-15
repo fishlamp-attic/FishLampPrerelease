@@ -295,6 +295,7 @@ LazySelectorGetter(selector, _selector, FLPropertyAttributesGetSelector)
 }
 #endif
 
+#if MOVE_TO_STORAGE
 - (FLDatabaseType) databaseColumnType {
 
     if(_attributes.is_object) {
@@ -307,6 +308,7 @@ LazySelectorGetter(selector, _selector, FLPropertyAttributesGetSelector)
         return FLDatabaseTypeObject; // it'll be boxes, like in a NSValue.
     }
 }
+#endif
 
 - (NSString*) stringEncodingKeyForRepresentedData {
     return nil;
