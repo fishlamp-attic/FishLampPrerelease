@@ -1,1 +1,0 @@
-PODS_FISHLAMP_OTHER_LDFLAGS = -lsqlite3 -framework ApplicationServices -framework CFNetwork -framework CoreFoundation -framework CoreServices -framework Foundation -framework Quartz -framework QuartzCore -framework Security -framework SystemConfiguration

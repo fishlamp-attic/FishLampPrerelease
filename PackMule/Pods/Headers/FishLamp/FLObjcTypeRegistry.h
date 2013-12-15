@@ -1,1 +1,0 @@
-../../../../FishLampCodeGenerator/Classes/Objc/Utils/FLObjcTypeRegistry.h

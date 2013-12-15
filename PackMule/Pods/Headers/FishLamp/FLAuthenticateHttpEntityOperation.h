@@ -1,1 +1,0 @@
-../../../../FishLampCocoa/Classes/Networking/Http/Authentication/FLAuthenticateHttpEntityOperation.h
