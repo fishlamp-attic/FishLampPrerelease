@@ -2728,11 +2728,6 @@
 		2799331E185E6805000388BD /* NSDate+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 27992813185E6804000388BD /* NSDate+FLAdditions.m */; };
 		2799331F185E6805000388BD /* NSDate+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 27992813185E6804000388BD /* NSDate+FLAdditions.m */; };
 		27993320185E6805000388BD /* NSDate+FLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 27992813185E6804000388BD /* NSDate+FLAdditions.m */; };
-		27993321185E6805000388BD /* NSFileManager+FishLamp.h in Headers */ = {isa = PBXBuildFile; fileRef = 27992814185E6804000388BD /* NSFileManager+FishLamp.h */; };
-		27993322185E6805000388BD /* NSFileManager+FishLamp.h in Headers */ = {isa = PBXBuildFile; fileRef = 27992814185E6804000388BD /* NSFileManager+FishLamp.h */; };
-		27993323185E6805000388BD /* NSFileManager+FishLamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 27992815185E6804000388BD /* NSFileManager+FishLamp.m */; };
-		27993324185E6805000388BD /* NSFileManager+FishLamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 27992815185E6804000388BD /* NSFileManager+FishLamp.m */; };
-		27993325185E6805000388BD /* NSFileManager+FishLamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 27992815185E6804000388BD /* NSFileManager+FishLamp.m */; };
 		27993326185E6805000388BD /* NSString+GUID.h in Headers */ = {isa = PBXBuildFile; fileRef = 27992816185E6804000388BD /* NSString+GUID.h */; };
 		27993327185E6805000388BD /* NSString+GUID.h in Headers */ = {isa = PBXBuildFile; fileRef = 27992816185E6804000388BD /* NSString+GUID.h */; };
 		27993328185E6805000388BD /* NSString+GUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 27992817185E6804000388BD /* NSString+GUID.m */; };
@@ -3008,6 +3003,16 @@
 		279934B7185E9251000388BD /* FLVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 27993463185E9251000388BD /* FLVersion.m */; };
 		279934B8185E9251000388BD /* FLVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 27993463185E9251000388BD /* FLVersion.m */; };
 		279934B9185E9251000388BD /* FLVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 27993463185E9251000388BD /* FLVersion.m */; };
+		279934BD185E9525000388BD /* NSFileManager+FishLamp.h in Headers */ = {isa = PBXBuildFile; fileRef = 279934BB185E9525000388BD /* NSFileManager+FishLamp.h */; };
+		279934BE185E9525000388BD /* NSFileManager+FishLamp.h in Headers */ = {isa = PBXBuildFile; fileRef = 279934BB185E9525000388BD /* NSFileManager+FishLamp.h */; };
+		279934BF185E9525000388BD /* NSFileManager+FishLamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 279934BC185E9525000388BD /* NSFileManager+FishLamp.m */; };
+		279934C0185E9525000388BD /* NSFileManager+FishLamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 279934BC185E9525000388BD /* NSFileManager+FishLamp.m */; };
+		279934C1185E9525000388BD /* NSFileManager+FishLamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 279934BC185E9525000388BD /* NSFileManager+FishLamp.m */; };
+		279934C4185E95A7000388BD /* NSString+GUID.h in Headers */ = {isa = PBXBuildFile; fileRef = 279934C2185E95A7000388BD /* NSString+GUID.h */; };
+		279934C5185E95A7000388BD /* NSString+GUID.h in Headers */ = {isa = PBXBuildFile; fileRef = 279934C2185E95A7000388BD /* NSString+GUID.h */; };
+		279934C6185E95A7000388BD /* NSString+GUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 279934C3185E95A7000388BD /* NSString+GUID.m */; };
+		279934C7185E95A7000388BD /* NSString+GUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 279934C3185E95A7000388BD /* NSString+GUID.m */; };
+		279934C8185E95A7000388BD /* NSString+GUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 279934C3185E95A7000388BD /* NSString+GUID.m */; };
 		27FD30841857851800579CFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FD30831857851800579CFF /* Foundation.framework */; };
 		27FD30891857851800579CFF /* FishLampCocoa_iOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27FD30881857851800579CFF /* FishLampCocoa_iOS.h */; };
 		27FD308B1857851800579CFF /* FishLampCocoa_iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FD308A1857851800579CFF /* FishLampCocoa_iOS.m */; };
@@ -4213,8 +4218,6 @@
 		2799280F185E6804000388BD /* FLTwoObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTwoObjects.m; sourceTree = "<group>"; };
 		27992812185E6804000388BD /* NSDate+FLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FLAdditions.h"; sourceTree = "<group>"; };
 		27992813185E6804000388BD /* NSDate+FLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FLAdditions.m"; sourceTree = "<group>"; };
-		27992814185E6804000388BD /* NSFileManager+FishLamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+FishLamp.h"; sourceTree = "<group>"; };
-		27992815185E6804000388BD /* NSFileManager+FishLamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+FishLamp.m"; sourceTree = "<group>"; };
 		27992816185E6804000388BD /* NSString+GUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GUID.h"; sourceTree = "<group>"; };
 		27992817185E6804000388BD /* NSString+GUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GUID.m"; sourceTree = "<group>"; };
 		27992819185E6804000388BD /* FLWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLWidget.h; sourceTree = "<group>"; };
@@ -4329,6 +4332,10 @@
 		27993461185E9251000388BD /* FLSelectorPerforming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSelectorPerforming.m; sourceTree = "<group>"; };
 		27993462185E9251000388BD /* FLVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLVersion.h; sourceTree = "<group>"; };
 		27993463185E9251000388BD /* FLVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLVersion.m; sourceTree = "<group>"; };
+		279934BB185E9525000388BD /* NSFileManager+FishLamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+FishLamp.h"; sourceTree = "<group>"; };
+		279934BC185E9525000388BD /* NSFileManager+FishLamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+FishLamp.m"; sourceTree = "<group>"; };
+		279934C2185E95A7000388BD /* NSString+GUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GUID.h"; sourceTree = "<group>"; };
+		279934C3185E95A7000388BD /* NSString+GUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GUID.m"; sourceTree = "<group>"; };
 		27FD30801857851800579CFF /* libFishLamp-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFishLamp-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27FD30831857851800579CFF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27FD30871857851800579CFF /* FishLamp-iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FishLamp-iOS-Prefix.pch"; sourceTree = "<group>"; };
@@ -5805,6 +5812,8 @@
 		2799264A185E6803000388BD /* Files */ = {
 			isa = PBXGroup;
 			children = (
+				279934BB185E9525000388BD /* NSFileManager+FishLamp.h */,
+				279934BC185E9525000388BD /* NSFileManager+FishLamp.m */,
 				2799264B185E6803000388BD /* FLAbstractFile.h */,
 				2799264C185E6803000388BD /* FLAbstractFile.m */,
 				2799264D185E6803000388BD /* FLFolder.h */,
@@ -6420,8 +6429,6 @@
 				2799280F185E6804000388BD /* FLTwoObjects.m */,
 				27992812185E6804000388BD /* NSDate+FLAdditions.h */,
 				27992813185E6804000388BD /* NSDate+FLAdditions.m */,
-				27992814185E6804000388BD /* NSFileManager+FishLamp.h */,
-				27992815185E6804000388BD /* NSFileManager+FishLamp.m */,
 				27992816185E6804000388BD /* NSString+GUID.h */,
 				27992817185E6804000388BD /* NSString+GUID.m */,
 			);
@@ -6545,6 +6552,8 @@
 		27993381185E9234000388BD /* Strings */ = {
 			isa = PBXGroup;
 			children = (
+				279934C2185E95A7000388BD /* NSString+GUID.h */,
+				279934C3185E95A7000388BD /* NSString+GUID.m */,
 				27993382185E9234000388BD /* FishLampStrings.h */,
 				27993383185E9234000388BD /* FLCStringFragment.h */,
 				27993384185E9234000388BD /* FLCStringFragment.m */,
@@ -6884,6 +6893,7 @@
 				2799292F185E6804000388BD /* FLCCodeBuilder.h in Headers */,
 				277EDEF6185E614200B55388 /* FLWizardButtonViewController.h in Headers */,
 				277EDE9A185E614200B55388 /* FLFileDropTableViewController.h in Headers */,
+				279934C4185E95A7000388BD /* NSString+GUID.h in Headers */,
 				27993421185E9234000388BD /* FLWhitespace.h in Headers */,
 				27993326185E6805000388BD /* NSString+GUID.h in Headers */,
 				277EDE86185E614200B55388 /* FLBreadcrumbBarView.h in Headers */,
@@ -6962,7 +6972,6 @@
 				27992EED185E6804000388BD /* FLXmlParser.h in Headers */,
 				27992BC4185E6804000388BD /* FLCodeObjectSelfReference.h in Headers */,
 				27992A8C185E6804000388BD /* FLObjcProtocolType.h in Headers */,
-				27993321185E6805000388BD /* NSFileManager+FishLamp.h in Headers */,
 				27992957185E6804000388BD /* FLCodeGeneratorProjectProvider.h in Headers */,
 				279930C6185E6805000388BD /* FLStreamWorker.h in Headers */,
 				2799299F185E6804000388BD /* FLObjcFileHeader.h in Headers */,
@@ -7101,6 +7110,7 @@
 				27992ECF185E6804000388BD /* FLObjectDescriber+FLXmlObjectBuilder.h in Headers */,
 				277EDE8E185E614200B55388 /* FLBreadcrumbBarViewOld.h in Headers */,
 				27992884185E6804000388BD /* FLFinisher.h in Headers */,
+				279934BD185E9525000388BD /* NSFileManager+FishLamp.h in Headers */,
 				279932A0185E6805000388BD /* FLTestGroup.h in Headers */,
 				27992B06185E6804000388BD /* FLCodeCodeSnippetBaseClass.h in Headers */,
 				27992DF4185E6804000388BD /* FLLinkedListObjectContainer.h in Headers */,
@@ -7535,6 +7545,7 @@
 				27992930185E6804000388BD /* FLCCodeBuilder.h in Headers */,
 				277EDEF7185E614200B55388 /* FLWizardButtonViewController.h in Headers */,
 				277EDE9B185E614200B55388 /* FLFileDropTableViewController.h in Headers */,
+				279934C5185E95A7000388BD /* NSString+GUID.h in Headers */,
 				27993422185E9234000388BD /* FLWhitespace.h in Headers */,
 				27993327185E6805000388BD /* NSString+GUID.h in Headers */,
 				277EDE87185E614200B55388 /* FLBreadcrumbBarView.h in Headers */,
@@ -7613,7 +7624,6 @@
 				27992EEE185E6804000388BD /* FLXmlParser.h in Headers */,
 				27992BC5185E6804000388BD /* FLCodeObjectSelfReference.h in Headers */,
 				27992A8D185E6804000388BD /* FLObjcProtocolType.h in Headers */,
-				27993322185E6805000388BD /* NSFileManager+FishLamp.h in Headers */,
 				27992958185E6804000388BD /* FLCodeGeneratorProjectProvider.h in Headers */,
 				279930C7185E6805000388BD /* FLStreamWorker.h in Headers */,
 				279929A0185E6804000388BD /* FLObjcFileHeader.h in Headers */,
@@ -7752,6 +7762,7 @@
 				27992ED0185E6804000388BD /* FLObjectDescriber+FLXmlObjectBuilder.h in Headers */,
 				277EDE8F185E614200B55388 /* FLBreadcrumbBarViewOld.h in Headers */,
 				27992885185E6804000388BD /* FLFinisher.h in Headers */,
+				279934BE185E9525000388BD /* NSFileManager+FishLamp.h in Headers */,
 				279932A1185E6805000388BD /* FLTestGroup.h in Headers */,
 				27992B07185E6804000388BD /* FLCodeCodeSnippetBaseClass.h in Headers */,
 				27992DF5185E6804000388BD /* FLLinkedListObjectContainer.h in Headers */,
@@ -8471,7 +8482,6 @@
 				27992E70185E6804000388BD /* Base64Transcoder.c in Sources */,
 				27992922185E6804000388BD /* NSBundle+FLCurrentBundle.m in Sources */,
 				27992F43185E6804000388BD /* FLAbstractFile.m in Sources */,
-				27993323185E6805000388BD /* NSFileManager+FishLamp.m in Sources */,
 				27992A75185E6804000388BD /* FLObjcImmutableObjectType.m in Sources */,
 				27992EB8185E6804000388BD /* FLUrlParameterParser.m in Sources */,
 				27992D50185E6804000388BD /* SDKColor+FLUtils.m in Sources */,
@@ -8613,6 +8623,7 @@
 				27993328185E6805000388BD /* NSString+GUID.m in Sources */,
 				27992CED185E6804000388BD /* FLWsdlMessageBody.m in Sources */,
 				279932CA185E6805000388BD /* FLOrderedRunList.m in Sources */,
+				279934C6185E95A7000388BD /* NSString+GUID.m in Sources */,
 				27992B21185E6804000388BD /* FLCodeConstructor.m in Sources */,
 				27993076185E6805000388BD /* FLOAuthSession.m in Sources */,
 				27992B58185E6804000388BD /* FLCodeEnumBaseClass.m in Sources */,
@@ -8679,6 +8690,7 @@
 				27992B71185E6804000388BD /* FLCodeGetPropertyValue.m in Sources */,
 				27992D5A185E6804000388BD /* FLCommandLineArgument.m in Sources */,
 				27992B8A185E6804000388BD /* FLCodeKeyValuePair.m in Sources */,
+				279934BF185E9525000388BD /* NSFileManager+FishLamp.m in Sources */,
 				27992C43185E6804000388BD /* FLCodeVariable.m in Sources */,
 				279932AC185E6805000388BD /* NSError+FLTestable.m in Sources */,
 				27992C98185E6804000388BD /* FLWsdlPortTypeCodeObject.m in Sources */,
@@ -9081,7 +9093,7 @@
 				27993424185E9234000388BD /* FLWhitespace.m in Sources */,
 				27992AE6185E6804000388BD /* FLCodeArray.m in Sources */,
 				27992E1C185E6804000388BD /* FLDatabaseIndex.m in Sources */,
-				27993324185E6805000388BD /* NSFileManager+FishLamp.m in Sources */,
+				279934C0185E9525000388BD /* NSFileManager+FishLamp.m in Sources */,
 				27992D60185E6804000388BD /* FLCommandLineParser.m in Sources */,
 				277EDE5E185E614200B55388 /* FLShellCommand.m in Sources */,
 				27992EDC185E6804000388BD /* FLXmlObjectBuilder.m in Sources */,
@@ -9381,6 +9393,7 @@
 				27992FB1185E6805000388BD /* FLObjectDescriber.m in Sources */,
 				2799302B185E6805000388BD /* FLHttpRequestByteCount.m in Sources */,
 				279934A7185E9251000388BD /* FLBitFlags.m in Sources */,
+				279934C7185E95A7000388BD /* NSString+GUID.m in Sources */,
 				27992F09185E6804000388BD /* FLXmlStringBuilder.m in Sources */,
 				27992DAC185E6804000388BD /* NSTextField+FLCompatibility.m in Sources */,
 				279930F6185E6805000388BD /* NSError+FLNetworking.m in Sources */,
@@ -9682,7 +9695,7 @@
 				27993425185E9234000388BD /* FLWhitespace.m in Sources */,
 				27992AE7185E6804000388BD /* FLCodeArray.m in Sources */,
 				27992E1D185E6804000388BD /* FLDatabaseIndex.m in Sources */,
-				27993325185E6805000388BD /* NSFileManager+FishLamp.m in Sources */,
+				279934C1185E9525000388BD /* NSFileManager+FishLamp.m in Sources */,
 				27992D61185E6804000388BD /* FLCommandLineParser.m in Sources */,
 				277EDE5F185E614200B55388 /* FLShellCommand.m in Sources */,
 				27992EDD185E6804000388BD /* FLXmlObjectBuilder.m in Sources */,
@@ -9982,6 +9995,7 @@
 				27992FB2185E6805000388BD /* FLObjectDescriber.m in Sources */,
 				2799302C185E6805000388BD /* FLHttpRequestByteCount.m in Sources */,
 				279934A8185E9251000388BD /* FLBitFlags.m in Sources */,
+				279934C8185E95A7000388BD /* NSString+GUID.m in Sources */,
 				27992F0A185E6804000388BD /* FLXmlStringBuilder.m in Sources */,
 				27992DAD185E6804000388BD /* NSTextField+FLCompatibility.m in Sources */,
 				279930F7185E6805000388BD /* NSError+FLNetworking.m in Sources */,
