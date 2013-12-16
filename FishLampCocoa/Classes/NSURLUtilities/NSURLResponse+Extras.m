@@ -33,7 +33,7 @@
 	return nil;
 }
 
-- (void) logToStringBuilder:(FLPrettyString*) prettyString {
+- (void) prettyDescription:(id<FLStringFormatter>) stringFormatter {
 
 	NSDictionary* headers = [self allHeaderFields];
 	
@@ -49,5 +49,7 @@
         }
     }];
 }
+
+
 
 @end

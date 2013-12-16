@@ -13,9 +13,7 @@
 #import "FLObjcRuntime.h"
 #import "FLPropertyAttributes.h"
 #import "FLObjectDescriber.h"
-#import "FLObjectDescriber.h"
 #import "FLModelObject.h"
-#import "FLObjectDescriber.h"
 
 @interface FLDatabaseTable ()
 @property (readwrite, strong, nonatomic) NSSet* primaryKeyColumns;

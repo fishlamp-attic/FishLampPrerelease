@@ -8,6 +8,7 @@
 //
 
 #import "FishLampCore.h"
+#import "NSError+FLNetworking.h"
 
 extern NSString* const FLNetworkErrorDomain;
 

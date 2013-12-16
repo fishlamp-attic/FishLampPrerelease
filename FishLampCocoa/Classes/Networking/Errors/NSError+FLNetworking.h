@@ -12,4 +12,7 @@
 @interface NSError (FLNetworking)
 @property (readonly, nonatomic) BOOL didLoseNetwork;
 @property (readonly, nonatomic) BOOL isNotConnectedToInternetError;
+
+- (NSString*) localizedDescriptionForSDKErrorCode;
+
 @end

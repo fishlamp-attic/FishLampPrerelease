@@ -8,8 +8,6 @@
 //
 #import "FishLampCore.h"
 
-#import "FishLampCore.h"
-
 @interface FLHttpMessage : NSObject<NSCopying> {
 @private
     CFHTTPMessageRef _message;

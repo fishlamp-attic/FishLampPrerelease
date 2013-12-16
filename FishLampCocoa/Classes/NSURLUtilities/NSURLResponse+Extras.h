@@ -12,4 +12,7 @@
 
 @interface NSHTTPURLResponse (Extras)
 - (NSError*) simpleHttpResponseErrorCheck;
+
+- (void) prettyDescription:(id<FLStringFormatter>) stringFormatter;
+
 @end

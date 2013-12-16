@@ -1,12 +1,12 @@
 //
-//  NSObject+FLPrettyDescribe.m
+//  FLPrettyDescription.m
 //  FishLampCore
 //
 //  Created by Mike Fullerton on 11/11/13.
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "NSObject+FLPrettyDescribe.h"
+#import "FLPrettyDescription.h"
 #import "FLPrettyString.h"
 
 @implementation NSObject (FLPrettyString)

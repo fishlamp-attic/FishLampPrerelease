@@ -1,5 +1,5 @@
 //
-//  NSObject+FLPrettyDescribe.h
+//  FLPrettyDescription.h
 //  FishLampCore
 //
 //  Created by Mike Fullerton on 11/11/13.
@@ -9,8 +9,17 @@
 #import "FishLampObjc.h"
 #import "FLStringFormatter.h"
 
-@protocol FLDescribable <NSObject>
+@protocol FLPrettyDescription <NSObject>
 - (void) prettyDescription:(id<FLStringFormatter>) stringFormatter;
+
+@optional
+/*!
+ *  This creates a pretty string and then calls [self prettyDescribe:]
+ *  
+ *  @return the formatted string
+ */
+- (NSString*) prettyDescription;
+
 @end
 
 @interface NSObject (FLPrettyDescribe)

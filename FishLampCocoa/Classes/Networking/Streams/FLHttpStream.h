@@ -9,7 +9,6 @@
 
 #import "FLReadStream.h"
 #import "FLHttpMessage.h"
-#import "FLStreamWorker.h"
 
 @interface FLHttpStream : FLReadStream {
 @private
