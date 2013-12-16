@@ -55,17 +55,18 @@ Pod::Spec.new do |fishlamp|
             ss.source_files = 'FishLampCocoa/Classes/SimpleLogger/**/*.{h,m}'
         end
 
-        core.subspec 'Utils' do |ss|
+    end
+    
+
+    fishlamp.subspec 'Cocoa' do |cocoa|
+
+        cocoa.subspec 'Utils' do |ss|
             ss.dependency 'FishLamp/Core/Required'
             ss.dependency 'FishLamp/Core/Strings'
             ss.dependency 'FishLamp/Core/Errors'
             ss.dependency 'FishLamp/Core/Assertions'
             ss.source_files = 'FishLampCocoa/Classes/Utils/**/*.{h,m}'
         end
-    end
-    
-
-    fishlamp.subspec 'Cocoa' do |cocoa|
 
         cocoa.subspec 'Proxies' do |ss|
             ss.dependency 'FishLamp/Core'
