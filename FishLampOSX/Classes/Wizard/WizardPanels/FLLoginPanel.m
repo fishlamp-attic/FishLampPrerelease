@@ -12,6 +12,7 @@
 #import "FLProgressPanel.h"
 #import "NSViewController+FLErrorSheet.h"
 #import "NSBundle+FLCurrentBundle.h"
+#import "FLAuthenticationHandler.h"
 
 @interface FLLoginPanel ()
 - (void) updateNextButton;
@@ -23,7 +24,7 @@
 
 @implementation FLLoginPanel
 
-@synthesize authenticationProvider = _authenticationProvider;
+@synthesize authenticationHandler = _authenticationHandler;
 
 - (id) init {
     return [self initWithNibName:@"FLLoginPanel" bundle:[FLBundleStack currentBundle]];
@@ -47,8 +48,9 @@
 
 - (void) dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
+
 #if FL_MRC
+    [_authenticationHandler release];
     [super dealloc];
 #endif
 }
@@ -94,20 +96,16 @@
     self.canOpenNextPanel = _loginButton.isEnabled;
 }
 
-- (void) updateCredentials {
-    FLAuthenticationCredentials* creds = [FLAuthenticationCredentials authenticationCredentials:self.userName password:self.password];
-    [self.authenticationProvider loginPanel:self setCredentials:creds];
+- (FLAuthenticationCredentials*) currentCredentials {
+    return [FLAuthenticationCredentials authenticationCredentials:self.userName password:self.password];
 }
 
-#if OSX
+- (void) updateCredentials {
+    [self.authenticationHandler setAuthenticationCredentials:[self currentCredentials]];
+}
 
 - (void)controlTextDidChange:(NSNotification *)note {
-//    [self updateCredentials];
     [self updateNextButton];
-
-//    if(self.view.window.initial               [self.view.window setInitialFirstResponder:_passwordEntryField];
-
-
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *) note {
@@ -127,8 +125,6 @@
         }
     }
 }
-
-#endif
 
 - (void) setNextResponderIfNeeded {
 
@@ -177,7 +173,7 @@
 }
 
 - (void) progressPanelWasCancelled:(FLProgressPanel*) panel {
-    [self.authenticationProvider loginPanelDidCancelAuthentication:self];
+    [self.authenticationHandler cancelAuthentication];
     [self showEntryFields:YES completion:nil];
 }
 
@@ -185,8 +181,7 @@
 
     [self updateCredentials];
 
-    [self.authenticationProvider  loginPanel:self
-           beginAuthenticatingWithCompletion:^(FLPromisedResult result) {
+    [self.authenticationHandler beginAuthenticating:^(FLPromisedResult result) {
 
         dispatch_async(dispatch_get_main_queue(), ^{
             if([result isError]) {
@@ -232,13 +227,13 @@
 }
 
 - (void) loadCredentials {
-    id<FLAuthenticationCredentials> credentials = [self.authenticationProvider  loginPanelGetCredentials:self];
+    id<FLAuthenticationCredentials> credentials = [self.authenticationHandler authenticationCredentials];
     [self setUserName:credentials.userName];
     [self setPassword:credentials.password];
 }
 
 - (IBAction) passwordCheckboxToggled:(id) sender {
-    [self.authenticationProvider loginPanel:self setSavePassword:self.savePasswordInKeychain];
+    [self.authenticationHandler setShouldSavePassword:self.savePasswordInKeychain];
 }
 
 //- (void) applicationWillTerminate:(id)sender {
@@ -278,7 +273,7 @@
     _passwordEntryField.delegate = self;
     _userNameTextField.delegate = self;
 
-    [self setSavePasswordInKeychain:[self.authenticationProvider loginPanelGetSavePassword:self]];
+    [self setSavePasswordInKeychain:[self.authenticationHandler shouldSavePassword]];
     [self loadCredentials];
     [self updateNextButton];
 }

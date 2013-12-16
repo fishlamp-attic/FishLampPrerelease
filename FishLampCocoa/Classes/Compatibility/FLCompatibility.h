@@ -11,6 +11,16 @@
 
 #if OSX
 
+#import <Cocoa/Cocoa.h>
+
+#if __MAC_10_8
+#import <CoreGraphics/CoreGraphics.h>
+#endif
+
+#import <AppKit/AppKit.h>
+
+
+
 #define SDKColor             NSColor
 #define SDKControl           NSControl
 #define SDKEvent             NSEvent
@@ -29,32 +39,56 @@
 
 #define SDKApplication       NSApplication
 
-#import "FLCompatibility+OSX.h"
+#define CGGetCurrentContext() [[NSGraphicsContext currentContext] graphicsPort]
 
 
 #endif
 
 #if IOS
 
+#import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <CoreText/CoreText.h>
+
+#define NSLinkAttributeName @"NSLinkAttributeName"
+
 #define SDKColor            UIColor
 #define SDKControl          UIControl
 #define SDKEvent            UIEvent
 #define SDKFont             UIFont
 #define SDKImage            SDKImage
-
 #define SDKView             UIView
 #define SDKViewController   UIViewController
-
 #define SDKButton           UIButton
-#define SDKImageView        SDKImageView
+#define SDKImageView        UIImageView
 #define SDKLabel            UITextField
 #define SDKTextField        UITextField
 #define SDKTextView         UITextView
-
 #define SDKApplication      UIApplication
 
-#import "FLCompatibility+iOS.h"
+#define CGGetCurrentContext UIGraphicsGetCurrentContext
 
+#define NSRectFromCGRect(RECT) RECT
+#define NSRectToCGRect(RECT) RECT
+
+#define NSPointFromCGPoint(POINT) POINT
+#define NSPointToCGPoint(POINT) POINT
+
+#define NSSizeFromCGSize(SIZE) SIZE
+#define NSSizeToCGSize(SIZE) SIZE
+
+@interface NSValue (Compatibility)
+
++ (NSValue *)valueWithPoint:(CGPoint)point;
++ (NSValue *)valueWithSize:(CGSize)size;
++ (NSValue *)valueWithRect:(CGRect)rect;
+
+- (CGPoint)pointValue;
+- (CGSize)sizeValue;
+- (CGRect)rectValue;
+
+@end
 
 #endif
 

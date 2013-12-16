@@ -7,8 +7,9 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FishLamp-OSX.h"
-#import "FLRotateAnimation.h"
+#import "FishLampOSX.h"
+
+@class FLAnimation;
 
 @interface FLAnimatedImageView : NSView {
 @private
@@ -30,9 +31,6 @@
 
 @property (readwrite, strong, nonatomic) SDKImage* image;
 - (void) setImageWithNameInBundle:(NSString*) name;
-
-// random!
-- (void) setRespondsToGlobalNetworkActivity:(BOOL) responds;
 
 - (void) didStartAnimating;
 - (void) didStopAnimating;

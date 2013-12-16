@@ -23,8 +23,8 @@
 - (id) init {
     self = [super init];
     if(self) {
-        self.textColor = [NSColor blackColor];
-        self.shadowColor = [NSColor whiteColor];
+        self.textColor = [SDKColor blackColor];
+        self.shadowColor = [SDKColor whiteColor];
     }
     return self;
 }
@@ -243,7 +243,7 @@
     [self setObject:[NSNumber numberWithBool:YES] forKey:NSUnderlineStyleAttributeName];
 }
 
-- (void) setAttributedStringColor:(NSColor*) color {
+- (void) setAttributedStringColor:(SDKColor*) color {
     [self setObject:color forKey:NSForegroundColorAttributeName];
 }
 

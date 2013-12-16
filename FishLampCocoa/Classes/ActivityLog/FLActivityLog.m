@@ -46,7 +46,7 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
 
 
         NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-            [NSColor gray15Color], NSForegroundColorAttributeName, 
+            [SDKColor gray15Color], NSForegroundColorAttributeName,
             self.activityLogTextFont, NSFontAttributeName, nil];
 
         NSMutableAttributedString* string = 
@@ -124,7 +124,7 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
             [attr setObject:self.activityLogTextFont forKey:NSFontAttributeName];
         }
         if(_textColor && [attr objectForKey:NSForegroundColorAttributeName] == nil) {
-            [attr setObject:[NSColor gray15Color] forKey:NSForegroundColorAttributeName];
+            [attr setObject:[SDKColor gray15Color] forKey:NSForegroundColorAttributeName];
         }
 
         theString = FLAutorelease([[NSAttributedString alloc] initWithString:string.string attributes:attr]);
@@ -157,7 +157,7 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
 
 - (void) appendErrorLine:(NSString*) errorLine {
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-        [NSColor redColor], NSForegroundColorAttributeName, 
+        [SDKColor redColor], NSForegroundColorAttributeName,
         self.activityLogTextFont, NSFontAttributeName, nil];
 
     NSMutableAttributedString* string = 
@@ -169,7 +169,7 @@ NSString* const FLActivityLogStringKey = @"FLActivityLogStringKey";
 
 - (void) appendBoldTitle:(NSString*) title {
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-        [NSColor gray15Color], NSForegroundColorAttributeName, 
+        [SDKColor gray15Color], NSForegroundColorAttributeName,
         self.activityLogTextFont, NSFontAttributeName, nil];
 
     NSMutableAttributedString* string = 

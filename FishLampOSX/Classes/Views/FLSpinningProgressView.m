@@ -8,9 +8,15 @@
 //
 
 #import "FLSpinningProgressView.h"
-#import "FLGlobalNetworkActivityIndicator.h"
 
-#define CUSTOMself 0
+//@interface FLSpinningProgressView : FLAnimatedImageView {
+//@private
+//    NSProgressIndicator* _spinner;
+//} 
+//
+//- (void) setRespondsToGlobalNetworkActivity;
+//
+//@end
 
 //@implementation FLSpinningProgressView
 //
@@ -67,17 +73,7 @@
 //
 //@end
 
-
-
 @implementation FLSpinningProgressView
-//
-//- (void) showNetworkProgress:(id) sender {
-//    [self startAnimation:self];
-//}
-//
-//- (void) hideNetworkProgress:(id) sender {
-//    [self stopAnimating];
-//}
 
 - (void) awakeFromNib {
     [super awakeFromNib];
@@ -104,19 +100,5 @@
     FLTrace(@"stop animation");
 }
 #endif
-
-- (void) setRespondsToGlobalNetworkActivity {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startAnimation:) name:FLGlobalNetworkActivityShow object:[FLGlobalNetworkActivityIndicator instance]];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopAnimation:) name:FLGlobalNetworkActivityHide object:[FLGlobalNetworkActivityIndicator instance]];
-
-}
-
-- (void) dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-
-#if FL_MRC
-	[super dealloc];
-#endif
-}
 
 @end

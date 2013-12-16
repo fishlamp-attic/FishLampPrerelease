@@ -12,7 +12,6 @@
 extern NSString* const FLNetworkErrorDomain;
 
 typedef enum {
-    FLNetworkErrorCodeSoapFault,
     FLNetworkErrorCodeNoRouteToHost = EHOSTUNREACH
 } FLNetworkErrorCode;
 

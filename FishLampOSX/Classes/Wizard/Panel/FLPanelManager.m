@@ -11,6 +11,7 @@
 #import "FLWizardStyleViewTransition.h"
 
 #import "FLCompatibility.h"
+#import "FLViewTransition.h"
 
 @interface FLPanelViewController()
 @property (readwrite, assign, nonatomic, getter=isSelected) BOOL selected;

@@ -14,6 +14,8 @@
 #import "FLWizardStyleViewTransition.h"
 #import "NSBundle+FLCurrentBundle.h"
 
+#import "FLNetworkActivity.h"
+
 @interface FLWizardViewController ()
 @end
 
@@ -39,16 +41,33 @@
     [super showPanelsInWindow:window];
 }
 
+
+- (void) networkActivityDidStart:(FLNetworkActivity*) networkActivity {
+    [_progressView startAnimation:self];
+}
+
+- (void) networkActivityDidStop:(FLNetworkActivity*) networkActivity {
+    [_progressView stopAnimation:self];
+}
+
 - (void) awakeFromNib {
     [super awakeFromNib];
 
     if(!self.buttonViewController.delegate) {
         self.buttonViewController.delegate = self;
 
-        [_progressView setRespondsToGlobalNetworkActivity];
+        [[FLGlobalNetworkActivity instance] addListener:self];
+
         [self addPanelArea:_headerViewController];
         [self addPanelArea:_buttonViewController];
     }
+}
+
+- (void)dealloc {
+	[[FLGlobalNetworkActivity instance] removeListener:self];
+#if FL_MRC
+	[super dealloc];
+#endif
 }
 
 - (void) removePanel:(FLPanelViewController*) panel {

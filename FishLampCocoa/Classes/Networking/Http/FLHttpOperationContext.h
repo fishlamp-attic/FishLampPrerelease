@@ -10,7 +10,7 @@
 #import "FLOperationContext.h"
 #import "FLHttpRequest.h"
 #import "FLAuthenticationCredentials.h"
-#import "FLCredentialsProvider.h"
+#import "FLAuthenticationHandler.h"
 
 @protocol FLStorageService;
 @protocol FLAuthenticationCredentials;
@@ -20,7 +20,7 @@
 
 @class FLServiceList;
 
-@interface FLHttpOperationContext : FLOperationContext<FLHttpRequestAuthenticator, FLCredentialsProvider> {
+@interface FLHttpOperationContext : FLOperationContext<FLHttpRequestAuthenticator, FLAuthenticationHandler> {
 @private
     id<FLStorageService> _storageService;
     id<FLAuthenticatedEntity> _authenticatedEntity;

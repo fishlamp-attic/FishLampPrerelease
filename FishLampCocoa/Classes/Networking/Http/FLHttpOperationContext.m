@@ -162,10 +162,6 @@
 - (void) prepareAuthenticatedOperation:(id) operation {
 }
 
-- (void) updateEntity:(id<FLAuthenticatedEntity>) entity {
-    self.authenticatedEntity = entity;
-}
-
 - (void) saveCredentials {
     if(self.credentialsStorage) {
         [self.credentialsStorage writeCredentials:self.authenticationCredentials];
@@ -185,5 +181,26 @@
 
     [self closeService];
 }
+
+//- (id<FLAuthenticationCredentials>) loginPanelGetCredentials:(FLLoginPanel*) panel {
+//    return self.authenticationCredentials;
+//}
+//
+//- (void) loginPanel:(FLLoginPanel*) panel setCredentials:(id<FLAuthenticationCredentials>) credentials {
+//    self.authenticationCredentials = credentials;
+//}
+
+- (void) cancelAuthentication {
+    [self requestCancel];
+}
+
+- (BOOL) shouldSavePassword {
+    return self.credentialsStorage.rememberPasswordSetting;
+}
+
+- (void) setShouldSavePassword:(BOOL) savePassword {
+    self.credentialsStorage.rememberPasswordSetting = savePassword;
+}
+
 
 @end

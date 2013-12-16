@@ -18,10 +18,10 @@ extern NSString* const FLActivityLogStringKey;
 @interface FLActivityLog : FLPrettyAttributedString {
 @private 
     SDKFont* _textFont;
-    NSColor* _textColor;
+    SDKColor* _textColor;
 }
 @property (readwrite, strong, nonatomic) SDKFont* activityLogTextFont;
-@property (readwrite, strong, nonatomic) NSColor* activityLogTextColor;
+@property (readwrite, strong, nonatomic) SDKColor* activityLogTextColor;
 
 + (id) activityLog;
 

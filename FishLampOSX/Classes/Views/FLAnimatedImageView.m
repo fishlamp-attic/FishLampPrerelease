@@ -8,7 +8,7 @@
 //
 
 #import "FLAnimatedImageView.h"
-#import "FLGlobalNetworkActivityIndicator.h"
+#import "FLRotateAnimation.h"
 
 @implementation FLAnimatedImageView
 
@@ -83,7 +83,7 @@
     return self;
 }
 
-- (void) setImage:(NSImage*) image {
+- (void) setImage:(SDKImage*) image {
     FLSetObjectWithRetain(_image, image);
 
     if(_animationLayer) {
@@ -164,12 +164,6 @@
 
 - (void) hideNetworkProgress:(id) sender {
     [self stopAnimating];
-}
-
-- (void) setRespondsToGlobalNetworkActivity:(BOOL) responds {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNetworkProgress:) name:FLGlobalNetworkActivityShow object:[FLGlobalNetworkActivityIndicator instance]];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideNetworkProgress:) name:FLGlobalNetworkActivityHide object:[FLGlobalNetworkActivityIndicator instance]];
-
 }
 
 - (void) setImageWithNameInBundle:(NSString*) name {

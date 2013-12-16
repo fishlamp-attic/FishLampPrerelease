@@ -10,6 +10,8 @@
 
 // http://whatcolor.heroku.com/
 
+#import "FLCompatibility.h"
+
 @interface SDKColor (FLMoreColors) 
 
 + (SDKColor*) iPhoneBlueColor;

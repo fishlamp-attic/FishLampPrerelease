@@ -50,7 +50,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
 
-    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextRef context = CGGetCurrentContext();
 
     [_backgroundColor setFill];
     NSRectFill(dirtyRect);

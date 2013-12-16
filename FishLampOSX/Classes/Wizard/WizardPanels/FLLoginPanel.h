@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FishLamp-OSX.h"
+#import "FishLampOSX.h"
 #import "FLPanelViewController.h"
 #import "FLWizardViewController.h"
 #import "FLProgressPanel.h"
@@ -15,8 +15,7 @@
 #import "FishLampAsync.h"
 
 @protocol FLLoginPanelDelegate;
-
-@protocol FLLoginPanelAuthenticationProvider;
+@protocol FLAuthenticationHandler;
 
 @interface FLLoginPanel : FLPanelViewController<NSTextFieldDelegate, FLProgressPanelDelegate>  {
 @private
@@ -25,36 +24,10 @@
     IBOutlet NSButton* _savePasswordCheckBox;
     IBOutlet NSButton* _forgotPasswordButton;
     IBOutlet NSButton* _loginButton;
-    __unsafe_unretained id<FLLoginPanelAuthenticationProvider> _authenticationDelegate;
+    id<FLAuthenticationHandler> _authenticationHandler;
 }
 + (id) loginPanel;
-@property (readwrite, assign, nonatomic) id<FLLoginPanelAuthenticationProvider> authenticationProvider;
-@end
-
-@protocol FLLoginPanelAuthenticationProvider <NSObject>
-
-// get/set credentials
-
-- (id<FLAuthenticationCredentials>) loginPanelGetCredentials:(FLLoginPanel*) panel;
-
-- (void) loginPanel:(FLLoginPanel*) panel setCredentials:(id<FLAuthenticationCredentials>) credentials;
-
-// authetication
-
-- (void) loginPanel:(FLLoginPanel*) loginPanel
-beginAuthenticatingWithCompletion:(fl_result_block_t) completion;
-
-- (void) loginPanelDidCancelAuthentication:(FLLoginPanel*) panel;
-
-//- (BOOL) loginPanel:(FLLoginPanel*) panel 
-//credentialsAreAuthenticated:(id<FLAuthenticationCredentials>) credentials;
-
-// get/set BOOL for saving password
-
-- (BOOL) loginPanelGetSavePassword:(FLLoginPanel*) panel;
-
-- (void) loginPanel:(FLLoginPanel*) panel setSavePassword:(BOOL) savePassword;
-
+@property (readwrite, strong, nonatomic) id<FLAuthenticationHandler> authenticationHandler;
 @end
 
 @protocol FLLoginPanelDelegate <NSObject>

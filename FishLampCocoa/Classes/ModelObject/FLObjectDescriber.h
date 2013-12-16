@@ -24,8 +24,6 @@
 @property (readonly, assign) NSUInteger propertyCount;
 @property (readonly, copy) NSDictionary* properties;
 
-@property (readonly, strong) id storageRepresentation;
-
 + (id) objectDescriber:(Class) aClass;
 
 // helpers

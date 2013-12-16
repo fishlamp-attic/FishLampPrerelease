@@ -8,6 +8,7 @@
 //
 
 #import "FLShellCommand.h"
+#import "FishLampAsync.h"
 
 @implementation FLShellCommand
 @synthesize environment = _environment;

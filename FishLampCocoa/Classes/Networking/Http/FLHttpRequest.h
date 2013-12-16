@@ -26,7 +26,7 @@
 @class FLHttpResponse;
 
 @protocol FLRetryHandler;
-
+@protocol FLNetworkActivityState;
 
 /**
  *  Http Request Authenticator
@@ -62,6 +62,8 @@
     id<FLHttpRequestAuthenticator> _httpRequestAuthenticator;
     BOOL _disableAuthenticator;
     id<FLReadStreamByteReader> _readStreamByteReader;
+
+    id<FLNetworkActivityState> _busyIndicator;
 }
 
 @property (readwrite, nonatomic, strong) id<FLRetryHandler> retryHandler;

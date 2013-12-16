@@ -8,18 +8,18 @@
 //
 
 #import "FLNetworkOperationContext.h"
-#import "FLGlobalNetworkActivityIndicator.h"
+#import "FLNetworkActivity.h"
 
 @implementation FLNetworkOperationContext
 
 //- (void) didStartWorking {
 //    [super didStartWorking];
-//    [[FLGlobalNetworkActivityIndicator instance] setNetworkBusy:YES];
+//    [[FLNetworkActivity instance] setNetworkBusy:YES];
 //}
 //
 //- (void) didStopWorking {
 //    [super didStopWorking];
-//    [[FLGlobalNetworkActivityIndicator instance] setNetworkBusy:NO];
+//    [[FLNetworkActivity instance] setNetworkBusy:NO];
 //}
 
 @end

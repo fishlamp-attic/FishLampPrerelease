@@ -70,13 +70,6 @@
 - (BOOL) representsIvar;
 @end
 
-#if MOVE_TO_STORAGE
-@interface FLPropertyDescriber (Database)
-- (FLDatabaseType) databaseColumnType;          
-@end
-#endif
-
-
 @interface FLPropertyDescriber (Deprecated)
 + (id) propertyDescriber:(NSString*) name class:(Class) aClass;
 @end

@@ -9,16 +9,5 @@
 
 #import "FLAnimatedImageView.h"
 
-//@interface FLSpinningProgressView : FLAnimatedImageView {
-//@private
-//    NSProgressIndicator* _spinner;
-//} 
-//
-//- (void) setRespondsToGlobalNetworkActivity;
-//
-//@end
-
-@interface FLSpinningProgressView : NSProgressIndicator {
-}
-- (void) setRespondsToGlobalNetworkActivity;
+@interface FLSpinningProgressView : NSProgressIndicator
 @end

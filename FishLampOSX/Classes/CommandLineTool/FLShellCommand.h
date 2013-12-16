@@ -8,7 +8,6 @@
 //
 
 #import "FishLampCore.h"
-#import "FishLampCore.h"
 #import "FLOperation.h"
 #import "FLCommandLineArgument.h"
 

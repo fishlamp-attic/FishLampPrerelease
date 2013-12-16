@@ -74,7 +74,7 @@
 //- (void) setAttribute:(id) object forName:(NSString*) name forRange:(NSRange) range; // nil ojbect removes it.
 //
 - (void) setAttributedStringFont:(SDKFont*) font;
-- (void) setAttributedStringColor:(NSColor*) color;
+- (void) setAttributedStringColor:(SDKColor*) color;
 - (void) setAttributedStringUnderlined;
 //
 //+ (id) mutableAttributedString;

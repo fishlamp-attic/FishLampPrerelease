@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FishLamp-OSX.h"
+#import "FishLampOSX.h"
 #import "FLStringFormatter.h"
 #import "FLWhitespaceStringFormatter.h"
 

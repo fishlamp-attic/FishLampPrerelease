@@ -10,11 +10,11 @@ target :"FishLamp-iOS" do
     platform :ios, '6.1'
 end
 
-target :"FishLamp-OSX-Universal" do
+target :"FishLampOSX-Universal" do
     platform :osx, '10.6'
 end
 
-target :"FishLamp-OSX" do
+target :"FishLampOSX" do
     platform :osx, '10.7'
 end
 

@@ -11,7 +11,6 @@
 
 #import "FLObjcRuntime.h"
 #import "FLModelObject.h"
-#import "FLDatabase.h"
 
 typedef void (^FLPropertyVisitor)(NSString* propertyName, id value, BOOL* stop);
 typedef void (^FLPropertyDescriberVisitor)(FLPropertyDescriber* propertyDescriber, BOOL* stop);
@@ -234,14 +233,7 @@ static NSMutableDictionary* s_registry = nil;
     return [[[self class] alloc] initWithClass:_objectClass properties:_properties];
 }
 
-- (id) storageRepresentation {
-    if([self.objectClass isModelObject]) {
-        dispatch_once(&_storageRepPred, ^{
-            _storageRepresentation = [[FLDatabaseTable alloc] initWithClass:self.objectClass];
-        }); 
-    }
-    return _storageRepresentation;
-}
+
 
 - (void) addPropertyArrayTypes:(NSArray*) types forPropertyName:(NSString*) name {
 

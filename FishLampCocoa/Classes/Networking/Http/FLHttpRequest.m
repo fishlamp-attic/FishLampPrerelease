@@ -12,7 +12,7 @@
 #import "NSBundle+FLVersion.h"
 #import "FLCoreFoundation.h"
 #import "FLDataSink.h"
-#import "FLGlobalNetworkActivityIndicator.h"
+#import "FLNetworkActivity.h"
 #import "FLHttpMessage.h"
 #import "FLHttpRequestBody.h"
 #import "FLHttpRequestByteCount.h"
@@ -40,6 +40,8 @@
 @property (readwrite, strong, nonatomic) FLHttpStream* httpStream;
 @property (readwrite, strong) FLHttpRequestByteCount* byteCount;
 - (void) finishRequestWithResult:(FLPromisedResult) result;
+
+@property (readwrite, strong, nonatomic) id<FLNetworkActivityState> busyIndicator;
 @end
 
 @implementation FLHttpRequest
@@ -56,6 +58,7 @@
 @synthesize byteCount = _byteCount;
 @synthesize retryHandler = _retryHandler;
 @synthesize readStreamByteReader = _readStreamByteReader;
+@synthesize busyIndicator = _busyIndicator;
 
 #if TRACE
 static int s_counter = 0;
@@ -108,6 +111,7 @@ static int s_counter = 0;
     [_requestHeaders release];
     [_requestBody release];
     [_retryHandler release];
+    [_busyIndicator release];
     [super dealloc];
 }
 #endif
@@ -125,9 +129,7 @@ static int s_counter = 0;
 
 - (void) openStreamWithURL:(NSURL*) url {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:FLNetworkActivityStartedNotification object:nil userInfo:[NSDictionary dictionaryWithObject:self forKey:FLNetworkActivitySenderKey]];
-    });
+    self.busyIndicator = [[FLGlobalNetworkActivity instance] setBusy];
     
     [self willOpen];
     [self sendMessageToListeners:@selector(httpRequestWillOpen:) withObject:self];
@@ -234,10 +236,8 @@ static int s_counter = 0;
     
     [self.retryHandler resetRetryCount];
 
-// TODO: move this?
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:FLNetworkActivityStoppedNotification object:nil userInfo:[NSDictionary dictionaryWithObject:self forKey:FLNetworkActivitySenderKey]];
-    });
+    [self.busyIndicator setNotBusy];
+    self.busyIndicator = nil;
 }
 
 - (void) requestCancel {

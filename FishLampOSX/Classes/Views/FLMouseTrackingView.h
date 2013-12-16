@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FishLamp-OSX.h"
+#import "FishLampOSX.h"
 #import "FLCompatibility.h"
 
 #import <AppKit/AppKit.h>

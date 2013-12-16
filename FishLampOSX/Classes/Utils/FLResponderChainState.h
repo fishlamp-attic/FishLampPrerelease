@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
-#import "FishLamp-OSX.h"
+#import "FishLampOSX.h"
 
 @interface FLResponderChainState : NSObject {
 @private
