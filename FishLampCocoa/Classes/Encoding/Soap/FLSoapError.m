@@ -8,7 +8,7 @@
 //
 
 #import "FLSoapError.h"
-#import "FLErrorCodes.h"
+#import "FishLampCoreErrorDomain.h"
 
 @implementation NSError (FLSoapExtras) 
 

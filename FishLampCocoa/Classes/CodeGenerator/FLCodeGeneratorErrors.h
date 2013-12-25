@@ -7,7 +7,7 @@
 //
 
 #import "FishLampCore.h"
-#import "FLExceptions.h"
+#import "FishLampExceptions.h"
 
 extern NSString* const FLCodeGeneratorErrorDomain;
 

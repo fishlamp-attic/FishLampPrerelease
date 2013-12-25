@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 #import "FishLampCore.h"
-#import "FLErrorCodes.h"
+#import "FishLampCoreErrorDomain.h"
 #import "FLSoapFault11.h"
 #import "FLErrorDomainInfo.h"
 #import "NSError+FishLamp.h"

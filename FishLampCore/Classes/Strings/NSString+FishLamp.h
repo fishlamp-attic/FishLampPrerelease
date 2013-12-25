@@ -69,25 +69,13 @@
 extern NSString* FLStringWithFormatOrNil(NSString* formatOrNil, ...) NS_FORMAT_FUNCTION(1,2);
 
 
-#if DEBUG
-// these work with nil strings, which is why they're not
-// category additions.
-extern BOOL FLStringIsEmpty(NSString* string);
-extern BOOL FLStringIsNotEmpty(NSString* string);
-extern BOOL FLStringsAreEqual(NSString* lhs, NSString* rhs);
-extern BOOL FLStringsAreEqualCaseInsensitive(NSString* lhs, NSString* rhs);
-#else
-#define __INLINES__
-#import "NSString+FishLamp_Inlines.h"
-#undef __INLINES__
-#endif
+//#if DEBUG
+//#else
+//#define __INLINES__
+//#import "NSString+FishLamp_Inlines.h"
+//#undef __INLINES__
+//#endif
 
-#define FLStringsAreNotEqual(lhs, rhs) (!FLStringsAreEqual(lhs, rhs))
-
-NS_INLINE
-NSString* FLEmptyStringOrString(NSString* string) {
-    return FLStringIsEmpty(string) ? @"" : string;
-}
 
 
 NS_INLINE

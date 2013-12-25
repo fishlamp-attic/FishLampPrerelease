@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FishLampObjc.h"
-#import "FLErrorException.h"
+#import "FishLampCore.h"
+#import "FishLampExceptions.h"
 #import "FLStackTrace.h"
 
 extern NSString* const FLTAssertFailedErrorDomain;

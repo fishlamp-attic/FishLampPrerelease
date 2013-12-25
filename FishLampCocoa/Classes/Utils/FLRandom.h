@@ -9,7 +9,7 @@
 
 #import "FishLampCore.h"
 #import "FLCoreFlags.h"
-#import "FishLampObjc.h"
+#import "FishLampCore.h"
 
 #define FLSetRandomSeed() srandom(time(NULL))
 

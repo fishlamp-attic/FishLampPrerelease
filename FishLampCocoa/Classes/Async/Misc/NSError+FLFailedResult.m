@@ -8,7 +8,7 @@
 
 #import "NSError+FLFailedResult.h"
 
-#import "FLErrorCodes.h"
+#import "FishLampCoreErrorDomain.h"
 
 @implementation NSError (FLAsyncResult)
 + (id) failedResultError {

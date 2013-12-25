@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Mike Fullerton. All rights reserved.
 //
 
-#import "FishLampObjc.h"
+#import "FishLampCore.h"
 
 /**
  *  A object proxy the protocol for defining objects that represents represents another object.

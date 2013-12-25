@@ -14,18 +14,6 @@
 #import "FLStringUtils_Inlines.h"
 #endif 
 
-NSString* FLStringWithFormatOrNil(NSString* format, ...) {
-    if(format) {
-        va_list va_args;
-        va_start(va_args, format);
-        
-        NSString* string = FLAutorelease([[NSString alloc] initWithFormat:[format description] arguments:va_args]);
-        va_end(va_args);
-        return string;
-    }
-    
-    return @"";
-}
 
 @implementation NSString (FLStringUtilities)
 
@@ -104,10 +92,6 @@ NSString* FLStringWithFormatOrNil(NSString* format, ...) {
     return string;
 }
 
-- (BOOL)isEqualToString_fl:(NSString *)aString caseSensitive:(BOOL) caseSensitive {
-	return caseSensitive ?	[self isEqualToString:aString] :		
-							[self caseInsensitiveCompare:aString] == NSOrderedSame; 
-}
 
 - (NSString*) stringWithUppercaseFirstLetter_fl
 {

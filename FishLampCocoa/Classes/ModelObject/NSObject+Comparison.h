@@ -9,7 +9,7 @@
 
 #import "FishLampCore.h"
 #import "FLCoreFlags.h"
-#import "FishLampObjc.h"
+#import "FishLampCore.h"
 
 /// @category NSObject(FLComparison)
 ///  An extension to NSObject to help with copying objects
