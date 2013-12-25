@@ -1,4 +1,0 @@
-
-#include "Piecemeal-XcodeConfigs/Configs/Piecemeal-IncludedConfig-DefaultCompilerWarnings.xcconfig"
-#include "Piecemeal-XcodeConfigs/Configs/Piecemeal-IncludedConfig-DefaultClangSettings.xcconfig"
-#include "Piecemeal-XcodeConfigs/Configs/Piecemeal-IncludedConfig-DefaultSettings-Release.xcconfig"

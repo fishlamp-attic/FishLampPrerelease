@@ -1,4 +1,0 @@
-
-#include "Piecemeal-XcodeConfigs/Configs/Piecemeal-IncludedConfig-OSX-64.xcconfig"
-#include "Piecemeal-XcodeConfigs/Configs/Piecemeal-IncludedConfig-ARC.xcconfig"
-#include "Piecemeal-XcodeConfigs/Configs/Piecemeal-IncludedConfig-Preprocessor.xcconfig"

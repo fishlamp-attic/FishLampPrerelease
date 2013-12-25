@@ -1,3 +1,0 @@
-
-#include "Piecemeal-XcodeConfigs/Configs/Piecemeal-IncludedConfig-iOS.xcconfig"
-#include "Piecemeal-XcodeConfigs/Configs/Piecemeal-IncludedConfig-Preprocessor.xcconfig"

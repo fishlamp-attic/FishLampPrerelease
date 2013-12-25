@@ -1,7 +1,0 @@
-
-
-#include "Piecemeal-XcodeConfigs/ProjectSettings/Piecemeal-ProjectSettingsRelease.xcconfig"
-
-// this twiddles a few things for DEBUG builds
-#include "Piecemeal-XcodeConfigs/Configs/Piecemeal-IncludedConfig-DefaultSettings-Debug.xcconfig"
-

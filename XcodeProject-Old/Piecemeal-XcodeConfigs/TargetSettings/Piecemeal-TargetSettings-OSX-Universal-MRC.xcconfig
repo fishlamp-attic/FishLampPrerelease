@@ -1,4 +1,0 @@
-
-#include "Piecemeal-XcodeConfigs/Configs/Piecemeal-IncludedConfig-OSX-Universal.xcconfig"
-#include "Piecemeal-XcodeConfigs/Configs/Piecemeal-IncludedConfig-MRC.xcconfig"
-#include "Piecemeal-XcodeConfigs/Configs/Piecemeal-IncludedConfig-Preprocessor.xcconfig"

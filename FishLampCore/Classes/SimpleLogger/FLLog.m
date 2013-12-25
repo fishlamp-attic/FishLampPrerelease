@@ -15,7 +15,6 @@
 #import "FLErrorException.h"
 #import "FLExceptions.h"
 #import "FLConsoleLogSink.h"
-#import "FLObjcRuntime.h"
 
 NSException* FLWillThrowExceptionHandlerForLogger(NSException *exception) {
     [[FLLogLogger instance] logObject:exception];
