@@ -1,0 +1,29 @@
+xcodeproj 'FishLampPrerelease.xcodeproj'
+
+platform :ios, '7.0'
+
+target :"FishLampPrerelease-iOS-ARC" do
+    platform :ios, '7.0'
+    pod 'FishLampCore', :path => '../../FishLampCore'
+    pod 'FishLampStrings', :path => '../../FishLampStrings'
+end
+
+target :"FishLampPrerelease-OSX-32-MRC" do
+    platform :osx, '10.6'
+    pod 'FishLampCore', :path => '../../FishLampCore'
+end
+
+target :"FishLampPrerelease-OSX-64-MRC" do
+    platform :osx, '10.6'
+    pod 'FishLampCore', :path => '../../FishLampCore'
+end
+
+target :"FishLampPrerelease-OSX-64-ARC" do
+    platform :osx, '10.6'
+    pod 'FishLampCore', :path => '../../FishLampCore'
+end
+
+target :"FishLampPrerelease-OSX-Universal-MRC" do
+    platform :osx, '10.6'
+    pod 'FishLampCore', :path => '../../FishLampCore'
+end

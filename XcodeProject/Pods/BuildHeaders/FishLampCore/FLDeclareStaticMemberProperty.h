@@ -1,0 +1,1 @@
+../../../../../FishLampCore/Classes/ObjcPropertyDeclaring/FLDeclareStaticMemberProperty.h

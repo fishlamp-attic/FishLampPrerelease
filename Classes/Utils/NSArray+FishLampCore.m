@@ -152,8 +152,8 @@
 @implementation NSMutableArray (FishLamp)
 
 - (void) moveObjectToNewIndex_fl:(NSUInteger) fromIndex toIndex:(NSUInteger) toIndex {
-	FLAssertWithComment(fromIndex < (NSUInteger)self.count, @"bad from idx");
-	FLAssertWithComment(toIndex < (NSUInteger)self.count, @"bad from idx");
+	FLAssert(fromIndex < (NSUInteger)self.count, @"bad from idx");
+	FLAssert(toIndex < (NSUInteger)self.count, @"bad from idx");
 
 	if(fromIndex != toIndex) {
 		id object = FLAutorelease(FLRetain([self objectAtIndex:fromIndex]));

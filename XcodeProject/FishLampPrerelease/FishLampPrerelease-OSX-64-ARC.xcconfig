@@ -1,0 +1,11 @@
+//
+//  Created by Mike Fullerton on 7/11/12.
+//  Copyright (c) 2013 GreenTongue Software LLC, Mike Fullerton. 
+//  This file is released under the MIT License: http://fishlamp.com/license 
+//
+
+#include "Pods/Pods-FishLampPrerelease-OSX-64-ARC.xcconfig"
+
+#include "XcodeBuildSupportConfigs/TargetSettings/OSX-64-ARC.xcconfig"
+#include "FishLampPrerelease/FishLampPrerelease-SharedTargetSettings.xcconfig"
+

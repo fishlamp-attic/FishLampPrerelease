@@ -304,8 +304,8 @@
 		_subWidgets = [[NSMutableArray alloc] init];
 	}
 	
-    FLAssertWithComment(widget != self, @"can't add yourself to your subWidgets!");
-    FLAssertWithComment(widget != self.parent, @"can't add your parent to your subWidgets!");
+    FLAssert(widget != self, @"can't add yourself to your subWidgets!");
+    FLAssert(widget != self.parent, @"can't add your parent to your subWidgets!");
     
 	[_subWidgets insertObject:widget atIndex:index];
 	if(widget.parent) {
@@ -322,7 +322,7 @@
 }
 
 - (void) removeWidget:(FLWidget*) widget {
-	FLAssertWithComment(widget.parent == self, @"attempting to remove subwidget from non-owning superwidget");
+	FLAssert(widget.parent == self, @"attempting to remove subwidget from non-owning superwidget");
     if(_subWidgets && widget.parent == self) {
         [self willRemoveSubWidget:widget];
         [_subWidgets removeObject:FLRetainWithAutorelease(widget)];

@@ -1,0 +1,1 @@
+../../../../../FishLampCore/Classes/ObjcCompiling/FishLampObjcCompiling.h

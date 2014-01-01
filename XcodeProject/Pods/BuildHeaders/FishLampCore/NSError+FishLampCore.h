@@ -1,0 +1,1 @@
+../../../../../FishLampCore/Classes/Errors/NSError+FishLampCore.h
