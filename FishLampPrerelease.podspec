@@ -138,10 +138,6 @@ Pod::Spec.new do |s|
 		ss.source_files = 'Classes/RetryHandler/**/*.{h,m}'
 	end
 
-	s.subspec 'Timer' do |ss|
-		ss.source_files = 'Classes/Timer/**/*.{h,m}'
-	end
-
 	s.subspec 'Storage' do |ss|
 		ss.dependency 'FishLampPrerelease/Files'
 		ss.source_files = 'Classes/Storage/**/*.{h,m}'
