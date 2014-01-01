@@ -45,10 +45,10 @@
 - (void) startAnimating:(id) target
              completion:(fl_block_t) completion {
     
-    FLAssertWithComment([NSThread isMainThread], @"not on main thread");
+    FLAssert([NSThread isMainThread], @"not on main thread");
 
     CALayer* layer = [target layer];
-    FLAssertNotNilWithComment(layer, @"layer is nil");
+    FLAssertNotNil(layer, @"layer is nil");
     
     [self startAnimationWithPrepareBlock:^{ [self prepareAnimation:layer]; }
                            commitBlock:^{ [self commitAnimation:layer]; }

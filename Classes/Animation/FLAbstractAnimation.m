@@ -36,7 +36,7 @@
   
     completion = FLCopyWithAutorelease(completion);
 
-    FLAssertWithComment([NSThread isMainThread], @"not on main thread");
+    FLAssert([NSThread isMainThread], @"not on main thread");
     
     if(prepare) {
         [CATransaction begin];

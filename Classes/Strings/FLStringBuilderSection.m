@@ -9,6 +9,10 @@
 
 #import "FLStringBuilderSection.h"
 #import "FLWhitespace.h"
+#import "FLPrettyDescription.h"
+
+#import "FLPrettyAttributedString.h"
+#import "FLPrettyString.h"
 
 @interface FLStringBuilderSection ()
 @property (readwrite, assign, nonatomic) id parentSection;

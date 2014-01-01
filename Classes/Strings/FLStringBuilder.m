@@ -10,6 +10,7 @@
 #import "FLStringBuilder.h"
 #import "FLPrettyString.h"
 #import "FLPrettyAttributedString.h"
+#import "NSArray+FishLampCore.h"
 
 @interface FLStringBuilder ()
 @property (readonly, strong, nonatomic) id<FLStringFormatter> rootStringBuilder;

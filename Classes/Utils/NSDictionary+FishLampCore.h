@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "FishLampObjc.h"
+#import "FishLampCore.h"
 
 // With the array api below, nils in the object arrays are acceptable and will
 // either remove item from the dictionary (in setObjects) or not add the key/object

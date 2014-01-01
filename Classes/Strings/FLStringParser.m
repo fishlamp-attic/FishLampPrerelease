@@ -71,7 +71,7 @@
         
         NSUInteger advancedBy = range.location + range.length;
         
-        FLConfirmWithComment(advancedBy > 0, @"Tokenizer must move range forward");
+        FLConfirm(advancedBy > 0, @"Tokenizer must move range forward");
 
         NSString* token = [unparsedString substringWithRange:range];
         [_tokens addObject:token];
@@ -95,7 +95,7 @@
     }
     
     if(_tokens.count) {
-        [_tokens removeLastObject_fl];
+        [_tokens removeObjectAtIndex:_tokens.count - 1];
     }
     
     self.unparsedString = nil;
@@ -121,7 +121,9 @@
 }
 
 - (void) popTokenizer {
-    [_tokenizers removeLastObject_fl];
+    if(_tokenizers.count) {
+        [_tokenizers removeObjectAtIndex:_tokenizers.count - 1];
+    }
 }
 
 @end

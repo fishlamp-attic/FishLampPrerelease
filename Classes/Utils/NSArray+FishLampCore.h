@@ -10,7 +10,7 @@
 /// @category NSArray(FishLamp)
 /// @brief A Category for adding a couple of obvious methods to NSArray.
 
-#import "FishLampObjc.h"
+#import "FishLampCore.h"
 
 @interface NSArray (FishLamp)
 

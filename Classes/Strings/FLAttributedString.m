@@ -161,7 +161,7 @@
 //+ (id) attributedStringWithString:(NSString*) string 
 //                    withTextStyle:(FLTextStyle*) textStyle {
 //
-//    FLAssertNotNilWithComment(textStyle, @"no text style attributed string");
+//    FLAssertNotNil(textStyle, @"no text style attributed string");
 //    NSMutableAttributedString* attrString =
 //        FLAutorelease([[NSMutableAttributedString alloc] initWithString:string]);
 //

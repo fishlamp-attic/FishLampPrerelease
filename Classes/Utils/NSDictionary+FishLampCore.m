@@ -7,7 +7,7 @@
 //  The FishLamp Framework is released under the MIT License: http://fishlamp.com/license 
 //
 
-#import "NSDictionary+FishLamp.h"
+#import "NSDictionary+FishLampCore.h"
 
 NS_INLINE
 NSUInteger FLDictionaryEntryArrayLength(const FLDictionaryEntry* objects) {

@@ -10,6 +10,7 @@
 #import "NSArray+FishLampCore.h"
 #import "NSString+FishLampCore.h"
 #import "FishLampAssertions.h"
+#import "NSString+FishLamp.h"
 
 @implementation NSObject (FLLameWorkaroundForArrayRTTI)
 - (BOOL) isArray_fl {

@@ -36,6 +36,7 @@ Pod::Spec.new do |s|
 	end
 
 	s.subspec 'Containers' do |ss|
+		ss.dependency 'FishLampPrerelease/Utils'
 		ss.source_files = 'Classes/Containers/**/*.{h,m}'
 	end
 
@@ -92,6 +93,7 @@ Pod::Spec.new do |s|
 	end
 
 	s.subspec 'Encoding' do |encoding|
+		encoding.dependency 'FishLampPrerelease/Utils'
 		encoding.dependency 'FishLampPrerelease/CodeBuilder'
 
 		encoding.subspec 'Xml' do |ss|
