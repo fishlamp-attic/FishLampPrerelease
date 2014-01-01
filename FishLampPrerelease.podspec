@@ -27,10 +27,6 @@ Pod::Spec.new do |s|
 		ss.source_files = 'Classes/Utils/**/*.{h,m}'
 	end
 
-	s.subspec 'Proxies' do |ss|
-		ss.source_files = 'Classes/Proxies/**/*.{h,m}'
-	end
-
 	s.subspec 'BundleUtils' do |ss|
 		ss.source_files = 'Classes/BundleUtils/**/*.{h,m}'
 	end
@@ -42,11 +38,6 @@ Pod::Spec.new do |s|
 
 	s.subspec 'ByteBuffer' do |ss|
 		ss.source_files = 'Classes/ByteBuffer/**/*.{h,m}'
-	end
-
-	s.subspec 'Events' do |ss|
-		ss.dependency 'FishLampPrerelease/Proxies'
-		ss.source_files = 'Classes/Events/**/*.{h,m}'
 	end
 
 	s.subspec 'Files' do |ss|
@@ -155,7 +146,7 @@ Pod::Spec.new do |s|
 		ss.dependency 'FishLampPrerelease/Storage'
 		ss.dependency 'FishLampPrerelease/ModelObject'
 		ss.dependency 'FishLampPrerelease/Services'
-		ss.dependency 'FishLampPrerelease/Async'
+		ss.dependency 'FishLampAsync'
 
 		ss.source_files = 'Classes/ObjectDatabase/**/*.{h,m}'
 	end
@@ -163,7 +154,7 @@ Pod::Spec.new do |s|
 	s.subspec 'Networking' do |network|
 
 		network.subspec 'Activity' do |ss|
-			ss.dependency 'FishLampPrerelease/Events'
+			ss.dependency 'FishLampEvents'
 			ss.source_files = 'Classes/Networking/Activity/**/*.{h,m}'
 		end
 		
@@ -183,9 +174,9 @@ Pod::Spec.new do |s|
 		end
 
 		network.subspec 'Streams' do |ss|
-			ss.dependency 'FishLampPrerelease/Events'
-			ss.dependency 'FishLampPrerelease/Timer'
-			ss.dependency 'FishLampPrerelease/Async'
+			ss.dependency 'FishLampEvents'
+			ss.dependency 'FishLampTimer'
+			ss.dependency 'FishLampAsync'
 			ss.dependency 'FishLampPrerelease/Networking/Sinks'
 
 			ss.ios.frameworks = 'CFNetwork'
@@ -196,7 +187,10 @@ Pod::Spec.new do |s|
 
 		network.subspec 'ProtocolSupport' do |ss|
 			ss.dependency 'FishLampStrings'
-			ss.dependency 'FishLampPrerelease/Async'
+			ss.dependency 'FishLampEvents'
+			ss.dependency 'FishLampAsync'
+			ss.dependency 'FishLampTimer'
+
 			ss.dependency 'FishLampPrerelease/RetryHandler'
 			ss.dependency 'FishLampPrerelease/BundleUtils'
 			ss.dependency 'FishLampPrerelease/CodeBuilder'
@@ -204,8 +198,6 @@ Pod::Spec.new do |s|
 			ss.dependency 'FishLampPrerelease/ModelObject'
 			ss.dependency 'FishLampPrerelease/Authentication'
 			ss.dependency 'FishLampPrerelease/Services'
-			ss.dependency 'FishLampPrerelease/Events'
-			ss.dependency 'FishLampPrerelease/Timer'
 
 			ss.dependency 'FishLampPrerelease/Networking/Activity'
 			ss.dependency 'FishLampPrerelease/Networking/Streams'
@@ -292,7 +284,7 @@ Pod::Spec.new do |s|
 		ss.dependency 'FishLampStrings'
 		ss.dependency 'FishLampPrerelease/ModelObject'
 		ss.dependency 'FishLampPrerelease/CodeBuilder'
-		ss.dependency 'FishLampPrerelease/Events'		
+		ss.dependency 'FishLampEvents'		
 		ss.dependency 'FishLampPrerelease/Files'		
 		ss.dependency 'FishLampPrerelease/Containers'		
 		ss.dependency 'FishLampPrerelease/ObjcRuntime'
