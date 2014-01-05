@@ -11,6 +11,8 @@
 //#import "SDKView+FLViewGeometry.h"
 #import "FLGeometry.h"
 
+#import "FishLampSimpleLogger.h"
+
 @interface FLWidget ()
 @property (readwrite, assign, nonatomic, getter=isParentHidden) BOOL parentHidden;
 @property (readwrite, assign, nonatomic) id parent;
