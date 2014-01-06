@@ -222,7 +222,7 @@
 //    FLAssertNotNil(font); 
 //    
 ////    CTFontRef fontRef = CTFontCreateWithName(FLBridge(CFStringRef, font.fontName), font.pointSize, NULL);
-////    FLAssertIsNotNil(fontRef);
+////    FLAssertNotNil(fontRef);
 ////    
 ////    if(fontRef) {
 ////        [self setAttribute:FLBridge(id, fontRef) forName:(NSString*) kCTFontAttributeName forRange:range];

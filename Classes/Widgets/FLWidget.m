@@ -166,7 +166,7 @@
 }
 
 - (void) visitWidgets:(void (^)(id widget, BOOL* stop)) visitor {
-	FLAssertIsNotNil(visitor);
+	FLAssertNotNil(visitor);
     BOOL stop = NO;
     [self visitWidgets:visitor stop:&stop];
 }
@@ -388,7 +388,7 @@ TODO("MF: optimize this.")
 }
 
 - (void) drawWidget:(CGRect) drawRect {
-    FLAssertIsNotNil(self.view);
+    FLAssertNotNil(self.view);
 
 // TODO: investigate coordinate system
 //                    CGContextTranslateCTM(context, 0.0, boxOffset);
